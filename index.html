@@ -1,0 +1,1536 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Film Portfolio - Cinematic Storytelling</title><style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff4444;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            z-index: 1;
+        }
+
+        .hero-background.active {
+            opacity: 0.8;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.3));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-content h1 span {
+            color: #ff4444;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #ff4444;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #cc3333;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Featured Works */
+        .featured-works {
+            padding: 5rem 0;
+            background: #111;
+            color: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            color: #fff;
+        }
+
+        .genre-section {
+            margin-bottom: 4rem;
+        }
+
+        .genre-title {
+            font-size: 1.5rem;
+            color: #ff4444;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 2px solid #ff4444;
+            padding-bottom: 0.5rem;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .work-card {
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .work-image {
+            width: 100%;
+            height: 250px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        /* Specific height only for Southern Gothic Mystery (1st) and Noir (10th) sections */
+        .genre-section:first-child .work-image {
+            height: 400px;
+        }
+        
+        .genre-section:nth-child(10) .work-image {
+            height: 400px;
+        }
+        .work-content {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .work-genre {
+            display: none;
+        }
+
+        .work-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .work-year {
+            display: none;
+        }
+
+        .work-description {
+            display: none;
+        }
+
+        .work-link {
+            color: #ff4444;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .work-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            background-color: #222;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            color: #fff;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ff4444;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: #000;
+            color: #fff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .about-text p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff4444;
+        }
+
+        .stat-label {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Services */
+        .services {
+            padding: 5rem 0;
+            background: #111;
+            color: #fff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: #222;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 5rem 0;
+            background: #000;
+            color: #fff;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .contact-info p {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form {
+            background: #222;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #333;
+            color: #fff;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style></head><body>
+    <header>
+        <nav class="container">
+            <div class="logo"></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <!-- Cycling Background Images - All Available Project Posters -->
+            <div class="hero-background" style="background-image: url('images/southern-belles-secret.png');"></div>
+            <div class="hero-background" style="background-image: url('images/the-alibi.png');"></div>
+            <div class="hero-background" style="background-image: url('images/sneakerheads.png');"></div>
+            <div class="hero-background" style="background-image: url('images/the-archive.png');"></div>
+            <div class="hero-background" style="background-image: url('images/refractions.png');"></div>
+            <div class="hero-background" style="background-image: url('images/mirror-image.png');"></div>
+            <div class="hero-background" style="background-image: url('images/spelman-christmas.png');"></div>
+            <div class="hero-background" style="background-image: url('images/southern-discomfort.png');"></div>
+            <div class="hero-background" style="background-image: url('images/the-proxy.png');"></div>
+            <div class="hero-background" style="background-image: url('images/beneath-magnolia-tree.png');"></div>
+            <div class="hero-background" style="background-image: url('images/twice-betrayed.png');"></div>
+            <div class="hero-background" style="background-image: url('images/past-due.png');"></div>
+            <div class="hero-background" style="background-image: url('images/somebody-you-know.png');"></div>
+            <div class="hero-background" style="background-image: url('images/broken-promise.png');"></div>
+            <div class="hero-background" style="background-image: url('images/influencers-last-post.png');"></div>
+            <div class="hero-background" style="background-image: url('images/bone-collectors-daughter.png');"></div>
+            <div class="hero-background" style="background-image: url('images/love-after-likes.png');"></div>
+            <div class="hero-background" style="background-image: url('images/second-first-date.png');"></div>
+            <div class="hero-background" style="background-image: url('images/flip-side-of-love.png');"></div>
+            <div class="hero-background" style="background-image: url('images/rhythm-and-blooms.png');"></div>
+            <div class="hero-background" style="background-image: url('images/trap-house-sitting.png');"></div>
+            <div class="hero-background" style="background-image: url('images/just-jack.png');"></div>
+            <div class="hero-background" style="background-image: url('images/grannys-house.png');"></div>
+            <div class="hero-background" style="background-image: url('images/divine-deception.png');"></div>
+            <div class="hero-background" style="background-image: url('images/the-line.png');"></div>
+            <div class="hero-background" style="background-image: url('images/grand-guignol.png');"></div>
+            <div class="hero-background" style="background-image: url('images/digital-shadows.png');"></div>
+            <div class="hero-background" style="background-image: url('images/exposed.png');"></div>
+            <div class="hero-background" style="background-image: url('images/second-skin.png');"></div>
+            <div class="hero-background" style="background-image: url('images/slice-of-paradise.png');"></div>
+            <div class="hero-background" style="background-image: url('images/twelve-dates-christmas-tree-lot.png');"></div>
+            <div class="hero-background" style="background-image: url('images/mother-interrupted.png');"></div>
+            <div class="hero-background" style="background-image: url('images/blood-money.png');"></div>
+            <div class="hero-background" style="background-image: url('images/lifeart.png');"></div>
+            <div class="hero-background" style="background-image: url('images/obsidian-codex.png');"></div>
+            <div class="hero-background" style="background-image: url('images/echoes-of-the-syndicate.png');"></div>
+            <div class="hero-background" style="background-image: url('images/cipher-of-shadows.png');"></div>
+            <div class="hero-background" style="background-image: url('images/blood-covenant.png');"></div>
+            <div class="hero-background" style="background-image: url('images/echo-chamber.png');"></div>
+            <div class="hero-background" style="background-image: url('images/queen-of-thorns.png');"></div>
+            <div class="hero-background" style="background-image: url('images/the-ghostmaker.png');"></div>
+            
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-content">
+                <h1>NCCA <span>ENTERTAINMENT</span></h1>
+                <p>Creating compelling stories through film that engage audiences, spark imagination, and resonate long after the credits roll.</p>
+                <div class="cta-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="featured-works">
+            <div class="container">
+                <h2 class="section-title">FEATURED</h2>
+                <p style="text-align: center; color: #ccc; margin-bottom: 3rem; font-size: 0.75em;">An extensive collection of 42 cinematic projects spanning multiple genres including action, comedy, drama, thriller, horror, romance, noir, documentary, and docuseries filmmaking.</p>          
+                <!-- Southern Gothic Mystery / Family Drama -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Southern Gothic Mystery / Family Drama</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('southern-belles-secret')">
+                            <div class="work-image" style="background-image: url('images/southern-belles-secret.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Southern Gothic Mystery / Family Drama</div>
+                                <h3 class="work-title">The Southern Belle's Secret</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When an investigative journalist uncovers evidence linking her family to a decades-old lynching, a polished Atlanta socialite must choose between protecting her dynasty's legacy or exposing a truth that could destroy her world—and redeem her soul.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drama -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Drama</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('lifeart')">
+                            <div class="work-image" style="background-image: url('images/lifeart.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Drama</div>
+                                <h3 class="work-title">Lifeart</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">In the heart of Shanghai's elite art world, a gifted European painter hides behind the pseudonym of a mysterious Chinese artist named "Tao"—but when family visits, secrets unravel, and a powerful commission threatens to expose everything, he must decide between artistic survival and personal authenticity.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('beneath-magnolia')">
+                            <div class="work-image" style="background-image: url('images/beneath-magnolia-tree.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Drama</div>
+                                <h3 class="work-title">Beneath the Magnolia Tree</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">A poignant Southern drama that explores family secrets and generational trauma beneath the beauty of the American South. Features stunning cinematography and powerful performances.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('mirror-image')">
+                            <div class="work-image" style="background-image: url('images/mirror-image.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Drama</div>
+                                <h3 class="work-title">Mirror Image</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When Atlanta's most successful fashion influencer is digitally framed by her own sister using deepfakes, forged evidence, and psychological manipulation, she must unravel a web of betrayal before her identity—and sanity—is completely erased.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('twice-betrayed')">
+                            <div class="work-image" style="background-image: url('images/twice-betrayed.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Drama</div>
+                                <h3 class="work-title">Twice Betrayed</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">When a respected Atlanta therapist's abusive ex-husband is found dead, she becomes the prime suspect—and her seemingly perfect new marriage begins to unravel as she discovers her new husband was hired to spy on her. But nothing is as it seems in this twisted tale of love, control, and betrayal.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('past-due')">
+                            <div class="work-image" style="background-image: url('images/past-due.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Drama</div>
+                                <h3 class="work-title">Past Due</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When a rising real estate attorney inherits her aunt's dilapidated West End home, she discovers a long-lost family secret buried beneath the floorboards—one connected to a decades-old missing persons case and a life she never knew was hers.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thriller -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Thriller</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('cipher-of-shadows')">
+                            <div class="work-image" style="background-image: url('images/cipher-of-shadows.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Thriller</div>
+                                <h3 class="work-title">The Cipher of Shadows</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">A guilt-ridden private investigator, specializing in missing persons, is hired by a mysterious femme fatale to find her vanished sister—only to uncover an AI-driven human trafficking network that exploits vulnerability through social media. As he confronts the system's architect, he must choose between revenge and redemption, trust and betrayal, before the algorithm claims its next victim: him.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('mother-interrupted')">
+                            <div class="work-image" style="background-image: url('images/mother-interrupted.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Thriller</div>
+                                <h3 class="work-title">Mother, Interrupted</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">Keisha has built the perfect life after growing up in foster care - thriving career, beautiful Buckhead home, and her pride and joy: 16-year-old adopted daughter Maya. When Maya begins acting out and sneaking around, Keisha assumes it's typical teenage rebellion. The Twist: Maya has been meeting with a woman claiming to be Keisha's biological mother - the same mother who abandoned Keisha at age 5. The woman reveals that Keisha isn't who she thinks she is: her real name is Aaliyah, and she was kidnapped from her loving family as a child by the woman Keisha believed was her abusive birth mother.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('blood-money')">
+                            <div class="work-image" style="background-image: url('images/blood-money.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Thriller</div>
+                                <h3 class="work-title">Blood Money</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">Amara is investigating a complex money laundering scheme involving several Atlanta-based nonprofits when she discovers her own mother's community organization is on the list. Convinced there's been a mistake, she digs deeper to clear her mother's name. The Twist: Her mother isn't innocent - she's been the mastermind behind a massive fraud ring that steals from legitimate charities serving Atlanta's underserved communities. But she's being blackmailed into it by someone who has evidence of a hit-and-run accident Amara caused as a teenager.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('the-proxy')">
+                            <div class="work-image" style="background-image: url('images/the-proxy.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Thriller</div>
+                                <h3 class="work-title">The Proxy</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When a struggling Atlanta artist is mistaken for an elite gallerist during a violent art heist, she's forced to navigate a world of stolen identities, black market legacies, and buried truths—only to discover the woman who stole her work may have also orchestrated her disappearance.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('the-alibi')">
+                            <div class="work-image" style="background-image: url('images/the-alibi.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Thriller</div>
+                                <h3 class="work-title">The Alibi</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When a wealthy and abusive businessman is found murdered, four women from his past—the ex-wife, the mistress, the business partner, and the estranged daughter—find themselves the prime suspects. To survive, they form an uneasy alliance and construct a shared alibi. But as the police circle closer and their lies begin to unravel, they start to suspect the killer is one of them. The truth is even more twisted: the real threat has been watching them from the start—and she's ready to strike again.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('somebody-you-know')">
+                            <div class="work-image" style="background-image: url('images/somebody-you-know.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Thriller</div>
+                                <h3 class="work-title">It's Somebody You Know</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">A psychological thriller that keeps audiences on the edge of their seats. Explores themes of trust, betrayal, and the darkness that can lurk behind familiar faces.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('broken-promise')">
+                            <div class="work-image" style="background-image: url('images/broken-promise.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Thriller</div>
+                                <h3 class="work-title">Broken Promise</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When a successful bridal boutique owner is conned by her charming fiancé, she joins forces with his ex-wife to track him down—only to uncover a trail of betrayal, a network of victims, and a deadly final con that could destroy them both.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('influencers-last-post')">
+                            <div class="work-image" style="background-image: url('images/influencers-last-post.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Thriller</div>
+                                <h3 class="work-title">The Influencer's Last Post</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">When disgraced lifestyle influencer Taylor Monroe is framed for the shocking disappearance of her online rival Nina Carter, she teams up with a skeptical journalist to uncover a twisted scheme of digital manipulation, blackmail, and deep fake deception—but exposing the truth could cost her life, her love, and what's left of her identity.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Action</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('queen-of-thorns')">
+                            <div class="work-image" style="background-image: url('images/queen-of-thorns.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Action</div>
+                                <h3 class="work-title">Queen of Thorns</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">Framed for a global catastrophe by her closest confidant, a ruthless arms dealer must dismantle the empire she unknowingly built on lies and a devastating superweapon to clear her name and confront the monstrous truth of her past.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('the-ghostmaker')">
+                            <div class="work-image" style="background-image: url('images/the-ghostmaker.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Action</div>
+                                <h3 class="work-title">The Ghostmaker</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">A rogue CIA operative who once specialized in erasing people from history discovers her own identity was a fabrication—volunteered by a man who loved the woman she now unknowingly impersonates. Hunted by the agency she once served, she must destroy the very system she helped build or become its final, perfect ghost.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('blood-covenant')">
+                            <div class="work-image" style="background-image: url('images/blood-covenant.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Action</div>
+                                <h3 class="work-title">Blood Covenant</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When a retired assassin haunted by his past teams up with a relentless journalist investigating her sister's death, they uncover a global conspiracy led by a secretive brotherhood manipulating world governments. But as personal ties to the cabal emerge, they must decide: expose the truth and lose everything—or vanish into legend as the villains history demands.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('obsidian-codex')">
+                            <div class="work-image" style="background-image: url('images/obsidian-codex.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Action</div>
+                                <h3 class="work-title">The Obsidian Codex</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">A disgraced archaeological explorer and a brilliant, but guarded, cryptographer must race against a shadowy organization to uncover an ancient artifact that could either save humanity or unleash a catastrophic power, forcing them to confront their pasts and a betrayal that shattered their shared history.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('echoes-of-the-syndicate')">
+                            <div class="work-image" style="background-image: url('images/echoes-of-the-syndicate.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Action</div>
+                                <h3 class="work-title">Echoes of the Syndicate</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When a former elite hacker, presumed dead, resurfaces to warn her ex-partner—a disillusioned corporate security expert—about a vast, interconnected conspiracy within the very organization he now protects, they must navigate a web of deception and betrayal to expose the truth and find redemption in a world that believes them both to be traitors.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horror -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Horror</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('second-skin')">
+                            <div class="work-image" style="background-image: url('images/second-skin.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Horror</div>
+                                <h3 class="work-title">Second Skin</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">A chilling horror film that explores transformation and identity. Features practical effects and atmospheric cinematography that creates genuine tension.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('bone-collectors-daughter')">
+                            <div class="work-image" style="background-image: url('images/bone-collectors-daughter.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Horror</div>
+                                <h3 class="work-title">The Bone Collector's Daughter</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">When a skeptical woman inherits her estranged mother's Appalachian home, she discovers a legacy of bone conjuring and memory-binding magic. Haunted by vengeful spirits known as the Hollow-Eyed, she must embrace her bloodline's dark rituals—or be consumed by the very past she tried to escape.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Romance -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Romance</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('southern-discomfort')">
+                            <div class="work-image" style="background-image: url('images/southern-discomfort.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Romance</div>
+                                <h3 class="work-title">Southern (Dis)comfort</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">After a scathing review tanks a struggling soul food restaurant, a feared Atlanta food critic is forced to team up with her ex-fiancé chef to rebuild its reputation—only to uncover buried family secrets, reignite old flames, and discover that the messiest meals often serve the deepest truths.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('love-after-likes')">
+                            <div class="work-image" style="background-image: url('images/love-after-likes.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Romance</div>
+                                <h3 class="work-title">Love after Likes</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">A modern romantic comedy that examines love in the digital age. Explores how social media affects relationships and authentic connection.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('second-first-date')">
+                            <div class="work-image" style="background-image: url('images/second-first-date.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Romance</div>
+                                <h3 class="work-title">Second First Date</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When a dating app matches two former college sweethearts — who once vowed never to speak again — they reluctantly agree to three dates as a dare. But as sparks reignite, they'll have to confront whether their love story ended too soon... or if some things are better left in the past.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('flip-side-of-love')">
+                            <div class="work-image" style="background-image: url('images/flip-side-of-love.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Romance</div>
+                                <h3 class="work-title">Flip Side of Love</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">When a driven TV producer returns home to film a historic home renovation, she's shocked to discover the project's contractor is her ex — the man who broke her heart. As old sparks resurface and buried Black history comes to light, they must navigate love, legacy, and the power of telling the truth… on and off camera.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('rhythm-and-blooms')">
+                            <div class="work-image" style="background-image: url('images/rhythm-and-blooms.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Romance</div>
+                                <h3 class="work-title">Rhythm & Blooms</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When a career-obsessed landscape architect loses his corporate job, he's reluctantly hired by a spontaneous jazz club owner to restore a decaying rooftop garden above her father's legendary venue. As the two clash and connect through plants and music, they revive not only the club—but themselves.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comedy -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Comedy</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('twelve-dates-christmas-tree-lot')">
+                            <div class="work-image" style="background-image: url('images/twelve-dates-christmas-tree-lot.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Comedy</div>
+                                <h3 class="work-title">The Twelve Dates of Christmas Tree Lot</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">Marcus Reed is freshly divorced and drowning in pine needles. His daddy's old Christmas tree lot in Southwest Atlanta is barely hanging on, and now Marcus has custody of his teenage daughter Jada for the holidays. She'd rather be on TikTok than helping sell trees, but hey—he's trying. Twelve days till Christmas. Twelve chances to get it right. And every day brings something new: a tree thief, a viral moment, some messy customers, and this fine coffee shop owner across the street named Ava. She's not impressed by Marcus, but the chemistry? Baby, it's thick like eggnog. At the heart of it all is Marcus learning how to show up—for his daughter, his community, and maybe, just maybe, for himself again.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('sneakerheads')">
+                            <div class="work-image" style="background-image: url('images/sneakerheads.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Comedy</div>
+                                <h3 class="work-title">Sneakerheads</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When a sneaker-obsessed teen drains his college fund to buy rare Yeezys, he fakes a sneaker addiction support group to cover his tracks—only for it to become a real movement. As hype builds and lies spiral, he must choose between the hustle and helping others for real.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('trap-house-sitting')">
+                            <div class="work-image" style="background-image: url('images/trap-house-sitting.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Comedy</div>
+                                <h3 class="work-title">Trap House Sitting</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">When a tightly-wound suburban teen agrees to house-sit her cousin's Atlanta music studio for the weekend, her clout-chasing twin and livestream-addicted friend turn it into the hottest underground party in the city—attracting influencers, rising rappers, and a dangerous music exec, all before her college interview Monday morning.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('just-jack')">
+                            <div class="work-image" style="background-image: url('images/just-jack.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Comedy</div>
+                                <h3 class="work-title">Just Jack</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">A heartwarming family comedy created by Kelly R. Tenney and Jodi Williams. This charming series explores family dynamics, friendship, and growing up with humor and heart, featuring an ensemble cast that brings authentic relationships to life.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Christmas -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Christmas</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('spelman-christmas')">
+                            <div class="work-image" style="background-image: url('images/spelman-christmas.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Christmas</div>
+                                <h3 class="work-title">A Spelman Christmas</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">A no-nonsense matriarch cancels Christmas after her husband's death—until her three adult daughters return home with surprise guests, big news, and enough drama to turn grief into gumbo, healing, and a holiday no one expected.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('grannys-house')">
+                            <div class="work-image" style="background-image: url('images/grannys-house.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Christmas</div>
+                                <h3 class="work-title">Granny's House: Home for the Holidays</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">A heartwarming family comedy that brings together multiple generations under one roof during the holidays. This project showcases exceptional character development and comedic timing while exploring themes of family, tradition, and love.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Noir -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Noir</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('divine-deception')">
+                            <div class="work-image" style="background-image: url('images/divine-deception.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Noir</div>
+                                <h3 class="work-title">Divine Deception</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">A Southern Gospel noir that delves into the dark underbelly of faith and corruption. This atmospheric thriller combines classic noir elements with contemporary storytelling to create a compelling narrative about deception and redemption.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Series -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Series</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('echo-chamber')">
+                            <div class="work-image" style="background-image: url('images/echo-chamber.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Series</div>
+                                <h3 class="work-title">Echo Chamber</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">In a near-future society obsessed with personalization, influence, and optimization, Echo Chamber explores the twisted consequences of living in a world where your reality is shaped by algorithms, and your identity is no longer yours alone.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('slice-of-paradise')">
+                            <div class="work-image" style="background-image: url('images/slice-of-paradise.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Series</div>
+                                <h3 class="work-title">Slice of Paradise</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">Slice of Paradise follows Jake Carter, a charming but directionless thirtysomething who reluctantly takes a job as the activity director at Sunny Shores Retirement Community. Struggling with his own arrested development, Jake suddenly finds himself surrounded by seniors who have way more zest for life than he does. Each episode explores comedic scenarios arising from generational clashes, unconventional friendships, romantic entanglements, and the pursuit of happiness—proving that fun doesn't retire at sixty-five.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('the-archive')">
+                            <div class="work-image" style="background-image: url('images/the-archive.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Series</div>
+                                <h3 class="work-title">The Archive</h3>
+                                <div class="work-year">2025</div>
+                                <p class="work-description">In a near-future world where every human memory is recorded and stored in a government-controlled database known as The Archive, a disgraced memory detective stumbles upon a hidden thread of falsified pasts — including his own — and begins a dangerous quest to uncover the truth, risking not only his life but the reality everyone believes in.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('the-line')">
+                            <div class="work-image" style="background-image: url('images/the-line.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Series</div>
+                                <h3 class="work-title">The Line</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">When a disgraced FBI agent is assigned to protect a rising music mogul entangled in Atlanta's rap scene, he's unaware she's not just running from a criminal empire—she's maneuvering to take it over. In a world where every beat is a transaction and every betrayal is a remix, survival isn't enough. Monique wants legacy.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('grand-guignol')">
+                            <div class="work-image" style="background-image: url('images/grand-guignol.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Series</div>
+                                <h3 class="work-title">Grand Guignol</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">A theatrical horror piece inspired by the classic French Grand Guignol tradition. Combines elements of stage and screen for a unique viewing experience.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+
+                        <div class="work-card" onclick="openModal('refractions')">
+                            <div class="work-image" style="background-image: url('images/refractions.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Series</div>
+                                <h3 class="work-title">Refractions</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">When the world's first successful human clone is secretly created by a private biotech company, she escapes and assumes a new identity. As she tries to live a normal life, she discovers others like her are out there—and someone is hunting them all. Every clone has a "prime" original who knows nothing of their existence, but the fates of each pair are mysteriously and fatally linked.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentary -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Documentary</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('digital-shadows')">
+                            <div class="work-image" style="background-image: url('images/digital-shadows.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Documentary</div>
+                                <h3 class="work-title">Digital Shadows</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">A chilling dive into the dark side of online fame and digital footprints—where what begins as viral glory can end in tragedy.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Docuseries -->
+                <div class="genre-section">
+                    <h3 class="genre-title">Docuseries</h3>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="openModal('exposed')">
+                            <div class="work-image" style="background-image: url('images/exposed.png'); background-size: cover; background-position: center;"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Docuseries</div>
+                                <h3 class="work-title">Exposed</h3>
+                                <div class="work-year">2024</div>
+                                <p class="work-description">While most true crime series focus on violent acts, Exposed shines a light on the often-overlooked emotional and financial devastation caused by white-collar, digital, and institutional exploitation. Each episode follows one survivor's journey—from their initial trauma through an investigation and, ultimately, a personal confrontation or courtroom reckoning. It's about justice—but also about reclaiming power.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>ABOUT THE FILMMAKER</h2>
+                        <p>I'm a script-slinging storyteller with a Southern soul — part Shonda, part Spike, part Santa Claus. From gritty crime dramas set in Atlanta's underworld to heartwarming holiday comedies featuring viral TikToks and dollar-store wreaths, I navigate genres like a showrunner in sneakers. I craft worlds where FBI agents clash with cartel bosses, artists lead double lives, and Grandma might just become the next social media sensation. With a producer's mind, a writer's wit, and a director's eye for both tension and tenderness, my scripts are not just narratives but living, breathing embodiments of culture, conflict, and comedy.</p>
+                        
+                        <p>Every project, whether it's The Line, Granny's House, LifeArt, or The Twelve Dates of Christmas Tree Lot, pulses with purpose. I've been fortunate to contribute to over 30 projects and 186 episodes of "One Tree Hill", honing skills in creativity, leadership, critical thinking, problem-solving, time management, and multitasking. My knack for clear communication has been instrumental in bridging the gap between producers and department heads, ensuring seamless production workflows.</p>
+                        
+                        <p><strong>Catchphrase:</strong><br>"Make it real, make it pop, make 'em feel something."</p>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">35+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title">MY DEVELOPMENT PROCESS</h2>
+                <p style="text-align: center; color: #ccc; margin-bottom: 3rem;">Every story I tell follows a bold, intentional path — from spark to screen.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Development</h3>
+                        <h4>Laying the foundation</h4>
+                        <p><strong>Concept Creation</strong><br>Writers brainstorm and develop the core idea that drives the story.</p>
+                        <p><strong>Scriptwriting</strong><br>The screenplay is drafted, refined, and polished for production-readiness.</p>
+                        <p><strong>Financing</strong><br>Producers secure funding through investors, studio partners, or grants.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Pre-Production</h3>
+                        <h4>Prepping for the big picture</h4>
+                        <p><strong>Planning</strong><br>A detailed schedule and production budget are mapped out.</p>
+                        <p><strong>Casting</strong><br>Actors are auditioned and selected to embody key roles.</p>
+                        <p><strong>Location Scouting</strong><br>Filming environments are identified, scouted, and secured.</p>
+                        <p><strong>Crew Assembly</strong><br>Key team members — directors, cinematographers, designers — are hired and briefed.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Production</h3>
+                        <h4>Bringing the vision to life</h4>
+                        <p><strong>Filming</strong><br>Cameras roll on set, on location, or in studio.</p>
+                        <p><strong>Daily Reviews</strong><br>Footage is reviewed each day to ensure quality, continuity, and performance.</p>
+                        <p><strong>Adjustments</strong><br>Creative and logistical tweaks are made in real time as the story unfolds.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">LET'S CREATE TOGETHER</h2>
+                <p style="text-align: center; color: #ccc; margin-bottom: 3rem;">Ready to bring your vision to life? Get in touch to discuss your next project.</p>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p><strong>Email</strong><br>nccaentertainment@gmail.com</p>
+                        <p><strong>Phone</strong><br>910.262.9307</p>
+                        <p><strong>Location</strong><br>Atlanta, GA<br>Los Angeles, CA</p>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Send a Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Project Details -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent">
+                <!-- Content will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NCCA Entertainment. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cycling background images
+        let currentBg = 0;
+        const backgrounds = document.querySelectorAll('.hero-background');
+        
+        function cycleBg() {
+            backgrounds[currentBg].classList.remove('active');
+            currentBg = (currentBg + 1) % backgrounds.length;
+            backgrounds[currentBg].classList.add('active');
+        }
+        
+        // Initialize first background
+        if (backgrounds.length > 0) {
+            backgrounds[0].classList.add('active');
+            // Cycle every 5 seconds
+            setInterval(cycleBg, 5000);
+        }
+
+        // Modal functionality
+        function openModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            // Project data
+            const projects = {
+                'southern-discomfort': {
+                    title: 'Southern (Dis)comfort',
+                    year: '2025',
+                    genre: 'Romance',
+                    description: 'After a scathing review tanks a struggling soul food restaurant, a feared Atlanta food critic is forced to team up with her ex-fiancé chef to rebuild its reputation—only to uncover buried family secrets, reignite old flames, and discover that the messiest meals often serve the deepest truths.',
+                    details: 'A delicious romantic comedy that blends food, family, and second chances in the heart of Atlanta. The film explores themes of forgiveness, professional pride, and the healing power of comfort food, while examining how shared passion can reignite lost love and rebuild broken relationships.'
+                },
+                'the-proxy': {
+                    title: 'The Proxy',
+                    year: '2025',
+                    genre: 'Thriller',
+                    description: 'When a struggling Atlanta artist is mistaken for an elite gallerist during a violent art heist, she\'s forced to navigate a world of stolen identities, black market legacies, and buried truths—only to discover the woman who stole her work may have also orchestrated her disappearance.',
+                    details: 'A gripping thriller that explores themes of identity theft, art world corruption, and survival. Set against the backdrop of Atlanta\'s elite art scene, the film examines how desperation can force ordinary people into extraordinary circumstances, and how the line between victim and perpetrator can become dangerously blurred.'
+                },
+                'the-archive': {
+                    title: 'The Archive',
+                    year: '2025',
+                    genre: 'Series',
+                    description: 'In a near-future world where every human memory is recorded and stored in a government-controlled database known as The Archive, a disgraced memory detective stumbles upon a hidden thread of falsified pasts — including his own — and begins a dangerous quest to uncover the truth, risking not only his life but the reality everyone believes in.',
+                    details: 'A mind-bending sci-fi thriller series that explores themes of memory, identity, and truth in a surveillance state. The show examines what happens when our most private thoughts become public property and questions the nature of reality when memories can be altered or fabricated. With stunning visual effects and complex storytelling, The Archive challenges viewers to consider the value of privacy and the power of controlling the past.'
+                },
+                'southern-belles-secret': {
+                    title: 'The Southern Belle\'s Secret',
+                    year: '2025',
+                    genre: 'Southern Gothic Mystery / Family Drama',
+                    description: 'When an investigative journalist uncovers evidence linking her family to a decades-old lynching, a polished Atlanta socialite must choose between protecting her dynasty\'s legacy or exposing a truth that could destroy her world—and redeem her soul.',
+                    details: 'A powerful Southern Gothic mystery that explores the dark legacy of family secrets and the courage required to confront historical truths. Set against the backdrop of Atlanta\'s high society, this film examines themes of justice, redemption, and the weight of inherited guilt.'
+                },
+                'the-alibi': {
+                    title: 'The Alibi',
+                    year: '2025',
+                    genre: 'Thriller',
+                    description: 'When a wealthy and abusive businessman is found murdered, four women from his past—the ex-wife, the mistress, the business partner, and the estranged daughter—find themselves the prime suspects. To survive, they form an uneasy alliance and construct a shared alibi. But as the police circle closer and their lies begin to unravel, they start to suspect the killer is one of them. The truth is even more twisted: the real threat has been watching them from the start—and she\'s ready to strike again.',
+                    details: 'A gripping psychological thriller that explores themes of justice, revenge, and the bonds formed between unlikely allies. The film examines how victims of abuse can find strength in solidarity while questioning the nature of justice and retribution.'
+                },
+                'beneath-magnolia': {
+                    title: 'Beneath the Magnolia Tree',
+                    year: '2024',
+                    genre: 'Drama',
+                    description: 'When a high-profile Atlanta therapist returns to her childhood home after her estranged mother\'s death, she\'s met by a teenage girl who claims to be her sister—and what begins as a simple estate sale turns into a harrowing journey into buried family secrets, generational trauma, and unexpected redemption.',
+                    details: 'THE HOOK: You can leave your past behind… but it never really leaves you. This is a slow-burn Southern mystery that weaves grief, suspense, and deeply rooted emotional tension into a story about what we inherit, what we bury, and what it takes to finally come home. Think Secrets of the Summer House meets The Clark Sisters with the psychological depth of The Vanishing Half. A powerful exploration of family dynamics, hidden truths, and the complex process of healing from generational wounds.'
+                },
+                'sneakerheads': {
+                    title: 'Sneakerheads',
+                    year: '2025',
+                    genre: 'Comedy',
+                    description: 'When a sneaker-obsessed teen drains his college fund to buy rare Yeezys, he fakes a sneaker addiction support group to cover his tracks—only for it to become a real movement. As hype builds and lies spiral, he must choose between the hustle and helping others for real.',
+                    details: 'A heartfelt comedy that explores themes of authenticity, community, and finding purpose beyond material obsessions. The film cleverly uses sneaker culture as a lens to examine modern youth\'s relationship with consumerism and genuine connection.'
+                },
+                'refractions': {
+                    title: 'Refractions',
+                    year: '2024',
+                    genre: 'Series',
+                    description: 'When the world\'s first successful human clone is secretly created by a private biotech company, she escapes and assumes a new identity. As she tries to live a normal life, she discovers others like her are out there—and someone is hunting them all. Every clone has a "prime" original who knows nothing of their existence, but the fates of each pair are mysteriously and fatally linked.',
+                    details: 'A sci-fi thriller series that merges Orphan Black-esque drama with emotional depth. The show explores identity, fate, and choice through interwoven storylines of clones, their unaware originals, and the shadowy organization tracking them all.'
+                },
+                'mirror-image': {
+                    title: 'Mirror Image',
+                    year: '2025',
+                    genre: 'Drama',
+                    description: 'When Atlanta\'s most successful fashion influencer is digitally framed by her own sister using deepfakes, forged evidence, and psychological manipulation, she must unravel a web of betrayal before her identity—and sanity—is completely erased.',
+                    details: 'A contemporary thriller that explores the dark side of social media influence and digital manipulation. The film examines themes of identity, family betrayal, and the psychological impact of living in a digitally constructed reality where truth becomes increasingly elusive.'
+                },
+                'spelman-christmas': {
+                    title: 'A Spelman Christmas',
+                    year: '2025',
+                    genre: 'Christmas',
+                    description: 'A no-nonsense matriarch cancels Christmas after her husband\'s death—until her three adult daughters return home with surprise guests, big news, and enough drama to turn grief into gumbo, healing, and a holiday no one expected.',
+                    details: 'A heartwarming holiday film that explores themes of grief, family healing, and the power of tradition to bring people together. Set against the backdrop of a historically Black college community, the film celebrates resilience, love, and the magic of Christmas in bringing families closer through difficult times.',
+                    pitchDeck: 'pitch-decks/spelman-christmas-pitch-deck.pdf'
+                },
+                'twice-betrayed': {
+                    title: 'Twice Betrayed',
+                    year: '2024',
+                    genre: 'Drama',
+                    description: 'When a respected Atlanta therapist\'s abusive ex-husband is found dead, she becomes the prime suspect—and her seemingly perfect new marriage begins to unravel as she discovers her new husband was hired to spy on her. But nothing is as it seems in this twisted tale of love, control, and betrayal.',
+                    details: 'A psychological drama that explores themes of domestic abuse, trust, and the complex dynamics of toxic relationships. The film examines how trauma can affect judgment and the lengths people will go to escape their past.'
+                },
+                'past-due': {
+                    title: 'Past Due',
+                    year: '2025',
+                    genre: 'Drama',
+                    description: 'When a rising real estate attorney inherits her aunt\'s dilapidated West End home, she discovers a long-lost family secret buried beneath the floorboards—one connected to a decades-old missing persons case and a life she never knew was hers.',
+                    details: 'A mystery drama that explores themes of family legacy, hidden history, and the power of uncovering truth. Set in Atlanta\'s historic West End, the film examines how the past can reshape our understanding of identity and belonging.'
+                },
+                'somebody-you-know': {
+                    title: 'It\'s Somebody You Know',
+                    year: '2025',
+                    genre: 'Thriller',
+                    description: 'A psychological thriller that keeps audiences on the edge of their seats. Explores themes of trust, betrayal, and the darkness that can lurk behind familiar faces.',
+                    details: 'A gripping psychological thriller that examines how well we really know the people closest to us. The film explores themes of deception, paranoia, and the terrifying realization that danger can come from the most unexpected sources.'
+                },
+                'broken-promise': {
+                    title: 'Broken Promise',
+                    year: '2025',
+                    genre: 'Thriller',
+                    description: 'When a successful bridal boutique owner is conned by her charming fiancé, she joins forces with his ex-wife to track him down—only to uncover a trail of betrayal, a network of victims, and a deadly final con that could destroy them both.',
+                    details: 'A thriller that explores themes of romance scams, female solidarity, and the pursuit of justice. The film examines how victims of manipulation can find strength in each other while seeking to expose predatory behavior.'
+                },
+                'influencers-last-post': {
+                    title: 'The Influencer\'s Last Post',
+                    year: '2024',
+                    genre: 'Thriller',
+                    description: 'When disgraced lifestyle influencer Taylor Monroe is framed for the shocking disappearance of her online rival Nina Carter, she teams up with a skeptical journalist to uncover a twisted scheme of digital manipulation, blackmail, and deep fake deception—but exposing the truth could cost her life, her love, and what\'s left of her identity.',
+                    details: 'A contemporary thriller that explores the dark side of social media influence and digital manipulation. The film examines themes of online identity, cyberbullying, and the dangerous intersection of technology and human psychology.',
+                    pitchDeck: 'pitch-decks/influencers-last-post-pitch-deck.pdf'
+                },
+                'bone-collectors-daughter': {
+                    title: 'The Bone Collector\'s Daughter',
+                    year: '2024',
+                    genre: 'Horror',
+                    description: 'When a skeptical woman inherits her estranged mother\'s Appalachian home, she discovers a legacy of bone conjuring and memory-binding magic. Haunted by vengeful spirits known as the Hollow-Eyed, she must embrace her bloodline\'s dark rituals—or be consumed by the very past she tried to escape.',
+                    details: 'A supernatural horror film that explores themes of family legacy, folk magic, and the power of ancestral knowledge. Set in the atmospheric Appalachian mountains, the film combines traditional horror elements with deep cultural storytelling about heritage and belonging.'
+                },
+                'love-after-likes': {
+                    title: 'Love after Likes',
+                    year: '2025',
+                    genre: 'Romance',
+                    description: 'A modern romantic comedy that examines love in the digital age. Explores how social media affects relationships and authentic connection.',
+                    details: 'A contemporary romantic comedy that explores how social media and digital communication impact modern relationships. The film examines themes of authenticity, connection, and finding real love in an increasingly virtual world.'
+                },
+                'second-first-date': {
+                    title: 'Second First Date',
+                    year: '2025',
+                    genre: 'Romance',
+                    description: 'When a dating app matches two former college sweethearts — who once vowed never to speak again — they reluctantly agree to three dates as a dare. But as sparks reignite, they\'ll have to confront whether their love story ended too soon... or if some things are better left in the past.',
+                    details: 'A romantic comedy about second chances and the power of forgiveness. The film explores themes of young love, personal growth, and whether people can truly change, all set against the backdrop of modern dating culture.'
+                },
+                'flip-side-of-love': {
+                    title: 'Flip Side of Love',
+                    year: '2024',
+                    genre: 'Romance',
+                    description: 'When a driven TV producer returns home to film a historic home renovation, she\'s shocked to discover the project\'s contractor is her ex — the man who broke her heart. As old sparks resurface and buried Black history comes to light, they must navigate love, legacy, and the power of telling the truth… on and off camera.',
+                    details: 'A romantic drama that combines love, history, and social justice. The film explores themes of reconciliation, cultural preservation, and the importance of telling untold stories while examining how shared purpose can reignite lost love.'
+                },
+                'rhythm-and-blooms': {
+                    title: 'Rhythm & Blooms',
+                    year: '2025',
+                    genre: 'Romance',
+                    description: 'When a career-obsessed landscape architect loses his corporate job, he\'s reluctantly hired by a spontaneous jazz club owner to restore a decaying rooftop garden above her father\'s legendary venue. As the two clash and connect through plants and music, they revive not only the club—but themselves.',
+                    details: 'A romantic comedy that blends music, nature, and personal growth. The film explores themes of career reinvention, following passion over profit, and how creative collaboration can lead to both professional success and personal fulfillment.',
+                    pitchDeck: 'pitch-decks/rhythm-and-blooms-pitch-deck.pdf'
+                },
+                'trap-house-sitting': {
+                    title: 'Trap House Sitting',
+                    year: '2025',
+                    genre: 'Comedy',
+                    description: 'When a tightly-wound suburban teen agrees to house-sit her cousin\'s Atlanta music studio for the weekend, her clout-chasing twin and livestream-addicted friend turn it into the hottest underground party in the city—attracting influencers, rising rappers, and a dangerous music exec, all before her college interview Monday morning.',
+                    details: 'A high-energy comedy that explores themes of social media culture, sibling dynamics, and the pressure to succeed. Set in Atlanta\'s vibrant music scene, the film examines how one weekend can change everything and the importance of staying true to yourself.'
+                },
+                'just-jack': {
+                    title: 'Just Jack',
+                    year: '2024',
+                    genre: 'Comedy',
+                    description: 'A heartwarming family comedy created by Kelly R. Tenney and Jodi Williams. This charming series explores family dynamics, friendship, and growing up with humor and heart, featuring an ensemble cast that brings authentic relationships to life.',
+                    details: 'A family-friendly comedy series that celebrates the joys and challenges of growing up. The show explores themes of friendship, family bonds, and personal development with warmth, humor, and genuine heart.'
+                },
+                'grannys-house': {
+                    title: 'Granny\'s House: Home for the Holidays',
+                    year: '2024',
+                    genre: 'Christmas',
+                    description: 'A heartwarming family comedy that brings together multiple generations under one roof during the holidays. This project showcases exceptional character development and comedic timing while exploring themes of family, tradition, and love.',
+                    details: 'A holiday family comedy that celebrates the chaos and joy of multi-generational family gatherings. The film explores themes of tradition, family bonds, and the magic of the holiday season in bringing people together.',
+                    pitchDeck: 'pitch-decks/grannys-house-pitch-deck.pdf'
+                },
+                'divine-deception': {
+                    title: 'Divine Deception',
+                    year: '2024',
+                    genre: 'Noir',
+                    description: 'A Southern Gospel noir that delves into the dark underbelly of faith and corruption. This atmospheric thriller combines classic noir elements with contemporary storytelling to create a compelling narrative about deception and redemption.',
+                    details: 'A noir thriller that explores the intersection of faith and corruption in the American South. The film examines themes of moral ambiguity, religious hypocrisy, and the search for redemption in a world where nothing is as it seems.',
+                    pitchDeck: 'pitch-decks/divine-deception-pitch-deck.pdf'
+                },
+                'the-line': {
+                    title: 'The Line',
+                    year: '2024',
+                    genre: 'Series',
+                    description: 'When a disgraced FBI agent is assigned to protect a rising music mogul entangled in Atlanta\'s rap scene, he\'s unaware she\'s not just running from a criminal empire—she\'s maneuvering to take it over. In a world where every beat is a transaction and every betrayal is a remix, survival isn\'t enough. Monique wants legacy.',
+                    details: 'A crime drama series set in Atlanta\'s hip-hop scene that explores themes of power, ambition, and survival. The show examines the complex relationships between law enforcement, the music industry, and criminal enterprises.',
+                    pitchDeck: 'pitch-decks/the-line-pitch-deck.pdf'
+                },
+                'grand-guignol': {
+                    title: 'Grand Guignol',
+                    year: '2024',
+                    genre: 'Series',
+                    description: 'A theatrical horror piece inspired by the classic French Grand Guignol tradition. Combines elements of stage and screen for a unique viewing experience.',
+                    details: 'A horror series that pays homage to the classic French Grand Guignol theater tradition. The show combines theatrical elements with modern filmmaking to create a unique and unsettling viewing experience that explores themes of performance, reality, and horror.'
+                },
+                'digital-shadows': {
+                    title: 'Digital Shadows',
+                    year: '2024',
+                    genre: 'Documentary',
+                    description: 'A chilling dive into the dark side of online fame and digital footprints—where what begins as viral glory can end in tragedy.',
+                    details: 'A documentary that explores the dangerous side of internet fame and social media culture. The film examines how digital footprints can have real-world consequences and the psychological impact of online harassment and cyberbullying.'
+                },
+                'exposed': {
+                    title: 'Exposed',
+                    year: '2024',
+                    genre: 'Docuseries',
+                    description: 'While most true crime series focus on violent acts, Exposed shines a light on the often-overlooked emotional and financial devastation caused by white-collar, digital, and institutional exploitation. Each episode follows one survivor\'s journey—from their initial trauma through an investigation and, ultimately, a personal confrontation or courtroom reckoning. It\'s about justice—but also about reclaiming power.',
+                    details: 'A docuseries that focuses on white-collar crime and institutional exploitation. The show gives voice to survivors of financial and digital crimes, exploring themes of justice, empowerment, and the long road to recovery from non-violent but devastating crimes.'
+                },
+                'second-skin': {
+                    title: 'Second Skin',
+                    year: '2024',
+                    genre: 'Horror',
+                    description: 'A chilling horror film that explores transformation and identity. Features practical effects and atmospheric cinematography that creates genuine tension.',
+                    details: 'A supernatural horror film that delves into Native American folklore and the terrifying concept of shapeshifters. The film combines traditional horror elements with cultural mythology to create a unique and frightening experience.'
+                },
+                'slice-of-paradise': {
+                    title: 'Slice of Paradise',
+                    year: '2025',
+                    genre: 'Series',
+                    description: 'Slice of Paradise follows Jake Carter, a charming but directionless thirtysomething who reluctantly takes a job as the activity director at Sunny Shores Retirement Community. Struggling with his own arrested development, Jake suddenly finds himself surrounded by seniors who have way more zest for life than he does.',
+                    details: 'Each episode explores comedic scenarios arising from generational clashes, unconventional friendships, romantic entanglements, and the pursuit of happiness—proving that fun doesn\'t retire at sixty-five. The series combines heartwarming moments with laugh-out-loud comedy as Jake learns life lessons from the vibrant seniors around him.'
+                },
+                'twelve-dates-christmas-tree-lot': {
+                    title: 'The Twelve Dates of Christmas Tree Lot',
+                    year: '2025',
+                    genre: 'Comedy',
+                    description: 'Marcus Reed is freshly divorced and drowning in pine needles. His daddy\'s old Christmas tree lot in Southwest Atlanta is barely hanging on, and now Marcus has custody of his teenage daughter Jada for the holidays. She\'d rather be on TikTok than helping sell trees, but hey—he\'s trying.',
+                    details: 'Twelve days till Christmas. Twelve chances to get it right. And every day brings something new: a tree thief, a viral moment, some messy customers, and this fine coffee shop owner across the street named Ava. She\'s not impressed by Marcus, but the chemistry? Baby, it\'s thick like eggnog. At the heart of it all is Marcus learning how to show up—for his daughter, his community, and maybe, just maybe, for himself again.',
+                    pitchDeck: 'pitch-decks/twelve-dates-christmas-tree-lot-pitch-deck.pdf'
+                },
+                'mother-interrupted': {
+                    title: 'Mother, Interrupted',
+                    year: '2025',
+                    genre: 'Thriller',
+                    description: 'Keisha has built the perfect life after growing up in foster care - thriving career, beautiful Buckhead home, and her pride and joy: 16-year-old adopted daughter Maya. When Maya begins acting out and sneaking around, Keisha assumes it\'s typical teenage rebellion.',
+                    details: 'The Twist: Maya has been meeting with a woman claiming to be Keisha\'s biological mother - the same mother who abandoned Keisha at age 5. The woman reveals that Keisha isn\'t who she thinks she is: her real name is Aaliyah, and she was kidnapped from her loving family as a child by the woman Keisha believed was her abusive birth mother. A psychological thriller that explores themes of identity, family trauma, and the devastating impact of childhood abduction on multiple generations.'
+                },
+                'blood-money': {
+                    title: 'Blood Money',
+                    year: '2025',
+                    genre: 'Thriller',
+                    description: 'Amara is investigating a complex money laundering scheme involving several Atlanta-based nonprofits when she discovers her own mother\'s community organization is on the list. Convinced there\'s been a mistake, she digs deeper to clear her mother\'s name.',
+                    details: 'The Twist: Her mother isn\'t innocent - she\'s been the mastermind behind a massive fraud ring that steals from legitimate charities serving Atlanta\'s underserved communities. But she\'s being blackmailed into it by someone who has evidence of a hit-and-run accident Amara caused as a teenager. A gripping thriller that explores themes of family loyalty, moral corruption, and the devastating consequences of buried secrets coming to light.'
+                },
+                'lifeart': {
+                    title: 'Lifeart',
+                    year: '2025',
+                    genre: 'Drama',
+                    description: 'In the heart of Shanghai\'s elite art world, a gifted European painter hides behind the pseudonym of a mysterious Chinese artist named "Tao"—but when family visits, secrets unravel, and a powerful commission threatens to expose everything, he must decide between artistic survival and personal authenticity.',
+                    details: 'A compelling drama that explores themes of cultural identity, artistic integrity, and the price of deception in the international art world. Set against the backdrop of Shanghai\'s sophisticated art scene, the film examines the complex dynamics of East-West cultural exchange and the personal cost of living a lie. The story delves into questions of authenticity, both artistic and personal, as the protagonist faces the ultimate choice between career success and honest self-expression.'
+                },
+                'obsidian-codex': {
+                    title: 'The Obsidian Codex',
+                    year: '2025',
+                    genre: 'Action',
+                    description: 'A disgraced archaeological explorer and a brilliant, but guarded, cryptographer must race against a shadowy organization to uncover an ancient artifact that could either save humanity or unleash a catastrophic power, forcing them to confront their pasts and a betrayal that shattered their shared history.',
+                    details: 'An action-adventure thriller that combines archaeological mystery with high-stakes espionage. The film explores themes of redemption, trust, and the weight of historical responsibility. Set across exotic locations and ancient ruins, the story weaves together past betrayals and present dangers as two former partners must overcome their fractured relationship to prevent a global catastrophe. Features intense action sequences, puzzle-solving elements, and deep character development.'
+                },
+                'echoes-of-the-syndicate': {
+                    title: 'Echoes of the Syndicate',
+                    year: '2025',
+                    genre: 'Action',
+                    description: 'When a former elite hacker, presumed dead, resurfaces to warn her ex-partner—a disillusioned corporate security expert—about a vast, interconnected conspiracy within the very organization he now protects, they must navigate a web of deception and betrayal to expose the truth and find redemption in a world that believes them both to be traitors.',
+                    details: 'A high-tech action thriller that explores themes of corporate espionage, digital warfare, and personal redemption. The film examines the blurred lines between loyalty and betrayal in the modern corporate world, where information is power and trust is a luxury few can afford. Features cutting-edge cyber action sequences, complex conspiracy plotting, and intense character dynamics as two former allies must rebuild their partnership to survive.'
+                },
+                'cipher-of-shadows': {
+                    title: 'The Cipher of Shadows',
+                    year: '2025',
+                    genre: 'Thriller',
+                    description: 'A guilt-ridden private investigator, specializing in missing persons, is hired by a mysterious femme fatale to find her vanished sister—only to uncover an AI-driven human trafficking network that exploits vulnerability through social media. As he confronts the system\'s architect, he must choose between revenge and redemption, trust and betrayal, before the algorithm claims its next victim: him.',
+                    details: 'A cutting-edge thriller that explores the dark intersection of artificial intelligence and human trafficking in the digital age. The film examines themes of guilt, redemption, and the price of technology when it falls into the wrong hands. Set against the backdrop of social media manipulation and algorithmic exploitation, the story weaves together noir detective elements with contemporary tech thriller suspense, creating a gripping narrative about trust, betrayal, and the fight for justice in an increasingly connected world.'
+                },
+                'blood-covenant': {
+                    title: 'Blood Covenant',
+                    year: '2025',
+                    genre: 'Action',
+                    description: 'When a retired assassin haunted by his past teams up with a relentless journalist investigating her sister\'s death, they uncover a global conspiracy led by a secretive brotherhood manipulating world governments. But as personal ties to the cabal emerge, they must decide: expose the truth and lose everything—or vanish into legend as the villains history demands.',
+                    details: 'An intense action thriller that combines espionage, conspiracy, and personal redemption. The film explores themes of legacy, sacrifice, and the price of truth in a world controlled by shadowy organizations. Featuring high-stakes action sequences, complex character dynamics, and a gripping narrative about two unlikely allies who must confront their past to expose a global conspiracy that threatens everything they hold dear.'
+                },
+                'echo-chamber': {
+                    title: 'Echo Chamber',
+                    year: '2025',
+                    genre: 'Series',
+                    description: 'In a near-future society obsessed with personalization, influence, and optimization, Echo Chamber explores the twisted consequences of living in a world where your reality is shaped by algorithms, and your identity is no longer yours alone.',
+                    details: 'Echo Chamber is an anthology series where each standalone episode dives into a world transformed by emerging technology, AI, surveillance, or hyper-targeted social systems. Episodes range from near-future cautionary tales to surreal psychological explorations. The tech is always grounded and believable—but pushed just far enough to be terrifying. Every episode poses a central question: What happens when technology doesn\'t just serve us—but replaces us, manipulates us, or becomes us? A thought-provoking sci-fi anthology that examines the dark side of our increasingly connected and algorithm-driven world.'
+                },
+                'queen-of-thorns': {
+                    title: 'Queen of Thorns',
+                    year: '2025',
+                    genre: 'Action',
+                    description: 'Framed for a global catastrophe by her closest confidant, a ruthless arms dealer must dismantle the empire she unknowingly built on lies and a devastating superweapon to clear her name and confront the monstrous truth of her past.',
+                    details: 'An explosive action thriller that explores themes of betrayal, redemption, and the devastating consequences of unchecked power. The film follows a complex anti-heroine who must confront the moral implications of her life\'s work while racing against time to prevent global destruction. Featuring intense action sequences, intricate conspiracy plotting, and deep character development as the protagonist grapples with her past choices and fights to expose the truth behind her empire of lies.'
+                },
+                'the-ghostmaker': {
+                    title: 'The Ghostmaker',
+                    year: '2025',
+                    genre: 'Action',
+                    description: 'A rogue CIA operative who once specialized in erasing people from history discovers her own identity was a fabrication—volunteered by a man who loved the woman she now unknowingly impersonates. Hunted by the agency she once served, she must destroy the very system she helped build or become its final, perfect ghost.',
+                    details: 'A high-stakes action thriller that explores themes of identity, memory, and the price of erasure in the intelligence world. The film examines the psychological toll of living a fabricated life and the moral complexities of a system designed to make people disappear. Featuring intense action sequences, complex character development, and a gripping narrative about a woman who must confront the truth about her own existence while being hunted by the very organization she once served. The story delves deep into questions of authenticity, love, sacrifice, and what it means to truly exist when your entire identity is a lie.',
+                    pitchDeck: 'pitch-decks/ghostmaker-pitch-deck.pdf'
+                }
+            };
+            
+            const project = projects[projectId];
+            if (project) {
+                let pitchDeckHtml = '';
+                if (project.pitchDeck) {
+                    pitchDeckHtml = `<p style="margin-top: 1.5rem;"><a href="${project.pitchDeck}" target="_blank" style="background: #ff4444; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;">📄 Download Pitch Deck</a></p>`;
+                }
+                
+                modalContent.innerHTML = `
+                    <h2>${project.title}</h2>
+                    <p><strong>Year:</strong> ${project.year} | <strong>Genre:</strong> ${project.genre}</p>
+                    <p><strong>Synopsis:</strong> ${project.description}</p>
+                    <p><strong>Details:</strong> ${project.details}</p>
+                    ${pitchDeckHtml}
+                `;
+                modal.style.display = 'block';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body></html>
+
