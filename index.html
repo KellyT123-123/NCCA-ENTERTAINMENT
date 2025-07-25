@@ -1278,22 +1278,26 @@
 
 
     <script>
-        // Complete modal functionality - Step 2
+        // Complete        // Store scroll position before opening modal
+        let scrollPosition = 0;
+        
         function openModal(projectId) {
-            console.log('Opening modal for:', projectId);
+            console.log('Opening modal for project:', projectId);
+            
+            // Store current scroll position
+            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             
             const modal = document.getElementById('projectModal');
-            const modalContent = document.getElementById('modalContent');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
             
-            if (!modal || !modalContent) {
+            if (!modal || !title || !content) {
                 console.error('Modal elements not found');
                 return;
             }
             
             // Complete project data
-            const projects = {
-                'the-last-dynasty': {
-                    title: 'The Last Dynasty',
+            const projects = {                title: 'The Last Dynasty',
                     year: '2025',
                     genre: 'Gothic Crime Thriller / Musical Mystery',
                     description: 'When tremor-ridden music heiress Jasmine Carter returns to her father\'s empire for a life-saving payout, she\'s trapped in his mansion during a glittering lockdown party where the king is murdered, the crown is stolen, and every guest—from her cartel-blackmailed brother to the detective hunting her family—is both suspect and accomplice.',
@@ -1494,11 +1498,13 @@
             const modal = document.getElementById('projectModal');
             if (modal) {
                 modal.style.display = 'none';
-                // Prevent page redirect by removing hash without affecting history
+                // Restore scroll position instead of redirecting
+                window.scrollTo(0, scrollPosition);
+                // Remove hash from URL without affecting history
                 if (window.location.hash) {
                     history.replaceState(null, null, window.location.pathname + window.location.search);
                 }
-                console.log('Modal closed');
+                console.log('Modal closed, scroll position restored');
             }
         }
         
@@ -1507,7 +1513,9 @@
             const modal = document.getElementById('projectModal');
             if (event.target === modal) {
                 modal.style.display = 'none';
-                // Prevent page redirect by removing hash without affecting history
+                // Restore scroll position instead of redirecting
+                window.scrollTo(0, scrollPosition);
+                // Remove hash from URL without affecting history
                 if (window.location.hash) {
                     history.replaceState(null, null, window.location.pathname + window.location.search);
                 }
