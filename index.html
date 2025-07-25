@@ -1278,7 +1278,7 @@
 
 
     <script>
-        // Simple modal functionality - Step 1
+        // Complete modal functionality - Step 2
         function openModal(projectId) {
             console.log('Opening modal for:', projectId);
             
@@ -1290,12 +1290,57 @@
                 return;
             }
             
-            // Simple test content for now
-            modalContent.innerHTML = `
-                <h2>Project: ${projectId}</h2>
-                <p>Modal is working! This is a test for project ID: ${projectId}</p>
-                <p>We will add full project data next.</p>
-            `;
+            // Complete project data
+            const projects = {
+                'the-last-dynasty': {
+                    title: 'The Last Dynasty',
+                    year: '2025',
+                    genre: 'Gothic Crime Thriller / Musical Mystery',
+                    description: 'When tremor-ridden music heiress Jasmine Carter returns to her father\'s empire for a life-saving payout, she\'s trapped in his mansion during a glittering lockdown party where the king is murdered, the crown is stolen, and every guest—from her cartel-blackmailed brother to the detective hunting her family—is both suspect and accomplice.',
+                    details: 'A Gothic crime thriller with musical mystery elements that combines "Succession" meets "The Godfather" with the lyrical grit of Atlanta. To survive the night, Jasmine must decode her father\'s last song, exposing a generational conspiracy that ties her sister\'s suicide, a 19-year-old\'s buried demo tape, and the $200M debt that could drown them all. In the Carter dynasty, blood isn\'t thicker than royalties—and the only thing more dangerous than the truth is who\'s willing to sing it. This atmospheric thriller explores themes of family legacy, musical heritage, and the deadly price of power in Atlanta\'s music industry.',
+                    pitchDeck: 'the_last_dynasty_pitch_deck.pdf'
+                },
+                'southern-belles-secret': {
+                    title: 'The Southern Belle\'s Secret',
+                    year: '2025',
+                    genre: 'Southern Gothic Mystery / Family Drama',
+                    description: 'When a young woman returns to her grandmother\'s antebellum mansion to settle the estate, she uncovers a century-old family secret that threatens to destroy everything she thought she knew about her heritage—and herself.',
+                    details: 'A haunting Southern Gothic mystery that explores themes of family legacy, buried secrets, and the weight of history. Set against the backdrop of a crumbling antebellum mansion, the story weaves together past and present as dark family truths come to light. The film examines how the sins of previous generations echo through time, forcing the protagonist to confront uncomfortable truths about her family\'s past while fighting to preserve what\'s worth saving for the future.',
+                    pitchDeck: 'southern_belles_secret_pitch_deck.pdf'
+                },
+                'soul-on-fire': {
+                    title: 'Soul On Fire',
+                    year: '1970s',
+                    genre: 'Limited Series',
+                    description: 'Set in 1970s Atlanta, this isn\'t just another rise-and-fall music story. "Soul on Fire" is about cultural theft on an industrial scale—how the American music business was built on appropriating Black artistry while systematically destroying Black artists. It\'s about a woman who discovers that her voice, her songs, even her pain have become commodities to be bought, sold, and locked away forever.',
+                    details: 'A powerful limited series that explores cultural theft and the music industry in 1970s Atlanta—a city caught between its segregated past and integrated future. Auburn Avenue pulses with soul and funk while downtown gleams with new development. The tone combines "Atlanta" meets "Watchmen" meets "The Deuce"—grounded period authenticity with moments of surreal, music-driven transcendence. Gritty realism punctuated by spectacular musical sequences that feel both of their time and timelessly cinematic. The series examines how Black culture thrives in basements and side streets while white executives profit from sanitized versions upstairs, serving as a microcosm for American capitalism\'s relationship with Black creativity.',
+                    pitchDeck: 'soul_on_fire_pitch_deck.pdf'
+                },
+                'sinners-and-saints': {
+                    title: 'Sinner\'s & Saints',
+                    year: '2025',
+                    genre: 'Limited Series / MOW',
+                    description: 'A preacher\'s daughter marries a reformed ex-con and tries to build a new life—but when his past catches up to them, she must decide if love is worth saving a man the world has written off.',
+                    details: 'A compelling made-for-television movie or limited series that delves into the complexities of love, loyalty, and redemption within the confines of faith and family. It explores the journey of Danielle Cross, a young woman raised in the strict, image-conscious world of her father\'s church, who defies expectations by marrying Malik Hayes, a man striving to overcome a checkered past. Their attempts to build a life together are continually threatened by external forces and the deep-seated secrets within Danielle\'s own family, forcing her to confront uncomfortable truths and make difficult choices about who she is and what she believes in. The film blends elements of romance, suspense, and family drama, culminating in a powerful narrative about forgiveness and the enduring power of love against all odds.',
+                    pitchDeck: 'sinners_and_saints_pitch_deck.pdf'
+                }
+            };
+            
+            const project = projects[projectId];
+            if (project) {
+                modalContent.innerHTML = `
+                    <h2>${project.title} (${project.year})</h2>
+                    <p><strong>Genre:</strong> ${project.genre}</p>
+                    <p><strong>Description:</strong> ${project.description}</p>
+                    <p><strong>Details:</strong> ${project.details}</p>
+                    ${project.pitchDeck ? `<div style="margin-top: 20px;"><a href="${project.pitchDeck}" target="_blank" style="background: #dc3545; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">📄 Download Pitch Deck</a></div>` : ''}
+                `;
+            } else {
+                modalContent.innerHTML = `
+                    <h2>Project: ${projectId}</h2>
+                    <p>Project details coming soon...</p>
+                `;
+            }
             
             modal.style.display = 'block';
             console.log('Modal opened successfully');
@@ -1317,7 +1362,30 @@
             }
         }
         
-        console.log('Basic modal functions loaded');
+        // Enhanced background cycling - Step 3
+        let currentBg = 0;
+        const backgrounds = document.querySelectorAll('.hero-background');
+        
+        function cycleBg() {
+            if (backgrounds.length > 0) {
+                backgrounds[currentBg].classList.remove('active');
+                currentBg = (currentBg + 1) % backgrounds.length;
+                backgrounds[currentBg].classList.add('active');
+                console.log('Background cycled to:', currentBg);
+            }
+        }
+        
+        // Initialize background cycling
+        document.addEventListener('DOMContentLoaded', function() {
+            if (backgrounds.length > 0) {
+                backgrounds[0].classList.add('active');
+                // Cycle every 5 seconds
+                setInterval(cycleBg, 5000);
+                console.log('Background cycling initialized with', backgrounds.length, 'backgrounds');
+            }
+        });
+        
+        console.log('Complete modal and background cycling functions loaded');
     </script>
 </body>
 </html>
