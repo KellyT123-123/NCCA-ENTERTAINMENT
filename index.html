@@ -1619,3 +1619,34 @@
                     details: 'A powerful limited series that explores cultural theft and the music industry in 1970s Atlanta—a city caught between its segregated past and integrated future. Auburn Avenue pulses with soul and funk while downtown gleams with new development. The tone combines "Atlanta" meets "Watchmen" meets "The Deuce"—grounded period authenticity with moments of surreal, music-driven transcendence. Gritty realism punctuated by spectacular musical sequences that feel both of their time and timelessly cinematic. The series examines how Black culture thrives in basements and side streets while white executives profit from sanitized versions upstairs, serving as a microcosm for American capitalism\'s relationship with Black creativity.',
                     pitchDeck: 'soul_on_fire_pitch_deck.pdf'
                 },
+
+            };
+
+            const project = projects[projectId];
+            if (project) {
+                modalContent.innerHTML = `
+                    <h2>${project.title} (${project.year})</h2>
+                    <p><strong>Genre:</strong> ${project.genre}</p>
+                    <p><strong>Description:</strong> ${project.description}</p>
+                    <p><strong>Details:</strong> ${project.details}</p>
+                    ${project.pitchDeck ? `<div style="margin-top: 20px;"><a href="${project.pitchDeck}" target="_blank" style="background: #dc3545; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">📄 Download Pitch Deck</a></div>` : ''}
+                `;
+                modal.style.display = 'block';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
+
