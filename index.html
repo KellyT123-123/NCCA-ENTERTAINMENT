@@ -1276,369 +1276,39 @@
         </div>
     </footer>
 
-    <script>
-        // Cycling background images
-        let currentBg = 0;
-        const backgrounds = document.querySelectorAll('.hero-background');
-        
-        function cycleBg() {
-            backgrounds[currentBg].classList.remove('active');
-            currentBg = (currentBg + 1) % backgrounds.length;
-            backgrounds[currentBg].classList.add('active');
-        }
-        
-        // Initialize first background
-        if (backgrounds.length > 0) {
-            backgrounds[0].classList.add('active');
-            // Cycle every 5 seconds
-            setInterval(cycleBg, 5000);
-        }
 
-        // Modal functionality
+    <script>
+        // Simple modal functionality - Step 1
         function openModal(projectId) {
+            console.log('Opening modal for:', projectId);
+            
             const modal = document.getElementById('projectModal');
             const modalContent = document.getElementById('modalContent');
             
-            // Project data
-            const projects = {
-                'southern-discomfort': {
-                    title: 'Southern (Dis)comfort',
-                    year: '2025',
-                    genre: 'Romance',
-                    description: 'After a scathing review tanks a struggling soul food restaurant, a feared Atlanta food critic is forced to team up with her ex-fiancé chef to rebuild its reputation—only to uncover buried family secrets, reignite old flames, and discover that the messiest meals often serve the deepest truths.',
-                    details: 'A delicious romantic comedy that blends food, family, and second chances in the heart of Atlanta. The film explores themes of forgiveness, professional pride, and the healing power of comfort food, while examining how shared passion can reignite lost love and rebuild broken relationships.'
-                },
-                'the-proxy': {
-                    title: 'The Proxy',
-                    year: '2025',
-                    genre: 'Thriller',
-                    description: 'When a struggling Atlanta artist is mistaken for an elite gallerist during a violent art heist, she\'s forced to navigate a world of stolen identities, black market legacies, and buried truths—only to discover the woman who stole her work may have also orchestrated her disappearance.',
-                    details: 'A gripping thriller that explores themes of identity theft, art world corruption, and survival. Set against the backdrop of Atlanta\'s elite art scene, the film examines how desperation can force ordinary people into extraordinary circumstances, and how the line between victim and perpetrator can become dangerously blurred.',
-                    pitchDeck: 'the_proxy_pitch_deck.pdf'
-                },
-                'the-archive': {
-                    title: 'The Archive',
-                    year: '2025',
-                    genre: 'Series',
-                    description: 'In a near-future world where every human memory is recorded and stored in a government-controlled database known as The Archive, a disgraced memory detective stumbles upon a hidden thread of falsified pasts — including his own — and begins a dangerous quest to uncover the truth, risking not only his life but the reality everyone believes in.',
-                    details: 'A mind-bending sci-fi thriller series that explores themes of memory, identity, and truth in a surveillance state. The show examines what happens when our most private thoughts become public property and questions the nature of reality when memories can be altered or fabricated. With stunning visual effects and complex storytelling, The Archive challenges viewers to consider the value of privacy and the power of controlling the past.'
-                },
-                'the-last-dynasty': {
-                    title: 'The Last Dynasty',
-                    year: '2025',
-                    genre: 'Gothic Crime Thriller / Musical Mystery',
-                    description: 'When tremor-ridden music heiress Jasmine Carter returns to her father\'s empire for a life-saving payout, she\'s trapped in his mansion during a glittering lockdown party where the king is murdered, the crown is stolen, and every guest—from her cartel-blackmailed brother to the detective hunting her family—is both suspect and accomplice.',
-                    details: 'A Gothic crime thriller with musical mystery elements that combines "Succession" meets "The Godfather" with the lyrical grit of Atlanta. To survive the night, Jasmine must decode her father\'s last song, exposing a generational conspiracy that ties her sister\'s suicide, a 19-year-old\'s buried demo tape, and the $200M debt that could drown them all. In the Carter dynasty, blood isn\'t thicker than royalties—and the only thing more dangerous than the truth is who\'s willing to sing it. This atmospheric thriller explores themes of family legacy, musical heritage, and the deadly price of power in Atlanta\'s music industry.',
-                    pitchDeck: 'the_last_dynasty_pitch_deck.pdf'
-                },
-                'southern-belles-secret': {
-                    title: 'The Southern Belle\'s Secret',
-                    year: '2025',
-                    genre: 'Southern Gothic Mystery / Family Drama',
-                    description: 'When an investigative journalist uncovers evidence linking her family to a decades-old lynching, a polished Atlanta socialite must choose between protecting her dynasty\'s legacy or exposing a truth that could destroy her world—and redeem her soul.',
-                    details: 'A powerful Southern Gothic mystery that explores the dark legacy of family secrets and the courage required to confront historical truths. Set against the backdrop of Atlanta\'s high society, this film examines themes of justice, redemption, and the weight of inherited guilt.',
-                    pitchDeck: 'pitch-decks/southern-belles-secret-pitch-deck.pdf'
-                },
-                'the-alibi': {
-                    title: 'The Alibi',
-                    year: '2025',
-                    genre: 'Thriller',
-                    description: 'When a wealthy and abusive businessman is found murdered, four women from his past—the ex-wife, the mistress, the business partner, and the estranged daughter—find themselves the prime suspects. To survive, they form an uneasy alliance and construct a shared alibi. But as the police circle closer and their lies begin to unravel, they start to suspect the killer is one of them. The truth is even more twisted: the real threat has been watching them from the start—and she\'s ready to strike again.',
-                    details: 'A gripping psychological thriller that explores themes of justice, revenge, and the bonds formed between unlikely allies. The film examines how victims of abuse can find strength in solidarity while questioning the nature of justice and retribution.'
-                },
-                'beneath-magnolia': {
-                    title: 'Beneath the Magnolia Tree',
-                    year: '2024',
-                    genre: 'Drama',
-                    description: 'When a high-profile Atlanta therapist returns to her childhood home after her estranged mother\'s death, she\'s met by a teenage girl who claims to be her sister—and what begins as a simple estate sale turns into a harrowing journey into buried family secrets, generational trauma, and unexpected redemption.',
-                    details: 'THE HOOK: You can leave your past behind… but it never really leaves you. This is a slow-burn Southern mystery that weaves grief, suspense, and deeply rooted emotional tension into a story about what we inherit, what we bury, and what it takes to finally come home. Think Secrets of the Summer House meets The Clark Sisters with the psychological depth of The Vanishing Half. A powerful exploration of family dynamics, hidden truths, and the complex process of healing from generational wounds.'
-                },
-                'sneakerheads': {
-                    title: 'Sneakerheads',
-                    year: '2025',
-                    genre: 'Comedy',
-                    description: 'When a sneaker-obsessed teen drains his college fund to buy rare Yeezys, he fakes a sneaker addiction support group to cover his tracks—only for it to become a real movement. As hype builds and lies spiral, he must choose between the hustle and helping others for real.',
-                    details: 'A heartfelt comedy that explores themes of authenticity, community, and finding purpose beyond material obsessions. The film cleverly uses sneaker culture as a lens to examine modern youth\'s relationship with consumerism and genuine connection.'
-                },
-                'refractions': {
-                    title: 'Refractions',
-                    year: '2024',
-                    genre: 'Series',
-                    description: 'When the world\'s first successful human clone is secretly created by a private biotech company, she escapes and assumes a new identity. As she tries to live a normal life, she discovers others like her are out there—and someone is hunting them all. Every clone has a "prime" original who knows nothing of their existence, but the fates of each pair are mysteriously and fatally linked.',
-                    details: 'A sci-fi thriller series that merges Orphan Black-esque drama with emotional depth. The show explores identity, fate, and choice through interwoven storylines of clones, their unaware originals, and the shadowy organization tracking them all.'
-                },
-                'mirror-image': {
-                    title: 'Mirror Image',
-                    year: '2025',
-                    genre: 'Drama',
-                    description: 'When Atlanta\'s most successful fashion influencer is digitally framed by her own sister using deepfakes, forged evidence, and psychological manipulation, she must unravel a web of betrayal before her identity—and sanity—is completely erased.',
-                    details: 'A contemporary thriller that explores the dark side of social media influence and digital manipulation. The film examines themes of identity, family betrayal, and the psychological impact of living in a digitally constructed reality where truth becomes increasingly elusive.'
-                },
-                'spelman-christmas': {
-                    title: 'A Spelman Christmas',
-                    year: '2025',
-                    genre: 'Christmas',
-                    description: 'A no-nonsense matriarch cancels Christmas after her husband\'s death—until her three adult daughters return home with surprise guests, big news, and enough drama to turn grief into gumbo, healing, and a holiday no one expected.',
-                    details: 'A heartwarming holiday film that explores themes of grief, family healing, and the power of tradition to bring people together. Set against the backdrop of a historically Black college community, the film celebrates resilience, love, and the magic of Christmas in bringing families closer through difficult times.',
-                    pitchDeck: 'pitch-decks/spelman-christmas-pitch-deck.pdf'
-                },
-                'twice-betrayed': {
-                    title: 'Twice Betrayed',
-                    year: '2024',
-                    genre: 'Drama',
-                    description: 'When a respected Atlanta therapist\'s abusive ex-husband is found dead, she becomes the prime suspect—and her seemingly perfect new marriage begins to unravel as she discovers her new husband was hired to spy on her. But nothing is as it seems in this twisted tale of love, control, and betrayal.',
-                    details: 'A psychological drama that explores themes of domestic abuse, trust, and the complex dynamics of toxic relationships. The film examines how trauma can affect judgment and the lengths people will go to escape their past.'
-                },
-                'past-due': {
-                    title: 'Past Due',
-                    year: '2025',
-                    genre: 'Drama',
-                    description: 'When a rising real estate attorney inherits her aunt\'s dilapidated West End home, she discovers a long-lost family secret buried beneath the floorboards—one connected to a decades-old missing persons case and a life she never knew was hers.',
-                    details: 'A mystery drama that explores themes of family legacy, hidden history, and the power of uncovering truth. Set in Atlanta\'s historic West End, the film examines how the past can reshape our understanding of identity and belonging.'
-                },
-                'somebody-you-know': {
-                    title: 'It\'s Somebody You Know',
-                    year: '2025',
-                    genre: 'Thriller',
-                    description: 'A psychological thriller that keeps audiences on the edge of their seats. Explores themes of trust, betrayal, and the darkness that can lurk behind familiar faces.',
-                    details: 'A gripping psychological thriller that examines how well we really know the people closest to us. The film explores themes of deception, paranoia, and the terrifying realization that danger can come from the most unexpected sources.'
-                },
-                'broken-promise': {
-                    title: 'Broken Promise',
-                    year: '2025',
-                    genre: 'Thriller',
-                    description: 'When a successful bridal boutique owner is conned by her charming fiancé, she joins forces with his ex-wife to track him down—only to uncover a trail of betrayal, a network of victims, and a deadly final con that could destroy them both.',
-                    details: 'A thriller that explores themes of romance scams, female solidarity, and the pursuit of justice. The film examines how victims of manipulation can find strength in each other while seeking to expose predatory behavior.'
-                },
-                'influencers-last-post': {
-                    title: 'The Influencer\'s Last Post',
-                    year: '2024',
-                    genre: 'Thriller',
-                    description: 'When disgraced lifestyle influencer Taylor Monroe is framed for the shocking disappearance of her online rival Nina Carter, she teams up with a skeptical journalist to uncover a twisted scheme of digital manipulation, blackmail, and deep fake deception—but exposing the truth could cost her life, her love, and what\'s left of her identity.',
-                    details: 'A contemporary thriller that explores the dark side of social media influence and digital manipulation. The film examines themes of online identity, cyberbullying, and the dangerous intersection of technology and human psychology.',
-                    pitchDeck: 'pitch-decks/influencers-last-post-pitch-deck.pdf'
-                },
-                'bone-collectors-daughter': {
-                    title: 'The Bone Collector\'s Daughter',
-                    year: '2024',
-                    genre: 'Horror',
-                    description: 'When a skeptical woman inherits her estranged mother\'s Appalachian home, she discovers a legacy of bone conjuring and memory-binding magic. Haunted by vengeful spirits known as the Hollow-Eyed, she must embrace her bloodline\'s dark rituals—or be consumed by the very past she tried to escape.',
-                    details: 'A supernatural horror film that explores themes of family legacy, folk magic, and the power of ancestral knowledge. Set in the atmospheric Appalachian mountains, the film combines traditional horror elements with deep cultural storytelling about heritage and belonging.'
-                },
-                'love-after-likes': {
-                    title: 'Love after Likes',
-                    year: '2025',
-                    genre: 'Romance',
-                    description: 'A modern romantic comedy that examines love in the digital age. Explores how social media affects relationships and authentic connection.',
-                    details: 'A contemporary romantic comedy that explores how social media and digital communication impact modern relationships. The film examines themes of authenticity, connection, and finding real love in an increasingly virtual world.',
-                    pitchDeck: 'love_after_likes_pitch_deck.pdf'
-                },
-                'second-first-date': {
-                    title: 'Second First Date',
-                    year: '2025',
-                    genre: 'Romance',
-                    description: 'When a dating app matches two former college sweethearts — who once vowed never to speak again — they reluctantly agree to three dates as a dare. But as sparks reignite, they\'ll have to confront whether their love story ended too soon... or if some things are better left in the past.',
-                    details: 'A romantic comedy about second chances and the power of forgiveness. The film explores themes of young love, personal growth, and whether people can truly change, all set against the backdrop of modern dating culture.'
-                },
-                'flip-side-of-love': {
-                    title: 'Flip Side of Love',
-                    year: '2024',
-                    genre: 'Romance',
-                    description: 'When a driven TV producer returns home to film a historic home renovation, she\'s shocked to discover the project\'s contractor is her ex — the man who broke her heart. As old sparks resurface and buried Black history comes to light, they must navigate love, legacy, and the power of telling the truth… on and off camera.',
-                    details: 'A romantic drama that combines love, history, and social justice. The film explores themes of reconciliation, cultural preservation, and the importance of telling untold stories while examining how shared purpose can reignite lost love.',
-                    pitchDeck: 'flip_side_of_love_pitch_deck.pdf'
-                },
-                'rhythm-and-blooms': {
-                    title: 'Rhythm & Blooms',
-                    year: '2025',
-                    genre: 'Romance',
-                    description: 'When a career-obsessed landscape architect loses his corporate job, he\'s reluctantly hired by a spontaneous jazz club owner to restore a decaying rooftop garden above her father\'s legendary venue. As the two clash and connect through plants and music, they revive not only the club—but themselves.',
-                    details: 'A romantic comedy that blends music, nature, and personal growth. The film explores themes of career reinvention, following passion over profit, and how creative collaboration can lead to both professional success and personal fulfillment.',
-                    pitchDeck: 'pitch-decks/rhythm-and-blooms-pitch-deck.pdf'
-                },
-                'trap-house-sitting': {
-                    title: 'Trap House Sitting',
-                    year: '2025',
-                    genre: 'Comedy',
-                    description: 'When a tightly-wound suburban teen agrees to house-sit her cousin\'s Atlanta music studio for the weekend, her clout-chasing twin and livestream-addicted friend turn it into the hottest underground party in the city—attracting influencers, rising rappers, and a dangerous music exec, all before her college interview Monday morning.',
-                    details: 'A high-energy comedy that explores themes of social media culture, sibling dynamics, and the pressure to succeed. Set in Atlanta\'s vibrant music scene, the film examines how one weekend can change everything and the importance of staying true to yourself.',
-                    pitchDeck: 'pitch-decks/trap-house-sitting-pitch-deck.pdf'
-                },
-                'just-jack': {
-                    title: 'Just Jack',
-                    year: '2024',
-                    genre: 'Comedy',
-                    description: 'A heartwarming family comedy created by Kelly R. Tenney and Jodi Williams. This charming series explores family dynamics, friendship, and growing up with humor and heart, featuring an ensemble cast that brings authentic relationships to life.',
-                    details: 'A family-friendly comedy series that celebrates the joys and challenges of growing up. The show explores themes of friendship, family bonds, and personal development with warmth, humor, and genuine heart.'
-                },
-                'grannys-house': {
-                    title: 'Granny\'s House: Home for the Holidays',
-                    year: '2024',
-                    genre: 'Christmas',
-                    description: 'A heartwarming family comedy that brings together multiple generations under one roof during the holidays. This project showcases exceptional character development and comedic timing while exploring themes of family, tradition, and love.',
-                    details: 'A holiday family comedy that celebrates the chaos and joy of multi-generational family gatherings. The film explores themes of tradition, family bonds, and the magic of the holiday season in bringing people together.',
-                    pitchDeck: 'pitch-decks/grannys-house-pitch-deck.pdf'
-                },
-                'divine-deception': {
-                    title: 'Divine Deception',
-                    year: '2024',
-                    genre: 'Noir',
-                    description: 'A Southern Gospel noir that delves into the dark underbelly of faith and corruption. This atmospheric thriller combines classic noir elements with contemporary storytelling to create a compelling narrative about deception and redemption.',
-                    details: 'A noir thriller that explores the intersection of faith and corruption in the American South. The film examines themes of moral ambiguity, religious hypocrisy, and the search for redemption in a world where nothing is as it seems.',
-                    pitchDeck: 'pitch-decks/divine-deception-pitch-deck.pdf'
-                },
-                'the-line': {
-                    title: 'The Line',
-                    year: '2024',
-                    genre: 'Series',
-                    description: 'When a disgraced FBI agent is assigned to protect a rising music mogul entangled in Atlanta\'s rap scene, he\'s unaware she\'s not just running from a criminal empire—she\'s maneuvering to take it over. In a world where every beat is a transaction and every betrayal is a remix, survival isn\'t enough. Monique wants legacy.',
-                    details: 'A crime drama series set in Atlanta\'s hip-hop scene that explores themes of power, ambition, and survival. The show examines the complex relationships between law enforcement, the music industry, and criminal enterprises.',
-                    pitchDeck: 'pitch-decks/the-line-pitch-deck.pdf'
-                },
-                'grand-guignol': {
-                    title: 'Grand Guignol',
-                    year: '2024',
-                    genre: 'Series',
-                    description: 'A theatrical horror piece inspired by the classic French Grand Guignol tradition. Combines elements of stage and screen for a unique viewing experience.',
-                    details: 'A horror series that pays homage to the classic French Grand Guignol theater tradition. The show combines theatrical elements with modern filmmaking to create a unique and unsettling viewing experience that explores themes of performance, reality, and horror.'
-                },
-                'digital-shadows': {
-                    title: 'Digital Shadows',
-                    year: '2024',
-                    genre: 'Documentary',
-                    description: 'A chilling dive into the dark side of online fame and digital footprints—where what begins as viral glory can end in tragedy.',
-                    details: 'A documentary that explores the dangerous side of internet fame and social media culture. The film examines how digital footprints can have real-world consequences and the psychological impact of online harassment and cyberbullying.',
-                    pitchDeck: 'digital_shadows_pitch_deck.pdf'
-                },
-                'exposed': {
-                    title: 'Exposed',
-                    year: '2024',
-                    genre: 'Docuseries',
-                    description: 'While most true crime series focus on violent acts, Exposed shines a light on the often-overlooked emotional and financial devastation caused by white-collar, digital, and institutional exploitation. Each episode follows one survivor\'s journey—from their initial trauma through an investigation and, ultimately, a personal confrontation or courtroom reckoning. It\'s about justice—but also about reclaiming power.',
-                    details: 'A docuseries that focuses on white-collar crime and institutional exploitation. The show gives voice to survivors of financial and digital crimes, exploring themes of justice, empowerment, and the long road to recovery from non-violent but devastating crimes.'
-                },
-                'second-skin': {
-                    title: 'Second Skin',
-                    year: '2024',
-                    genre: 'Horror',
-                    description: 'A chilling horror film that explores transformation and identity. Features practical effects and atmospheric cinematography that creates genuine tension.',
-                    details: 'A supernatural horror film that delves into Native American folklore and the terrifying concept of shapeshifters. The film combines traditional horror elements with cultural mythology to create a unique and frightening experience.'
-                },
-                'slice-of-paradise': {
-                    title: 'Slice of Paradise',
-                    year: '2025',
-                    genre: 'Series',
-                    description: 'Slice of Paradise follows Jake Carter, a charming but directionless thirtysomething who reluctantly takes a job as the activity director at Sunny Shores Retirement Community. Struggling with his own arrested development, Jake suddenly finds himself surrounded by seniors who have way more zest for life than he does.',
-                    details: 'Each episode explores comedic scenarios arising from generational clashes, unconventional friendships, romantic entanglements, and the pursuit of happiness—proving that fun doesn\'t retire at sixty-five. The series combines heartwarming moments with laugh-out-loud comedy as Jake learns life lessons from the vibrant seniors around him.'
-                },
-                'miss-juneteenth-blues': {
-                    title: 'Miss Juneteenth Blues',
-                    year: '2025',
-                    genre: 'Comedy-Drama / Southern Family Drama',
-                    description: 'When her rebellious teenage daughter earns a spot in the prestigious Miss Juneteenth pageant, a down-on-her-luck former queen, desperate to save her family from financial ruin, fakes her age to re-enter the competition—only to uncover a rigged system built on lies, legacy, and long-buried secrets.',
-                    details: 'A 90-minute Lifetime Television Movie that combines "Little Miss Sunshine" with a touch of "Eve\'s Bayou" – heartfelt, genuinely funny, and deeply poignant, infused with the rich soul of the South. As she fights to secure her daughter\'s future, she rediscovers her own worth, sparking a fierce movement that redefines what it means to be a queen in a world obsessed with perfection. Think gospel montages that stir your spirit, glitter under pressure, and Black women who don\'t just wear their scars like crowns, but turn them into battle armor. This empowerment story explores themes of family legacy, self-worth, and the courage to challenge corrupt systems while celebrating the strength and resilience of Black women in the South.'
-                },
-                'twelve-dates-christmas-tree-lot': {
-                    title: 'The Twelve Dates of Christmas Tree Lot',
-                    year: '2025',
-                    genre: 'Comedy',
-                    description: 'Marcus Reed is freshly divorced and drowning in pine needles. His daddy\'s old Christmas tree lot in Southwest Atlanta is barely hanging on, and now Marcus has custody of his teenage daughter Jada for the holidays. She\'d rather be on TikTok than helping sell trees, but hey—he\'s trying.',
-                    details: 'Twelve days till Christmas. Twelve chances to get it right. And every day brings something new: a tree thief, a viral moment, some messy customers, and this fine coffee shop owner across the street named Ava. She\'s not impressed by Marcus, but the chemistry? Baby, it\'s thick like eggnog. At the heart of it all is Marcus learning how to show up—for his daughter, his community, and maybe, just maybe, for himself again.',
-                    pitchDeck: 'pitch-decks/twelve-dates-christmas-tree-lot-pitch-deck.pdf'
-                },
-                'mother-interrupted': {
-                    title: 'Mother, Interrupted',
-                    year: '2025',
-                    genre: 'Thriller',
-                    description: 'Keisha has built the perfect life after growing up in foster care - thriving career, beautiful Buckhead home, and her pride and joy: 16-year-old adopted daughter Maya. When Maya begins acting out and sneaking around, Keisha assumes it\'s typical teenage rebellion.',
-                    details: 'The Twist: Maya has been meeting with a woman claiming to be Keisha\'s biological mother - the same mother who abandoned Keisha at age 5. The woman reveals that Keisha isn\'t who she thinks she is: her real name is Aaliyah, and she was kidnapped from her loving family as a child by the woman Keisha believed was her abusive birth mother. A psychological thriller that explores themes of identity, family trauma, and the devastating impact of childhood abduction on multiple generations.'
-                },
-                'blood-money': {
-                    title: 'Blood Money',
-                    year: '2025',
-                    genre: 'Thriller',
-                    description: 'Amara is investigating a complex money laundering scheme involving several Atlanta-based nonprofits when she discovers her own mother\'s community organization is on the list. Convinced there\'s been a mistake, she digs deeper to clear her mother\'s name.',
-                    details: 'The Twist: Her mother isn\'t innocent - she\'s been the mastermind behind a massive fraud ring that steals from legitimate charities serving Atlanta\'s underserved communities. But she\'s being blackmailed into it by someone who has evidence of a hit-and-run accident Amara caused as a teenager. A gripping thriller that explores themes of family loyalty, moral corruption, and the devastating consequences of buried secrets coming to light.'
-                },
-                'the-feed': {
-                    title: 'The Feed',
-                    year: '2025',
-                    genre: 'Drama',
-                    description: 'A brilliant Black tech entrepreneur moves into an exclusive, seemingly idyllic smart-home community, only to discover its advanced security system is a sophisticated tool for racial profiling, forcing him to fight back against the insidious surveillance built into the very foundation of his new life.',
-                    details: 'A powerful drama that explores themes of technological surveillance, racial profiling, and systemic discrimination in modern smart communities. The film examines how advanced technology can be weaponized for discriminatory purposes and follows one man\'s fight against insidious surveillance systems. This timely story addresses contemporary issues of privacy, racial justice, and the intersection of technology with social inequality, while exploring the courage required to challenge systems designed to oppress.',
-                    pitchDeck: 'the_feed_pitch_deck.pdf'
-                },
-                'lifeart': {
-                    title: 'Lifeart',
-                    year: '2025',
-                    genre: 'Drama',
-                    description: 'In the heart of Shanghai\'s elite art world, a gifted European painter hides behind the pseudonym of a mysterious Chinese artist named "Tao"—but when family visits, secrets unravel, and a powerful commission threatens to expose everything, he must decide between artistic survival and personal authenticity.',
-                    details: 'A compelling drama that explores themes of cultural identity, artistic integrity, and the price of deception in the international art world. Set against the backdrop of Shanghai\'s sophisticated art scene, the film examines the complex dynamics of East-West cultural exchange and the personal cost of living a lie. The story delves into questions of authenticity, both artistic and personal, as the protagonist faces the ultimate choice between career success and honest self-expression.'
-                },
-                'obsidian-codex': {
-                    title: 'The Obsidian Codex',
-                    year: '2025',
-                    genre: 'Action',
-                    description: 'A disgraced archaeological explorer and a brilliant, but guarded, cryptographer must race against a shadowy organization to uncover an ancient artifact that could either save humanity or unleash a catastrophic power, forcing them to confront their pasts and a betrayal that shattered their shared history.',
-                    details: 'An action-adventure thriller that combines archaeological mystery with high-stakes espionage. The film explores themes of redemption, trust, and the weight of historical responsibility. Set across exotic locations and ancient ruins, the story weaves together past betrayals and present dangers as two former partners must overcome their fractured relationship to prevent a global catastrophe. Features intense action sequences, puzzle-solving elements, and deep character development.'
-                },
-                'echoes-of-the-syndicate': {
-                    title: 'Echoes of the Syndicate',
-                    year: '2025',
-                    genre: 'Action',
-                    description: 'When a former elite hacker, presumed dead, resurfaces to warn her ex-partner—a disillusioned corporate security expert—about a vast, interconnected conspiracy within the very organization he now protects, they must navigate a web of deception and betrayal to expose the truth and find redemption in a world that believes them both to be traitors.',
-                    details: 'A high-tech action thriller that explores themes of corporate espionage, digital warfare, and personal redemption. The film examines the blurred lines between loyalty and betrayal in the modern corporate world, where information is power and trust is a luxury few can afford. Features cutting-edge cyber action sequences, complex conspiracy plotting, and intense character dynamics as two former allies must rebuild their partnership to survive.'
-                },
-                'cipher-of-shadows': {
-                    title: 'The Cipher of Shadows',
-                    year: '2025',
-                    genre: 'Thriller',
-                    description: 'A guilt-ridden private investigator, specializing in missing persons, is hired by a mysterious femme fatale to find her vanished sister—only to uncover an AI-driven human trafficking network that exploits vulnerability through social media. As he confronts the system\'s architect, he must choose between revenge and redemption, trust and betrayal, before the algorithm claims its next victim: him.',
-                    details: 'A cutting-edge thriller that explores the dark intersection of artificial intelligence and human trafficking in the digital age. The film examines themes of guilt, redemption, and the price of technology when it falls into the wrong hands. Set against the backdrop of social media manipulation and algorithmic exploitation, the story weaves together noir detective elements with contemporary tech thriller suspense, creating a gripping narrative about trust, betrayal, and the fight for justice in an increasingly connected world.'
-                },
-                'the-architect': {
-                    title: 'The Architect',
-                    year: '2025',
-                    genre: 'Action',
-                    description: 'When a serial killer targeting corrupt elites is revealed to be her supposedly dead partner, a disgraced detective must choose between upholding the law or joining his brutal crusade to replace the city\'s broken system with his own brand of justice.',
-                    details: 'In Meridian City, corruption isn\'t just endemic—it\'s architectural. Detective Kaito Ishikawa was once the department\'s rising star until she uncovered evidence that Police Commissioner Walsh was trafficking children through his "youth outreach programs." When she tried to expose him, the entire system turned against her. Her evidence disappeared, her witness was murdered, and she was framed for police brutality. Her eight-year-old niece Yuki, who was going to testify about what she saw at one of Walsh\'s facilities, died in a suspicious car accident the night before the hearing. Now, three years later, Kaito works private security for the same corrupt elite she once fought, haunted by her failure and drowning in cynicism. That changes when Meridian City\'s untouchables start dying in spectacular fashion.',
-                    pitchDeck: 'pitch-decks/the-architect-pitch-deck.pdf'
-                },
-                'blood-covenant': {
-                    title: 'Blood Covenant',
-                    year: '2025',
-                    genre: 'Action',
-                    description: 'When a retired assassin haunted by his past teams up with a relentless journalist investigating her sister\'s death, they uncover a global conspiracy led by a secretive brotherhood manipulating world governments. But as personal ties to the cabal emerge, they must decide: expose the truth and lose everything—or vanish into legend as the villains history demands.',
-                    details: 'An intense action thriller that combines espionage, conspiracy, and personal redemption. The film explores themes of legacy, sacrifice, and the price of truth in a world controlled by shadowy organizations. Featuring high-stakes action sequences, complex character dynamics, and a gripping narrative about two unlikely allies who must confront their past to expose a global conspiracy that threatens everything they hold dear.'
-                },
-                'soul-on-fire': {
-                    title: 'Soul On Fire',
-                    year: '1970s',
-                    genre: 'Limited Series',
-                    description: 'Set in 1970s Atlanta, this isn\'t just another rise-and-fall music story. "Soul on Fire" is about cultural theft on an industrial scale—how the American music business was built on appropriating Black artistry while systematically destroying Black artists. It\'s about a woman who discovers that her voice, her songs, even her pain have become commodities to be bought, sold, and locked away forever.',
-                    details: 'A powerful limited series that explores cultural theft and the music industry in 1970s Atlanta—a city caught between its segregated past and integrated future. Auburn Avenue pulses with soul and funk while downtown gleams with new development. The tone combines "Atlanta" meets "Watchmen" meets "The Deuce"—grounded period authenticity with moments of surreal, music-driven transcendence. Gritty realism punctuated by spectacular musical sequences that feel both of their time and timelessly cinematic. The series examines how Black culture thrives in basements and side streets while white executives profit from sanitized versions upstairs, serving as a microcosm for American capitalism\'s relationship with Black creativity.',
-                    pitchDeck: 'soul_on_fire_pitch_deck.pdf'
-                },
-
-            };
-
-            const project = projects[projectId];
-            if (project) {
-                modalContent.innerHTML = `
-                    <h2>${project.title} (${project.year})</h2>
-                    <p><strong>Genre:</strong> ${project.genre}</p>
-                    <p><strong>Description:</strong> ${project.description}</p>
-                    <p><strong>Details:</strong> ${project.details}</p>
-                    ${project.pitchDeck ? `<div style="margin-top: 20px;"><a href="${project.pitchDeck}" target="_blank" style="background: #dc3545; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">📄 Download Pitch Deck</a></div>` : ''}
-                `;
-                modal.style.display = 'block';
+            if (!modal || !modalContent) {
+                console.error('Modal elements not found');
+                return;
+            }
+            
+            // Simple test content for now
+            modalContent.innerHTML = `
+                <h2>Project: ${projectId}</h2>
+                <p>Modal is working! This is a test for project ID: ${projectId}</p>
+                <p>We will add full project data next.</p>
+            `;
+            
+            modal.style.display = 'block';
+            console.log('Modal opened successfully');
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            if (modal) {
+                modal.style.display = 'none';
+                console.log('Modal closed');
             }
         }
-
-        function closeModal() {
-            document.getElementById('projectModal').style.display = 'none';
-        }
-
+        
         // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('projectModal');
@@ -1646,6 +1316,8 @@
                 modal.style.display = 'none';
             }
         }
+        
+        console.log('Basic modal functions loaded');
     </script>
 </body>
 </html>
