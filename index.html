@@ -1278,12 +1278,7 @@
 
 
     <script>
-           window.addEventListener('DOMContentLoaded', () => {
-        // Complete        // Store scroll position before opening modal
-        let scrollPosition = 0;
-
-    function openModal(projectId) {
-    const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+function openModal(projectId) {
     const modal   = document.getElementById('projectModal');
     const content = document.getElementById('modalContent');
     if (!modal || !content) return;
