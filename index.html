@@ -1283,15 +1283,15 @@
         let scrollPosition = 0;
 
     function openModal(projectId) {
-        console.log('Opening modal for project:', projectId);
-        scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        const modal = document.getElementById('projectModal');
-        const title = document.getElementById('modalTitle');
-        const content = document.getElementById('modalContent');
-        if (!modal || !title || !content) {
-            console.error('Modal elements not found');
-            return;
-        }
+    console.log('Opening modal for project:', projectId);
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    const modal   = document.getElementById('projectModal');
+    const title   = document.getElementById('modalTitle');
+    const content = document.getElementById('modalContent');
+    if (!modal || !title || !content) {
+        console.error('Modal elements not found');
+        return;
+    }
 
             
             // Complete project data
@@ -1475,38 +1475,33 @@
             };
             
             const project = projects[projectId];
-            if (project) {
-                modalContent.innerHTML = `
-                    <h2>${project.title} (${project.year})</h2>
-                    <p><strong>Genre:</strong> ${project.genre}</p>
-                    <p><strong>Description:</strong> ${project.description}</p>
-                    <p><strong>Details:</strong> ${project.details}</p>
-                    ${project.pitchDeck ? `<div style="margin-top: 20px;"><a href="${project.pitchDeck}" target="_blank" style="background: #dc3545; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">📄 Download Pitch Deck</a></div>` : ''}
-                `;
-            } else {
-                modalContent.innerHTML = `
-                    <h2>Project: ${projectId}</h2>
-                    <p>Project details coming soon...</p>
-                `;
-            }
+    if (project) {
+        content.innerHTML = `
+            <h2>${project.title} (${project.year})</h2>
+            <p><strong>Genre:</strong> ${project.genre}</p>
+            <p><strong>Description:</strong> ${project.description}</p>
+            <p><strong>Details:</strong> ${project.details}</p>
+            ${project.pitchDeck ? `<div style="margin-top:20px">
+                <a href="${project.pitchDeck}" target="_blank" style="background:#dc3545;color:#fff;padding:10px 20px;text-decoration:none;border-radius:5px;">📄 Download Pitch Deck</a>
+            </div>` : ''}
+        `;
+    } else {
+        content.innerHTML = `<h2>Project: ${projectId}</h2><p>Details coming soon…</p>`;
+    }
+    modal.style.display = 'block';
+}
             
-            modal.style.display = 'block';
-            console.log('Modal opened successfully');
-        }
         
         function closeModal() {
-            const modal = document.getElementById('projectModal');
-            if (modal) {
-                modal.style.display = 'none';
-                // Restore scroll position instead of redirecting
-                window.scrollTo(0, scrollPosition);
-                // Remove hash from URL without affecting history
-                if (window.location.hash) {
-                    history.replaceState(null, null, window.location.pathname + window.location.search);
-                }
-                console.log('Modal closed, scroll position restored');
-            }
+    const modal = document.getElementById('projectModal');
+    if (modal) {
+        modal.style.display = 'none';
+        window.scrollTo(0, scrollPosition);
+        if (window.location.hash) {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
         }
+    }
+}
         
         // Close modal when clicking outside
         window.onclick = function(event) {
@@ -1543,7 +1538,7 @@
         }
 
         console.log('Complete modal and background cycling functions loaded');
-    });   // closes the outer DOMContentLoaded listener
+    });   // <-- this closes window.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
