@@ -1484,33 +1484,17 @@
         content.innerHTML = `<h2>Project: ${projectId}</h2><p>Details coming soon…</p>`;
     }
     modal.style.display = 'block';
-};
-            
-        
-        function closeModal() {
+}
+
+function closeModal() {
     const modal = document.getElementById('projectModal');
     if (modal) modal.style.display = 'none';
     if (window.location.hash) {
         history.replaceState(null, null, window.location.pathname + window.location.search);
     }
 }
-        
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('projectModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-                // Restore scroll position instead of redirecting
-                window.scrollTo(0, scrollPosition);
-                // Remove hash from URL without affecting history
-                if (window.location.hash) {
-                    history.replaceState(null, null, window.location.pathname + window.location.search);
-                }
-            }
-        }
-        
-         // Enhanced background cycling - Step 3
-      window.addEventListener('DOMContentLoaded', () => {
+
+window.addEventListener('DOMContentLoaded', () => {
     let currentBg = 0;
     const backgrounds = document.querySelectorAll('.hero-background');
     function cycleBg() {
@@ -1528,9 +1512,7 @@
         const modal = document.getElementById('projectModal');
         if (e.target === modal) closeModal();
     };
-               console.log('Complete modal and background cycling functions loaded');
-    });   // closes the outer DOMContentLoaded listener
+});
 </script>
 </body>
 </html>
-
