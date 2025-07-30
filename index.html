@@ -1281,21 +1281,18 @@
            window.addEventListener('DOMContentLoaded', () => {
         // Complete        // Store scroll position before opening modal
         let scrollPosition = 0;
-        
-        function openModal(projectId) {
-            console.log('Opening modal for project:', projectId);
-            
-            // Store current scroll position
-            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            
-            const modal = document.getElementById('projectModal');
-            const title = document.getElementById('modalTitle');
-            const content = document.getElementById('modalContent');
-            
-            if (!modal || !title || !content) {
-                console.error('Modal elements not found');
-                return;
-            }
+
+    function openModal(projectId) {
+        console.log('Opening modal for project:', projectId);
+        scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        const modal = document.getElementById('projectModal');
+        const title = document.getElementById('modalTitle');
+        const content = document.getElementById('modalContent');
+        if (!modal || !title || !content) {
+            console.error('Modal elements not found');
+            return;
+        }
+
             
             // Complete project data
             const projects = {                title: 'The Last Dynasty',
@@ -1523,10 +1520,10 @@
             }
         }
         
-        // Enhanced background cycling - Step 3
+         // Enhanced background cycling - Step 3
         let currentBg = 0;
         const backgrounds = document.querySelectorAll('.hero-background');
-        
+
         function cycleBg() {
             if (backgrounds.length > 0) {
                 backgrounds[currentBg].classList.remove('active');
@@ -1535,19 +1532,16 @@
                 console.log('Background cycled to:', currentBg);
             }
         }
-        
+
         // Initialize background cycling
-        document.addEventListener('DOMContentLoaded', function() {
-            if (backgrounds.length > 0) {
-                backgrounds[0].classList.add('active');
-                // Cycle every 5 seconds
-                setInterval(cycleBg, 5000);
-                console.log('Background cycling initialized with', backgrounds.length, 'backgrounds');
-            }
-        });
-        
+        if (backgrounds.length > 0) {
+            backgrounds[0].classList.add('active');
+            setInterval(cycleBg, 5000);
+            console.log('Background cycling initialized with', backgrounds.length, 'backgrounds');
+        }
+
         console.log('Complete modal and background cycling functions loaded');
-    </script>
+    });   // closes the outer DOMContentLoaded listener
+</script>
 </body>
 </html>
-
