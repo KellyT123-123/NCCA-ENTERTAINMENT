@@ -1285,7 +1285,9 @@
 
 
     <script>
+           let scrollPosition = 0;   // global var to remember where we were
 function openModal(projectId) {
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;  // save scroll
     const modal   = document.getElementById('projectModal');
     const content = document.getElementById('modalContent');
     if (!modal || !content) return;
@@ -1707,14 +1709,18 @@ function openModal(projectId) {
     } else {
         content.innerHTML = `<h2>Project: ${projectId}</h2><p>Details coming soon…</p>`;
     }
+ /* … build modal content … */
     modal.style.display = 'block';
 }
 
 function closeModal() {
     const modal = document.getElementById('projectModal');
-    if (modal) modal.style.display = 'none';
-    if (window.location.hash) {
-        history.replaceState(null, null, window.location.pathname + window.location.search);
+    if (modal) {
+        modal.style.display = 'none';
+        window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+        if (window.location.hash) {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
     }
 }
 
