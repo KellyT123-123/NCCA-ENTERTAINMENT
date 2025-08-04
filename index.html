@@ -205,8 +205,7 @@
 
         .work-image {
             width: 100%;
-         /* Increase height to fit most posters */
-            height: 250px;
+            height: 250px; /* Default height */
             background: #333;
             display: flex;
             align-items: center;
@@ -215,14 +214,16 @@
             font-size: 1.2rem; /* This font size will not be visible unless you have text over the image */
         }
 
-        /* Specific height only for Southern Gothic Mystery (1st) and Noir (10th) sections */
+        /* Specific height only for Southern Gothic Mystery (1st) Noir (8th) and Horror (12th) sections */
         .genre-section:nth-of-type(1) .work-image {
     height: 400px;
-}
-        
-        .genre-section:nth-of-type(10) .work-image {
+}        
+        .genre-section:nth-of-type(8) .work-image {
     height: 400px;
-}
+}   
+        .genre-section:nth-of-type(12) .work-image {
+    height: 400px;
+}               
         .work-content {
             padding: 1rem;
             text-align: center;
