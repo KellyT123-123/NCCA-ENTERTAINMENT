@@ -536,6 +536,7 @@
             <div class="hero-background" style="background-image: url('images/queen-of-thorns.png');"></div>
             <div class="hero-background" style="background-image: url('images/the-ghostmaker.png');"></div>
               <div class="hero-background" style="background-image: url('images/atl-soul-poster.png');"></div>
+               <div class="hero-background" style="background-image: url('images/this-is-me-now.png');"></div>
             
             <div class="hero-overlay"></div>
             
@@ -584,6 +585,17 @@
                 <div class="genre-section">
                     <h3 class="genre-title">Drama</h3>
                     <div class="works-grid">
+                            <div class="work-card" onclick="openModal('this-is-me-now')">
+                            <div class="work-image" style="background-image: url('this-is-me-now.png');"></div>
+                            <div class="work-content">
+                                <div class="work-genre">Drama</div>
+                                <h3 class="work-title">This is me now</h3>
+                                <div class="work-year">2026</div>
+                                <p class="work-description">When a quiet tech-savvy high schooler becomes the subject of a viral scandal, she must fight to reclaim her voice—not with violence, but with the truth, spoken out loud in front of the people who tried to silence her.</p>
+                                <a href="#" class="work-link">View Project Details</a>
+                            </div>
+                        </div>
+                           
                         <div class="work-card" onclick="openModal('the-feed')">
                             <div class="work-image" style="background-image: url('the_feed_poster.png');"></div>
                             <div class="work-content">
@@ -1729,6 +1741,13 @@ function openModal(projectId) {
     details: 'Treatment/Outline availiable.',
     pitchDeck: 'pitch-decks/atl_soul_pitch_deck.pdf'
 },
+                    'this-is-me-now': {
+    title: 'This is me now',
+    year: '2026',
+    genre: 'Drama',
+    description: 'When a quiet tech-savvy high schooler becomes the subject of a viral scandal, she must fight to reclaim her voice—not with violence, but with the truth, spoken out loud in front of the people who tried to silence her.',
+    details: 'Treatment/Outline availiable.',
+    pitchDeck: 'pitch-decks/this_is_me_now_pitch_deck.pdf'
         };
             
              const p = projects[projectId];
