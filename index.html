@@ -1761,15 +1761,20 @@
         }
 
                function closeModal() {
-            const modal = document.getElementById('projectModal');
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                
-                // Restore scroll position
-                window.scrollTo(0, savedScrollPosition);
-            }
-        }
+    const modal = document.getElementById('projectModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        
+        // Use setTimeout to ensure modal is fully closed before restoring scroll position
+        setTimeout(function() {
+            window.scrollTo({
+                top: savedScrollPosition,
+                behavior: 'instant'
+            });
+        }, 50); // Small delay to ensure DOM has updated
+    }
+}
 
         // Background cycling with indicator updates
         function cycleBg() {
