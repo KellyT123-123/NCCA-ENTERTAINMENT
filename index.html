@@ -1809,53 +1809,131 @@ function openModal(projectId) {
 },
 };  
 
-     const p = projects[projectId];
-    if (p) {
-        content.innerHTML = `
-            <h2>${p.title} (${p.year})</h2>
-            <p><strong>Genre:</strong> ${p.genre}</p>
-            <p><strong>Description:</strong> ${p.description}</p>
-            <p><strong>Details:</strong> ${p.details}</p>
-            ${p.pitchDeck ? `<div style="margin-top:20px">
-                <a href="${p.pitchDeck}" target="_blank" style="background:#dc3545;color:#fff;padding:10px 20px;text-decoration:none;border-radius:5px;">📄 Download Pitch Deck</a>
-            </div>` : ''}
-        `;
-    } else {
-        content.innerHTML = `<h2>Project: ${projectId}</h2><p>Details coming soon…</p>`;
-    }
- /* ... build modal content ...*/
-    modal.style.display = 'block';
+     const project = projects[projectId];
+            
+            if (project) {
+                content.innerHTML = `
+                    <h2>${project.title} (${project.year})</h2>
+                    <p><strong>Genre:</strong> ${project.genre}</p>
+                    <p><strong>Description:</strong> ${project.description}</p>
+                    <p><strong>Details:</strong> ${project.details}</p>
+                    <div style="margin-top: 20px;">
+                        <button class="btn btn-primary" onclick="closeModal()">Close</button>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = `
+                    <h2>Project: ${projectId}</h2>
+                    <p>Details coming soon...</p>
+                    <div style="margin-top: 20px;">
+                        <button class="btn btn-primary" onclick="closeModal()">Close</button>
+                    </div>
+                `;
+            }
 
-function closeModal() {
-    const modal = document.getElementById('projectModal');
-    if (modal) {
-    if (modal) modal.style.display = 'none';
-    if (window.location.hash) {
-        history.replaceState(null, null, window.location.pathname + window.location.search);
-    }
-  }
-}
-     
-/* ----------  DOM-LOADED SETUP  ---------- */
-window.addEventListener('DOMContentLoaded', function () => {
-    let currentBg = 0;
-    const backgrounds = document.querySelectorAll('.hero-background');
-    function cycleBg() {
-        if (backgrounds.length) {
-            backgrounds[currentBg].classList.remove('active');
-            currentBg = (currentBg + 1) % backgrounds.length;
-            backgrounds[currentBg].classList.add('active');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
-    }
-    if (backgrounds.length) {
-        backgrounds[0].classList.add('active');
-        setInterval(cycleBg, 5000);
-    }
-    window.onclick = e => {
-        const modal = document.getElementById('projectModal');
-        if (e.target === modal) closeModal();
-    };
-});
-</script>
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Background cycling
+        function cycleBg() {
+            if (backgrounds.length > 0) {
+                backgrounds[currentBg].classList.remove('active');
+                currentBg = (currentBg + 1) % backgrounds.length;
+                backgrounds[currentBg].classList.add('active');
+            }
+        }
+
+        // Form handling
+        function handleContactForm(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            const form = document.getElementById('contactForm');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            form.classList.add('loading');
+            
+            // Simulate form submission (replace with actual form handling)
+            setTimeout(() => {
+                formMessage.innerHTML = '<div class="form-success">Thank you for your message! We\'ll get back to you soon.</div>';
+                form.reset();
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                form.classList.remove('loading');
+            }, 2000);
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start background cycling
+            if (backgrounds.length > 0) {
+                backgrounds[0].classList.add('active');
+                setInterval(cycleBg, 5000);
+            }
+
+            // Add form event listener
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', handleContactForm);
+            }
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                const modal = document.getElementById('projectModal');
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Handle navigation clicks for smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href.length > 1) {
+                        e.preventDefault();
+                        const element = document.querySelector(href);
+                        if (element) {
+                            element.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                        closeMobileMenu();
+                    }
+                });
+            });
+
+            // Add keyboard navigation for modals
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        });
+
+        // Add scroll effect for header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+            }
+        });
+    </script>
 </body>
 </html>
