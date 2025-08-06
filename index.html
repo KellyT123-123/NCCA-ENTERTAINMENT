@@ -1305,11 +1305,17 @@
 
 
     <script>
-           let scrollPosition = 0;   // global var to remember where we were
+/* ----------  GLOBAL FUNCTIONS  ---------- */
 function openModal(projectId) {
-    const modal = document.getElementById('projectModal');
+    console.log('Opening modal for project:', projectId);
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    const modal   = document.getElementById('projectModal');
+    const title   = document.getElementById('modalTitle');
     const content = document.getElementById('modalContent');
-    if (!modal || !content) return;
+    if (!modal || !title || !content) {
+        console.error('Modal elements not found');
+        return;
+    }
 
     // ✅ ONE AND ONLY ONE projects object
     const projects = {
@@ -1721,37 +1727,39 @@ function openModal(projectId) {
     pitchDeck: 'pitch-decks/this_is_me_now_pitch_deck.pdf'
 };  
 
-    const p = projects[projectId];
-    if (p) {
+     const project = projects[projectId];
+    if (project) {
         content.innerHTML = `
-            <h2>${p.title} (${p.year})</h2>
-            <p><strong>Genre:</strong> ${p.genre}</p>
-            <p><strong>Description:</strong> ${p.description}</p>
-            <p><strong>Details:</strong> ${p.details}</p>
-            ${p.pitchDeck ? 
-                  </div>` : ''}
+            <h2>${project.title} (${project.year})</h2>
+            <p><strong>Genre:</strong> ${project.genre}</p>
+            <p><strong>Description:</strong> ${project.description}</p>
+            <p><strong>Details:</strong> ${project.details}</p>
+            ${project.pitchDeck ? `<div style="margin-top:20px">
+                <a href="${project.pitchDeck}" target="_blank" style="background:#dc3545;color:#fff;padding:10px 20px;text-decoration:none;border-radius:5px;">📄 Download Pitch Deck</a>
+            </div>` : ''}
         `;
     } else {
         content.innerHTML = `<h2>Project: ${projectId}</h2><p>Details coming soon…</p>`;
     }
     modal.style.display = 'block';
-}         `<div style="margin-top:20px">
-                    <a href="${p.pitchDeck}" target="_blank" style="background:#dc3545;color:#fff;padding:10px 20px;text-decoration:none;border-radius:5px;">📄 Download Pitch Deck</a>
+}
 
 function closeModal() {
     const modal = document.getElementById('projectModal');
     if (modal) {
         modal.style.display = 'none';
-        window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+        window.scrollTo(0, scrollPosition);
         if (window.location.hash) {
             history.replaceState(null, null, window.location.pathname + window.location.search);
         }
     }
 }
 
-  document.addEventListener('DOMContentLoaded', function () {
-        const backgrounds = document.querySelectorAll('.hero-background');
-        let currentIndex = 0;
+/* ----------  DOM-LOADED SETUP  ---------- */
+window.addEventListener('DOMContentLoaded', () => {
+    /* background cycling */
+    let currentBg = 0;
+    const backgrounds = document.querySelectorAll('.hero-background');
     function cycleBg() {
         if (backgrounds.length) {
             backgrounds[currentBg].classList.remove('active');
@@ -1763,10 +1771,14 @@ function closeModal() {
         backgrounds[0].classList.add('active');
         setInterval(cycleBg, 5000);
     }
+
+    /* modal backdrop click */
     window.onclick = e => {
         const modal = document.getElementById('projectModal');
         if (e.target === modal) closeModal();
     };
+
+    console.log('Complete modal and background cycling functions loaded');
 });
 </script>
 </body>
