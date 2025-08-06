@@ -1761,16 +1761,19 @@ function openModal(projectId) {
     } else {
         content.innerHTML = `<h2>Project: ${projectId}</h2><p>Details coming soon…</p>`;
     }
+ /* ... build modal content ...*/
     modal.style.display = 'block';
 
 function closeModal() {
     const modal = document.getElementById('projectModal');
+    if (modal) {
     if (modal) modal.style.display = 'none';
     if (window.location.hash) {
         history.replaceState(null, null, window.location.pathname + window.location.search);
     }
+  }
 }
-
+     
 /* ----------  DOM-LOADED SETUP  ---------- */
 window.addEventListener('DOMContentLoaded', () => {
     let currentBg = 0;
