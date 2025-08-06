@@ -172,40 +172,34 @@
             color: #fff;
         }
 
-        .genre-section {
-            margin-bottom: 4rem;
-        }
+/* Unified Grid Layout */
+.genre-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
 
-        .genre-title {
-            font-size: 1.5rem;
-            color: #ff4444;
-            margin-bottom: 2rem;
-            text-align: center;
-            border-bottom: 2px solid #ff4444;
-            padding-bottom: 0.5rem;
-        }
-
-       .works-grid {
+.works-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
-    padding: 1rem;
-    width: 100%;           /* ← Critical */
-    max-width: 1200px;     /* Optional: prevent too-wide layout */
-    margin: 0 auto;        /* Center if needed */
+    padding: 0;
+    width: 100%;
 }
-        .work-card {
-            background: #222;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
 
-        .work-card:hover {
-            transform: translateY(-5px);
-        }
+.work-card {
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    width: 100%;
+}
 
-       /* Default height for all posters */
+.work-card:hover {
+    transform: translateY(-5px);
+}
+
 .work-image {
     width: 100%;
     height: 250px;
@@ -213,11 +207,6 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    font-size: 1.2rem;
     overflow: hidden;
 }
 
