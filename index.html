@@ -1309,11 +1309,9 @@
     <script>
            let scrollPosition = 0;   // global var to remember where we were
 function openModal(projectId) {
-    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;  // save scroll
-    const modal   = document.getElementById('projectModal');
+    const modal = document.getElementById('projectModal');
     const content = document.getElementById('modalContent');
     if (!modal || !content) return;
-
             
             // Complete project data
             const projects = {
@@ -1361,7 +1359,7 @@ function openModal(projectId) {
                     title: 'The Double Cross',
                     year: '2026',
                     genre: 'Crime Thriller / Emotional Drama',
-                    description: 'A gritty, suspenseful, and emotionally charged crime thriller set in Atlanta. Think "The Good Wife" meets "Ozark" with a Southern twist.An ex-con living under FBI protection in Atlanta is forced back into the criminal underworld by a high-stakes heist threatening the city\'s financial heart. Her world shatters when she discovers the idealistic rookie agent on her case is her long-lost daughter, and the architect of the chaos is the vengeful former lover who adopted their child to orchestrate her ultimate ruin.',
+                    description: 'A gritty, suspenseful, and emotionally charged crime thriller set in Atlanta. Think "The Good Wife" meets "Ozark" with a Southern twist.An ex-con living under FBI protection in Atlanta is forced back into the criminal underworld by a high stakes heist threatening the city\'s financial heart. Her world shatters when she discovers the idealistic rookie agent on her case is her long-lost daughter, and the architect of the chaos is the vengeful former lover who adopted their child to orchestrate her ultimate ruin.',
                     details: 'Treatment/Outline available',
                     pitchDeck: 'pitch-decks/the_double_cross_pitch_deck.pdf'
                 },
@@ -1583,14 +1581,6 @@ function openModal(projectId) {
         details: 'Treatment/Outline availiable',
         // no pitchDeck → download button will NOT appear
         },
-                   'the-double-cross': {
-        title: 'The Double Cross',
-        year: '2026',
-        genre: 'Thriller',
-        description: 'An ex-con living under FBI protection in Atlanta is forced back into the criminal underworld by a high-stakes heist threatening the city\'s financial heart. Her world shatters when she discovers the idealistic rookie agent on her case is her long lost daughter, and the architect of the chaos is the vengeful former lover who adopted their child to orchestrate her ultimate ruin.',
-        details: 'Treatment/Outline availiable',
-        // no pitchDeck → download button will NOT appear
-        },
                      'somebody-you-know': {
         title: 'Its Somebody You Know',
         year: '2026',
@@ -1612,14 +1602,6 @@ function openModal(projectId) {
         year: '2026',
         genre: 'Drama',
         description: 'In the heart of Shanghai\'s elite art world, a gifted European painter hides behind the pseudonym of a mysterious Chinese artist named Tao, but when family visits, secrets unravel, and a powerful commission threatens to expose everything, he must decide between artistic survival and personal authenticity.',
-        details: 'Treatment/Outline availiable',
-                            // no pitchDeck → download button will NOT appear
-        },
-                   'mother-interrupted': {
-        title: 'Mother, Interrupted',
-        year: '2026',
-        genre: 'Thriller',
-        description: 'Keisha has built the perfect life after growing up in foster care - thriving career, beautiful Buckhead home, and her pride and joy: 16-year-old adopted daughter Maya. When Maya begins acting out and sneaking around, Keisha assumes its typical teenage rebellion. The Twist: Maya has been meeting with a woman claiming to be Keisha\'s biological mother - the same mother who abandoned Keisha at age five. The woman reveals that Keisha isnt who she thinks she is: her real name is Aaliyah, who was kidnapped from her loving family as a child by the woman Keisha believed was her abusive birth mother.',
         details: 'Treatment/Outline availiable',
                             // no pitchDeck → download button will NOT appear
         },
@@ -1740,22 +1722,22 @@ function openModal(projectId) {
     details: 'Treatment/Outline availiable.',
     pitchDeck: 'pitch-decks/this_is_me_now_pitch_deck.pdf'
 };  
-            
-             const p = projects[projectId];
+
+    const p = projects[projectId];
     if (p) {
         content.innerHTML = `
             <h2>${p.title} (${p.year})</h2>
             <p><strong>Genre:</strong> ${p.genre}</p>
             <p><strong>Description:</strong> ${p.description}</p>
             <p><strong>Details:</strong> ${p.details}</p>
-            ${p.pitchDeck ? `<div style="margin-top:20px">
-                <a href="${p.pitchDeck}" target="_blank" style="background:#dc3545;color:#fff;padding:10px 20px;text-decoration:none;border-radius:5px;">📄 Download Pitch Deck</a>
-            </div>` : ''}
+            ${p.pitchDeck ? 
+                `<div style="margin-top:20px">
+                    <a href="${p.pitchDeck}" target="_blank" style="background:#dc3545;color:#fff;padding:10px 20px;text-decoration:none;border-radius:5px;">📄 Download Pitch Deck</a>
+                </div>` : ''}
         `;
     } else {
         content.innerHTML = `<h2>Project: ${projectId}</h2><p>Details coming soon…</p>`;
     }
- /* … build modal content … */
     modal.style.display = 'block';
 }
 
