@@ -187,11 +187,13 @@
 
        .works-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
     padding: 1rem;
-    justify-items: center;
-} 
+    width: 100%;           /* ← Critical */
+    max-width: 1200px;     /* Optional: prevent too-wide layout */
+    margin: 0 auto;        /* Center if needed */
+}
         .work-card {
             background: #222;
             border-radius: 10px;
