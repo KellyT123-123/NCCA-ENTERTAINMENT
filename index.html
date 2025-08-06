@@ -1743,9 +1743,9 @@ function closeModal() {
     }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    let currentBg = 0;
-    const backgrounds = document.querySelectorAll('.hero-background');
+  document.addEventListener('DOMContentLoaded', function () {
+        const backgrounds = document.querySelectorAll('.hero-background');
+        let currentIndex = 0;
     function cycleBg() {
         if (backgrounds.length) {
             backgrounds[currentBg].classList.remove('active');
