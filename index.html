@@ -1765,6 +1765,9 @@
             if (modal) {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
+                
+                // Restore scroll position
+                window.scrollTo(0, savedScrollPosition);
             }
         }
 
