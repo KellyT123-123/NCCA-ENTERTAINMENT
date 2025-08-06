@@ -1304,9 +1304,9 @@ function openModal(projectId) {
     const modal = document.getElementById('projectModal');
     const content = document.getElementById('modalContent');
     if (!modal || !content) return;
-            
-            // Complete project data
-            const projects = {
+
+    // ✅ ONE AND ONLY ONE projects object
+    const projects = {
     'the-last-dynasty': {
         title: 'The Last Dynasty',
         year: '2026',
@@ -1723,15 +1723,14 @@ function openModal(projectId) {
             <p><strong>Description:</strong> ${p.description}</p>
             <p><strong>Details:</strong> ${p.details}</p>
             ${p.pitchDeck ? 
-                `<div style="margin-top:20px">
-                    <a href="${p.pitchDeck}" target="_blank" style="background:#dc3545;color:#fff;padding:10px 20px;text-decoration:none;border-radius:5px;">📄 Download Pitch Deck</a>
-                </div>` : ''}
+                  </div>` : ''}
         `;
     } else {
         content.innerHTML = `<h2>Project: ${projectId}</h2><p>Details coming soon…</p>`;
     }
     modal.style.display = 'block';
-}
+}         `<div style="margin-top:20px">
+                    <a href="${p.pitchDeck}" target="_blank" style="background:#dc3545;color:#fff;padding:10px 20px;text-decoration:none;border-radius:5px;">📄 Download Pitch Deck</a>
 
 function closeModal() {
     const modal = document.getElementById('projectModal');
