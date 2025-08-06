@@ -1311,9 +1311,7 @@ function openModal(projectId) {
     const modal   = document.getElementById('projectModal');
     const content = document.getElementById('modalContent');
     if (!modal || !content) return;
-    }
 
-    // ✅ ONE AND ONLY ONE projects object
     const projects = {
     'the-last-dynasty': {
         title: 'The Last Dynasty',
@@ -1743,18 +1741,14 @@ function openModal(projectId) {
 
 function closeModal() {
     const modal = document.getElementById('projectModal');
-    if (modal) {
-        modal.style.display = 'none';
-        window.scrollTo(0, scrollPosition);
-        if (window.location.hash) {
-            history.replaceState(null, null, window.location.pathname + window.location.search);
-        }
+    if (modal) modal.style.display = 'none';
+    if (window.location.hash) {
+        history.replaceState(null, null, window.location.pathname + window.location.search);
     }
 }
 
 /* ----------  DOM-LOADED SETUP  ---------- */
 window.addEventListener('DOMContentLoaded', () => {
-    /* background cycling */
     let currentBg = 0;
     const backgrounds = document.querySelectorAll('.hero-background');
     function cycleBg() {
@@ -1768,14 +1762,10 @@ window.addEventListener('DOMContentLoaded', () => {
         backgrounds[0].classList.add('active');
         setInterval(cycleBg, 5000);
     }
-
-    /* modal backdrop click */
     window.onclick = e => {
         const modal = document.getElementById('projectModal');
         if (e.target === modal) closeModal();
     };
-
-    console.log('Complete modal and background cycling functions loaded');
 });
 </script>
 </body>
