@@ -1473,8 +1473,7 @@
                 </div>
             </div>
 
-             <!-- Feature - Horror -->
-                                <!-- Horror -->
+            <!-- Horror -->
             <div class="genre-section">
                 <h3 class="genre-title">Feature - Horror</h3>
                 <div class="works-grid">
@@ -1491,7 +1490,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/bone-collectors-daughter.png');"></div>
@@ -1507,6 +1505,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
             <!-- Film Noir -->
             <div class="genre-section">
@@ -1796,11 +1795,25 @@
                 description: 'When a sneaker-obsessed teen drains his college fund to buy rare Yeezys, he fakes a sneaker addiction support group to cover his tracks—only for it to become a real movement. As hype builds and lies spiral, he must choose between the hustle and helping others for real.',
                 available: 'Treatment/Outline/Script Available',
                 pitchDeck: 'pitch-decks/sneakerheads-anonymous-pitch-deck.pdf'
+            },
+            'second-skin': {
+                title: 'Second Skin',
+                genre: 'Horror',
+                year: '2026',
+                description: 'A chilling horror film that explores transformation and identity. Features practical effects and atmospheric cinematography that creates genuine tension.',
+                available: 'Treatment/Outline available'
+            },
+            'bone-collectors-daughter': {
+                title: 'The Bone Collector\'s Daughter',
+                genre: 'Horror',
+                year: '2026',
+                description: 'When a skeptical woman inherits her estranged mother\'s Appalachian home, she discovers a legacy of bone conjuring and memory-binding magic. Haunted by vengeful spirits known as the Hollow-Eyed, she must embrace her bloodline\'s dark rituals—or be consumed by the very past she tried to escape.',
+                available: 'Treatment/Outline available'
             }
         };
 
         function openModal(projectId) {
-            const project = projects[projectId];
+            const project = projectData[projectId];
             if (project) {
                 document.getElementById('modalTitle').textContent = project.title;
                 document.getElementById('modalGenre').textContent = project.genre;
@@ -1816,17 +1829,25 @@
                     downloadLink.style.display = 'none';
                 }
                 
+                const modal = document.getElementById('projectModal');
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
         }
 
         function closeModal() {
+            const modal = document.getElementById('projectModal');
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
-        closeBtn.addEventListener('click', closeModal);
+        // Initialize modal elements
+        const modal = document.getElementById('projectModal');
+        const closeBtn = document.querySelector('.close');
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeModal);
+        }
 
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
@@ -1858,3 +1879,4 @@
     </script>
 </body>
 </html>
+
