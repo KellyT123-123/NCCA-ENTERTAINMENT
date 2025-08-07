@@ -4,15 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NCCA Entertainment - Cinematic Storytelling</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-    
     <style>
-        /* Reset default browser styles */
         * {
             margin: 0;
             padding: 0;
@@ -23,31 +15,30 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #000;
-            scroll-behavior: smooth;
+            background: #000;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
 
         /* Header */
         header {
-            background: rgba(0, 0, 0, 0.9);
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
@@ -72,16 +63,6 @@
             color: #ff4444;
         }
 
-        /* Mobile menu toggle */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -104,65 +85,58 @@
             background-position: center;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            z-index: 1;
+            z-index: -2;
         }
 
         .hero-background.active {
             opacity: 1;
         }
 
-        /* Background cycling images */
-        .hero-background:nth-child(1) { 
-            background: url('the_last_dynasty_poster.png') center/cover, linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-        }
-        .hero-background:nth-child(2) { 
-            background: url('the_feed_poster.png') center/cover, linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
-        }
-        .hero-background:nth-child(3) { 
-            background: url('sinners_and_saints_poster.png') center/cover, linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
-        }
-        .hero-background:nth-child(4) { 
-            background: url('miss_juneteenth_blues_poster.png') center/cover, linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); 
-        }
-        .hero-background:nth-child(5) { 
-            background: url('the_double_cross_poster.png') center/cover, linear-gradient(135deg, #fa709a 0%, #fee140 100%); 
-        }
-        .hero-background:nth-child(6) { 
-            background: url('soul_on_fire_poster.png') center/cover, linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
-        }
-
-        .hero-overlay {
+        .hero-background::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 2;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
         }
+
+        /* Background images */
+        .hero-background:nth-child(1) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .hero-background:nth-child(2) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .hero-background:nth-child(3) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .hero-background:nth-child(4) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .hero-background:nth-child(5) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .hero-background:nth-child(6) { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .hero-background:nth-child(7) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .hero-background:nth-child(8) { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+        .hero-background:nth-child(9) { background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%); }
+        .hero-background:nth-child(10) { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .hero-background:nth-child(11) { background: linear-gradient(135deg, #ff8a80 0%, #ea80fc 100%); }
+        .hero-background:nth-child(12) { background: linear-gradient(135deg, #8fd3f4 0%, #84fab0 100%); }
 
         .hero-content {
             position: relative;
-            z-index: 3;
+            z-index: 2;
             max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .hero h1 span {
+        .hero .highlight {
             color: #ff4444;
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .cta-buttons {
@@ -173,14 +147,14 @@
         }
 
         .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
+            padding: 1rem 2rem;
             text-decoration: none;
+            border-radius: 5px;
             font-weight: bold;
             transition: all 0.3s;
+            border: none;
             cursor: pointer;
-            display: inline-block;
+            font-size: 1rem;
         }
 
         .btn-primary {
@@ -204,15 +178,15 @@
             color: #000;
         }
 
-        /* Cycling indicator */
-        .cycling-indicator {
+        /* Cycling dots */
+        .cycling-dots {
             position: absolute;
-            bottom: 30px;
+            bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
-            z-index: 4;
+            gap: 0.5rem;
+            z-index: 3;
         }
 
         .cycling-dot {
@@ -221,41 +195,46 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: background 0.3s;
         }
 
         .cycling-dot.active {
             background: #ff4444;
-            transform: scale(1.2);
         }
 
-        /* Featured Works */
-        .featured-works {
+        /* Portfolio Section */
+        .portfolio {
             padding: 5rem 0;
             background: #111;
             color: #fff;
         }
 
-        .section-title {
+        .portfolio h2 {
             text-align: center;
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
-            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff4444;
         }
 
-        /* Genre sections */
-        .genre-section {
-            margin-bottom: 4rem;
-            max-width: 1200px;
+        .portfolio-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: #ccc;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
+        .genre-section {
+            margin-bottom: 4rem;
+        }
+
         .genre-title {
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: #ff4444;
-            margin-bottom: 2rem;
             text-align: center;
+            margin-bottom: 2rem;
             border-bottom: 2px solid #ff4444;
             padding-bottom: 0.5rem;
         }
@@ -264,64 +243,64 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
-            padding: 0;
-            width: 100%;
+            margin-bottom: 2rem;
         }
 
-        .work-card {
+        .work-item {
             background: #222;
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.3s;
-            width: 100%;
-            cursor: pointer;
             position: relative;
-            z-index: 1;
         }
 
-        .work-card:hover {
+        .work-item:hover {
             transform: translateY(-5px);
-            z-index: 2;
         }
 
         .work-image {
             width: 100%;
-            height: 250px;
-            background-color: #333;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            overflow: hidden;
+            height: 200px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 3rem;
             position: relative;
         }
 
-        .work-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
-            opacity: 0.6;
-            z-index: 1;
-        }
+        /* Project-specific gradients */
+        .work-item:nth-child(1) .work-image { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .work-item:nth-child(2) .work-image { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .work-item:nth-child(3) .work-image { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .work-item:nth-child(4) .work-image { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .work-item:nth-child(5) .work-image { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .work-item:nth-child(6) .work-image { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
 
         .work-content {
             padding: 1.5rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
         .work-title {
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: #fff;
-            font-weight: bold;
-            position: relative;
-            z-index: 2;
+        }
+
+        .view-details-btn {
+            background: #ff4444;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .view-details-btn:hover {
+            background: #cc3333;
         }
 
         /* HIDDEN BY DEFAULT - Project details */
@@ -337,7 +316,7 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -345,38 +324,17 @@
             color: #ff4444;
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
-            font-weight: bold;
         }
 
         .work-year {
             color: #ccc;
-            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
         .work-description {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
             color: #ddd;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        /* View Details Button */
-        .view-details-btn {
-            background: #ff4444;
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            margin-top: 1rem;
-        }
-
-        .view-details-btn:hover {
-            background: #cc3333;
-            transform: translateY(-1px);
         }
 
         .work-link {
@@ -580,9 +538,9 @@
 
         .process-list li::before {
             content: "→";
-            color: #ff4444;
             position: absolute;
             left: 0;
+            color: #ff4444;
         }
 
         /* Contact Section */
@@ -599,9 +557,9 @@
             color: #ff4444;
         }
 
-        .contact-content {
+        .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
             max-width: 1000px;
             margin: 0 auto;
@@ -609,17 +567,15 @@
 
         .contact-info h3 {
             color: #ff4444;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .contact-item {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .contact-item strong {
             color: #ff4444;
-            display: block;
-            margin-bottom: 0.5rem;
         }
 
         .contact-form {
@@ -646,12 +602,12 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 0.75rem;
             border: none;
             border-radius: 5px;
             background: #444;
             color: #fff;
-            font-family: inherit;
+            font-size: 1rem;
         }
 
         .form-group textarea {
@@ -662,8 +618,8 @@
         .submit-btn {
             background: #ff4444;
             color: #fff;
+            padding: 1rem 2rem;
             border: none;
-            padding: 12px 30px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 1rem;
@@ -682,22 +638,18 @@
             padding: 2rem 0;
         }
 
-        /* Responsive Design */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
             .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .hero p {
-                font-size: 1rem;
+            .nav-links {
+                display: none;
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
             }
 
             .cta-buttons {
@@ -705,35 +657,9 @@
                 align-items: center;
             }
 
-            .works-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
             .stats {
-                gap: 2rem;
-            }
-
-            .process-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .container {
-                padding: 0 15px;
-            }
-
-            .modal-content {
-                margin: 5% auto;
-                padding: 1.5rem;
+                flex-direction: column;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -749,23 +675,27 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="menu-toggle">☰</button>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <!-- Background cycling elements -->
         <div class="hero-background active"></div>
         <div class="hero-background"></div>
         <div class="hero-background"></div>
         <div class="hero-background"></div>
         <div class="hero-background"></div>
         <div class="hero-background"></div>
-        
-        <div class="hero-overlay"></div>
-        
+        <div class="hero-background"></div>
+        <div class="hero-background"></div>
+        <div class="hero-background"></div>
+        <div class="hero-background"></div>
+        <div class="hero-background"></div>
+        <div class="hero-background"></div>
+
         <div class="hero-content">
-            <h1>NCCA <span>ENTERTAINMENT</span></h1>
+            <h1>NCCA <span class="highlight">ENTERTAINMENT</span></h1>
             <p>Creating compelling stories through film that engage audiences, spark imagination, and resonate long after the credits roll.</p>
             <div class="cta-buttons">
                 <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
@@ -773,8 +703,15 @@
             </div>
         </div>
 
-        <div class="cycling-indicator">
+        <!-- Cycling dots -->
+        <div class="cycling-dots">
             <div class="cycling-dot active"></div>
+            <div class="cycling-dot"></div>
+            <div class="cycling-dot"></div>
+            <div class="cycling-dot"></div>
+            <div class="cycling-dot"></div>
+            <div class="cycling-dot"></div>
+            <div class="cycling-dot"></div>
             <div class="cycling-dot"></div>
             <div class="cycling-dot"></div>
             <div class="cycling-dot"></div>
@@ -783,18 +720,18 @@
         </div>
     </section>
 
-    <!-- Featured Works -->
-    <section id="portfolio" class="featured-works">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">FEATURED</h2>
-            <p style="text-align: center; margin-bottom: 3rem; color: #ccc;">An extensive collection of 52 cinematic projects spanning multiple genres action, comedy, drama, thriller, horror, romance, Film Noir, streaming docuseries and Feature films.</p>
+            <h2>FEATURED</h2>
+            <p class="portfolio-intro">An extensive collection of 52 cinematic projects spanning multiple genres action, comedy, drama, thriller, horror, romance, Film Noir, streaming docuseries and Feature films.</p>
 
             <!-- Southern Gothic / Drama -->
             <div class="genre-section">
                 <h3 class="genre-title">Southern Gothic / Drama</h3>
                 <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('the_last_dynasty_poster.png');"></div>
+                    <div class="work-item">
+                        <div class="work-image"></div>
                         <div class="work-content">
                             <h3 class="work-title">The Last Dynasty</h3>
                             <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
@@ -807,8 +744,8 @@
                         </div>
                     </div>
 
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/southern-belles-secret.png');"></div>
+                    <div class="work-item">
+                        <div class="work-image"></div>
                         <div class="work-content">
                             <h3 class="work-title">The Southern Belle's Secret</h3>
                             <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
@@ -827,8 +764,8 @@
             <div class="genre-section">
                 <h3 class="genre-title">Drama</h3>
                 <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/this-is-me-now.png');"></div>
+                    <div class="work-item">
+                        <div class="work-image"></div>
                         <div class="work-content">
                             <h3 class="work-title">This is Me Now</h3>
                             <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
@@ -841,8 +778,8 @@
                         </div>
                     </div>
 
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('the_feed_poster.png');"></div>
+                    <div class="work-item">
+                        <div class="work-image"></div>
                         <div class="work-content">
                             <h3 class="work-title">The Feed</h3>
                             <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
@@ -855,8 +792,8 @@
                         </div>
                     </div>
 
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/lifeart.png');"></div>
+                    <div class="work-item">
+                        <div class="work-image"></div>
                         <div class="work-content">
                             <h3 class="work-title">Lifeart</h3>
                             <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
@@ -865,696 +802,6 @@
                                 <div class="work-year">2026</div>
                                 <p class="work-description">In the heart of Shanghai's elite art world, a gifted European painter hides behind the pseudonym of a mysterious Chinese artist named "Tao"—but when family visits, secrets unravel, and a powerful commission threatens to expose everything, he must decide between artistic survival and personal authenticity.</p>
                                 <button class="work-link" onclick="openModal('lifeart')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/beneath-the-magnolia-tree.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Beneath the Magnolia Tree</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Drama</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A poignant Southern drama that explores family secrets and generational trauma beneath the beauty of the American South. Features stunning cinematography and powerful performances.</p>
-                                <button class="work-link" onclick="openModal('beneath-the-magnolia-tree')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/mirror-image.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Mirror Image</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Drama</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When Atlanta's most successful fashion influencer is digitally framed by her own sister using deepfakes, forged evidence, and psychological manipulation, she must unravel a web of betrayal before her identity—and sanity—is completely erased.</p>
-                                <button class="work-link" onclick="openModal('mirror-image')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/twice-betrayed.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Twice Betrayed</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Drama</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a respected Atlanta therapist's abusive ex-husband is found dead, she becomes the prime suspect and her seemingly perfect new marriage begins to unravel as she discovers her new husband was hired to spy on her. But nothing is as it seems in this twisted tale of love, control, and betrayal.</p>
-                                <button class="work-link" onclick="openModal('twice-betrayed')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/past-due.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Past Due</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Drama</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a rising real estate attorney inherits her aunt's dilapidated West End home, she discovers a long-lost family secret buried beneath the floorboards—one connected to a decades-old missing persons case and a life she never knew was hers.</p>
-                                <button class="work-link" onclick="openModal('past-due')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/refractions.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Refractions</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Drama</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A compelling drama that examines how perspective shapes reality. Through interconnected storylines, the film explores how the same events can be viewed differently by different people.</p>
-                                <button class="work-link" onclick="openModal('refractions')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/the-archive.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Archive</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Drama</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A thought-provoking drama about memory, history, and the stories we choose to preserve. Explores themes of legacy and the importance of documenting our experiences.</p>
-                                <button class="work-link" onclick="openModal('the-archive')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Thriller -->
-            <div class="genre-section">
-                <h3 class="genre-title">Thriller</h3>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('the_double_cross_poster.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Double Cross</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Crime Thriller / Emotional Drama</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">An ex-con living under FBI protection in Atlanta is forced back into the criminal underworld by a high-stakes heist threatening the city's financial heart. Her world shatters when she discovers the idealistic rookie agent on her case is her long-lost daughter, and the architect of the chaos is the vengeful former lover who adopted their child to orchestrate her ultimate ruin.</p>
-                                <button class="work-link" onclick="openModal('the-double-cross')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/shadows-on-the-force.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Shadows on the Force</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Thriller</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A principled Black female detective begins to suspect her white boyfriend—an Atlanta beat cop—of being involved in the city's deadly drug trade. But when she digs deeper, she uncovers a deeper conspiracy… and learns he may be the only person trying to save her.</p>
-                                <button class="work-link" onclick="openModal('shadows-on-the-force')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/cipher-of-shadows.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Cipher of Shadows</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Thriller</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A guilt-ridden private investigator, specializing in missing persons, is hired by a mysterious femme fatale to find her vanished sister—only to uncover an AI-driven human trafficking network that exploits vulnerability through social media. As he confronts the system's architect, he must choose between revenge and redemption, trust and betrayal, before the algorithm claims its next victim: him.</p>
-                                <button class="work-link" onclick="openModal('cipher-of-shadows')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/mother-interrupted.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Mother, Interrupted</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Thriller</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">Keisha has built the perfect life after growing up in foster care - thriving career, beautiful Buckhead home, and her pride and joy: 16-year-old adopted daughter Maya. When Maya begins acting out and sneaking around, Keisha assumes it's typical teenage rebellion. The Twist: Maya has been meeting with a woman claiming to be Keisha's biological mother - the same mother who abandoned Keisha at age 5.</p>
-                                <button class="work-link" onclick="openModal('mother-interrupted')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/blood-money.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Blood Money</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Thriller</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">Amara is investigating a complex money laundering scheme involving several Atlanta-based nonprofits when she discovers her own mother's community organization is on the list. Convinced there's been a mistake, she digs deeper to clear her mother's name. The Twist: Her mother isn't innocent - she's been the mastermind behind a massive fraud ring that steals from legitimate charities serving Atlanta's underserved communities.</p>
-                                <button class="work-link" onclick="openModal('blood-money')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/the-proxy.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Proxy</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Thriller</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a struggling Atlanta artist is mistaken for an elite gallerist during a violent art heist, she's forced to navigate a world of stolen identities, black market legacies, and buried truths—only to discover the woman who stole her work may have also orchestrated her disappearance.</p>
-                                <button class="work-link" onclick="openModal('the-proxy')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/the-alibi.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Alibi</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Thriller</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a wealthy and abusive businessman is found murdered, four women from his past—the ex-wife, the mistress, the business partner, and the estranged daughter—find themselves the prime suspects. To survive, they form an uneasy alliance and construct a shared alibi. But as the police circle closer and their lies begin to unravel, they start to suspect the killer is one of them.</p>
-                                <button class="work-link" onclick="openModal('the-alibi')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/somebody-you-know.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">It's Somebody You Know</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Thriller</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A psychological thriller that keeps audiences on the edge of their seats. Explores themes of trust, betrayal, and the darkness that can lurk behind familiar faces.</p>
-                                <button class="work-link" onclick="openModal('somebody-you-know')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/broken-promise.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Broken Promise</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Thriller</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a successful bridal boutique owner is conned by her charming fiancé, she joins forces with his ex-wife to track him down—only to uncover a trail of betrayal, a network of victims, and a deadly final con that could destroy them both.</p>
-                                <button class="work-link" onclick="openModal('broken-promise')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/atl-soul-poster.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">ATL Soul: The Velvet LaRou Story</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Thriller</div>
-                                <div class="work-year">2027</div>
-                                <p class="work-description">1979, Atlanta. A drug-addicted soul singer, betrayed by her label and her city, stages a rooftop revolution, broadcasting her stolen music live from the South's tallest hotel, turning a whites-only pool into a baptismal font for the New South.</p>
-                                <button class="work-link" onclick="openModal('atlanta-soul-the-velvet-larue-story')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/influencers-last-post.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Influencer's Last Post</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Thriller</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When disgraced lifestyle influencer Taylor Monroe is framed for the shocking disappearance of her online rival Nina Carter, she teams up with a skeptical journalist to uncover a twisted scheme of digital manipulation, blackmail, and deep fake deception—but exposing the truth could cost her life, her love, and what's left of her identity.</p>
-                                <button class="work-link" onclick="openModal('influencers-last-post')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Romance -->
-            <div class="genre-section">
-                <h3 class="genre-title">Romance</h3>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/southern-discomfort.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Southern (Dis)comfort</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Romance</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">After a scathing review tanks a struggling soul food restaurant, a feared Atlanta food critic is forced to team up with her ex-fiancé chef to rebuild its reputation—only to uncover buried family secrets, reignite old flames, and discover that the messiest meals often serve the deepest truths.</p>
-                                <button class="work-link" onclick="openModal('southern-discomfort')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/love-after-likes.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Love after Likes</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Romance</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A modern romantic comedy that examines love in the digital age. Explores how social media affects relationships and authentic connection.</p>
-                                <button class="work-link" onclick="openModal('love-after-likes')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/second-first-date.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Second First Date</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Romance</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a dating app matches two former college sweethearts — who once vowed never to speak again — they reluctantly agree to three dates as a dare. But as sparks reignite, they'll have to confront whether their love story ended too soon... or if some things are better left in the past.</p>
-                                <button class="work-link" onclick="openModal('second-first-date')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/flip-side-of-love.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Flip Side of Love</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Romance</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a driven TV producer returns home to film a historic home renovation, she's shocked to discover the project's contractor is her ex — the man who broke her heart. As old sparks resurface and buried Black history comes to light, they must navigate love, legacy, and the power of telling the truth… on and off camera.</p>
-                                <button class="work-link" onclick="openModal('flip-side-of-love')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/ex-files.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Ex-Files</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Romance</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A rising-star divorce attorney is blindsided when her latest high-profile client turns out to be her ex-husband—the one she thought she annulled years ago. Now, as old sparks reignite and her current relationship crumbles, she must choose between rewriting the past or fighting for the future.</p>
-                                <button class="work-link" onclick="openModal('the-ex-files')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/rhythm-and-blooms.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Rhythm & Blooms</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Romance</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a career-obsessed landscape architect loses his corporate job, he's reluctantly hired by a spontaneous jazz club owner to restore a decaying rooftop garden above her father's legendary venue. As the two clash and connect through plants and music, they revive not only the club—but themselves.</p>
-                                <button class="work-link" onclick="openModal('rhythm-and-blooms')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Comedy -->
-            <div class="genre-section">
-                <h3 class="genre-title">Comedy</h3>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('miss_juneteenth_blues_poster.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Miss Juneteenth Blues</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Comedy-Drama / Southern Family Drama</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When her rebellious teenage daughter earns a spot in the prestigious Miss Juneteenth pageant, a down-on-her-luck former queen, desperate to save her family from financial ruin, fakes her age to re-enter the competition—only to uncover a rigged system built on lies, legacy, and long-buried secrets.</p>
-                                <button class="work-link" onclick="openModal('miss-juneteenth-blues')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/sneakerheads.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Sneakerheads Anonymous</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Comedy</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a sneaker-obsessed teen drains his college fund to buy rare Yeezys, he fakes a sneaker addiction support group to cover his tracks—only for it to become a real movement. As hype builds and lies spiral, he must choose between the hustle and helping others for real.</p>
-                                <button class="work-link" onclick="openModal('sneakerheads')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/trap-house-sitting.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Trap House Sitting</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Comedy</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a tightly-wound suburban teen agrees to house-sit her cousin's Atlanta music studio for the weekend, her clout-chasing twin and livestream-addicted friend turn it into the hottest underground party in the city—attracting influencers, rising rappers, and a dangerous music exec, all before her college interview Monday morning.</p>
-                                <button class="work-link" onclick="openModal('trap-house-sitting')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Christmas Stories -->
-            <div class="genre-section">
-                <h3 class="genre-title">Christmas Stories</h3>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/spelman-christmas.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">A Spelman Christmas</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Christmas</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A no-nonsense matriarch cancels Christmas after her husband's death—until her three adult daughters return home with surprise guests, big news, and enough drama to turn grief into gumbo, healing, and a holiday no one expected.</p>
-                                <button class="work-link" onclick="openModal('spelman-christmas')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/grannys-house.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Granny's House: Home for the Holidays</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Christmas</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A heartwarming family comedy that brings together multiple generations under one roof during the holidays. This project showcases exceptional character development and comedic timing while exploring themes of family, tradition, and love.</p>
-                                <button class="work-link" onclick="openModal('grannys-house')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/twelve-dates-christmas-tree-lot.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Twelve Dates of Christmas Tree Lot</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Christmas</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">Marcus Reed is freshly divorced and drowning in pine needles. His daddy's old Christmas tree lot in Southwest Atlanta is barely hanging on, and now Marcus has custody of his teenage daughter Jada for the holidays. She'd rather be on TikTok than helping sell trees, but hey—he's trying. Twelve days till Christmas. Twelve chances to get it right. And every day brings something new: a tree thief, a viral moment, some messy customers, and this fine coffee shop owner across the street named Ava. She's not impressed by Marcus, but the chemistry? Baby, it's thick like eggnog. At the heart of it all is Marcus learning how to show up—for his daughter, his community, and maybe, just maybe, for himself again.</p>
-                                <button class="work-link" onclick="openModal('twelve-dates-christmas-tree-lot')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Network Series -->
-            <div class="genre-section">
-                <h3 class="genre-title">Network Series</h3>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/just-jack.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Just Jack</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Comedy</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A heartwarming family comedy created by Kelly R. Tenney and Jodi Williams. This charming series explores family dynamics, friendship, and growing up with humor and heart, featuring an ensemble cast that brings authentic relationships to life.</p>
-                                <button class="work-link" onclick="openModal('just-jack')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/echo-chamber.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Echo Chamber</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Series</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">In a near-future society obsessed with personalization, influence, and optimization, Echo Chamber explores the twisted consequences of living in a world where your reality is shaped by algorithms, and your identity is no longer yours alone.</p>
-                                <button class="work-link" onclick="openModal('echo-chamber')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/slice-of-paradise.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Slice of Paradise</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Series</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">Slice of Paradise follows Jake Carter, a charming but directionless thirtysomething who reluctantly takes a job as the activity director at Sunny Shores Retirement Community. Struggling with his own arrested development, Jake suddenly finds himself surrounded by seniors who have way more zest for life than he does. Each episode explores comedic scenarios arising from generational clashes, unconventional friendships, romantic entanglements and the pursuit of happiness, proving that fun doesn't retire at sixty-five.</p>
-                                <button class="work-link" onclick="openModal('slice-of-paradise')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Limited Series -->
-            <div class="genre-section">
-                <h3 class="genre-title">Limited Series</h3>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('sinners_and_saints_poster.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Sinners & Saints</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Limited Series / MOW</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A preacher's daughter marries a reformed ex-con and tries to build a new life—but when his past catches up to them, she must decide if love is worth saving a man the world has written off.</p>
-                                <button class="work-link" onclick="openModal('sinners-and-saints')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('soul_on_fire_poster.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Soul On Fire</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Limited Series</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">Set in 1970s Atlanta, this isn't just another rise-and-fall music story. "Soul on Fire" is about cultural theft on an industrial scale—how the American music business was built on appropriating Black artistry while systematically destroying Black artists. It's about a woman who discovers that her voice, her songs, even her pain have become commodities to be bought, sold, and locked away forever.</p>
-                                <button class="work-link" onclick="openModal('soul-on-fire')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Action -->
-            <div class="genre-section">
-                <h3 class="genre-title">Action</h3>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/the-architect.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Architect</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Action</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a serial killer targeting corrupt elites is revealed to be her supposedly dead partner, a disgraced detective must choose between upholding the law or joining his brutal crusade to replace the city's broken system with his own brand of justice.</p>
-                                <button class="work-link" onclick="openModal('the-architect')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/queen-of-thorns.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Queen of Thorns</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Action</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">Framed for a global catastrophe by her closest confidant, a ruthless arms dealer must dismantle the empire she unknowingly built on lies and a devastating superweapon to clear her name and confront the monstrous truth of her past.</p>
-                                <button class="work-link" onclick="openModal('queen-of-thorns')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/the-ghostmaker.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Ghostmaker</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Action</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A rogue CIA operative who once specialized in erasing people from history discovers her own identity was a fabrication—volunteered by a man who loved the woman she now unknowingly impersonates. Hunted by the agency she once served, she must destroy the very system she helped build or become its final, perfect ghost.</p>
-                                <button class="work-link" onclick="openModal('the-ghostmaker')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/blood-covenant.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Blood Covenant</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Action</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a retired assassin haunted by his past teams up with a relentless journalist investigating her sister's death, they uncover a global conspiracy led by a secretive brotherhood manipulating world governments. But as personal ties to the cabal emerge, they must decide: expose the truth and lose everything—or vanish into legend as the villains history demands.</p>
-                                <button class="work-link" onclick="openModal('blood-covenant')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/obsidian-codex.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Obsidian Codex</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Action</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A disgraced archaeological explorer and a brilliant, but guarded, cryptographer must race against a shadowy organization to uncover an ancient artifact that could either save humanity or unleash a catastrophic power, forcing them to confront their pasts and a betrayal that shattered their shared history.</p>
-                                <button class="work-link" onclick="openModal('obsidian-codex')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/echoes-of-the-syndicate.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Echoes of the Syndicate</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Action</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a former elite hacker, presumed dead, resurfaces to warn her ex-partner, a disillusioned corporate security expert, about a vast, interconnected conspiracy within the very organization he now protects, they must navigate a web of deception and betrayal to expose the truth and find redemption in a world that believes them both to be traitors.</p>
-                                <button class="work-link" onclick="openModal('echoes-of-the-syndicate')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Horror -->
-            <div class="genre-section">
-                <h3 class="genre-title">Feature - Horror</h3>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/second-skin.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Second Skin</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Horror</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A chilling horror film that explores transformation and identity. Features practical effects and atmospheric cinematography that creates genuine tension.</p>
-                                <button class="work-link" onclick="openModal('second-skin')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/bone-collectors-daughter.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">The Bone Collector's Daughter</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Horror</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">When a skeptical woman inherits her estranged mother's Appalachian home, she discovers a legacy of bone conjuring and memory-binding magic. Haunted by vengeful spirits known as the Hollow-Eyed, she must embrace her bloodline's dark rituals—or be consumed by the very past she tried to escape.</p>
-                                <button class="work-link" onclick="openModal('bone-collectors-daughter')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Film Noir -->
-            <div class="genre-section">
-                <h3 class="genre-title">Film Noir</h3>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/divine-deception.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Divine Deception</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Film Noir</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A Southern Gospel noir that delves into the dark underbelly of faith and corruption. This atmospheric thriller combines classic noir elements with contemporary storytelling to create a compelling narrative about deception and redemption.</p>
-                                <button class="work-link" onclick="openModal('divine-deception')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Docuseries -->
-            <div class="genre-section">
-                <h3 class="genre-title">Docuseries</h3>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/exposed.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Exposed</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Docuseries</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">While most true crime series focus on violent acts, Exposed shines a light on the often-overlooked emotional and financial devastation caused by white-collar, digital, and institutional exploitation. Each episode follows one survivor's journey—from their initial trauma through an investigation and, ultimately, a personal confrontation or courtroom reckoning. It's about justice—but also about reclaiming power.</p>
-                                <button class="work-link" onclick="openModal('exposed')">View Full Details & Download</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="work-card">
-                        <div class="work-image" style="background-image: url('images/digital-shadows.png');"></div>
-                        <div class="work-content">
-                            <h3 class="work-title">Digital Shadows</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
-                            <div class="work-details">
-                                <div class="work-genre">Docuseries</div>
-                                <div class="work-year">2026</div>
-                                <p class="work-description">A chilling dive into the dark side of online fame and digital footprints—where what begins as viral glory can end in tragedy.</p>
-                                <button class="work-link" onclick="openModal('digital-shadows')">View Full Details & Download</button>
                             </div>
                         </div>
                     </div>
@@ -1637,21 +884,17 @@
             <h2>LET'S BRING STORIES TO LIFE</h2>
             <p style="text-align: center; margin-bottom: 3rem; color: #ccc;">Ready to create something unforgettable? Reach out, and let's discuss your next project.</p>
             
-            <div class="contact-content">
+            <div class="contact-grid">
                 <div class="contact-info">
                     <h3>Get In Touch</h3>
                     <div class="contact-item">
-                        <strong>Email</strong>
-                        nccaentertainment@gmail.com
+                        <strong>Email</strong> nccaentertainment@gmail.com
                     </div>
                     <div class="contact-item">
-                        <strong>Phone</strong>
-                        910.262.9307
+                        <strong>Phone</strong> 910.262.9307
                     </div>
                     <div class="contact-item">
-                        <strong>Location</strong>
-                        Atlanta, GA<br>
-                        Los Angeles, CA
+                        <strong>Location</strong> Atlanta, GA<br>Los Angeles, CA
                     </div>
                 </div>
                 
@@ -1688,12 +931,12 @@
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <div id="modalGenre" class="modal-genre"></div>
-            <div id="modalYear" class="modal-year"></div>
-            <p id="modalDescription" class="modal-description"></p>
-            <p id="modalAvailable" class="modal-available"></p>
-            <a id="modalDownload" class="download-link" href="#" target="_blank">Download Pitch Deck</a>
+            <h2 id="modalTitle">Project Title</h2>
+            <div id="modalGenre" class="modal-genre">Genre</div>
+            <div id="modalYear" class="modal-year">Year</div>
+            <p id="modalDescription" class="modal-description">Description</p>
+            <p id="modalAvailable" class="modal-available">Available</p>
+            <a id="modalDownload" href="#" class="download-link" target="_blank">Download Pitch Deck</a>
         </div>
     </div>
 
@@ -1717,7 +960,7 @@
             showBackground(currentBackground);
         }
 
-        // Auto-cycle backgrounds every 5 seconds
+        // Start cycling
         setInterval(nextBackground, 5000);
 
         // Dot click functionality
@@ -1753,7 +996,7 @@
                 genre: 'Crime Thriller / Musical Mystery',
                 year: '2026',
                 description: 'When tremor-ridden music heiress Jasmine Carter returns to her father\'s empire for a life-saving payout, she\'s trapped in his mansion during a glittering lockdown party where the king is murdered, the crown is stolen, and every guest—from her cartel-blackmailed brother to the detective hunting her family—is both suspect and accomplice.',
-                available: 'Treatment/Outline/Script available',
+                available: 'Treatment/Outline available',
                 pitchDeck: 'pitch-decks/the-last-dynasty-pitch-deck.pdf'
             },
             'southern-belles-secret': {
@@ -1761,54 +1004,32 @@
                 genre: 'Southern Gothic / Drama',
                 year: '2026',
                 description: 'When an investigative journalist uncovers evidence linking her family to a decades-old lynching, a polished Atlanta socialite must choose between protecting her dynasty\'s legacy or exposing a truth that could destroy her world—and redeem her soul.',
-                available: 'Treatment/Outline/Script available',
+                available: 'Treatment/Outline available',
                 pitchDeck: 'pitch-decks/southern-belles-secret-pitch-deck.pdf'
+            },
+            'this-is-me-now': {
+                title: 'This is Me Now',
+                genre: 'Drama',
+                year: '2026',
+                description: 'When a quiet tech-savvy high schooler becomes the subject of a viral scandal, she must fight to reclaim her voice—not with violence, but with the truth, spoken out loud in front of the people who tried to silence her.',
+                available: 'Treatment/Outline available',
+                pitchDeck: 'pitch-decks/this-is-me-now-pitch-deck.pdf'
             },
             'the-feed': {
                 title: 'The Feed',
                 genre: 'Drama',
                 year: '2026',
                 description: 'A brilliant Black tech entrepreneur moves into an exclusive, seemingly idyllic smart-home community, only to discover its advanced security system is a sophisticated tool for racial profiling, forcing him to fight back against the insidious surveillance built into the very foundation of his new life.',
-                available: 'Treatment/Outline/Script available',
+                available: 'Treatment/Outline available',
                 pitchDeck: 'pitch-decks/the-feed-pitch-deck.pdf'
             },
-            'the-double-cross': {
-                title: 'The Double Cross',
-                genre: 'Crime Thriller / Emotional Drama',
+            'lifeart': {
+                title: 'Lifeart',
+                genre: 'Drama',
                 year: '2026',
-                description: 'An ex-con living under FBI protection in Atlanta is forced back into the criminal underworld by a high-stakes heist threatening the city\'s financial heart. Her world shatters when she discovers the idealistic rookie agent on her case is her long-lost daughter, and the architect of the chaos is the vengeful former lover who adopted their child to orchestrate her ultimate ruin.',
+                description: 'In the heart of Shanghai\'s elite art world, a gifted European painter hides behind the pseudonym of a mysterious Chinese artist named "Tao"—but when family visits, secrets unravel, and a powerful commission threatens to expose everything, he must decide between artistic survival and personal authenticity.',
                 available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/the-double-cross-pitch-deck.pdf'
-            },
-            'twelve-dates-christmas-tree-lot': {
-                title: 'The Twelve Dates of Christmas Tree Lot',
-                genre: 'Christmas',
-                year: '2026',
-                description: 'Marcus Reed is freshly divorced and drowning in pine needles. His daddy\'s old Christmas tree lot in Southwest Atlanta is barely hanging on, and now Marcus has custody of his teenage daughter Jada for the holidays. She\'d rather be on TikTok than helping sell trees, but hey—he\'s trying. Twelve days till Christmas. Twelve chances to get it right.',
-                available: 'Treatment/Outline/Script Available',
-                pitchDeck: 'pitch-decks/twelve-dates-christmas-tree-lot-pitch-deck.pdf'
-            },
-            'sneakerheads': {
-                title: 'Sneakerheads Anonymous',
-                genre: 'Comedy',
-                year: '2026',
-                description: 'When a sneaker-obsessed teen drains his college fund to buy rare Yeezys, he fakes a sneaker addiction support group to cover his tracks—only for it to become a real movement. As hype builds and lies spiral, he must choose between the hustle and helping others for real.',
-                available: 'Treatment/Outline/Script Available',
-                pitchDeck: 'pitch-decks/sneakerheads-anonymous-pitch-deck.pdf'
-            },
-            'second-skin': {
-                title: 'Second Skin',
-                genre: 'Horror',
-                year: '2026',
-                description: 'A chilling horror film that explores transformation and identity. Features practical effects and atmospheric cinematography that creates genuine tension.',
-                available: 'Treatment/Outline available'
-            },
-            'bone-collectors-daughter': {
-                title: 'The Bone Collector\'s Daughter',
-                genre: 'Horror',
-                year: '2026',
-                description: 'When a skeptical woman inherits her estranged mother\'s Appalachian home, she discovers a legacy of bone conjuring and memory-binding magic. Haunted by vengeful spirits known as the Hollow-Eyed, she must embrace her bloodline\'s dark rituals—or be consumed by the very past she tried to escape.',
-                available: 'Treatment/Outline available'
+                pitchDeck: 'pitch-decks/lifeart-pitch-deck.pdf'
             }
         };
 
@@ -1829,7 +1050,6 @@
                     downloadLink.style.display = 'none';
                 }
                 
-                const modal = document.getElementById('projectModal');
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
@@ -1842,9 +1062,6 @@
         }
 
         // Initialize modal elements
-        const modal = document.getElementById('projectModal');
-        const closeBtn = document.querySelector('.close');
-
         if (closeBtn) {
             closeBtn.addEventListener('click', closeModal);
         }
@@ -1867,14 +1084,6 @@
                     });
                 }
             });
-        });
-
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         });
     </script>
 </body>
