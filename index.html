@@ -1813,7 +1813,7 @@
         };
 
         function openModal(projectId) {
-            const project = projectData[projectId];
+            const project = projects[projectId];
             if (project) {
                 document.getElementById('modalTitle').textContent = project.title;
                 document.getElementById('modalGenre').textContent = project.genre;
