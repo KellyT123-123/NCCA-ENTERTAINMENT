@@ -1665,26 +1665,6 @@
             });
         });
 
-        // FIXED: Toggle project details functionality
-        function toggleDetails(button) {
-            const workDetails = button.nextElementSibling;
-            
-            if (!workDetails || !workDetails.classList.contains('work-details')) {
-                console.error('Work details element not found');
-                return;
-            }
-            
-            const isShowing = workDetails.classList.contains('show');
-            
-            if (isShowing) {
-                workDetails.classList.remove('show');
-                button.textContent = 'View Project Details';
-            } else {
-                workDetails.classList.add('show');
-                button.textContent = 'Hide Project Details';
-            }
-        }
-
         // FIXED: Complete project data with all referenced projects
         const projects = {
             'the-last-dynasty': {
@@ -2079,7 +2059,7 @@
                 year: '2026',
                 description: 'A chilling dive into the dark side of online fame and digital footprints—where what begins as viral glory can end in tragedy.',
                 available: 'Treatment/Episodic Outline available'
-            }
+               }
         };
 
         // FIXED: Modal functionality - Remove querySelector usage
