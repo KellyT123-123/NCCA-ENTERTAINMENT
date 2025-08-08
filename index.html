@@ -1594,7 +1594,7 @@
             <a id="modalDownload" class="download-link" href="#" target="_blank">Download Pitch Deck</a>
         </div>
     </div>
-    <script>
+  <script>
         // Background cycling functionality
         let currentBackground = 0;
         const backgrounds = document.querySelectorAll('.hero-background');
@@ -1645,8 +1645,8 @@
             }
         }
 
-        // Modal functionality
-    const projects = {
+        // FIXED: Complete project data with all referenced projects
+        const projects = {
             'the-last-dynasty': {
                 title: 'The Last Dynasty',
                 genre: 'Crime Thriller / Musical Mystery',
@@ -2056,18 +2056,37 @@
             }
             
             // Populate modal content
-            document.getElementById('modalTitle').textContent = project.title;
-            document.getElementById('modalGenre').textContent = project.genre;
-            document.getElementById('modalYear').textContent = project.year;
-            document.getElementById('modalDescription').textContent = project.description;
-            document.getElementById('modalAvailable').textContent = project.available;
+            const modalTitle = document.getElementById('modalTitle');
+            const modalGenre = document.getElementById('modalGenre');
+            const modalYear = document.getElementById('modalYear');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalAvailable = document.getElementById('modalAvailable');
+            const downloadLink = document.getElementById('modalDownload');
             
-          const downloadLink = document.getElementById('modalDownload');
-            if (project.pitchDeck) {
-                downloadLink.href = project.pitchDeck;
-                downloadLink.style.display = 'inline-block';
-            } else {
-                downloadLink.style.display = 'none';
+            if (modalTitle) modalTitle.textContent = project.title;
+            if (modalGenre) modalGenre.textContent = project.genre;
+            if (modalYear) modalYear.textContent = project.year;
+            if (modalDescription) modalDescription.textContent = project.description;
+            if (modalAvailable) modalAvailable.textContent = project.available;
+            
+            if (downloadLink) {
+                if (project.pitchDeck) {
+                    downloadLink.href = project.pitchDeck;
+                    downloadLink.style.display = 'inline-block';
+                    downloadLink.onclick = function(e) {
+                        e.preventDefault();
+                        // Create a temporary link to download the file
+                        const link = document.createElement('a');
+                        link.href = project.pitchDeck;
+                        link.download = project.pitchDeck.split('/').pop(); // Get filename
+                        link.target = '_blank';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    };
+                } else {
+                    downloadLink.style.display = 'none';
+                }
             }
             
             modal.style.display = 'block';
