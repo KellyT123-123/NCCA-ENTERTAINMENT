@@ -2062,15 +2062,14 @@
             document.getElementById('modalDescription').textContent = project.description;
             document.getElementById('modalAvailable').textContent = project.available;
             
-           const downloadContainer = document.getElementById('modalDownloadContainer');
-            downloadContainer.innerHTML = '';
+          const downloadLink = document.getElementById('modalDownload');
             if (project.pitchDeck) {
-                downloadContainer.innerHTML = `
-                    <a href="${project.pitchDeck}" target="_blank" class="download-link">View Pitch Deck</a>
-                    <a href="${project.pitchDeck}" download class="download-link">Download PDF</a>
-                `;
+                downloadLink.href = project.pitchDeck;
+                downloadLink.style.display = 'inline-block';
+            } else {
+                downloadLink.style.display = 'none';
             }
-
+            
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
