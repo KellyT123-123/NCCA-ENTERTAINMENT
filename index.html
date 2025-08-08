@@ -1635,469 +1635,468 @@
         </div>
     </div>
   <script>
-        // Background cycling functionality
-        let currentBackground = 0;
-        const backgrounds = document.querySelectorAll('.hero-background');
-        const dots = document.querySelectorAll('.cycling-dot');
+    // Background cycling functionality
+    let currentBackground = 0;
+    const backgrounds = document.querySelectorAll('.hero-background');
+    const dots = document.querySelectorAll('.cycling-dot');
 
-        function showBackground(index) {
-            backgrounds.forEach((bg, i) => {
-                bg.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-
-        function nextBackground() {
-            currentBackground = (currentBackground + 1) % backgrounds.length;
-            showBackground(currentBackground);
-        }
-
-        // Auto-cycle backgrounds every 5 seconds
-        setInterval(nextBackground, 5000);
-
-        // Dot click functionality
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentBackground = index;
-                showBackground(currentBackground);
-            });
+    function showBackground(index) {
+        backgrounds.forEach((bg, i) => {
+            bg.classList.toggle('active', i === index);
         });
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
 
-        // FIXED: Toggle project details functionality
-        function toggleDetails(button) {
-            const workDetails = button.nextElementSibling;
-            
-            if (!workDetails || !workDetails.classList.contains('work-details')) {
-                console.error('Work details element not found');
-                return;
-            }
-            
-            const isShowing = workDetails.classList.contains('show');
-            
-            if (isShowing) {
-                workDetails.classList.remove('show');
-                button.textContent = 'View Project Details';
-            } else {
-                workDetails.classList.add('show');
-                button.textContent = 'Hide Project Details';
-            }
+    function nextBackground() {
+        currentBackground = (currentBackground + 1) % backgrounds.length;
+        showBackground(currentBackground);
+    }
+
+    // Auto-cycle backgrounds every 5 seconds
+    setInterval(nextBackground, 5000);
+
+    // Dot click functionality
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentBackground = index;
+            showBackground(currentBackground);
+        });
+    });
+
+    // Toggle project details functionality
+    function toggleDetails(button) {
+        const workDetails = button.nextElementSibling;
+        
+        if (!workDetails || !workDetails.classList.contains('work-details')) {
+            console.error('Work details element not found');
+            return;
         }
+        
+        const isShowing = workDetails.classList.contains('show');
+        
+        if (isShowing) {
+            workDetails.classList.remove('show');
+            button.textContent = 'View Project Details';
+        } else {
+            workDetails.classList.add('show');
+            button.textContent = 'Hide Project Details';
+        }
+    }
 
-        // FIXED: Complete project data with all referenced projects
-        const projects = {
-            'the-last-dynasty': {
-                title: 'The Last Dynasty',
-                genre: 'Crime Thriller / Musical Mystery',
-                year: '2026',
-                description: 'When tremor-ridden music heiress Jasmine Carter returns to her father\'s empire for a life-saving payout, she\'s trapped in his mansion during a glittering lockdown party where the king is murdered, the crown is stolen, and every guest—from her cartel-blackmailed brother to the detective hunting her family—is both suspect and accomplice.',
-                available: 'Treatment/Outline/Script available',
-                pitchDeck: 'pitch-decks/the_last_dynasty_pitch_deck.pdf'
-            },
-            'southern-belles-secret': {
-                title: 'The Southern Belle\'s Secret',
-                genre: 'Southern Gothic / Drama',
-                year: '2026',
-                description: 'When an investigative journalist uncovers evidence linking her family to a decades-old lynching, a polished Atlanta socialite must choose between protecting her dynasty\'s legacy or exposing a truth that could destroy her world—and redeem her soul.',
-                available: 'Treatment/Outline/Script available',
-                pitchDeck: 'pitch-decks/southern_belles_secret_pitch_deck.pdf'
-            },
-            'this-is-me-now': {
-                title: 'This is Me Now',
-                genre: 'Drama',
-                year: '2026',
-                description: 'When a quiet tech-savvy high schooler becomes the subject of a viral scandal, she must fight to reclaim her voice—not with violence, but with the truth, spoken out loud in front of the people who tried to silence her.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/this_is_me_now_pitch_deck.pdf'
-            },
-            'the-feed': {
-                title: 'The Feed',
-                genre: 'Drama',
-                year: '2026',
-                description: 'A brilliant Black tech entrepreneur moves into an exclusive, seemingly idyllic smart-home community, only to discover its advanced security system is a sophisticated tool for racial profiling, forcing him to fight back against the insidious surveillance built into the very foundation of his new life.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/the_feed_pitch_deck.pdf'
-            },
-            'lifeart': {
-                title: 'Lifeart',
-                genre: 'Drama',
-                year: '2026',
-                description: 'In the heart of Shanghai\'s elite art world, a gifted European painter hides behind the pseudonym of a mysterious Chinese artist named "Tao"—but when family visits, secrets unravel, and a powerful commission threatens to expose everything, he must decide between artistic survival and personal authenticity.',
-                available: 'Treatment/Outline available'
-            },
-            'the-double-cross': {
-                title: 'The Double Cross',
-                genre: 'Crime Thriller / Emotional Drama',
-                year: '2026',
-                description: 'An ex-con living under FBI protection in Atlanta is forced back into the criminal underworld by a high-stakes heist threatening the city\'s financial heart. Her world shatters when she discovers the idealistic rookie agent on her case is her long-lost daughter, and the architect of the chaos is the vengeful former lover who adopted their child to orchestrate her ultimate ruin.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/the_double_cross_pitch_deck.pdf'
-            },
-            'shadows-on-the-force': {
-                title: 'Shadows on the Force',
-                genre: 'Thriller',
-                year: '2026',
-                description: 'A principled Black female detective begins to suspect her white boyfriend—an Atlanta beat cop—of being involved in the city\'s deadly drug trade. But when she digs deeper, she uncovers a deeper conspiracy… and learns he may be the only person trying to save her.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/shadows_on_the_force_pitch_deck.pdf'
-            },
-            'southern-discomfort': {
-                title: 'Southern (Dis)comfort',
-                genre: 'Romance',
-                year: '2026',
-                description: 'After a scathing review tanks a struggling soul food restaurant, a feared Atlanta food critic is forced to team up with her ex-fiancé chef to rebuild its reputation—only to uncover buried family secrets, reignite old flames, and discover that the messiest meals often serve the deepest truths.',
-                available: 'Treatment/Outline/Script available',
-                pitchDeck: 'pitch-decks/southern_discomfort_pitch_deck.pdf'
-            },
-            'miss-juneteenth-blues': {
-                title: 'Miss Juneteenth Blues',
-                genre: 'Comedy-Drama / Southern Family Drama',
-                year: '2026',
-                description: 'When her rebellious teenage daughter earns a spot in the prestigious Miss Juneteenth pageant, a down-on-her-luck former queen, desperate to save her family from financial ruin, fakes her age to re-enter the competition—only to uncover a rigged system built on lies, legacy, and long-buried secrets.',
-                available: 'Treatment/Outline/Script available',
-                pitchDeck: 'pitch-decks/miss_juneteenth_blues_pitch_deck.pdf'
-            },
-            'sinners-and-saints': {
-                title: 'Sinners & Saints',
-                genre: 'Limited Series / MOW',
-                year: '2026',
-                description: 'A preacher\'s daughter marries a reformed ex-con and tries to build a new life—but when his past catches up to them, she must decide if love is worth saving a man the world has written off.',
-                available: 'Treatment/Episodic Outline available',
-                pitchDeck: 'pitch-decks/sinners_and_saints_pitch_deck.pdf'
-            },
-            'soul-on-fire': {
-                title: 'Soul On Fire',
-                genre: 'Limited Series',
-                year: '2026',
-                description: 'Set in 1970s Atlanta, this isn\'t just another rise-and-fall music story. "Soul on Fire" is about cultural theft on an industrial scale—how the American music business was built on appropriating Black artistry while systematically destroying Black artists. It\'s about a woman who discovers that her voice, her songs, even her pain have become commodities to be bought, sold, and locked away forever.',
-                available: 'Treatment/Episodic Outline available',
-                pitchDeck: 'pitch-decks/soul_on_fire_pitch_deck.pdf'
-            },
-            'beneath-the-magnolia-tree': {
-                title: 'Beneath the Magnolia Tree',
-                genre: 'Drama',
-                year: '2026',
-                description: 'A poignant Southern drama that explores family secrets and generational trauma beneath the beauty of the American South. Features stunning cinematography and powerful performances.',
-                available: 'Treatment/Outline available'
-            },
-            'mirror-image': {
-                title: 'Mirror Image',
-                genre: 'Drama',
-                year: '2026',
-                description: 'When Atlanta\'s most successful fashion influencer is digitally framed by her own sister using deepfakes, forged evidence, and psychological manipulation, she must unravel a web of betrayal before her identity—and sanity—is completely erased.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/mirror-image-pitch-deck.pdf'
-            },
-            'twice-betrayed': {
-                title: 'Twice Betrayed',
-                genre: 'Drama',
-                year: '2026',
-                description: 'When a respected Atlanta therapist\'s abusive ex-husband is found dead, she becomes the prime suspect and her seemingly perfect new marriage begins to unravel as she discovers her new husband was hired to spy on her. But nothing is as it seems in this twisted tale of love, control, and betrayal.',
-                available: 'Treatment/Outline available'
-            },
-            'past-due': {
-                title: 'Past Due',
-                genre: 'Drama',
-                year: '2026',
-                description: 'When a rising real estate attorney inherits her aunt\'s dilapidated West End home, she discovers a long-lost family secret buried beneath the floorboards—one connected to a decades-old missing persons case and a life she never knew was hers.',
-                available: 'Treatment/Outline available'
-            },
-            'refractions': {
-                title: 'Refractions',
-                genre: 'Series',
-                year: '2026',
-                description: 'When the world\'s first successful human clone is secretly created by a private biotech company, she escapes and assumes a new identity. As she tries to live a normal life, she discovers others like her are out there—and someone is hunting them all. Every clone has a "prime" original who knows nothing of their existence, but the fates of each pair are mysteriously and fatally linked.',
-                available: 'Treatment/Episodic Outline available'
-            },
-            'the-archive': {
-                title: 'The Archive',
-                genre: 'Series',
-                year: '2026',
-                description: 'In a near-future world where every human memory is recorded and stored in a government-controlled database known as The Archive, a disgraced memory detective stumbles upon a hidden thread of falsified pasts — including his own — and begins a dangerous quest to uncover the truth, risking not only his life but the reality everyone believes in.',
-                available: 'Treatment/Episodic Outline available'
-            },
-            'cipher-of-shadows': {
-                title: 'The Cipher of Shadows',
-                genre: 'Thriller',
-                year: '2026',
-                description: 'A guilt-ridden private investigator, specializing in missing persons, is hired by a mysterious femme fatale to find her vanished sister—only to uncover an AI-driven human trafficking network that exploits vulnerability through social media. As he confronts the system\'s architect, he must choose between revenge and redemption, trust and betrayal, before the algorithm claims its next victim: him.',
-                available: 'Treatment/Outline available'
-            },
-            'mother-interrupted': {
-                title: 'Mother, Interrupted',
-                genre: 'Thriller',
-                year: '2026',
-                description: 'Keisha has built the perfect life after growing up in foster care - thriving career, beautiful Buckhead home, and her pride and joy: 16-year-old adopted daughter Maya. When Maya begins acting out and sneaking around, Keisha assumes it\'s typical teenage rebellion. The Twist: Maya has been meeting with a woman claiming to be Keisha\'s biological mother - the same mother who abandoned Keisha at age 5. The woman reveals that Keisha isn\'t who she thinks she is: her real name is Aaliyah, and she was kidnapped from her loving family as a child by the woman Keisha believed was her abusive birth mother.',
-                available: 'Treatment/Outline available'
-            },
-            'blood-money': {
-                title: 'Blood Money',
-                genre: 'Thriller',
-                year: '2026',
-                description: 'Amara is investigating a complex money laundering scheme involving several Atlanta-based nonprofits when she discovers her own mother\'s community organization is on the list. Convinced there\'s been a mistake, she digs deeper to clear her mother\'s name. The Twist: Her mother isn\'t innocent - she\'s been the mastermind behind a massive fraud ring that steals from legitimate charities serving Atlanta\'s underserved communities. But she\'s being blackmailed into it by someone who has evidence of a hit-and-run accident Amara caused as a teenager.',
-                available: 'Treatment/Outline available'
-            },
-            'the-proxy': {
-                title: 'The Proxy',
-                genre: 'Thriller',
-                year: '2026',
-                description: 'When a struggling Atlanta artist is mistaken for an elite gallerist during a violent art heist, she\'s forced to navigate a world of stolen identities, black market legacies, and buried truths—only to discover the woman who stole her work may have also orchestrated her disappearance.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/the-proxy-pitch-deck.pdf'
-            },
-            'the-alibi': {
-                title: 'The Alibi',
-                genre: 'Thriller',
-                year: '2026',
-                description: 'When a wealthy and abusive businessman is found murdered, four women from his past—the ex-wife, the mistress, the business partner, and the estranged daughter—find themselves the prime suspects. To survive, they form an uneasy alliance and construct a shared alibi. But as the police circle closer and their lies begin to unravel, they start to suspect the killer is one of them. The truth is even more twisted: the real threat has been watching them from the start—and she\'s ready to strike again.',
-                available: 'Treatment/Outline available'
-            },
-            'somebody-you-know': {
-                title: 'It\'s Somebody You Know',
-                genre: 'Thriller',
-                year: '2026',
-                description: 'A psychological thriller that keeps audiences on the edge of their seats. Explores themes of trust, betrayal, and the darkness that can lurk behind familiar faces.',
-                available: 'Treatment/Outline available'
-            },
-            'broken-promise': {
-                title: 'Broken Promise',
-                genre: 'Thriller',
-                year: '2026',
-                description: 'When a successful bridal boutique owner is conned by her charming fiancé, she joins forces with his ex-wife to track him down—only to uncover a trail of betrayal, a network of victims, and a deadly final con that could destroy them both.',
-                available: 'Treatment/Outline available'
-            },
-            'atlanta-soul-the-velvet-larue-story': {
-                title: 'ATL Soul: The Velvet LaRou Story',
-                genre: 'Thriller',
-                year: '2027',
-                description: '1979, Atlanta. A drug-addicted soul singer, betrayed by her label and her city, stages a rooftop revolution, broadcasting her stolen music live from the South\'s tallest hotel, turning a whites-only pool into a baptismal font for the New South.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/atl-soul-pitch-deck.pdf'
-            },
-            'influencers-last-post': {
-                title: 'The Influencer\'s Last Post',
-                genre: 'Thriller',
-                year: '2026',
-                description: 'When disgraced lifestyle influencer Taylor Monroe is framed for the shocking disappearance of her online rival Nina Carter, she teams up with a skeptical journalist to uncover a twisted scheme of digital manipulation, blackmail, and deep fake deception—but exposing the truth could cost her life, her love, and what\'s left of her identity.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/influencers-last-post-pitch-deck.pdf'
-            },
-            'love-after-likes': {
-                title: 'Love after Likes',
-                genre: 'Romance',
-                year: '2026',
-                description: 'A modern romantic comedy that examines love in the digital age. Explores how social media affects relationships and authentic connection.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/love-after-likes-pitch-deck.pdf'
-            },
-            'second-first-date': {
-                title: 'Second First Date',
-                genre: 'Romance',
-                year: '2026',
-                description: 'When a dating app matches two former college sweethearts — who once vowed never to speak again — they reluctantly agree to three dates as a dare. But as sparks reignite, they\'ll have to confront whether their love story ended too soon... or if some things are better left in the past.',
-                available: 'Treatment/Outline available'
-            },
-            'flip-side-of-love': {
-                title: 'Flip Side of Love',
-                genre: 'Romance',
-                year: '2026',
-                description: 'When a driven TV producer returns home to film a historic home renovation, she\'s shocked to discover the project\'s contractor is her ex — the man who broke her heart. As old sparks resurface and buried Black history comes to light, they must navigate love, legacy, and the power of telling the truth… on and off camera.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/flip-side-of-love-pitch-deck.pdf'
-            },
-            'the-ex-files': {
-                title: 'The Ex-Files',
-                genre: 'Romance',
-                year: '2026',
-                description: 'A rising-star divorce attorney is blindsided when her latest high-profile client turns out to be her ex-husband—the one she thought she annulled years ago. Now, as old sparks reignite and her current relationship crumbles, she must choose between rewriting the past or fighting for the future.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/the-ex-files-pitch-deck.pdf'
-            },
-            'rhythm-and-blooms': {
-                title: 'Rhythm & Blooms',
-                genre: 'Romance',
-                year: '2026',
-                description: 'When a career-obsessed landscape architect loses his corporate job, he\'s reluctantly hired by a spontaneous jazz club owner to restore a decaying rooftop garden above her father\'s legendary venue. As the two clash and connect through plants and music, they revive not only the club—but themselves.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/rhythm-and-blooms-pitch-deck.pdf'
-            },
-            'sneakerheads': {
-                title: 'Sneakerheads Anonymous',
-                genre: 'Comedy',
-                year: '2026',
-                description: 'When a sneaker-obsessed teen drains his college fund to buy rare Yeezys, he fakes a sneaker addiction support group to cover his tracks—only for it to become a real movement. As hype builds and lies spiral, he must choose between the hustle and helping others for real.',
-                available: 'Treatment/Outline/Script Available',
-                pitchDeck: 'pitch-decks/sneakerheads-anonymous-pitch-deck.pdf'
-            },
-            'trap-house-sitting': {
-                title: 'Trap House Sitting',
-                genre: 'Comedy',
-                year: '2026',
-                description: 'When a tightly-wound suburban teen agrees to house-sit her cousin\'s Atlanta music studio for the weekend, her clout-chasing twin and livestream-addicted friend turn it into the hottest underground party in the city—attracting influencers, rising rappers, and a dangerous music exec, all before her college interview Monday morning.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/trap-house-sitting-pitch-deck.pdf'
-            },
-            'spelman-christmas': {
-                title: 'A Spelman Christmas',
-                genre: 'Christmas',
-                year: '2026',
-                description: 'A no-nonsense matriarch cancels Christmas after her husband\'s death—until her three adult daughters return home with surprise guests, big news, and enough drama to turn grief into gumbo, healing, and a holiday no one expected.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/spelman-christmas-pitch-deck.pdf'
-            },
-            'grannys-house': {
-                title: 'Granny\'s House: Home for the Holidays',
-                genre: 'Christmas',
-                year: '2026',
-                description: 'A heartwarming family comedy that brings together multiple generations under one roof during the holidays. This project showcases exceptional character development and comedic timing while exploring themes of family, tradition, and love.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/grannys-house-pitch-deck.pdf'
-            },
-            'twelve-dates-christmas-tree-lot': {
-                title: 'The Twelve Dates of Christmas Tree Lot',
-                genre: 'Christmas',
-                year: '2026',
-                description: 'Marcus Reed is freshly divorced and drowning in pine needles. His daddy\'s old Christmas tree lot in Southwest Atlanta is barely hanging on, and now Marcus has custody of his teenage daughter Jada for the holidays. She\'d rather be on TikTok than helping sell trees, but hey—he\'s trying. Twelve days till Christmas. Twelve chances to get it right. And every day brings something new: a tree thief, a viral moment, some messy customers, and this fine coffee shop owner across the street named Ava. She\'s not impressed by Marcus, but the chemistry? Baby, it\'s thick like eggnog. At the heart of it all is Marcus learning how to show up—for his daughter, his community, and maybe, just maybe, for himself again.',
-                available: 'Treatment/Outline/Script Available',
-                pitchDeck: 'pitch-decks/twelve-dates-christmas-tree-lot-pitch-deck.pdf'
-            },
-            'just-jack': {
-                title: 'Just Jack',
-                genre: 'Comedy',
-                year: '2026',
-                description: 'A heartwarming family comedy created by Kelly R. Tenney and Jodi Williams. This charming series explores family dynamics, friendship, and growing up with humor and heart, featuring an ensemble cast that brings authentic relationships to life.',
-                available: 'Treatment/Episodic Outline available'
-            },
-            'echo-chamber': {
-                title: 'Echo Chamber',
-                genre: 'Series',
-                year: '2026',
-                description: 'In a near-future society obsessed with personalization, influence, and optimization, Echo Chamber explores the twisted consequences of living in a world where your reality is shaped by algorithms, and your identity is no longer yours alone.',
-                available: 'Treatment/Episodic Outline available'
-            },
-            'slice-of-paradise': {
-                title: 'Slice of Paradise',
-                genre: 'Series',
-                year: '2026',
-                description: 'Slice of Paradise follows Jake Carter, a charming but directionless thirtysomething who reluctantly takes a job as the activity director at Sunny Shores Retirement Community. Struggling with his own arrested development, Jake suddenly finds himself surrounded by seniors who have way more zest for life than he does. Each episode explores comedic scenarios arising from generational clashes, unconventional friendships, romantic entanglements, and the pursuit of happiness—proving that fun doesn\'t retire at sixty-five.',
-                available: 'Treatment/Episodic Outline available'
-            },
-            'the-line': {
-                title: 'The Line',
-                genre: 'Series',
-                year: '2026',
-                description: 'When a disgraced FBI agent is assigned to protect a rising music mogul entangled in Atlanta\'s rap scene, he\'s unaware she\'s not just running from a criminal empire—she\'s maneuvering to take it over. In a world where every beat is a transaction and every betrayal is a remix, survival isn\'t enough. Monique wants legacy.',
-                available: 'Treatment/Episodic Outline available',
-                pitchDeck: 'pitch-decks/the-line-pitch-deck.pdf'
-            },
-            'grand-guignol': {
-                title: 'Grand Guignol',
-                genre: 'Series',
-                year: '2026',
-                description: 'A theatrical horror piece inspired by the classic French Grand Guignol tradition. Combines elements of stage and screen for a unique viewing experience.',
-                available: 'Treatment/Outline available'
-            },
-            'the-architect': {
-                title: 'The Architect',
-                genre: 'Action',
-                year: '2026',
-                description: 'When a serial killer targeting corrupt elites is revealed to be her supposedly dead partner, a disgraced detective must choose between upholding the law or joining his brutal crusade to replace the city\'s broken system with his own brand of justice.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/the-architect-pitch-deck.pdf'
-            },
-            'queen-of-thorns': {
-                title: 'Queen of Thorns',
-                genre: 'Action',
-                year: '2026',
-                description: 'Framed for a global catastrophe by her closest confidant, a ruthless arms dealer must dismantle the empire she unknowingly built on lies and a devastating superweapon to clear her name and confront the monstrous truth of her past.',
-                available: 'Treatment/Outline available'
-            },
-            'the-ghostmaker': {
-                title: 'Ghostmaker',
-                genre: 'Action',
-                year: '2026',
-                description: 'A rogue CIA operative who once specialized in erasing people from history discovers her own identity was a fabrication—volunteered by a man who loved the woman she now unknowingly impersonates. Hunted by the agency she once served, she must destroy the very system she helped build or become its final, perfect ghost.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/ghostmaker-pitch-deck.pdf'
-            },
-            'blood-covenant': {
-                title: 'Blood Covenant',
-                genre: 'Action',
-                year: '2026',
-                description: 'When a retired assassin haunted by his past teams up with a relentless journalist investigating her sister\'s death, they uncover a global conspiracy led by a secretive brotherhood manipulating world governments. But as personal ties to the cabal emerge, they must decide: expose the truth and lose everything—or vanish into legend as the villains history demands.',
-                available: 'Treatment/Outline available'
-            },
-            'obsidian-codex': {
-                title: 'The Obsidian Codex',
-                genre: 'Action',
-                year: '2026',
-                description: 'A disgraced archaeological explorer and a brilliant, but guarded, cryptographer must race against a shadowy organization to uncover an ancient artifact that could either save humanity or unleash a catastrophic power, forcing them to confront their pasts and a betrayal that shattered their shared history.',
-                available: 'Treatment/Outline available'
-            },
-            'echoes-of-the-syndicate': {
-                title: 'Echoes of the Syndicate',
-                genre: 'Action',
-                year: '2026',
-                description: 'When a former elite hacker, presumed dead, resurfaces to warn her ex-partner—a disillusioned corporate security expert—about a vast, interconnected conspiracy within the very organization he now protects, they must navigate a web of deception and betrayal to expose the truth and find redemption in a world that believes them both to be traitors.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/echoes-of-the-syndicate-pitch-deck.pdf'
-            },
-            'second-skin': {
-                title: 'Second Skin',
-                genre: 'Horror',
-                year: '2026',
-                description: 'A chilling horror film that explores transformation and identity. Features practical effects and atmospheric cinematography that creates genuine tension.',
-                available: 'Treatment/Outline available'
-            },
-            'bone-collectors-daughter': {
-                title: 'The Bone Collector\'s Daughter',
-                genre: 'Horror',
-                year: '2026',
-                description: 'When a skeptical woman inherits her estranged mother\'s Appalachian home, she discovers a legacy of bone conjuring and memory-binding magic. Haunted by vengeful spirits known as the Hollow-Eyed, she must embrace her bloodline\'s dark rituals—or be consumed by the very past she tried to escape.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/the-bone-collectors-daughter-pitch-deck.pdf'
-            },
-            'divine-deception': {
-                title: 'Divine Deception',
-                genre: 'Film Noir',
-                year: '2026',
-                description: 'A Southern Gospel noir that delves into the dark underbelly of faith and corruption. This atmospheric thriller combines classic noir elements with contemporary storytelling to create a compelling narrative about deception and redemption.',
-                available: 'Treatment/Outline available',
-                pitchDeck: 'pitch-decks/divine-deception-pitch-deck.pdf'
-            },
-            'exposed': {
-                title: 'Exposed',
-                genre: 'Docuseries',
-                year: '2026',
-                description: 'While most true crime series focus on violent acts, Exposed shines a light on the often-overlooked emotional and financial devastation caused by white-collar, digital, and institutional exploitation. Each episode follows one survivor\'s journey—from their initial trauma through an investigation and, ultimately, a personal confrontation or courtroom reckoning. It\'s about justice—but also about reclaiming power.',
-                available: 'Treatment/Episodic Outline available'
-            },
-            'digital-shadows': {
-                title: 'Digital Shadows',
-                genre: 'Docuseries',
-                year: '2026',
-                description: 'A chilling dive into the dark side of online fame and digital footprints—where what begins as viral glory can end in tragedy.',
-                available: 'Treatment/Episodic Outline available'
-            }
-        };
+    // Complete project data
+    const projects = {
+        'the-last-dynasty': {
+            title: 'The Last Dynasty',
+            genre: 'Crime Thriller / Musical Mystery',
+            year: '2026',
+            description: 'When tremor-ridden music heiress Jasmine Carter returns to her father\'s empire for a life-saving payout, she\'s trapped in his mansion during a glittering lockdown party where the king is murdered, the crown is stolen, and every guest—from her cartel-blackmailed brother to the detective hunting her family—is both suspect and accomplice.',
+            available: 'Treatment/Outline/Script available',
+            pitchDeck: 'pitch-decks/the_last_dynasty_pitch_deck.pdf'
+        },
+        'southern-belles-secret': {
+            title: 'The Southern Belle\'s Secret',
+            genre: 'Southern Gothic / Drama',
+            year: '2026',
+            description: 'When an investigative journalist uncovers evidence linking her family to a decades-old lynching, a polished Atlanta socialite must choose between protecting her dynasty\'s legacy or exposing a truth that could destroy her world—and redeem her soul.',
+            available: 'Treatment/Outline/Script available',
+            pitchDeck: 'pitch-decks/southern_belles_secret_pitch_deck.pdf'
+        },
+        'this-is-me-now': {
+            title: 'This is Me Now',
+            genre: 'Drama',
+            year: '2026',
+            description: 'When a quiet tech-savvy high schooler becomes the subject of a viral scandal, she must fight to reclaim her voice—not with violence, but with the truth, spoken out loud in front of the people who tried to silence her.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/this_is_me_now_pitch_deck.pdf'
+        },
+        'the-feed': {
+            title: 'The Feed',
+            genre: 'Drama',
+            year: '2026',
+            description: 'A brilliant Black tech entrepreneur moves into an exclusive, seemingly idyllic smart-home community, only to discover its advanced security system is a sophisticated tool for racial profiling, forcing him to fight back against the insidious surveillance built into the very foundation of his new life.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/the_feed_pitch_deck.pdf'
+        },
+        'lifeart': {
+            title: 'Lifeart',
+            genre: 'Drama',
+            year: '2026',
+            description: 'In the heart of Shanghai\'s elite art world, a gifted European painter hides behind the pseudonym of a mysterious Chinese artist named "Tao"—but when family visits, secrets unravel, and a powerful commission threatens to expose everything, he must decide between artistic survival and personal authenticity.',
+            available: 'Treatment/Outline available'
+        },
+        'the-double-cross': {
+            title: 'The Double Cross',
+            genre: 'Crime Thriller / Emotional Drama',
+            year: '2026',
+            description: 'An ex-con living under FBI protection in Atlanta is forced back into the criminal underworld by a high-stakes heist threatening the city\'s financial heart. Her world shatters when she discovers the idealistic rookie agent on her case is her long-lost daughter, and the architect of the chaos is the vengeful former lover who adopted their child to orchestrate her ultimate ruin.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/the_double_cross_pitch_deck.pdf'
+        },
+        'shadows-on-the-force': {
+            title: 'Shadows on the Force',
+            genre: 'Thriller',
+            year: '2026',
+            description: 'A principled Black female detective begins to suspect her white boyfriend—an Atlanta beat cop—of being involved in the city\'s deadly drug trade. But when she digs deeper, she uncovers a deeper conspiracy… and learns he may be the only person trying to save her.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/shadows_on_the_force_pitch_deck.pdf'
+        },
+        'southern-discomfort': {
+            title: 'Southern (Dis)comfort',
+            genre: 'Romance',
+            year: '2026',
+            description: 'After a scathing review tanks a struggling soul food restaurant, a feared Atlanta food critic is forced to team up with her ex-fiancé chef to rebuild its reputation—only to uncover buried family secrets, reignite old flames, and discover that the messiest meals often serve the deepest truths.',
+            available: 'Treatment/Outline/Script available',
+            pitchDeck: 'pitch-decks/southern_discomfort_pitch_deck.pdf'
+        },
+        'miss-juneteenth-blues': {
+            title: 'Miss Juneteenth Blues',
+            genre: 'Comedy-Drama / Southern Family Drama',
+            year: '2026',
+            description: 'When her rebellious teenage daughter earns a spot in the prestigious Miss Juneteenth pageant, a down-on-her-luck former queen, desperate to save her family from financial ruin, fakes her age to re-enter the competition—only to uncover a rigged system built on lies, legacy, and long-buried secrets.',
+            available: 'Treatment/Outline/Script available',
+            pitchDeck: 'pitch-decks/miss_juneteenth_blues_pitch_deck.pdf'
+        },
+        'sinners-and-saints': {
+            title: 'Sinners & Saints',
+            genre: 'Limited Series / MOW',
+            year: '2026',
+            description: 'A preacher\'s daughter marries a reformed ex-con and tries to build a new life—but when his past catches up to them, she must decide if love is worth saving a man the world has written off.',
+            available: 'Treatment/Episodic Outline available',
+            pitchDeck: 'pitch-decks/sinners_and_saints_pitch_deck.pdf'
+        },
+        'soul-on-fire': {
+            title: 'Soul On Fire',
+            genre: 'Limited Series',
+            year: '2026',
+            description: 'Set in 1970s Atlanta, this isn\'t just another rise-and-fall music story. "Soul on Fire" is about cultural theft on an industrial scale—how the American music business was built on appropriating Black artistry while systematically destroying Black artists. It\'s about a woman who discovers that her voice, her songs, even her pain have become commodities to be bought, sold, and locked away forever.',
+            available: 'Treatment/Episodic Outline available',
+            pitchDeck: 'pitch-decks/soul_on_fire_pitch_deck.pdf'
+        },
+        'beneath-the-magnolia-tree': {
+            title: 'Beneath the Magnolia Tree',
+            genre: 'Drama',
+            year: '2026',
+            description: 'A poignant Southern drama that explores family secrets and generational trauma beneath the beauty of the American South. Features stunning cinematography and powerful performances.',
+            available: 'Treatment/Outline available'
+        },
+        'mirror-image': {
+            title: 'Mirror Image',
+            genre: 'Drama',
+            year: '2026',
+            description: 'When Atlanta\'s most successful fashion influencer is digitally framed by her own sister using deepfakes, forged evidence, and psychological manipulation, she must unravel a web of betrayal before her identity—and sanity—is completely erased.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/mirror_image_pitch_deck.pdf'
+        },
+        'twice-betrayed': {
+            title: 'Twice Betrayed',
+            genre: 'Drama',
+            year: '2026',
+            description: 'When a respected Atlanta therapist\'s abusive ex-husband is found dead, she becomes the prime suspect and her seemingly perfect new marriage begins to unravel as she discovers her new husband was hired to spy on her. But nothing is as it seems in this twisted tale of love, control, and betrayal.',
+            available: 'Treatment/Outline available'
+        },
+        'past-due': {
+            title: 'Past Due',
+            genre: 'Drama',
+            year: '2026',
+            description: 'When a rising real estate attorney inherits her aunt\'s dilapidated West End home, she discovers a long-lost family secret buried beneath the floorboards—one connected to a decades-old missing persons case and a life she never knew was hers.',
+            available: 'Treatment/Outline available'
+        },
+        'refractions': {
+            title: 'Refractions',
+            genre: 'Series',
+            year: '2026',
+            description: 'When the world\'s first successful human clone is secretly created by a private biotech company, she escapes and assumes a new identity. As she tries to live a normal life, she discovers others like her are out there—and someone is hunting them all. Every clone has a "prime" original who knows nothing of their existence, but the fates of each pair are mysteriously and fatally linked.',
+            available: 'Treatment/Episodic Outline available'
+        },
+        'the-archive': {
+            title: 'The Archive',
+            genre: 'Series',
+            year: '2026',
+            description: 'In a near-future world where every human memory is recorded and stored in a government-controlled database known as The Archive, a disgraced memory detective stumbles upon a hidden thread of falsified pasts — including his own — and begins a dangerous quest to uncover the truth, risking not only his life but the reality everyone believes in.',
+            available: 'Treatment/Episodic Outline available'
+        },
+        'cipher-of-shadows': {
+            title: 'The Cipher of Shadows',
+            genre: 'Thriller',
+            year: '2026',
+            description: 'A guilt-ridden private investigator, specializing in missing persons, is hired by a mysterious femme fatale to find her vanished sister—only to uncover an AI-driven human trafficking network that exploits vulnerability through social media. As he confronts the system\'s architect, he must choose between revenge and redemption, trust and betrayal, before the algorithm claims its next victim: him.',
+            available: 'Treatment/Outline available'
+        },
+        'mother-interrupted': {
+            title: 'Mother, Interrupted',
+            genre: 'Thriller',
+            year: '2026',
+            description: 'Keisha has built the perfect life after growing up in foster care - thriving career, beautiful Buckhead home, and her pride and joy: 16-year-old adopted daughter Maya. When Maya begins acting out and sneaking around, Keisha assumes it\'s typical teenage rebellion. The Twist: Maya has been meeting with a woman claiming to be Keisha\'s biological mother - the same mother who abandoned Keisha at age 5. The woman reveals that Keisha isn\'t who she thinks she is: her real name is Aaliyah, and she was kidnapped from her loving family as a child by the woman Keisha believed was her abusive birth mother.',
+            available: 'Treatment/Outline available'
+        },
+        'blood-money': {
+            title: 'Blood Money',
+            genre: 'Thriller',
+            year: '2026',
+            description: 'Amara is investigating a complex money laundering scheme involving several Atlanta-based nonprofits when she discovers her own mother\'s community organization is on the list. Convinced there\'s been a mistake, she digs deeper to clear her mother\'s name. The Twist: Her mother isn\'t innocent - she\'s been the mastermind behind a massive fraud ring that steals from legitimate charities serving Atlanta\'s underserved communities. But she\'s being blackmailed into it by someone who has evidence of a hit-and-run accident Amara caused as a teenager.',
+            available: 'Treatment/Outline available'
+        },
+        'the-proxy': {
+            title: 'The Proxy',
+            genre: 'Thriller',
+            year: '2026',
+            description: 'When a struggling Atlanta artist is mistaken for an elite gallerist during a violent art heist, she\'s forced to navigate a world of stolen identities, black market legacies, and buried truths—only to discover the woman who stole her work may have also orchestrated her disappearance.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/the_proxy_pitch_deck.pdf'
+        },
+        'the-alibi': {
+            title: 'The Alibi',
+            genre: 'Thriller',
+            year: '2026',
+            description: 'When a wealthy and abusive businessman is found murdered, four women from his past—the ex-wife, the mistress, the business partner, and the estranged daughter—find themselves the prime suspects. To survive, they form an uneasy alliance and construct a shared alibi. But as the police circle closer and their lies begin to unravel, they start to suspect the killer is one of them. The truth is even more twisted: the real threat has been watching them from the start—and she\'s ready to strike again.',
+            available: 'Treatment/Outline available'
+        },
+        'somebody-you-know': {
+            title: 'It\'s Somebody You Know',
+            genre: 'Thriller',
+            year: '2026',
+            description: 'A psychological thriller that keeps audiences on the edge of their seats. Explores themes of trust, betrayal, and the darkness that can lurk behind familiar faces.',
+            available: 'Treatment/Outline available'
+        },
+        'broken-promise': {
+            title: 'Broken Promise',
+            genre: 'Thriller',
+            year: '2026',
+            description: 'When a successful bridal boutique owner is conned by her charming fiancé, she joins forces with his ex-wife to track him down—only to uncover a trail of betrayal, a network of victims, and a deadly final con that could destroy them both.',
+            available: 'Treatment/Outline available'
+        },
+        'atlanta-soul-the-velvet-larue-story': {
+            title: 'ATL Soul: The Velvet LaRou Story',
+            genre: 'Thriller',
+            year: '2027',
+            description: '1979, Atlanta. A drug-addicted soul singer, betrayed by her label and her city, stages a rooftop revolution, broadcasting her stolen music live from the South\'s tallest hotel, turning a whites-only pool into a baptismal font for the New South.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/atl_soul_pitch_deck.pdf'
+        },
+        'influencers-last-post': {
+            title: 'The Influencer\'s Last Post',
+            genre: 'Thriller',
+            year: '2026',
+            description: 'When disgraced lifestyle influencer Taylor Monroe is framed for the shocking disappearance of her online rival Nina Carter, she teams up with a skeptical journalist to uncover a twisted scheme of digital manipulation, blackmail, and deep fake deception—but exposing the truth could cost her life, her love, and what\'s left of her identity.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/influencers_last_post_pitch_deck.pdf'
+        },
+        'love-after-likes': {
+            title: 'Love after Likes',
+            genre: 'Romance',
+            year: '2026',
+            description: 'A modern romantic comedy that examines love in the digital age. Explores how social media affects relationships and authentic connection.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/love_after_likes_pitch_deck.pdf'
+        },
+        'second-first-date': {
+            title: 'Second First Date',
+            genre: 'Romance',
+            year: '2026',
+            description: 'When a dating app matches two former college sweethearts — who once vowed never to speak again — they reluctantly agree to three dates as a dare. But as sparks reignite, they\'ll have to confront whether their love story ended too soon... or if some things are better left in the past.',
+            available: 'Treatment/Outline available'
+        },
+        'flip-side-of-love': {
+            title: 'Flip Side of Love',
+            genre: 'Romance',
+            year: '2026',
+            description: 'When a driven TV producer returns home to film a historic home renovation, she\'s shocked to discover the project\'s contractor is her ex — the man who broke her heart. As old sparks resurface and buried Black history comes to light, they must navigate love, legacy, and the power of telling the truth… on and off camera.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/flip_side_of_love_pitch_deck.pdf'
+        },
+        'the-ex-files': {
+            title: 'The Ex-Files',
+            genre: 'Romance',
+            year: '2026',
+            description: 'A rising-star divorce attorney is blindsided when her latest high-profile client turns out to be her ex-husband—the one she thought she annulled years ago. Now, as old sparks reignite and her current relationship crumbles, she must choose between rewriting the past or fighting for the future.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/the_ex_files_pitch_deck.pdf'
+        },
+        'rhythm-and-blooms': {
+            title: 'Rhythm & Blooms',
+            genre: 'Romance',
+            year: '2026',
+            description: 'When a career-obsessed landscape architect loses his corporate job, he\'s reluctantly hired by a spontaneous jazz club owner to restore a decaying rooftop garden above her father\'s legendary venue. As the two clash and connect through plants and music, they revive not only the club—but themselves.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/rhythm_and_blooms_pitch_deck.pdf'
+        },
+        'sneakerheads': {
+            title: 'Sneakerheads Anonymous',
+            genre: 'Comedy',
+            year: '2026',
+            description: 'When a sneaker-obsessed teen drains his college fund to buy rare Yeezys, he fakes a sneaker addiction support group to cover his tracks—only for it to become a real movement. As hype builds and lies spiral, he must choose between the hustle and helping others for real.',
+            available: 'Treatment/Outline/Script Available',
+            pitchDeck: 'pitch-decks/sneakerheads_anonymous_pitch_deck.pdf'
+        },
+        'trap-house-sitting': {
+            title: 'Trap House Sitting',
+            genre: 'Comedy',
+            year: '2026',
+            description: 'When a tightly-wound suburban teen agrees to house-sit her cousin\'s Atlanta music studio for the weekend, her clout-chasing twin and livestream-addicted friend turn it into the hottest underground party in the city—attracting influencers, rising rappers, and a dangerous music exec, all before her college interview Monday morning.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/trap_house_sitting_pitch_deck.pdf'
+        },
+        'spelman-christmas': {
+            title: 'A Spelman Christmas',
+            genre: 'Christmas',
+            year: '2026',
+            description: 'A no-nonsense matriarch cancels Christmas after her husband\'s death—until her three adult daughters return home with surprise guests, big news, and enough drama to turn grief into gumbo, healing, and a holiday no one expected.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/spelman_christmas_pitch_deck.pdf'
+        },
+        'grannys-house': {
+            title: 'Granny\'s House: Home for the Holidays',
+            genre: 'Christmas',
+            year: '2026',
+            description: 'A heartwarming family comedy that brings together multiple generations under one roof during the holidays. This project showcases exceptional character development and comedic timing while exploring themes of family, tradition, and love.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/grannys_house_pitch_deck.pdf'
+        },
+        'twelve-dates-christmas-tree-lot': {
+            title: 'The Twelve Dates of Christmas Tree Lot',
+            genre: 'Christmas',
+            year: '2026',
+            description: 'Marcus Reed is freshly divorced and drowning in pine needles. His daddy\'s old Christmas tree lot in Southwest Atlanta is barely hanging on, and now Marcus has custody of his teenage daughter Jada for the holidays. She\'d rather be on TikTok than helping sell trees, but hey—he\'s trying. Twelve days till Christmas. Twelve chances to get it right. And every day brings something new: a tree thief, a viral moment, some messy customers, and this fine coffee shop owner across the street named Ava. She\'s not impressed by Marcus, but the chemistry? Baby, it\'s thick like eggnog. At the heart of it all is Marcus learning how to show up—for his daughter, his community, and maybe, just maybe, for himself again.',
+            available: 'Treatment/Outline/Script Available',
+            pitchDeck: 'pitch-decks/twelve_dates_christmas_tree_lot_pitch_deck.pdf'
+        },
+        'just-jack': {
+            title: 'Just Jack',
+            genre: 'Comedy',
+            year: '2026',
+            description: 'A heartwarming family comedy created by Kelly R. Tenney and Jodi Williams. This charming series explores family dynamics, friendship, and growing up with humor and heart, featuring an ensemble cast that brings authentic relationships to life.',
+            available: 'Treatment/Episodic Outline available'
+        },
+        'echo-chamber': {
+            title: 'Echo Chamber',
+            genre: 'Series',
+            year: '2026',
+            description: 'In a near-future society obsessed with personalization, influence, and optimization, Echo Chamber explores the twisted consequences of living in a world where your reality is shaped by algorithms, and your identity is no longer yours alone.',
+            available: 'Treatment/Episodic Outline available'
+        },
+        'slice-of-paradise': {
+            title: 'Slice of Paradise',
+            genre: 'Series',
+            year: '2026',
+            description: 'Slice of Paradise follows Jake Carter, a charming but directionless thirtysomething who reluctantly takes a job as the activity director at Sunny Shores Retirement Community. Struggling with his own arrested development, Jake suddenly finds himself surrounded by seniors who have way more zest for life than he does. Each episode explores comedic scenarios arising from generational clashes, unconventional friendships, romantic entanglements, and the pursuit of happiness—proving that fun doesn\'t retire at sixty-five.',
+            available: 'Treatment/Episodic Outline available'
+        },
+        'the-line': {
+            title: 'The Line',
+            genre: 'Series',
+            year: '2026',
+            description: 'When a disgraced FBI agent is assigned to protect a rising music mogul entangled in Atlanta\'s rap scene, he\'s unaware she\'s not just running from a criminal empire—she\'s maneuvering to take it over. In a world where every beat is a transaction and every betrayal is a remix, survival isn\'t enough. Monique wants legacy.',
+            available: 'Treatment/Episodic Outline available',
+            pitchDeck: 'pitch-decks/the_line_pitch_deck.pdf'
+        },
+        'grand-guignol': {
+            title: 'Grand Guignol',
+            genre: 'Series',
+            year: '2026',
+            description: 'A theatrical horror piece inspired by the classic French Grand Guignol tradition. Combines elements of stage and screen for a unique viewing experience.',
+            available: 'Treatment/Outline available'
+        },
+        'the-architect': {
+            title: 'The Architect',
+            genre: 'Action',
+            year: '2026',
+            description: 'When a serial killer targeting corrupt elites is revealed to be her supposedly dead partner, a disgraced detective must choose between upholding the law or joining his brutal crusade to replace the city\'s broken system with his own brand of justice.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/the_architect_pitch_deck.pdf'
+        },
+        'queen-of-thorns': {
+            title: 'Queen of Thorns',
+            genre: 'Action',
+            year: '2026',
+            description: 'Framed for a global catastrophe by her closest confidant, a ruthless arms dealer must dismantle the empire she unknowingly built on lies and a devastating superweapon to clear her name and confront the monstrous truth of her past.',
+            available: 'Treatment/Outline available'
+        },
+        'the-ghostmaker': {
+            title: 'Ghostmaker',
+            genre: 'Action',
+            year: '2026',
+            description: 'A rogue CIA operative who once specialized in erasing people from history discovers her own identity was a fabrication—volunteered by a man who loved the woman she now unknowingly impersonates. Hunted by the agency she once served, she must destroy the very system she helped build or become its final, perfect ghost.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/ghostmaker_pitch_deck.pdf'
+        },
+        'blood-covenant': {
+            title: 'Blood Covenant',
+            genre: 'Action',
+            year: '2026',
+            description: 'When a retired assassin haunted by his past teams up with a relentless journalist investigating her sister\'s death, they uncover a global conspiracy led by a secretive brotherhood manipulating world governments. But as personal ties to the cabal emerge, they must decide: expose the truth and lose everything—or vanish into legend as the villains history demands.',
+            available: 'Treatment/Outline available'
+        },
+        'obsidian-codex': {
+            title: 'The Obsidian Codex',
+            genre: 'Action',
+            year: '2026',
+            description: 'A disgraced archaeological explorer and a brilliant, but guarded, cryptographer must race against a shadowy organization to uncover an ancient artifact that could either save humanity or unleash a catastrophic power, forcing them to confront their pasts and a betrayal that shattered their shared history.',
+            available: 'Treatment/Outline available'
+        },
+        'echoes-of-the-syndicate': {
+            title: 'Echoes of the Syndicate',
+            genre: 'Action',
+            year: '2026',
+            description: 'When a former elite hacker, presumed dead, resurfaces to warn her ex-partner—a disillusioned corporate security expert—about a vast, interconnected conspiracy within the very organization he now protects, they must navigate a web of deception and betrayal to expose the truth and find redemption in a world that believes them both to be traitors.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/echoes_of_the_syndicate_pitch_deck.pdf'
+        },
+        'second-skin': {
+            title: 'Second Skin',
+            genre: 'Horror',
+            year: '2026',
+            description: 'A chilling horror film that explores transformation and identity. Features practical effects and atmospheric cinematography that creates genuine tension.',
+            available: 'Treatment/Outline available'
+        },
+        'bone-collectors-daughter': {
+            title: 'The Bone Collector\'s Daughter',
+            genre: 'Horror',
+            year: '2026',
+            description: 'When a skeptical woman inherits her estranged mother\'s Appalachian home, she discovers a legacy of bone conjuring and memory-binding magic. Haunted by vengeful spirits known as the Hollow-Eyed, she must embrace her bloodline\'s dark rituals—or be consumed by the very past she tried to escape.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/the_bone_collectors_daughter_pitch_deck.pdf'
+        },
+        'divine-deception': {
+            title: 'Divine Deception',
+            genre: 'Film Noir',
+            year: '2026',
+            description: 'A Southern Gospel noir that delves into the dark underbelly of faith and corruption. This atmospheric thriller combines classic noir elements with contemporary storytelling to create a compelling narrative about deception and redemption.',
+            available: 'Treatment/Outline available',
+            pitchDeck: 'pitch-decks/divine_deception_pitch_deck.pdf'
+        },
+        'exposed': {
+            title: 'Exposed',
+            genre: 'Docuseries',
+            year: '2026',
+            description: 'While most true crime series focus on violent acts, Exposed shines a light on the often-overlooked emotional and financial devastation caused by white-collar, digital, and institutional exploitation. Each episode follows one survivor\'s journey—from their initial trauma through an investigation and, ultimately, a personal confrontation or courtroom reckoning. It\'s about justice—but also about reclaiming power.',
+            available: 'Treatment/Episodic Outline available'
+        },
+        'digital-shadows': {
+            title: 'Digital Shadows',
+            genre: 'Docuseries',
+            year: '2026',
+            description: 'A chilling dive into the dark side of online fame and digital footprints—where what begins as viral glory can end in tragedy.',
+            available: 'Treatment/Episodic Outline available'
+        }
+    };
 
-        // FIXED: Modal functionality - Remove querySelector usage
-        function openModal(projectId) {
-            const project = projects[projectId];
-            const modal = document.getElementById('projectModal');
-            
-            if (!project) {
-                console.error('Project not found:', projectId);
-                return;
-            }
-            
-            if (!modal) {
-                console.error('Modal element not found');
-                return;
-            }
-            
-            // Populate modal content safely
+    // Modal functionality
+    function openModal(projectId) {
+        const project = projects[projectId];
+        const modal = document.getElementById('projectModal');
+        
+        if (!project) {
+            console.error('Project not found:', projectId);
+            return;
+        }
+        
+        if (!modal) {
+            console.error('Modal element not found');
+            return;
+        }
+               // Populate modal content safely
             const modalTitle = document.getElementById('modalTitle');
             const modalGenre = document.getElementById('modalGenre');
             const modalYear = document.getElementById('modalYear');
