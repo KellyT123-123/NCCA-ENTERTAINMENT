@@ -2082,7 +2082,7 @@
             }
         };
 
-        // FIXED: Modal functionality
+        // FIXED: Modal functionality - Remove querySelector usage
         function openModal(projectId) {
             const project = projects[projectId];
             const modal = document.getElementById('projectModal');
@@ -2097,7 +2097,7 @@
                 return;
             }
             
-            // Populate modal content
+            // Populate modal content safely
             const modalTitle = document.getElementById('modalTitle');
             const modalGenre = document.getElementById('modalGenre');
             const modalYear = document.getElementById('modalYear');
@@ -2115,19 +2115,28 @@
                 if (project.pitchDeck) {
                     downloadLink.href = project.pitchDeck;
                     downloadLink.style.display = 'inline-block';
+                    // FIXED: Remove any querySelector usage
                     downloadLink.onclick = function(e) {
                         e.preventDefault();
-                        // Create a temporary link to download the file
+                        e.stopPropagation();
+                        
+                        // Simple download approach
                         const link = document.createElement('a');
                         link.href = project.pitchDeck;
-                        link.download = project.pitchDeck.split('/').pop(); // Get filename
+                        link.download = '';
                         link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        
+                        // Trigger download
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
+                        
+                        return false;
                     };
                 } else {
                     downloadLink.style.display = 'none';
+                    downloadLink.onclick = null;
                 }
             }
             
