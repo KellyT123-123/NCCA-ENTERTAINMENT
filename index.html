@@ -752,13 +752,97 @@ section.compact { padding: var(--space-lg) 0; }
 /* Tighten footer area a bit */
 footer { padding: var(--space-lg) 0; }
 
+
+/* ===== BRAND PALETTE (Unified) =====
+   Adjust these four variables to re-skin the site in seconds. */
+:root{
+  --brand: #9b5cff;         /* Primary accent (amethyst) */
+  --brand-ink: #1a1325;     /* Headlines / nav text */
+  --brand-bg: #0c0c0f;      /* Page background (near-black) */
+  --brand-muted: #b7b1c6;   /* Supporting text */
+  --brand-rule: rgba(255,255,255,0.12);
+  --brand-hover: #b082ff;
+}
+
+body { background: var(--brand-bg); color: #f2f2f5; }
+
+a { color: var(--brand); text-decoration: none; }
+a:hover, a:focus { color: var(--brand-hover); text-decoration: underline; }
+
+h1, h2, h3, h4 { color: #fff; }
+
+/* Rules & section dividers */
+h2 { border-color: var(--brand-rule); }
+.project { border-bottom-color: var(--brand-rule); }
+
+/* Buttons (if any .btn classes exist) */
+.btn, .button, button, input[type="submit"]{
+  background: var(--brand);
+  color: #0a0613;
+  border: none;
+  padding: 0.75rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:hover, .button:hover, button:hover, input[type="submit"]:hover{
+  background: var(--brand-hover);
+}
+
+/* Muted copy */
+.muted, .section-intro, .work-content p { color: var(--brand-muted); }
+
+/* Subtle alternating sections (optional) */
+section:nth-of-type(even){ background: rgba(255,255,255,0.02); }
+
+
+/* ===== NAV BRAND ===== */
+nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 800; letter-spacing: 0.02em; color: #fff;
+}
+.brand:hover { color: var(--brand-hover); text-decoration: none; }
+.brand-mark { display: inline-block; border-radius: 8px; }
+.brand-text { font-size: clamp(14px, 1.6vw, 18px); }
+
 </style>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<!-- Social Preview -->
+<meta property="og:title" content="NCCA ENTERTAINMENT">
+<meta property="og:description" content="Film & Television Production">
+<meta property="og:image" content="og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NCCA ENTERTAINMENT">
+<meta name="twitter:description" content="Film & Television Production">
+<meta name="twitter:image" content="og-image.png">
+
 </head>
 <body>
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">NCCA ENTERTAINMENT</div>
+            
+  
+<a class="brand" href="#home" aria-label="NCCA Entertainment">
+  <svg class="brand-mark" width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#c7a1ff"/>
+        <stop offset="1" stop-color="#7e4bff"/>
+      </linearGradient>
+    </defs>
+    <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#g)"/>
+    <path d="M9 22V10h3.2l4.2 7.1V10H22v12h-3.2l-4.2-7.1V22H9z" fill="#0b0713"/>
+  </svg>
+  <span class="brand-text">NCCA ENTERTAINMENT</span>
+</a>
+<div class="logo">NCCA ENTERTAINMENT</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
