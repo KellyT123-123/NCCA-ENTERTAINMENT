@@ -1671,18 +1671,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 <p>© 2025 NCCA Entertainment. All rights reserved.</p>
 </div>
 </footer>
-<div class="modal" id="projectModal">
-<div class="modal-content">
-<span class="close">×</span>
-<h2 id="modalTitle">
-<div class="modal-genre" id="modalGenre"></div>
-<div class="modal-year" id="modalYear"></div>
-<p class="modal-description" id="modalDescription"></p>
-<p class="modal-available" id="modalAvailable"></p>
-<!-- Change the modal download link to: -->
-<a class="download-link" href="javascript:void(0)" id="modalDownload" style="display: none;">📄 Download Pitch Deck</a>
-</h2></div>
-</div>
+
 <script>
     // Background cycling functionality
     let currentBackground = 0;
@@ -2299,7 +2288,7 @@ document.addEventListener('DOMContentLoaded', () => {
       posterEl.style.backgroundImage = `url('${img}')`;
     }
     // Ensure triggers open modal
-    card.querySelectorAll('.js-details, .work-link, .view-details-btn').forEach(trigger => {
+    card.querySelectorAll('.view-details-btn').forEach(trigger => {
       trigger.addEventListener('click', (e) => {
         e.preventDefault();
         openFromCard(card);
@@ -2356,5 +2345,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-</script></body>
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const dl = document.getElementById('modalDownload');
+  const ex = document.getElementById('modalExtra');
+  if (dl) { dl.setAttribute('target','_blank'); dl.setAttribute('rel','noopener'); }
+  if (ex) { ex.setAttribute('target','_blank'); ex.setAttribute('rel','noopener'); }
+});
+</script>
+
+</body>
 </html>
