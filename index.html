@@ -752,7 +752,6 @@ section.compact { padding: var(--space-lg) 0; }
 /* Tighten footer area a bit */
 footer { padding: var(--space-lg) 0; }
 
-
 /* ===== BRAND PALETTE (Unified) =====
    Adjust these four variables to re-skin the site in seconds. */
 :root{
@@ -795,7 +794,6 @@ h2 { border-color: var(--brand-rule); }
 /* Subtle alternating sections (optional) */
 section:nth-of-type(even){ background: rgba(255,255,255,0.02); }
 
-
 /* ===== NAV BRAND ===== */
 nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); }
 .brand {
@@ -805,6 +803,61 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 .brand:hover { color: var(--brand-hover); text-decoration: none; }
 .brand-mark { display: inline-block; border-radius: 8px; }
 .brand-text { font-size: clamp(14px, 1.6vw, 18px); }
+
+
+/* ===== Project Details Modal ===== */
+.modal {
+  position: fixed; inset: 0;
+  display: none;
+  align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.55);
+  z-index: 9999;
+}
+.modal[open] { display: flex; }
+.modal__dialog {
+  width: min(900px, 92vw);
+  background: #0f0f13;
+  color: #f2f2f5;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+.modal__header, .modal__footer { padding: 18px 20px; }
+.modal__header {
+  display:flex; align-items:center; justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.modal__title { font-size: clamp(20px, 2.2vw, 28px); margin: 0; }
+.modal__close {
+  background: transparent; border: none; color: #fff; font-size: 26px; cursor: pointer;
+}
+.modal__body {
+  display: grid; gap: 18px;
+  grid-template-columns: 1fr;
+  padding: 20px;
+}
+@media (min-width: 900px) {
+  .modal__body { grid-template-columns: 1fr 1.2fr; }
+}
+.modal__media {
+  aspect-ratio: 16/9;
+  background: rgba(255,255,255,0.06) url('og-image.png') center/cover no-repeat;
+  border-radius: 12px;
+}
+.modal__desc { color: var(--brand-muted, #b7b1c6); }
+.modal__btn {
+  display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
+  background: var(--brand, #9b5cff); color:#0a0613; border-radius:999px; padding: 12px 18px; font-weight:800; text-decoration:none;
+}
+.modal__btn:hover { background: var(--brand-hover, #b082ff); }
+
+
+.modal__btn--ghost {
+  background: rgba(255,255,255,0.08);
+  color: #f2f2f5;
+}
+.modal__btn--ghost:hover { background: rgba(255,255,255,0.14); }
 
 </style>
 
@@ -842,10 +895,8 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
   </svg>
   <span class="brand-text">NCCA ENTERTAINMENT</span>
 </a>
-<div class="logo">NCCA ENTERTAINMENT</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
+<ul class="nav-links">
+<li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -903,7 +954,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 
             <!-- Southern Gothic / Drama -->
             <div class="genre-section">
-                <h3 class="genre-title">Southern Gothic / Drama</h4><div class="works-grid">
+                <h3 class="genre-title">Southern Gothic / Drama</h3><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('the_last_dynasty_poster.png');"></div>
                         <div class="work-content">
@@ -1617,7 +1668,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
     <section id="about" class="about section">
         <div class="container">
             <div class="about-content">
-                <h2>ABOUT THE FILMMAKER</h2>
+                <h2>ABOUT THE FILMMAKER</h3>
                 <p>I'm a writer and producer who blends the storytelling heart of the South with a modern, gritty edge. From gritty crime dramas set in Atlanta's underworld to heartwarming holiday comedies featuring viral TikToks and dollar-store wreaths, I navigate genres like a showrunner in sneakers.</p>
                 
                 <p>I craft worlds where FBI agents clash with cartel bosses, artists lead double lives, and Grandma might just become the next social media sensation. With a producer's mind, a writer's wit, and a director's eye for both tension and tenderness, my scripts are not just narratives but living, breathing embodiments of culture, conflict, and comedy.</p>
@@ -1664,7 +1715,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
                 </div>
                 
                 <div class="contact-form">
-                    <h3>Send a Message</h4><form id="contactForm">
+                    <h3>Send a Message</h3><form id="contactForm">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
@@ -2279,5 +2330,130 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
             });
         }
     </script>
+
+<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal__dialog">
+    <div class="modal__header">
+      <h3 class="modal__title" id="modalTitle">Project Title</h3>
+      <button class="modal__close" type="button" aria-label="Close">×</button>
+    </div>
+    <div class="modal__body">
+      <div class="modal__media" id="modalMedia"></div>
+      <div class="modal__content">
+        <p class="modal__desc" id="modalDesc">Summary goes here.</p>
+        <div class="modal__footer">
+          <a id="modalDownload" class="modal__btn" href="#" target="_blank" rel="noopener">Download</a>
+          <a id="modalExtra" class="modal__btn modal__btn--ghost" href="#" target="_blank" rel="noopener">Read Treatment / Watch Teaser</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  const modal = document.getElementById('projectModal');
+  const titleEl = document.getElementById('modalTitle');
+  const descEl  = document.getElementById('modalDesc');
+  const mediaEl = document.getElementById('modalMedia');
+  const dlEl    = document.getElementById('modalDownload');
+  const closeBtn= modal.querySelector('.modal__close');
+
+  function openModalFromTrigger(trigger){
+    // Find the closest project/work card
+    const card = trigger.closest('.work-item, .project, article, .card, .work');
+    let title = 'Project';
+    let desc  = '';
+    let downloadHref = '#';
+
+    if(card){
+      const t = card.querySelector('.work-title, h4, h3, .title');
+      if(t) title = t.textContent.trim();
+      // Try to find a reasonably descriptive paragraph inside the card
+      const ps = card.querySelectorAll('p');
+      if(ps && ps.length){
+        // choose the longest paragraph as a summary
+        let best = ''; let maxLen = 0;
+        ps.forEach(p => {
+          const txt = p.textContent.trim();
+          if(txt.length > maxLen){ maxLen = txt.length; best = txt; }
+        });
+        desc = best || '';
+      }
+      // If the original card has a real download link, capture it
+      const dl = card.querySelector('a[href*=".pdf"], a[href*=".doc"], a[href*=".png"], a[href*=".jpg"], a[href*="download"], a[href*=".ppt"], a[href*=".zip"]');
+      if(dl) downloadHref = dl.getAttribute('href');
+    }
+
+    titleEl.textContent = title;
+    descEl.textContent = desc || 'Full project details coming soon.';
+    dlEl.setAttribute('href', downloadHref);
+    
+    // Assign extra CTA via data attributes on the project card
+    const extraBtn = document.getElementById('modalExtra');
+    extraBtn.style.display = 'none';
+    let extraHref = null;
+    let extraLabel = null;
+
+    if (card) {
+      extraHref = card.getAttribute('data-extra');
+      extraLabel = card.getAttribute('data-extra-label') || 'Read Treatment / Watch Teaser';
+      const dlOverride = card.getAttribute('data-download');
+      const imgOverride = card.getAttribute('data-img');
+
+      // Optional: override download link via data-download
+      if (dlOverride) downloadHref = dlOverride;
+
+      // Optional: override modal visual via data-img
+      if (imgOverride) {
+        mediaEl.style.backgroundImage = 'url(' + imgOverride + ')';
+        mediaEl.style.backgroundSize = 'cover';
+        mediaEl.style.backgroundPosition = 'center';
+      } else {
+        mediaEl.style.backgroundImage = '';
+      }
+    }
+
+    if (extraHref) {
+      extraBtn.setAttribute('href', extraHref);
+      extraBtn.textContent = extraLabel;
+      extraBtn.style.display = 'inline-flex';
+    }
+    
+
+
+    // Show modal
+    modal.setAttribute('open', '');
+
+    // Trap focus on close button for simplicity
+    closeBtn.focus();
+  }
+
+  // Delegate clicks from all "View Full Details & Download" links
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a.js-details');
+    if(a){
+      e.preventDefault();
+      openModalFromTrigger(a);
+    }
+    if(e.target === modal){
+      // click outside dialog closes
+      modal.removeAttribute('open');
+    }
+    if(e.target.closest('.modal__close')){
+      modal.removeAttribute('open');
+    }
+  });
+
+  // ESC closes
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.hasAttribute('open')){
+      modal.removeAttribute('open');
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
