@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -2246,7 +2246,55 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
                 navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
             });
         }
-    </script>
+    
+// Helper to resolve a deck PDF URL from card datasets
+
+// Create a filesystem-safe slug from a string
+function slugifyTitle(txt) {
+  if (!txt) return '';
+  return txt
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9\s_-]/g, '')     // remove non-alphanumerics except space, underscore, hyphen
+    .replace(/\s+/g, ' ')              // normalize spaces
+    .trim();
+}
+function slugUnderscore(txt) {
+  return slugifyTitle(txt).replace(/\s+/g, '_');
+}
+function slugHyphen(txt) {
+  return slugifyTitle(txt).replace(/\s+/g, '-');
+}
+
+function resolveDeckUrl(card) {
+  const sources = [
+    card.dataset.download,
+    card.dataset.deck,
+    card.dataset.pdf,
+    card.dataset.file
+  ].filter(Boolean);
+  // Fallback: look for an existing href on the primary "work-link"
+  const link = card.querySelector('.work-link');
+  if (link && link.getAttribute('href')) {
+    sources.push(link.getAttribute('href'));
+  }
+  // Return the first non-empty, trimmed URL
+  let url = sources.map(s => (s||'').trim()).find(s => s.length > 0) || null;
+
+// If nothing explicit, try constructing from title or data-slug
+if (!url) {
+  const rawSlug = (card.dataset.slug || card.querySelector('.work-title')?.textContent || '').trim();
+  const s1 = slugUnderscore(rawSlug);
+  const s2 = slugHyphen(rawSlug);
+  const guess1 = s1 ? `pitch-decks/${s1}_pitch_deck.pdf` : null;
+  const guess2 = s2 ? `pitch-decks/${s2}-pitch-deck.pdf` : null;
+  url = guess1 || guess2 || null;
+}
+return url;
+
+}
+
+</script>
 <div aria-labelledby="modalTitle" aria-modal="true" class="modal" id="projectModal" role="dialog">
 <div class="modal__dialog">
 <div class="modal__header">
@@ -2288,6 +2336,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (img && posterEl) {
       posterEl.style.backgroundImage = `url('${img}')`;
     }
+    // Auto-wire the primary 'View Full Details & Download' link to the pitch deck
+    (function(){
+      const link = card.querySelector('.work-link');
+      const pdfUrl = resolveDeckUrl(card);
+      if (link && pdfUrl) {
+        link.setAttribute('href', pdfUrl);
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener');
+        link.removeAttribute('disabled');
+      }
+    })();
     // Ensure triggers open modal
     card.querySelectorAll('.view-details-btn').forEach(trigger => {
       trigger.addEventListener('click', (e) => {
@@ -2298,6 +2357,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function openFromCard(card) {
+  const deckUrl = resolveDeckUrl(card);
+  const extraUrl = card.dataset.extra || card.dataset.treatment || card.dataset.teaser || '';
+
     const title = card.querySelector('.work-title')?.textContent?.trim() || 'Project';
     const genre = card.querySelector('.work-genre')?.textContent?.trim() || '';
     const year  = card.querySelector('.work-year')?.textContent?.trim() || '';
@@ -2314,6 +2376,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (card.dataset.download) {
       ui.download.href = card.dataset.download;
+  if (ui.extra && extraUrl) { ui.extra.setAttribute('href', extraUrl); }
+  if (ui.download && deckUrl) { ui.download.setAttribute('href', deckUrl); ui.download.setAttribute('target','_blank'); ui.download.setAttribute('rel','noopener'); }
       ui.download.style.display = '';
     } else {
       ui.download.style.display = 'none';
@@ -2352,6 +2416,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const dl = document.getElementById('modalDownload');
   const ex = document.getElementById('modalExtra');
   if (dl) { dl.setAttribute('target','_blank'); dl.setAttribute('rel','noopener'); }
+  const ex0 = document.getElementById('modalExtra');
+  if (ex0) { ex0.setAttribute('target','_blank'); ex0.setAttribute('rel','noopener'); }
   if (ex) { ex.setAttribute('target','_blank'); ex.setAttribute('rel','noopener'); }
 });
 </script>
