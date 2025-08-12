@@ -704,7 +704,55 @@
                 padding: 1.5rem;
             }
         }
-    </style>
+    
+/* ===== HEADINGS & WHITESPACE PASS ===== */
+:root{
+  --maxw: 1200px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 40px;
+  --space-xl: 72px;
+  --rule: #262626;
+}
+
+/* Typography rhythm */
+h1, h2, h3, h4 { line-height: 1.25; margin: 0 0 var(--space-sm); }
+h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: clamp(24px, 3.2vw, 36px); font-weight: 700; padding-bottom: var(--space-sm); border-bottom: 1px solid var(--rule); }
+h3 { font-size: clamp(18px, 2.2vw, 24px); font-weight: 700; }
+h4 { font-size: clamp(16px, 2vw, 20px); font-weight: 700; }
+
+/* Global section spacing + anchor offset for fixed header */
+section { padding: var(--space-xl) 0; scroll-margin-top: 90px; }
+section.compact { padding: var(--space-lg) 0; }
+
+/* Vertical rhythm helpers */
+.stack > * + * { margin-top: var(--space-md); }
+.stack-lg > * + * { margin-top: var(--space-lg); }
+.stack-sm > * + * { margin-top: var(--space-sm); }
+
+/* Section intro text (replaces inline style) */
+.section-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #ccc;
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Genre heading spacing */
+.genre-title { margin-bottom: var(--space-md); padding-bottom: var(--space-xs); }
+
+/* Card/content spacing */
+.work-content { padding: 1.5rem; }
+.work-title { margin-bottom: var(--space-sm); }
+
+/* Tighten footer area a bit */
+footer { padding: var(--space-lg) 0; }
+
+</style>
 </head>
 <body>
     <!-- Header -->
@@ -764,20 +812,18 @@
     </section>
 
     <!-- Featured Works -->
-    <section id="portfolio" class="featured-works">
+    <section id="portfolio" class="featured-works section">
         <div class="container">
             <h2 class="section-title">FEATURED</h2>
-            <p style="text-align: center; margin-bottom: 3rem; color: #ccc;">An extensive collection of 52 cinematic projects spanning multiple genres action, comedy, drama, thriller, horror, romance, Film Noir, streaming docuseries and Feature films.</p>
+            <p class="section-intro">An extensive collection of 52 cinematic projects spanning multiple genres action, comedy, drama, thriller, horror, romance, Film Noir, streaming docuseries and Feature films.</p>
 
             <!-- Southern Gothic / Drama -->
             <div class="genre-section">
-                <h3 class="genre-title">Southern Gothic / Drama</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Southern Gothic / Drama</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('the_last_dynasty_poster.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Last Dynasty</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Last Dynasty</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Crime Thriller / Musical Mystery</div>
                                 <div class="work-year">2026</div>
@@ -790,8 +836,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/southern-belles-secret.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Southern Belle's Secret</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Southern Belle's Secret</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Southern Gothic / Drama</div>
                                 <div class="work-year">2026</div>
@@ -805,13 +850,11 @@
 
             <!-- Drama -->
              <div class="genre-section">
-                <h3 class="genre-title">Drama</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Drama</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/this-is-me-now.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">This is Me Now</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">This is Me Now</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Drama</div>
                                 <div class="work-year">2026</div>
@@ -824,8 +867,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('the_feed_poster.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Feed</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Feed</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Drama</div>
                                 <div class="work-year">2026</div>
@@ -838,8 +880,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/lifeart.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Lifeart</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Lifeart</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Drama</div>
                                 <div class="work-year">2026</div>
@@ -852,8 +893,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/beneath-the-magnolia-tree.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Beneath the Magnolia Tree</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Beneath the Magnolia Tree</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Drama</div>
                                 <div class="work-year">2026</div>
@@ -866,8 +906,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/mirror-image.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Mirror Image</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Mirror Image</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Drama</div>
                                 <div class="work-year">2026</div>
@@ -880,8 +919,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/twice-betrayed.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Twice Betrayed</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Twice Betrayed</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Drama</div>
                                 <div class="work-year">2026</div>
@@ -894,8 +932,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/past-due.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Past Due</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Past Due</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Drama</div>
                                 <div class="work-year">2026</div>
@@ -908,8 +945,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/refractions.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Refractions</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Refractions</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Drama</div>
                                 <div class="work-year">2026</div>
@@ -922,8 +958,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/the-archive.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Archive</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Archive</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Drama</div>
                                 <div class="work-year">2026</div>
@@ -937,13 +972,11 @@
 
             <!-- Thriller -->
             <div class="genre-section">
-                <h3 class="genre-title">Thriller</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Thriller</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('the_double_cross_poster.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Double Cross</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Double Cross</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Crime Thriller / Emotional Drama</div>
                                 <div class="work-year">2026</div>
@@ -956,8 +989,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/shadows-on-the-force.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Shadows on the Force</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Shadows on the Force</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Thriller</div>
                                 <div class="work-year">2026</div>
@@ -970,8 +1002,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/cipher-of-shadows.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Cipher of Shadows</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Cipher of Shadows</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Thriller</div>
                                 <div class="work-year">2026</div>
@@ -984,8 +1015,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/mother-interrupted.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Mother, Interrupted</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Mother, Interrupted</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Thriller</div>
                                 <div class="work-year">2026</div>
@@ -998,8 +1028,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/blood-money.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Blood Money</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Blood Money</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Thriller</div>
                                 <div class="work-year">2026</div>
@@ -1012,8 +1041,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/the-proxy.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Proxy</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Proxy</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Thriller</div>
                                 <div class="work-year">2026</div>
@@ -1026,8 +1054,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/the-alibi.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Alibi</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Alibi</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Thriller</div>
                                 <div class="work-year">2026</div>
@@ -1040,8 +1067,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/somebody-you-know.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">It's Somebody You Know</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">It's Somebody You Know</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Thriller</div>
                                 <div class="work-year">2026</div>
@@ -1054,8 +1080,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/broken-promise.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Broken Promise</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Broken Promise</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Thriller</div>
                                 <div class="work-year">2026</div>
@@ -1068,8 +1093,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/atl-soul-poster.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">ATL Soul: The Velvet LaRou Story</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">ATL Soul: The Velvet LaRou Story</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Thriller</div>
                                 <div class="work-year">2027</div>
@@ -1082,8 +1106,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/influencers-last-post.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Influencer's Last Post</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Influencer's Last Post</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Thriller</div>
                                 <div class="work-year">2026</div>
@@ -1097,13 +1120,11 @@
 
             <!-- Romance -->
             <div class="genre-section">
-                <h3 class="genre-title">Romance</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Romance</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/southern-discomfort.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Southern (Dis)comfort</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Southern (Dis)comfort</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Romance</div>
                                 <div class="work-year">2026</div>
@@ -1116,8 +1137,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/love-after-likes.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Love after Likes</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Love after Likes</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Romance</div>
                                 <div class="work-year">2026</div>
@@ -1130,8 +1150,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/second-first-date.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Second First Date</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Second First Date</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Romance</div>
                                 <div class="work-year">2026</div>
@@ -1144,8 +1163,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/flip-side-of-love.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Flip Side of Love</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Flip Side of Love</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Romance</div>
                                 <div class="work-year">2026</div>
@@ -1158,8 +1176,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/ex-files.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Ex-Files</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Ex-Files</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Romance</div>
                                 <div class="work-year">2026</div>
@@ -1172,8 +1189,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/rhythm-and-blooms.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Rhythm & Blooms</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Rhythm & Blooms</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Romance</div>
                                 <div class="work-year">2026</div>
@@ -1187,13 +1203,11 @@
 
             <!-- Comedy -->
             <div class="genre-section">
-                <h3 class="genre-title">Comedy</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Comedy</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('miss_juneteenth_blues_poster.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Miss Juneteenth Blues</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Miss Juneteenth Blues</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Comedy-Drama / Southern Family Drama</div>
                                 <div class="work-year">2026</div>
@@ -1206,8 +1220,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/sneakerheads.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Sneakerheads Anonymous</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Sneakerheads Anonymous</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Comedy</div>
                                 <div class="work-year">2026</div>
@@ -1220,8 +1233,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/trap-house-sitting.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Trap House Sitting</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Trap House Sitting</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Comedy</div>
                                 <div class="work-year">2026</div>
@@ -1235,13 +1247,11 @@
 
             <!-- Christmas Stories -->
             <div class="genre-section">
-                <h3 class="genre-title">Christmas Stories</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Christmas Stories</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/spelman-christmas.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">A Spelman Christmas</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">A Spelman Christmas</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Christmas</div>
                                 <div class="work-year">2026</div>
@@ -1254,8 +1264,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/grannys-house.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Granny's House: Home for the Holidays</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Granny's House: Home for the Holidays</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Christmas</div>
                                 <div class="work-year">2026</div>
@@ -1268,8 +1277,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/twelve-dates-christmas-tree-lot.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Twelve Dates of Christmas Tree Lot</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Twelve Dates of Christmas Tree Lot</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Christmas</div>
                                 <div class="work-year">2026</div>
@@ -1283,13 +1291,11 @@
 
             <!-- Network Series -->
             <div class="genre-section">
-                <h3 class="genre-title">Network Series</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Network Series</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/just-jack.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Just Jack</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Just Jack</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Comedy</div>
                                 <div class="work-year">2026</div>
@@ -1302,8 +1308,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/echo-chamber.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Echo Chamber</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Echo Chamber</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Series</div>
                                 <div class="work-year">2026</div>
@@ -1316,8 +1321,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/slice-of-paradise.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Slice of Paradise</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Slice of Paradise</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Series</div>
                                 <div class="work-year">2026</div>
@@ -1331,13 +1335,11 @@
 
             <!-- Limited Series -->
             <div class="genre-section">
-                <h3 class="genre-title">Limited Series</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Limited Series</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('sinners_and_saints_poster.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Sinners & Saints</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Sinners & Saints</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Limited Series / MOW</div>
                                 <div class="work-year">2026</div>
@@ -1350,8 +1352,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('soul_on_fire_poster.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Soul On Fire</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Soul On Fire</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Limited Series</div>
                                 <div class="work-year">2026</div>
@@ -1365,13 +1366,11 @@
 
             <!-- Action -->
             <div class="genre-section">
-                <h3 class="genre-title">Feature - Action</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Feature - Action</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/the-architect.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Architect</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Architect</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Action</div>
                                 <div class="work-year">2026</div>
@@ -1384,8 +1383,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/queen-of-thorns.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Queen of Thorns</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Queen of Thorns</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Action</div>
                                 <div class="work-year">2026</div>
@@ -1398,8 +1396,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/the-ghostmaker.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Ghostmaker</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Ghostmaker</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Action</div>
                                 <div class="work-year">2026</div>
@@ -1412,8 +1409,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/blood-covenant.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Blood Covenant</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Blood Covenant</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Action</div>
                                 <div class="work-year">2026</div>
@@ -1426,8 +1422,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/obsidian-codex.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Obsidian Codex</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Obsidian Codex</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Action</div>
                                 <div class="work-year">2026</div>
@@ -1440,8 +1435,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/echoes-of-the-syndicate.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Echoes of the Syndicate</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Echoes of the Syndicate</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Action</div>
                                 <div class="work-year">2026</div>
@@ -1455,13 +1449,11 @@
 
             <!-- Horror -->
             <div class="genre-section">
-                <h3 class="genre-title">Feature - Horror</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Feature - Horror</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/second-skin.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Second Skin</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Second Skin</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Horror</div>
                                 <div class="work-year">2026</div>
@@ -1474,8 +1466,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/bone-collectors-daughter.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">The Bone Collector's Daughter</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">The Bone Collector's Daughter</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Horror</div>
                                 <div class="work-year">2026</div>
@@ -1489,13 +1480,11 @@
 
             <!-- Film Noir -->
             <div class="genre-section">
-                <h3 class="genre-title">Film Noir</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Film Noir</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/divine-deception.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Divine Deception</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Divine Deception</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Film Noir</div>
                                 <div class="work-year">2026</div>
@@ -1509,13 +1498,11 @@
 
             <!-- Docuseries -->
             <div class="genre-section">
-                <h3 class="genre-title">Docuseries</h3>
-                <div class="works-grid">
+                <h3 class="genre-title">Docuseries</h4><div class="works-grid">
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/exposed.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Exposed</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Exposed</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Docuseries</div>
                                 <div class="work-year">2026</div>
@@ -1528,8 +1515,7 @@
                     <div class="work-card">
                         <div class="work-image" style="background-image: url('images/digital-shadows.png');"></div>
                         <div class="work-content">
-                            <h3 class="work-title">Digital Shadows</h3>
-                            <button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
+                            <h4 class="work-title">Digital Shadows</h4><button class="view-details-btn" onclick="toggleDetails(this)">View Project Details</button>
                             <div class="work-details">
                                 <div class="work-genre">Docuseries</div>
                                 <div class="work-year">2026</div>
@@ -1544,7 +1530,7 @@
     </section>
 
      <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about section">
         <div class="container">
             <div class="about-content">
                 <h2>ABOUT THE FILMMAKER</h2>
@@ -1571,15 +1557,14 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact section">
         <div class="container">
             <h2>LET'S BRING STORIES TO LIFE</h2>
-            <p style="text-align: center; margin-bottom: 3rem; color: #ccc;">Ready to create something unforgettable? Reach out, and let's discuss your next project.</p>
+            <p class="section-intro">Ready to create something unforgettable? Reach out, and let's discuss your next project.</p>
             
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-item">
+                    <h3>Get In Touch</h4><div class="contact-item">
                         <strong>Email</strong>
                         nccaentertainment@gmail.com
                     </div>
@@ -1595,8 +1580,7 @@
                 </div>
                 
                 <div class="contact-form">
-                    <h3>Send a Message</h3>
-                    <form id="contactForm">
+                    <h3>Send a Message</h4><form id="contactForm">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
