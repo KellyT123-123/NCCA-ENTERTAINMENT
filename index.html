@@ -2251,6 +2251,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 <div class="modal__dialog">
 <div class="modal__header">
 <h3 class="modal__title" id="modalTitle">Project Title</h3>
+<div class="modal__meta"><span id="modalGenre"></span><span id="modalYear"></span><span id="modalAvailable"></span></div>
 <button aria-label="Close" class="modal__close" type="button">×</button>
 </div>
 <div class="modal__body">
@@ -2302,11 +2303,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const year  = card.querySelector('.work-year')?.textContent?.trim() || '';
     const desc  = card.querySelector('.work-description')?.textContent?.trim() || '';
 
-    ui.title.textContent = title;
-    ui.genre.textContent = genre;
-    ui.year.textContent  = year;
-    ui.desc.textContent  = desc;
-    ui.avail.textContent = card.dataset.download ? 'Download available.' : '';
+    if (ui.title) ui.title.textContent = title;
+    if (ui.genre) ui.genre.textContent = genre;
+    if (ui.year) ui.year.textContent = year;
+    if (ui.desc) ui.desc.textContent = desc;
+    if (ui.avail) ui.avail.textContent = card.dataset.download ? 'Download available.' : '';
 
     const poster = card.dataset.img;
     ui.media.style.backgroundImage = poster ? `url('${poster}')` : '';
