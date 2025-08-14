@@ -1633,119 +1633,159 @@ footer { position: relative; }
 </div>
 <!-- Network Series -->
 <div class="genre-section">
-<h3 class="genre-title">Network Series</h3>
-<div class="works-grid">
-<div class="work-card" data-deck="pitch-decks/just_jack_pitch_deck.pdf" data-download="assets/just-jack-treatment.pdf" data-extra="assets/just-jack-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/just-jack-poster.jpg" data-project="just_jack">
-<div class="work-image" style="background-image: url('images/just-jack.png');"></div>
-<div class="work-content">
-<h4 class="work-title">Just Jack</h4><button class="view-details-btn">View Project Details</button>
-<div class="work-details">
-<div class="work-genre">Comedy</div>
-<div class="work-year">2026</div>
-<p class="work-description">A heartwarming family comedy created by Kelly R. Tenney and Jodi Williams. This charming series explores family dynamics, friendship, and growing up with humor and heart, featuring an ensemble cast that brings authentic relationships to life.</p>
-<a class="work-link" data-modal="details" href="pitch-decks/just_jack_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
-</div>
-</div>
-</div>
-<div class="work-card" data-deck="pitch-decks/echo_chamber_pitch_deck.pdf" data-download="assets/echo-chamber-treatment.pdf" data-extra="assets/echo-chamber-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/echo-chamber-poster.jpg" data-project="echo_chamber">
-<div class="work-image" style="background-image: url('images/echo-chamber.png');"></div>
-<div class="work-content">
-<h4 class="work-title">Echo Chamber</h4><button class="view-details-btn">View Project Details</button>
-<div class="work-details">
-<div class="work-genre">Series</div>
-<div class="work-year">2026</div>
-<p class="work-description">In a near future society obsessed with personalization, influence and optimization, Echo Chamber explores the twisted consequences of living in a world where your reality is shaped by algorithms, and your identity is no longer yours alone.</p>
-<a class="work-link" data-modal="details" href="pitch-decks/echo_chamber_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
-</div>
-</div>
-</div>
-<div class="work-card" data-deck="pitch-decks/slice_of_paradise_pitch_deck.pdf" data-download="assets/slice-of-paradise-treatment.pdf" data-extra="assets/slice-of-paradise-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/slice-of-paradise-poster.jpg" data-project="slice_of_paradise">
-<div class="work-image" style="background-image: url('images/slice-of-paradise.png');"></div>
-<div class="work-content">
-<h4 class="work-title">Slice of Paradise</h4><button class="view-details-btn">View Project Details</button>
-<div class="work-details">
-<div class="work-genre">Series</div>
-<div class="work-year">2026</div>
-<p class="work-description">Slice of Paradise follows Jake Carter, a charming but directionless thirty something who reluctantly takes a job as the activity director at Sunny Shores Retirement Community. Struggling with his own arrested development, Jake suddenly finds himself surrounded by seniors who have way more zest for life than he does. Each episode explores comedic scenarios arising from generational clashes, unconventional friendships, romantic entanglements and the pursuit of happiness, proving that fun doesn't retire at sixty-five.</p>
-<a class="work-link" data-modal="details" href="pitch-decks/slice_of_paradise_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
-</div>
-</div>
-</div>
-<div class="work-card" data-deck="pitch-decks/the_archive_pitch_deck.pdf" data-download="assets/the-archive-treatment.pdf" data-extra="assets/the-archive-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/the-archive-poster.jpg" data-project="the_archive">
-<div class="work-image" style="background-image: url('images/the-archive.png');"></div>
-<div class="work-content">
-<h4 class="work-title">The Archive</h4><button class="view-details-btn">View Project Details</button>
-<div class="work-details">
-<div class="work-genre">Series</div>
-<div class="work-year">2026</div>
-<p class="work-description">A thought-provoking drama about memory, history, and the stories we choose to preserve. Explores themes of legacy and the importance of documenting our experiences.</p>
-<a class="work-link" data-modal="details" href="pitch-decks/the_archive_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
-</div>
-</div>
-</div>
-<div class="work-card" data-deck="pitch-decks/refractions_pitch_deck.pdf" data-download="assets/refractions-treatment.pdf" data-extra="assets/refractions-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/refractions-poster.jpg" data-project="refractions">
-<div class="work-image" style="background-image: url('images/refractions.png');"></div>
-<div class="work-content">
-<h4 class="work-title">Refractions</h4><button class="view-details-btn">View Project Details</button>
-<div class="work-details">
-<div class="work-genre">Series</div>
-<div class="work-year">2026</div>
-<p class="work-description">A compelling drama that examines how perspective shapes reality. Through interconnected storylines, the film explores how the same events can be viewed differently by different people.</p>
-<a class="work-link" data-modal="details" href="pitch-decks/refractions_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
-</div>
-</div>
-</div>
-</div>
+  <h3 class="genre-title">Network Series</h3>
+  <div class="works-grid">
+
+    <!-- Just Jack -->
+    <div class="work-card"
+         data-project="just_jack"
+         data-deck="pitch-decks/just_jack_pitch_deck.pdf"
+         data-download="assets/just-jack-treatment.pdf"
+         data-extra="assets/just-jack-teaser.mp4"
+         data-extra-label="Watch Teaser"
+         data-img="assets/just-jack-poster.jpg">
+      <div class="work-image" style="background-image:url('images/just-jack.png')" aria-hidden="true"></div>
+      <div class="work-content">
+        <h4 class="work-title">Just Jack</h4>
+        <button class="view-details-btn" aria-label="View project details for Just Jack">View Project Details</button>
+        <div class="work-details">
+          <div class="work-genre">Comedy Series</div>
+          <div class="work-year">2026</div>
+          <p class="work-description">A heartwarming family comedy created by Kelly R. Tenney and Jodi Williams. This charming series explores family dynamics, friendship, and growing up with humor and heart, featuring an ensemble cast that brings authentic relationships to life.</p>
+          <a class="work-link" data-modal="details" href="pitch-decks/just_jack_pitch_deck.pdf" target="_blank" rel="noopener">View Full Details &amp; Download</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Echo Chamber -->
+    <div class="work-card"
+         data-project="echo_chamber"
+         data-deck="pitch-decks/echo_chamber_pitch_deck.pdf"
+         data-download="assets/echo-chamber-treatment.pdf"
+         data-extra="assets/echo-chamber-teaser.mp4"
+         data-extra-label="Watch Teaser"
+         data-img="assets/echo-chamber-poster.jpg">
+      <div class="work-image" style="background-image:url('images/echo-chamber.png')" aria-hidden="true"></div>
+      <div class="work-content">
+        <h4 class="work-title">Echo Chamber</h4>
+        <button class="view-details-btn" aria-label="View project details for Echo Chamber">View Project Details</button>
+        <div class="work-details">
+          <div class="work-genre">Drama Series</div>
+          <div class="work-year">2026</div>
+          <p class="work-description">In a near-future obsessed with personalization and optimization, identity is shaped by algorithms—and owned by those who write them.</p>
+          <a class="work-link" data-modal="details" href="pitch-decks/echo_chamber_pitch_deck.pdf" target="_blank" rel="noopener">View Full Details &amp; Download</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slice of Paradise -->
+    <div class="work-card"
+         data-project="slice_of_paradise"
+         data-deck="pitch-decks/slice_of_paradise_pitch_deck.pdf"
+         data-download="assets/slice-of-paradise-treatment.pdf"
+         data-extra="assets/slice-of-paradise-teaser.mp4"
+         data-extra-label="Watch Teaser"
+         data-img="assets/slice-of-paradise-poster.jpg">
+      <div class="work-image" style="background-image:url('images/slice-of-paradise.png')" aria-hidden="true"></div>
+      <div class="work-content">
+        <h4 class="work-title">Slice of Paradise</h4>
+        <button class="view-details-btn" aria-label="View project details for Slice of Paradise">View Project Details</button>
+        <div class="work-details">
+          <div class="work-genre">Comedy Series</div>
+          <div class="work-year">2026</div>
+          <p class="work-description">A directionless thirty-something becomes the activity director at a retirement community—and discovers his residents have more zest for life than he does.</p>
+          <a class="work-link" data-modal="details" href="pitch-decks/slice_of_paradise_pitch_deck.pdf" target="_blank" rel="noopener">View Full Details &amp; Download</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Archive -->
+    <div class="work-card"
+         data-project="the_archive"
+         data-deck="pitch-decks/the_archive_pitch_deck.pdf"
+         data-download="assets/the-archive-treatment.pdf"
+         data-extra="assets/the-archive-teaser.mp4"
+         data-extra-label="Watch Teaser"
+         data-img="assets/the-archive-poster.jpg">
+      <div class="work-image" style="background-image:url('images/the-archive.png')" aria-hidden="true"></div>
+      <div class="work-content">
+        <h4 class="work-title">The Archive</h4>
+        <button class="view-details-btn" aria-label="View project details for The Archive">View Project Details</button>
+        <div class="work-details">
+          <div class="work-genre">Drama Series</div>
+          <div class="work-year">2026</div>
+          <p class="work-description">A thought-provoking series about memory, history, and the stories we choose to preserve—and the ones we try to erase.</p>
+          <a class="work-link" data-modal="details" href="pitch-decks/the_archive_pitch_deck.pdf" target="_blank" rel="noopener">View Full Details &amp; Download</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Refractions -->
+    <div class="work-card"
+         data-project="refractions"
+         data-deck="pitch-decks/refractions_pitch_deck.pdf"
+         data-download="assets/refractions-treatment.pdf"
+         data-extra="assets/refractions-teaser.mp4"
+         data-extra-label="Watch Teaser"
+         data-img="assets/refractions-poster.jpg">
+      <div class="work-image" style="background-image:url('images/refractions.png')" aria-hidden="true"></div>
+      <div class="work-content">
+        <h4 class="work-title">Refractions</h4>
+        <button class="view-details-btn" aria-label="View project details for Refractions">View Project Details</button>
+        <div class="work-details">
+          <div class="work-genre">Drama Series</div>
+          <div class="work-year">2026</div>
+          <p class="work-description">Interconnected stories reveal how the same event shatters—and reshapes—different lives depending on where you stand.</p>
+          <a class="work-link" data-modal="details" href="pitch-decks/refractions_pitch_deck.pdf" target="_blank" rel="noopener">View Full Details &amp; Download</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 <!-- Limited Series -->
 <div class="genre-section">
-<h3 class="genre-title">Limited Series</h3>
-<div class="works-grid">
-<div class="work-card" data-deck="pitch-decks/sinners_and_saints_pitch_deck.pdf" data-download="assets/sinners-saints-treatment.pdf" data-extra="assets/sinners-saints-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/sinners-saints-poster.jpg" data-project="sinners_andamp_saints">
-<div class="work-image" style="background-image: url('sinners_and_saints_poster.png');"></div>
-<div class="work-content">
-<h4 class="work-title">Sinners &amp; Saints</h4><button class="view-details-btn">View Project Details</button>
-<div class="work-details">
-<div class="work-genre">Limited Series / MOW</div>
-<div class="work-year">2026</div>
-<p class="work-description">A preacher's daughter marries a reformed ex-con and tries to build a new life but when his past catches up to them, she must decide if love is worth saving a man the world has written off.</p>
-<a class="work-link" data-modal="details" href="pitch-decks/sinners_andamp_saints_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
-</div>
-</div>
-</div>
-<div class="work-card"
-     data-project="soul_on_fire"
-     data-deck="pitch-decks/soul_on_fire_pitch_deck.pdf"
-     data-download="assets/soul-on-fire-treatment.pdf"
-     data-extra="assets/soul-on-fire-teaser.mp4"
-     data-extra-label="Watch Teaser"
-     data-img="assets/soul-on-fire-poster.jpg">
+  <h3 class="genre-title">Limited Series</h3>
+  <div class="works-grid">
 
-  <div class="work-image"
-       style="background-image:url('assets/soul-on-fire-poster.jpg')"
-       aria-hidden="true"></div>
+    <!-- Sinners & Saints -->
+    <div class="work-card"
+         data-project="sinners_and_saints"
+         data-deck="pitch-decks/sinners_and_saints_pitch_deck.pdf"
+         data-download="assets/sinners-saints-treatment.pdf"
+         data-extra="assets/sinners-saints-teaser.mp4"
+         data-extra-label="Watch Teaser"
+         data-img="assets/sinners-saints-poster.jpg">
+      <div class="work-image" style="background-image:url('assets/sinners-saints-poster.jpg')" aria-hidden="true"></div>
+      <div class="work-content">
+        <h4 class="work-title">Sinners &amp; Saints</h4>
+        <button class="view-details-btn" aria-label="View project details for Sinners and Saints">View Project Details</button>
+        <div class="work-details">
+          <div class="work-genre">Limited Series / MOW</div>
+          <div class="work-year">2026</div>
+          <p class="work-description">A preacher’s daughter marries a reformed ex-con, but when his past catches up to them, she must decide if love is worth saving a man the world has written off.</p>
+          <a class="work-link" data-modal="details" href="pitch-decks/sinners_and_saints_pitch_deck.pdf" target="_blank" rel="noopener">View Full Details &amp; Download</a>
+        </div>
+      </div>
+    </div>
 
-  <div class="work-content">
-    <h4 class="work-title">Soul on Fire: The Anthem of a Stolen Generation</h4>
-
-    <button class="view-details-btn" aria-label="View project details for Soul on Fire">
-      View Project Details
-    </button>
-
-    <div class="work-details">
-      <div class="work-genre">Limited Series</div>
-      <div class="work-year">2026</div>
-      <p class="work-description">
-        Set in 1970s Atlanta, a brilliant soul singer fights a system that
-        monetizes her voice while erasing her authorship. To reclaim her art
-        and future, she must outwit the label that owns her songs—and her story.
-      </p>
-
-      <a class="work-link" data-modal="details"
-         href="pitch-decks/soul_on_fire_pitch_deck.pdf"
-         target="_blank" rel="noopener">
-        View Full Details &amp; Download
-      </a>
+    <!-- Soul on Fire -->
+    <div class="work-card"
+         data-project="soul_on_fire"
+         data-deck="pitch-decks/soul_on_fire_pitch_deck.pdf"
+         data-download="assets/soul-on-fire-treatment.pdf"
+         data-extra="assets/soul-on-fire-teaser.mp4"
+         data-extra-label="Watch Teaser"
+         data-img="assets/soul-on-fire-poster.jpg">
+      <div class="work-image" style="background-image:url('assets/soul-on-fire-poster.jpg')" aria-hidden="true"></div>
+      <div class="work-content">
+        <h4 class="work-title">Soul on Fire: The Anthem of a Stolen Generation</h4>
+        <button class="view-details-btn" aria-label="View project details for Soul on Fire">View Project Details</button>
+        <div class="work-details">
+          <div class="work-genre">Limited Series</div>
+          <div class="work-year">2026</div>
+          <p class="work-description">Set in 1970s Atlanta, a brilliant soul singer fights a system that monetizes her voice while erasing her authorship. To reclaim her art and future, she must outwit the label that owns her songs—and her story.</p>
+          <a class="work-link" data-modal="details" href="pitch-decks/soul_on_fire_pitch_deck.pdf" target="_blank" rel="noopener">View Full Details &amp; Download</a>
 </div>
 </div>
 </div>
