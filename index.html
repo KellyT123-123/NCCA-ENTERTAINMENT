@@ -863,6 +863,92 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 }
 .modal__btn--ghost:hover { background: rgba(255,255,255,0.14); }
 
+
+/* === Enhancements: Visual Storytelling, Navigation, Title Hierarchy === */
+.work-image {
+    transition: transform 0.4s ease;
+}
+.work-card:hover .work-image {
+    transform: scale(1.05);
+}
+.work-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Anchor navigation for portfolio categories */
+.portfolio-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0 2.25rem;
+}
+.portfolio-nav a {
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+    padding: 0.5rem 0.9rem;
+    border-radius: 20px;
+    transition: background 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+.portfolio-nav a:hover,
+.portfolio-nav a:focus {
+    background: var(--brand, #9b5cff);
+    color: #0a0613;
+}
+
+/* Stronger project title hierarchy & hover state */
+.work-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+.work-card:hover .work-title {
+    color: var(--brand, #9b5cff);
+}
+
+
+/* === Back-to-Top Button & Scroll-Spy Active State === */
+.back-to-top{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+  background: var(--brand, #9b5cff);
+  color: #0a0613;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateY(10px);
+  z-index: 10000;
+}
+.back-to-top.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.back-to-top:focus{ outline: 2px solid #fff; outline-offset: 2px; }
+
+/* Active category pill */
+.portfolio-nav a.is-active,
+.portfolio-nav a[aria-current="true"]{
+  background: var(--brand, #9b5cff);
+  color: #0a0613;
+}
+
 </style>
 <!-- Favicon -->
 
@@ -944,9 +1030,18 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 <div class="container">
 <h2 class="section-title">FEATURED</h2>
 <p class="section-intro">An extensive collection of 52 cinematic projects spanning multiple genres action, comedy, drama, thriller, horror, romance, Film Noir, streaming docuseries and Feature films.</p>
+<nav class="portfolio-nav" aria-label="Portfolio categories">
+  <a href="#southern-gothic">Southern Gothic</a>
+  <a href="#drama">Drama</a>
+  <a href="#thriller">Thriller</a>
+  <a href="#romance">Romance</a>
+  <a href="#comedy">Comedy</a>
+  <a href="#christmas">Christmas</a>
+</nav>
+
 <!-- Southern Gothic / Drama -->
 <div class="genre-section">
-<h3 class="genre-title">Southern Gothic / Drama</h3><div class="works-grid">
+<h3 id="southern-gothic" class="genre-title">Southern Gothic / Drama</h3><div class="works-grid">
 <div class="work-card" data-deck="pitch-decks/the_last_dynasty_pitch_deck.pdf" data-project="the_last_dynasty" data-download="assets/the-last-dynasty-treatment.pdf" data-extra="assets/the-last-dynasty-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/the-last-dynasty-poster.jpg">
 <div class="work-image" style="background-image: url('the_last_dynasty_poster.png');"></div>
 <div class="work-content">
@@ -975,7 +1070,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 </div>
 <!-- Drama -->
 <div class="genre-section">
-<h3 class="genre-title">Drama</h3>
+<h3 id="drama" class="genre-title">Drama</h3>
 <div class="works-grid">
 <div class="work-card" data-deck="pitch-decks/this_is_me_now_pitch_deck.pdf" data-project="this_is_me_now" data-download="assets/this-is-me-now-treatment.pdf" data-extra="assets/this-is-me-now-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/this-is-me-now-poster.jpg">
 <div class="work-image" style="background-image: url('images/this-is-me-now.png');"></div>
@@ -1065,7 +1160,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 </div>
 <!-- Thriller -->
 <div class="genre-section">
-<h3 class="genre-title">Thriller</h3>
+<h3 id="thriller" class="genre-title">Thriller</h3>
 <div class="works-grid">
 <div class="work-card" data-deck="pitch-decks/the_double_cross_pitch_deck.pdf" data-project="the_double_cross" data-download="assets/the-double-cross-treatment.pdf" data-extra="assets/the-double-cross-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/the-double-cross-poster.jpg">
 <div class="work-image" style="background-image: url('the_double_cross_poster.png');"></div>
@@ -1203,7 +1298,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 </div>
 <!-- Romance -->
 <div class="genre-section">
-<h3 class="genre-title">Romance</h3>
+<h3 id="romance" class="genre-title">Romance</h3>
 <div class="works-grid">
 <div class="work-card" data-deck="pitch-decks/southern_discomfort_pitch_deck.pdf" data-project="southern_discomfort" data-download="assets/southern-discomfort-treatment.pdf" data-extra="assets/southern-discomfort-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/southern-discomfort-poster.jpg">
 <div class="work-image" style="background-image: url('images/southern-discomfort.png');"></div>
@@ -1281,7 +1376,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 </div>
 <!-- Comedy -->
 <div class="genre-section">
-<h3 class="genre-title">Comedy</h3>
+<h3 id="comedy" class="genre-title">Comedy</h3>
 <div class="works-grid">
 <div class="work-card" data-deck="pitch-decks/miss_juneteenth_blues_pitch_deck.pdf" data-project="miss_juneteenth_blues" data-download="assets/miss-juneteenth-blues-treatment.pdf" data-extra="assets/miss-juneteenth-blues-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/miss-juneteenth-blues-poster.jpg">
 <div class="work-image" style="background-image: url('miss_juneteenth_blues_poster.png');"></div>
@@ -1347,7 +1442,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 </div>
 <!-- Christmas Stories -->
 <div class="genre-section">
-<h3 class="genre-title">Christmas Stories</h3>
+<h3 id="christmas" class="genre-title">Christmas Stories</h3>
 <div class="works-grid">
 <div class="work-card" data-deck="pitch-decks/spelman_christmas_pitch_deck.pdf" data-project="a_spelman_christmas" data-download="assets/a-spelman-christmas-treatment.pdf" data-extra="assets/a-spelman-christmas-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/a-spelman-christmas-poster.jpg">
 <div class="work-image" style="background-image: url('images/spelman-christmas.png');"></div>
@@ -2098,5 +2193,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<button class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 </body>
 </html>
