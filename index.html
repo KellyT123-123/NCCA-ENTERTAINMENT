@@ -1104,6 +1104,18 @@ footer { position: relative; }
 .materials .btn-chip:hover{ transform:translateY(-1px); background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.35); }
 .materials{ gap:.5rem; }
 
+
+
+/* --- Materials as buttons (v2) --- */
+.materials { display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; }
+.materials .btn-chip{ 
+  display:inline-block; padding:.45rem .7rem; border-radius:999px;
+  border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.08);
+  font-size:.78rem; line-height:1; text-decoration:none; color:var(--brand-ink,#F2E6D0);
+  transition:transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.materials .btn-chip:hover{ transform:translateY(-1px); background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.35); }
+
 </style>
 <!-- Favicon -->
 <!-- Social Preview -->
@@ -2497,42 +2509,77 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <script>
+// Tiles standardizer v2: remove status badge, dedupe Genre, split "Deck Teaser" combo into two real buttons.
 document.addEventListener('DOMContentLoaded', function(){
-  const findCard = (el)=> el.closest('.work-card');
+  const clean = (s)=> (s||'').trim();
+  const sameText = (a,b)=> clean(a).toLowerCase() === clean(b).toLowerCase();
+
+  // 0) If a previous script rendered status badges, remove them
+  document.querySelectorAll('.badge--status').forEach(el=> el.remove());
+
+  // 1) De-duplicate Genre if it matches Format (e.g., both "Docuseries")
+  document.querySelectorAll('.meta-row').forEach(row=>{
+    const format = row.querySelector('.badge--format')?.textContent || '';
+    const genreB = row.querySelector('.badge--genre');
+    if(genreB && sameText(genreB.textContent, format)){
+      genreB.remove();
+    }
+  });
+
+  // 2) Convert any stray "Deck Teaser" combined link to separate buttons
   const makeBtn = (label, href, cls)=>{
     const a = document.createElement('a');
     a.className = 'btn-chip ' + cls;
     a.textContent = label;
-    a.href = href;
-    a.target = '_blank';
-    a.rel = 'noopener';
+    a.href = href; a.target = '_blank'; a.rel = 'noopener';
     return a;
   };
   const ensureMaterials = (card)=>{
     let meta = card.querySelector('.meta-row');
     if(!meta){
-      meta = document.createElement('div'); meta.className = 'meta-row';
+      meta = document.createElement('div'); meta.className='meta-row';
       const content = card.querySelector('.work-content');
       (content?.querySelector('.work-details') || content)?.append(meta);
     }
     let mats = card.querySelector('.materials');
-    if(!mats){ mats = document.createElement('div'); mats.className = 'materials'; meta.appendChild(mats); }
+    if(!mats){ mats = document.createElement('div'); mats.className='materials'; meta.appendChild(mats); }
     return mats;
   };
 
-  document.querySelectorAll('a').forEach(a=>{
-    const t = (a.textContent || '').toLowerCase().replace(/\s+/g,' ').trim();
-    if(t.includes('deck') && t.includes('teaser') && !a.classList.contains('mat--deck') && !a.classList.contains('mat--teaser')){
-      const card = findCard(a);
-      if(!card) return;
-      const deck = card.dataset.deck;
-      const teaser = card.dataset.extra;
-      if(!deck && !teaser) return;
-      const mats = ensureMaterials(card);
-      if(deck) mats.appendChild(makeBtn('Deck', deck, 'mat--deck'));
-      if(teaser) mats.appendChild(makeBtn('Teaser', teaser, 'mat--teaser'));
-      a.parentNode.removeChild(a);
-    }
+  document.querySelectorAll('.work-card').forEach(card=>{
+    const deck = card.dataset.deck;
+    const teaser = card.dataset.extra;
+    const script = card.dataset.script;
+
+    // Split any combined link inside this card
+    card.querySelectorAll('a').forEach(a=>{
+      const t = (a.textContent||'').toLowerCase();
+      if(t.includes('deck') && t.includes('teaser') && !a.classList.contains('mat--deck') && !a.classList.contains('mat--teaser')){
+        const mats = ensureMaterials(card);
+        if(deck){ mats.appendChild(makeBtn('Deck', deck, 'mat--deck')); }
+        if(script){ mats.appendChild(makeBtn('Script', script, 'mat--script')); }
+        if(teaser){ mats.appendChild(makeBtn('Teaser', teaser, 'mat--teaser')); }
+        a.remove();
+      }
+    });
+
+    // Ensure Materials buttons exist when data-* is present
+    const mats = ensureMaterials(card);
+    const need = [
+      ['mat--deck','Deck', deck],
+      ['mat--script','Script', script],
+      ['mat--teaser','Teaser', teaser],
+    ];
+    need.forEach(([cls,label,href])=>{
+      if(!href) return;
+      let btn = mats.querySelector('.'+cls);
+      if(!btn){
+        mats.appendChild(makeBtn(label, href, cls));
+      }else{ // normalize targets/rel
+        btn.href = href; btn.target = '_blank'; btn.rel = 'noopener';
+        btn.classList.add('btn-chip');
+      }
+    });
   });
 });
 </script>
