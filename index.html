@@ -2433,7 +2433,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 </script>
-
 <script>
 (function(){
   const isValid = (href)=> href && href !== '#' && !href.startsWith('http') ? true : !!href;
@@ -2495,6 +2494,47 @@ document.addEventListener('DOMContentLoaded', () => {
     ensureBtn('mat--teaser','Teaser', teaser);
   });
 })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const findCard = (el)=> el.closest('.work-card');
+  const makeBtn = (label, href, cls)=>{
+    const a = document.createElement('a');
+    a.className = 'btn-chip ' + cls;
+    a.textContent = label;
+    a.href = href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    return a;
+  };
+  const ensureMaterials = (card)=>{
+    let meta = card.querySelector('.meta-row');
+    if(!meta){
+      meta = document.createElement('div'); meta.className = 'meta-row';
+      const content = card.querySelector('.work-content');
+      (content?.querySelector('.work-details') || content)?.append(meta);
+    }
+    let mats = card.querySelector('.materials');
+    if(!mats){ mats = document.createElement('div'); mats.className = 'materials'; meta.appendChild(mats); }
+    return mats;
+  };
+
+  document.querySelectorAll('a').forEach(a=>{
+    const t = (a.textContent || '').toLowerCase().replace(/\s+/g,' ').trim();
+    if(t.includes('deck') && t.includes('teaser') && !a.classList.contains('mat--deck') && !a.classList.contains('mat--teaser')){
+      const card = findCard(a);
+      if(!card) return;
+      const deck = card.dataset.deck;
+      const teaser = card.dataset.extra;
+      if(!deck && !teaser) return;
+      const mats = ensureMaterials(card);
+      if(deck) mats.appendChild(makeBtn('Deck', deck, 'mat--deck'));
+      if(teaser) mats.appendChild(makeBtn('Teaser', teaser, 'mat--teaser'));
+      a.parentNode.removeChild(a);
+    }
+  });
+});
 </script>
 </body>
 </html>
