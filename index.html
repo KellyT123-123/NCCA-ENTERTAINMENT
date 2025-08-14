@@ -1023,6 +1023,39 @@ footer { position: relative; }
 /* Extra spacing for additional hero CTAs */
 .hero .cta-buttons .btn{ margin: 0.25rem; }
 
+
+/* === Curated Collections (Network, Features, Docuseries) === */
+.curated-section{ margin: 2.5rem 0 3.5rem; }
+.curated-section h3{ text-align:center; color: var(--brand-ink); margin-bottom: 1rem; }
+.curated-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.work-link-card{
+  display:block;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow:hidden;
+  text-decoration:none;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+.work-link-card:hover{
+  transform: translateY(-3px);
+  border-color: var(--brand);
+  background: rgba(255,255,255,0.06);
+}
+.work-link-media{
+  aspect-ratio: 16/9;
+  background: #222 center/cover no-repeat;
+}
+.work-link-title{
+  padding: .8rem 1rem 1rem;
+  font-weight: 800;
+  color: var(--brand-ink);
+}
+
 </style>
 <!-- Favicon -->
 
@@ -1123,6 +1156,114 @@ footer { position: relative; }
   <a href="#christmas">Christmas</a>
 </nav>
 <!-- Format anchors -->
+    <section class="curated-section compact" id="network-series">
+      <div class="container">
+        <h3>Network Series — Spotlight</h3>
+        <div class="curated-grid">
+          
+    <a class="work-link-card" href="pitch-decks/the_feed_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('the_feed_poster.png')"></div>
+      <div class="work-link-title">The Feed</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/shadows_on_the_force_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/shadows-on-the-force.png')"></div>
+      <div class="work-link-title">Shadows on the Force</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/the_cipher_of_shadows_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/cipher-of-shadows.png')"></div>
+      <div class="work-link-title">The Cipher of Shadows</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/mother_interrupted_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/mother-interrupted.png')"></div>
+      <div class="work-link-title">Mother, Interrupted</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/blood_money_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/blood-money.png')"></div>
+      <div class="work-link-title">Blood Money</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/the_proxy_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/the-proxy.png')"></div>
+      <div class="work-link-title">The Proxy</div>
+    </a>
+    
+        </div>
+      </div>
+    </section>
+    
+    <section class="curated-section compact" id="features">
+      <div class="container">
+        <h3>Feature Films — Spotlight</h3>
+        <div class="curated-grid">
+          
+    <a class="work-link-card" href="pitch-decks/the_last_dynasty_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('the_last_dynasty_poster.png')"></div>
+      <div class="work-link-title">The Last Dynasty</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/southern_belles_secret_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/southern-belles-secret.png')"></div>
+      <div class="work-link-title">The Southern Belle's Secret</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/mirror_image_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/mirror-image.png')"></div>
+      <div class="work-link-title">Mirror Image</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/the_double_cross_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('the_double_cross_poster.png')"></div>
+      <div class="work-link-title">The Double Cross</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/southern_discomfort_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/southern-discomfort.png')"></div>
+      <div class="work-link-title">Southern (Dis)comfort</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/influencers_last_post_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/influencers-last-post.png')"></div>
+      <div class="work-link-title">The Influencer's Last Post</div>
+    </a>
+    
+        </div>
+      </div>
+    </section>
+    
+    <section class="curated-section compact" id="docuseries">
+      <div class="container">
+        <h3>Docuseries — Spotlight</h3>
+        <div class="curated-grid">
+          
+    <a class="work-link-card" href="pitch-decks/exposed_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/exposed.png')"></div>
+      <div class="work-link-title">Exposed</div>
+    </a>
+    
+
+    <a class="work-link-card" href="pitch-decks/digital_shadows_pitch_deck.pdf" target="_blank" rel="noopener">
+      <div class="work-link-media" style="background-image:url('images/digital-shadows.png')"></div>
+      <div class="work-link-title">Digital Shadows</div>
+    </a>
+    
+        </div>
+      </div>
+    </section>
+    
 <div id="features" style="position:relative; top:-40px;"></div>
 <div id="network-series" style="position:relative; top:-40px;"></div>
 <div id="docuseries" style="position:relative; top:-40px;"></div>
