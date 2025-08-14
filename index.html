@@ -710,64 +710,84 @@
         }
     
 /* ===== HEADINGS & WHITESPACE PASS ===== */
+
+/* === Southern Noir Brand Refresh === */
 :root{
-  --maxw: 1200px;
-  --space-xs: 8px;
-  --space-sm: 12px;
-  --space-md: 20px;
-  --space-lg: 40px;
-  --space-xl: 72px;
-  --rule: #262626;
+  --brand: #D48B3C;         /* Bourbon Amber (primary accent) */
+  --brand-ink: #F2E6D0;     /* Film Grain Ivory - headings/nav text accent */
+  --brand-bg: #0A0A0A;      /* Cinematic Black */
+  --brand-muted: #B9A98F;   /* Muted warm copy */
+  --brand-rule: rgba(255,255,255,0.10);
+  --brand-hover: #E3A463;   /* Lighter amber */
 }
 
-/* Typography rhythm */
-h1, h2, h3, h4 { line-height: 1.25; margin: 0 0 var(--space-sm); }
-h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; letter-spacing: -0.01em; }
-h2 { font-size: clamp(24px, 3.2vw, 36px); font-weight: 700; padding-bottom: var(--space-sm); border-bottom: 1px solid var(--rule); }
-h3 { font-size: clamp(18px, 2.2vw, 24px); font-weight: 700; }
-h4 { font-size: clamp(16px, 2vw, 20px); font-weight: 700; }
+body { background: var(--brand-bg); color: #f5f3ee; }
 
-/* Global section spacing + anchor offset for fixed header */
-section { padding: var(--space-xl) 0; scroll-margin-top: 90px; }
-section.compact { padding: var(--space-lg) 0; }
-
-/* Vertical rhythm helpers */
-.stack > * + * { margin-top: var(--space-md); }
-.stack-lg > * + * { margin-top: var(--space-lg); }
-.stack-sm > * + * { margin-top: var(--space-sm); }
-
-/* Section intro text (replaces inline style) */
-.section-intro {
-  text-align: center;
-  margin-bottom: 3rem;
-  color: #ccc;
-  max-width: 70ch;
-  margin-left: auto;
-  margin-right: auto;
+/* Header monogram watermark */
+header{
+  background:
+    rgba(0,0,0,0.85)
+    url('images/ncca-monogram.svg') no-repeat center/120px auto;
+  background-blend-mode: overlay;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  border-bottom: 1px solid var(--brand-rule);
 }
 
-/* Genre heading spacing */
-.genre-title { margin-bottom: var(--space-md); padding-bottom: var(--space-xs); }
+/* Hero + Footer film grain overlay */
+.hero::before,
+footer::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url('images/film-grain.png') repeat;
+  opacity:0.08;
+  pointer-events:none;
+}
+.hero{ position:relative; }
+footer{ position:relative; }
 
-/* Card/content spacing */
-.work-content { padding: 1.5rem; }
-.work-title { margin-bottom: var(--space-sm); }
+/* Headings color tweak */
+h1, h2, h3, h4 { color: var(--brand-ink); }
 
-/* Tighten footer area a bit */
-footer { padding: var(--space-lg) 0; }
-
-/* ===== BRAND PALETTE (Unified) =====
-   Adjust these four variables to re-skin the site in seconds. */
-:root{
-  --brand: #9b5cff;         /* Primary accent (amethyst) */
-  --brand-ink: #1a1325;     /* Headlines / nav text */
-  --brand-bg: #0c0c0f;      /* Page background (near-black) */
-  --brand-muted: #b7b1c6;   /* Supporting text */
-  --brand-rule: rgba(255,255,255,0.12);
-  --brand-hover: #b082ff;
+/* Buttons keep brand accent */
+.btn, .button, button, input[type="submit"]{
+  background: var(--brand);
+  color: #1b1004;
+}
+.btn.btn-secondary{
+  background: transparent;
+  color: var(--brand-ink);
+  border: 2px solid var(--brand-ink);
+}
+.btn.btn-secondary:hover{
+  background: var(--brand-ink);
+  color: #1b1004;
 }
 
-body { background: var(--brand-bg); color: #f2f2f5; }
+/* Portfolio pills active/hover harmonized */
+.portfolio-nav a{
+  background: rgba(255,255,255,0.06);
+  color: var(--brand-ink);
+}
+.portfolio-nav a:hover{
+  background: var(--brand);
+  color: #1b1004;
+}
+.portfolio-nav a.is-active,
+.portfolio-nav a[aria-current="true"]{
+  background: var(--brand);
+  color: #1b1004;
+}
+
+/* Card accents */
+.work-card{
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.work-content p,
+.section-intro,
+.muted { color: var(--brand-muted); }
+
+body { background: var(--brand-bg); color: #f5f3ee; }
 
 a { color: var(--brand); text-decoration: none; }
 a:hover, a:focus { color: var(--brand-hover); text-decoration: underline; }
@@ -949,6 +969,60 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
   color: #0a0613;
 }
 
+
+/* === Southern Noir Branding & Palette === */
+:root {
+  --brand: #D48B3C;         /* Bourbon Amber */
+  --brand-hover: #f2c48f;   /* Warm highlight */
+  --brand-bg: #0A0A0A;      /* Cinematic black */
+  --brand-muted: #b7b1c6;   /* Supporting text (keeping for contrast) */
+  --brand-rule: rgba(255,255,255,0.08);
+}
+
+header {
+  background: rgba(0,0,0,0.85) url('images/ncca-monogram.svg') no-repeat center/120px auto;
+  background-blend-mode: overlay;
+}
+
+.hero::before,
+footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('images/film-grain.png') repeat;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+footer { position: relative; }
+
+/* Adjust hero overlay to appear above grain */
+.hero-overlay { z-index: 1; }
+.hero-content { position: relative; z-index: 2; }
+
+/* Update buttons with new brand colors */
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--brand-hover);
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.btn-secondary:hover {
+  background: #fff;
+  color: #000;
+}
+
+
+/* Extra spacing for additional hero CTAs */
+.hero .cta-buttons .btn{ margin: 0.25rem; }
+
 </style>
 <!-- Favicon -->
 
@@ -1005,10 +1079,20 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 <div class="hero-content">
 <h1>NCCA <span>ENTERTAINMENT</span></h1>
 <p>Creating compelling stories through film that engage audiences, spark imagination, and resonate long after the credits roll.</p>
+
 <div class="cta-buttons">
 <a class="btn btn-primary" href="#portfolio">View Portfolio</a>
 <a class="btn btn-secondary" href="#contact">Get In Touch</a>
+<a class="btn btn-primary" href="#network-series">Network Series</a>
+<a class="btn btn-primary" href="#feature-films">Feature</a>
+<a class="btn btn-primary" href="#docuseries">Docuseries</a>
+
+<a class="btn btn-secondary" href="#network-series">Network Series</a>
+<a class="btn btn-secondary" href="#features">Feature</a>
+<a class="btn btn-secondary" href="#docuseries">Docuseries</a>
+
 </div>
+
 </div>
 <div class="cycling-indicator">
 <div class="cycling-dot active"></div>
@@ -1038,6 +1122,11 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
   <a href="#comedy">Comedy</a>
   <a href="#christmas">Christmas</a>
 </nav>
+<!-- Format anchors -->
+<div id="features" style="position:relative; top:-40px;"></div>
+<div id="network-series" style="position:relative; top:-40px;"></div>
+<div id="docuseries" style="position:relative; top:-40px;"></div>
+
 
 <!-- Southern Gothic / Drama -->
 <div class="genre-section">
@@ -1748,7 +1837,7 @@ nav, .navbar, header { background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); 
 <div class="stats">
 <div class="stat">
 <span class="stat-number">52+</span>
-<span class="stat-label">Projects available</span>
+<span class="stat-label">Projects 52</span>
 </div>
 <div class="stat">
 <span class="stat-number">25+</span>
