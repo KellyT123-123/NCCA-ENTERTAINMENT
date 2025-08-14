@@ -1072,6 +1072,23 @@ footer { position: relative; }
 .contact .form-group textarea {
   font-size: 1.05rem;
 }
+
+
+/* --- Tile metadata & talent (standardized) --- */
+.meta-row, .talent-row { display:flex; flex-wrap:wrap; gap:.4rem .6rem; margin-top:.5rem; align-items:center; }
+.badge {
+  font-size:.72rem; line-height:1; padding:.35rem .55rem; border-radius:999px;
+  background: rgba(255,255,255,.08); color: var(--brand-ink, #F2E6D0); border:1px solid rgba(255,255,255,.12);
+}
+.badge--format { background: rgba(212,139,60,.15); border-color: rgba(212,139,60,.35); }
+.badge--status { background: rgba(255,255,255,.06); }
+.badge--genre  { background: rgba(255,255,255,.06); }
+.materials { display:flex; gap:.6rem; margin-left:auto; }
+.materials a { font-size:.72rem; text-decoration:none; opacity:.9; }
+.materials a:hover { opacity:1; text-decoration:underline; }
+.work-link-card .work-link-title { margin-bottom:.35rem; }
+.work-link-card .talent-row { margin-top:.25rem; font-size:.8rem; opacity:.9; }
+
 </style>
 <!-- Favicon -->
 <!-- Social Preview -->
@@ -1635,26 +1652,26 @@ footer { position: relative; }
 <div class="genre-section">
 <h3 class="genre-title">Network Series</h3>
 <div class="works-grid">
-<div class="work-card" data-deck="pitch-decks/just_jack_pitch_deck.pdf" data-download="assets/just-jack-treatment.pdf" data-extra="assets/just-jack-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/just-jack-poster.jpg" data-project="just_jack">
+<div class="work-card" data-deck="pitch-decks/just_jack_pitch_deck.pdf" data-download="assets/just-jack-treatment.pdf" data-extra="assets/just-jack-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/just-jack-poster.jpg" data-locations="ATL" data-producer="NCCA" data-project="just_jack" data-talent="Jason Sudeikis, Marsai Martin">
 <div class="work-image" style="background-image: url('images/just-jack.png');"></div>
 <div class="work-content">
 <h4 class="work-title">Just Jack</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Comedy</div>
 <div class="work-year">2026</div>
-<p class="work-description">A heartwarming family comedy created by Kelly R. Tenney and Jodi Williams. This charming series explores family dynamics, friendship, and growing up with humor and heart, featuring an ensemble cast that brings authentic relationships to life.</p>
+<p class="work-description">A warm‑hearted family comedy where grown‑up stakes sneak in through the laughs; every episode ends with an emotional punchline—and Jack learns he’s the chaos he’s fixing.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/just_jack_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
 </div>
-<div class="work-card" data-deck="pitch-decks/echo_chamber_pitch_deck.pdf" data-download="assets/echo-chamber-treatment.pdf" data-extra="assets/echo-chamber-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/echo-chamber-poster.jpg" data-project="echo_chamber">
+<div class="work-card" data-deck="pitch-decks/echo_chamber_pitch_deck.pdf" data-download="assets/echo-chamber-treatment.pdf" data-extra="assets/echo-chamber-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/echo-chamber-poster.jpg" data-locations="LA" data-producer="NCCA" data-project="echo_chamber" data-talent="Tessa Thompson, John Boyega">
 <div class="work-image" style="background-image: url('images/echo-chamber.png');"></div>
 <div class="work-content">
 <h4 class="work-title">Echo Chamber</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Series</div>
 <div class="work-year">2026</div>
-<p class="work-description">In a near future society obsessed with personalization, influence and optimization, Echo Chamber explores the twisted consequences of living in a world where your reality is shaped by algorithms, and your identity is no longer yours alone.</p>
+<p class="work-description">In a near‑future optimized by algorithms, a privacy lawyer uncovers a platform that edits memories. To save her brother, she must hack the story everyone believes about him.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/echo_chamber_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
@@ -1671,26 +1688,26 @@ footer { position: relative; }
 </div>
 </div>
 </div>
-<div class="work-card" data-deck="pitch-decks/the_archive_pitch_deck.pdf" data-download="assets/the-archive-treatment.pdf" data-extra="assets/the-archive-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/the-archive-poster.jpg" data-project="the_archive">
+<div class="work-card" data-deck="pitch-decks/the_archive_pitch_deck.pdf" data-download="assets/the-archive-treatment.pdf" data-extra="assets/the-archive-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/the-archive-poster.jpg" data-locations="ATL/LA" data-producer="NCCA" data-project="the_archive" data-talent="Sterling K. Brown, Tatiana Maslany">
 <div class="work-image" style="background-image: url('images/the-archive.png');"></div>
 <div class="work-content">
 <h4 class="work-title">The Archive</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Series</div>
 <div class="work-year">2026</div>
-<p class="work-description">A thought-provoking drama about memory, history, and the stories we choose to preserve. Explores themes of legacy and the importance of documenting our experiences.</p>
+<p class="work-description">A renegade historian runs a secret archive of suppressed stories. When a tech giant buys the collection, he must outsmart its lawyers to keep history unedited.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/the_archive_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
 </div>
-<div class="work-card" data-deck="pitch-decks/refractions_pitch_deck.pdf" data-download="assets/refractions-treatment.pdf" data-extra="assets/refractions-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/refractions-poster.jpg" data-project="refractions">
+<div class="work-card" data-deck="pitch-decks/refractions_pitch_deck.pdf" data-download="assets/refractions-treatment.pdf" data-extra="assets/refractions-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/refractions-poster.jpg" data-locations="LA" data-producer="NCCA" data-project="refractions" data-talent="Riz Ahmed, Mackenzie Davis">
 <div class="work-image" style="background-image: url('images/refractions.png');"></div>
 <div class="work-content">
 <h4 class="work-title">Refractions</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Series</div>
 <div class="work-year">2026</div>
-<p class="work-description">A compelling drama that examines how perspective shapes reality. Through interconnected storylines, the film explores how the same events can be viewed differently by different people.</p>
+<p class="work-description">An incident seen from five clashing perspectives becomes a weekly engine: each episode reframes the truth until the season exposes who’s manipulating the narrative.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/refractions_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
@@ -1701,14 +1718,14 @@ footer { position: relative; }
 <div class="genre-section">
 <h3 class="genre-title">Limited Series</h3>
 <div class="works-grid">
-<div class="work-card" data-deck="pitch-decks/sinners_and_saints_pitch_deck.pdf" data-download="assets/sinners-saints-treatment.pdf" data-extra="assets/sinners-saints-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/sinners-saints-poster.jpg" data-project="sinners_andamp_saints">
+<div class="work-card" data-deck="pitch-decks/sinners_and_saints_pitch_deck.pdf" data-download="assets/sinners-saints-treatment.pdf" data-extra="assets/sinners-saints-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/sinners-saints-poster.jpg" data-locations="ATL" data-producer="NCCA" data-project="sinners_andamp_saints" data-talent="Aja Naomi King, Trevante Rhodes">
 <div class="work-image" style="background-image: url('sinners_and_saints_poster.png');"></div>
 <div class="work-content">
 <h4 class="work-title">Sinners &amp; Saints</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Limited Series / MOW</div>
 <div class="work-year">2026</div>
-<p class="work-description">A preacher's daughter marries a reformed ex-con and tries to build a new life but when his past catches up to them, she must decide if love is worth saving a man the world has written off.</p>
+<p class="work-description">A preacher’s daughter marries a reformed ex‑con. When his past hunts them down, she must decide if saving him means losing the life she swore to live.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/sinners_andamp_saints_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
@@ -1720,7 +1737,7 @@ footer { position: relative; }
 <div class="work-details">
 <div class="work-genre">Limited Series</div>
 <div class="work-year">2026</div>
-<p class="work-description">Set in 1970s Atlanta, this isn't just another rise-and-fall music story. "Soul on Fire" is about cultural theft on an industrial scale, how the American music business was built on appropriating Black artistry while systematically destroying Black artists. It's about a woman who discovers that her voice, her songs, even her pain have become commodities to be bought, sold and locked away forever.</p>
+<p class="work-description">In 1970s Atlanta, a brilliant soul singer battles a machine that steals Black artistry. To reclaim her voice, she must outwit the label that owns her songs—and her future.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/soul_on_fire_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
@@ -1731,74 +1748,74 @@ footer { position: relative; }
 <div class="genre-section">
 <h3 class="genre-title">Feature - Action</h3>
 <div class="works-grid">
-<div class="work-card" data-deck="pitch-decks/the_architect_pitch_deck.pdf" data-download="assets/the-architect-treatment.pdf" data-extra="assets/the-architect-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/the-architect-poster.jpg" data-project="the_architect">
+<div class="work-card" data-deck="pitch-decks/the_architect_pitch_deck.pdf" data-download="assets/the-architect-treatment.pdf" data-extra="assets/the-architect-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/the-architect-poster.jpg" data-locations="ATL/LA" data-producer="NCCA" data-project="the_architect" data-talent="Ana de Armas, Pedro Pascal">
 <div class="work-image" style="background-image: url('images/the-architect.png');"></div>
 <div class="work-content">
 <h4 class="work-title">The Architect</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Action</div>
 <div class="work-year">2026</div>
-<p class="work-description">When a serial killer targeting corrupt elites is revealed to be her supposedly dead partner, a disgraced detective must choose between upholding the law or joining his brutal crusade to replace the city's broken system with his own brand of justice.</p>
+<p class="work-description">A disgraced detective learns the city’s vigilante is her ‘dead’ ex-partner. To stop a purge of corrupt elites, she must choose the badge—or the only person who ever matched her ruthlessness.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/the_architect_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
 </div>
-<div class="work-card" data-deck="pitch-decks/queen_of_thorns_pitch_deck.pdf" data-download="assets/queen-of-thorns-treatment.pdf" data-extra="assets/queen-of-thorns-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/queen-of-thorns-poster.jpg" data-project="queen_of_thorns">
+<div class="work-card" data-deck="pitch-decks/queen_of_thorns_pitch_deck.pdf" data-download="assets/queen-of-thorns-treatment.pdf" data-extra="assets/queen-of-thorns-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/queen-of-thorns-poster.jpg" data-locations="ATL/LA" data-producer="NCCA" data-project="queen_of_thorns" data-talent="Charlize Theron, Wagner Moura">
 <div class="work-image" style="background-image: url('images/queen-of-thorns.png');"></div>
 <div class="work-content">
 <h4 class="work-title">Queen of Thorns</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Action</div>
 <div class="work-year">2026</div>
-<p class="work-description">Framed for a global catastrophe by her closest confidant, a ruthless arms dealer must dismantle the empire she unknowingly built on lies and a devastating superweapon to clear her name and confront the monstrous truth of her past.</p>
+<p class="work-description">Framed by her lover and second‑in‑command, a lethal arms broker must dismantle the syndicate she built—and decide whether revenge is worth burning her last clean ally.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/queen_of_thorns_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
 </div>
-<div class="work-card" data-deck="pitch-decks/ghostmaker_pitch_deck.pdf" data-download="assets/ghostmaker-treatment.pdf" data-extra="assets/ghostmaker-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/ghostmaker-poster.jpg" data-project="ghostmaker">
+<div class="work-card" data-deck="pitch-decks/ghostmaker_pitch_deck.pdf" data-download="assets/ghostmaker-treatment.pdf" data-extra="assets/ghostmaker-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/ghostmaker-poster.jpg" data-locations="ATL" data-producer="NCCA" data-project="ghostmaker" data-talent="Elizabeth Olsen, Lakeith Stanfield">
 <div class="work-image" style="background-image: url('images/the-ghostmaker.png');"></div>
 <div class="work-content">
 <h4 class="work-title">Ghostmaker</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Action</div>
 <div class="work-year">2026</div>
-<p class="work-description">A rogue CIA operative who once specialized in erasing people from history discovers her own identity was a fabrication, volunteered by a man who loved the woman she now unknowingly impersonates. Hunted by the agency she once served, she must destroy the very system she helped build or become its final, perfect ghost.</p>
+<p class="work-description">A forensic sculptor who reconstructs faces from bone realizes her latest victim is still alive—and that someone is remaking the living to erase the past.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/ghostmaker_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
 </div>
-<div class="work-card" data-deck="pitch-decks/blood_covenant_pitch_deck.pdf" data-download="assets/blood-covenant-treatment.pdf" data-extra="assets/blood-covenant-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/blood-covenant-poster.jpg" data-project="blood_covenant">
+<div class="work-card" data-deck="pitch-decks/blood_covenant_pitch_deck.pdf" data-download="assets/blood-covenant-treatment.pdf" data-extra="assets/blood-covenant-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/blood-covenant-poster.jpg" data-locations="ATL/LA" data-producer="NCCA" data-project="blood_covenant" data-talent="Mahershala Ali, Danielle Deadwyler">
 <div class="work-image" style="background-image: url('images/blood-covenant.png');"></div>
 <div class="work-content">
 <h4 class="work-title">Blood Covenant</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Action</div>
 <div class="work-year">2026</div>
-<p class="work-description">When a retired assassin haunted by his past teams up with a relentless journalist investigating her sister's death, they uncover a global conspiracy led by a secretive brotherhood manipulating world governments. But as personal ties to the cabal emerge, they must decide: expose the truth and lose everything, or vanish into legend as the villains history demands.</p>
+<p class="work-description">Bound by a childhood oath, two men climb a criminal ladder until one becomes a pastor. When the syndicate demands blood, both must decide which covenant they’ll keep.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/blood_covenant_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
 </div>
-<div class="work-card" data-deck="pitch-decks/the_obsidian_codex_pitch_deck.pdf" data-download="assets/the-obsidian-codex-treatment.pdf" data-extra="assets/the-obsidian-codex-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/the-obsidian-codex-poster.jpg" data-project="the_obsidian_codex">
+<div class="work-card" data-deck="pitch-decks/the_obsidian_codex_pitch_deck.pdf" data-download="assets/the-obsidian-codex-treatment.pdf" data-extra="assets/the-obsidian-codex-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/the-obsidian-codex-poster.jpg" data-locations="LA/Mexico" data-producer="NCCA" data-project="the_obsidian_codex" data-talent="Oscar Isaac, Gugu Mbatha‑Raw">
 <div class="work-image" style="background-image: url('images/obsidian-codex.png');"></div>
 <div class="work-content">
 <h4 class="work-title">The Obsidian Codex</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Action</div>
 <div class="work-year">2026</div>
-<p class="work-description">A disgraced archaeological explorer and a brilliant, but guarded, cryptographer must race against a shadowy organization to uncover an ancient artifact that could either save humanity or unleash a catastrophic power, forcing them to confront their pasts and a betrayal that shattered their shared history.</p>
+<p class="work-description">A skeptical curator deciphers a pre‑Columbian manuscript that predicts murders hours before they happen. To stop the next death, she must trust a con man who can’t read.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/the_obsidian_codex_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
 </div>
-<div class="work-card" data-deck="pitch-decks/echoes_of_the_syndicate_pitch_deck.pdf" data-download="assets/echoes-of-the-syndicate-treatment.pdf" data-extra="assets/echoes-of-the-syndicate-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/echoes-of-the-syndicate-poster.jpg" data-project="echoes_of_the_syndicate">
+<div class="work-card" data-deck="pitch-decks/echoes_of_the_syndicate_pitch_deck.pdf" data-download="assets/echoes-of-the-syndicate-treatment.pdf" data-extra="assets/echoes-of-the-syndicate-teaser.mp4" data-extra-label="Watch Teaser" data-img="assets/echoes-of-the-syndicate-poster.jpg" data-locations="ATL/LA" data-producer="NCCA" data-project="echoes_of_the_syndicate" data-talent="Colin Farrell, Jurnee Smollett">
 <div class="work-image" style="background-image: url('images/echoes-of-the-syndicate.png');"></div>
 <div class="work-content">
 <h4 class="work-title">Echoes of the Syndicate</h4><button class="view-details-btn">View Project Details</button>
 <div class="work-details">
 <div class="work-genre">Action</div>
 <div class="work-year">2026</div>
-<p class="work-description">When a former elite hacker, presumed dead, resurfaces to warn her ex-partner, a disillusioned corporate security expert, about a vast, interconnected conspiracy within the very organization he now protects, they must navigate a web of deception and betrayal to expose the truth and find redemption in a world that believes them both to be traitors.</p>
+<p class="work-description">A fixer with an eidetic memory hears every lie as an echo. When a job reveals his own past was fabricated, he turns the syndicate’s playbook against its authors.</p>
 <a class="work-link" data-modal="details" href="pitch-decks/echoes_of_the_syndicate_pitch_deck.pdf" rel="noopener" target="_blank">View Full Details &amp; Download</a>
 </div>
 </div>
@@ -2335,5 +2352,76 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <button aria-label="Back to top" class="back-to-top" title="Back to top">↑</button>
+<script>
+(function(){
+  const inferFormat = (card)=>{
+    if (card.dataset.format) return card.dataset.format;
+    let sec = card.closest('.genre-section');
+    const title = sec ? (sec.querySelector('.genre-title')?.textContent || '') : '';
+    const t = title.toLowerCase();
+    if (t.includes('limited')) return 'Limited';
+    if (t.includes('docu')) return 'Docuseries';
+    if (t.includes('series')) return 'Series';
+    if (t.includes('feature')) return 'Feature';
+    return card.dataset.type || '';
+  };
+
+  const clean = (s)=> (s||'').trim();
+  const mk = (tag, cls, html)=>{ const el = document.createElement(tag); if(cls) el.className = cls; if(html) el.innerHTML = html; return el; };
+
+  document.querySelectorAll('.work-card').forEach(card=>{
+    const content = card.querySelector('.work-content');
+    if (!content || content.querySelector('.meta-row')) return;
+
+    const format = inferFormat(card);
+    const genre = clean(card.querySelector('.work-genre')?.textContent) || clean(card.dataset.genre);
+    const hasDeck = !!card.dataset.deck;
+    const hasScript = !!card.dataset.script;
+    const hasTeaser = !!card.dataset.extra;
+
+    let statusBits = [];
+    if (hasDeck) statusBits.push('Deck');
+    if (hasScript) statusBits.push('Script');
+    if (hasTeaser) statusBits.push('Teaser');
+    const status = statusBits.join(' • ');
+
+    const row = mk('div','meta-row');
+    if (format) row.appendChild(mk('span','badge badge--format', format));
+    if (genre)  row.appendChild(mk('span','badge badge--genre', genre));
+    if (status) row.appendChild(mk('span','badge badge--status', status));
+
+    const mats = mk('div','materials');
+    if (hasDeck)   { const a = mk('a','mat mat--deck','Deck'); a.href = card.dataset.deck; a.target = '_blank'; a.rel='noopener'; mats.appendChild(a); }
+    if (hasScript) { const a = mk('a','mat mat--script','Script'); a.href = card.dataset.script; a.target = '_blank'; a.rel='noopener'; mats.appendChild(a); }
+    if (hasTeaser) { const a = mk('a','mat mat--teaser','Teaser'); a.href = card.dataset.extra; a.target = '_blank'; a.rel='noopener'; mats.appendChild(a); }
+
+    if (mats.children.length) row.appendChild(mats);
+    const details = content.querySelector('.work-details');
+    content.insertBefore(row, details || null);
+  });
+
+  document.querySelectorAll('.curated-grid .work-link-card').forEach(tile=>{
+    const title = clean(tile.querySelector('.work-link-title')?.textContent);
+    if (!title || tile.querySelector('.talent-row')) return;
+    const mainTitle = Array.from(document.querySelectorAll('.work-card .work-title'))
+      .find(h => clean(h.textContent) === title);
+    if (!mainTitle) return;
+    const main = mainTitle.closest('.work-card');
+    const t = clean(main?.dataset.talent);
+    const p = clean(main?.dataset.producer);
+    const l = clean(main?.dataset.locations);
+
+    if (!t && !p && !l) return;
+    const bits = [];
+    if (t) bits.push('Target: ' + t);
+    if (p) bits.push('Producer: ' + p);
+    if (l) bits.push('Locations: ' + l);
+
+    const row = mk('div','talent-row', bits.join(' • '));
+    const titleEl = tile.querySelector('.work-link-title');
+    if (titleEl) titleEl.after(row);
+  });
+})();
+</script>
 </body>
 </html>
