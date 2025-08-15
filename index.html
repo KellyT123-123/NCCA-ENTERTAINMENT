@@ -2391,8 +2391,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (t.includes('feature')) return 'Feature';
     return card.dataset.type || '';
   };
-  const clean = (s)=> (s||'').trim();
-  const mk = (tag, cls, html)=>{ const el = document.createElement(tag); if(cls) el.className = cls; if(html) el.innerHTML = html; return el; };
+  const clean = (s)=> (s||'')
+    .toLowerCase()
+    .split(':')[0]              // ignore anything after colon
+    .replace(/[^a-z0-9]+/g,' ') // strip punctuation, collapse spaces
+    .trim();const mk = (tag, cls, html)=>{ const el = document.createElement(tag); if(cls) el.className = cls; if(html) el.innerHTML = html; return el; };
 
   // Main grid badges/materials
   document.querySelectorAll('.work-card').forEach(card=>{
