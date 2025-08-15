@@ -2511,8 +2511,12 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 // Tiles standardizer v2: remove status badge, dedupe Genre, split "Deck Teaser" combo into two real buttons.
 document.addEventListener('DOMContentLoaded', function(){
-  const clean = (s)=> (s||'').trim();
-  const sameText = (a,b)=> clean(a).toLowerCase() === clean(b).toLowerCase();
+  const clean = (s)=> (s||'')
+    .toLowerCase()
+    .split(':')[0]              // ignore anything after colon
+    .replace(/[^a-z0-9]+/g,' ') // strip punctuation, collapse spaces
+    .trim();
+  const sameText = (a,b)=> clean(a) === clean(b);
 
   // 0) If a previous script rendered status badges, remove them
   document.querySelectorAll('.badge--status').forEach(el=> el.remove());
