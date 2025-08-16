@@ -1202,66 +1202,105 @@ footer { position: relative; }
 <a href="#horror">Horror</a><a href="#christmas">Christmas</a>
 </nav>
 <!-- Format anchors -->
-<section class="curated-section compact" id="network-series">
-<div class="container">
-<h3>Network Series — Spotlight</h3>
+<section class="curated-section compact" id="Noir">
+  <div class="container">
+    <h3>Film Noir — Spotlight</h3>
 
     <!-- === Position 1: Divine Deception (alone) === -->
     <div class="curated-grid" aria-label="Spotlight Position 1">
       <a class="work-link-card" href="pitch-decks/divine_deception_pitch_deck.pdf" rel="noopener" target="_blank">
         <div class="work-link-media" style="background-image:url('images/divine_deception_poster.png')"></div>
         <div class="work-link-title">Divine Deception</div>
+        <!-- Inline fallback so something shows even if main-card data is missing.
+             The script will replace/append with data-talent/producer/locations if available. -->
+        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+
+        <!-- Trailer button -->
+        <div class="tile-actions">
+          <a class="btn-trailer" href="assets/divine_deception_trailer.mp4" target="_blank" rel="noopener">Watch Trailer</a>
+        </div>
+      </a>
+    </div>
+
+    <!-- === Position 2: Movie of the Week === -->
+    <h4 class="spotlight-subtitle" style="text-align:center; margin:.75rem 0 .5rem;">Movie of the Week</h4>
+
+    <div class="curated-grid" aria-label="Spotlight Position 2">
+      <a class="work-link-card" href="pitch-decks/this_is_me_now_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('images/this_is_me_now_poster.png')"></div>
+        <div class="work-link-title">This Is Me Now</div>
+        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+      </a>
+
+      <a class="work-link-card" href="pitch-decks/the_proxy_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('images/the_proxy_poster.png')"></div>
+        <div class="work-link-title">The Proxy</div>
+        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+      </a>
+
+      <a class="work-link-card" href="pitch-decks/atl_soul_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('images/atl_soul_poster.png')"></div>
+        <div class="work-link-title">ATL Soul</div>
+        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+      </a>
+
+      <a class="work-link-card" href="pitch-decks/mirror_image_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('images/mirror_image_poster.png')"></div>
+        <div class="work-link-title">Mirror Image</div>
+        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+      </a>
+
+      <!-- Position 2 — Row 2 -->
+      <a class="work-link-card" href="pitch-decks/the_last_dynasty_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('images/the_last_dynasty_poster.png')"></div>
+        <div class="work-link-title">The Last Dynasty</div>
+        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+      </a>
+
+      <a class="work-link-card" href="pitch-decks/rhythm_and_blues_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('images/rhythm_and_blues_poster.png')"></div>
+        <div class="work-link-title">Rhythm &amp; Blues</div>
+        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+      </a>
+
+      <a class="work-link-card" href="pitch-decks/hot_mess_express_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('images/hot_mess_express_poster.png')"></div>
+        <div class="work-link-title">Hot Mess Express</div>
+        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+      </a>
+
+      <a class="work-link-card" href="pitch-decks/the_influencers_last_post_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('images/the_influencers_last_post_poster.png')"></div>
+        <div class="work-link-title">The Influencer’s Last Post</div>
         <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
       </a>
     </div>
 
-    <!-- === Position 2: Movie of the Weeks === -->
-    <h4 class="spotlight-subtitle" style="text-align:center; margin:.75rem 0 .5rem;">Movie of the Weeks</h4>
-    <div class="curated-grid" aria-label="Spotlight Position 2">
-      <a class="work-link-card" href="pitch-decks/this_is_me_now_the_proxy_pitch_deck.pdf" rel="noopener" target="_blank">
-        <div class="work-link-media" style="background-image:url('images/this_is_me_now_the_proxy_poster.png')"></div>
-        <div class="work-link-title">This Is Me Now / The Proxy</div>
-        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+    <!-- === Position 3: Network Series — Spotlight (unchanged structure; fixed nesting) === -->
+    <h4 class="spotlight-subtitle" style="text-align:center; margin:.75rem 0 .5rem;">Network Series</h4>
+    <div class="curated-grid" aria-label="Spotlight Position 3">
+      <a class="work-link-card" href="pitch-decks/soul_on_fire_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('images/soul_on_fire_poster.png')"></div>
+        <div class="work-link-title">Soul On Fire</div>
       </a>
-      <a class="work-link-card" href="pitch-decks/atl_soul_mirror_image_pitch_deck.pdf" rel="noopener" target="_blank">
-        <div class="work-link-media" style="background-image:url('images/atl_soul_mirror_image_poster.png')"></div>
-        <div class="work-link-title">ATL Soul / Mirror Image</div>
-        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+      <a class="work-link-card" href="pitch-decks/refractions_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('assets/refractions-poster.jpg')"></div>
+        <div class="work-link-title">Refractions</div>
       </a>
-      <a class="work-link-card" href="pitch-decks/the_last_dynasty_the_influencers_last_post_pitch_deck.pdf" rel="noopener" target="_blank">
-        <div class="work-link-media" style="background-image:url('images/the_last_dynasty_influencers_last_post_poster.png')"></div>
-        <div class="work-link-title">The Last Dynasty / The Influencer’s Last Post</div>
-        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+      <a class="work-link-card" href="pitch-decks/the_archive_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('assets/the-archive-poster.jpg')"></div>
+        <div class="work-link-title">The Archive</div>
       </a>
-      <a class="work-link-card" href="pitch-decks/rhythm_and_blues_hot_mess_express_pitch_deck.pdf" rel="noopener" target="_blank">
-        <div class="work-link-media" style="background-image:url('images/rhythm_and_blues_hot_mess_express_poster.png')"></div>
-        <div class="work-link-title">Rhythm &amp; Blues / Hot Mess Express</div>
-        <div class="talent-row">Producer: K Tenney • Locations: ATL</div>
+      <a class="work-link-card" href="pitch-decks/just_jack_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('images/just-jack.png')"></div>
+        <div class="work-link-title">Just Jack</div>
+      </a>
+      <a class="work-link-card" href="pitch-decks/echo_chamber_pitch_deck.pdf" rel="noopener" target="_blank">
+        <div class="work-link-media" style="background-image:url('assets/echo-chamber-poster.jpg')"></div>
+        <div class="work-link-title">Echo Chamber</div>
       </a>
     </div>
-<div class="curated-grid"><a class="work-link-card" href="pitch-decks/soul_on_fire_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('images/soul_on_fire_poster.png')"></div><div class="work-link-title">Soul on Fire</div></a><a class="work-link-card" href="pitch-decks/sinners_and_saints_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('sinners_and_saints_poster.png')"></div><div class="work-link-title">Sinners &amp; Saints</div></a><a class="work-link-card" href="pitch-decks/refractions_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('assets/refractions-poster.jpg')"></div><div class="work-link-title">Refractions</div></a><a class="work-link-card" href="pitch-decks/the_archive_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('assets/the-archive-poster.jpg')"></div><div class="work-link-title">The Archive</div></a><a class="work-link-card" href="pitch-decks/just_jack_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('images/just-jack.png')"></div><div class="work-link-title">Just Jack</div></a><a class="work-link-card" href="pitch-decks/echo_chamber_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('assets/echo-chamber-poster.jpg')"></div><div class="work-link-title">Echo Chamber</div></a></div>
-</div>
-</section>
-<section class="curated-section compact" id="features">
-<div class="container">
-<h3>Feature Films — Spotlight</h3>
-<div class="curated-grid"><a class="work-link-card" href="pitch-decks/the_architect_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('images/the-architect.png')"></div><div class="work-link-title">The Architect</div></a><a class="work-link-card" href="pitch-decks/queen_of_thorns_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('assets/queen-of-thorns-poster.jpg')"></div><div class="work-link-title">Queen of Thorns</div></a><a class="work-link-card" href="pitch-decks/ghostmaker_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('assets/ghostmaker-poster.jpg')"></div><div class="work-link-title">Ghostmaker</div></a><a class="work-link-card" href="pitch-decks/blood_covenant_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('assets/blood-covenant-poster.jpg')"></div><div class="work-link-title">Blood Covenant</div></a><a class="work-link-card" href="pitch-decks/the_obsidian_codex_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('assets/the-obsidian-codex-poster.jpg')"></div><div class="work-link-title">The Obsidian Codex</div></a><a class="work-link-card" href="pitch-decks/echoes_of_the_syndicate_pitch_deck.pdf" rel="noopener" target="_blank"><div class="work-link-media" style="background-image:url('assets/echoes-of-the-syndicate-poster.jpg')"></div><div class="work-link-title">Echoes of the Syndicate</div></a></div>
-</div>
-</section>
-<section class="curated-section compact" id="docuseries">
-<div class="container">
-<h3>Docuseries — Spotlight</h3>
-<div class="curated-grid">
-<a class="work-link-card" href="pitch-decks/exposed_pitch_deck.pdf" rel="noopener" target="_blank">
-<div class="work-link-media" style="background-image:url('images/exposed.png')"></div>
-<div class="work-link-title">Exposed</div>
-</a>
-<a class="work-link-card" href="pitch-decks/digital_shadows_pitch_deck.pdf" rel="noopener" target="_blank">
-<div class="work-link-media" style="background-image:url('images/digital-shadows.png')"></div>
-<div class="work-link-title">Digital Shadows</div>
-</a>
-</div>
-</div>
+  </div>
 </section>
 <div id="features" style="position:relative; top:-40px;"></div>
 <div id="network-series" style="position:relative; top:-40px;"></div>
