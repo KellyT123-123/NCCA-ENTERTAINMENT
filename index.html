@@ -1171,7 +1171,7 @@ footer { position: relative; }
 <div class="hero-content">
 <h1>NCCA <span>ENTERTAINMENT</span></h1>
 <p>A boutique content studio delivering premium, culturally rich scripted series and films, where Atlanta’s soul meets global storytelling.</p>
-<div class="cta-buttons"><a class="btn btn-primary" href="#portfolio">View Portfolio</a><a class="btn btn-secondary" href="#contact">Get In Touch</a><a class="btn btn-primary" href="#network-series">Network Series</a><a class="btn btn-primary" href="#features">Feature</a><a class="btn btn-primary" href="#docuseries">Docuseries</a></div>
+<div class="cta-buttons"><a class="btn btn-primary" href="#Noir">View Portfolio</a><a class="btn btn-secondary" href="#contact">Get In Touch</a><a class="btn btn-primary" href="#network-series">Network Series</a></div>
 </div>
 <div class="cycling-indicator">
 <div class="cycling-dot active"></div>
@@ -1217,7 +1217,7 @@ footer { position: relative; }
 
         <!-- Trailer button -->
         <div class="tile-actions">
-          <a class="btn-trailer" href="assets/divine-deception-teaser.mp4" target="_blank" rel="noopener" onclick="openTrailer(event);" >Watch Trailer</a>
+          <a class="btn-trailer" href="assets/divine-deception-teaser.mp4" target="_blank" rel="noopener" onclick="openTrailer(event);"  onclick="openTrailer(event);" >Watch Trailer</a>
         </div>
       </a>
     </div>
@@ -2741,6 +2741,73 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   });
 })();
+</script>
+
+
+<!-- === Trailer Lightbox (Divine Deception only) === -->
+<style>
+  #trailerModal{display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:10000;
+    align-items:center; justify-content:center; padding:20px;}
+  #trailerModal .modal-inner{position:relative; width:min(960px, 94vw);}
+  #trailerModal .close-x{position:absolute; top:-44px; right:0; font-size:36px; color:#fff; cursor:pointer;}
+  #trailerVideo{width:100%; height:auto; display:block; border-radius:12px; background:#000;}
+  @media (max-width:600px){ #trailerModal .close-x{ top:-36px; font-size:30px; } }
+</style>
+<div id="trailerModal" role="dialog" aria-modal="true" aria-label="Divine Deception Trailer">
+  <div class="modal-inner">
+    <button class="close-x" aria-label="Close trailer" onclick="closeTrailer()">&times;</button>
+    <video id="trailerVideo" controls playsinline muted preload="metadata" poster="assets/divine-deception-poster.jpg">
+      <source src="assets/divine-deception-teaser.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
+</div>
+<script>
+  (function(){
+    const modal = document.getElementById('trailerModal');
+    const video = document.getElementById('trailerVideo');
+    window.openTrailer = function(e){
+      if(e) e.preventDefault();
+      modal.style.display = 'flex';
+      try { video.currentTime = 0; video.muted = true; video.play(); } catch(_) {}
+    };
+    window.closeTrailer = function(){
+      modal.style.display = 'none';
+      try { video.pause(); } catch(_) {}
+    };
+    // backdrop click closes
+    modal && modal.addEventListener('click', function(ev){
+      if(ev.target === modal){ closeTrailer(); }
+    });
+    // Esc to close
+    document.addEventListener('keydown', function(ev){
+      if(ev.key === 'Escape'){ closeTrailer(); }
+    });
+  })();
+</script>
+
+
+<script>
+  (function(){
+    const header = document.querySelector('header');
+    function headerOffset(){ return header ? header.offsetHeight : 0; }
+    function smoothGo(hash){
+      if(!hash) return;
+      const el = document.querySelector(hash);
+      if(!el) return;
+      const y = window.pageYOffset + el.getBoundingClientRect().top - headerOffset() - 12;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+    // Only hero CTA anchors
+    document.querySelectorAll('.hero a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        smoothGo(a.getAttribute('href'));
+      });
+    });
+    // Handle direct hash loads
+    if(location.hash){ setTimeout(()=>smoothGo(location.hash), 0); }
+  })();
 </script>
 
 </body></html>
