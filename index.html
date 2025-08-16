@@ -1217,7 +1217,7 @@ footer { position: relative; }
 
         <!-- Trailer button -->
         <div class="tile-actions">
-          <a <a class="btn-trailer" href="assets/divine-deception-teaser.mp4" target="_blank" rel="noopener">Watch Trailer</a></a>
+          <a class="btn-trailer" href="assets/divine-deception-teaser.mp4" target="_blank" rel="noopener" onclick="openTrailer(event);" >Watch Trailer</a>
         </div>
       </a>
     </div>
@@ -2663,5 +2663,84 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 });
 </script>
-</body>
-</html>
+
+<!-- === Trailer Lightbox (Divine Deception only) === -->
+<style>
+  #trailerModal{display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:10000;
+    align-items:center; justify-content:center; padding:20px;}
+  #trailerModal .modal-inner{position:relative; width:min(960px, 94vw);}
+  #trailerModal .close-x{position:absolute; top:-44px; right:0; font-size:36px; color:#fff; cursor:pointer;}
+  #trailerVideo{width:100%; height:auto; display:block; border-radius:12px; background:#000;}
+  @media (max-width:600px){ #trailerModal .close-x{ top:-36px; font-size:30px; } }
+</style>
+<div id="trailerModal" role="dialog" aria-modal="true" aria-label="Divine Deception Trailer">
+  <div class="modal-inner">
+    <button class="close-x" aria-label="Close trailer" onclick="closeTrailer()">&times;</button>
+    <video id="trailerVideo" controls preload="metadata">
+      <source src="assets/divine-deception-teaser.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
+</div>
+<script>
+  (function(){
+    const modal = document.getElementById('trailerModal');
+    const video = document.getElementById('trailerVideo');
+    window.openTrailer = function(e){
+      if(e) e.preventDefault();
+      modal.style.display = 'flex';
+      try { video.currentTime = 0; video.play(); } catch(_) {}
+    };
+    window.closeTrailer = function(){
+      modal.style.display = 'none';
+      try { video.pause(); } catch(_) {}
+    };
+    // Close on backdrop click
+    modal && modal.addEventListener('click', function(ev){
+      if(ev.target === modal){ closeTrailer(); }
+    });
+    // Close on ESC
+    document.addEventListener('keydown', function(ev){
+      if(ev.key === 'Escape'){ closeTrailer(); }
+    });
+  })();
+</script>
+
+<script>
+(function(){
+  const norm = (s)=>(s||'').toLowerCase().replace(/&amp;/g,'&').split(':')[0].replace(/[^a-z0-9]+/g,' ').trim();
+  const mains = Array.from(document.querySelectorAll('.work-card .work-title')).map(h=>{
+    const card = h.closest('.work-card'); return { key: norm(h.textContent), ds: card?.dataset||{} };
+  });
+  function best(key){
+    const c = mains.filter(m=> m.key===key || m.key.startsWith(key) || key.startsWith(m.key));
+    if(!c.length) return null;
+    return c.sort((a,b)=>{
+      const sa=(a.ds.talent?1:0)+(a.ds.producer?1:0)+(a.ds.locations?1:0);
+      const sb=(b.ds.talent?1:0)+(b.ds.producer?1:0)+(b.ds.locations?1:0);
+      return sb-sa;
+    })[0];
+  }
+  document.querySelectorAll('#Noir .curated-grid .work-link-card').forEach(tile=>{
+    const t = tile.querySelector('.work-link-title'); if(!t) return;
+    const k = norm(t.textContent); if(!k) return;
+    const hit = best(k); if(!hit) return;
+    const ds = hit.ds;
+    const parts = [];
+    if(ds.talent) parts.push('Target: '+ds.talent);
+    if(ds.producer) parts.push('Producer: '+ds.producer);
+    if(ds.locations) parts.push('Locations: '+ds.locations);
+    if(parts.length){
+      const row = tile.querySelector('.talent-row');
+      const text = parts.join(' • ');
+      if(row) row.textContent = text; else {
+        const div = document.createElement('div');
+        div.className = 'talent-row'; div.textContent = text;
+        t.insertAdjacentElement('afterend', div);
+      }
+    }
+  });
+})();
+</script>
+
+</body></html>
