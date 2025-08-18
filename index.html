@@ -88,7 +88,7 @@
 .platform-logo span{transform:scale(.95)}
 </style>
 <link href="/favicon.ico" rel="icon" sizes="any" type="image/x-icon"/><link href="favicon.ico" rel="icon" sizes="any" type="image/x-icon"/><link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/><link href="favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/><link href="apple-touch-icon.png" rel="apple-touch-icon"/><style>
-#heroBg{position:absolute;inset:0;background:#000 center/cover no-repeat;filter:brightness(.45);transition:background-image .6s ease-in-out;z-index:0}
+#heroBg{position:absolute;inset:0;background:#000 center/cover no-repeat;filter:brightness(.75);transition:background-image .6s ease-in-out;z-index:0}
 .hero .hero-inner{position:relative;z-index:2}
 .hero{position:relative;overflow:hidden}
 </style></head>
@@ -145,10 +145,6 @@
 </div>
 <h4 style="text-align:center;color:#fff;margin:1rem 0 .5rem">Spotlight 2</h4>
 <div class="grid"><article class="card" data-audience="Gen Z; Women 25–40" data-format="Series" data-genre="Network Series" data-platform="Paramount+ / Peacock / BET+ / OWN" data-title="The Line"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">The Line</div><div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge audience">Gen Z; Women 25–40</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span></div></div><p class="muted">A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta’s music scene.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Women 25–40 | Black Audiences" data-format="Series" data-genre="Drama 🗡️" data-platform="BET+ / OWN / Lifetime" data-title="The Feed"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">The Feed</div><div class="meta"><span class="badge genre">Drama 🗡️</span><span class="badge format">Series</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div><p class="muted">A Black tech entrepreneur moves into a smart-home community and uncovers a biased surveillance system targeting him.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Women 25–40 | Black Audiences" data-format="Feature" data-genre="Rom-Com ❤️" data-platform="BET+ / OWN / Lifetime" data-title="Rhythm &amp; Blooms"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">Rhythm &amp; Blooms</div><div class="meta"><span class="badge genre">Rom-Com ❤️</span><span class="badge format">Feature</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div><p class="muted">A structured landscape designer and a jazz club owner fall in love while reviving a rooftop garden.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Women 25–40" data-format="Feature" data-genre="Thriller ⚡" data-platform="Netflix / HBO / Apple" data-title="Mirror Image"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">Mirror Image</div><div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">Feature</span><span class="badge audience">Women 25–40</span><div class="platform-logos"><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple"></span></div></div><p class="muted">A fashion influencer is digitally framed by her sister using deepfakes and manipulation.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article></div>
-<h4 id="network-series" style="text-align:center;color:#fff;margin:1.2rem 0 .5rem">Network Series</h4>
-<div class="grid">
-<article class="card" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/soul_on_fire_pitch_deck.pdf" data-format="Series" data-genre="Limited Series 🎤" data-platform="Netflix / HBO / Apple / BET+ / OWN / Lifetime" data-title="Soul On Fire">
-<div class="card-media" style="background-image:url('images/soul_on_fire_poster.png')"></div>
 <div class="card-body">
 <div class="title">Soul On Fire</div>
 <div class="meta"><span class="badge genre">Limited Series 🎤</span><span class="badge format">Series</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple"></span><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div><p class="muted"></p>
@@ -809,25 +805,47 @@
 <script>
 // --- Hardcoded posters for hero rotation ---
 const HERO_IMAGES = [
-  "images/divine_deception_poster.png",
-  "images/southern-belles-secret.png",
-  "images/the-proxy.png",
-  "assets/the-archive-poster.jpg",
-  "images/soul_on_fire_poster.png",
-  "the_last_dynasty_poster.png"
-].filter(u => !!u);
-
+  "linear-gradient(135deg,#0f172a,#111827)",
+  "linear-gradient(135deg,#1f2937,#0b1021)",
+  "linear-gradient(135deg,#0e7490,#0b1021)",
+  "linear-gradient(135deg,#1d4ed8,#0b1021)",
+  "linear-gradient(135deg,#7c3aed,#0b1021)"
+].filter(Boolean);
 
 function initHeroCycle(){
   const hero = document.getElementById('heroBg');
   if(!hero) return;
-  // Use hardcoded list first; if empty, fallback to scraping tiles
-  let imgs = (Array.isArray(HERO_IMAGES) && HERO_IMAGES.length) ? HERO_IMAGES.slice(0,12) : [];
-  if(!imgs.length){
-    imgs = Array.from(document.querySelectorAll('#portfolio .card-media')).map(el=>{
-      const m = /url\(\"?([^\")]+)\"?\)/.exec(el.style.backgroundImage || '');
+  // default gradient while we resolve images
+  hero.style.background = "linear-gradient(135deg,#0f172a,#111827)";
+  const isGradient = s => /^linear-gradient|^radial-gradient/.test(s||"");
+  const getTileImages = () => Array.from(document.querySelectorAll('#portfolio .card-media')).map(el=>{
+      const m = /url\(\"?([^\\")]+)\"?\)/.exec(el.style.backgroundImage || '');
       return m ? m[1] : null;
     }).filter(u => u && !u.startsWith('data:') && !/placeholder_16x9\.png$/i.test(u)).slice(0,12);
+  const testLoad = (src) => new Promise(res=>{
+    if(isGradient(src)) return res({ok:true,src});
+    const im = new Image();
+    let done=false;
+    const finish=(ok)=>{ if(done) return; done=true; res({ok,src}); };
+    im.onload=()=>finish(true); im.onerror=()=>finish(false);
+    im.src=src;
+    setTimeout(()=>finish(false), 5000);
+  });
+  (async()=>{
+    const candidates = HERO_IMAGES.length ? HERO_IMAGES : getTileImages();
+    const results = await Promise.all(candidates.map(testLoad));
+    let imgs = results.filter(r=>r.ok).map(r=>r.src);
+    if(!imgs.length){ imgs = getTileImages(); }
+    if(!imgs.length){ return; }
+    let i=0;
+    const apply=(src)=>{ 
+      if(isGradient(src)){ hero.style.background = src; hero.style.backgroundImage=''; }
+      else { hero.style.backgroundImage = `url('${src}')`; }
+    };
+    apply(imgs[0]);
+    setInterval(()=>{ i=(i+1)%imgs.length; apply(imgs[i]); }, 4000);
+  })();
+}).filter(u => u && !u.startsWith('data:') && !/placeholder_16x9\.png$/i.test(u)).slice(0,12);
   }
   if(!imgs.length) return;
   let i = 0;
@@ -858,5 +876,9 @@ function wireGenrePills(){
     });
   });
 }
-document.addEventListener('DOMContentLoaded', ()=>{ wireGenrePills(); });</script></body>
+
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{ wireGenrePills(); });
+</script>
+</body>
 </html>
