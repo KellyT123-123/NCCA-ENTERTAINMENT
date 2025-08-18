@@ -721,7 +721,6 @@ document.addEventListener('DOMContentLoaded', ()=>{ wireGenrePills();  });</scri
 
 <script>
 // ========== FILTERS ==========
-
 function applyFilters({format=null, genre=null} = {}){
   const fmt = format ? format.toLowerCase() : null;
   const gen = genre ? genre.toLowerCase() : null;
@@ -748,7 +747,6 @@ function wireGenrePills(){
 }
 
 // ========== POSTERS + HERO (safe) ==========
-
 (function(){
   function getCandidates(card){
     const postersAttr = (card.getAttribute('data-posters') || card.getAttribute('data-poster') || '').trim();
