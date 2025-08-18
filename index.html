@@ -161,30 +161,6 @@
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a></div>
 </div>
 </article>
-<article class="card" data-deck="pitch-decks/the_archive_pitch_deck.pdf" data-title="The Archive">
-<div class="card-media" style="background-image:url('assets/the-archive-poster.jpg')" data-empty="true"></div>
-<div class="card-body">
-<div class="title">The Archive</div>
-<p class="muted"></p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a></div>
-</div>
-</article>
-<article class="card" data-deck="pitch-decks/just_jack_pitch_deck.pdf" data-title="Just Jack">
-<div class="card-media" style="background-image:url('images/just-jack.png')" data-empty="true"></div>
-<div class="card-body">
-<div class="title">Just Jack</div>
-<p class="muted"></p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a></div>
-</div>
-</article>
-<article class="card" data-deck="pitch-decks/echo_chamber_pitch_deck.pdf" data-title="Echo Chamber">
-<div class="card-media" style="background-image:url('assets/echo-chamber-poster.jpg')" data-empty="true"></div>
-<div class="card-body">
-<div class="title">Echo Chamber</div>
-<p class="muted"></p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a></div>
-</div>
-</article>
 </div>
 </section><section aria-labelledby="southern-gothic-title" class="section" id="southern-gothic">
 <h3 id="southern-gothic-title" style="color:#fff;text-align:center;margin-bottom:1rem">Southern Gothic / Drama</h3>
@@ -741,98 +717,113 @@ function wireGenrePills(){
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{ wireGenrePills();  });</script>
+
+
 <script>
+// ===== Posters + HERO (safe version) =====
 (function(){
-  function getCardPosterCandidates(card){
-    const postersAttr = card.getAttribute('data-posters') || card.getAttribute('data-poster') || '';
-    let list = postersAttr.split(',').map(s=>s.trim()).filter(Boolean);
-    const media = card.querySelector('.card-media');
-    if(media){
-      const bg = getComputedStyle(media).backgroundImage;
-      if(bg && bg !== 'none' && !/placeholder_16x9\.png/i.test(bg)){
-        const url = bg.replace(/^url\((['"]?)(.*?)\1\)$/,'$2');
-        if(url && !list.includes(url)) list.unshift(url);
-      }
-    }
+  function getCandidates(card){
+    const postersAttr = (card.getAttribute('data-posters') || card.getAttribute('data-poster') || '').trim();
+    const list = postersAttr ? postersAttr.split(',').map(s=>s.trim()).filter(Boolean) : [];
     return list;
   }
   function preload(url){
-    return new Promise((resolve,reject)=>{
-      const img = new Image();
-      img.onload = ()=>resolve(url);
-      img.onerror = ()=>reject(url);
+    return new Promise(function(resolve,reject){
+      var img = new Image();
+      img.onload = function(){ resolve(url); };
+      img.onerror = function(){ reject(url); };
       img.src = url;
     });
   }
-  async function firstThatLoads(urls){
-    for(const u of urls){
-      try { await preload(u); return u; } catch {}
-    }
-    throw new Error('no poster loaded');
-  }
-  async function applyPosters(){
-    const cards = Array.from(document.querySelectorAll('.card'));
-    const heroEl = document.getElementById('hero');
-    const pool = new Set();
-    for (const card of cards){
-      const media = card.querySelector('.card-media');
-      if(!media) continue;
-      const inline = media.getAttribute('style') || '';
-      if(/placeholder_16x9\.png/i.test(inline)){
-        media.setAttribute('style', inline.replace(/background-image\s*:\s*url\((['"]?)images\/placeholder_16x9\.png\1\)\s*;?/i,''));
+  function firstThatLoads(urls){
+    return new Promise(function(resolve,reject){
+      if(!urls || !urls.length){ reject('no urls'); return; }
+      var i = 0;
+      function next(){
+        if(i>=urls.length){ reject('none loaded'); return; }
+        var u = urls[i++];
+        var img = new Image();
+        img.onload = function(){ resolve(u); };
+        img.onerror = next;
+        img.src = u;
       }
-      const candidates = getCardPosterCandidates(card);
+      next();
+    });
+  }
+  function isGradient(v){
+    return typeof v === 'string' && (/^linear-gradient/i.test(v) || /^radial-gradient/i.test(v));
+  }
+  function setBG(el, src){
+    if(!el) return;
+    if(isGradient(src)){
+      el.style.background = src;
+      el.style.backgroundSize = 'cover';
+      el.style.backgroundPosition = 'center';
+    }else{
+      el.style.backgroundImage = "url('"+src+"')";
+      el.style.backgroundSize = 'cover';
+      el.style.backgroundPosition = 'center';
+    }
+  }
+
+  function applyPosters(){
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+    var hero = document.getElementById('hero');
+    var pool = [];
+
+    // Cards
+    var p = Promise.resolve();
+    cards.forEach(function(card){
+      var media = card.querySelector('.card-media');
+      if(!media) return;
+      var inline = media.getAttribute('style') || '';
+      if(/placeholder_16x9\.png/i.test(inline)){
+        media.setAttribute('style', inline.replace(/background-image\s*:\s*url\((['\"]?)images\/placeholder_16x9\.png\1\)\s*;?/i,''));
+      }
+
+      var candidates = getCandidates(card);
       if(candidates.length){
-        try{
-          const ok = await firstThatLoads(candidates);
-          media.style.backgroundImage = `url('${ok}')`;
-          media.style.backgroundSize = 'cover';
-          media.style.backgroundPosition = 'center';
-          media.removeAttribute('data-empty');
-          pool.add(ok);
-        }catch(e){
-          media.setAttribute('data-empty','true');
-        }
-      }else{
+        p = p.then(function(){
+          return firstThatLoads(candidates).then(function(ok){
+            setBG(media, ok);
+            media.removeAttribute('data-empty');
+            if(pool.indexOf(ok) === -1){ pool.push(ok); }
+          }).catch(function(){ media.setAttribute('data-empty','true'); });
+        });
+      } else {
         media.setAttribute('data-empty','true');
       }
-    }
-    const HARD = (window.HERO_IMAGES && window.HERO_IMAGES.length ? window.HERO_IMAGES : [
-      'linear-gradient(135deg,#0f172a,#111827)',
-      'linear-gradient(135deg,#1f2937,#0b1021)',
-      'linear-gradient(135deg,#0e7490,#0b1021)',
-      'linear-gradient(135deg,#1d4ed8,#0b1021)',
-      'linear-gradient(135deg,#7c3aed,#0b1021)'
-    ]);
-    const dynamic = Array.from(pool);
-    const sequence = HARD.concat(dynamic);
-    let i = 0;
-    function setHero(src){
-      if(!heroEl) return;
-      if(/^linear-gradient/.test(src) || /^radial-gradient/.test(src)){
-        heroEl.style.background = src;
-        heroEl.style.backgroundSize = 'cover';
-        heroEl.style.backgroundPosition = 'center';
-      } else {
-        heroEl.style.backgroundImage = `url('${src}')`;
-        heroEl.style.backgroundSize = 'cover';
-        heroEl.style.backgroundPosition = 'center';
+    });
+
+    // HERO rotate after cards processed
+    p.then(function(){
+      var HERO_IMAGES = [
+        "linear-gradient(135deg,#0f172a,#111827)",
+        "linear-gradient(135deg,#1f2937,#0b1021)",
+        "linear-gradient(135deg,#0e7490,#0b1021)",
+        "linear-gradient(135deg,#1d4ed8,#0b1021)",
+        "linear-gradient(135deg,#7c3aed,#0b1021)"
+      ];
+      var seq = HERO_IMAGES.concat(pool);
+      if(!seq.length){ seq = HERO_IMAGES.slice(); }
+      var i = 0;
+      function tick(){
+        setBG(hero, seq[i % seq.length]);
+        i++;
       }
-    }
-    if(sequence.length){
-      setHero(sequence[0]); i = 1;
-      setInterval(()=>{
-        setHero(sequence[i % sequence.length]); i++;
-      }, 6000);
-    }
+      tick();
+      setInterval(tick, 6000);
+    });
   }
-  (function ensureFallbackCSS(){
+
+  // Ensure fallback CSS exists
+  (function(){
     if(document.getElementById('poster-fallback-css')) return;
-    const el = document.createElement('style'); el.id='poster-fallback-css';
-    el.textContent = `.card-media{aspect-ratio:16/9;background:#222 center/cover no-repeat;position:relative}
-.card-media[data-empty="true"]{background-image:linear-gradient(135deg,#1a1a1a,#2b2b32)}`;
+    var el = document.createElement('style'); el.id='poster-fallback-css';
+    el.textContent = ".card-media{aspect-ratio:16/9;background:#222 center/cover no-repeat;position:relative}.card-media[data-empty='true']{background-image:linear-gradient(135deg,#1a1a1a,#2b2b32)}";
     document.head.appendChild(el);
   })();
+
   document.addEventListener('DOMContentLoaded', applyPosters);
 })();
 </script>
