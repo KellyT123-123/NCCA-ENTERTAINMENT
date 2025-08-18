@@ -716,19 +716,21 @@ function wireGenrePills(){
   });
 }
 
-document.addEventListener('DOMContentLoaded', ()=>{ wireGenrePills();  });</script>
+document.addEventListener('DOMContentLoaded', ()=>{ wireGenrePills();  });
 
 
 <script>
-function applyFilters({format=null, genre=null}={}) {
+// ========== FILTERS ==========
+function applyFilters({format=null, genre=null} = {}){
   const fmt = format ? format.toLowerCase() : null;
   const gen = genre ? genre.toLowerCase() : null;
+
   document.querySelectorAll('.card').forEach(card=>{
-    const f=(card.dataset.format||'').toLowerCase();
-    const g=(card.dataset.genre||'').toLowerCase();
+    const f = (card.dataset.format||'').toLowerCase();
+    const g = (card.dataset.genre||'').toLowerCase();
     let show = true;
-    if(fmt) show = show && f.includes(fmt);
-    if(gen) show = show && (g.includes(gen) || (card.closest('section[id]') && card.closest('section[id]').id.toLowerCase().includes(gen)));
+    if (fmt) show = show && f.includes(fmt);
+    if (gen) show = show && (g.includes(gen) || (card.closest('section[id]') && card.closest('section[id]').id.toLowerCase().includes(gen)));
     card.style.display = show ? '' : 'none';
   });
 }
@@ -737,8 +739,7 @@ function wireGenrePills(){
   document.querySelectorAll('.portfolio-nav .pill').forEach(pill=>{
     const href = pill.getAttribute('href') || '';
     const id = href.startsWith('#') ? href.slice(1) : '';
-    pill.addEventListener('click', (e)=>{
-      // allow default anchor jump, also filter by genre using the id
+    pill.addEventListener('click', ()=>{
       applyFilters({genre:id});
     });
   });
@@ -789,14 +790,12 @@ function wireGenrePills(){
     const hero  = document.getElementById('hero');
     const pool  = [];
 
-    // Clean placeholders + set posters
     let chain = Promise.resolve();
 
     cards.forEach(function(card){
       const media = card.querySelector('.card-media');
       if (!media) return;
 
-      // strip inline placeholder if it exists
       const inline = media.getAttribute('style') || '';
       if (/placeholder_16x9\.png/i.test(inline)){
         media.setAttribute('style', inline.replace(/background-image\s*:\s*url\((['\"]?)images\/placeholder_16x9\.png\1\)\s*;?/i,''));
@@ -818,7 +817,6 @@ function wireGenrePills(){
       }
     });
 
-    // Rotate HERO after cards processed
     chain.then(function(){
       const HERO_IMAGES = [
         "linear-gradient(135deg,#0f172a,#111827)",
@@ -836,7 +834,6 @@ function wireGenrePills(){
     });
   }
 
-  // Ensure fallback CSS exists
   (function ensureFallbackCSS(){
     if (document.getElementById('poster-fallback-css')) return;
     const el = document.createElement('style'); el.id='poster-fallback-css';
@@ -844,7 +841,6 @@ function wireGenrePills(){
     document.head.appendChild(el);
   })();
 
-  // Single on-load hook for both features
   document.addEventListener('DOMContentLoaded', function(){
     wireGenrePills();
     applyPosters();
