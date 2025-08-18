@@ -720,17 +720,15 @@ document.addEventListener('DOMContentLoaded', ()=>{ wireGenrePills();  });</scri
 
 
 <script>
-// ========== FILTERS ==========
-function applyFilters({format=null, genre=null} = {}){
+function applyFilters({format=null, genre=null}={}) {
   const fmt = format ? format.toLowerCase() : null;
   const gen = genre ? genre.toLowerCase() : null;
-
   document.querySelectorAll('.card').forEach(card=>{
-    const f = (card.dataset.format||'').toLowerCase();
-    const g = (card.dataset.genre||'').toLowerCase();
+    const f=(card.dataset.format||'').toLowerCase();
+    const g=(card.dataset.genre||'').toLowerCase();
     let show = true;
-    if (fmt) show = show && f.includes(fmt);
-    if (gen) show = show && (g.includes(gen) || (card.closest('section[id]') && card.closest('section[id]').id.toLowerCase().includes(gen)));
+    if(fmt) show = show && f.includes(fmt);
+    if(gen) show = show && (g.includes(gen) || (card.closest('section[id]') && card.closest('section[id]').id.toLowerCase().includes(gen)));
     card.style.display = show ? '' : 'none';
   });
 }
@@ -739,7 +737,7 @@ function wireGenrePills(){
   document.querySelectorAll('.portfolio-nav .pill').forEach(pill=>{
     const href = pill.getAttribute('href') || '';
     const id = href.startsWith('#') ? href.slice(1) : '';
-    pill.addEventListener('click', ()=>{
+    pill.addEventListener('click', (e)=>{
       // allow default anchor jump, also filter by genre using the id
       applyFilters({genre:id});
     });
