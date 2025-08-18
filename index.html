@@ -860,10 +860,20 @@ function wireGenrePills(){
     });
   });
 }
-
-function extendMenuForGenres(){};
+function wireGenrePills(){
+  document.querySelectorAll('.portfolio-nav .pill').forEach(pill=>{
+    const href = pill.getAttribute('href') || '';
+    const id = href.startsWith('#') ? href.slice(1) : '';
+    pill.addEventListener('click', (e)=>{
+      // allow default anchor jump, also filter by genre using the id
+      applyFilters({genre:id});
+    });
   });
 }
 
-document.addEventListener('DOMContentLoaded', ()=>{ wireGenrePills(); });</script></body>
+document.addEventListener('DOMContentLoaded', () => {
+  wireGenrePills();
+});
+</script>
+</body>
 </html>
