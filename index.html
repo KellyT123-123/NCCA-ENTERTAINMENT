@@ -70,7 +70,23 @@
     .share a{width:40px;height:40px;display:grid;place-items:center;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15)}
     @media(max-width:980px){.share{display:none}} .to-top{position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:999px;background:var(--brand);color:#111;border:none;font-weight:800;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s, transform .25s}
     .to-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
-  </style>
+  
+
+.platform-logos{display:flex;flex-wrap:wrap;gap:.35rem;margin:.35rem 0}
+.platform-logo{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);font-size:.7rem;font-weight:800;color:#fff;letter-spacing:.02em}
+.platform-logo[data-platform*="Netflix"]{background:#E50914;color:#fff;border-color:#b40c14}
+.platform-logo[data-platform*="HBO"]{background:#221f1f;color:#fff}
+.platform-logo[data-platform*="Apple"]{background:#1e1e1e;color:#fff}
+.platform-logo[data-platform*="BET+"]{background:#6c2bd9;color:#fff}
+.platform-logo[data-platform*="OWN"]{background:#3d8b49;color:#fff}
+.platform-logo[data-platform*="Lifetime"]{background:#cc0033;color:#fff}
+.platform-logo[data-platform*="Paramount+"]{background:#0064FF;color:#fff}
+.platform-logo[data-platform*="Peacock"]{background:#111;color:#fff}
+.platform-logo[data-platform*="ABC"]{background:#000;color:#fff}
+.platform-logo[data-platform*="NBC"]{background:#034bad;color:#fff}
+.platform-logo[data-platform*="FOX"]{background:#003399;color:#fff}
+.platform-logo span{transform:scale(.95)}
+</style>
 <link href="/favicon.ico" rel="icon" sizes="any" type="image/x-icon"/><link href="favicon.ico" rel="icon" sizes="any" type="image/x-icon"/><link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/><link href="favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/><link href="apple-touch-icon.png" rel="apple-touch-icon"/><style>
 #heroBg{position:absolute;inset:0;background:#000 center/cover no-repeat;filter:brightness(.45);transition:background-image .6s ease-in-out;z-index:0}
 .hero .hero-inner{position:relative;z-index:2}
@@ -122,20 +138,20 @@
 <div class="card-media" style="background-image:url('images/divine_deception_poster.png')"></div>
 <div class="card-body">
 <div class="title">Divine Deception</div>
-<div class="meta"><span class="badge genre">Film Noir 🗡️</span><span class="badge format">Feature</span><span class="badge platform">BET+ / OWN / Lifetime</span><span class="badge audience">Women 25–40 | Black Audiences</span></div><p class="muted">Producer: J Williams • Locations: ATL</p>
+<div class="meta"><span class="badge genre">Film Noir 🗡️</span><span class="badge format">Feature</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div><p class="muted">Producer: J Williams • Locations: ATL</p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/divine-deception-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
 </div>
 </article>
 </div>
 <h4 style="text-align:center;color:#fff;margin:1rem 0 .5rem">Spotlight 2</h4>
-<div class="grid"><article class="card" data-audience="Women 25–40 | Black Audiences" data-format="Series" data-genre="Limited Series 🎤" data-platform="Netflix / HBO / Apple / BET+ / OWN / Lifetime" data-title="Soul on Fire"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">Soul on Fire</div><div class="meta"><span class="badge genre">Limited Series 🎤</span><span class="badge format">Series</span><span class="badge platform">Netflix / HBO / Apple / BET+ / OWN / Lifetime</span><span class="badge audience">Women 25–40 | Black Audiences</span></div><p class="muted">A brilliant soul singer’s rise and fall exposes systemic racism and cultural theft.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Gen Z; Women 25–40" data-format="Series" data-genre="Network Series" data-platform="Paramount+ / Peacock / BET+ / OWN" data-title="The Line"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">The Line</div><div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge platform">Paramount+ / Peacock / BET+ / OWN</span><span class="badge audience">Gen Z; Women 25–40</span></div><p class="muted">A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta’s music scene.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Women 25–40 | Black Audiences" data-format="Series" data-genre="Drama 🗡️" data-platform="BET+ / OWN / Lifetime" data-title="The Feed"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">The Feed</div><div class="meta"><span class="badge genre">Drama 🗡️</span><span class="badge format">Series</span><span class="badge platform">BET+ / OWN / Lifetime</span><span class="badge audience">Women 25–40 | Black Audiences</span></div><p class="muted">A Black tech entrepreneur moves into a smart-home community and uncovers a biased surveillance system targeting him.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Women 25–40 | Black Audiences" data-format="Feature" data-genre="Rom-Com ❤️" data-platform="BET+ / OWN / Lifetime" data-title="Rhythm &amp; Blooms"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">Rhythm &amp; Blooms</div><div class="meta"><span class="badge genre">Rom-Com ❤️</span><span class="badge format">Feature</span><span class="badge platform">BET+ / OWN / Lifetime</span><span class="badge audience">Women 25–40 | Black Audiences</span></div><p class="muted">A structured landscape designer and a jazz club owner fall in love while reviving a rooftop garden.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Women 25–40" data-format="Feature" data-genre="Thriller ⚡" data-platform="Netflix / HBO / Apple" data-title="Mirror Image"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">Mirror Image</div><div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">Feature</span><span class="badge platform">Netflix / HBO / Apple</span><span class="badge audience">Women 25–40</span></div><p class="muted">A fashion influencer is digitally framed by her sister using deepfakes and manipulation.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Gen Z" data-format="Series" data-genre="Network Series" data-platform="Paramount+ / Peacock / Netflix / HBO / Apple" data-title="Refractions"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">Refractions</div><div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge platform">Paramount+ / Peacock / Netflix / HBO / Apple</span><span class="badge audience">Gen Z</span></div><p class="muted">A Gen Z ensemble faces life-bending ethical dilemmas in a rapidly shifting, tech-mediated world.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article></div>
+<div class="grid"><article class="card" data-audience="Gen Z; Women 25–40" data-format="Series" data-genre="Network Series" data-platform="Paramount+ / Peacock / BET+ / OWN" data-title="The Line"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">The Line</div><div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge audience">Gen Z; Women 25–40</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span></div></div><p class="muted">A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta’s music scene.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Women 25–40 | Black Audiences" data-format="Series" data-genre="Drama 🗡️" data-platform="BET+ / OWN / Lifetime" data-title="The Feed"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">The Feed</div><div class="meta"><span class="badge genre">Drama 🗡️</span><span class="badge format">Series</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div><p class="muted">A Black tech entrepreneur moves into a smart-home community and uncovers a biased surveillance system targeting him.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Women 25–40 | Black Audiences" data-format="Feature" data-genre="Rom-Com ❤️" data-platform="BET+ / OWN / Lifetime" data-title="Rhythm &amp; Blooms"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">Rhythm &amp; Blooms</div><div class="meta"><span class="badge genre">Rom-Com ❤️</span><span class="badge format">Feature</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div><p class="muted">A structured landscape designer and a jazz club owner fall in love while reviving a rooftop garden.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article><article class="card" data-audience="Women 25–40" data-format="Feature" data-genre="Thriller ⚡" data-platform="Netflix / HBO / Apple" data-title="Mirror Image"><div class="card-media" style="background-image:url('images/placeholder_16x9.png')"></div><div class="card-body"><div class="title">Mirror Image</div><div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">Feature</span><span class="badge audience">Women 25–40</span><div class="platform-logos"><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple"></span></div></div><p class="muted">A fashion influencer is digitally framed by her sister using deepfakes and manipulation.</p><div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div></div></article></div>
 <h4 id="network-series" style="text-align:center;color:#fff;margin:1.2rem 0 .5rem">Network Series</h4>
 <div class="grid">
 <article class="card" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/soul_on_fire_pitch_deck.pdf" data-format="Series" data-genre="Limited Series 🎤" data-platform="Netflix / HBO / Apple / BET+ / OWN / Lifetime" data-title="Soul On Fire">
 <div class="card-media" style="background-image:url('images/soul_on_fire_poster.png')"></div>
 <div class="card-body">
 <div class="title">Soul On Fire</div>
-<div class="meta"><span class="badge genre">Limited Series 🎤</span><span class="badge format">Series</span><span class="badge platform">Netflix / HBO / Apple / BET+ / OWN / Lifetime</span><span class="badge audience">Women 25–40 | Black Audiences</span></div><p class="muted"></p>
+<div class="meta"><span class="badge genre">Limited Series 🎤</span><span class="badge format">Series</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple"></span><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div><p class="muted"></p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a></div>
 </div>
 </article>
@@ -143,7 +159,7 @@
 <div class="card-media" style="background-image:url('assets/refractions-poster.jpg')"></div>
 <div class="card-body">
 <div class="title">Refractions</div>
-<div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge platform">Paramount+ / Peacock / Netflix / HBO / Apple</span><span class="badge audience">Gen Z</span></div><p class="muted"></p>
+<div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple"></span></div></div><p class="muted"></p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a></div>
 </div>
 </article>
@@ -172,8 +188,7 @@
 </div>
 </article>
 </div>
-</section>
-<section aria-labelledby="southern-gothic-title" class="section" id="southern-gothic">
+</section><section aria-labelledby="southern-gothic-title" class="section" id="southern-gothic">
 <h3 id="southern-gothic-title" style="color:#fff;text-align:center;margin-bottom:1rem">Southern Gothic / Drama</h3>
 <div class="grid">
 <article class="card" data-deck="pitch-decks/the_last_dynasty_pitch_deck.pdf" data-format="Feature" data-genre="Crime Thriller / Musical Mystery" data-title="The Last Dynasty" data-trailer="assets/the-last-dynasty-teaser.mp4" data-treatment="assets/the-last-dynasty-treatment.pdf">
@@ -189,21 +204,20 @@
 <div class="card-media" style="background-image:url('images/southern-belles-secret.png')"></div>
 <div class="card-body">
 <div class="title">The Southern Belle's Secret</div>
-<div class="meta"><span class="badge genre">Southern Gothic 🗡️</span><span class="badge format">Feature</span><span class="badge platform">BET+ / OWN / Lifetime</span><span class="badge audience">Women 25–40 | Black Audiences</span></div>
+<div class="meta"><span class="badge genre">Southern Gothic 🗡️</span><span class="badge format">Feature</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
 <p class="muted">When a Southern debutante uncovers her family’s connection to a decades old lynching, her polished world begins to unravel</p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-southern-belles-secret-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
 </div>
 </article>
 </div>
-</section>
-<section aria-labelledby="drama-title" class="section" id="drama">
+</section><section aria-labelledby="drama-title" class="section" id="drama">
 <h3 id="drama-title" style="color:#fff;text-align:center;margin-bottom:1rem">Drama</h3>
 <div class="grid">
 <article class="card" data-audience="YA | Gen Z" data-deck="pitch-decks/this_is_me_now_pitch_deck.pdf" data-format="MOW" data-genre="Drama" data-platform="Paramount+ / Peacock / ABC / NBC / FOX" data-title="This is Me Now" data-trailer="assets/this-is-me-now-teaser.mp4" data-treatment="assets/this-is-me-now-treatment.pdf">
 <div class="card-media" style="background-image:url('images/this-is-me-now.png')"></div>
 <div class="card-body">
 <div class="title">This is Me Now</div>
-<div class="meta"><span class="badge genre">Drama</span><span class="badge format">MOW</span><span class="badge platform">Paramount+ / Peacock / ABC / NBC / FOX</span><span class="badge audience">YA | Gen Z</span></div>
+<div class="meta"><span class="badge genre">Drama</span><span class="badge format">MOW</span><span class="badge audience">YA | Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="ABC">ABC</span><span class="platform-logo" data-platform="NBC">NBC</span><span class="platform-logo" data-platform="FOX">FOX</span></div></div>
 <p class="muted">A quiet, tech-savvy teen becomes infamous overnight when a private video goes viral.</p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/this-is-me-now-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
 </div>
@@ -212,7 +226,7 @@
 <div class="card-media" style="background-image:url('the_feed_poster.png')"></div>
 <div class="card-body">
 <div class="title">The Feed</div>
-<div class="meta"><span class="badge genre">Drama 🗡️</span><span class="badge format">Series</span><span class="badge platform">BET+ / OWN / Lifetime</span><span class="badge audience">Women 25–40 | Black Audiences</span></div>
+<div class="meta"><span class="badge genre">Drama 🗡️</span><span class="badge format">Series</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
 <p class="muted">A dream home becomes a digital nightmare when its AI system begins racially profiling its new owner.</p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-feed-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
 </div>
@@ -239,7 +253,7 @@
 <div class="card-media" style="background-image:url('images/mirror-image.png')"></div>
 <div class="card-body">
 <div class="title">Mirror Image</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">Feature</span><span class="badge platform">Netflix / HBO / Apple</span><span class="badge audience">Women 25–40</span></div>
+<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">Feature</span><span class="badge audience">Women 25–40</span><div class="platform-logos"><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple"></span></div></div>
 <p class="muted">When her identical twin uses deepfake technology to erase her identity, Atlanta’s top fashion influencer must fight to prove she’s still real.</p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/mirror-image-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
 </div>
@@ -263,8 +277,7 @@
 </div>
 </article>
 </div>
-</section>
-<section aria-labelledby="thriller-title" class="section" id="thriller">
+</section><section aria-labelledby="thriller-title" class="section" id="thriller">
 <h3 id="thriller-title" style="color:#fff;text-align:center;margin-bottom:1rem">Thriller</h3>
 <div class="grid">
 <article class="card" data-deck="pitch-decks/the_double_cross_pitch_deck.pdf" data-format="Feature" data-genre="Crime Thriller / Emotional Drama" data-title="The Double Cross" data-trailer="assets/the-double-cross-teaser.mp4" data-treatment="assets/the-double-cross-treatment.pdf">
@@ -367,8 +380,7 @@
 </div>
 </article>
 </div>
-</section>
-<section aria-labelledby="romance-title" class="section" id="romance">
+</section><section aria-labelledby="romance-title" class="section" id="romance">
 <h3 id="romance-title" style="color:#fff;text-align:center;margin-bottom:1rem">Romance</h3>
 <div class="grid">
 <article class="card" data-deck="pitch-decks/southern_discomfort_pitch_deck.pdf" data-format="Feature" data-genre="Romance" data-title="Southern (Dis)comfort" data-trailer="assets/southern-discomfort-teaser.mp4" data-treatment="assets/southern-discomfort-treatment.pdf">
@@ -420,14 +432,13 @@
 <div class="card-media" style="background-image:url('images/rhythm-and-blooms.png')"></div>
 <div class="card-body">
 <div class="title">Rhythm &amp; Blooms</div>
-<div class="meta"><span class="badge genre">Rom-Com ❤️</span><span class="badge format">Feature</span><span class="badge platform">BET+ / OWN / Lifetime</span><span class="badge audience">Women 25–40 | Black Audiences</span></div>
+<div class="meta"><span class="badge genre">Rom-Com ❤️</span><span class="badge format">Feature</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
 <p class="muted">A corporate dropout and a free spirited club owner find harmony in a rooftop garden.</p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/rhythm-blooms-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
 </div>
 </article>
 </div>
-</section>
-<section aria-labelledby="comedy-title" class="section" id="comedy">
+</section><section aria-labelledby="comedy-title" class="section" id="comedy">
 <h3 id="comedy-title" style="color:#fff;text-align:center;margin-bottom:1rem">Comedy</h3>
 <div class="grid">
 <article class="card" data-deck="pitch-decks/miss_juneteenth_blues_pitch_deck.pdf" data-format="Feature" data-genre="Comedy-Drama / Southern Family Drama" data-title="Miss Juneteenth Blues" data-trailer="assets/miss-juneteenth-blues-teaser.mp4" data-treatment="assets/miss-juneteenth-blues-treatment.pdf">
@@ -476,8 +487,7 @@
 </div>
 </article>
 </div>
-</section>
-<section aria-labelledby="christmas-title" class="section" id="christmas">
+</section><section aria-labelledby="christmas-title" class="section" id="christmas">
 <h3 id="christmas-title" style="color:#fff;text-align:center;margin-bottom:1rem">Christmas Stories</h3>
 <div class="grid">
 <article class="card" data-deck="pitch-decks/spelman_christmas_pitch_deck.pdf" data-format="Feature" data-genre="Christmas" data-title="A Spelman Christmas" data-trailer="assets/a-spelman-christmas-teaser.mp4" data-treatment="assets/a-spelman-christmas-treatment.pdf">
@@ -509,6 +519,12 @@
 </article>
 </div>
 </section>
+
+
+
+
+
+
 <section aria-labelledby="network-series-title" class="section" id="network-series">
 <h3 id="network-series-title" style="color:#fff;text-align:center;margin-bottom:1rem">Network Series</h3>
 <div class="grid">
@@ -552,7 +568,7 @@
 <div class="card-media" style="background-image:url('images/refractions.png')"></div>
 <div class="card-body">
 <div class="title">Refractions</div>
-<div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge platform">Paramount+ / Peacock / Netflix / HBO / Apple</span><span class="badge audience">Gen Z</span></div>
+<div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple"></span></div></div>
 <p class="muted">One event, five perspectives, endless truths.</p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/refractions-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
 </div>
@@ -561,7 +577,7 @@
 <div class="card-media" style="background-image:url('images/the-line.png')"></div>
 <div class="card-body">
 <div class="title">The Line</div>
-<div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge platform">Paramount+ / Peacock / BET+ / OWN</span><span class="badge audience">Gen Z; Women 25–40</span></div>
+<div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge audience">Gen Z; Women 25–40</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span></div></div>
 <p class="muted">When a disciplined FBI agent is assigned to protect a fiercely independent rap music agent entangled in Atlanta’s criminal underworld, their clashing worlds collide.</p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-line-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
 </div>
@@ -584,7 +600,7 @@
 <div class="card-media" style="background-image:url('images/soul_on_fire_poster.png')"></div>
 <div class="card-body">
 <div class="title">Soul On Fire</div>
-<div class="meta"><span class="badge genre">Limited Series 🎤</span><span class="badge format">Series</span><span class="badge platform">Netflix / HBO / Apple / BET+ / OWN / Lifetime</span><span class="badge audience">Women 25–40 | Black Audiences</span></div>
+<div class="meta"><span class="badge genre">Limited Series 🎤</span><span class="badge format">Series</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple"></span><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
 <p class="muted">A brilliant soul singer risks everything to reclaim her stolen voice in 1970s Atlanta.</p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/soul-on-fire-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
 </div>
@@ -680,7 +696,7 @@
 <div class="card-media" style="background-image:url('images/divine-deception.png')"></div>
 <div class="card-body">
 <div class="title">Divine Deception</div>
-<div class="meta"><span class="badge genre">Film Noir 🗡️</span><span class="badge format">Feature</span><span class="badge platform">BET+ / OWN / Lifetime</span><span class="badge audience">Women 25–40 | Black Audiences</span></div>
+<div class="meta"><span class="badge genre">Film Noir 🗡️</span><span class="badge format">Feature</span><span class="badge audience">Women 25–40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
 <p class="muted">A Southern Gospel noir that delves into the dark underbelly of faith and corruption. This atmospheric thriller combines classic noir elements with contemporary storytelling to create a compelling narrative about deception and redemption.</p>
 <div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/divine-deception-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
 </div>
@@ -797,60 +813,74 @@
     document.addEventListener('DOMContentLoaded', ()=>{ buildProjectMenus(); initScrollSpy(); initToTop(); initCards(); initShare(); });
   </script>
 <script>
-(function(){
-  const $ = (s,ctx=document)=>ctx.querySelector(s); const $$=(s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
+// --- Hardcoded posters for hero rotation ---
+const HERO_IMAGES = [
+  "images/divine_deception_poster.png",
+  "images/southern-belles-secret.png",
+  "images/the-proxy.png",
+  "assets/the-archive-poster.jpg",
+  "images/soul_on_fire_poster.png",
+  "the_last_dynasty_poster.png"
+].filter(u => !!u);
 
-  function applyFilter(format){
-    $$('.card').forEach(card=>{
-      const f=(card.dataset.format||'').toLowerCase();
-      card.style.display = format ? (f.includes(format.toLowerCase()) ? '' : 'none') : '';
-    });
-  }
 
-  function buildMenuHandlers(){
-    const menu = $('#menu-dynamic') || document;
-    menu.addEventListener('click', (e)=>{
-      const a = e.target.closest('a[data-filter-format]');
-      if(!a) return;
-      e.preventDefault();
-      const format = a.getAttribute('data-filter-format');
-      applyFilter(format);
-      const port = $('#portfolio'); if(port){ port.scrollIntoView({behavior:'smooth'}); }
-      const first = $$('#portfolio .card').find(c=>c.style.display!== 'none');
-      if(first){ first.style.outline='2px solid var(--brand)'; setTimeout(()=>first.style.outline='none', 1500); }
-    });
-  }
-
-  function ensureMenuItems(){
-    const grid = $('#menu-dynamic'); if(!grid) return;
-    const existing = grid.querySelector('[data-filter-format]');
-    if(existing) return; // already wired
-    const col = document.createElement('div');
-    col.innerHTML = '<div class="muted" style="padding:.35rem .5rem">By Format</div>';
-    ['Feature','Series','MOW','Docuseries'].forEach(f=>{
-      const a=document.createElement('a'); a.href='#portfolio'; a.dataset.filterFormat=f; a.textContent=f; col.appendChild(a);
-    });
-    grid.appendChild(col);
-  }
-
-  function initHeroCycle(){
-    const hero = $('#heroBg'); if(!hero) return;
-    const imgs = $$('#portfolio .card-media').map(el=>{
-      const m = /url\("?([^\")]+)\"?\)/.exec(el.style.backgroundImage || '');
+function initHeroCycle(){
+  const hero = document.getElementById('heroBg');
+  if(!hero) return;
+  // Use hardcoded list first; if empty, fallback to scraping tiles
+  let imgs = (Array.isArray(HERO_IMAGES) && HERO_IMAGES.length) ? HERO_IMAGES.slice(0,12) : [];
+  if(!imgs.length){
+    imgs = Array.from(document.querySelectorAll('#portfolio .card-media')).map(el=>{
+      const m = /url\(\"?([^\")]+)\"?\)/.exec(el.style.backgroundImage || '');
       return m ? m[1] : null;
-    }).filter(Boolean).slice(0,8);
-    let i=0;
-    if(imgs.length){
-      hero.style.backgroundImage = `url('${imgs[0]}')`;
-      setInterval(()=>{ i=(i+1)%imgs.length; hero.style.backgroundImage = `url('${imgs[i]}')`; }, 4000);
-    }
+    }).filter(u => u && !u.startsWith('data:') && !/placeholder_16x9\.png$/i.test(u)).slice(0,12);
   }
-
-  document.addEventListener('DOMContentLoaded', ()=>{
-    ensureMenuItems();
-    buildMenuHandlers();
-    initHeroCycle();
+  if(!imgs.length) return;
+  let i = 0;
+  hero.style.backgroundImage = `url('${imgs[0]}')`;
+  setInterval(()=>{ i=(i+1)%imgs.length; hero.style.backgroundImage = `url('${imgs[i]}')`; }, 4000);
+}
+</script><script>
+function applyFilters({format=null, genre=null}={}){
+  const fmt = format ? format.toLowerCase() : null;
+  const gen = genre ? genre.toLowerCase() : null;
+  document.querySelectorAll('.card').forEach(card=>{
+    const f=(card.dataset.format||'').toLowerCase();
+    const g=(card.dataset.genre||'').toLowerCase();
+    let show = true;
+    if(fmt) show = show && f.includes(fmt);
+    if(gen) show = show && (g.includes(gen) || (card.closest('section[id]') && card.closest('section[id]').id.toLowerCase().includes(gen)));
+    card.style.display = show ? '' : 'none';
   });
-})();
-</script></body>
+}
+
+function wireGenrePills(){
+  document.querySelectorAll('.portfolio-nav .pill').forEach(pill=>{
+    const href = pill.getAttribute('href') || '';
+    const id = href.startsWith('#') ? href.slice(1) : '';
+    pill.addEventListener('click', (e)=>{
+      // allow default anchor jump, also filter by genre using the id
+      applyFilters({genre:id});
+    });
+  });
+}
+
+function extendMenuForGenres(){
+  const grid = document.getElementById('menu-dynamic'); if(!grid) return;
+  const exists = grid.querySelector('[data-filter-genre]');
+  if(exists) return;
+  const col = document.createElement('div');
+  col.innerHTML = '<div class="muted" style="padding:.35rem .5rem">By Genre</div>';
+  ['southern-gothic','drama','thriller','romance','comedy','horror','christmas','Noir'].forEach(g=>{
+    const a=document.createElement('a'); a.href='#portfolio'; a.dataset.filterGenre=g; a.textContent=g.replace(/\\b\\w/g,m=>m.toUpperCase()).replace(/-/g,' '); col.appendChild(a);
+  });
+  grid.prepend(col);
+  grid.addEventListener('click', (e)=>{
+    const a = e.target.closest('a[data-filter-genre]'); if(!a) return;
+    e.preventDefault(); applyFilters({genre:a.dataset.filterGenre});
+    const port = document.getElementById('portfolio'); if(port){ port.scrollIntoView({behavior:'smooth'}); }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{ wireGenrePills(); extendMenuForGenres(); });</script></body>
 </html>
