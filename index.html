@@ -943,7 +943,6 @@ function wireGenrePills(){
     });
     // keep only likely images
     return urls.filter(function(u){ return /\.(jpg|jpeg|png|webp)(\?.*)?$/i.test(u); });
-  }
 
   function isGradient(v){ return typeof v==='string' && (/^linear-gradient|^radial-gradient/i.test(v)); }
   function setBG(el, src){
