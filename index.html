@@ -25,6 +25,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
+#heroBg{position:absolute;inset:0;background:#000 center/cover no-repeat;filter:brightness(.45);transition:background-image .6s ease-in-out;z-index:0;}
+.hero{position:relative;overflow:hidden;min-height:70vh;}
+.hero .hero-inner{position:relative;z-index:2;}
+
     :root{--brand:#D48B3C;--brand-hover:#E3A463;--brand-ink:#F2E6D0;--brand-bg:#0A0A0A;--brand-muted:#B9A98F;--brand-rule:rgba(255,255,255,.10)}
     *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth}
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--brand-bg);color:#f5f3ee;line-height:1.6}
@@ -113,8 +117,7 @@
 </nav>
 </div>
 </header>
-<section class="hero">
-  <div id="heroBg"></div> 
+<section class="hero"> 
 <div id="heroBg"></div>
 <div class="hero-inner">
 <h1>NCCA <span>ENTERTAINMENT</span></h1>
@@ -899,64 +902,63 @@ function wireGenrePills(){
 }
 
 // ========= POSTERS + HERO =========
-(function(){
-  function ensureHeroBg(){
-    var hero = document.querySelector('section.hero');
-    if(!hero) return null;
-    var el = document.getElementById('heroBg');
-    if(!el){
-      el = document.createElement('div');
-      el.id = 'heroBg';
-      hero.insertBefore(el, hero.firstChild);
-    }
-    return el;
-  }
-
-  function ensureHeroCss(){
-    if(document.getElementById('heroBg-css')) return;
-    var s = document.createElement('style'); s.id='heroBg-css';
-    s.textContent = [
-      '#heroBg{position:absolute;inset:0;background:#000 center/cover no-repeat;',
-      'filter:brightness(.45);transition:opacity .4s ease-in-out;z-index:0;opacity:1}',
-      '.hero{position:relative;overflow:hidden;min-height:70vh}',
-      '.hero .hero-inner{position:relative;z-index:2}'
-    ].join('');
-    document.head.appendChild(s);
-  }
-
-  function collectPosters(){
+ function collectTilePosters(){
     var urls = [];
     document.querySelectorAll('.card .card-media').forEach(function(media){
-      // inline style
+      // from inline style, if set
       var s = media.getAttribute('style') || '';
       var m = /background-image\s*:\s*url\((['"]?)(.*?)\1\)/i.exec(s);
       if (m && m[2] && urls.indexOf(m[2]) === -1) urls.push(m[2]);
-      // data-posters
+
+      // from data-posters, if provided
       var card = media.closest('.card');
       if (card){
-        (card.getAttribute('data-posters') || '')
-          .split(',')
-          .map(function(x){return x.trim();})
-          .filter(Boolean)
-          .forEach(function(u){ if(urls.indexOf(u) === -1) urls.push(u); });
+        var dp = (card.getAttribute('data-posters') || '').split(',').map(function(x){return x.trim();}).filter(Boolean);
+        dp.forEach(function(u){ if (urls.indexOf(u) === -1) urls.push(u); });
       }
     });
-    return urls.filter(function(u){ return /\.(jpg|jpeg|png|webp)(\?.*)?$/i.test(u); });
+    // Keep only likely images
+    return urls.filter(function(u){ return /\.(jpg|jpeg|png|webp)$/i.test(u); });
   }
 
-  function isGradient(v){ return typeof v==='string' && (/^linear-gradient|^radial-gradient/i.test(v)); }
-
-  // Use background shorthand so it always wins over previous CSS
+  function isGradient(v){ return typeof v==='string' && (/^linear-gradient/i.test(v) || /^radial-gradient/i.test(v)); }
   function setBG(el, src){
     if (!el) return;
-    if (isGradient(src)) {
-      el.style.background = src + ' center / cover no-repeat';
+    if (isGradient(src)){
+      el.style.background = src;
     } else {
-      el.style.background = "url('" + src + "') center / cover no-repeat";
+      el.style.backgroundImage = "url('"+src+"')";
     }
+    el.style.backgroundSize = 'cover';
+    el.style.backgroundPosition = 'center';
   }
 
-  <script>
+  function startHero(){
+    var hero = document.getElementById('heroBg');
+    if (!hero){ return; } // nothing to paint
+
+    // 1) try posters from tiles; 2) fallback to gradients
+    var posters = collectTilePosters();
+    var GRADIENTS = [
+      "linear-gradient(135deg,#0f172a,#111827)",
+      "linear-gradient(135deg,#1f2937,#0b1021)",
+      "linear-gradient(135deg,#0e7490,#0b1021)",
+      "linear-gradient(135deg,#1d4ed8,#0b1021)",
+      "linear-gradient(135deg,#7c3aed,#0b1021)"
+    ];
+    var seq = posters.length ? posters : GRADIENTS;
+
+    var i = 0;
+    function tick(){ setBG(hero, seq[i % seq.length]); i++; }
+    tick();
+    setInterval(tick, 6000);
+  }
+
+  document.addEventListener('DOMContentLoaded', startHero);
+})();
+</script>
+
+<script>
 (function(){
   function ensureHeroBg(){
     var heroSection = document.querySelector('section.hero');
@@ -975,9 +977,9 @@ function wireGenrePills(){
     var s = document.createElement('style'); s.id='heroBg-css';
     s.textContent = [
       '#heroBg{position:absolute;inset:0;background:#000 center/cover no-repeat;',
-      'filter:brightness(.45);transition:opacity .4s ease-in-out;z-index:0;opacity:1}',
-      '.hero{position:relative;overflow:hidden;min-height:70vh}',
-      '.hero .hero-inner{position:relative;z-index:2}'
+      'filter:brightness(.45);transition:background-image .6s ease-in-out;z-index:0;}',
+      '.hero{position:relative;overflow:hidden;min-height:70vh;}',
+      '.hero .hero-inner{position:relative;z-index:2;}'
     ].join('');
     document.head.appendChild(s);
   }
@@ -985,11 +987,9 @@ function wireGenrePills(){
   function collectPosters(){
     var urls = [];
     document.querySelectorAll('.card .card-media').forEach(function(media){
-      // inline style
       var s = media.getAttribute('style') || '';
       var m = /background-image\s*:\s*url\((['"]?)(.*?)\1\)/i.exec(s);
       if (m && m[2] && urls.indexOf(m[2]) === -1) urls.push(m[2]);
-      // data-posters
       var card = media.closest('.card');
       if (card){
         (card.getAttribute('data-posters') || '')
@@ -1006,7 +1006,6 @@ function wireGenrePills(){
     return typeof v === 'string' && (/^linear-gradient|^radial-gradient/i.test(v));
   }
 
-  // Use background shorthand so it overrides any prior CSS
   function setBG(el, src){
     if (!el) return;
     if (isGradient(src)) {
@@ -1031,7 +1030,6 @@ function wireGenrePills(){
     ];
     var seq = posters.length ? posters : GRADIENTS;
 
-    // avoid double intervals
     if (window.__heroInterval) { clearInterval(window.__heroInterval); }
 
     var i = 0;
@@ -1041,9 +1039,8 @@ function wireGenrePills(){
     }
     tick();
     window.__heroInterval = setInterval(tick, 6000);
-
-    console.log("Hero rotator running (shorthand). Sources:", seq.length);
-  } // <-- closes startHero()
+    console.log("Hero rotator running (patched). Sources:", seq.length);
+  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', startHero);
@@ -1052,5 +1049,6 @@ function wireGenrePills(){
   }
 })();
 </script>
+
 </body>
 </html>
