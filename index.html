@@ -899,20 +899,29 @@ function wireGenrePills(){
 }
 
 // ========= POSTERS + HERO =========
-(function(){
-  function getTilePosters(){
-    return Array.prototype.slice.call(document.querySelectorAll('#portfolio .card-media'))
-      .map(function(el){
-        var s = el.getAttribute('style') || '';
-        var m = /background-image\s*:\s*url\((['\"]?)(.*?)\1\)/i.exec(s);
-        return m ? m[2] : null;
-      })
-      .filter(function(u){ return u && !/placeholder_16x9\.png$/i.test(u); });
+ function collectTilePosters(){
+    var urls = [];
+    document.querySelectorAll('.card .card-media').forEach(function(media){
+      // from inline style, if set
+      var s = media.getAttribute('style') || '';
+      var m = /background-image\s*:\s*url\((['"]?)(.*?)\1\)/i.exec(s);
+      if (m && m[2] && urls.indexOf(m[2]) === -1) urls.push(m[2]);
+
+      // from data-posters, if provided
+      var card = media.closest('.card');
+      if (card){
+        var dp = (card.getAttribute('data-posters') || '').split(',').map(function(x){return x.trim();}).filter(Boolean);
+        dp.forEach(function(u){ if (urls.indexOf(u) === -1) urls.push(u); });
+      }
+    });
+    // Keep only likely images
+    return urls.filter(function(u){ return /\.(jpg|jpeg|png|webp)$/i.test(u); });
   }
+
   function isGradient(v){ return typeof v==='string' && (/^linear-gradient/i.test(v) || /^radial-gradient/i.test(v)); }
   function setBG(el, src){
-    if(!el) return;
-    if(isGradient(src)){
+    if (!el) return;
+    if (isGradient(src)){
       el.style.background = src;
     } else {
       el.style.backgroundImage = "url('"+src+"')";
@@ -920,29 +929,29 @@ function wireGenrePills(){
     el.style.backgroundSize = 'cover';
     el.style.backgroundPosition = 'center';
   }
-  function applyPostersAndHero(){
-    document.querySelectorAll('.card .card-media').forEach(function(media){
-      var bg = (getComputedStyle(media).backgroundImage || '').toLowerCase();
-      if(!bg || bg==='none') media.setAttribute('data-empty','true');
-    });
-    var hero = document.getElementById('hero') || document.getElementById('heroBg') || document.getElementById('home');
-    var posters = getTilePosters();
-    var HERO_IMAGES = [
+
+  function startHero(){
+    var hero = document.getElementById('heroBg');
+    if (!hero){ return; } // nothing to paint
+
+    // 1) try posters from tiles; 2) fallback to gradients
+    var posters = collectTilePosters();
+    var GRADIENTS = [
       "linear-gradient(135deg,#0f172a,#111827)",
       "linear-gradient(135deg,#1f2937,#0b1021)",
       "linear-gradient(135deg,#0e7490,#0b1021)",
       "linear-gradient(135deg,#1d4ed8,#0b1021)",
       "linear-gradient(135deg,#7c3aed,#0b1021)"
     ];
-    var seq = posters.length ? posters : HERO_IMAGES;
+    var seq = posters.length ? posters : GRADIENTS;
+
     var i = 0;
     function tick(){ setBG(hero, seq[i % seq.length]); i++; }
-    if(hero){ tick(); setInterval(tick, 6000); }
+    tick();
+    setInterval(tick, 6000);
   }
-  document.addEventListener('DOMContentLoaded', function(){
-    wireGenrePills();
-    applyPostersAndHero();
-  });
+
+  document.addEventListener('DOMContentLoaded', startHero);
 })();
 </script>
 </body>
