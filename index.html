@@ -55,14 +55,14 @@
     .btn.secondary:hover{background:#fff;color:#000}
     .section{padding:3.5rem 0} .container{max-width:1200px;margin:0 auto;padding:0 20px}
     .section h2{color:#fff;text-align:center;margin:0 auto 1rem;border-bottom:1px solid var(--brand-rule);padding-bottom:.6rem;max-width:900px}
-    .section-intro{text-align:center;color:#var(--brand-muted);max-width:900px;margin:0 auto 2rem}
+    .section-intro{text-align:center;color:var(--brand-muted);max-width:900px;margin:0 auto 2rem}
     .portfolio-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin:1rem 0 1.75rem}
     .pill{background:rgba(255,255,255,.08);color:#fff;padding:.45rem .8rem;border-radius:999px}
     .pill[aria-current="true"], .pill:hover{background:var(--brand);color:#111}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
     .card{background:#16161b;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;transition:transform .2s ease,border-color .2s ease}
     .card:hover{transform:translateY(-4px);border-color:var(--brand)}
-    .card-media{aspect-ratio:16/9!important;background-color:#222;background-position:center center!important;background-size:cover!important;background-repeat:no-repeat!important;position:relative}
+    .card-media{aspect-ratio:16/9;background-color:#222;background-position:center center!important;background-size:cover!important;background-repeat:no-repeat!important;position:relative}
     .card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.65), transparent)}
     .card-body{padding:1rem} .title{font-weight:800;font-size:1.1rem;color:#fff;margin-bottom:.35rem}
     .muted{color:#B9A98F} .meta{display:flex;flex-wrap:wrap;gap:.35rem;margin:.4rem 0}
@@ -810,7 +810,7 @@
 <label for="name">Name</label>
 <input id="name" name="name" placeholder="Your name" style="margin:.4rem 0 1rem;padding:.6rem;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff"/>
 <label for="email">Email</label>
-<input id="email" name="email" placeholder="you@company.com" style="margin:.4rem 0 1rem;padding:.6rem;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff"/>
+<input id="email" type="email" autocomplete="email" inputmode="email" name="email" placeholder="you@company.com" style="margin:.4rem 0 1rem;padding:.6rem;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff"/>
 <label for="msg">Message</label>
 <textarea id="msg" name="msg" placeholder="How can we help?" rows="4" style="margin:.4rem 0 1rem;padding:.6rem;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff"></textarea>
 <button class="btn" type="submit">Send</button>
@@ -830,7 +830,7 @@
 <p class="modal-desc" id="projectDesc"></p>
 <div class="gate" id="gate">
 <label for="gateEmail">Enter your email to reveal downloads (for security):</label>
-<input id="gateEmail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@company.com"/>
+<input id="gateEmail" name="email" type="email" autocomplete="email" inputmode="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@company.com"/>
 <div class="actions" style="margin-top:.6rem">
 <a class="btn" href="#" id="unlock">Unlock</a>
 <a class="btn-ghost" href="#" id="skip">Skip (view trailer only)</a>
@@ -915,9 +915,12 @@ function ensureHeroCss(){
   if(document.getElementById('heroBg-css')) return;
   const s = document.createElement('style'); s.id='heroBg-css';
   s.textContent = [
-    '#heroBg{position:absolute;inset:0;background:#000 center/cover no-repeat;',
+    '#heroBg{position:absolute;inset:0;background-color:#000;',
+    'background-position:center top;',
+    'background-size:contain;',
+    'background-repeat:no-repeat;',
     'filter:brightness(.45);transition:background-image .6s ease-in-out;z-index:0;}',
-    '.hero{position:relative;overflow:hidden;min-height:70vh;}',
+    '.hero{position:relative;overflow:hidden;min-height:70vh;display:grid;place-items:start center;text-align:center;padding-top:clamp(60px,14vh,160px);padding-bottom:64px;}',
     '.hero .hero-inner{position:relative;z-index:2;}'
   ].join('');
   document.head.appendChild(s);
@@ -925,9 +928,14 @@ function ensureHeroCss(){
 function isGradient(v){ return typeof v==='string' && (/^linear-gradient|^radial-gradient/i.test(v)); }
 function setBG(el, src){
   if (!el) return;
-  el.style.background = isGradient(src)
-    ? (src + ' center / cover no-repeat')
-    : ("url('" + src + "') center / cover no-repeat");
+  if (isGradient(src)) {
+    el.style.backgroundImage = src;
+  } else {
+    el.style.backgroundImage = "url('" + src + "')";
+  }
+  el.style.backgroundPosition = 'center top';
+  el.style.backgroundSize = 'contain';
+  el.style.backgroundRepeat = 'no-repeat';
 }
 
 /* Collect posters from cards (inline style or data-posters) */
