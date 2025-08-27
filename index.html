@@ -121,6 +121,17 @@
 .platform-logo[data-platform*="FOX"]{background:#003399;color:#fff}
 .platform-logo span{transform:scale(.95)}
 </style>
+  
+  <style id="hero-no-crop-hotfix">
+#heroBg,
+#heroBg[style*="background"],
+#heroBg[style*="cover"]{
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  background-size: contain !important;
+  background-color: #000 !important;
+}
+</style>
 
 </head>
 <body>
