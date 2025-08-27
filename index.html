@@ -25,29 +25,9 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
-  
-#heroBg{
-  position:absolute;
-  inset:0;
-  background:#000 center/contain no-repeat; /* always show full poster, no cropping */
-  filter:brightness(.45);
-  transition:background-image .6s ease-in-out;
-  z-index:0;
-}
-.hero{
-  position:relative;
-  overflow:hidden;
-  min-height:70vh;
-  display:grid;
-  place-items:start center;           /* top-align hero content */
-  text-align:center;
-  padding-top:clamp(60px,14vh,160px); /* puts copy in upper third */
-  padding-bottom:64px;
-}
-.hero .hero-inner{
-  position:relative;
-  z-index:2;
-}
+#heroBg{position:absolute;inset:0;background:#000 center/cover no-repeat;filter:brightness(.45);transition:background-image .6s ease-in-out;z-index:0;}
+.hero{position:relative;overflow:hidden;min-height:70vh;}
+.hero .hero-inner{position:relative;z-index:2;}
 
     :root{--brand:#D48B3C;--brand-hover:#E3A463;--brand-ink:#F2E6D0;--brand-bg:#0A0A0A;--brand-muted:#B9A98F;--brand-rule:rgba(255,255,255,.10)}
     *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth}
@@ -65,7 +45,7 @@
     .menu-panel{position:absolute;right:0;top:calc(100% + 6px);min-width:240px;background:#0f0f13;border:1px solid rgba(255,255,255,.12);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.45);padding:.4rem}
     .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:.25rem} .menu a{display:block;padding:.55rem .65rem;border-radius:8px;color:#f5f3ee}
     .menu a:hover{background:rgba(255,255,255,.08);text-decoration:none}
-    .hero{position:relative;min-height:70vh;display:grid;place-items:start center;text-align:center;overflow:hidden}
+    .hero{position:relative;min-height:70vh;display:grid;place-items:center;text-align:center;overflow:hidden}
     .hero-inner{position:relative;z-index:2;max-width:900px;padding:0 20px}
     .hero h1{font-size:clamp(28px,4.2vw,60px)} .hero h1 span{color:var(--brand)}
     .hero p{opacity:.92;margin:.8rem auto 1.25rem;max-width:800px;color:var(--brand-ink)}
@@ -75,14 +55,14 @@
     .btn.secondary:hover{background:#fff;color:#000}
     .section{padding:3.5rem 0} .container{max-width:1200px;margin:0 auto;padding:0 20px}
     .section h2{color:#fff;text-align:center;margin:0 auto 1rem;border-bottom:1px solid var(--brand-rule);padding-bottom:.6rem;max-width:900px}
-    .section-intro{text-align:center;color:var(--brand-muted);max-width:900px;margin:0 auto 2rem}
+    .section-intro{text-align:center;color:#var(--brand-muted);max-width:900px;margin:0 auto 2rem}
     .portfolio-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin:1rem 0 1.75rem}
     .pill{background:rgba(255,255,255,.08);color:#fff;padding:.45rem .8rem;border-radius:999px}
     .pill[aria-current="true"], .pill:hover{background:var(--brand);color:#111}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
     .card{background:#16161b;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;transition:transform .2s ease,border-color .2s ease}
     .card:hover{transform:translateY(-4px);border-color:var(--brand)}
-    .card-media{aspect-ratio:2/3;background:#222 center/cover no-repeat;position:relative}
+    .card-media{aspect-ratio:16/9;background:#222 center/cover no-repeat;position:relative}
     .card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.65), transparent)}
     .card-body{padding:1rem} .title{font-weight:800;font-size:1.1rem;color:#fff;margin-bottom:.35rem}
     .muted{color:#B9A98F} .meta{display:flex;flex-wrap:wrap;gap:.35rem;margin:.4rem 0}
