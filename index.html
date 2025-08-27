@@ -28,9 +28,7 @@
 #heroBg{
   position:absolute;
   inset:0;
-  background:#000 center/contain no-repeat;
-  background-size:contain !important;        /* protect against inline 'cover' */
-  background-position:center center !important;
+  background:#000 center/contain no-repeat; /* always show full poster, no cropping */
   filter:brightness(.45);
   transition:background-image .6s ease-in-out;
   z-index:0;
@@ -40,9 +38,9 @@
   overflow:hidden;
   min-height:70vh;
   display:grid;
-  place-items:start center;                   /* top-align hero content */
+  place-items:start center;           /* top-align hero content */
   text-align:center;
-  padding-top:clamp(60px,14vh,160px);         /* copy in upper third */
+  padding-top:clamp(60px,14vh,160px); /* puts copy in upper third */
   padding-bottom:64px;
 }
 .hero .hero-inner{
@@ -121,14 +119,6 @@
 .platform-logo[data-platform*="NBC"]{background:#034bad;color:#fff}
 .platform-logo[data-platform*="FOX"]{background:#003399;color:#fff}
 .platform-logo span{transform:scale(.95)}
-
-/* Desktop: switch to immersive fill with a safe top bias */
-@media (min-width:1024px){
-  #heroBg{
-    background-size:cover !important;
-    background-position:center top !important;
-  }
-}
 </style>
 
 </head>
