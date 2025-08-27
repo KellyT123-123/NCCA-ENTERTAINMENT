@@ -25,7 +25,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
-#heroBg{position:absolute;inset:0;background:#000 center/cover no-repeat;filter:brightness(.45);transition:background-image .6s ease-in-out;z-index:0;}
+#heroBg{position:absolute;inset:0;background-color:#000;background-position:center top!important;background-size:contain!important;background-repeat:no-repeat!important;filter:brightness(.45);transition:background-image .6s ease-in-out;z-index:0;}
 .hero{position:relative;overflow:hidden;min-height:70vh;}
 .hero .hero-inner{position:relative;z-index:2;}
 
@@ -62,7 +62,7 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
     .card{background:#16161b;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;transition:transform .2s ease,border-color .2s ease}
     .card:hover{transform:translateY(-4px);border-color:var(--brand)}
-    .card-media{aspect-ratio:16/9!important;background:#222 center/cover no-repeat!important;position:relative}
+    .card-media{aspect-ratio:16/9!important;background-color:#222;background-position:center center!important;background-size:cover!important;background-repeat:no-repeat!important;position:relative}
     .card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.65), transparent)}
     .card-body{padding:1rem} .title{font-weight:800;font-size:1.1rem;color:#fff;margin-bottom:.35rem}
     .muted{color:#B9A98F} .meta{display:flex;flex-wrap:wrap;gap:.35rem;margin:.4rem 0}
