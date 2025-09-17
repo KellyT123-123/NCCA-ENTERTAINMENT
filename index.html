@@ -366,6 +366,7 @@
       font-weight:600;
       transition:all 0.3s ease;
       border:1px solid rgba(255,255,255,.1);
+      cursor:pointer;
     }
     
     .pill:hover{
@@ -397,6 +398,7 @@
       transition:all 0.3s ease;
       border:1px solid rgba(255,255,255,.1);
       margin:0 0.5rem;
+      cursor:pointer;
     }
 
     .toggle-btn:hover{
@@ -500,130 +502,169 @@
     }
     
     .badge.genre{
-      background:linear-gradient(135deg, rgba(212,139,60,.15), rgba(212,139,60,.25));
+      background:rgba(212,139,60,.2);
+      color:var(--brand);
       border:1px solid rgba(212,139,60,.4);
-      color:var(--brand-hover);
     }
     
     .badge.format{
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.2);
-      color:#F2E6D0;
+      background:rgba(100,150,255,.2);
+      color:#a5c3ff;
+      border:1px solid rgba(100,150,255,.4);
     }
     
     .badge.audience{
-      background:rgba(100,150,255,.15);
-      border:1px solid rgba(100,150,255,.3);
-      color:#a5c3ff;
+      background:rgba(255,255,255,.1);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.2);
     }
     
     .platform-logos{
       display:flex;
-      flex-wrap:wrap;
-      gap:0.4rem;
-      margin:0.5rem 0;
+      gap:0.3rem;
+      margin-left:auto;
     }
     
     .platform-logo{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:28px;
-      height:28px;
-      border-radius:50%;
       font-size:0.7rem;
-      font-weight:800;
-      color:#fff;
-      letter-spacing:0.02em;
-      border:1px solid rgba(255,255,255,.2);
-      transition:transform 0.2s ease;
+      padding:0.3rem 0.5rem;
+      border-radius:4px;
+      font-weight:700;
+      color:#000;
+      background:#fff;
+      opacity:0.9;
     }
     
-    .platform-logo:hover{
-      transform:scale(1.1);
-    }
-    
-    .platform-logo[data-platform*="Netflix"]{background:#E50914;border-color:#b40c14}
-    .platform-logo[data-platform*="HBO"]{background:#221f1f;color:#fff}
-    .platform-logo[data-platform*="Apple"]{background:#1e1e1e;color:#fff}
-    .platform-logo[data-platform*="BET+"]{background:#6c2bd9;color:#fff}
-    .platform-logo[data-platform*="OWN"]{background:#3d8b49;color:#fff}
-    .platform-logo[data-platform*="Lifetime"]{background:#cc0033;color:#fff}
-    .platform-logo[data-platform*="Paramount+"]{background:#0064FF;color:#fff}
-    .platform-logo[data-platform*="Peacock"]{background:#111;color:#fff}
-    .platform-logo[data-platform*="ABC"]{background:#000;color:#fff}
-    .platform-logo[data-platform*="NBC"]{background:#034bad;color:#fff}
-    .platform-logo[data-platform*="FOX"]{background:#003399;color:#fff}
+    .platform-logo[data-platform="BET+"]{background:#7B2CBF;color:#fff}
+    .platform-logo[data-platform="OWN"]{background:#D48B3C;color:#fff}
+    .platform-logo[data-platform="Lifetime"]{background:#E91E63;color:#fff}
+    .platform-logo[data-platform="Paramount+"]{background:#0066CC;color:#fff}
+    .platform-logo[data-platform="Peacock"]{background:#673AB7;color:#fff}
+    .platform-logo[data-platform="Netflix"]{background:#E50914;color:#fff}
+    .platform-logo[data-platform="HBO"]{background:#000;color:#fff}
+    .platform-logo[data-platform="Apple"]{background:#000;color:#fff}
+    .platform-logo[data-platform="ABC"]{background:#000;color:#fff}
+    .platform-logo[data-platform="NBC"]{background:#4285F4;color:#fff}
+    .platform-logo[data-platform="FOX"]{background:#003366;color:#fff}
     
     .muted{
-      color:#B9A98F;
+      color:var(--brand-muted);
+      font-size:0.95rem;
       line-height:1.5;
       margin:1rem 0;
     }
     
     .actions{
       display:flex;
-      flex-wrap:wrap;
       gap:0.8rem;
       margin-top:1.2rem;
     }
     
     .chip{
-      display:inline-block;
-      font-size:0.9rem;
-      padding:0.6rem 1rem;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.25);
-      background:rgba(255,255,255,.09);
+      background:rgba(255,255,255,.08);
       color:#fff;
+      padding:0.5rem 1rem;
+      border-radius:999px;
+      font-size:0.85rem;
       font-weight:600;
       transition:all 0.3s ease;
+      border:1px solid rgba(255,255,255,.1);
     }
     
     .chip:hover{
       background:var(--brand);
       color:#111;
-      border-color:var(--brand);
       transform:translateY(-1px);
       text-decoration:none;
     }
 
-    /* Genre Section Headers */
-    .section h3{
-      color:#fff;
-      text-align:center;
-      margin-bottom:2rem;
-      font-size:clamp(1.5rem, 3vw, 2.2rem);
-      font-weight:700;
-      position:relative;
-      padding-bottom:0.5rem;
+    /* Format Filter Pills */
+    .format-pills{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:0.8rem;
+      margin:2rem 0 3rem;
     }
     
-    .section h3::after{
+    .format-pill{
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      padding:0.6rem 1.2rem;
+      border-radius:999px;
+      font-weight:600;
+      transition:all 0.3s ease;
+      border:1px solid rgba(255,255,255,.1);
+      cursor:pointer;
+      text-decoration:none;
+    }
+    
+    .format-pill:hover{
+      background:var(--brand);
+      color:#111;
+      transform:translateY(-1px);
+      box-shadow:0 4px 15px rgba(212,139,60,.3);
+      text-decoration:none;
+    }
+    
+    .format-pill.active{
+      background:var(--brand);
+      color:#111;
+      border-color:var(--brand);
+    }
+
+    /* Project Count Display */
+    .project-count{
+      text-align:center;
+      margin:1rem 0 2rem;
+      font-size:1.1rem;
+      color:var(--brand-muted);
+    }
+    
+    .project-count strong{
+      color:var(--brand);
+      font-weight:800;
+    }
+
+    /* Genre Section Headers */
+    .genre-section{
+      margin:4rem 0 2rem;
+    }
+    
+    .genre-section h3{
+      color:#fff;
+      font-size:2rem;
+      font-weight:800;
+      text-align:center;
+      margin-bottom:1rem;
+      padding-bottom:0.5rem;
+      border-bottom:2px solid var(--brand);
+      position:relative;
+    }
+    
+    .genre-section h3::after{
       content:'';
       position:absolute;
-      bottom:0;
+      bottom:-2px;
       left:50%;
       transform:translateX(-50%);
       width:60px;
-      height:3px;
+      height:2px;
       background:var(--brand);
-      border-radius:2px;
     }
 
-    /* Modal Enhancements */
-    dialog.modal{
-      position:fixed;
-      inset:0;
-      margin:auto;
-      max-width:min(1000px, 95vw);
-      max-height:90vh;
-      border:1px solid rgba(255,255,255,.15);
-      background:linear-gradient(135deg, #0f0f13 0%, #1a1a20 100%);
+    /* Enhanced Modal */
+    .modal{
+      border:none;
+      border-radius:20px;
+      background:linear-gradient(135deg, #16161b 0%, #1a1a20 100%);
       color:#fff;
-      border-radius:24px;
-      box-shadow:0 40px 100px rgba(0,0,0,.7);
+      max-width:800px;
+      width:90vw;
+      max-height:90vh;
       overflow:hidden;
+      box-shadow:0 25px 100px rgba(0,0,0,.8);
+      backdrop-filter:blur(20px);
     }
     
     .modal::backdrop{
@@ -637,23 +678,28 @@
       justify-content:space-between;
       padding:1.5rem 2rem;
       border-bottom:1px solid rgba(255,255,255,.1);
-      background:linear-gradient(135deg, rgba(212,139,60,.1), transparent);
+      background:rgba(0,0,0,.3);
     }
     
     .modal-title{
-      font-weight:800;
       font-size:1.5rem;
-      color:var(--brand);
+      font-weight:800;
+      color:#fff;
     }
     
     .close{
-      background:transparent;
+      background:none;
       border:none;
       color:#fff;
-      font-size:28px;
+      font-size:2rem;
       cursor:pointer;
-      padding:0.5rem;
-      border-radius:8px;
+      padding:0;
+      width:40px;
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
       transition:background 0.2s ease;
     }
     
@@ -662,160 +708,141 @@
     }
     
     .modal-body{
-      display:grid;
-      gap:2rem;
       padding:2rem;
       overflow-y:auto;
-    }
-    
-    @media(min-width:900px){
-      .modal-body{
-        grid-template-columns:1fr 1.3fr;
-      }
+      max-height:60vh;
     }
     
     .modal-media{
       aspect-ratio:16/9;
-      background:#1c1c22 center/cover no-repeat;
-      border-radius:16px;
-      box-shadow:0 10px 30px rgba(0,0,0,.5);
+      background-color:#222;
+      background-position:center;
+      background-size:cover;
+      border-radius:12px;
+      margin-bottom:1.5rem;
     }
     
     .modal-desc{
-      color:#F2E6D0;
+      color:var(--brand-muted);
+      font-size:1rem;
       line-height:1.6;
-      font-size:1.05rem;
+      margin:1rem 0;
     }
     
     .modal-footer{
+      padding:1.5rem 2rem;
+      border-top:1px solid rgba(255,255,255,.1);
+      background:rgba(0,0,0,.2);
       display:flex;
       gap:1rem;
       flex-wrap:wrap;
-      padding:0 2rem 2rem;
     }
     
     .btn-ghost{
-      background:rgba(255,255,255,.08);
+      background:transparent;
       color:#fff;
+      border:2px solid rgba(255,255,255,.3);
       padding:0.8rem 1.5rem;
       border-radius:999px;
-      font-weight:700;
+      font-weight:600;
       transition:all 0.3s ease;
-      border:1px solid rgba(255,255,255,.2);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
     }
     
     .btn-ghost:hover{
-      background:rgba(255,255,255,.15);
-      transform:translateY(-1px);
+      background:rgba(255,255,255,.1);
+      border-color:rgba(255,255,255,.5);
       text-decoration:none;
     }
 
-    /* Gate styling */
+    /* Email Gate */
     .gate{
-      border:2px dashed rgba(212,139,60,.3);
+      background:rgba(212,139,60,.1);
+      border:1px solid rgba(212,139,60,.3);
+      border-radius:12px;
       padding:1.5rem;
-      border-radius:16px;
-      margin-top:1rem;
-      background:rgba(212,139,60,.05);
+      margin:1rem 0;
     }
     
     .gate input{
       width:100%;
       padding:0.8rem 1rem;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.25);
-      background:#15151b;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,.3);
+      background:rgba(0,0,0,.3);
       color:#fff;
       font-size:1rem;
-      margin:0.5rem 0;
     }
     
     .gate input:focus{
       outline:none;
       border-color:var(--brand);
-      box-shadow:0 0 0 3px rgba(212,139,60,.2);
+      box-shadow:0 0 0 2px rgba(212,139,60,.2);
     }
 
-    /* Back to top button */
+    /* Back to Top Button */
     .to-top{
       position:fixed;
-      right:24px;
-      bottom:24px;
-      width:50px;
-      height:50px;
-      border-radius:50%;
+      bottom:2rem;
+      right:2rem;
       background:var(--brand);
       color:#111;
       border:none;
-      font-weight:800;
+      width:50px;
+      height:50px;
+      border-radius:50%;
       font-size:1.2rem;
+      font-weight:800;
       cursor:pointer;
-      box-shadow:0 15px 35px rgba(0,0,0,.4);
-      opacity:0;
-      pointer-events:none;
-      transform:translateY(20px);
       transition:all 0.3s ease;
+      box-shadow:0 4px 20px rgba(212,139,60,.3);
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(20px);
       z-index:1000;
     }
     
     .to-top.show{
       opacity:1;
-      pointer-events:auto;
+      visibility:visible;
       transform:translateY(0);
     }
     
     .to-top:hover{
-      transform:translateY(-2px);
-      box-shadow:0 20px 45px rgba(0,0,0,.5);
       background:var(--brand-hover);
-    }
-
-    /* Spotlight effect for featured content */
-    .spotlight-section{
-      background:linear-gradient(135deg, rgba(212,139,60,.03) 0%, transparent 50%, rgba(212,139,60,.03) 100%);
-      border-radius:20px;
-      padding:2rem 0;
-      margin:2rem 0;
-    }
-
-    /* Show/Hide for featured vs all projects */
-    .project-card.all-projects{
-      display:none;
-    }
-
-    .show-all .project-card.all-projects{
-      display:block;
-    }
-
-    .show-all .project-card.featured-only{
-      display:none;
+      transform:translateY(-2px);
+      box-shadow:0 6px 25px rgba(212,139,60,.4);
     }
 
     /* Responsive Design */
-    @media(max-width:768px){
+    @media (max-width: 768px) {
       .nav{
-        gap:1rem;
+        gap:16px;
+      }
+      
+      .nav > a{
+        font-size:0.9rem;
+      }
+      
+      .btn-cta{
+        padding:0.6rem 1rem;
+        font-size:0.9rem;
       }
       
       .dropdown-menu{
-        position:fixed;
-        top:80px;
-        left:1rem;
-        right:1rem;
-        width:auto;
+        min-width:250px;
+        right:-20px;
       }
       
-      .hero h1{
-        font-size:clamp(2.5rem, 10vw, 4rem);
+      .dropdown-grid{
+        grid-template-columns:1fr;
       }
       
-      .hero p{
-        font-size:1.1rem;
-      }
-      
-      .btn{
-        padding:0.8rem 1.5rem;
-        font-size:0.9rem;
+      .hero-inner{
+        margin-top:100px;
       }
       
       .grid{
@@ -823,910 +850,1055 @@
         gap:1.5rem;
       }
       
-      .section{
-        padding:3rem 0;
+      .modal{
+        width:95vw;
+        max-height:95vh;
       }
       
-      .container{
-        padding:0 1rem;
+      .modal-body{
+        padding:1.5rem;
       }
-
-      .toggle-btn{
-        margin:0.2rem;
-        padding:0.6rem 1rem;
-        font-size:0.9rem;
+      
+      .modal-footer{
+        padding:1rem 1.5rem;
+        flex-direction:column;
+      }
+      
+      .format-pills{
+        gap:0.5rem;
+      }
+      
+      .format-pill{
+        padding:0.5rem 1rem;
+        font-size:0.85rem;
       }
     }
 
-    /* Loading animation for hero background */
-    @keyframes fadeIn{
-      from{opacity:0;transform:scale(1.1);}
-      to{opacity:1;transform:scale(1);}
+    /* Hide/Show Logic for All Projects */
+    body:not(.show-all) .all-projects{
+      display:none;
     }
     
-    #heroBg{
-      animation:fadeIn 2s ease-out;
+    body.show-all .featured-only{
+      display:none;
+    }
+
+    /* Animation Classes */
+    .fade-in{
+      animation:fadeIn 0.5s ease-in-out;
+    }
+    
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
     }
 </style>
-
 </head>
 <body>
+
 <header>
-<div class="nav-wrap">
-<a aria-label="NCCA Entertainment" class="brand" href="#home">
-<span class="brand-text">NCCA ENTERTAINMENT</span>
-</a>
-<nav aria-label="Primary" class="nav">
-<a href="#portfolio">Featured</a>
-<a href="#all-projects">All Projects</a>
-<div class="dropdown">
-  <div class="dropdown-toggle">Genres</div>
-  <div class="dropdown-menu">
-    <div class="dropdown-header">Drama & Noir</div>
-    <a href="#southern-gothic">Southern Gothic</a>
-    <a href="#drama">Drama</a>
-    <a href="#film-noir">Film Noir</a>
-    <a href="#thriller">Thriller</a>
-    <div class="dropdown-header">Entertainment</div>
-    <a href="#romance">Romance</a>
-    <a href="#comedy">Comedy</a>
-    <a href="#horror">Horror</a>
-    <a href="#christmas">Christmas</a>
-    <div class="dropdown-header">Series & Features</div>
-    <a href="#network-series">Network Series</a>
-    <a href="#limited-series">Limited Series</a>
-    <a href="#feature-action">Action Features</a>
-    <a href="#docuseries">Docuseries</a>
+  <div class="nav-wrap">
+    <a href="#" class="brand">NCCA ENTERTAINMENT</a>
+    <nav class="nav">
+      <a href="#featured">Featured</a>
+      <a href="#all-projects">All Projects</a>
+      <div class="dropdown">
+        <div class="dropdown-toggle">Genres</div>
+        <div class="dropdown-menu">
+          <div class="dropdown-header">Browse by Genre</div>
+          <div class="dropdown-grid">
+            <a href="#film-noir">Film Noir</a>
+            <a href="#southern-gothic">Southern Gothic</a>
+            <a href="#drama">Drama</a>
+            <a href="#thriller">Thriller</a>
+            <a href="#romance">Romance</a>
+            <a href="#comedy">Comedy</a>
+            <a href="#horror">Horror</a>
+            <a href="#christmas">Christmas</a>
+            <a href="#network-series">Network Series</a>
+            <a href="#limited-series">Limited Series</a>
+            <a href="#action">Action Features</a>
+            <a href="#docuseries">Docuseries</a>
+          </div>
+        </div>
+      </div>
+      <a href="#about">About</a>
+      <a href="#contact" class="btn-cta">Get in Touch</a>
+    </nav>
   </div>
-</div>
-<a href="#about">About</a>
-<a class="btn-cta" href="#contact">Get in Touch</a>
-</nav>
-</div>
 </header>
 
-<section class="hero" id="home"> 
-<div id="heroBg"></div>
-<div class="hero-inner">
-<h1>NCCA <span>ENTERTAINMENT</span></h1>
-<p>A boutique content studio delivering premium, culturally rich scripted series and films — where Atlanta's soul meets global storytelling.</p>
-<div class="hero-cta">
-<a class="btn" href="#portfolio">View Portfolio</a>
-<a class="btn secondary" href="#about">Learn More</a>
-</div>
-</div>
+<section class="hero">
+  <div id="heroBg"></div>
+  <div class="hero-inner">
+    <h1>NCCA <span>ENTERTAINMENT</span></h1>
+    <p>A boutique content studio delivering premium, culturally rich scripted series and films — where Atlanta's soul meets global storytelling.</p>
+    <div class="hero-cta">
+      <a href="#featured" class="btn">VIEW PORTFOLIO</a>
+      <a href="#all-projects" class="btn secondary">ALL PROJECTS</a>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="portfolio">
-<div class="container">
-<h2>FEATURED PROJECTS</h2>
-<p class="section-intro">Highlights from our extensive collection of cinematic projects spanning all genres and formats.</p>
+<section id="featured" class="section">
+  <div class="container">
+    <h2>FEATURED PROJECTS</h2>
+    <p class="section-intro">Showcasing our most compelling and market-ready projects across multiple genres and formats.</p>
 
-<nav aria-label="Quick filters" class="portfolio-nav">
-<a class="pill" href="#southern-gothic">Southern Gothic</a>
-<a class="pill" href="#drama">Drama</a>
-<a class="pill" href="#thriller">Thriller</a>
-<a class="pill" href="#romance">Romance</a>
-<a class="pill" href="#comedy">Comedy</a>
-<a class="pill" href="#horror">Horror</a>
-<a class="pill" href="#christmas">Christmas</a>
-</nav>
+    <!-- Featured Spotlight -->
+    <div class="genre-section">
+      <h3>Film Noir — Spotlight</h3>
+      <div class="grid">
+        <article class="card project-card featured-only" data-title="Divine Deception" data-genre="Film Noir" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/divine-deception-pitch-deck.pdf" data-onesheet="one-sheets/divine-deception-onesheet.pdf" data-treatment="assets/divine-deception-treatment.pdf" data-trailer="assets/divine-deception-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/divine-deception.png')"></div>
+          <div class="card-body">
+            <div class="title">Divine Deception</div>
+            <div class="meta">
+              <span class="badge genre">Film Noir</span>
+              <span class="badge format">🗡️MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">A Southern Gospel noir that delves into the dark underbelly of faith and corruption in Atlanta's religious community.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/divine-deception-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
 
-<div class="spotlight-section">
-<section aria-labelledby="noir-title" class="section" id="noir">
-<h3 id="noir-title">Film Noir — Spotlight</h3>
-<div class="grid" data-tier="spotlight">
-<article class="card project-card featured-only" data-audience="Women 25—40 | Black Audiences" data-deck="pitch-decks/divine_deception_pitch_deck.pdf" data-onesheet="one-sheets/divine-deception-onesheet.pdf" data-format="MOW" data-genre="Film Noir 🗡️" data-platform="BET+ / OWN / Lifetime" data-title="Divine Deception" data-trailer="assets/divine-deception-teaser.mp4" data-treatment="assets/divine-deception-treatment.pdf">
-<div class="card-media" style="background-image:url('images/divine_deception_poster.jpg')"></div>
-<div class="card-body">
-<div class="title">Divine Deception</div>
-<div class="meta"><span class="badge genre">Film Noir 🗡️</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A Southern Gospel noir that delves into the dark underbelly of faith and corruption in Atlanta's religious community.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/divine-deception-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
+    <!-- Featured Projects Grid -->
+    <div class="genre-section">
+      <h3>Featured Projects</h3>
+      <div class="grid">
+        <article class="card project-card featured-only" data-title="The Line" data-genre="Drama" data-format="Series" data-audience="Gen Z; Women 25–40" data-deck="pitch-decks/the-line-pitch-deck.pdf" data-onesheet="one-sheets/the-line-onesheet.pdf" data-treatment="assets/the-line-treatment.pdf" data-trailer="assets/the-line-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/the-line.png')"></div>
+          <div class="card-body">
+            <div class="title">The Line</div>
+            <div class="meta">
+              <span class="badge genre">Drama</span>
+              <span class="badge format">🗡️ Series</span>
+              <span class="badge audience">Gen Z; Women 25–40</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Paramount+">P+</span>
+                <span class="platform-logo" data-platform="Peacock">P</span>
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+              </div>
+            </div>
+            <p class="muted">A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/the-line-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
 
-<h4 style="text-align:center;color:#fff;margin:1rem 0 .5rem">Featured Projects</h4>
-<div class="grid">
+        <article class="card project-card featured-only" data-title="The Feed" data-genre="Drama" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/the-feed-pitch-deck.pdf" data-onesheet="one-sheets/the-feed-onesheet.pdf" data-treatment="assets/the-feed-treatment.pdf" data-trailer="assets/the-feed-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/the-feed.png')"></div>
+          <div class="card-body">
+            <div class="title">The Feed</div>
+            <div class="meta">
+              <span class="badge genre">Drama</span>
+              <span class="badge format">🗡️ MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">A Black tech entrepreneur moves into a smart-home community and uncovers a biased surveillance system targeting him.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/the-feed-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
 
-  <!-- THE LINE -->
-  <article class="card project-card featured-only"
-           data-title="The Line"
-           data-format="Series"
-           data-genre="Drama 🗡️"
-           data-platform="Paramount+ / Peacock / BET+ / OWN"
-           data-audience="Gen Z; Women 25—40"
-           data-posters="images/the-line-poster.jpg" 
-           data-treatment="assets/the-line-treatment.pdf"
-           data-onesheet="one-sheets/the-line-onesheet.pdf">
-    <div class="card-media" style="background-image:url('images/the-line-poster.jpg')"></div>
-    <div class="card-body">
-      <div class="title">The Line</div>
-      <div class="meta">
-        <span class="badge genre">Drama 🗡️</span>
-        <span class="badge format">Series</span>
-        <span class="badge audience">Gen Z; Women 25—40</span>
-        <div class="platform-logos">
-          <span class="platform-logo" data-platform="Paramount+">P+</span>
-          <span class="platform-logo" data-platform="Peacock">P</span>
-          <span class="platform-logo" data-platform="BET+">B+</span>
-          <span class="platform-logo" data-platform="OWN">OWN</span>
+        <article class="card project-card featured-only" data-title="Rhythm & Blooms" data-genre="Romance" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/rhythm-and-blooms-pitch-deck.pdf" data-onesheet="one-sheets/rhythm-and-blooms-onesheet.pdf" data-treatment="assets/rhythm-and-blooms-treatment.pdf" data-trailer="assets/rhythm-and-blooms-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/rhythm-and-blooms.png')"></div>
+          <div class="card-body">
+            <div class="title">Rhythm & Blooms</div>
+            <div class="meta">
+              <span class="badge genre">Rom-Com</span>
+              <span class="badge format">❤️ MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">A structured landscape designer and a jazz club owner fall in love while reviving a rooftop garden.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/rhythm-and-blooms-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card featured-only" data-title="Mirror Image" data-genre="Thriller" data-format="MOW" data-audience="Women 25–40" data-deck="pitch-decks/mirror-image-pitch-deck.pdf" data-onesheet="one-sheets/mirror-image-onesheet.pdf" data-treatment="assets/mirror-image-treatment.pdf" data-trailer="assets/mirror-image-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/mirror-image.png')"></div>
+          <div class="card-body">
+            <div class="title">Mirror Image</div>
+            <div class="meta">
+              <span class="badge genre">Thriller</span>
+              <span class="badge format">⚡ MOW</span>
+              <span class="badge audience">Women 25–40</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Netflix">N</span>
+                <span class="platform-logo" data-platform="HBO">HBO</span>
+                <span class="platform-logo" data-platform="Apple">🍎</span>
+              </div>
+            </div>
+            <p class="muted">A fashion influencer is digitally framed by her sister using deepfakes and manipulation.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/mirror-image-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="all-projects" class="section">
+  <div class="container">
+    <h2>ALL PROJECTS</h2>
+    <p class="section-intro">Our complete portfolio of 27+ projects spanning multiple genres, formats, and target audiences — from intimate character studies to high-concept thrillers.</p>
+    
+    <div class="project-count">
+      <strong>27+</strong> projects across all genres and formats
+    </div>
+
+    <!-- Format Filter Pills -->
+    <div class="format-pills">
+      <a href="#" class="format-pill active" data-format="all">All Projects</a>
+      <a href="#" class="format-pill" data-format="MOW">MOW</a>
+      <a href="#" class="format-pill" data-format="Feature">Feature</a>
+      <a href="#" class="format-pill" data-format="Series">Series</a>
+      <a href="#" class="format-pill" data-format="Network Series">Network Series</a>
+    </div>
+
+    <!-- Film Noir Section -->
+    <div class="genre-section" id="film-noir">
+      <h3>Film Noir</h3>
+      <div class="grid">
+        <article class="card project-card all-projects" data-title="Divine Deception" data-genre="Film Noir" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/divine-deception-pitch-deck.pdf" data-onesheet="one-sheets/divine-deception-onesheet.pdf" data-treatment="assets/divine-deception-treatment.pdf" data-trailer="assets/divine-deception-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/divine-deception.png')"></div>
+          <div class="card-body">
+            <div class="title">Divine Deception</div>
+            <div class="meta">
+              <span class="badge genre">Film Noir</span>
+              <span class="badge format">🗡️MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">A Southern Gospel noir that delves into the dark underbelly of faith and corruption in Atlanta's religious community.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/divine-deception-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Southern Gothic Section -->
+    <div class="genre-section" id="southern-gothic">
+      <h3>Southern Gothic</h3>
+      <div class="grid">
+        <article class="card project-card all-projects" data-title="The Southern Belle's Secret" data-genre="Southern Gothic" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/the-southern-belles-secret-pitch-deck.pdf" data-onesheet="one-sheets/the-southern-belles-secret-onesheet.pdf" data-treatment="assets/the-southern-belles-secret-treatment.pdf" data-trailer="assets/the-southern-belles-secret-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/the-southern-belles-secret.png')"></div>
+          <div class="card-body">
+            <div class="title">The Southern Belle's Secret</div>
+            <div class="meta">
+              <span class="badge genre">Southern Gothic</span>
+              <span class="badge format">🗡️MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">When a Southern debutante uncovers her family's connection to a decades old lynching, her polished world begins to unravel</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/the-southern-belles-secret-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Drama Section -->
+    <div class="genre-section" id="drama">
+      <h3>Drama</h3>
+      <div class="grid">
+        <article class="card project-card all-projects" data-title="The Line" data-genre="Drama" data-format="Series" data-audience="Gen Z; Women 25–40" data-deck="pitch-decks/the-line-pitch-deck.pdf" data-onesheet="one-sheets/the-line-onesheet.pdf" data-treatment="assets/the-line-treatment.pdf" data-trailer="assets/the-line-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/the-line.png')"></div>
+          <div class="card-body">
+            <div class="title">The Line</div>
+            <div class="meta">
+              <span class="badge genre">Drama</span>
+              <span class="badge format">🗡️Series</span>
+              <span class="badge audience">Gen Z; Women 25–40</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Paramount+">P+</span>
+                <span class="platform-logo" data-platform="Peacock">P</span>
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+              </div>
+            </div>
+            <p class="muted">A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/the-line-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="The Feed" data-genre="Drama" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/the-feed-pitch-deck.pdf" data-onesheet="one-sheets/the-feed-onesheet.pdf" data-treatment="assets/the-feed-treatment.pdf" data-trailer="assets/the-feed-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/the-feed.png')"></div>
+          <div class="card-body">
+            <div class="title">The Feed</div>
+            <div class="meta">
+              <span class="badge genre">Drama</span>
+              <span class="badge format">🗡️MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">A Black tech entrepreneur moves into a smart-home community and uncovers a biased surveillance system targeting him.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/the-feed-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="This is Me Now" data-genre="Drama" data-format="Feature" data-audience="YA | Gen Z" data-deck="pitch-decks/this-is-me-now-pitch-deck.pdf" data-onesheet="one-sheets/this-is-me-now-onesheet.pdf" data-treatment="assets/this-is-me-now-treatment.pdf" data-trailer="assets/this-is-me-now-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/this-is-me-now.png')"></div>
+          <div class="card-body">
+            <div class="title">This is Me Now</div>
+            <div class="meta">
+              <span class="badge genre">Drama</span>
+              <span class="badge format">Feature</span>
+              <span class="badge audience">YA | Gen Z</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Paramount+">P+</span>
+                <span class="platform-logo" data-platform="Peacock">P</span>
+                <span class="platform-logo" data-platform="ABC">ABC</span>
+                <span class="platform-logo" data-platform="NBC">NBC</span>
+                <span class="platform-logo" data-platform="FOX">FOX</span>
+              </div>
+            </div>
+            <p class="muted">A quiet, tech-savvy teen becomes infamous overnight when a private video goes viral.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/this-is-me-now-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Lifeart" data-genre="Drama" data-format="Feature" data-deck="pitch-decks/lifeart-pitch-deck.pdf" data-onesheet="one-sheets/lifeart-onesheet.pdf" data-treatment="assets/lifeart-treatment.pdf" data-trailer="assets/lifeart-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/lifeart.png')"></div>
+          <div class="card-body">
+            <div class="title">Lifeart</div>
+            <div class="meta">
+              <span class="badge genre">Drama</span>
+              <span class="badge format">Feature</span>
+            </div>
+            <p class="muted">A painter hides behind a false identity until one commission threatens to unmask him.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/lifeart-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Beneath the Magnolia Tree" data-genre="Drama" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/beneath-the-magnolia-tree-pitch-deck.pdf" data-onesheet="one-sheets/beneath-the-magnolia-tree-onesheet.pdf" data-treatment="assets/beneath-the-magnolia-tree-treatment.pdf" data-trailer="assets/beneath-the-magnolia-tree-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/beneath-the-magnolia-tree.png')"></div>
+          <div class="card-body">
+            <div class="title">Beneath the Magnolia Tree</div>
+            <div class="meta">
+              <span class="badge genre">Drama</span>
+              <span class="badge format">🗡️MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">Beneath the beauty of the South lies a family's deepest scars.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/beneath-the-magnolia-tree-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Thriller Section -->
+    <div class="genre-section" id="thriller">
+      <h3>Thriller</h3>
+      <div class="grid">
+        <article class="card project-card all-projects" data-title="Mirror Image" data-genre="Thriller" data-format="MOW" data-audience="Women 25–40" data-deck="pitch-decks/mirror-image-pitch-deck.pdf" data-onesheet="one-sheets/mirror-image-onesheet.pdf" data-treatment="assets/mirror-image-treatment.pdf" data-trailer="assets/mirror-image-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/mirror-image.png')"></div>
+          <div class="card-body">
+            <div class="title">Mirror Image</div>
+            <div class="meta">
+              <span class="badge genre">Thriller</span>
+              <span class="badge format">⚡MOW</span>
+              <span class="badge audience">Women 25–40</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Netflix">N</span>
+                <span class="platform-logo" data-platform="HBO">HBO</span>
+                <span class="platform-logo" data-platform="Apple">🍎</span>
+              </div>
+            </div>
+            <p class="muted">A fashion influencer is digitally framed by her sister using deepfakes and manipulation.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/mirror-image-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="The Last Dynasty" data-genre="Thriller" data-format="Feature" data-deck="pitch-decks/the-last-dynasty-pitch-deck.pdf" data-onesheet="one-sheets/the-last-dynasty-onesheet.pdf" data-treatment="assets/the-last-dynasty-treatment.pdf" data-trailer="assets/the-last-dynasty-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/the-last-dynasty.png')"></div>
+          <div class="card-body">
+            <div class="title">The Last Dynasty</div>
+            <div class="meta">
+              <span class="badge genre">Crime Thriller / Musical Mystery</span>
+              <span class="badge format">Feature</span>
+            </div>
+            <p class="muted">A musical mystery thriller set in Atlanta's music industry.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/the-last-dynasty-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="The Double Cross" data-genre="Thriller" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/the-double-cross-pitch-deck.pdf" data-onesheet="one-sheets/the-double-cross-onesheet.pdf" data-treatment="assets/the-double-cross-treatment.pdf" data-trailer="assets/the-double-cross-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/the-double-cross.png')"></div>
+          <div class="card-body">
+            <div class="title">The Double Cross</div>
+            <div class="meta">
+              <span class="badge genre">Crime Thriller / Emotional Drama</span>
+              <span class="badge format">MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">An ex-con discovers the rookie FBI agent tracking her is the daughter she thought she lost.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/the-double-cross-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Shadows on the Force" data-genre="Thriller" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/shadows-on-the-force-pitch-deck.pdf" data-onesheet="one-sheets/shadows-on-the-force-onesheet.pdf" data-treatment="assets/shadows-on-the-force-treatment.pdf" data-trailer="assets/shadows-on-the-force-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/shadows-on-the-force.png')"></div>
+          <div class="card-body">
+            <div class="title">Shadows on the Force</div>
+            <div class="meta">
+              <span class="badge genre">Thriller</span>
+              <span class="badge format">⚡MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">A detective's search for the truth could destroy both her case and her heart.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/shadows-on-the-force-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Romance Section -->
+    <div class="genre-section" id="romance">
+      <h3>Romance</h3>
+      <div class="grid">
+        <article class="card project-card all-projects" data-title="Rhythm & Blooms" data-genre="Romance" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/rhythm-and-blooms-pitch-deck.pdf" data-onesheet="one-sheets/rhythm-and-blooms-onesheet.pdf" data-treatment="assets/rhythm-and-blooms-treatment.pdf" data-trailer="assets/rhythm-and-blooms-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/rhythm-and-blooms.png')"></div>
+          <div class="card-body">
+            <div class="title">Rhythm & Blooms</div>
+            <div class="meta">
+              <span class="badge genre">Rom-Com</span>
+              <span class="badge format">❤️MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">A structured landscape designer and a jazz club owner fall in love while reviving a rooftop garden.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/rhythm-and-blooms-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Southern (Dis)comfort" data-genre="Romance" data-format="Feature" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/southern-discomfort-pitch-deck.pdf" data-onesheet="one-sheets/southern-discomfort-onesheet.pdf" data-treatment="assets/southern-discomfort-treatment.pdf" data-trailer="assets/southern-discomfort-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/southern-discomfort.png')"></div>
+          <div class="card-body">
+            <div class="title">Southern (Dis)comfort</div>
+            <div class="meta">
+              <span class="badge genre">Rom-Com</span>
+              <span class="badge format">❤️ Feature</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">A feared food critic must rebuild a restaurant with the man who once broke her heart.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/southern-discomfort-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Love after Likes" data-genre="Romance" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/love-after-likes-pitch-deck.pdf" data-onesheet="one-sheets/love-after-likes-onesheet.pdf" data-treatment="assets/love-after-likes-treatment.pdf" data-trailer="assets/love-after-likes-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/love-after-likes.png')"></div>
+          <div class="card-body">
+            <div class="title">Love after Likes</div>
+            <div class="meta">
+              <span class="badge genre">Rom-Com</span>
+              <span class="badge format">❤️MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">A viral breakup sends a perfectionist influencer offline—and straight into unexpected love.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/love-after-likes-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Comedy Section -->
+    <div class="genre-section" id="comedy">
+      <h3>Comedy</h3>
+      <div class="grid">
+        <article class="card project-card all-projects" data-title="Miss Juneteenth Blues" data-genre="Comedy" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/miss-juneteenth-blues-pitch-deck.pdf" data-onesheet="one-sheets/miss-juneteenth-blues-onesheet.pdf" data-treatment="assets/miss-juneteenth-blues-treatment.pdf" data-trailer="assets/miss-juneteenth-blues-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/miss-juneteenth-blues.png')"></div>
+          <div class="card-body">
+            <div class="title">Miss Juneteenth Blues</div>
+            <div class="meta">
+              <span class="badge genre">Comedy-Drama / Southern Family Drama</span>
+              <span class="badge format">MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">A down on her luck mom enters a pageant she swore off, under false pretenses.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/miss-juneteenth-blues-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Sneakerheads Anonymous" data-genre="Comedy" data-format="MOW" data-audience="YA | Gen Z" data-deck="pitch-decks/sneakerheads-anonymous-pitch-deck.pdf" data-onesheet="one-sheets/sneakerheads-anonymous-onesheet.pdf" data-treatment="assets/sneakerheads-anonymous-treatment.pdf" data-trailer="assets/sneakerheads-anonymous-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/sneakerheads-anonymous.png')"></div>
+          <div class="card-body">
+            <div class="title">Sneakerheads Anonymous</div>
+            <div class="meta">
+              <span class="badge genre">Comedy</span>
+              <span class="badge format">MOW</span>
+              <span class="badge audience">YA | Gen Z</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Paramount+">P+</span>
+                <span class="platform-logo" data-platform="Peacock">P</span>
+                <span class="platform-logo" data-platform="ABC">ABC</span>
+                <span class="platform-logo" data-platform="NBC">NBC</span>
+                <span class="platform-logo" data-platform="FOX">FOX</span>
+              </div>
+            </div>
+            <p class="muted">A sneaker-head drains his college fund for Yeezys, then accidentally becomes the guru of a fake rehab group.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/sneakerheads-anonymous-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Trap House Sitting" data-genre="Comedy" data-format="Feature" data-audience="YA | Gen Z" data-deck="pitch-decks/trap-house-sitting-pitch-deck.pdf" data-onesheet="one-sheets/trap-house-sitting-onesheet.pdf" data-treatment="assets/trap-house-sitting-treatment.pdf" data-trailer="assets/trap-house-sitting-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/trap-house-sitting.png')"></div>
+          <div class="card-body">
+            <div class="title">Trap House Sitting</div>
+            <div class="meta">
+              <span class="badge genre">Comedy</span>
+              <span class="badge format">Feature</span>
+              <span class="badge audience">YA | Gen Z</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Paramount+">P+</span>
+                <span class="platform-logo" data-platform="Peacock">P</span>
+                <span class="platform-logo" data-platform="ABC">ABC</span>
+                <span class="platform-logo" data-platform="NBC">NBC</span>
+                <span class="platform-logo" data-platform="FOX">FOX</span>
+              </div>
+            </div>
+            <p class="muted">Babysitting a cousin's studio turns into Atlanta's wildest underground party.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/trap-house-sitting-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Hot Mess Express" data-genre="Comedy" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/hot-mess-express-pitch-deck.pdf" data-onesheet="one-sheets/hot-mess-express-onesheet.pdf" data-treatment="assets/hot-mess-express-treatment.pdf" data-trailer="assets/hot-mess-express-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/hot-mess-express.png')"></div>
+          <div class="card-body">
+            <div class="title">Hot Mess Express</div>
+            <div class="meta">
+              <span class="badge genre">Comedy</span>
+              <span class="badge format">MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">Three overworked moms snap and head out on the most chaotic girls' trip of their lives.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/hot-mess-express-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Black Girls Guide to Vengeance(and Vodka)" data-genre="Comedy" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/black-girls-guide-to-vengeance-and-vodka-pitch-deck.pdf" data-onesheet="one-sheets/black-girls-guide-to-vengeance-and-vodka-onesheet.pdf" data-treatment="assets/black-girls-guide-to-vengeance-and-vodka-treatment.pdf" data-trailer="assets/black-girls-guide-to-vengeance-and-vodka-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/black-girls-guide-to-vengeance-and-vodka.png')"></div>
+          <div class="card-body">
+            <div class="title">Black Girls Guide to Vengeance(and Vodka)</div>
+            <div class="meta">
+              <span class="badge genre">Comedy</span>
+              <span class="badge format">MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">Dumped for an AI clone built from her own data, a software engineer goes viral with a revenge app.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/black-girls-guide-to-vengeance-and-vodka-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Horror Section -->
+    <div class="genre-section" id="horror">
+      <h3>Horror</h3>
+      <div class="grid">
+        <article class="card project-card all-projects" data-title="Second Skin" data-genre="Horror" data-format="Feature" data-deck="pitch-decks/second-skin-pitch-deck.pdf" data-onesheet="one-sheets/second-skin-onesheet.pdf" data-treatment="assets/second-skin-treatment.pdf" data-trailer="assets/second-skin-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/second-skin.png')"></div>
+          <div class="card-body">
+            <div class="title">Second Skin</div>
+            <div class="meta">
+              <span class="badge genre">Horror</span>
+              <span class="badge format">Feature</span>
+            </div>
+            <p class="muted">A cursed fashion shoot unleashes a horror that wears its victims from the inside out.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/second-skin-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="The Bone Collector's Daughter" data-genre="Horror" data-format="Feature" data-deck="pitch-decks/the-bone-collectors-daughter-pitch-deck.pdf" data-onesheet="one-sheets/the-bone-collectors-daughter-onesheet.pdf" data-treatment="assets/the-bone-collectors-daughter-treatment.pdf" data-trailer="assets/the-bone-collectors-daughter-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/the-bone-collectors-daughter.png')"></div>
+          <div class="card-body">
+            <div class="title">The Bone Collector's Daughter</div>
+            <div class="meta">
+              <span class="badge genre">Horror</span>
+              <span class="badge format">Feature</span>
+            </div>
+            <p class="muted">A daughter inherits more than a house, she inherits a haunting legacy of bone magic.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/the-bone-collectors-daughter-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Christmas Stories Section -->
+    <div class="genre-section" id="christmas">
+      <h3>Christmas Stories</h3>
+      <div class="grid">
+        <article class="card project-card all-projects" data-title="A Spelman Christmas" data-genre="Christmas" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/a-spelman-christmas-pitch-deck.pdf" data-onesheet="one-sheets/a-spelman-christmas-onesheet.pdf" data-treatment="assets/a-spelman-christmas-treatment.pdf" data-trailer="assets/a-spelman-christmas-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/a-spelman-christmas.png')"></div>
+          <div class="card-body">
+            <div class="title">A Spelman Christmas</div>
+            <div class="meta">
+              <span class="badge genre">Christmas</span>
+              <span class="badge format">MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">One family's holiday grief turns into the reunion they never expected.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/a-spelman-christmas-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Granny's House: Home for the Holidays" data-genre="Christmas" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/grannys-house-home-for-the-holidays-pitch-deck.pdf" data-onesheet="one-sheets/grannys-house-home-for-the-holidays-onesheet.pdf" data-treatment="assets/grannys-house-home-for-the-holidays-treatment.pdf" data-trailer="assets/grannys-house-home-for-the-holidays-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/grannys-house-home-for-the-holidays.png')"></div>
+          <div class="card-body">
+            <div class="title">Granny's House: Home for the Holidays</div>
+            <div class="meta">
+              <span class="badge genre">Christmas</span>
+              <span class="badge format">MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">One house, three generations, and a holiday season that's anything but quiet.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/grannys-house-home-for-the-holidays-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="The Twelve Dates of Christmas Tree Lot" data-genre="Christmas" data-format="MOW" data-audience="Women 25–40 | Black Audiences" data-deck="pitch-decks/the-twelve-dates-of-christmas-tree-lot-pitch-deck.pdf" data-onesheet="one-sheets/the-twelve-dates-of-christmas-tree-lot-onesheet.pdf" data-treatment="assets/the-twelve-dates-of-christmas-tree-lot-treatment.pdf" data-trailer="assets/the-twelve-dates-of-christmas-tree-lot-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/the-twelve-dates-of-christmas-tree-lot.png')"></div>
+          <div class="card-body">
+            <div class="title">The Twelve Dates of Christmas Tree Lot</div>
+            <div class="meta">
+              <span class="badge genre">Christmas</span>
+              <span class="badge format">MOW</span>
+              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="BET+">B+</span>
+                <span class="platform-logo" data-platform="OWN">OWN</span>
+                <span class="platform-logo" data-platform="Lifetime">L</span>
+              </div>
+            </div>
+            <p class="muted">Twelve days, one struggling tree lot, and a divorced dad's chance at redemption.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/the-twelve-dates-of-christmas-tree-lot-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Network Series Section -->
+    <div class="genre-section" id="network-series">
+      <h3>Network Series</h3>
+      <div class="grid">
+        <article class="card project-card all-projects" data-title="Just Jack" data-genre="Network Series" data-format="Network Series" data-audience="YA | Gen Z" data-deck="pitch-decks/just-jack-pitch-deck.pdf" data-onesheet="one-sheets/just-jack-onesheet.pdf" data-treatment="assets/just-jack-treatment.pdf" data-trailer="assets/just-jack-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/just-jack.png')"></div>
+          <div class="card-body">
+            <div class="title">Just Jack</div>
+            <div class="meta">
+              <span class="badge genre">Comedy</span>
+              <span class="badge format">Network Series</span>
+              <span class="badge audience">YA | Gen Z</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Paramount+">P+</span>
+                <span class="platform-logo" data-platform="Peacock">P</span>
+                <span class="platform-logo" data-platform="ABC">ABC</span>
+                <span class="platform-logo" data-platform="NBC">NBC</span>
+                <span class="platform-logo" data-platform="FOX">FOX</span>
+              </div>
+            </div>
+            <p class="muted">A warm hearted family comedy where grown up stakes sneak in through the laughs; every episode ends with an emotional punchline.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/just-jack-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Echo Chamber" data-genre="Network Series" data-format="Series" data-audience="Gen Z" data-deck="pitch-decks/echo-chamber-pitch-deck.pdf" data-onesheet="one-sheets/echo-chamber-onesheet.pdf" data-treatment="assets/echo-chamber-treatment.pdf" data-trailer="assets/echo-chamber-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/echo-chamber.png')"></div>
+          <div class="card-body">
+            <div class="title">Echo Chamber</div>
+            <div class="meta">
+              <span class="badge genre">Network Series</span>
+              <span class="badge format">Series</span>
+              <span class="badge audience">Gen Z</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Paramount+">P+</span>
+                <span class="platform-logo" data-platform="Peacock">P</span>
+                <span class="platform-logo" data-platform="Netflix">N</span>
+                <span class="platform-logo" data-platform="HBO">HBO</span>
+                <span class="platform-logo" data-platform="Apple">🍎</span>
+              </div>
+            </div>
+            <p class="muted">In a world where memories can be edited, one woman must hack the story of her brother's life.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/echo-chamber-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="Slice of Paradise" data-genre="Network Series" data-format="Series" data-audience="YA | Gen Z" data-deck="pitch-decks/slice-of-paradise-pitch-deck.pdf" data-onesheet="one-sheets/slice-of-paradise-onesheet.pdf" data-treatment="assets/slice-of-paradise-treatment.pdf" data-trailer="assets/slice-of-paradise-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/slice-of-paradise.png')"></div>
+          <div class="card-body">
+            <div class="title">Slice of Paradise</div>
+            <div class="meta">
+              <span class="badge genre">Network Series</span>
+              <span class="badge format">Series</span>
+              <span class="badge audience">YA | Gen Z</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Paramount+">P+</span>
+                <span class="platform-logo" data-platform="Peacock">P</span>
+                <span class="platform-logo" data-platform="ABC">ABC</span>
+                <span class="platform-logo" data-platform="NBC">NBC</span>
+                <span class="platform-logo" data-platform="FOX">FOX</span>
+              </div>
+            </div>
+            <p class="muted">A directionless thirty-something finds purpose in the last place he expected: a retirement community.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/slice-of-paradise-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card all-projects" data-title="The Archive" data-genre="Network Series" data-format="Series" data-audience="Gen Z" data-deck="pitch-decks/the-archive-pitch-deck.pdf" data-onesheet="one-sheets/the-archive-onesheet.pdf" data-treatment="assets/the-archive-treatment.pdf" data-trailer="assets/the-archive-teaser.mp4">
+          <div class="card-media" style="background-image:url('images/the-archive.png')"></div>
+          <div class="card-body">
+            <div class="title">The Archive</div>
+            <div class="meta">
+              <span class="badge genre">Network Series</span>
+              <span class="badge format">Series</span>
+              <span class="badge audience">Gen Z</span>
+              <div class="platform-logos">
+                <span class="platform-logo" data-platform="Paramount+">P+</span>
+                <span class="platform-logo" data-platform="Peacock">P</span>
+                <span class="platform-logo" data-platform="Netflix">N</span>
+                <span class="platform-logo" data-platform="HBO">HBO</span>
+                <span class="platform-logo" data-platform="Apple">🍎</span>
+              </div>
+            </div>
+            <p class="muted">A renegade historian protects a library of suppressed stories from corporate erasure.</p>
+            <div class="actions">
+              <a href="#" class="chip js-open" data-open>View Details</a>
+              <a href="assets/the-archive-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Limited Series Section -->
+    <div class="genre-section" id="limited-series">
+      <h3>Limited Series</h3>
+      <div class="grid">
+        <div class="card" style="background: linear-gradient(135deg, rgba(212,139,60,.1), rgba(212,139,60,.05)); border: 2px dashed rgba(212,139,60,.3);">
+          <div class="card-body" style="text-align: center; padding: 3rem 2rem;">
+            <h4 style="color: var(--brand); margin-bottom: 1rem; font-size: 1.5rem;">Limited Series projects coming soon...</h4>
+            <p class="muted">We're developing compelling limited series that explore complex narratives across multiple episodes.</p>
+          </div>
         </div>
       </div>
-      <p class="muted">A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.</p>
-      <div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div>
     </div>
-  </article>
 
-  <!-- THE FEED -->
-  <article class="card project-card featured-only"
-           data-title="The Feed"
-           data-format="MOW"
-           data-genre="Drama 🗡️"
-           data-platform="BET+ / OWN / Lifetime"
-           data-audience="Women 25—40 | Black Audiences"
-           data-posters="images/the-feed-poster.jpg" 
-           data-treatment="assets/the-feed-treatment.pdf"
-           data-onesheet="one-sheets/the-feed-onesheet.pdf">
-    <div class="card-media" style="background-image:url('images/the-feed-poster.jpg')"></div>
-    <div class="card-body">
-      <div class="title">The Feed</div>
-      <div class="meta">
-        <span class="badge genre">Drama 🗡️</span>
-        <span class="badge format">MOW</span>
-        <span class="badge audience">Women 25—40 | Black Audiences</span>
-        <div class="platform-logos">
-          <span class="platform-logo" data-platform="BET+">B+</span>
-          <span class="platform-logo" data-platform="OWN">OWN</span>
-          <span class="platform-logo" data-platform="Lifetime">L</span>
+    <!-- Action Features Section -->
+    <div class="genre-section" id="action">
+      <h3>Action Features</h3>
+      <div class="grid">
+        <div class="card" style="background: linear-gradient(135deg, rgba(212,139,60,.1), rgba(212,139,60,.05)); border: 2px dashed rgba(212,139,60,.3);">
+          <div class="card-body" style="text-align: center; padding: 3rem 2rem;">
+            <h4 style="color: var(--brand); margin-bottom: 1rem; font-size: 1.5rem;">Action Feature projects coming soon...</h4>
+            <p class="muted">High-octane action features that blend Atlanta's urban landscape with pulse-pounding storytelling.</p>
+          </div>
         </div>
       </div>
-      <p class="muted">A Black tech entrepreneur moves into a smart-home community and uncovers a biased surveillance system targeting him.</p>
-      <div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div>
     </div>
-  </article>
 
-  <!-- RHYTHM & BLOOMS -->
-  <article class="card project-card featured-only"
-           data-title="Rhythm & Blooms"
-           data-format="MOW"
-           data-genre="Rom-Com ❤️"
-           data-platform="BET+ / OWN / Lifetime"
-           data-audience="Women 25—40 | Black Audiences"
-           data-posters="images/rhythm-and-blooms-poster.jpg" 
-           data-treatment="assets/rhythm-blooms-treatment.pdf"
-           data-onesheet="one-sheets/rhythm-blooms-onesheet.pdf">
-    <div class="card-media" style="background-image:url('images/rhythm-and-blooms-poster.jpg')"></div>
-    <div class="card-body">
-      <div class="title">Rhythm &amp; Blooms</div>
-      <div class="meta">
-        <span class="badge genre">Rom-Com ❤️</span>
-        <span class="badge format">MOW</span>
-        <span class="badge audience">Women 25—40 | Black Audiences</span>
-        <div class="platform-logos">
-          <span class="platform-logo" data-platform="BET+">B+</span>
-          <span class="platform-logo" data-platform="OWN">OWN</span>
-          <span class="platform-logo" data-platform="Lifetime">L</span>
+    <!-- Docuseries Section -->
+    <div class="genre-section" id="docuseries">
+      <h3>Docuseries</h3>
+      <div class="grid">
+        <div class="card" style="background: linear-gradient(135deg, rgba(212,139,60,.1), rgba(212,139,60,.05)); border: 2px dashed rgba(212,139,60,.3);">
+          <div class="card-body" style="text-align: center; padding: 3rem 2rem;">
+            <h4 style="color: var(--brand); margin-bottom: 1rem; font-size: 1.5rem;">Docuseries projects coming soon...</h4>
+            <p class="muted">Documentary series that uncover untold stories and explore cultural narratives with depth and authenticity.</p>
+          </div>
         </div>
       </div>
-      <p class="muted">A structured landscape designer and a jazz club owner fall in love while reviving a rooftop garden.</p>
-      <div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div>
     </div>
-  </article>
+  </div>
+</section>
 
-  <!-- MIRROR IMAGE -->
-  <article class="card project-card featured-only"
-           data-title="Mirror Image"
-           data-format="MOW"
-           data-genre="Thriller ⚡"
-           data-platform="Netflix / HBO / Apple"
-           data-audience="Women 25—40"
-           data-posters="images/mirror-image-poster.jpg" 
-           data-treatment="assets/mirror-image-treatment.pdf"
-           data-onesheet="one-sheets/mirror-image-onesheet.pdf">
-    <div class="card-media" style="background-image:url('images/mirror-image-poster.jpg')"></div>
-    <div class="card-body">
-      <div class="title">Mirror Image</div>
-      <div class="meta">
-        <span class="badge genre">Thriller ⚡</span>
-        <span class="badge format">MOW</span>
-        <span class="badge audience">Women 25—40</span>
-        <div class="platform-logos">
-          <span class="platform-logo" data-platform="Netflix">N</span>
-          <span class="platform-logo" data-platform="HBO">HBO</span>
-          <span class="platform-logo" data-platform="Apple">🍎</span>
+<section id="about" class="section">
+  <div class="container">
+    <h2>About NCCA Entertainment</h2>
+    <p class="section-intro">NCCA ENTERTAINMENT develops premium, culturally resonant stories for film and television with a focus on high‑concept thrillers, Southern Gothic dramas, music‑driven prestige, and network‑ready Movies‑of‑the‑Week.</p>
+
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 3rem;">
+      <div class="card" style="background: linear-gradient(135deg, rgba(212,139,60,.1), rgba(212,139,60,.05));">
+        <div class="card-body">
+          <h3 style="color: var(--brand); margin-bottom: 1rem;">Our Mission</h3>
+          <p class="muted">To create authentic, culturally rich content that bridges Atlanta's vibrant storytelling tradition with global audiences, delivering premium entertainment that resonates across demographics.</p>
         </div>
       </div>
-      <p class="muted">A fashion influencer is digitally framed by her sister using deepfakes and manipulation.</p>
-      <div class="actions"><a class="chip js-open" data-open="True" href="#">View Details</a></div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(100,150,255,.1), rgba(100,150,255,.05));">
+        <div class="card-body">
+          <h3 style="color: #a5c3ff; margin-bottom: 1rem;">Our Focus</h3>
+          <p class="muted">Specializing in high-concept thrillers, Southern Gothic narratives, music-driven stories, and compelling Movies-of-the-Week that showcase diverse voices and perspectives.</p>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));">
+        <div class="card-body">
+          <h3 style="color: #fff; margin-bottom: 1rem;">Our Approach</h3>
+          <p class="muted">Boutique studio delivering premium content with Atlanta's soul at its core, ensuring every project maintains artistic integrity while meeting commercial market demands.</p>
+        </div>
+      </div>
     </div>
-  </article>
-
-</div>
-</section>
-</div>
-</div>
+  </div>
 </section>
 
-<section class="section" id="all-projects">
-<div class="container">
-<h2>COMPLETE PORTFOLIO</h2>
-<p class="section-intro">Our comprehensive collection of 40+ premium projects across all genres, formats, and platforms. From Southern Gothic dramas to high-concept thrillers, network series to feature films.</p>
+<section id="contact" class="section">
+  <div class="container">
+    <h2>Get in Touch</h2>
+    <p class="section-intro">Reach out for pitch materials, collaboration, or representation inquiries. We're always looking for passionate partners who share our vision for premium storytelling.</p>
 
-<div class="view-toggle">
-<a href="#" class="toggle-btn active" id="showFeatured">Featured Projects</a>
-<a href="#" class="toggle-btn" id="showAll">All Projects</a>
-</div>
+    <div class="grid" style="grid-template-columns: 1fr; max-width: 600px; margin: 0 auto;">
+      <form class="card" onsubmit="event.preventDefault();alert('Thanks — we\'ll be in touch!');this.reset();" style="padding:2rem">
+        <div style="margin-bottom: 1.5rem;">
+          <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--brand); font-weight: 600;">Name</label>
+          <input id="name" name="name" placeholder="Your name" style="width: 100%; margin: 0; padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff; font-size: 1rem;"/>
+        </div>
 
-<nav aria-label="All project filters" class="portfolio-nav">
-<a class="pill" href="#" data-filter="all">All</a>
-<a class="pill" href="#" data-filter="thriller">Thriller</a>
-<a class="pill" href="#" data-filter="drama">Drama</a>
-<a class="pill" href="#" data-filter="romance">Romance</a>
-<a class="pill" href="#" data-filter="comedy">Comedy</a>
-<a class="pill" href="#" data-filter="action">Action</a>
-<a class="pill" href="#" data-filter="horror">Horror</a>
-<a class="pill" href="#" data-filter="christmas">Christmas</a>
-<a class="pill" href="#" data-filter="series">Series</a>
-<a class="pill" href="#" data-filter="docuseries">Docuseries</a>
-</nav>
+        <div style="margin-bottom: 1.5rem;">
+          <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--brand); font-weight: 600;">Email</label>
+          <input id="email" type="email" autocomplete="email" inputmode="email" name="email" placeholder="you@company.com" style="width: 100%; margin: 0; padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff; font-size: 1rem;"/>
+        </div>
 
-<section aria-labelledby="southern-gothic-title" class="section" id="southern-gothic">
-<h3 id="southern-gothic-title">Southern Gothic / Drama</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-deck="pitch-decks/the_last_dynasty_pitch_deck.pdf" data-onesheet="one-sheets/the-last-dynasty-onesheet.pdf" data-format="Feature" data-genre="Crime Thriller / Musical Mystery" data-title="The Last Dynasty" data-trailer="assets/the-last-dynasty-teaser.mp4" data-treatment="assets/the-last-dynasty-treatment.pdf">
-<div class="card-media" style="background-image:url('the_last_dynasty_poster.png')"></div>
-<div class="card-body">
-<div class="title">The Last Dynasty</div>
-<div class="meta"><span class="badge genre">Crime Thriller / Musical Mystery</span><span class="badge format">Feature</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">Music dynasty heiress returns home for a life saving inheritance and becomes trapped in a deadly locked room mystery where everyone, including her own family, is a suspect.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-last-dynasty-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-<article class="card project-card all-projects" data-audience="Women 25—40 | Black Audiences" data-deck="pitch-decks/southern_belles_secret_pitch_deck.pdf" data-onesheet="one-sheets/southern-belles-secret-onesheet.pdf" data-format="Feature" data-genre="Southern Gothic 🗡️" data-platform="BET+ / OWN / Lifetime" data-title="The Southern Belle's Secret" data-trailer="assets/the-southern-belles-secret-teaser.mp4" data-treatment="assets/the-southern-belles-secret-treatment.pdf">
-<div class="card-media" style="background-image:url('images/southern-belles-secret.png')"></div>
-<div class="card-body">
-<div class="title">The Southern Belle's Secret</div>
-<div class="meta"><span class="badge genre">Southern Gothic 🗡️</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">When a Southern debutante uncovers her family's connection to a decades old lynching, her polished world begins to unravel</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-southern-belles-secret-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
+        <div style="margin-bottom: 1.5rem;">
+          <label for="subject" style="display: block; margin-bottom: 0.5rem; color: var(--brand); font-weight: 600;">Subject</label>
+          <select id="subject" name="subject" style="width: 100%; margin: 0; padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff; font-size: 1rem;">
+            <option value="">Select inquiry type</option>
+            <option value="pitch">Pitch Materials Request</option>
+            <option value="collaboration">Collaboration Opportunity</option>
+            <option value="representation">Representation Inquiry</option>
+            <option value="general">General Information</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <label for="msg" style="display: block; margin-bottom: 0.5rem; color: var(--brand); font-weight: 600;">Message</label>
+          <textarea id="msg" name="msg" placeholder="Tell us about your project or inquiry..." rows="5" style="width: 100%; margin: 0; padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff; font-size: 1rem; resize: vertical;"></textarea>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem;">Send Message</button>
+      </form>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(212,139,60,.05); border-radius: 16px; border: 1px solid rgba(212,139,60,.2);">
+      <h3 style="color: var(--brand); margin-bottom: 1rem;">Industry Professionals</h3>
+      <p style="color: var(--brand-muted); margin-bottom: 1.5rem;">For pitch decks, treatments, and detailed project information, please reach out directly. All materials are available for qualified industry professionals.</p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <span class="badge" style="background: rgba(212,139,60,.2); color: var(--brand); border: 1px solid rgba(212,139,60,.4);">Producers</span>
+        <span class="badge" style="background: rgba(212,139,60,.2); color: var(--brand); border: 1px solid rgba(212,139,60,.4);">Executives</span>
+        <span class="badge" style="background: rgba(212,139,60,.2); color: var(--brand); border: 1px solid rgba(212,139,60,.4);">Agents</span>
+        <span class="badge" style="background: rgba(212,139,60,.2); color: var(--brand); border: 1px solid rgba(212,139,60,.4);">Managers</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section aria-labelledby="drama-title" class="section" id="drama">
-<h3 id="drama-title">Drama</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-audience="YA | Gen Z" data-deck="pitch-decks/this_is_me_now_pitch_deck.pdf" data-onesheet="one-sheets/this-is-me-now-onesheet.pdf" data-format="Feature" data-genre="Drama" data-platform="Paramount+ / Peacock / ABC / NBC / FOX" data-title="This is Me Now" data-trailer="assets/this-is-me-now-teaser.mp4" data-treatment="assets/this-is-me-now-treatment.pdf">
-<div class="card-media" style="background-image:url('images/this-is-me-now.png')"></div>
-<div class="card-body">
-<div class="title">This is Me Now</div>
-<div class="meta"><span class="badge genre">Drama</span><span class="badge format">Feature</span><span class="badge audience">YA | Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="ABC">ABC</span><span class="platform-logo" data-platform="NBC">NBC</span><span class="platform-logo" data-platform="FOX">FOX</span></div></div>
-<p class="muted">A quiet, tech-savvy teen becomes infamous overnight when a private video goes viral.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/this-is-me-now-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/lifeart_pitch_deck.pdf" data-onesheet="one-sheets/lifeart-onesheet.pdf" data-format="Feature" data-genre="Drama" data-title="Lifeart" data-trailer="assets/lifeart-teaser.mp4" data-treatment="assets/lifeart-treatment.pdf">
-<div class="card-media" style="background-image:url('images/lifeart.png')"></div>
-<div class="card-body">
-<div class="title">Lifeart</div>
-<div class="meta"><span class="badge genre">Drama</span><span class="badge format">Feature</span></div>
-<p class="muted">A painter hides behind a false identity until one commission threatens to unmask him.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/lifeart-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/beneath_the_magnolia_tree_pitch_deck.pdf" data-onesheet="one-sheets/beneath-the-magnolia-tree-onesheet.pdf" data-format="Feature" data-genre="Drama" data-title="Beneath the Magnolia Tree" data-trailer="assets/beneath-the-magnolia-tree-teaser.mp4" data-treatment="assets/beneath-the-magnolia-tree-treatment.pdf">
-<div class="card-media" style="background-image:url('images/beneath-the-magnolia-tree.jpg')"></div>
-<div class="card-body">
-<div class="title">Beneath the Magnolia Tree</div>
-<div class="meta"><span class="badge genre">Drama 🗡️</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">Beneath the beauty of the South lies a family's deepest scars.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/beneath-the-magnolia-tree-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/twice_betrayed_pitch_deck.pdf" data-onesheet="one-sheets/twice-betrayed-onesheet.pdf" data-format="Feature" data-genre="Drama" data-title="Twice Betrayed" data-trailer="assets/twice-betrayed-teaser.mp4" data-treatment="assets/twice-betrayed-treatment.pdf">
-<div class="card-media" style="background-image:url('images/twice-betrayed.png')"></div>
-<div class="card-body">
-<div class="title">Twice Betrayed</div>
-<div class="meta"><span class="badge genre">Drama 🗡️</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A woman discovers that her new fiancé is the same man who conned her best friend years earlier, she must untangle a web of lies, financial fraud, and dangerous obsession</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/twice-betrayed-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/past_due_pitch_deck.pdf" data-onesheet="one-sheets/past-due-onesheet.pdf" data-format="Feature" data-genre="Drama" data-title="Past Due" data-trailer="assets/past-due-teaser.mp4" data-treatment="assets/past-due-treatment.pdf">
-<div class="card-media" style="background-image:url('images/past-due.png')"></div>
-<div class="card-body">
-<div class="title">Past Due</div>
-<div class="meta"><span class="badge genre">Drama 🗡️</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">An ambitious attorney inherits a crumbling home—and a secret that could rewrite her past.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/past-due-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
-</section>
-
-<section aria-labelledby="thriller-title" class="section" id="thriller">
-<h3 id="thriller-title">Thriller</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-deck="pitch-decks/the_double_cross_pitch_deck.pdf" data-onesheet="one-sheets/the-double-cross-onesheet.pdf" data-format="Feature" data-genre="Crime Thriller / Emotional Drama" data-title="The Double Cross" data-trailer="assets/the-double-cross-teaser.mp4" data-treatment="assets/the-double-cross-treatment.pdf">
-<div class="card-media" style="background-image:url('the_double_cross_poster.png')"></div>
-<div class="card-body">
-<div class="title">The Double Cross</div>
-<div class="meta"><span class="badge genre">Crime Thriller / Emotional Drama</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">An ex-con discovers the rookie FBI agent tracking her is the daughter she thought she lost.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-double-cross-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/shadows_on_the_force_pitch_deck.pdf" data-onesheet="one-sheets/shadows-on-the-force-onesheet.pdf" data-format="Feature" data-genre="Thriller" data-title="Shadows on the Force" data-trailer="assets/shadows-on-the-force-teaser.mp4" data-treatment="assets/shadows-on-the-force-treatment.pdf">
-<div class="card-media" style="background-image:url('images/shadows-on-the-force.png')"></div>
-<div class="card-body">
-<div class="title">Shadows on the Force</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A detective's search for the truth could destroy both her case and her heart.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/shadows-on-the-force-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/the_cipher_of_shadows_pitch_deck.pdf" data-onesheet="one-sheets/the-cipher-of-shadows-onesheet.pdf" data-format="Feature" data-genre="Thriller" data-title="The Cipher of Shadows" data-trailer="assets/the-cipher-of-shadows-teaser.mp4" data-treatment="assets/the-cipher-of-shadows-treatment.pdf">
-<div class="card-media" style="background-image:url('images/cipher-of-shadows.png')"></div>
-<div class="card-body">
-<div class="title">The Cipher of Shadows</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A missing persons case leads a PI into the darkest corners of AI driven exploitation.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-cipher-of-shadows-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/mother_interrupted_pitch_deck.pdf" data-onesheet="one-sheets/mother-interrupted-onesheet.pdf" data-format="Feature" data-genre="Thriller" data-title="Mother, Interrupted" data-trailer="assets/mother-interrupted-teaser.mp4" data-treatment="assets/mother-interrupted-treatment.pdf">
-<div class="card-media" style="background-image:url('images/mother-interrupted.png')"></div>
-<div class="card-body">
-<div class="title">Mother, Interrupted</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A mother's perfect life unravels when her daughter seeks out the woman who abandoned her at five years old.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/mother-interrupted-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/blood_money_pitch_deck.pdf" data-onesheet="one-sheets/blood-money-onesheet.pdf" data-format="Feature" data-genre="Thriller" data-title="Blood Money" data-trailer="assets/blood-money-teaser.mp4" data-treatment="assets/blood-money-treatment.pdf">
-<div class="card-media" style="background-image:url('images/blood-money.png')"></div>
-<div class="card-body">
-<div class="title">Blood Money</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A daughter's investigation into nonprofit fraud exposes her own mother as the mastermind.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/blood-money-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/the_proxy_pitch_deck.pdf" data-onesheet="one-sheets/the-proxy-onesheet.pdf" data-format="Feature" data-genre="Thriller" data-title="The Proxy" data-trailer="assets/the-proxy-teaser.mp4" data-treatment="assets/the-proxy-treatment.pdf">
-<div class="card-media" style="background-image:url('images/the-proxy.png')"></div>
-<div class="card-body">
-<div class="title">The Proxy</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">Mistaken for someone she isn't, an artist is pulled into the dark underworld of stolen identities.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-proxy-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/the_alibi_pitch_deck.pdf" data-onesheet="one-sheets/the-alibi-onesheet.pdf" data-format="Feature" data-genre="Thriller" data-title="The Alibi" data-trailer="assets/the-alibi-teaser.mp4" data-treatment="assets/the-alibi-treatment.pdf">
-<div class="card-media" style="background-image:url('images/the-alibi.png')"></div>
-<div class="card-body">
-<div class="title">The Alibi</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">Four women with everything to lose may also be covering for one another's crime.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-alibi-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/its_somebody_you_know_pitch_deck.pdf" data-onesheet="one-sheets/its-somebody-you-know-onesheet.pdf" data-format="Feature" data-genre="Thriller" data-title="It's Somebody You Know" data-trailer="assets/its-somebody-you-know-teaser.mp4" data-treatment="assets/its-somebody-you-know-treatment.pdf">
-<div class="card-media" style="background-image:url('images/somebody-you-know.png')"></div>
-<div class="card-body">
-<div class="title">It's Somebody You Know</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">The greatest threat may come from the faces you trust most.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/its-somebody-you-know-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/broken_promise_pitch_deck.pdf" data-onesheet="one-sheets/broken-promise-onesheet.pdf" data-format="Feature" data-genre="Thriller" data-title="Broken Promise" data-trailer="assets/broken-promise-teaser.mp4" data-treatment="assets/broken-promise-treatment.pdf">
-<div class="card-media" style="background-image:url('images/broken-promise.png')"></div>
-<div class="card-body">
-<div class="title">Broken Promise</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A scorned bride teams up with her fiancé's ex to expose his web of lies.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/broken-promise-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/atl_soul_pitch_deck.pdf" data-onesheet="one-sheets/atl-soul-the-velvet-larou-story-onesheet.pdf" data-format="Feature" data-genre="Thriller" data-title="ATL Soul: The Velvet LaRou Story" data-trailer="assets/atl-soul-the-velvet-larou-story-teaser.mp4" data-treatment="assets/atl-soul-the-velvet-larou-story-treatment.pdf">
-<div class="card-media" style="background-image:url('images/atl-soul-poster.png')"></div>
-<div class="card-body">
-<div class="title">ATL Soul: The Velvet LaRou Story</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">In 1979 Atlanta, a fallen soul singer turns her greatest betrayal into a revolution.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/atl-soul-the-velvet-larou-story-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/influencers_last_post_pitch_deck.pdf" data-onesheet="one-sheets/the-influencers-last-post-onesheet.pdf" data-format="Feature" data-genre="Thriller" data-title="The Influencer's Last Post" data-trailer="assets/the-influencers-last-post-teaser.mp4" data-treatment="assets/the-influencers-last-post-treatment.pdf">
-<div class="card-media" style="background-image:url('images/influencers-last-post.png')"></div>
-<div class="card-body">
-<div class="title">The Influencer's Last Post</div>
-<div class="meta"><span class="badge genre">Thriller ⚡</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A disgraced influencer must fight to prove her innocence before her identity is erased forever.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-influencers-last-post-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
-</section>
-
-<section aria-labelledby="romance-title" class="section" id="romance">
-<h3 id="romance-title">Romance</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-deck="pitch-decks/southern_discomfort_pitch_deck.pdf" data-onesheet="one-sheets/southern-discomfort-onesheet.pdf" data-format="Feature" data-genre="Romance" data-title="Southern (Dis)comfort" data-trailer="assets/southern-discomfort-teaser.mp4" data-treatment="assets/southern-discomfort-treatment.pdf">
-<div class="card-media" style="background-image:url('images/southern-discomfort.png')"></div>
-<div class="card-body">
-<div class="title">Southern (Dis)comfort</div>
-<div class="meta"><span class="badge genre">Rom-Com ❤️</span><span class="badge format">Feature</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A feared food critic must rebuild a restaurant with the man who once broke her heart.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/southern-discomfort-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/love_after_likes_pitch_deck.pdf" data-onesheet="one-sheets/love-after-likes-onesheet.pdf" data-format="MOW" data-genre="Romance" data-title="Love after Likes" data-trailer="assets/love-after-likes-teaser.mp4" data-treatment="assets/love-after-likes-treatment.pdf">
-<div class="card-media" style="background-image:url('images/love-after-likes.png')"></div>
-<div class="card-body">
-<div class="title">Love after Likes</div>
-<div class="meta"><span class="badge genre">Rom-Com ❤️</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A viral breakup sends a perfectionist influencer offline—and straight into unexpected love.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/love-after-likes-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/second_first_date_pitch_deck.pdf" data-onesheet="one-sheets/second-first-date-onesheet.pdf" data-format="MOW" data-genre="Romance" data-title="Second First Date" data-trailer="assets/second-first-date-teaser.mp4" data-treatment="assets/second-first-date-treatment.pdf">
-<div class="card-media" style="background-image:url('images/second-first-date.png')"></div>
-<div class="card-body">
-<div class="title">Second First Date</div>
-<div class="meta"><span class="badge genre">Rom-Com ❤️</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A dating app dares two exes to see if lightning can strike twice.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/second-first-date-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/flip_side_of_love_pitch_deck.pdf" data-onesheet="one-sheets/flip-side-of-love-onesheet.pdf" data-format="MOW" data-genre="Romance" data-title="Flip Side of Love" data-trailer="assets/flip-side-of-love-teaser.mp4" data-treatment="assets/flip-side-of-love-treatment.pdf">
-<div class="card-media" style="background-image:url('images/flip-side-of-love.png')"></div>
-<div class="card-body">
-<div class="title">Flip Side of Love</div>
-<div class="meta"><span class="badge genre">Rom-Com ❤️</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A TV producer returns home to renovate a historic house—only to find her ex is running the project.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/flip-side-of-love-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/the_ex_files_pitch_deck.pdf" data-onesheet="one-sheets/the-ex-files-onesheet.pdf" data-format="MOW" data-genre="Romance" data-title="The Ex-Files" data-trailer="assets/the-ex-files-teaser.mp4" data-treatment="assets/the-ex-files-treatment.pdf">
-<div class="card-media" style="background-image:url('images/ex-files.png')"></div>
-<div class="card-body">
-<div class="title">The Ex-Files</div>
-<div class="meta"><span class="badge genre">Rom-Com ❤️</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A divorce attorney's latest high-profile client is the man she thought she annulled years ago.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-ex-files-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
-</section>
-
-<section aria-labelledby="comedy-title" class="section" id="comedy">
-<h3 id="comedy-title">Comedy</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-deck="pitch-decks/miss_juneteenth_blues_pitch_deck.pdf" data-onesheet="one-sheets/miss-juneteenth-blues-onesheet.pdf" data-format="MOW" data-genre="Comedy-Drama / Southern Family Drama" data-title="Miss Juneteenth Blues" data-trailer="assets/miss-juneteenth-blues-teaser.mp4" data-treatment="assets/miss-juneteenth-blues-treatment.pdf">
-<div class="card-media" style="background-image:url('miss_juneteenth_blues_poster.png')"></div>
-<div class="card-body">
-<div class="title">Miss Juneteenth Blues</div>
-<div class="meta"><span class="badge genre">Comedy-Drama / Southern Family Drama</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A down on her luck mom enters a pageant she swore off, under false pretenses.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/miss-juneteenth-blues-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/sneakerheads_anonymous_pitch_deck.pdf" data-onesheet="one-sheets/sneakerheads-anonymous-onesheet.pdf" data-format="Feature" data-genre="Comedy" data-title="Sneakerheads Anonymous" data-trailer="assets/sneakerheads-anonymous-teaser.mp4" data-treatment="assets/sneakerheads-anonymous-treatment.pdf">
-<div class="card-media" style="background-image:url('images/sneakerheads.png')"></div>
-<div class="card-body">
-<div class="title">Sneakerheads Anonymous</div>
-<div class="meta"><span class="badge genre">Comedy</span><span class="badge format">MOW</span><span class="badge audience">YA | Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="ABC">ABC</span><span class="platform-logo" data-platform="NBC">NBC</span><span class="platform-logo" data-platform="FOX">FOX</span></div></div>
-<p class="muted">A sneaker-head drains his college fund for Yeezys, then accidentally becomes the guru of a fake rehab group.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/sneakerheads-anonymous-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/trap_house_sitting_pitch_deck.pdf" data-onesheet="one-sheets/trap-house-sitting-onesheet.pdf" data-format="Feature" data-genre="Comedy" data-title="Trap House Sitting" data-trailer="assets/trap-house-sitting-teaser.mp4" data-treatment="assets/trap-house-sitting-treatment.pdf">
-<div class="card-media" style="background-image:url('images/trap-house-sitting.png')"></div>
-<div class="card-body">
-<div class="title">Trap House Sitting</div>
-<div class="meta"><span class="badge genre">Comedy</span><span class="badge format">Feature</span><span class="badge audience">YA | Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="ABC">ABC</span><span class="platform-logo" data-platform="NBC">NBC</span><span class="platform-logo" data-platform="FOX">FOX</span></div></div>
-<p class="muted">Babysitting a cousin's studio turns into Atlanta's wildest underground party.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/trap-house-sitting-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/hot_mess_express_pitch_deck.pdf" data-onesheet="one-sheets/hot-mess-express-onesheet.pdf" data-format="MOW" data-genre="Comedy" data-title="Hot Mess Express" data-trailer="assets/hot-mess-express-teaser.mp4" data-treatment="assets/hot-mess-express-treatment.pdf">
-<div class="card-media" style="background-image:url('images/hot-mess-express.jpg')"></div>
-<div class="card-body">
-<div class="title">Hot Mess Express</div>
-<div class="meta"><span class="badge genre">Comedy</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">Three overworked moms snap and head out on the most chaotic girls' trip of their lives.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/hot-mess-express-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/black_girls_guide_pitch_deck.pdf" data-onesheet="one-sheets/black-girls-guide-onesheet.pdf" data-format="MOW" data-genre="Comedy" data-title="Black Girls Guide to Vengeance(and Vodka)" data-trailer="assets/black-girls-guide-teaser.mp4" data-treatment="assets/black-girls-guide-treatment.pdf">
-<div class="card-media" style="background-image:url('images/black-girls-guide.png')"></div>
-<div class="card-body">
-<div class="title">Black Girls Guide to Vengeance(and Vodka)</div>
-<div class="meta"><span class="badge genre">Comedy</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">Dumped for an AI clone built from her own data, a software engineer goes viral with a revenge app.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/black-girls-guide-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
-</section>
-
-<section aria-labelledby="horror-title" class="section" id="horror">
-<h3 id="horror-title">Horror</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-deck="pitch-decks/second_skin_pitch_deck.pdf" data-onesheet="one-sheets/second-skin-onesheet.pdf" data-format="Feature" data-genre="Horror" data-title="Second Skin" data-trailer="assets/second-skin-teaser.mp4" data-treatment="assets/second-skin-treatment.pdf">
-<div class="card-media" style="background-image:url('images/second-skin.png')"></div>
-<div class="card-body">
-<div class="title">Second Skin</div>
-<div class="meta"><span class="badge genre">Horror</span><span class="badge format">Feature</span></div>
-<p class="muted">A cursed fashion shoot unleashes a horror that wears its victims from the inside out.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/second-skin-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/the_bone_collectors_daughter_pitch_deck.pdf" data-onesheet="one-sheets/the-bone-collectors-daughter-onesheet.pdf" data-format="Feature" data-genre="Horror" data-title="The Bone Collector's Daughter" data-trailer="assets/the-bone-collectors-daughter-teaser.mp4" data-treatment="assets/the-bone-collectors-daughter-treatment.pdf">
-<div class="card-media" style="background-image:url('images/bone-collectors-daughter.png')"></div>
-<div class="card-body">
-<div class="title">The Bone Collector's Daughter</div>
-<div class="meta"><span class="badge genre">Horror</span><span class="badge format">Feature</span></div>
-<p class="muted">A daughter inherits more than a house, she inherits a haunting legacy of bone magic.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-bone-collectors-daughter-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
-</section>
-
-<section aria-labelledby="christmas-title" class="section" id="christmas">
-<h3 id="christmas-title">Christmas Stories</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-deck="pitch-decks/spelman_christmas_pitch_deck.pdf" data-onesheet="one-sheets/a-spelman-christmas-onesheet.pdf" data-format="MOW" data-genre="Christmas" data-title="A Spelman Christmas" data-trailer="assets/a-spelman-christmas-teaser.mp4" data-treatment="assets/a-spelman-christmas-treatment.pdf">
-<div class="card-media" style="background-image:url('images/spelman-christmas.png')"></div>
-<div class="card-body">
-<div class="title">A Spelman Christmas</div>
-<div class="meta"><span class="badge genre">Christmas</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">One family's holiday grief turns into the reunion they never expected.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/a-spelman-christmas-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/grannys_house_for_the_holidays_pitch_deck.pdf" data-onesheet="one-sheets/grannys-house-home-for-the-holidays-onesheet.pdf" data-format="MOW" data-genre="Christmas" data-title="Granny's House: Home for the Holidays" data-trailer="assets/grannys-house-home-for-the-holidays-teaser.mp4" data-treatment="assets/grannys-house-home-for-the-holidays-treatment.pdf">
-<div class="card-media" style="background-image:url('images/grannys-house.png')"></div>
-<div class="card-body">
-<div class="title">Granny's House: Home for the Holidays</div>
-<div class="meta"><span class="badge genre">Christmas</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">One house, three generations, and a holiday season that's anything but quiet.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/grannys-house-home-for-the-holidays-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/twelve_dates_christmas_tree_lot_pitch_deck.pdf" data-onesheet="one-sheets/the-twelve-dates-of-christmas-tree-lot-onesheet.pdf" data-format="MOW" data-genre="Christmas" data-title="The Twelve Dates of Christmas Tree Lot" data-trailer="assets/the-twelve-dates-of-christmas-tree-lot-teaser.mp4" data-treatment="assets/the-twelve-dates-of-christmas-tree-lot-treatment.pdf">
-<div class="card-media" style="background-image:url('images/twelve-dates-christmas-tree-lot.png')"></div>
-<div class="card-body">
-<div class="title">The Twelve Dates of Christmas Tree Lot</div>
-<div class="meta"><span class="badge genre">Christmas</span><span class="badge format">MOW</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">Twelve days, one struggling tree lot, and a divorced dad's chance at redemption.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-twelve-dates-of-christmas-tree-lot-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
-</section>
-
-<section aria-labelledby="network-series-title" class="section" id="network-series">
-<h3 id="network-series-title">Network Series</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-deck="pitch-decks/just_jack_pitch_deck.pdf" data-onesheet="one-sheets/just-jack-onesheet.pdf" data-format="Series" data-genre="Comedy" data-title="Just Jack" data-trailer="assets/just-jack-teaser.mp4" data-treatment="assets/just-jack-treatment.pdf">
-<div class="card-media" style="background-image:url('images/just-jack.png')"></div>
-<div class="card-body">
-<div class="title">Just Jack</div>
-<div class="meta"><span class="badge genre">Comedy</span><span class="badge format">Network Series</span><span class="badge audience">YA | Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="ABC">ABC</span><span class="platform-logo" data-platform="NBC">NBC</span><span class="platform-logo" data-platform="FOX">FOX</span></div></div>
-<p class="muted">A warm hearted family comedy where grown up stakes sneak in through the laughs; every episode ends with an emotional punchline.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/just-jack-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/echo_chamber_pitch_deck.pdf" data-onesheet="one-sheets/echo-chamber-onesheet.pdf" data-format="Series" data-genre="Series" data-title="Echo Chamber" data-trailer="assets/echo-chamber-teaser.mp4" data-treatment="assets/echo-chamber-treatment.pdf">
-<div class="card-media" style="background-image:url('images/echo-chamber.png')"></div>
-<div class="card-body">
-<div class="title">Echo Chamber</div>
-<div class="meta"><span class="badge genre">Network Series</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">In a world where memories can be edited, one woman must hack the story of her brother's life.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/echo-chamber-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/slice_of_paradise_pitch_deck.pdf" data-onesheet="one-sheets/slice-of-paradise-onesheet.pdf" data-format="Series" data-genre="Series" data-title="Slice of Paradise" data-trailer="assets/slice-of-paradise-teaser.mp4" data-treatment="assets/slice-of-paradise-treatment.pdf">
-<div class="card-media" style="background-image:url('images/slice-of-paradise.png')"></div>
-<div class="card-body">
-<div class="title">Slice of Paradise</div>
-<div class="meta"><span class="badge genre">Network Series</span><span class="badge audience">YA | Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="ABC">ABC</span><span class="platform-logo" data-platform="NBC">NBC</span><span class="platform-logo" data-platform="FOX">FOX</span></div></div> 
-<p class="muted">A directionless thirty-something finds purpose in the last place he expected: a retirement community.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/slice-of-paradise-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/the_archive_pitch_deck.pdf" data-onesheet="one-sheets/the-archive-onesheet.pdf" data-format="Series" data-genre="Series" data-title="The Archive" data-trailer="assets/the-archive-teaser.mp4" data-treatment="assets/the-archive-treatment.pdf">
-<div class="card-media" style="background-image:url('images/the-archive.png')"></div>
-<div class="card-body">
-<div class="title">The Archive</div>
-<div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">A renegade historian protects a library of suppressed stories from corporate erasure.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-archive-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-audience="Gen Z" data-deck="pitch-decks/refractions_pitch_deck.pdf" data-onesheet="one-sheets/refractions-onesheet.pdf" data-format="Series" data-genre="Network Series" data-platform="Paramount+ / Peacock / Netflix / HBO / Apple" data-title="Refractions" data-trailer="assets/refractions-teaser.mp4" data-treatment="assets/refractions-treatment.pdf">
-<div class="card-media" style="background-image:url('images/refractions.png')"></div>
-<div class="card-body">
-<div class="title">Refractions</div>
-<div class="meta"><span class="badge genre">Network Series</span><span class="badge format">Series</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">One event, five perspectives, endless truths.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/refractions-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
-</section>
-
-<section aria-labelledby="limited-series-title" class="section" id="limited-series">
-<h3 id="limited-series-title">Limited Series</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-deck="pitch-decks/sinners_and_saints_pitch_deck.pdf" data-onesheet="one-sheets/sinners-and-saints-onesheet.pdf" data-format="Series" data-genre="Limited Series" data-title="Sinners &amp; Saints" data-trailer="assets/sinners-saints-teaser.mp4" data-treatment="assets/sinners-saints-treatment.pdf">
-<div class="card-media" style="background-image:url('sinners_and_saints_poster.png')"></div>
-<div class="card-body">
-<div class="title">Sinners &amp; Saints</div>
-<div class="meta"><span class="badge genre">Limited Series</span><span class="badge format">Series</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A preacher's daughter marries an ex-con and must choose between faith and survival when his past comes calling.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/sinners-saints-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-audience="Women 25—40 | Black Audiences" data-deck="pitch-decks/soul_on_fire_pitch_deck.pdf" data-onesheet="one-sheets/soul-on-fire-onesheet.pdf" data-format="Series" data-genre="Limited Series 🎤" data-platform="Netflix / HBO / Apple / BET+ / OWN / Lifetime" data-title="Soul On Fire" data-trailer="assets/soul-on-fire-teaser.mp4" data-treatment="assets/soul-on-fire-treatment.pdf">
-<div class="card-media" style="background-image:url('images/soul_on_fire_poster.png')"></div>
-<div class="card-body">
-<div class="title">Soul On Fire</div>
-<div class="meta"><span class="badge genre">Limited Series 🎤</span><span class="badge format">Series</span><span class="badge audience">Women 25—40 | Black Audiences</span><div class="platform-logos"><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span><span class="platform-logo" data-platform="BET+">B+</span><span class="platform-logo" data-platform="OWN">OWN</span><span class="platform-logo" data-platform="Lifetime">L</span></div></div>
-<p class="muted">A brilliant soul singer risks everything to reclaim her stolen voice in 1970s Atlanta.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/soul-on-fire-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
-</section>
-
-<section aria-labelledby="feature-action-title" class="section" id="feature-action">
-<h3 id="feature-action-title">Action Features</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-deck="pitch-decks/the_architect_pitch_deck.pdf" data-onesheet="one-sheets/the-architect-onesheet.pdf" data-format="Feature" data-genre="Action" data-title="The Architect" data-trailer="assets/the-architect-teaser.mp4" data-treatment="assets/the-architect-treatment.pdf">
-<div class="card-media" style="background-image:url('images/the-architect.png')"></div>
-<div class="card-body">
-<div class="title">The Architect</div>
-<div class="meta"><span class="badge genre">Action</span><span class="badge format">Feature</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">A disgraced detective must stop a vigilante, her presumed dead ex-partner.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-architect-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/queen_of_thorns_pitch_deck.pdf" data-onesheet="one-sheets/queen-of-thorns-onesheet.pdf" data-format="Feature" data-genre="Action" data-title="Queen of Thorns" data-trailer="assets/queen-of-thorns-teaser.mp4" data-treatment="assets/queen-of-thorns-treatment.pdf">
-<div class="card-media" style="background-image:url('images/queen-of-thorns.png')"></div>
-<div class="card-body">
-<div class="title">Queen of Thorns</div>
-<div class="meta"><span class="badge genre">Action</span><span class="badge format">Feature</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">Betrayed by her lover, an arms broker must burn down the empire she built.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/queen-of-thorns-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/ghostmaker_pitch_deck.pdf" data-onesheet="one-sheets/ghostmaker-onesheet.pdf" data-format="Feature" data-genre="Action" data-title="Ghostmaker" data-trailer="assets/ghostmaker-teaser.mp4" data-treatment="assets/ghostmaker-treatment.pdf">
-<div class="card-media" style="background-image:url('images/the-ghostmaker.png')"></div>
-<div class="card-body">
-<div class="title">Ghostmaker</div>
-<div class="meta"><span class="badge genre">Action</span><span class="badge format">Feature</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">A CIA operative who once erased others' identities discovers that her own life is a fabrication.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/ghostmaker-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/blood_covenant_pitch_deck.pdf" data-onesheet="one-sheets/blood-covenant-onesheet.pdf" data-format="Feature" data-genre="Action" data-title="Blood Covenant" data-trailer="assets/blood-covenant-teaser.mp4" data-treatment="assets/blood-covenant-treatment.pdf">
-<div class="card-media" style="background-image:url('images/blood-covenant.png')"></div>
-<div class="card-body">
-<div class="title">Blood Covenant</div>
-<div class="meta"><span class="badge genre">Action</span><span class="badge format">Feature</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">Two childhood blood brothers find themselves on opposite sides of the pulpit and the gun.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/blood-covenant-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/the_obsidian_codex_pitch_deck.pdf" data-onesheet="one-sheets/the-obsidian-codex-onesheet.pdf" data-format="Feature" data-genre="Action" data-title="The Obsidian Codex" data-trailer="assets/the-obsidian-codex-teaser.mp4" data-treatment="assets/the-obsidian-codex-treatment.pdf">
-<div class="card-media" style="background-image:url('images/obsidian-codex.png')"></div>
-<div class="card-body">
-<div class="title">The Obsidian Codex</div>
-<div class="meta"><span class="badge genre">Action</span><span class="badge format">Feature</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">An ancient manuscript predicts murders hours before they happen.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/the-obsidian-codex-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/echoes_of_the_syndicate_pitch_deck.pdf" data-onesheet="one-sheets/echoes-of-the-syndicate-onesheet.pdf" data-format="Feature" data-genre="Action" data-title="Echoes of the Syndicate" data-trailer="assets/echoes-of-the-syndicate-teaser.mp4" data-treatment="assets/echoes-of-the-syndicate-treatment.pdf">
-<div class="card-media" style="background-image:url('images/echoes-of-the-syndicate.png')"></div>
-<div class="card-body">
-<div class="title">Echoes of the Syndicate</div>
-<div class="meta"><span class="badge genre">Action</span><span class="badge format">Feature</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">A fixer who hears every lie as an echo discovers his own past is fake.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/echoes-of-the-syndicate-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/reflections_pitch_deck.pdf" data-onesheet="one-sheets/reflections-onesheet.pdf" data-format="Feature" data-genre="Action" data-title="Reflections" data-trailer="assets/reflections-teaser.mp4" data-treatment="assets/reflections-treatment.pdf">
-<div class="card-media" style="background-image:url('images/reflections.png')"></div>
-<div class="card-body">
-<div class="title">Reflections</div>
-<div class="meta"><span class="badge genre">Action</span><span class="badge format">Feature</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">An Atlanta designer uncovers a patient, calculating stalker hiding in plain sight and must become the bait.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/reflections-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
-</section>
-
-<section aria-labelledby="docuseries-title" class="section" id="docuseries">
-<h3 id="docuseries-title">Docuseries</h3>
-<div class="grid">
-<article class="card project-card all-projects" data-deck="pitch-decks/exposed_pitch_deck.pdf" data-onesheet="one-sheets/exposed-onesheet.pdf" data-format="Docuseries" data-genre="Docuseries" data-title="Exposed" data-trailer="assets/exposed-teaser.mp4" data-treatment="assets/exposed-treatment.pdf">
-<div class="card-media" style="background-image:url('images/exposed.png')"></div>
-<div class="card-body">
-<div class="title">Exposed</div>
-<div class="meta"><span class="badge genre">Docuseries</span><span class="badge format">Docuseries</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">True crime isn't always about murder, it's about the unseen crimes that steal lives in silence.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/exposed-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-
-<article class="card project-card all-projects" data-deck="pitch-decks/digital_shadows_pitch_deck.pdf" data-onesheet="one-sheets/digital-shadows-onesheet.pdf" data-format="Docuseries" data-genre="Docuseries" data-title="Digital Shadows" data-trailer="assets/digital-shadows-teaser.mp4" data-treatment="assets/digital-shadows-treatment.pdf">
-<div class="card-media" style="background-image:url('images/digital-shadows.png')"></div>
-<div class="card-body">
-<div class="title">Digital Shadows</div>
-<div class="meta"><span class="badge genre">Docuseries</span><span class="badge format">Docuseries</span><span class="badge audience">Gen Z</span><div class="platform-logos"><span class="platform-logo" data-platform="Paramount+">P+</span><span class="platform-logo" data-platform="Peacock">P</span><span class="platform-logo" data-platform="Netflix">N</span><span class="platform-logo" data-platform="HBO">HBO</span><span class="platform-logo" data-platform="Apple">🍎</span></div></div>
-<p class="muted">Online fame comes fast—and sometimes ends in tragedy.</p>
-<div class="actions"><a class="chip js-open" data-open="" href="#">View Details</a> <a class="chip" href="assets/digital-shadows-teaser.mp4" rel="noopener" target="_blank">Watch Trailer</a></div>
-</div>
-</article>
-</div>
-</section>
-</div>
-</section>
-
-<section aria-labelledby="about-title" class="section" id="about">
-<div class="container">
-<h2 id="about-title">About NCCA Entertainment</h2>
-<p class="section-intro">NCCA ENTERTAINMENT develops premium, culturally resonant stories for film and television with a focus on high‑concept thrillers, Southern Gothic dramas, music‑driven prestige, and network‑ready Movies‑of‑the‑Week.</p>
-
-<div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 3rem;">
-<div class="card" style="background: linear-gradient(135deg, rgba(212,139,60,.1), rgba(212,139,60,.05));">
-<div class="card-body">
-<h3 style="color: var(--brand); margin-bottom: 1rem;">Our Mission</h3>
-<p class="muted">To create authentic, culturally rich content that bridges Atlanta's vibrant storytelling tradition with global audiences, delivering premium entertainment that resonates across demographics.</p>
-</div>
-</div>
-
-<div class="card" style="background: linear-gradient(135deg, rgba(100,150,255,.1), rgba(100,150,255,.05));">
-<div class="card-body">
-<h3 style="color: #a5c3ff; margin-bottom: 1rem;">Our Focus</h3>
-<p class="muted">Specializing in high-concept thrillers, Southern Gothic narratives, music-driven stories, and compelling Movies-of-the-Week that showcase diverse voices and perspectives.</p>
-</div>
-</div>
-
-<div class="card" style="background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));">
-<div class="card-body">
-<h3 style="color: #fff; margin-bottom: 1rem;">Our Approach</h3>
-<p class="muted">Boutique studio delivering premium content with Atlanta's soul at its core, ensuring every project maintains artistic integrity while meeting commercial market demands.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section aria-labelledby="contact-title" class="section" id="contact">
-<div class="container">
-<h2 id="contact-title">Get in Touch</h2>
-<p class="section-intro">Reach out for pitch materials, collaboration, or representation inquiries. We're always looking for passionate partners who share our vision for premium storytelling.</p>
-
-<div class="grid" style="grid-template-columns: 1fr; max-width: 600px; margin: 0 auto;">
-<form class="card" onsubmit="event.preventDefault();alert('Thanks — we\'ll be in touch!');this.reset();" style="padding:2rem">
-<div style="margin-bottom: 1.5rem;">
-<label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--brand); font-weight: 600;">Name</label>
-<input id="name" name="name" placeholder="Your name" style="width: 100%; margin: 0; padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff; font-size: 1rem;"/>
-</div>
-
-<div style="margin-bottom: 1.5rem;">
-<label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--brand); font-weight: 600;">Email</label>
-<input id="email" type="email" autocomplete="email" inputmode="email" name="email" placeholder="you@company.com" style="width: 100%; margin: 0; padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff; font-size: 1rem;"/>
-</div>
-
-<div style="margin-bottom: 1.5rem;">
-<label for="subject" style="display: block; margin-bottom: 0.5rem; color: var(--brand); font-weight: 600;">Subject</label>
-<select id="subject" name="subject" style="width: 100%; margin: 0; padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff; font-size: 1rem;">
-<option value="">Select inquiry type</option>
-<option value="pitch">Pitch Materials Request</option>
-<option value="collaboration">Collaboration Opportunity</option>
-<option value="representation">Representation Inquiry</option>
-<option value="general">General Information</option>
-</select>
-</div>
-
-<div style="margin-bottom: 2rem;">
-<label for="msg" style="display: block; margin-bottom: 0.5rem; color: var(--brand); font-weight: 600;">Message</label>
-<textarea id="msg" name="msg" placeholder="Tell us about your project or inquiry..." rows="5" style="width: 100%; margin: 0; padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:#15151b;color:#fff; font-size: 1rem; resize: vertical;"></textarea>
-</div>
-
-<button class="btn" type="submit" style="width: 100%; font-size: 1.1rem;">Send Message</button>
-</form>
-</div>
-
-<div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(212,139,60,.05); border-radius: 16px; border: 1px solid rgba(212,139,60,.2);">
-<h3 style="color: var(--brand); margin-bottom: 1rem;">Industry Professionals</h3>
-<p style="color: var(--brand-muted); margin-bottom: 1.5rem;">For pitch decks, treatments, and detailed project information, please reach out directly. All materials are available for qualified industry professionals.</p>
-<div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-<span class="badge" style="background: rgba(212,139,60,.2); color: var(--brand); border: 1px solid rgba(212,139,60,.4);">Producers</span>
-<span class="badge" style="background: rgba(212,139,60,.2); color: var(--brand); border: 1px solid rgba(212,139,60,.4);">Executives</span>
-<span class="badge" style="background: rgba(212,139,60,.2); color: var(--brand); border: 1px solid rgba(212,139,60,.4);">Agents</span>
-<span class="badge" style="background: rgba(212,139,60,.2); color: var(--brand); border: 1px solid rgba(212,139,60,.4);">Managers</span>
-</div>
-</div>
-</div>
-</section>
-
-<dialog aria-labelledby="projectTitle" class="modal" id="projectModal">
-<div class="modal-header">
-<div class="modal-title" id="projectTitle">Project</div>
-<button aria-label="Close" class="close" onclick="document.getElementById('projectModal').close()">×</button>
-</div>
-<div class="modal-body">
-<div class="modal-media" id="projectMedia"></div>
-<div>
-<div class="meta" id="projectMeta"></div>
-<p class="modal-desc" id="projectDesc"></p>
-<div class="gate" id="gate" style="display: none;">
-<label for="gateEmail" style="color: var(--brand); font-weight: 600; margin-bottom: 0.5rem; display: block;">Enter your email to access pitch materials:</label>
-<input id="gateEmail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="your.email@company.com" style="margin-bottom: 1rem;"/>
-<div class="actions" style="margin-top:.8rem">
-<a class="btn" href="#" id="unlock">Access Materials</a>
-<a class="btn-ghost" href="#" id="skip">View Trailer Only</a>
-</div>
-</div>
-</div>
-</div>
-<div class="modal-footer" id="projectLinks"></div>
+<dialog id="projectModal" class="modal">
+  <div class="modal-header">
+    <div id="projectTitle" class="modal-title">Project</div>
+    <button class="close" onclick="document.getElementById('projectModal').close()" aria-label="Close">×</button>
+  </div>
+  <div class="modal-body">
+    <div id="projectMedia" class="modal-media"></div>
+    <div>
+      <div id="projectMeta" class="meta"></div>
+      <p id="projectDesc" class="modal-desc"></p>
+      <div id="gate" class="gate" style="display: none;">
+        <label for="gateEmail" style="color: var(--brand); font-weight: 600; margin-bottom: 0.5rem; display: block;">Enter your email to access pitch materials:</label>
+        <input id="gateEmail" type="email" name="email" autocomplete="email" inputmode="email" placeholder="your.email@company.com" style="margin-bottom: 1rem;"/>
+        <div class="actions" style="margin-top:.8rem">
+          <a id="unlock" class="btn" href="#">Access Materials</a>
+          <a id="skip" class="btn-ghost" href="#">View Trailer Only</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="projectLinks" class="modal-footer"></div>
 </dialog>
 
-<button aria-label="Back to top" class="to-top" id="toTop">↑</button>
+<button id="toTop" class="to-top" aria-label="Back to top">↑</button>
 
 <script>
 /* ===== Utilities ===== */
 const $ = (s,ctx=document)=>ctx.querySelector(s);
-const $ = (s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
+const $$ = (s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
 
 /* ===== Enhanced Hero Background Management ===== */
 function ensureHeroBg(){
@@ -1810,7 +1982,7 @@ function applyFilters({format=null, genre=null}={}){
   const fmt = format ? String(format).toLowerCase() : null;
   const gen = genre ? String(genre).toLowerCase() : null;
   
-  document.querySelectorAll('.card').forEach(card=>{
+  $$('.project-card').forEach(card=>{
     const f=(card.dataset.format||'').toLowerCase();
     const g=(card.dataset.genre||'').toLowerCase();
     let show = true;
@@ -1835,15 +2007,15 @@ function applyFilters({format=null, genre=null}={}){
   });
   
   // Update active pill
-  document.querySelectorAll('.pill').forEach(pill => pill.classList.remove('active'));
+  $$('.pill').forEach(pill => pill.classList.remove('active'));
   if(gen) {
-    const activePill = document.querySelector(`.pill[href="#${gen}"]`);
+    const activePill = $(`.pill[href="#${gen}"]`);
     if(activePill) activePill.classList.add('active');
   }
 }
 
 function wireGenrePills(){
-  document.querySelectorAll('.portfolio-nav .pill').forEach(pill=>{
+  $$('.portfolio-nav .pill').forEach(pill=>{
     const href = pill.getAttribute('href') || '';
     const id = (href && href.charAt(0)==='#') ? href.slice(1) : '';
     const filter = pill.getAttribute('data-filter') || '';
@@ -1854,14 +2026,14 @@ function wireGenrePills(){
       if(filter) {
         if(filter === 'all') {
           // Show all projects
-          document.querySelectorAll('.project-card').forEach(card => card.style.display = '');
+          $$('.project-card').forEach(card => card.style.display = '');
         } else {
           // Filter by specific genre/format
           applyFilters({genre:filter});
         }
         
         // Update active state
-        document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+        $$('.pill').forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
       } else if(id) {
         applyFilters({genre:id});
@@ -1871,6 +2043,49 @@ function wireGenrePills(){
         if(section) {
           section.scrollIntoView({behavior: 'smooth', block: 'start'});
         }
+      }
+    });
+  });
+}
+
+/* ===== Format Filter Pills ===== */
+function initFormatFilters(){
+  $$('.format-pill').forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      const format = pill.dataset.format;
+      
+      // Update active state
+      $$('.format-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      
+      if(format === 'all') {
+        // Show all projects
+        $$('.project-card').forEach(card => {
+          card.style.display = '';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        });
+      } else {
+        // Filter by format
+        $$('.project-card').forEach(card => {
+          const cardFormat = card.dataset.format || '';
+          const show = cardFormat.toLowerCase().includes(format.toLowerCase());
+          
+          if(show) {
+            card.style.display = '';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, Math.random() * 200);
+          } else {
+            card.style.display = 'none';
+          }
+        });
       }
     });
   });
@@ -1947,34 +2162,42 @@ function openCardModal(card){
   const show=()=>protectedLinks.forEach(a=>a.style.display='inline-flex');
   
   hide(); 
-  if(gate) gate.style.display='block';
+  if(gate && protectedLinks.length > 0) gate.style.display='block';
   
-  // Remove previous event listeners
-  const oldUnlock = $('#unlock');
-  const oldSkip = $('#skip');
+  // Clear previous event listeners by cloning elements
+  const unlock = $('#unlock');
+  const skip = $('#skip');
   
-  $('#unlock')?.addEventListener('click', (e)=>{
-    e.preventDefault();
-    const email=$('#gateEmail').value.trim();
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ 
-      alert('Please enter a valid email address.'); 
-      return; 
-    }
-    show(); 
-    if(gate) gate.style.display='none';
-  });
+  if(unlock) {
+    const newUnlock = unlock.cloneNode(true);
+    unlock.parentNode.replaceChild(newUnlock, unlock);
+    newUnlock.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const email=$('#gateEmail').value.trim();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ 
+        alert('Please enter a valid email address.'); 
+        return; 
+      }
+      show(); 
+      if(gate) gate.style.display='none';
+    });
+  }
   
-  $('#skip')?.addEventListener('click', (e)=>{ 
-    e.preventDefault(); 
-    if(gate) gate.style.display='none'; 
-  });
+  if(skip) {
+    const newSkip = skip.cloneNode(true);
+    skip.parentNode.replaceChild(newSkip, skip);
+    newSkip.addEventListener('click', (e)=>{ 
+      e.preventDefault(); 
+      if(gate) gate.style.display='none'; 
+    });
+  }
 
   modal?.showModal();
 }
 
 /* ===== Navigation Enhancements ===== */
 function initSmoothScrolling(){
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  $$('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href').substring(1);
@@ -2032,6 +2255,7 @@ function initCards(){
 /* ===== Initialize Everything ===== */
 document.addEventListener('DOMContentLoaded', ()=>{
   wireGenrePills();
+  initFormatFilters();
   initViewToggle();
   initSmoothScrolling();
   initToTop();
@@ -2048,7 +2272,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 // Enhanced dropdown functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const dropdowns = document.querySelectorAll('.dropdown');
+  const dropdowns = $$('.dropdown');
   
   dropdowns.forEach(dropdown => {
     const toggle = dropdown.querySelector('.dropdown-toggle');
