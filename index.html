@@ -415,12 +415,12 @@
       max-width: var(--tile-max);
     }
 
-    /* Image wrapper keeps 2:3 poster ratio (no layout shift) */
+    /* Image wrapper keeps 16:9 poster ratio (no layout shift) */
     .project-card .poster, .tile .poster, .project-tile .poster,
     .card-media {
       position: relative;
       width: 100%;
-      aspect-ratio: 2 / 3;           /* consistent frame */
+      aspect-ratio: 16 / 9;          /* 16:9 landscape format to prevent title cutoff */
       overflow: hidden;
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0,0,0,.18);
