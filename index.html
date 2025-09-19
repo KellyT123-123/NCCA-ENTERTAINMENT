@@ -28,6 +28,11 @@
       --brand-muted:#B9A98F;
       --brand-rule:rgba(255,255,255,.10);
       --glass-bg:rgba(10,10,10,.85);
+      
+      /* ===== Tile sizing: slightly larger posters, consistent ratio ===== */
+      --tile-max: 320px;   /* was ~260-280 on many grids; bump ~15-20% */
+      --tile-gap: 1rem;
+      --caption-lines: 2;  /* clamp title to 2 lines, never clip */
     }
     
     *{box-sizing:border-box;margin:0;padding:0} 
@@ -379,8 +384,13 @@
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
-      gap:2rem;
+      gap:var(--tile-gap);
       margin-top:2rem;
+    }
+    
+    /* Grid spacing */
+    .grid, .projects-grid {
+      grid-gap: var(--tile-gap);
     }
 
     /* Enhanced Card Design */
@@ -391,6 +401,7 @@
       transition:all 0.4s ease;
       border:1px solid rgba(255,255,255,.08);
       box-shadow:0 8px 32px rgba(0,0,0,.3);
+      max-width: var(--tile-max);
     }
     
     .card:hover{
@@ -399,19 +410,34 @@
       border-color:rgba(212,139,60,.3);
     }
     
-    .card-media{
-      height:200px;
-      background-size:cover;
-      background-position:center;
-      position:relative;
-      overflow:hidden;
+    /* Poster card sizing */
+    .project-card, .tile, .project-tile {
+      max-width: var(--tile-max);
     }
-    
-    /* Fix for Action Features and Docuseries poster sizing */
-    #action-features .card-media,
-    #docuseries .card-media{
-      height:180px;
-      max-height:180px;
+
+    /* Image wrapper keeps 2:3 poster ratio (no layout shift) */
+    .project-card .poster, .tile .poster, .project-tile .poster,
+    .card-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2 / 3;           /* consistent frame */
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+      background: #111;              /* hides while loading */
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Actual <img> */
+    .project-card .poster img,
+    .tile .poster img,
+    .project-tile .poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;              /* default cinematic fill */
+      object-position: center;
+      display: block;
     }
     
     .card-media::before{
@@ -432,12 +458,45 @@
       color:#fff;
     }
     
-    .meta{
+    /* Title/caption area lives OUTSIDE the image for no overlap clipping */
+    .project-card .meta,
+    .tile .meta,
+    .project-tile .meta,
+    .meta {
       display:flex;
       flex-wrap:wrap;
       gap:0.5rem;
       margin-bottom:1rem;
       align-items:center;
+      margin-top: .5rem;
+      min-height: calc(1.2em * var(--caption-lines) + .4rem);
+    }
+
+    /* Prevent title cut-offs and ellipsize gracefully on 2 lines */
+    .project-card .title,
+    .tile .title,
+    .project-tile .title,
+    .title {
+      display: -webkit-box;
+      -webkit-line-clamp: var(--caption-lines);
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.2;
+      font-weight: 700;
+      font-size:1.3rem;
+      margin-bottom:0.8rem;
+      color:#fff;
+    }
+
+    /* If you keep a bottom overlay on the image, give it breathing room */
+    .project-card .overlay-title,
+    .tile .overlay-title {
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: .75rem 1rem;           /* more padding so text isn't clipped */
+      background: linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,0));
+      -webkit-line-clamp: var(--caption-lines);
     }
     
     .badge{
@@ -892,6 +951,14 @@
     @keyframes fadeIn{
       from{opacity:0;transform:translateY(20px)}
       to{opacity:1;transform:translateY(0)}
+    }
+
+    /* ===== Southern Gothic: avoid bad crop on that poster ===== */
+    /* If a specific image has heads near the top, bias the crop */
+    .section--southern-gothic .poster img,
+    #southern-gothic .card-media { 
+      object-position: center top; 
+      background-position: center top;
     }
 </style>
 </head>
