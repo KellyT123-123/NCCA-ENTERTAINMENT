@@ -1409,42 +1409,202 @@
   }
 </style>
 
+<style id="ncca-nav-styles">
+.site-header.ncca-nav { position: sticky; top: 0; z-index: 2000; background: rgba(11,11,12,.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,.08); }
+.ncca-nav-wrap { max-width: 1400px; margin: 0 auto; padding: .75rem 24px; display: flex; align-items: center; gap: 1rem; }
+.ncca-brand { font-weight: 900; letter-spacing: .5px; padding: .25rem .6rem; border-radius: 8px; background: linear-gradient(180deg,#2a2c31,#17181b); color: #ffd166; text-decoration: none; }
+.ncca-primary-nav { margin-left: auto; }
+.ncca-nav-list { list-style: none; margin: 0; padding: 0; display: flex; gap: .5rem; align-items: center; }
+.ncca-item > a, .ncca-item > .ncca-link { color: #e7e7ea; text-decoration: none; padding: .5rem .7rem; border-radius: 8px; font-weight: 700; }
+.ncca-item > a:hover, .ncca-item > .ncca-link:hover { background: #191b20; }
+.ncca-nav-toggle { display: none; margin-left: auto; font-size: 1.25rem; line-height: 1; background: #191b20; color: #e7e7ea; border: 1px solid #2a2c31; border-radius: 8px; padding: .4rem .6rem; }
+.ncca-has-mega { position: relative; }
+.ncca-has-mega .ncca-link { background: transparent; border: 1px solid #2a2c31; }
+.ncca-mega { position: absolute; left: 0; top: calc(100% + 8px); width: min(920px, 96vw); background: #0f1114; border: 1px solid #2a2c31; border-radius: 12px; box-shadow: 0 12px 32px rgba(0,0,0,.45); padding: 1rem; display: none; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+.ncca-has-mega .ncca-link[aria-expanded="true"] + .ncca-mega { display: grid; }
+.ncca-mega-col h4 { margin: .25rem 0 .5rem; font-size: .9rem; letter-spacing: .5px; color: #a9acb6; font-weight: 800; }
+.ncca-mega-links { list-style: none; margin: 0; padding: 0; display: grid; gap: .35rem; }
+.ncca-mega-links a { display: block; padding: .4rem .5rem; border-radius: 6px; text-decoration: none; color: #e7e7ea; }
+.ncca-mega-links a:hover { background: #191b20; }
+.ncca-mega-cta { display: inline-block; margin-top: .75rem; padding: .5rem .75rem; border: 1px solid #2a2c31; border-radius: 8px; color: #e7e7ea; text-decoration: none; }
+.ncca-mega-cta:hover { background: #191b20; }
+.site-header .ncca-has-mega .ncca-mega { transform: translateX(-1rem); }
+@media (min-width: 1280px){ .site-header .ncca-has-mega .ncca-mega { transform: translateX(-2rem); }}
+@media (max-width: 900px){
+  .ncca-nav-toggle { display: inline-block; }
+  .ncca-primary-nav { display: none; width: 100%; }
+  .ncca-primary-nav.ncca-open { display: block; }
+  .ncca-nav-list { flex-direction: column; align-items: stretch; gap: .25rem; margin-top: .5rem; }
+  .ncca-has-mega .ncca-mega { position: static; display: none; grid-template-columns: 1fr; padding: .75rem; }
+  .ncca-has-mega .ncca-link[aria-expanded="true"] + .ncca-mega { display: grid; }
+}
+[id] { scroll-margin-top: 96px; }
+</style>
+
+<style id="ncca-enhancements">
+/* Sticky search/filter container */
+.search-filter-container {
+  position: sticky;
+  top: 80px; /* Below main nav */
+  z-index: 100;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--brand-rule, #2a2c31);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  max-height: 200px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.search-filter-container.collapsed { max-height: 60px; }
+
+/* Quick-access toolbar */
+.quick-access { background: rgba(212,139,60,0.08); padding: 2rem 0; }
+.quick-access .pathway-grid {
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+.quick-access .pathway-card {
+  display: grid; gap: .25rem; text-decoration: none;
+  padding: 1rem; border: 1px solid #2a2c31; border-radius: 12px;
+  color: #e7e7ea; background: #0f1114;
+}
+.quick-access .pathway-card:hover { background:#15181c; }
+.quick-access .pathway-card .icon { font-size: 1.25rem; }
+
+/* Project card overlay (progressive reveal) */
+.project-card.enhanced { position: relative; }
+.project-card .card-overlay {
+  position: absolute; inset: 0; display: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.85));
+  color: #fff; padding: 1rem; border-radius: inherit;
+}
+@media (hover:hover){
+  .project-card.enhanced:hover .card-overlay { display: block; }
+}
+.card-overlay .quick-info { position: absolute; left: 0; right: 0; bottom: .5rem; padding: 0 1rem; }
+.card-overlay h4 { margin: 0 0 .25rem; font-size: 1rem; }
+.card-overlay .quick-actions { display: flex; gap: .5rem; margin-top: .5rem; }
+.card-overlay .btn-icon { background:#191b20; border:1px solid #2a2c31; color:#e7e7ea; border-radius:8px; padding:.35rem .5rem; cursor:pointer; }
+
+/* Mobile bottom nav + drawer */
+@media (max-width: 900px){
+  .mobile-bottom-nav {
+    position: fixed; bottom: 0; left:0; right:0; z-index: 1200;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background:#0f1114; border-top:1px solid #2a2c31;
+  }
+  .mobile-bottom-nav .nav-item {
+    display: grid; place-items:center; gap:2px; padding:.5rem 0; color:#e7e7ea; background:transparent; border:0;
+  }
+  body { padding-bottom: 64px; } /* reserve space for bottom nav */
+}
+.mobile-drawer {
+  position: fixed; left:0; right:0; bottom:-100%; z-index:1300;
+  background:#0f1114; border-top:1px solid #2a2c31; border-radius:16px 16px 0 0;
+  transition: bottom .25s ease;
+  max-height: 80vh; display:flex; flex-direction:column;
+}
+.mobile-drawer.open { bottom:0; }
+.mobile-drawer .drawer-header, .mobile-drawer .drawer-footer {
+  padding: .75rem 1rem; border-bottom:1px solid #2a2c31;
+}
+.mobile-drawer .drawer-body { padding: 1rem; overflow:auto; }
+.mobile-drawer .close { background:#191b20; color:#e7e7ea; border:1px solid #2a2c31; border-radius:8px; padding:.35rem .6rem; }
+
+/* Filter presets, sort/view controls */
+.filter-presets { display:flex; flex-wrap:wrap; gap:.5rem; }
+.preset-chip { background:#191b20; border:1px solid #2a2c31; color:#e7e7ea; border-radius:999px; padding:.35rem .75rem; cursor:pointer; }
+.view-controls-enhanced { display:flex; gap:.75rem; align-items:center; flex-wrap:wrap; }
+.view-controls-enhanced select, .density-btn, .layout-btn {
+  background:#191b20; color:#e7e7ea; border:1px solid #2a2c31; border-radius:8px; padding:.4rem .6rem;
+}
+.density-btn.active, .layout-btn.active { outline:2px solid #ffd166; }
+.skip-link { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+.skip-link:focus { position:static; width:auto; height:auto; padding:.5rem; background:#191b20; color:#fff; }
+
+/* Comparison modal (basic styles) */
+.comparison-modal { display:none; position:fixed; inset:10% 5%; background:#0f1114; border:1px solid #2a2c31; border-radius:12px; z-index:1400; }
+.comparison-modal.open { display:block; overflow:auto; }
+.comparison-header { display:flex; justify-content:space-between; align-items:center; padding:1rem; border-bottom:1px solid #2a2c31; }
+.comparison-table { width:100%; border-collapse:collapse; color:#e7e7ea; }
+.comparison-table td { border-bottom:1px solid #2a2c31; padding:.6rem .75rem; }
+.pro-features-grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); }
+.pro-feature-card { border:1px solid #2a2c31; border-radius:12px; padding:1rem; background:#0f1114; }
+</style>
+
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#projects" class="skip-link">Skip to projects</a>
 
-<header>
-  <div class="nav-wrap">
-    <a href="#" class="brand">NCCA ENTERTAINMENT</a>
-    <nav class="nav">
-      <a href="#featured">Featured</a>
-      <a href="#all-projects">All Projects</a>
-      <div class="dropdown">
-        <div class="dropdown-toggle">Genres</div>
-        <div class="dropdown-menu">
-          <div class="dropdown-header">Browse by Genre</div>
-          <div class="dropdown-grid">
-            <a href="#film-noir">Film Noir</a>
-            <a href="#southern-gothic">Southern Gothic</a>
-            <a href="#drama">Drama</a>
-            <a href="#thriller">Thriller</a>
-            <a href="#romance">Romance</a>
-            <a href="#comedy">Comedy</a>
-            <a href="#horror">Horror</a>
-            <a href="#christmas-stories">Christmas</a>
-            <a href="#network-series">Network Series</a>
-            <a href="#limited-series">Limited Series</a>
-            <a href="#action-features">Action Features</a>
-            <a href="#docuseries">Docuseries</a>
+<header class="site-header ncca-nav" role="banner">
+  <div class="ncca-nav-wrap">
+    <a class="ncca-brand" href="#top" aria-label="NCCA Home">NCCA</a>
+    <button class="ncca-nav-toggle" id="nccaNavToggle" aria-expanded="false" aria-controls="nccaPrimaryNav" aria-label="Open menu">☰</button>
+    <nav id="nccaPrimaryNav" class="ncca-primary-nav" role="navigation" aria-label="Main">
+      <ul class="ncca-nav-list">
+        <li class="ncca-item"><a href="#top">🏠 Home</a></li>
+        <li class="ncca-item ncca-has-mega">
+          <button class="ncca-link" aria-expanded="false" aria-haspopup="true" aria-controls="nccaMegaBrowse">📂 Browse Projects</button>
+          <div id="nccaMegaBrowse" class="ncca-mega" role="group" aria-label="Browse Projects">
+            <div class="ncca-mega-col">
+              <h4>BY GENRE</h4>
+              <ul class="ncca-mega-links">
+                <li><a href="#drama">Drama</a></li>
+                <li><a href="#thriller">Thriller</a></li>
+                <li><a href="#romance">Romance</a></li>
+                <li><a href="#comedy">Comedy</a></li>
+                <li><a href="#action-features">Action</a></li>
+                <li><a href="#horror">Horror</a></li>
+                <li><a href="#southern-gothic">Southern Gothic</a></li>
+                <li><a href="#film-noir">Film Noir</a></li>
+                <li><a href="#christmas-stories">Christmas</a></li>
+              </ul>
+            </div>
+            <div class="ncca-mega-col">
+              <h4>BY FORMAT</h4>
+              <ul class="ncca-mega-links">
+                <li><a href="#action-features">Features</a></li>
+                <li><a href="#all-projects">MOW</a></li>
+                <li><a href="#network-series">Series</a></li>
+                <li><a href="#limited-series">Limited Series</a></li>
+                <li><a href="#docuseries">Docuseries</a></li>
+              </ul>
+            </div>
+            <div class="ncca-mega-col">
+              <h4>CURATED</h4>
+              <ul class="ncca-mega-links">
+                <li><a href="#featured">⭐ Featured</a></li>
+                <li><a href="#all-projects">🔥 Popular</a></li>
+                <li><a href="#all-projects">🆕 Recent</a></li>
+              </ul>
+              <a class="ncca-mega-cta" href="#all-projects">View All Projects →</a>
+            </div>
           </div>
-        </div>
-      </div>
-      <a href="#about">About</a>
-      <a href="#contact" class="btn-cta">Get in Touch</a>
+        </li>
+        <li class="ncca-item"><a href="#formats">🎬 Formats</a></li>
+        <li class="ncca-item"><a href="#for-pros">👤 For Professionals</a></li>
+        <li class="ncca-item"><a href="#contact">💬 Contact</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
 <section class="hero">
+
+<!-- Quick Access Pathways -->
+<section class="quick-access">
+  <div class="container">
+    <h3>I'm looking for...</h3>
+    <div class="pathway-grid">
+      <a href="#film-noir" class="pathway-card"><span class="icon">🎬</span><strong>Features for Theatrical</strong><small>12 action & thriller features</small></a>
+      <a href="#mow" class="pathway-card"><span class="icon">📺</span><strong>TV Movies (MOW)</strong><small>18 movies for broadcast</small></a>
+      <a href="#network-series" class="pathway-card"><span class="icon">🎭</span><strong>Series Concepts</strong><small>8 network & limited series</small></a>
+      <a href="#pitch-ready" class="pathway-card"><span class="icon">📊</span><strong>Pitch-Ready Projects</strong><small>View decks & one-sheets</small></a>
+    </div>
+  </div>
+</section>
+
   <div id="heroBg"></div>
   <div class="hero-inner">
     <h1>NCCA <span>ENTERTAINMENT</span></h1>
@@ -3753,6 +3913,212 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('DOMContentLoaded', initSearchFilter);
   } else {
     initSearchFilter();
+  }
+})();
+</script>
+
+<script id="ncca-nav-js">
+(function(){
+  const navToggle = document.getElementById('nccaNavToggle');
+  const primaryNav = document.getElementById('nccaPrimaryNav');
+  const megaToggle = document.querySelector('.ncca-has-mega > .ncca-link');
+  if (navToggle && primaryNav) {
+    navToggle.addEventListener('click', () => {
+      const open = primaryNav.classList.toggle('ncca-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  if (megaToggle) {
+    megaToggle.addEventListener('click', (e) => {
+      const expanded = megaToggle.getAttribute('aria-expanded') === 'true';
+      megaToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      e.stopPropagation();
+    });
+    megaToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { megaToggle.setAttribute('aria-expanded','true'); e.preventDefault(); }
+      if (e.key === 'Escape')    { megaToggle.setAttribute('aria-expanded','false'); }
+    });
+  }
+  document.addEventListener('click', (e) => {
+    const within = e.target.closest('.ncca-has-mega');
+    if (!within && megaToggle) megaToggle.setAttribute('aria-expanded','false');
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && megaToggle) megaToggle.setAttribute('aria-expanded','false');
+  });
+})();
+</script>
+
+<!-- Fixed Bottom Nav (Mobile Only) -->
+<nav class="mobile-bottom-nav" aria-label="Mobile shortcuts">
+  <button class="nav-item" data-action="home"><span class="icon">🏠</span><span class="label">Home</span></button>
+  <button class="nav-item" data-action="browse"><span class="icon">🔍</span><span class="label">Browse</span></button>
+  <button class="nav-item" data-action="filter"><span class="icon">🎛️</span><span class="label">Filter</span></button>
+  <button class="nav-item" data-action="menu"><span class="icon">☰</span><span class="label">Menu</span></button>
+</nav>
+
+<!-- Slide-up Filter Drawer -->
+<aside class="mobile-drawer" id="filterDrawer" aria-label="Filters">
+  <div class="drawer-header">
+    <h3>Filter Projects</h3>
+    <button class="close" aria-label="Close">✕</button>
+  </div>
+  <div class="drawer-body">
+    <!-- You can mirror your existing filters here via JS if desired -->
+    <div class="filter-presets">
+      <button class="preset-chip" data-preset="theatrical">🎬 Theatrical Features</button>
+      <button class="preset-chip" data-preset="broadcast">📺 Broadcast Ready MOW</button>
+      <button class="preset-chip" data-preset="streaming">📱 Streaming Series</button>
+      <button class="preset-chip" data-preset="holiday">🎄 Holiday Content</button>
+    </div>
+    <div class="view-controls-enhanced" style="margin-top:1rem;">
+      <select id="sort-by">
+        <option value="featured">Featured First</option>
+        <option value="recent">Recently Added</option>
+        <option value="title">A-Z Title</option>
+        <option value="genre">By Genre</option>
+        <option value="format">By Format</option>
+      </select>
+      <div class="density-toggle">
+        <button class="density-btn" data-density="compact">═</button>
+        <button class="density-btn active" data-density="comfortable">⊞</button>
+        <button class="density-btn" data-density="spacious">▢</button>
+      </div>
+      <div class="layout-toggle">
+        <button class="layout-btn active" data-layout="grid">Grid</button>
+        <button class="layout-btn" data-layout="list">List</button>
+        <button class="layout-btn" data-layout="gallery">Gallery</button>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-footer">
+    <button class="btn-ghost">Clear All</button>
+    <button class="btn">Apply Filters</button>
+  </div>
+</aside>
+
+
+<script id="ncca-enhancements-js">
+(function(){
+  // A) Load More (non-destructive): show first 12 from #all-projects, then reveal in batches of 12
+  const allSection = document.querySelector('#all-projects, #projects, [data-all-projects]');
+  if (allSection){
+    const cards = allSection.querySelectorAll('.project-card, article, .card');
+    if (cards.length > 20){ // only if large lists
+      const batch = 12;
+      cards.forEach((c,i)=>{ if(i >= batch) c.classList.add('ncca-hidden'); });
+      const btn = document.createElement('button');
+      btn.textContent = "Load More";
+      btn.className = "btn";
+      btn.style.display = "block";
+      btn.style.margin = "1rem auto";
+      btn.addEventListener('click', ()=>{
+        const hidden = allSection.querySelectorAll('.ncca-hidden');
+        hidden.forEach((c,i)=>{ if(i < batch) c.classList.remove('ncca-hidden'); });
+        if (allSection.querySelectorAll('.ncca-hidden').length === 0) btn.remove();
+      });
+      allSection.appendChild(btn);
+      const style = document.createElement('style'); style.textContent = '.ncca-hidden{display:none !important;}'; document.head.appendChild(style);
+    }
+  }
+
+  // B) Enhance project cards with overlay (non-destructive)
+  document.querySelectorAll('.project-card').forEach(card=>{
+    if(card.classList.contains('enhanced')) return;
+    card.classList.add('enhanced');
+    const title = card.getAttribute('data-title') || (card.querySelector('.title') && card.querySelector('.title').textContent.trim()) || 'Project';
+    const tagline = card.getAttribute('data-tagline') || '';
+    const overlay = document.createElement('div');
+    overlay.className = 'card-overlay';
+    overlay.innerHTML = '<div class="quick-info"><h4>'+title+'</h4><p class="tagline">'+tagline+'</p><div class="quick-actions"><button class="btn-icon" title="View Details">👁️</button><button class="btn-icon" title="Download Pitch Deck" data-action="deck">📥</button><button class="btn-icon" title="Share" data-action="share">🔗</button><button class="btn-icon" title="Add to Collection" data-action="save">📌</button></div></div>';
+    card.appendChild(overlay);
+  });
+
+  // C) Collections: simple localStorage bookmarking
+  const Collections = {
+    key:'ncca_saved',
+    get(){ try{ return JSON.parse(localStorage.getItem(this.key)||'[]'); }catch(e){ return [] } },
+    set(v){ localStorage.setItem(this.key, JSON.stringify(v)); },
+    toggle(id){
+      const s=this.get(); const i=s.indexOf(id);
+      if(i===-1){ s.push(id); } else { s.splice(i,1); }
+      this.set(s); return s.includes(id);
+    }
+  };
+  document.body.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.btn-icon[data-action="save"]');
+    if(btn){
+      const card = e.target.closest('.project-card');
+      const id = card && (card.dataset.id || card.dataset.title || card.querySelector('.title')?.textContent.trim());
+      if(id){
+        const saved = Collections.toggle(id);
+        btn.classList.toggle('saved', saved);
+      }
+    }
+  });
+
+  // D) Mobile bottom nav behaviors & filter drawer
+  const bottomNav = document.querySelector('.mobile-bottom-nav');
+  const drawer = document.getElementById('filterDrawer');
+  if(bottomNav && drawer){
+    bottomNav.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.nav-item'); if(!btn) return;
+      const action = btn.dataset.action;
+      if(action==='home'){ window.scrollTo({top:0, behavior:'smooth'}); }
+      if(action==='browse'){ document.querySelector('#all-projects, #projects')?.scrollIntoView({behavior:'smooth'}); }
+      if(action==='filter'){ drawer.classList.add('open'); }
+      if(action==='menu'){ document.getElementById('nccaNavToggle')?.click(); }
+    });
+    drawer.querySelector('.close')?.addEventListener('click', ()=> drawer.classList.remove('open'));
+  }
+
+  // E) Smart Search (basic autocomplete hook if search exists)
+  const searchInput = document.getElementById('project-search');
+  if(searchInput){
+    const sugg = document.createElement('div'); sugg.className='search-suggestions'; searchInput.insertAdjacentElement('afterend', sugg);
+    function highlight(text,q){ const i=text.toLowerCase().indexOf(q); if(i<0) return text; return text.slice(0,i)+'<mark>'+text.slice(i,i+q.length)+'</mark>'+text.slice(i+q.length); }
+    const allCards = Array.from(document.querySelectorAll('.project-card'));
+    const allProjects = allCards.map((c,i)=>{
+      const title = (c.dataset.title || c.querySelector('.title')?.textContent || '').trim();
+      const genre = (c.dataset.genre || c.closest('[id]')?.id || '').replace(/-/g,' ');
+      const fmt   = (c.dataset.format || '').trim();
+      const img   = c.querySelector('img')?.getAttribute('src') || '';
+      return { id: c.id || ('card_'+i), title, genre, format: fmt, thumbnail: img, searchText: (title+' '+genre+' '+fmt).toLowerCase() };
+    });
+    searchInput.addEventListener('input', (e)=>{
+      const q = e.target.value.trim().toLowerCase();
+      if(q.length<2){ sugg.innerHTML=''; return; }
+      const matches = allProjects.filter(p=>p.searchText.includes(q)).slice(0,5);
+      sugg.innerHTML = matches.map(m=>`<div class="suggestion-item" data-id="${m.id}" style="display:flex;gap:.5rem;align-items:center;padding:.35rem;border:1px solid #2a2c31;border-radius:8px;margin-top:.25rem;cursor:pointer;">
+        <img src="${m.thumbnail}" alt="" style="width:36px;height:24px;object-fit:cover;border-radius:4px;">
+        <div><strong>${highlight(m.title, q)}</strong><div style="color:#a9acb6;font-size:.85rem;">${m.genre} • ${m.format||'Project'}</div></div>
+      </div>`).join('');
+      sugg.querySelectorAll('.suggestion-item').forEach(row=>{
+        row.addEventListener('click', ()=>{
+          const id=row.getAttribute('data-id'); const el = document.getElementById(id) || allCards.find(c=> (c.id===id) ) || null;
+          if(el && el.scrollIntoView) el.scrollIntoView({behavior:'smooth', block:'center'});
+          sugg.innerHTML='';
+        });
+      });
+    });
+  }
+
+  // F) Accessibility helpers
+  const live = document.getElementById('filter-announce');
+  function announce(count){ if(live) live.textContent = `Showing ${count} projects`; }
+  announce(document.querySelectorAll('.project-card').length);
+
+  // G) Performance: lazy-load for .card-media[data-bg]
+  const lazyEls = document.querySelectorAll('.card-media[data-bg]');
+  if(lazyEls.length){
+    const io = new IntersectionObserver((entries, obs)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          const el = en.target; el.style.backgroundImage = `url('${el.dataset.bg}')`; el.classList.add('loaded'); obs.unobserve(el);
+        }
+      });
+    });
+    lazyEls.forEach(el=> io.observe(el));
   }
 })();
 </script>
