@@ -29,8 +29,8 @@
       --brand-rule:rgba(255,255,255,.10);
       --glass-bg:rgba(10,10,10,.85);
       
-      /* ===== Tile sizing: slightly larger posters, consistent ratio ===== */
-      --tile-max: 320px;
+      /* ===== Tile sizing: larger posters to prevent title cutoff ===== */
+      --tile-max: 380px;
       --tile-gap: 1rem;
       --caption-lines: 2;
     }
@@ -529,7 +529,7 @@
     
     .card-image{
       position:relative;
-      aspect-ratio:2/3;
+      aspect-ratio:3/4;
       overflow:hidden;
     }
     
@@ -545,14 +545,14 @@
     }
     
     .card-content{
-      padding:1.5rem;
+      padding:1.75rem;
     }
     
     .card-title{
-      font-size:1.2rem;
+      font-size:1.3rem;
       font-weight:700;
       margin-bottom:0.75rem;
-      line-height:1.3;
+      line-height:1.25;
       display:-webkit-box;
       -webkit-line-clamp:var(--caption-lines);
       -webkit-box-orient:vertical;
@@ -730,7 +730,7 @@
       }
       
       .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       }
       
       .hero-ctas {
