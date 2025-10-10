@@ -3998,15 +3998,19 @@ document.addEventListener('DOMContentLoaded', function() {
 </aside>
 
 
+
 <script id="ncca-enhancements-js">
 (function(){
-  // A) Load More (non-destructive): show first 12 from #all-projects, then reveal in batches of 12
+  // Config
+  const CFG = (window.NCCA_CONFIG || {});
+  const LOAD_BATCH = Number(CFG.loadMoreBatch) > 0 ? Number(CFG.loadMoreBatch) : 12;
+
+  // A) Load More (non-destructive): configurable batch size
   const allSection = document.querySelector('#all-projects, #projects, [data-all-projects]');
   if (allSection){
     const cards = allSection.querySelectorAll('.project-card, article, .card');
-    if (cards.length > 20){ // only if large lists
-      const batch = 12;
-      cards.forEach((c,i)=>{ if(i >= batch) c.classList.add('ncca-hidden'); });
+    if (cards.length > LOAD_BATCH){ // only if large lists
+      cards.forEach((c,i)=>{ if(i >= LOAD_BATCH) c.classList.add('ncca-hidden'); });
       const btn = document.createElement('button');
       btn.textContent = "Load More";
       btn.className = "btn";
@@ -4014,7 +4018,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btn.style.margin = "1rem auto";
       btn.addEventListener('click', ()=>{
         const hidden = allSection.querySelectorAll('.ncca-hidden');
-        hidden.forEach((c,i)=>{ if(i < batch) c.classList.remove('ncca-hidden'); });
+        hidden.forEach((c,i)=>{ if(i < LOAD_BATCH) c.classList.remove('ncca-hidden'); });
         if (allSection.querySelectorAll('.ncca-hidden').length === 0) btn.remove();
       });
       allSection.appendChild(btn);
@@ -4030,7 +4034,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tagline = card.getAttribute('data-tagline') || '';
     const overlay = document.createElement('div');
     overlay.className = 'card-overlay';
-    overlay.innerHTML = '<div class="quick-info"><h4>'+title+'</h4><p class="tagline">'+tagline+'</p><div class="quick-actions"><button class="btn-icon" title="View Details">👁️</button><button class="btn-icon" title="Download Pitch Deck" data-action="deck">📥</button><button class="btn-icon" title="Share" data-action="share">🔗</button><button class="btn-icon" title="Add to Collection" data-action="save">📌</button></div></div>';
+    overlay.innerHTML = '<div class="quick-info"><h4>'+title+'</h4><p class="tagline">'+tagline+'</p><div class="quick-actions"><button class="btn-icon" title="View Details" data-action="view">👁️</button><button class="btn-icon" title="Download Pitch Deck" data-action="deck">📥</button><button class="btn-icon" title="Share" data-action="share">🔗</button><button class="btn-icon" title="Add to Collection" data-action="save">📌</button></div></div>';
     card.appendChild(overlay);
   });
 
@@ -4045,15 +4049,42 @@ document.addEventListener('DOMContentLoaded', function() {
       this.set(s); return s.includes(id);
     }
   };
+
+  // Deck opening + share + save
   document.body.addEventListener('click', (e)=>{
-    const btn = e.target.closest('.btn-icon[data-action="save"]');
-    if(btn){
+    const btnDeck = e.target.closest('.btn-icon[data-action="deck"]');
+    if(btnDeck){
+      const card = e.target.closest('.project-card');
+      if(card){
+        const deck = card.getAttribute('data-deck') ||
+                     card.querySelector('[data-deck]')?.getAttribute('data-deck') ||
+                     card.querySelector('a[data-deck]')?.getAttribute('href');
+        if(deck){ window.open(deck, '_blank'); }
+      }
+      return;
+    }
+    const btnSave = e.target.closest('.btn-icon[data-action="save"]');
+    if(btnSave){
       const card = e.target.closest('.project-card');
       const id = card && (card.dataset.id || card.dataset.title || card.querySelector('.title')?.textContent.trim());
       if(id){
         const saved = Collections.toggle(id);
-        btn.classList.toggle('saved', saved);
+        btnSave.classList.toggle('saved', saved);
       }
+      return;
+    }
+    const btnShare = e.target.closest('.btn-icon[data-action="share"]');
+    if(btnShare){
+      const url = window.location.href.split('#')[0] + (e.target.closest('.project-card')?.id ? ('#'+e.target.closest('.project-card').id) : '');
+      if(navigator.clipboard){ navigator.clipboard.writeText(url); }
+      return;
+    }
+    const btnView = e.target.closest('.btn-icon[data-action="view"]');
+    if(btnView){
+      // Let existing click handlers open the modal; fallback: click the card
+      const card = e.target.closest('.project-card');
+      card?.click();
+      return;
     }
   });
 
@@ -4103,12 +4134,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // F) Accessibility helpers
+  // F) Preset chips wiring: call your real filter function if available
+  // Expose hook: window.applyFilterPreset(key) -> implement in your codebase to integrate fully.
+  const PRESET_TARGETS = {
+    theatrical: '#film-noir, #action-features',
+    broadcast: '#mow, #holiday, #christmas-stories',
+    streaming: '#network-series, #limited-series, #docuseries',
+    holiday: '#holiday, #christmas-stories'
+  };
+  document.querySelectorAll('.preset-chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const key = btn.getAttribute('data-preset');
+      if(typeof window.applyFilterPreset === 'function'){
+        window.applyFilterPreset(key);
+      } else {
+        // Default behavior: scroll to the first matching section
+        const sel = PRESET_TARGETS[key];
+        if(sel){
+          const el = document.querySelector(sel.split(',')[0].trim());
+          el?.scrollIntoView({behavior:'smooth'});
+        }
+      }
+      // Announce for screen readers
+      const live = document.getElementById('filter-announce');
+      if(live) live.textContent = `Preset "${key}" applied`;
+    });
+  });
+
+  // G) Accessibility helpers
   const live = document.getElementById('filter-announce');
   function announce(count){ if(live) live.textContent = `Showing ${count} projects`; }
   announce(document.querySelectorAll('.project-card').length);
 
-  // G) Performance: lazy-load for .card-media[data-bg]
+  // H) Performance: lazy-load for .card-media[data-bg]
   const lazyEls = document.querySelectorAll('.card-media[data-bg]');
   if(lazyEls.length){
     const io = new IntersectionObserver((entries, obs)=>{
@@ -4122,6 +4180,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 })();
 </script>
+
 
 </body>
 </html>
