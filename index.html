@@ -981,7 +981,71 @@
   #limited-series .project-card,
   #docuseries .project-card { grid-column: auto; }
 }
+/* ===== NCCA: Uniform tile size everywhere + 16:9 + double-wide for Limited/Docs ===== */
+:root { --card-min: 320px; --gap: 1rem; }
 
+/* UNIFY every project grid to the same min width */
+.grid,
+.projects-grid,
+.genre-grid,
+.cards-grid {
+  display: grid !important;
+  gap: var(--gap) !important;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr)) !important;
+}
+
+/* NEUTRALIZE any per-section forced columns (the reason some tiles shrink) */
+#southern-gothic .grid,
+#horror .grid,
+#action-features .grid,
+#network-series .grid,
+#christmas-stories .grid,
+#limited-series .grid,
+#docuseries .grid,
+#southern-gothic .projects-grid,
+#horror .projects-grid,
+#action-features .projects-grid,
+#network-series .projects-grid,
+#christmas-stories .projects-grid,
+#limited-series .projects-grid,
+#docuseries .projects-grid {
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr)) !important;
+}
+
+/* LOCK posters to landscape 16:9 everywhere */
+.project-card,
+.card,
+.tile { aspect-ratio: 16 / 9; }
+
+.project-card .poster,
+.card-media,
+.tile .poster { aspect-ratio: 16 / 9; }
+
+.project-card img,
+.card-media img,
+.tile img,
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* swap to 'contain' per-item if needed */
+  object-position: center;
+  display: block;
+}
+
+/* Titles below images—safe, no clipping */
+.meta { margin-top: .55rem; }
+.title {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; line-height: 1.2; font-weight: 700;
+}
+
+/* Limited & Docuseries only: double-wide on desktop, normal on mobile */
+#limited-series .project-card,
+#docuseries .project-card { grid-column: span 2; }
+@media (max-width: 800px){
+  #limited-series .project-card,
+  #docuseries .project-card { grid-column: span 1; }
+}
 
 /* === NCCA Slim Audio Player === */
 .audio-player { --accent:#ffd166; --bg:#111; --text:#e7e7ea; --muted:#a9acb6; width:100%;
