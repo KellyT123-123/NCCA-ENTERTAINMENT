@@ -28,101 +28,472 @@
       --brand-bg:#0A0A0A;
       --brand-muted:#B9A98F;
       --brand-rule:rgba(255,255,255,.10);
-      --glass-bg:rgba(10,10,10,.85);
 
       --card-min:320px;
       --gap:1rem;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--brand-bg);color:#f5f3ee;line-height:1.6}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--brand-bg);
+      color:#f5f3ee;
+      line-height:1.6
+    }
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline;color:var(--brand-hover)}
 
     /* Sticky Header */
-    .site-header{position:sticky;top:0;z-index:2000;background:rgba(11,11,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
-    .nav-wrap{max-width:1400px;margin:0 auto;padding:.75rem 24px;display:flex;align-items:center;gap:1rem}
-    .brand{font-weight:900;letter-spacing:.5px;padding:.25rem .6rem;border-radius:8px;background:linear-gradient(180deg,#2a2c31,#17181b);color:#ffd166;text-decoration:none}
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:2000;
+      background:rgba(11,11,12,.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .nav-wrap{
+      max-width:1400px;
+      margin:0 auto;
+      padding:.75rem 24px;
+      display:flex;
+      align-items:center;
+      gap:1rem
+    }
+    .brand{
+      font-weight:900;
+      letter-spacing:.5px;
+      padding:.25rem .6rem;
+      border-radius:8px;
+      background:linear-gradient(180deg,#2a2c31,#17181b);
+      color:#ffd166;
+      text-decoration:none
+    }
     .nav{margin-left:auto}
-    .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:.5rem;align-items:center}
-    .nav-item>a,.nav-item>.link{color:#e7e7ea;text-decoration:none;padding:.5rem .7rem;border-radius:8px;font-weight:700}
-    .nav-item>a:hover,.nav-item>.link:hover{background:#191b20}
-    .nav-toggle{display:none;margin-left:auto;font-size:1.25rem;line-height:1;background:#191b20;color:#e7e7ea;border:1px solid #2a2c31;border-radius:8px;padding:.4rem .6rem}
+    .nav-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:.5rem;
+      align-items:center
+    }
+    .nav-item>a,.nav-item>.link{
+      color:#e7e7ea;
+      text-decoration:none;
+      padding:.5rem .7rem;
+      border-radius:8px;
+      font-weight:700
+    }
+    .nav-item>a:hover,.nav-item>.link:hover{
+      background:#191b20
+    }
+    .nav-toggle{
+      display:none;
+      margin-left:auto;
+      font-size:1.25rem;
+      line-height:1;
+      background:#191b20;
+      color:#e7e7ea;
+      border:1px solid #2a2c31;
+      border-radius:8px;
+      padding:.4rem .6rem
+    }
 
-    /* Mega */
+    /* Mega Menu */
     .has-mega{position:relative}
-    .has-mega .link{background:transparent;border:1px solid #2a2c31}
-    .mega{position:absolute;left:0;top:calc(100% + 8px);width:min(920px,96vw);background:#0f1114;border:1px solid #2a2c31;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.45);padding:1rem;display:none;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+    .has-mega .link{
+      background:transparent;
+      border:1px solid #2a2c31;
+      cursor:pointer
+    }
+    .mega{
+      position:absolute;
+      left:0;
+      top:calc(100% + 8px);
+      width:min(920px,96vw);
+      background:#0f1114;
+      border:1px solid #2a2c31;
+      border-radius:12px;
+      box-shadow:0 12px 32px rgba(0,0,0,.45);
+      padding:1rem;
+      display:none;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:1rem
+    }
     .has-mega .link[aria-expanded="true"]+.mega{display:grid}
-    .mega-col h4{margin:.25rem 0 .5rem;font-size:.9rem;letter-spacing:.5px;color:#a9acb6;font-weight:800}
-    .mega-links{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
-    .mega-links a{display:block;padding:.4rem .5rem;border-radius:6px;text-decoration:none;color:#e7e7ea}
-    .mega-links a:hover{background:#191b20}
-    .mega-cta{display:inline-block;margin-top:.75rem;padding:.5rem .75rem;border:1px solid #2a2c31;border-radius:8px;color:#e7e7ea;text-decoration:none}
+    .mega-col h4{
+      margin:.25rem 0 .5rem;
+      font-size:.9rem;
+      letter-spacing:.5px;
+      color:#a9acb6;
+      font-weight:800
+    }
+    .mega-links{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:.35rem
+    }
+    .mega-links a{
+      display:block;
+      padding:.4rem .5rem;
+      border-radius:6px;
+      text-decoration:none;
+      color:#e7e7ea
+    }
+    .mega-links a:hover{
+      background:#191b20
+    }
+    .mega-cta{
+      display:inline-block;
+      margin-top:.75rem;
+      padding:.5rem .75rem;
+      border:1px solid #2a2c31;
+      border-radius:8px;
+      color:#e7e7ea;
+      text-decoration:none
+    }
     .mega-cta:hover{background:#191b20}
 
     /* Hero */
-    .hero{position:relative;min-height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#000}
-    .hero h1{font-size:clamp(3rem,8vw,7rem);font-weight:900;margin-bottom:1.5rem;letter-spacing:-.03em;line-height:0.9}
-    .hero h1 span{color:var(--brand);background:linear-gradient(135deg,var(--brand),var(--brand-hover));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    .hero p{font-size:clamp(1.1rem,2.5vw,1.4rem);opacity:.95;margin:0 auto 2.5rem;max-width:800px;color:var(--brand-ink)}
-    .btn{display:inline-block;background:var(--brand);color:#111;border:none;padding:1rem 2rem;border-radius:999px;font-weight:800;font-size:1rem;transition:all .3s ease;box-shadow:0 8px 30px rgba(212,139,60,.3);text-transform:uppercase;letter-spacing:.05em;cursor:pointer}
-    .btn:hover{background:var(--brand-hover);text-decoration:none;transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,139,60,.4)}
-    .btn.secondary{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.3)}
-    .btn.secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
+    .hero{
+      position:relative;
+      min-height:72vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow:hidden;
+      background:#000
+    }
+    .hero h1{
+      font-size:clamp(3rem,8vw,7rem);
+      font-weight:900;
+      margin-bottom:1.5rem;
+      letter-spacing:-.03em;
+      line-height:0.9
+    }
+    .hero h1 span{
+      color:var(--brand);
+      background:linear-gradient(135deg,var(--brand),var(--brand-hover));
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent
+    }
+    .hero p{
+      font-size:clamp(1.1rem,2.5vw,1.4rem);
+      opacity:.95;
+      margin:0 auto 2.5rem;
+      max-width:800px;
+      color:var(--brand-ink)
+    }
+    .btn{
+      display:inline-block;
+      background:var(--brand);
+      color:#111;
+      border:none;
+      padding:1rem 2rem;
+      border-radius:999px;
+      font-weight:800;
+      font-size:1rem;
+      transition:all .3s ease;
+      box-shadow:0 8px 30px rgba(212,139,60,.3);
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      cursor:pointer
+    }
+    .btn:hover{
+      background:var(--brand-hover);
+      text-decoration:none;
+      transform:translateY(-2px);
+      box-shadow:0 12px 40px rgba(212,139,60,.4)
+    }
+    .btn.secondary{
+      background:transparent;
+      color:#fff;
+      border:2px solid rgba(255,255,255,.3)
+    }
+    .btn.secondary:hover{
+      background:rgba(255,255,255,.1);
+      border-color:rgba(255,255,255,.5)
+    }
 
     .section{padding:4rem 0;position:relative}
     .container{max-width:1400px;margin:0 auto;padding:0 24px}
-    .section h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;text-align:center;margin-bottom:1.25rem;letter-spacing:-.02em;background:linear-gradient(135deg,#fff,var(--brand-ink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    .section-intro{text-align:center;font-size:1.1rem;color:var(--brand-muted);max-width:800px;margin:0 auto 2.2rem;line-height:1.6}
+    .section h2{
+      font-size:clamp(2.2rem,5vw,3.6rem);
+      font-weight:900;
+      text-align:center;
+      margin-bottom:1.25rem;
+      letter-spacing:-.02em;
+      background:linear-gradient(135deg,#fff,var(--brand-ink));
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent
+    }
+    .section-intro{
+      text-align:center;
+      font-size:1.1rem;
+      color:var(--brand-muted);
+      max-width:800px;
+      margin:0 auto 2.2rem;
+      line-height:1.6
+    }
 
-    /* Filters/Search */
-    .search-filter-container{position:sticky;top:72px;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--brand-rule);box-shadow:0 4px 12px rgba(0,0,0,.3);padding:1rem 0}
-    .chipbar{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
-    .chip{background:rgba(255,255,255,.08);color:#fff;padding:.6rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-weight:700;cursor:pointer}
-    .chip.active,.chip:hover{background:var(--brand);color:#111;border-color:var(--brand)}
+    /* Filter Chip Bar */
+    .search-filter-container{
+      position:sticky;
+      top:72px;
+      z-index:100;
+      background:rgba(10,10,10,.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--brand-rule);
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
+      padding:1rem 0
+    }
+    .chipbar{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      justify-content:center
+    }
+    .chip{
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      padding:.6rem 1.1rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      font-weight:700;
+      cursor:pointer;
+      font-size:.9rem
+    }
+    .chip.active,
+    .chip:hover{
+      background:var(--brand);
+      color:#111;
+      border-color:var(--brand)
+    }
 
     /* Grid & Cards */
-    .grid,.projects-grid,.genre-grid,.cards-grid{display:grid;gap:var(--gap);grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr))}
-    .card{background:linear-gradient(145deg,#1a1a1f,#0f0f13);border-radius:20px;overflow:hidden;transition:all .4s ease;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 32px rgba(0,0,0,.3)}
-    .card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4);border-color:rgba(212,139,60,.28)}
-    .card-media{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#111;background-size:cover;background-position:center;border-radius:12px}
+    .grid{display:grid;gap:var(--gap);grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr))}
+    .card{
+      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
+      border-radius:20px;
+      overflow:hidden;
+      transition:all .4s ease;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 8px 32px rgba(0,0,0,.3)
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 60px rgba(0,0,0,.4);
+      border-color:rgba(212,139,60,.28)
+    }
+    .card-media{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      overflow:hidden;
+      background:#111;
+      background-size:cover;
+      background-position:center;
+      border-radius:12px
+    }
     .card-body{padding:1.1rem 1.25rem}
-    .title{font-size:1.25rem;font-weight:800;margin-bottom:.6rem;color:#fff;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .meta{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.8rem;align-items:center}
-    .badge{background:rgba(212,139,60,.18);color:var(--brand);padding:.25rem .6rem;border-radius:999px;font-size:.8rem;font-weight:700;border:1px solid rgba(212,139,60,.3)}
-    .muted{color:var(--brand-muted);line-height:1.55;margin-bottom:1rem}
-    .actions{display:flex;gap:.6rem;flex-wrap:wrap}
-    .platform-logos{display:flex;gap:.4rem;align-items:center;font-size:.7rem;font-weight:700;color:#fff}
+    .title{
+      font-size:1.25rem;
+      font-weight:800;
+      margin-bottom:.6rem;
+      color:#fff;
+      line-height:1.2;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden
+    }
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.45rem;
+      margin-bottom:.8rem;
+      align-items:center
+    }
+    .badge{
+      background:rgba(212,139,60,.18);
+      color:var(--brand);
+      padding:.25rem .6rem;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:700;
+      border:1px solid rgba(212,139,60,.3)
+    }
+    .platform-logos{
+      display:flex;
+      gap:.4rem;
+      align-items:center;
+      font-size:.7rem;
+      font-weight:700;
+      color:#fff
+    }
+    .muted{
+      color:var(--brand-muted);
+      line-height:1.55;
+      margin-bottom:1rem;
+      font-size:.95rem
+    }
+    .actions{
+      display:flex;
+      gap:.6rem;
+      flex-wrap:wrap
+    }
 
     /* Audio Player */
-    .audio-player{--accent:#ffd166;--bg:#111;--text:#e7e7ea;--muted:#a9acb6;width:100%;border:1px solid #2a2c31;border-radius:12px;background:var(--bg);box-shadow:0 6px 18px rgba(0,0,0,.25);overflow:hidden;font:14px/1.4 Inter,system-ui,sans-serif;margin:1.5rem 0 0}
-    .audio-row{display:flex;align-items:center;gap:.75rem;padding:.75rem .9rem}
-    .ap-button{width:36px;height:36px;border-radius:999px;border:1px solid #2a2c31;display:grid;place-items:center;cursor:pointer;background:#191b20;color:var(--text)}
-    .ap-button:hover{transform:translateY(-1px)}
-    .track-meta{min-width:0;display:flex;flex-direction:column}
-    .track-title{font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .track-artist{color:var(--muted);font-size:.9rem;margin-top:2px}
-    .time{color:var(--muted);font-variant-numeric:tabular-nums;margin-left:auto}
-    .scrub{width:100%;height:6px;background:#1b1d22;border-radius:999px;position:relative;cursor:pointer;margin:.25rem 0 0}
-    .scrub>.bar{height:100%;width:0%;background:var(--accent);border-radius:inherit}
-    .playlist{border-top:1px solid #2a2c31;max-height:220px;overflow:auto}
-    .track{display:flex;gap:.75rem;align-items:center;padding:.6rem .9rem;cursor:pointer}
+    .audio-player{
+      --accent:#ffd166;
+      --bg:#111;
+      --text:#e7e7ea;
+      --muted:#a9acb6;
+      width:100%;
+      border:1px solid #2a2c31;
+      border-radius:12px;
+      background:var(--bg);
+      box-shadow:0 6px 18px rgba(0,0,0,.25);
+      overflow:hidden;
+      font:14px/1.4 Inter,system-ui,sans-serif;
+      margin:1.5rem 0 0
+    }
+    .audio-row{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      padding:.75rem .9rem
+    }
+    .ap-button{
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:1px solid #2a2c31;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      background:#191b20;
+      color:var(--text);
+      font-size:.9rem;
+      font-weight:700
+    }
+    .ap-button:hover{
+      transform:translateY(-1px)
+    }
+    .track-meta{
+      min-width:0;
+      display:flex;
+      flex-direction:column
+    }
+    .track-title{
+      font-weight:700;
+      color:var(--text);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis
+    }
+    .track-artist{
+      color:var(--muted);
+      font-size:.9rem;
+      margin-top:2px
+    }
+    .time{
+      color:var(--muted);
+      font-variant-numeric:tabular-nums;
+      margin-left:auto;
+      font-size:.8rem
+    }
+    .scrub{
+      width:100%;
+      height:6px;
+      background:#1b1d22;
+      border-radius:999px;
+      position:relative;
+      cursor:pointer;
+      margin:.25rem 0 0
+    }
+    .scrub>.bar{
+      height:100%;
+      width:0%;
+      background:var(--accent);
+      border-radius:inherit
+    }
+    .playlist{
+      border-top:1px solid #2a2c31;
+      max-height:220px;
+      overflow:auto
+    }
+    .track{
+      display:flex;
+      gap:.75rem;
+      align-items:center;
+      padding:.6rem .9rem;
+      cursor:pointer;
+      font-size:.9rem;
+      line-height:1.4
+    }
     .track:hover{background:#15161a}
     .track.active{background:#1a1b20}
-    .track .dot{width:8px;height:8px;border-radius:999px;background:#2a2c31}
-    .track.active .dot{background:var(--accent)}
+    .track .dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:#2a2c31
+    }
+    .track.active .dot{background:#ffd166}
 
-    .to-top{position:fixed;bottom:1.25rem;right:1.25rem;background:var(--brand);color:#111;border:none;width:50px;height:50px;border-radius:50%;font-size:1.2rem;font-weight:800;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 20px rgba(212,139,60,.3);opacity:0;visibility:hidden;transform:translateY(20px);z-index:1000}
-    .to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+    /* Back to Top button */
+    .to-top{
+      position:fixed;
+      bottom:1.25rem;
+      right:1.25rem;
+      background:var(--brand);
+      color:#111;
+      border:none;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      font-size:1.2rem;
+      font-weight:800;
+      cursor:pointer;
+      transition:all .3s ease;
+      box-shadow:0 4px 20px rgba(212,139,60,.3);
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(20px);
+      z-index:1000
+    }
+    .to-top.show{
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0)
+    }
+
     @media(max-width:900px){
       .nav-toggle{display:inline-block}
       .nav{display:none;width:100%}
       .nav.open{display:block}
-      .nav-list{flex-direction:column;align-items:stretch;gap:.25rem;margin-top:.5rem}
-      .has-mega .mega{position:static;display:none;grid-template-columns:1fr;padding:.75rem}
+      .nav-list{
+        flex-direction:column;
+        align-items:stretch;
+        gap:.25rem;
+        margin-top:.5rem
+      }
+      .has-mega .mega{
+        position:static;
+        display:none;
+        grid-template-columns:1fr;
+        padding:.75rem
+      }
       .has-mega .link[aria-expanded="true"]+.mega{display:grid}
     }
+
     [id]{scroll-margin-top:96px}
   </style>
 </head>
@@ -143,24 +514,18 @@
               <div class="mega-col">
                 <h4>BY GENRE</h4>
                 <ul class="mega-links">
-                  <li><a href="#drama">Drama</a></li>
-                  <li><a href="#thriller">Thriller</a></li>
-                  <li><a href="#romance">Romance</a></li>
-                  <li><a href="#comedy">Comedy</a></li>
-                  <li><a href="#action-features">Action</a></li>
-                  <li><a href="#horror">Horror</a></li>
-                  <li><a href="#southern-gothic">Southern Gothic</a></li>
-                  <li><a href="#film-noir">Film Noir</a></li>
                   <li><a href="#christmas-stories">Christmas</a></li>
+                  <li><a href="#horror">Horror / Southern Gothic</a></li>
+                  <li><a href="#network-series">Series</a></li>
+                  <li><a href="#docuseries">Docuseries</a></li>
                 </ul>
               </div>
               <div class="mega-col">
                 <h4>BY FORMAT</h4>
                 <ul class="mega-links">
-                  <li><a href="#action-features">Features</a></li>
                   <li><a href="#all-projects">MOW</a></li>
-                  <li><a href="#network-series">Series</a></li>
-                  <li><a href="#limited-series">Limited Series</a></li>
+                  <li><a href="#all-projects">Feature Film</a></li>
+                  <li><a href="#network-series">Network Series</a></li>
                   <li><a href="#docuseries">Docuseries</a></li>
                 </ul>
               </div>
@@ -183,6 +548,8 @@
   </header>
 
   <main id="main">
+
+    <!-- HERO -->
     <section class="hero" id="top">
       <div class="hero-inner">
         <h1>NCCA <span>ENTERTAINMENT</span></h1>
@@ -194,29 +561,33 @@
       </div>
     </section>
 
-    <!-- Quick filter chips -->
+    <!-- QUICK FILTER CHIPS -->
     <div class="search-filter-container">
       <div class="container">
         <div class="chipbar" id="chipbar">
           <button class="chip" data-filter='{"format":"MOW"}'>TV Movies (MOW)</button>
           <button class="chip" data-filter='{"format":"Network Series"}'>Network Series</button>
           <button class="chip" data-filter='{"genre":"Horror"}'>Horror</button>
-          <button class="chip" data-filter='{"genre":"Action"}'>Action</button>
           <button class="chip" data-filter='{"genre":"Christmas"}'>Christmas</button>
+          <button class="chip" data-filter='{"genre":"Docuseries"}'>Docuseries</button>
           <button class="chip" data-reset>Clear</button>
         </div>
       </div>
     </div>
 
-    <!-- Featured -->
+    <!-- FEATURED -->
     <section id="featured" class="section">
       <div class="container">
         <h2>FEATURED PROJECTS</h2>
         <p class="section-intro">Showcasing market-ready projects across multiple genres and formats.</p>
 
         <div class="grid" id="featuredGrid">
-          <!-- Example Card 1 -->
-          <article class="card project-card" data-title="The Influencer's Last Post" data-genre="Film Noir" data-format="MOW" data-audience="Women 25–40 | Gen Z">
+
+          <article class="card project-card"
+            data-title="The Influencer's Last Post"
+            data-genre="Film Noir"
+            data-format="MOW"
+            data-audience="Women 25–40 | Gen Z">
             <div class="card-media" style="background-image:url('images/influencers-last-post.png')"></div>
             <div class="card-body">
               <div class="title">The Influencer's Last Post</div>
@@ -233,8 +604,11 @@
             </div>
           </article>
 
-          <!-- Example Card 2 -->
-          <article class="card project-card" data-title="Reflections" data-genre="Action" data-format="Feature" data-audience="Adults 25–54">
+          <article class="card project-card"
+            data-title="Reflections"
+            data-genre="Action"
+            data-format="Feature"
+            data-audience="Adults 25–54">
             <div class="card-media" style="background-image:url('images/reflections.png')"></div>
             <div class="card-body">
               <div class="title">Reflections</div>
@@ -250,17 +624,19 @@
               </div>
             </div>
           </article>
+
         </div>
       </div>
     </section>
 
-    <!-- All Projects -->
+    <!-- ALL PROJECTS (MASTER GRID WITH FILTER) -->
     <section id="all-projects" class="section">
       <div class="container">
         <h2>ALL PROJECTS</h2>
         <p class="section-intro">Use the chips above to filter quickly by format or genre. You can also scroll to curated sections below.</p>
 
         <div id="projectsWrap" class="projects-container">
+
           <div id="emptyState" class="card" style="display:none;padding:2rem;text-align:center;border:1px solid var(--brand-rule)">
             <h3 style="margin-bottom:.5rem">No matches</h3>
             <p class="muted" style="margin-bottom:1rem">Try different filters or clear them.</p>
@@ -269,10 +645,12 @@
 
           <div class="grid" id="projectsGrid">
 
-            <!-- START PROJECT CARDS (merged from live site) -->
-
             <!-- The Line -->
-            <article class="card project-card" data-title="The Line" data-genre="Network Series" data-format="Network Series" data-audience="Gen Z; Women 25–40">
+            <article class="card project-card"
+              data-title="The Line"
+              data-genre="Network Series"
+              data-format="Network Series"
+              data-audience="Gen Z; Women 25–40">
               <div class="card-media" style="background-image:url('images/the-line.png')"></div>
               <div class="card-body">
                 <div class="title">The Line</div>
@@ -289,7 +667,11 @@
             </article>
 
             <!-- Rhythm & Blooms -->
-            <article class="card project-card" data-title="Rhythm &amp; Blooms" data-genre="Rom-Com" data-format="MOW" data-audience="Women 25–40 | Black Audiences">
+            <article class="card project-card"
+              data-title="Rhythm &amp; Blooms"
+              data-genre="Rom-Com"
+              data-format="MOW"
+              data-audience="Women 25–40 | Black Audiences">
               <div class="card-media" style="background-image:url('images/rhythm-and-blooms.png')"></div>
               <div class="card-body">
                 <div class="title">Rhythm &amp; Blooms</div>
@@ -306,7 +688,11 @@
             </article>
 
             <!-- The Feed -->
-            <article class="card project-card" data-title="The Feed" data-genre="Drama" data-format="MOW" data-audience="Women 25–40 | Black Audiences">
+            <article class="card project-card"
+              data-title="The Feed"
+              data-genre="Drama"
+              data-format="MOW"
+              data-audience="Women 25–40 | Black Audiences">
               <div class="card-media" style="background-image:url('images/the-feed.png')"></div>
               <div class="card-body">
                 <div class="title">The Feed</div>
@@ -323,7 +709,11 @@
             </article>
 
             <!-- Divine Deception -->
-            <article class="card project-card" data-title="Divine Deception" data-genre="Film Noir" data-format="MOW" data-audience="Women 25–40 | Black Audiences">
+            <article class="card project-card"
+              data-title="Divine Deception"
+              data-genre="Film Noir"
+              data-format="MOW"
+              data-audience="Women 25–40 | Black Audiences">
               <div class="card-media" style="background-image:url('images/divine-deception.png')"></div>
               <div class="card-body">
                 <div class="title">Divine Deception</div>
@@ -346,7 +736,11 @@
             </article>
 
             <!-- Past Due -->
-            <article class="card project-card" data-title="Past Due" data-genre="Thriller" data-format="MOW" data-audience="Women 25–40">
+            <article class="card project-card"
+              data-title="Past Due"
+              data-genre="Thriller"
+              data-format="MOW"
+              data-audience="Women 25–40">
               <div class="card-media" style="background-image:url('images/past-due.png')"></div>
               <div class="card-body">
                 <div class="title">Past Due</div>
@@ -369,7 +763,11 @@
             </article>
 
             <!-- Refractions -->
-            <article class="card project-card" data-title="Refractions" data-genre="Thriller" data-format="Feature" data-audience="Gen Z">
+            <article class="card project-card"
+              data-title="Refractions"
+              data-genre="Thriller"
+              data-format="Feature"
+              data-audience="Gen Z">
               <div class="card-media" style="background-image:url('images/refractions.png')"></div>
               <div class="card-body">
                 <div class="title">Refractions</div>
@@ -392,14 +790,18 @@
             </article>
 
             <!-- Digital Shadows -->
-            <article class="card project-card" data-title="Digital Shadows" data-format="Docuseries" data-genre="Docuseries" data-audience="Gen Z">
+            <article class="card project-card"
+              data-title="Digital Shadows"
+              data-format="Docuseries"
+              data-genre="Docuseries"
+              data-audience="Gen Z">
               <div class="card-media" style="background-image:url('images/digital-shadows.png')"></div>
               <div class="card-body">
                 <div class="title">Digital Shadows</div>
                 <div class="meta">
-                  <span class="badge genre">Docuseries</span>
-                  <span class="badge format">📺 Docuseries</span>
-                  <span class="badge audience">Gen Z</span>
+                  <span class="badge">Docuseries</span>
+                  <span class="badge">📺 Docuseries</span>
+                  <span class="badge">Gen Z</span>
                   <div class="platform-logos">
                     <span class="platform-logo" data-platform="Netflix">N</span>
                     <span class="platform-logo" data-platform="HBO">HBO</span>
@@ -417,14 +819,18 @@
             </article>
 
             <!-- Exposed -->
-            <article class="card project-card" data-title="Exposed" data-format="Docuseries" data-genre="Docuseries" data-audience="Women 25–40">
+            <article class="card project-card"
+              data-title="Exposed"
+              data-format="Docuseries"
+              data-genre="Docuseries"
+              data-audience="Women 25–40">
               <div class="card-media" style="background-image:url('images/exposed.png')"></div>
               <div class="card-body">
                 <div class="title">Exposed</div>
                 <div class="meta">
-                  <span class="badge genre">Docuseries</span>
-                  <span class="badge format">Docuseries</span>
-                  <span class="badge audience">Gen Z</span>
+                  <span class="badge">Docuseries</span>
+                  <span class="badge">Docuseries</span>
+                  <span class="badge">Women 25–40</span>
                   <div class="platform-logos">
                     <span class="platform-logo" data-platform="Paramount+">P+</span>
                     <span class="platform-logo" data-platform="Peacock">P</span>
@@ -441,14 +847,12 @@
               </div>
             </article>
 
-            <!-- END PROJECT CARDS -->
-
-          </div>
-        </div>
+          </div><!-- /projectsGrid -->
+        </div><!-- /projectsWrap -->
       </div>
     </section>
 
-    <!-- Music Section with working player -->
+    <!-- MUSIC -->
     <section id="music" class="section">
       <div class="container">
         <h2>Music</h2>
@@ -473,10 +877,67 @@
 
           <div class="playlist" id="playlist"></div>
         </div>
-        <p class="muted">Place audio files at <code>/assets/audio/</code>. Keep filenames lowercase on GitHub Pages.</p>
+
+        <p class="muted" style="text-align:center;margin-top:1rem">Store audio files in <code>/assets/audio/</code> on this domain. Filenames should match the playlist in the script below.</p>
       </div>
     </section>
 
+    <!-- CURATED: CHRISTMAS -->
+    <section id="christmas-stories" class="section">
+      <div class="container">
+        <h2>Christmas Stories</h2>
+        <p class="section-intro">Heart-forward holiday stories rooted in Southern family, grief, joy, and second chances.</p>
+
+        <div class="grid">
+          <!-- Paste Christmas / holiday projects here.
+               Important: Give each card data-genre="Christmas"
+               so the Christmas chip filter can also catch them. -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CURATED: HORROR / SOUTHERN GOTHIC -->
+    <section id="horror" class="section">
+      <div class="container">
+        <h2>Horror & Southern Gothic</h2>
+        <p class="section-intro">Folklore, blood memory, and hauntings rooted in Southern soil.</p>
+
+        <div class="grid">
+          <!-- Paste horror / elevated horror / Southern Gothic projects here.
+               Example cards like The Bone Collector's Daughter, Second Skin.
+               Use data-genre="Horror" or data-genre="Southern Gothic". -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CURATED: NETWORK SERIES -->
+    <section id="network-series" class="section">
+      <div class="container">
+        <h2>Network Series</h2>
+        <p class="section-intro">Returnable drama engines designed for broadcast, cable, and streamer episodic pipelines.</p>
+
+        <div class="grid">
+          <!-- Paste ongoing/serialized shows here.
+               Example: The Line.
+               Use data-format="Network Series". -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CURATED: DOCUSERIES -->
+    <section id="docuseries" class="section">
+      <div class="container">
+        <h2>Docuseries</h2>
+        <p class="section-intro">True crime, digital culture, and social impact built for binge viewing.</p>
+
+        <div class="grid">
+          <!-- Paste Digital Shadows, Exposed, etc.
+               Use data-format="Docuseries" or data-genre="Docuseries". -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FOR PROFESSIONALS -->
     <section id="for-pros" class="section">
       <div class="container">
         <h2>For Professionals</h2>
@@ -487,6 +948,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
@@ -497,7 +959,7 @@
     </div>
   </footer>
 
-  <!-- Core UX scripts: nav, filters, audio -->
+  <!-- BEHAVIOR SCRIPTS -->
   <script>
     // Nav toggle
     const navToggle = document.getElementById('navToggle');
@@ -507,7 +969,7 @@
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
-    // Mega ARIA
+    // Mega menu expand / collapse
     document.querySelectorAll('.has-mega .link').forEach(btn => {
       btn.addEventListener('click', () => {
         const expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -521,7 +983,7 @@
       }
     });
 
-    // Back to Top
+    // Back to Top button
     const toTop = document.getElementById('toTop');
     window.addEventListener('scroll', () => {
       const show = window.scrollY > 700;
@@ -529,7 +991,7 @@
     });
     toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 
-    // Filtering without "No projects found" flash
+    // FILTER LOGIC FOR MASTER GRID
     const grid = document.getElementById('projectsGrid');
     const emptyState = document.getElementById('emptyState');
     const clearFiltersBtn = document.getElementById('clearFiltersBtn');
@@ -540,9 +1002,9 @@
       const cards = grid.querySelectorAll('.project-card');
       let shown = 0;
       cards.forEach(card => {
-        const genre = (card.getAttribute('data-genre') || '').toLowerCase();
+        const genre  = (card.getAttribute('data-genre')  || '').toLowerCase();
         const format = (card.getAttribute('data-format') || '').toLowerCase();
-        const passesGenre = activeFilter.genre ? genre.includes(activeFilter.genre) : true;
+        const passesGenre  = activeFilter.genre  ? genre.includes(activeFilter.genre)   : true;
         const passesFormat = activeFilter.format ? format.includes(activeFilter.format) : true;
         const visible = passesGenre && passesFormat;
         card.style.display = visible ? '' : 'none';
@@ -561,8 +1023,7 @@
         activeFilter = JSON.parse(chip.dataset.filter);
         chips.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
         chip.classList.add('active');
-        // normalize keys
-        if (activeFilter.genre) activeFilter.genre = activeFilter.genre.toLowerCase();
+        if (activeFilter.genre)  activeFilter.genre  = activeFilter.genre.toLowerCase();
         if (activeFilter.format) activeFilter.format = activeFilter.format.toLowerCase();
       }
       applyFilter();
@@ -574,25 +1035,25 @@
       applyFilter();
     });
 
-    // Initial render: hide empty state; do not filter until user acts
+    // Hide empty state initially
     emptyState.style.display = 'none';
 
     // AUDIO PLAYER
     (function(){
-      const audio = document.getElementById('audioElement');
-      const playBtn = document.getElementById('playPauseBtn');
-      const titleEl = document.getElementById('trackTitle');
+      const audio     = document.getElementById('audioElement');
+      const playBtn   = document.getElementById('playPauseBtn');
+      const titleEl   = document.getElementById('trackTitle');
       const currentEl = document.getElementById('currentTime');
-      const totalEl = document.getElementById('totalTime');
-      const scrub = document.getElementById('scrubBar');
-      const bar = document.getElementById('progressBar');
-      const list = document.getElementById('playlist');
+      const totalEl   = document.getElementById('totalTime');
+      const scrub     = document.getElementById('scrubBar');
+      const bar       = document.getElementById('progressBar');
+      const list      = document.getElementById('playlist');
 
-      // Update these paths to real files on the SAME domain
+      // Update these to match actual audio assets you upload
       const playlist = [
-        { title: 'NCCA Theme', src: 'assets/audio/ncca-theme.mp3' },
-        { title: 'Film Noir Cue', src: 'assets/audio/film-noir-cue.mp3' },
-        { title: 'Holiday Cue', src: 'assets/audio/holiday-cue.mp3' }
+        { title: 'NCCA Theme',     src: 'assets/audio/ncca-theme.mp3' },
+        { title: 'Film Noir Cue',  src: 'assets/audio/film-noir-cue.mp3' },
+        { title: 'Holiday Cue',    src: 'assets/audio/holiday-cue.mp3' }
       ];
 
       let i = 0;
@@ -619,9 +1080,17 @@
       }
 
       playBtn.addEventListener('click', () => {
-        if (!userInteracted){ load(i); userInteracted = true; }
-        if (audio.paused){ audio.play().catch(()=>{}); playBtn.textContent='⏸'; }
-        else { audio.pause(); playBtn.textContent='▶'; }
+        if (!userInteracted){
+          load(i);
+          userInteracted = true;
+        }
+        if (audio.paused){
+          audio.play().catch(()=>{});
+          playBtn.textContent='⏸';
+        } else {
+          audio.pause();
+          playBtn.textContent='▶';
+        }
       });
 
       audio.addEventListener('loadedmetadata', () => {
@@ -630,7 +1099,9 @@
 
       audio.addEventListener('timeupdate', () => {
         currentEl.textContent = fmt(audio.currentTime);
-        if (audio.duration) bar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+        if (audio.duration){
+          bar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+        }
       });
 
       audio.addEventListener('ended', () => {
@@ -645,10 +1116,11 @@
         audio.currentTime = ratio * audio.duration;
       });
 
-      // Build playlist UI
-      list.innerHTML = playlist.map((t, idx) => (
+      // Build visible playlist section
+      list.innerHTML = playlist.map((t, idx) =>
         `<div class="track" data-i="${idx}"><div class="dot"></div>${t.title}</div>`
-      )).join('');
+      ).join('');
+
       list.addEventListener('click', e => {
         const el = e.target.closest('.track');
         if (!el) return;
@@ -657,7 +1129,7 @@
         playBtn.textContent = '⏸';
       });
 
-      // Do not preload audio until user interacts (iOS policy friendly)
+      // Pre-label first track title without autoplay
       titleEl.textContent = playlist[0].title;
     })();
   </script>
