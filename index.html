@@ -93,15 +93,17 @@
       border-radius:8px;
       font-weight:700;
       background:none;
-      border:none;
+      border:1px solid transparent;
       cursor:pointer;
       font-size:.95rem;
       line-height:1.2;
     }
     .nav-item>a:hover,
     .nav-item>.link:hover{
-      background:#191b20
+      background:#191b20;
+      border-color:#2a2c31;
     }
+
     .nav-toggle{
       display:none;
       margin-left:auto;
@@ -119,8 +121,6 @@
     .has-mega{position:relative}
     .has-mega .link{
       background:transparent;
-      border:1px solid #2a2c31;
-      cursor:pointer;
       display:flex;
       align-items:center;
       gap:.4rem;
@@ -138,8 +138,11 @@
       display:none;
       grid-template-columns:1fr 1fr 1fr;
       gap:1rem;
+      z-index:3000;
     }
-    .has-mega .link[aria-expanded="true"]+.mega{display:grid}
+    .has-mega .link[aria-expanded="true"] + .mega{
+      display:grid;
+    }
     .mega-col h4{
       margin:.25rem 0 .5rem;
       font-size:.9rem;
@@ -647,7 +650,9 @@
         grid-template-columns:1fr;
         padding:.75rem
       }
-      .has-mega .link[aria-expanded="true"]+.mega{display:grid}
+      .has-mega .link[aria-expanded="true"] + .mega{
+        display:grid;
+      }
     }
 
     [id]{scroll-margin-top:96px}
@@ -693,7 +698,7 @@
               <h4>BY GENRE</h4>
               <ul class="mega-links">
                 <li><a href="#christmas-stories">Christmas</a></li>
-                <li><a href="#southern-gothic">Southern Gothic</a></li>
+                <li><a href="#horror">Horror / Southern Gothic</a></li>
                 <li><a href="#network-series">Series</a></li>
                 <li><a href="#docuseries">Docuseries</a></li>
                 <li><a href="#action-features">Action Features</a></li>
@@ -701,15 +706,12 @@
                 <li><a href="#romance">Romance</a></li>
                 <li><a href="#thriller">Thriller</a></li>
                 <li><a href="#drama">Drama</a></li>
-                <li><a href="#horror">Horror</a></li>
               </ul>
             </div>
             <div class="mega-col">
               <h4>BY FORMAT</h4>
               <ul class="mega-links">
                 <li><a href="#all-projects">MOW</a></li>
-                <li><a href="#christmas-stories">Christmas</a></li>
-                <li><a href="#southern gothic">Southern Gothic</a></li>
                 <li><a href="#all-projects">Feature Film</a></li>
                 <li><a href="#network-series">Network Series</a></li>
                 <li><a href="#docuseries">Docuseries</a></li>
@@ -718,7 +720,6 @@
                 <li><a href="#romance">Romance</a></li>
                 <li><a href="#thriller">Thriller</a></li>
                 <li><a href="#drama">Drama</a></li>
-                 <li><a href="#horror">Horror</a></li>
               </ul>
             </div>
             <div class="mega-col">
@@ -768,7 +769,6 @@
         <button class="chip" data-filter='{"genre":"Comedy"}'>Comedy</button>
         <button class="chip" data-filter='{"genre":"Thriller"}'>Thriller</button>
         <button class="chip" data-filter='{"genre":"Drama"}'>Drama</button>
-        <button class="chip" data-filter='{"genre":"Southern Gothic"}'>Southern Gothic</button>
         <button class="chip" data-reset>Clear</button>
       </div>
     </div>
@@ -1182,9 +1182,9 @@
           <div class="card-body">
             <div class="title">A Spelman Christmas</div>
             <div class="meta">
-              <span class="badge genre">Christmas</span>
-              <span class="badge format">MOW</span>
-              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <span class="badge">Christmas</span>
+              <span class="badge">MOW</span>
+              <span class="badge">Women 25–40 | Black Audiences</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="BET+">B+</span>
                 <span class="platform-logo" data-platform="OWN">OWN</span>
@@ -1214,9 +1214,9 @@
           <div class="card-body">
             <div class="title">Granny's House for the Holidays</div>
             <div class="meta">
-              <span class="badge genre">Christmas</span>
-              <span class="badge format">MOW</span>
-              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <span class="badge">Christmas</span>
+              <span class="badge">MOW</span>
+              <span class="badge">Women 25–40 | Black Audiences</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="BET+">B+</span>
                 <span class="platform-logo" data-platform="OWN">OWN</span>
@@ -1246,9 +1246,9 @@
           <div class="card-body">
             <div class="title">Twelve Dates at the Christmas Tree Lot</div>
             <div class="meta">
-              <span class="badge genre">Christmas</span>
-              <span class="badge format">MOW</span>
-              <span class="badge audience">Women 25–40</span>
+              <span class="badge">Christmas</span>
+              <span class="badge">MOW</span>
+              <span class="badge">Women 25–40</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="BET+">B+</span>
                 <span class="platform-logo" data-platform="OWN">OWN</span>
@@ -1262,8 +1262,8 @@
             </div>
           </div>
         </article>
-      </div><!-- /.grid -->
-    </div><!-- /.container -->
+      </div>
+    </div>
   </section>
 
   <!-- CURATED: COMEDY -->
@@ -1290,9 +1290,9 @@
           <div class="card-body">
             <div class="title">Hot Mess Express</div>
             <div class="meta">
-              <span class="badge genre">Comedy</span>
-              <span class="badge format">😂 MOW</span>
-              <span class="badge audience">Women 25–40 | Gen Z</span>
+              <span class="badge">Comedy</span>
+              <span class="badge">😂 MOW</span>
+              <span class="badge">Women 25–40 | Gen Z</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Netflix">N</span>
                 <span class="platform-logo" data-platform="HBO">HBO</span>
@@ -1312,7 +1312,7 @@
         <!-- Miss Juneteenth Blues -->
         <article class="card project-card"
           data-title="Miss Juneteenth Blues"
-          data-genre="Comedy"
+          data-genre="Comedy-Drama / Southern Family Drama"
           data-format="MOW"
           data-audience="Women 25–40 | Black Audiences"
           data-desc="A down-on-her-luck mom re-enters the Juneteenth pageant world she swore off, under a fake identity, to secure her daughter's future."
@@ -1324,9 +1324,9 @@
           <div class="card-body">
             <div class="title">Miss Juneteenth Blues</div>
             <div class="meta">
-              <span class="badge genre">Comedy-Drama / Southern Family Drama</span>
-              <span class="badge format">MOW</span>
-              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <span class="badge">Comedy-Drama / Southern Family Drama</span>
+              <span class="badge">MOW</span>
+              <span class="badge">Women 25–40 | Black Audiences</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="BET+">B+</span>
                 <span class="platform-logo" data-platform="OWN">OWN</span>
@@ -1358,9 +1358,9 @@
           <div class="card-body">
             <div class="title">Black Girl's Guide to Vengeance (and Vodka)</div>
             <div class="meta">
-              <span class="badge genre">Comedy</span>
-              <span class="badge format">MOW</span>
-              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <span class="badge">Comedy</span>
+              <span class="badge">MOW</span>
+              <span class="badge">Women 25–40 | Black Audiences</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="BET+">B+</span>
                 <span class="platform-logo" data-platform="OWN">OWN</span>
@@ -1392,9 +1392,9 @@
           <div class="card-body">
             <div class="title">Sneakerheads Anonymous</div>
             <div class="meta">
-              <span class="badge genre">Comedy</span>
-              <span class="badge format">😂 Feature</span>
-              <span class="badge audience">Gen Z | Men 18–34</span>
+              <span class="badge">Comedy</span>
+              <span class="badge">😂 Feature</span>
+              <span class="badge">Gen Z | Men 18–34</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Netflix">N</span>
                 <span class="platform-logo" data-platform="HBO">HBO</span>
@@ -1426,9 +1426,9 @@
           <div class="card-body">
             <div class="title">Trap House Sitting</div>
             <div class="meta">
-              <span class="badge genre">Comedy</span>
-              <span class="badge format">😂 Feature</span>
-              <span class="badge audience">Gen Z | Men 18–34</span>
+              <span class="badge">Comedy</span>
+              <span class="badge">😂 Feature</span>
+              <span class="badge">Gen Z | Men 18–34</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Netflix">N</span>
                 <span class="platform-logo" data-platform="HBO">HBO</span>
@@ -1444,8 +1444,8 @@
             </div>
           </div>
         </article>
-      </div><!-- /.grid -->
-    </div><!-- /.container -->
+      </div>
+    </div>
   </section>
 
   <!-- CURATED: SOUTHERN GOTHIC -->
@@ -1472,9 +1472,9 @@
           <div class="card-body">
             <div class="title">The Southern Belle's Secret</div>
             <div class="meta">
-              <span class="badge genre">Southern Gothic</span>
-              <span class="badge format">MOW</span>
-              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <span class="badge">Southern Gothic</span>
+              <span class="badge">MOW</span>
+              <span class="badge">Women 25–40 | Black Audiences</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="BET+">B+</span>
                 <span class="platform-logo" data-platform="OWN">OWN</span>
@@ -1507,9 +1507,9 @@
           <div class="card-body">
             <div class="title">Beneath the Magnolia Tree</div>
             <div class="meta">
-              <span class="badge genre">Southern Gothic</span>
-              <span class="badge format">MOW</span>
-              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <span class="badge">Southern Gothic</span>
+              <span class="badge">MOW</span>
+              <span class="badge">Women 25–40 | Black Audiences</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="BET+">B+</span>
                 <span class="platform-logo" data-platform="OWN">OWN</span>
@@ -1525,8 +1525,8 @@
             </div>
           </div>
         </article>
-      </div><!-- /.grid -->
-    </div><!-- /.container -->
+      </div>
+    </div>
   </section>
 
   <!-- CURATED: DRAMA -->
@@ -1553,9 +1553,9 @@
           <div class="card-body">
             <div class="title">The Feed</div>
             <div class="meta">
-              <span class="badge genre">Drama</span>
-              <span class="badge format">MOW</span>
-              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <span class="badge">Drama</span>
+              <span class="badge">MOW</span>
+              <span class="badge">Women 25–40 | Black Audiences</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="BET+">B+</span>
                 <span class="platform-logo" data-platform="OWN">OWN</span>
@@ -1588,9 +1588,9 @@
           <div class="card-body">
             <div class="title">This Is Me Now</div>
             <div class="meta">
-              <span class="badge genre">Drama</span>
-              <span class="badge format">Feature</span>
-              <span class="badge audience">YA | Gen Z</span>
+              <span class="badge">Drama</span>
+              <span class="badge">Feature</span>
+              <span class="badge">YA | Gen Z</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Paramount+">P+</span>
                 <span class="platform-logo" data-platform="Peacock">P</span>
@@ -1625,8 +1625,8 @@
           <div class="card-body">
             <div class="title">LifeArt</div>
             <div class="meta">
-              <span class="badge genre">Drama</span>
-              <span class="badge format">Feature</span>
+              <span class="badge">Drama</span>
+              <span class="badge">Feature</span>
             </div>
             <p class="muted">
               A European artist builds a lucrative career by posing as a reclusive Chinese painter,
@@ -1638,84 +1638,20 @@
             </div>
           </div>
         </article>
-      </div><!-- /.grid -->
-    </div><!-- /.container -->
+      </div>
+    </div>
   </section>
 
-  <!-- CURATED: HORROR-->
+  <!-- CURATED: HORROR / SOUTHERN GOTHIC -->
   <section id="horror" class="section">
     <div class="container">
-      <h2>Horror &amp;</h2>
-      <p class="section-intro">Folklore, blood memory, and hauntings rooted in American tales.</p>
+      <h2>Horror &amp; Southern Gothic</h2>
+      <p class="section-intro">Folklore, blood memory, and hauntings rooted in Southern soil.</p>
 
       <div class="grid">
-          <article class="card project-card"
-        data-title="Second Skin"
-        data-genre="Horror"
-        data-format="Feature"
-        data-audience="Gen Z | Horror Fans"
-        data-deck="pitch-decks/second_skin_pitch_deck.pdf"
-        data-onesheet="one-sheets/second-skin-one-sheet.pdf"
-        data-treatment="assets/second-skin-treatment.pdf"
-        data-trailer="assets/second-skin-teaser.mp4">
-
-        <div class="card-media" style="background-image:url('images/second-skin.png')"></div>
-
-        <div class="card-body">
-          <div class="title">Second Skin</div>
-          <div class="meta">
-            <span class="badge genre">Horror</span>
-            <span class="badge format">👻 Feature</span>
-            <span class="badge audience">Gen Z | Horror Fans</span>
-            <div class="platform-logos">
-              <span class="platform-logo" data-platform="Netflix">N</span>
-              <span class="platform-logo" data-platform="HBO">HBO</span>
-              <span class="platform-logo" data-platform="Apple">🍎</span>
-            </div>
-          </div>
-          <p class="muted">
-            A plastic surgeon's experimental procedure unleashes something that wears you from the inside out.
-          </p>
-          <div class="actions">
-            <a href="#" class="chip js-open" data-open>View Details</a>
-            <a href="assets/second-skin-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="card project-card"
-        data-title="The Bone Collector's Daughter"
-        data-genre="Horror"
-        data-format="Feature"
-        data-audience="Gen Z | Horror Fans"
-        data-deck="pitch-decks/the-bone-collectors-daughter-pitch-deck.pdf"
-        data-onesheet="one-sheets/the-bone-collectors-daughter-one-sheet.pdf"
-        data-treatment="assets/the-bone-collectors-daughter-treatment.pdf"
-        data-trailer="assets/the-bone-collectors-daughter-teaser.mp4">
-
-        <div class="card-media" style="background-image:url('images/the-bone-collectors-daughter.png')"></div>
-
-        <div class="card-body">
-          <div class="title">The Bone Collector's Daughter</div>
-          <div class="meta">
-            <span class="badge genre">Horror</span>
-            <span class="badge format">Feature</span>
-            <span class="badge audience">Gen Z | Horror Fans</span>
-            <div class="platform-logos">
-              <span class="platform-logo" data-platform="Netflix">N</span>
-              <span class="platform-logo" data-platform="HBO">HBO</span>
-              <span class="platform-logo" data-platform="Apple">🍎</span>
-            </div>
-          </div>
-          <p class="muted">
-            A daughter inherits more than a house. She inherits a legacy of bone magic that refuses to stay buried.
-          </p>
-          <div class="actions">
-            <a href="#" class="chip js-open" data-open>View Details</a>
-            <a href="assets/the-bone-collectors-daughter-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-          </div>
-        </div>
-      </article>
+        <!-- (You can drop Bone Collector's Daughter, Second Skin, etc here later)
+             data-genre="Horror" or data-genre="Southern Gothic"
+        -->
       </div>
     </div>
   </section>
@@ -1744,9 +1680,9 @@
           <div class="card-body">
             <div class="title">Echo Chamber</div>
             <div class="meta">
-              <span class="badge genre">Network Series</span>
-              <span class="badge format">📺 Network Series</span>
-              <span class="badge audience">Gen Z | Adults 18–49</span>
+              <span class="badge">Network Series</span>
+              <span class="badge">📺 Network Series</span>
+              <span class="badge">Gen Z | Adults 18–49</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="ABC">ABC</span>
                 <span class="platform-logo" data-platform="NBC">NBC</span>
@@ -1779,9 +1715,9 @@
           <div class="card-body">
             <div class="title">Just Jack</div>
             <div class="meta">
-              <span class="badge genre">Network Series</span>
-              <span class="badge format">📺 Network Series</span>
-              <span class="badge audience">Adults 18–49</span>
+              <span class="badge">Network Series</span>
+              <span class="badge">📺 Network Series</span>
+              <span class="badge">Adults 18–49</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="ABC">ABC</span>
                 <span class="platform-logo" data-platform="NBC">NBC</span>
@@ -1814,9 +1750,9 @@
           <div class="card-body">
             <div class="title">The Line</div>
             <div class="meta">
-              <span class="badge genre">Network Series</span>
-              <span class="badge format">📺 Network Series</span>
-              <span class="badge audience">Gen Z; Women 25–40</span>
+              <span class="badge">Network Series</span>
+              <span class="badge">📺 Network Series</span>
+              <span class="badge">Gen Z; Women 25–40</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Paramount+">P+</span>
                 <span class="platform-logo" data-platform="Peacock">P</span>
@@ -1849,9 +1785,9 @@
           <div class="card-body">
             <div class="title">Soul on Fire</div>
             <div class="meta">
-              <span class="badge genre">Drama</span>
-              <span class="badge format">🔥 Limited Series</span>
-              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <span class="badge">Drama</span>
+              <span class="badge">🔥 Limited Series</span>
+              <span class="badge">Women 25–40 | Black Audiences</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Netflix">N</span>
                 <span class="platform-logo" data-platform="HBO">HBO</span>
@@ -1883,9 +1819,9 @@
           <div class="card-body">
             <div class="title">Sinners &amp; Saints</div>
             <div class="meta">
-              <span class="badge genre">Limited Series</span>
-              <span class="badge format">Limited Series</span>
-              <span class="badge audience">Women 25–40</span>
+              <span class="badge">Limited Series</span>
+              <span class="badge">Limited Series</span>
+              <span class="badge">Women 25–40</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Netflix">N</span>
                 <span class="platform-logo" data-platform="HBO">HBO</span>
@@ -1901,8 +1837,8 @@
             </div>
           </div>
         </article>
-      </div><!-- /.grid -->
-    </div><!-- /.container -->
+      </div>
+    </div>
   </section>
 
   <!-- CURATED: THRILLER -->
@@ -1929,9 +1865,9 @@
           <div class="card-body">
             <div class="title">Mirror Image</div>
             <div class="meta">
-              <span class="badge genre">Thriller</span>
-              <span class="badge format">⚡ MOW</span>
-              <span class="badge audience">Women 25–40</span>
+              <span class="badge">Thriller</span>
+              <span class="badge">⚡ MOW</span>
+              <span class="badge">Women 25–40</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Netflix">N</span>
                 <span class="platform-logo" data-platform="HBO">HBO</span>
@@ -1964,9 +1900,9 @@
           <div class="card-body">
             <div class="title">Past Due</div>
             <div class="meta">
-              <span class="badge genre">Thriller</span>
-              <span class="badge format">⚡ MOW</span>
-              <span class="badge audience">Women 25–40</span>
+              <span class="badge">Thriller</span>
+              <span class="badge">⚡ MOW</span>
+              <span class="badge">Women 25–40</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Netflix">N</span>
                 <span class="platform-logo" data-platform="HBO">HBO</span>
@@ -1998,9 +1934,9 @@
           <div class="card-body">
             <div class="title">Refractions</div>
             <div class="meta">
-              <span class="badge genre">Thriller</span>
-              <span class="badge format">⚡ Feature</span>
-              <span class="badge audience">Gen Z</span>
+              <span class="badge">Thriller</span>
+              <span class="badge">⚡ Feature</span>
+              <span class="badge">Gen Z</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Netflix">N</span>
                 <span class="platform-logo" data-platform="HBO">HBO</span>
@@ -2016,8 +1952,8 @@
             </div>
           </div>
         </article>
-      </div><!-- /.grid -->
-    </div><!-- /.container -->
+      </div>
+    </div>
   </section>
 
   <!-- CURATED: ROMANCE -->
@@ -2044,9 +1980,9 @@
           <div class="card-body">
             <div class="title">Love After Likes</div>
             <div class="meta">
-              <span class="badge genre">Rom-Com</span>
-              <span class="badge format">❤ MOW</span>
-              <span class="badge audience">Women 25–40 | Gen Z</span>
+              <span class="badge">Rom-Com</span>
+              <span class="badge">❤ MOW</span>
+              <span class="badge">Women 25–40 | Gen Z</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Netflix">N</span>
                 <span class="platform-logo" data-platform="Peacock">P</span>
@@ -2078,9 +2014,9 @@
           <div class="card-body">
             <div class="title">Rhythm &amp; Blooms</div>
             <div class="meta">
-              <span class="badge genre">Rom-Com</span>
-              <span class="badge format">❤ MOW</span>
-              <span class="badge audience">Women 25–40 | Black Audiences</span>
+              <span class="badge">Rom-Com</span>
+              <span class="badge">❤ MOW</span>
+              <span class="badge">Women 25–40 | Black Audiences</span>
               <div class="platform-logos">
                 <span class="platform-logo" data-platform="Hallmark">H</span>
                 <span class="platform-logo" data-platform="OWN">OWN</span>
@@ -2096,11 +2032,11 @@
             </div>
           </div>
         </article>
-      </div><!-- /.grid -->
-    </div><!-- /.container -->
+      </div>
+    </div>
   </section>
 
-  <!-- DOCUSERIES ANCHOR (for nav link & SEO) -->
+  <!-- DOCUSERIES ANCHOR -->
   <section id="docuseries" class="section">
     <div class="container">
       <h2>Docuseries</h2>
@@ -2194,9 +2130,9 @@
           <div class="card-body">
             <div class="title">Reflections</div>
             <div class="meta">
-              <span class="badge genre">Action</span>
-              <span class="badge format">Feature</span>
-              <span class="badge audience">Adults 25–54</span>
+              <span class="badge">Action</span>
+              <span class="badge">Feature</span>
+              <span class="badge">Adults 25–54</span>
             </div>
             <p class="muted">
               An Atlanta designer becomes the bait to catch a calculating stalker hiding in plain sight.
@@ -2207,109 +2143,6 @@
             </div>
           </div>
         </article>
-           <article class="card project-card"
-        data-title="Ghostmaker"
-        data-genre="Action"
-        data-format="Feature"
-        data-audience="Gen Z"
-        data-deck="pitch-decks/ghostmaker_pitch_deck.pdf"
-        data-onesheet="one-sheets/ghostmaker-one-sheet.pdf"
-        data-treatment="assets/ghostmaker-treatment.pdf"
-        data-trailer="assets/ghostmaker-teaser.mp4">
-
-        <div class="card-media" style="background-image:url('images/the-ghostmaker.png')"></div>
-
-        <div class="card-body">
-          <div class="title">Ghostmaker</div>
-          <div class="meta">
-            <span class="badge genre">Action</span>
-            <span class="badge format">Feature</span>
-            <span class="badge audience">Gen Z</span>
-            <div class="platform-logos">
-              <span class="platform-logo" data-platform="Paramount+">P+</span>
-              <span class="platform-logo" data-platform="Peacock">P</span>
-              <span class="platform-logo" data-platform="Netflix">N</span>
-              <span class="platform-logo" data-platform="HBO">HBO</span>
-            </div>
-          </div>
-          <p class="muted">
-            A CIA asset who specializes in erasing identities discovers hers was erased first. Her entire life is a manufactured cover.
-          </p>
-          <div class="actions">
-            <a href="#" class="chip js-open" data-open>View Details</a>
-            <a href="assets/ghostmaker-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-          </div>
-        </div>
-      </article>
- <article class="card project-card"
-        data-title="The Architect"
-        data-genre="Action"
-        data-format="Feature"
-        data-audience="Gen Z"
-        data-deck="pitch-decks/the_architect_pitch_deck.pdf"
-        data-onesheet="one-sheets/the-architect-one-sheet.pdf"
-        data-treatment="assets/the-architect-treatment.pdf"
-        data-trailer="assets/the-architect-teaser.mp4">
-
-        <div class="card-media" style="background-image:url('images/the-architect.png')"></div>
-
-        <div class="card-body">
-          <div class="title">The Architect</div>
-          <div class="meta">
-            <span class="badge genre">Action</span>
-            <span class="badge format">Feature</span>
-            <span class="badge audience">Gen Z</span>
-            <div class="platform-logos">
-              <span class="platform-logo" data-platform="Paramount+">P+</span>
-              <span class="platform-logo" data-platform="Peacock">P</span>
-              <span class="platform-logo" data-platform="Netflix">N</span>
-              <span class="platform-logo" data-platform="HBO">HBO</span>
-            </div>
-          </div>
-          <p class="muted">
-            A disgraced detective must stop a vigilante: her presumed-dead ex-partner, now executing criminals the system protected.
-          </p>
-          <div class="actions">
-            <a href="#" class="chip js-open" data-open>View Details</a>
-            <a href="assets/the-architect-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="card project-card"
-        data-title="Queen of Thorns"
-        data-genre="Action"
-        data-format="Feature"
-        data-audience="Gen Z"
-        data-deck="pitch-decks/queen_of_thorns_pitch_deck.pdf"
-        data-onesheet="one-sheets/queen-of-thorns-one-sheet.pdf"
-        data-treatment="assets/queen-of-thorns-treatment.pdf"
-        data-trailer="assets/queen-of-thorns-teaser.mp4">
-
-        <div class="card-media" style="background-image:url('images/queen-of-thorns.png')"></div>
-
-        <div class="card-body">
-          <div class="title">Queen of Thorns</div>
-          <div class="meta">
-            <span class="badge genre">Action</span>
-            <span class="badge format">Feature</span>
-            <span class="badge audience">Gen Z</span>
-            <div class="platform-logos">
-              <span class="platform-logo" data-platform="Paramount+">P+</span>
-              <span class="platform-logo" data-platform="Peacock">P</span>
-              <span class="platform-logo" data-platform="Netflix">N</span>
-              <span class="platform-logo" data-platform="HBO">HBO</span>
-            </div>
-          </div>
-          <p class="muted">
-            Betrayed by her lover and framed for a bioweapon attack, an arms broker must burn down the empire she built.
-          </p>
-          <div class="actions">
-            <a href="#" class="chip js-open" data-open>View Details</a>
-            <a href="assets/queen-of-thorns-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-          </div>
-        </div>
-      </article>
       </div>
     </div>
   </section>
@@ -2427,341 +2260,361 @@
 </footer>
 
 <script>
-/* MOBILE NAV TOGGLE */
-(function(){
-  const navToggle = document.getElementById('navToggle');
-  const nav = document.getElementById('primaryNav');
-  const browseBtn = document.getElementById('browseBtn');
+document.addEventListener('DOMContentLoaded', function(){
 
-  if(navToggle){
-    navToggle.addEventListener('click',()=>{
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-    });
-  }
+  /* MOBILE NAV + MEGA MENU */
+  try {
+    const navToggle = document.getElementById('navToggle');
+    const nav = document.getElementById('primaryNav');
+    const browseBtn = document.getElementById('browseBtn');
 
-  if(browseBtn){
-    browseBtn.addEventListener('click',()=>{
-      const expanded = browseBtn.getAttribute('aria-expanded') === 'true';
-      browseBtn.setAttribute('aria-expanded', String(!expanded));
-      // .mega visibility handled by CSS using aria-expanded
-    });
-  }
-})();
-
-/* FILTER CHIPS */
-(function(){
-  const chipbar = document.getElementById('chipbar');
-  const projectsGrid = document.getElementById('projectsGrid');
-  const emptyState = document.getElementById('emptyState');
-  const clearFiltersBtn = document.getElementById('clearFiltersBtn');
-  let activeFilter = null;
-
-  function cardMatchesFilter(card,filterObj){
-    if(!filterObj) return true;
-    const genre = card.dataset.genre || '';
-    const format = card.dataset.format || '';
-    // match if all provided keys match (case-insensitive contains)
-    for(const key in filterObj){
-      const val = (filterObj[key]||'').toLowerCase();
-      if(key==="genre"){
-        if(!genre.toLowerCase().includes(val)) return false;
-      }else if(key==="format"){
-        if(!format.toLowerCase().includes(val)) return false;
-      }
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open', !expanded);
+      });
     }
-    return true;
-  }
 
-  function applyFilter(){
-    const cards = projectsGrid.querySelectorAll('.project-card');
-    let visibleCount = 0;
-    cards.forEach(card=>{
-      if(cardMatchesFilter(card,activeFilter)){
-        card.style.display='';
-        visibleCount++;
-      }else{
-        card.style.display='none';
+    if (browseBtn) {
+      browseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const expanded = browseBtn.getAttribute('aria-expanded') === 'true';
+        browseBtn.setAttribute('aria-expanded', String(!expanded));
+        // visibility of .mega is handled purely by CSS via [aria-expanded="true"]
+      });
+    }
+
+    // close mega if you click anywhere else (desktop/mobile)
+    document.addEventListener('click', (e)=>{
+      if (!e.target.closest('.has-mega')) {
+        if (browseBtn && browseBtn.getAttribute('aria-expanded') === 'true') {
+          browseBtn.setAttribute('aria-expanded','false');
+        }
       }
     });
-    if(visibleCount===0){
-      emptyState.style.display='';
-    }else{
-      emptyState.style.display='none';
-    }
+  } catch (err) {
+    console.warn('Nav init error:', err);
   }
 
-  if(chipbar){
-    chipbar.addEventListener('click',e=>{
-      const btn = e.target.closest('.chip');
-      if(!btn) return;
+  /* FILTER CHIPS */
+  try {
+    const chipbar = document.getElementById('chipbar');
+    const projectsGrid = document.getElementById('projectsGrid');
+    const emptyState = document.getElementById('emptyState');
+    const clearFiltersBtn = document.getElementById('clearFiltersBtn');
 
-      // reset state if data-reset
-      if(btn.hasAttribute('data-reset')){
-        activeFilter = null;
+    let activeFilter = null;
+
+    function cardMatchesFilter(card, filterObj){
+      if(!filterObj) return true;
+      const genre = (card.dataset.genre || '').toLowerCase();
+      const format = (card.dataset.format || '').toLowerCase();
+      for(const key in filterObj){
+        const val = (filterObj[key]||'').toLowerCase();
+        if(key==="genre"){
+          if(!genre.includes(val)) return false;
+        }else if(key==="format"){
+          if(!format.includes(val)) return false;
+        }
+      }
+      return true;
+    }
+
+    function applyFilter(){
+      if(!projectsGrid) return;
+      const cards = projectsGrid.querySelectorAll('.project-card');
+      let visibleCount = 0;
+      cards.forEach(card=>{
+        if(cardMatchesFilter(card,activeFilter)){
+          card.style.display='';
+          visibleCount++;
+        }else{
+          card.style.display='none';
+        }
+      });
+      if(emptyState){
+        if(visibleCount===0){
+          emptyState.style.display='';
+        }else{
+          emptyState.style.display='none';
+        }
+      }
+    }
+
+    if(chipbar){
+      chipbar.addEventListener('click', e=>{
+        const btn = e.target.closest('.chip');
+        if(!btn) return;
+
+        // reset filters
+        if(btn.hasAttribute('data-reset')){
+          activeFilter = null;
+          [...chipbar.querySelectorAll('.chip')].forEach(c=>c.classList.remove('active'));
+          applyFilter();
+          return;
+        }
+
+        const raw = btn.getAttribute('data-filter');
+        if(!raw) return;
+        try{
+          activeFilter = JSON.parse(raw);
+        }catch(err){
+          activeFilter = null;
+        }
+
         [...chipbar.querySelectorAll('.chip')].forEach(c=>c.classList.remove('active'));
+        btn.classList.add('active');
         applyFilter();
-        return;
-      }
+      });
+    }
 
-      const raw = btn.getAttribute('data-filter');
-      if(!raw) return;
-      try{
-        activeFilter = JSON.parse(raw);
-      }catch(err){
+    if(clearFiltersBtn){
+      clearFiltersBtn.addEventListener('click',()=>{
         activeFilter = null;
+        if(chipbar){
+          [...chipbar.querySelectorAll('.chip')].forEach(c=>c.classList.remove('active'));
+        }
+        applyFilter();
+      });
+    }
+  } catch (err) {
+    console.warn('Filter init error:', err);
+  }
+
+  /* BACK TO TOP BUTTON */
+  try {
+    const toTopBtn = document.getElementById('toTopBtn');
+    if(toTopBtn){
+      function onScroll(){
+        if(window.scrollY>400){
+          toTopBtn.classList.add('show');
+        }else{
+          toTopBtn.classList.remove('show');
+        }
+      }
+      window.addEventListener('scroll',onScroll);
+      toTopBtn.addEventListener('click',()=>{
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+      onScroll();
+    }
+  } catch (err) {
+    console.warn('BackToTop init error:', err);
+  }
+
+  /* MODAL LOGIC (View Details) */
+  try {
+    const overlay = document.getElementById('projectModalOverlay');
+    const titleEl = document.getElementById('projectModalTitle');
+    const metaWrap = document.getElementById('projectModalMeta');
+    const descEl = document.getElementById('projectModalDesc');
+    const linksWrap = document.getElementById('projectModalLinks');
+    const closeBtn = document.getElementById('modalCloseBtn');
+
+    function openModalFromCard(card){
+      if(!overlay) return;
+      // title
+      titleEl.textContent = card.dataset.title || '—';
+
+      // meta badges
+      metaWrap.innerHTML = '';
+      const mGenre = card.dataset.genre;
+      const mFormat = card.dataset.format;
+      const mAudience = card.dataset.audience;
+      [mGenre,mFormat,mAudience].forEach(txt=>{
+        if(txt){
+          const span=document.createElement('span');
+          span.className='badge';
+          span.textContent=txt;
+          metaWrap.appendChild(span);
+        }
+      });
+
+      // description
+      descEl.textContent = card.dataset.desc || '';
+
+      // links
+      linksWrap.innerHTML='';
+      const deck=card.dataset.deck;
+      const onesheet=card.dataset.onesheet;
+      const treatment=card.dataset.treatment;
+      const trailer=card.dataset.trailer;
+
+      function addLink(href,label){
+        if(!href) return;
+        const a=document.createElement('a');
+        a.href=href;
+        a.target="_blank";
+        a.rel="noopener";
+        a.className='chip';
+        a.textContent=label;
+        linksWrap.appendChild(a);
       }
 
-      [...chipbar.querySelectorAll('.chip')].forEach(c=>c.classList.remove('active'));
-      btn.classList.add('active');
+      addLink(deck,'Pitch Deck');
+      addLink(onesheet,'One-Sheet');
+      addLink(treatment,'Treatment');
+      addLink(trailer,'Trailer / Teaser');
 
-      applyFilter();
-    });
-  }
-
-  if(clearFiltersBtn){
-    clearFiltersBtn.addEventListener('click',()=>{
-      activeFilter = null;
-      [...chipbar.querySelectorAll('.chip')].forEach(c=>c.classList.remove('active'));
-      applyFilter();
-    });
-  }
-})();
-
-/* BACK TO TOP BUTTON */
-(function(){
-  const toTopBtn = document.getElementById('toTopBtn');
-  if(!toTopBtn) return;
-
-  function onScroll(){
-    if(window.scrollY>400){
-      toTopBtn.classList.add('show');
-    }else{
-      toTopBtn.classList.remove('show');
+      overlay.classList.add('show');
     }
-  }
-  window.addEventListener('scroll',onScroll);
-  toTopBtn.addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
-  onScroll();
-})();
 
-/* MODAL LOGIC (View Details) */
-(function(){
-  const overlay = document.getElementById('projectModalOverlay');
-  const titleEl = document.getElementById('projectModalTitle');
-  const metaWrap = document.getElementById('projectModalMeta');
-  const descEl = document.getElementById('projectModalDesc');
-  const linksWrap = document.getElementById('projectModalLinks');
-  const closeBtn = document.getElementById('modalCloseBtn');
-
-  function openModalFromCard(card){
-    if(!overlay) return;
-    // populate title
-    titleEl.textContent = card.dataset.title || '—';
-
-    // meta badges
-    metaWrap.innerHTML = '';
-    const mGenre = card.dataset.genre;
-    const mFormat = card.dataset.format;
-    const mAudience = card.dataset.audience;
-    [mGenre,mFormat,mAudience].forEach(txt=>{
-      if(txt){
-        const span=document.createElement('span');
-        span.className='badge';
-        span.textContent=txt;
-        metaWrap.appendChild(span);
+    document.addEventListener('click',e=>{
+      const btn=e.target.closest('[data-open].js-open');
+      if(btn){
+        const card=e.target.closest('.project-card');
+        if(card){
+          openModalFromCard(card);
+        }
       }
     });
 
-    // description
-    descEl.textContent = card.dataset.desc || '';
-
-    // links
-    linksWrap.innerHTML='';
-    const deck=card.dataset.deck;
-    const onesheet=card.dataset.onesheet;
-    const treatment=card.dataset.treatment;
-    const trailer=card.dataset.trailer;
-
-    function addLink(href,label){
-      if(!href) return;
-      const a=document.createElement('a');
-      a.href=href;
-      a.target="_blank";
-      a.rel="noopener";
-      a.className='chip';
-      a.textContent=label;
-      linksWrap.appendChild(a);
-    }
-
-    addLink(deck,'Pitch Deck');
-    addLink(onesheet,'One-Sheet');
-    addLink(treatment,'Treatment');
-    addLink(trailer,'Trailer / Teaser');
-
-    overlay.classList.add('show');
-  }
-
-  document.addEventListener('click',e=>{
-    const btn=e.target.closest('[data-open].js-open');
-    if(btn){
-      const card=e.target.closest('.project-card');
-      if(card){
-        openModalFromCard(card);
+    function closeModal(){
+      if(overlay){
+        overlay.classList.remove('show');
       }
     }
-  });
 
-  function closeModal(){
-    overlay.classList.remove('show');
-  }
-  if(closeBtn){
-    closeBtn.addEventListener('click',closeModal);
-  }
-  if(overlay){
-    overlay.addEventListener('click',e=>{
-      if(e.target===overlay) closeModal();
-    });
-  }
-  document.addEventListener('keydown',e=>{
-    if(e.key==='Escape'){ closeModal(); }
-  });
-})();
-
-/* SIMPLE AUDIO PLAYER */
-(function(){
-  const audio = document.getElementById('audioElement');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const trackTitle = document.getElementById('trackTitle');
-  const trackArtist = document.getElementById('trackArtist');
-  const currentTimeEl = document.getElementById('currentTime');
-  const totalTimeEl = document.getElementById('totalTime');
-  const scrubBar = document.getElementById('scrubBar');
-  const progressBar = document.getElementById('progressBar');
-  const playlistEl = document.getElementById('playlist');
-
-  if(!audio) return;
-
-  // define playlist here
-  const playlist = [
-    {
-      title:"Soul on Fire - Theme",
-      artist:"NCCA Entertainment",
-      file:"assets/audio/soul-on-fire-theme.mp3",
-      duration:"2:31"
-    },
-    {
-      title:"The Line - Main Title",
-      artist:"NCCA Entertainment",
-      file:"assets/audio/the-line-main-title.mp3",
-      duration:"1:48"
-    },
-    {
-      title:"Rhythm & Blooms - Rooftop Dance",
-      artist:"NCCA Entertainment",
-      file:"assets/audio/rhythm-and-blooms-rooftop-dance.mp3",
-      duration:"2:05"
+    if(closeBtn){
+      closeBtn.addEventListener('click',closeModal);
     }
-  ];
-
-  let currentIndex = 0;
-  let isPlaying = false;
-
-  function loadTrack(index){
-    const tr = playlist[index];
-    if(!tr) return;
-    currentIndex=index;
-    audio.src = tr.file;
-    trackTitle.textContent = tr.title || '—';
-    trackArtist.textContent = tr.artist || 'NCCA Entertainment';
-    totalTimeEl.textContent = tr.duration || '0:00';
-
-    // update active class
-    [...playlistEl.children].forEach((row,i)=>{
-      if(i===index){ row.classList.add('active'); }
-      else{ row.classList.remove('active'); }
+    if(overlay){
+      overlay.addEventListener('click',e=>{
+        if(e.target===overlay) closeModal();
+      });
+    }
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){ closeModal(); }
     });
+  } catch (err) {
+    console.warn('Modal init error:', err);
   }
 
-  function playTrack(){
-    audio.play().then(()=>{
-      isPlaying=true;
-      playPauseBtn.textContent='⏸';
-    }).catch(()=>{});
-  }
-  function pauseTrack(){
-    audio.pause();
-    isPlaying=false;
-    playPauseBtn.textContent='▶';
-  }
+  /* SIMPLE AUDIO PLAYER */
+  try {
+    const audio = document.getElementById('audioElement');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const trackTitle = document.getElementById('trackTitle');
+    const trackArtist = document.getElementById('trackArtist');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalTimeEl = document.getElementById('totalTime');
+    const scrubBar = document.getElementById('scrubBar');
+    const progressBar = document.getElementById('progressBar');
+    const playlistEl = document.getElementById('playlist');
 
-  // build playlist UI
-  playlistEl.innerHTML='';
-  playlist.forEach((tr,idx)=>{
-    const row=document.createElement('div');
-    row.className='track';
-    row.innerHTML=`
-      <div class="dot"></div>
-      <div style="flex:1;min-width:0;">
-        <div style="font-weight:600;color:#e7e7ea;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${tr.title}</div>
-        <div style="color:#a9acb6;font-size:.8rem;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${tr.artist}</div>
-      </div>
-      <div style="color:#a9acb6;font-size:.8rem;font-variant-numeric:tabular-nums;">${tr.duration}</div>
-    `;
-    row.addEventListener('click',()=>{
-      loadTrack(idx);
-      playTrack();
-    });
-    playlistEl.appendChild(row);
-  });
+    if(audio && playPauseBtn && trackTitle && trackArtist && currentTimeEl && totalTimeEl && scrubBar && progressBar && playlistEl){
 
-  // init first
-  loadTrack(currentIndex);
+      const playlist = [
+        {
+          title:"Soul on Fire - Theme",
+          artist:"NCCA Entertainment",
+          file:"assets/audio/soul-on-fire-theme.mp3",
+          duration:"2:31"
+        },
+        {
+          title:"The Line - Main Title",
+          artist:"NCCA Entertainment",
+          file:"assets/audio/the-line-main-title.mp3",
+          duration:"1:48"
+        },
+        {
+          title:"Rhythm & Blooms - Rooftop Dance",
+          artist:"NCCA Entertainment",
+          file:"assets/audio/rhythm-and-blooms-rooftop-dance.mp3",
+          duration:"2:05"
+        }
+      ];
 
-  // play/pause
-  if(playPauseBtn){
-    playPauseBtn.addEventListener('click',()=>{
-      if(isPlaying){
-        pauseTrack();
-      }else{
+      let currentIndex = 0;
+      let isPlaying = false;
+
+      function loadTrack(index){
+        const tr = playlist[index];
+        if(!tr) return;
+        currentIndex=index;
+        audio.src = tr.file;
+        trackTitle.textContent = tr.title || '—';
+        trackArtist.textContent = tr.artist || 'NCCA Entertainment';
+        totalTimeEl.textContent = tr.duration || '0:00';
+
+        [...playlistEl.children].forEach((row,i)=>{
+          if(i===index){ row.classList.add('active'); }
+          else{ row.classList.remove('active'); }
+        });
+      }
+
+      function playTrack(){
+        audio.play().then(()=>{
+          isPlaying=true;
+          playPauseBtn.textContent='⏸';
+        }).catch(()=>{});
+      }
+      function pauseTrack(){
+        audio.pause();
+        isPlaying=false;
+        playPauseBtn.textContent='▶';
+      }
+
+      playlistEl.innerHTML='';
+      playlist.forEach((tr,idx)=>{
+        const row=document.createElement('div');
+        row.className='track';
+        row.innerHTML=`
+          <div class="dot"></div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:600;color:#e7e7ea;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${tr.title}</div>
+            <div style="color:#a9acb6;font-size:.8rem;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${tr.artist}</div>
+          </div>
+          <div style="color:#a9acb6;font-size:.8rem;font-variant-numeric:tabular-nums;">${tr.duration}</div>
+        `;
+        row.addEventListener('click',()=>{
+          loadTrack(idx);
+          playTrack();
+        });
+        playlistEl.appendChild(row);
+      });
+
+      loadTrack(currentIndex);
+
+      playPauseBtn.addEventListener('click',()=>{
+        if(isPlaying){
+          pauseTrack();
+        }else{
+          playTrack();
+        }
+      });
+
+      audio.addEventListener('timeupdate',()=>{
+        const cur = audio.currentTime;
+        const dur = audio.duration || 1;
+        const m = Math.floor(cur/60);
+        const s = Math.floor(cur%60).toString().padStart(2,'0');
+        currentTimeEl.textContent = m+":"+s;
+        const pct = (cur/dur)*100;
+        progressBar.style.width = pct+"%";
+      });
+
+      audio.addEventListener('ended',()=>{
+        const nextIndex = (currentIndex+1)%playlist.length;
+        loadTrack(nextIndex);
         playTrack();
-      }
-    });
+      });
+
+      scrubBar.addEventListener('click',e=>{
+        const rect=scrubBar.getBoundingClientRect();
+        const x=e.clientX-rect.left;
+        const pct=x/rect.width;
+        if(audio.duration){
+          audio.currentTime = pct*audio.duration;
+        }
+      });
+    }
+  } catch (err) {
+    console.warn('Audio init error:', err);
   }
 
-  // time update
-  audio.addEventListener('timeupdate',()=>{
-    const cur = audio.currentTime;
-    const dur = audio.duration || 1;
-    // update text current time
-    const m = Math.floor(cur/60);
-    const s = Math.floor(cur%60).toString().padStart(2,'0');
-    currentTimeEl.textContent = m+":"+s;
-    // progress bar
-    const pct = (cur/dur)*100;
-    progressBar.style.width = pct+"%";
-  });
-
-  audio.addEventListener('ended',()=>{
-    // auto-next
-    const nextIndex = (currentIndex+1)%playlist.length;
-    loadTrack(nextIndex);
-    playTrack();
-  });
-
-  // scrub interaction
-  if(scrubBar){
-    scrubBar.addEventListener('click',e=>{
-      const rect=scrubBar.getBoundingClientRect();
-      const x=e.clientX-rect.left;
-      const pct=x/rect.width;
-      if(audio.duration){
-        audio.currentTime = pct*audio.duration;
-      }
-    });
-  }
-})();
+});
 </script>
 </body>
 </html>
