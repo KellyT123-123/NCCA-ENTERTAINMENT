@@ -760,15 +760,15 @@
   <div class="search-filter-container">
     <div class="container">
       <div class="chipbar" id="chipbar">
-        <button class="chip" data-filter='{"format":"MOW"}'>TV Movies (MOW)</button>
-        <button class="chip" data-filter='{"format":"Network Series"}'>Network Series</button>
-        <button class="chip" data-filter='{"genre":"Horror"}'>Horror</button>
-        <button class="chip" data-filter='{"genre":"Christmas"}'>Christmas</button>
-        <button class="chip" data-filter='{"genre":"Docuseries"}'>Docuseries</button>
-        <button class="chip" data-filter='{"genre":"Romance"}'>Romance</button>
-        <button class="chip" data-filter='{"genre":"Comedy"}'>Comedy</button>
-        <button class="chip" data-filter='{"genre":"Thriller"}'>Thriller</button>
-        <button class="chip" data-filter='{"genre":"Drama"}'>Drama</button>
+        <a href="#christmas-stories" class="chip">Christmas</a>
+        <a href="#horror" class="chip">Horror / Southern Gothic</a>
+        <a href="#network-series" class="chip">Series</a>
+        <a href="#docuseries" class="chip">Docuseries</a>
+        <a href="#action-features" class="chip">Action Features</a>
+        <a href="#comedy" class="chip">Comedy</a>
+        <a href="#romance" class="chip">Romance</a>
+        <a href="#thriller" class="chip">Thriller</a>
+        <a href="#drama" class="chip">Drama</a>
         <button class="chip" data-reset>Clear</button>
       </div>
     </div>
@@ -3552,10 +3552,11 @@
 
 
   <script>
-    // Filter functionality for chip buttons
+    // Filter chip active state management
     document.addEventListener('DOMContentLoaded', function() {
-      const chips = document.querySelectorAll('.chip[data-filter], .chip[data-reset]');
+      const chips = document.querySelectorAll('.chip[href], .chip[data-reset]');
       
+      // Add click handlers for visual feedback
       chips.forEach(chip => {
         chip.addEventListener('click', function() {
           // Remove active class from all chips
@@ -3563,55 +3564,16 @@
           
           // Add active class to clicked chip
           this.classList.add('active');
-          
-          // Check if this is a reset button
-          if (this.hasAttribute('data-reset')) {
-            // Clear all filters - just scroll to all projects
-            window.location.hash = 'all-projects';
-            return;
-          }
-          
-          // Get filter data
-          const filterData = this.getAttribute('data-filter');
-          if (filterData) {
-            try {
-              const filter = JSON.parse(filterData);
-              console.log('Filter:', filter);
-              
-              // For now, just scroll to the All Projects section
-              // Users can browse through pages to find their desired genre/format
-              window.location.hash = 'all-projects';
-              
-              // Optional: Show a message about which filter was selected
-              const pageInfo = document.getElementById('pageInfo');
-              if (pageInfo && filter.genre) {
-                setTimeout(() => {
-                  pageInfo.textContent = `Showing all projects - Browse for ${filter.genre}`;
-                  setTimeout(() => {
-                    pageInfo.textContent = `Page 1 of ${document.querySelectorAll('.project-page').length}`;
-                  }, 3000);
-                }, 100);
-              } else if (pageInfo && filter.format) {
-                setTimeout(() => {
-                  pageInfo.textContent = `Showing all projects - Browse for ${filter.format}`;
-                  setTimeout(() => {
-                    pageInfo.textContent = `Page 1 of ${document.querySelectorAll('.project-page').length}`;
-                  }, 3000);
-                }, 100);
-              }
-            } catch (e) {
-              console.error('Error parsing filter:', e);
-            }
-          }
         });
       });
       
-      // Clear filter button in All Projects section
-      const clearBtn = document.getElementById('clearFiltersBtn');
+      // Clear button scrolls to top
+      const clearBtn = document.querySelector('.chip[data-reset]');
       if (clearBtn) {
         clearBtn.addEventListener('click', function() {
           chips.forEach(c => c.classList.remove('active'));
-          window.location.hash = 'all-projects';
+          window.location.hash = '';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
     });
