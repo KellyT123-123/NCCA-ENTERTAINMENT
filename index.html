@@ -842,292 +842,6 @@
     </div>
   </section>
 
-  <!-- ALL PROJECTS (MASTER GRID WITH FILTER) -->
-  <section id="all-projects" class="section">
-    <div class="container">
-      <h2>ALL PROJECTS</h2>
-      <p class="section-intro">
-        Use the chips above to filter quickly by format or genre. You can also scroll to curated sections below.
-      </p>
-
-      <div id="projectsWrap" class="projects-container">
-
-        <!-- Empty state -->
-        <div id="emptyState" class="card" style="display:none;padding:2rem;text-align:center;border:1px solid var(--brand-rule)">
-          <h3 style="margin-bottom:.5rem">No matches</h3>
-          <p class="muted" style="margin-bottom:1rem">Try different filters or clear them.</p>
-          <button class="btn secondary" id="clearFiltersBtn">Clear filters</button>
-        </div>
-
-        <div class="grid" id="projectsGrid">
-
-          <!-- The Line -->
-          <article class="card project-card"
-            data-title="The Line"
-            data-genre="Network Series"
-            data-format="Network Series"
-            data-audience="Gen Z; Women 25–40"
-            data-desc="A by-the-book FBI agent and a music exec collide while uncovering a conspiracy in Atlanta's music scene."
-            data-deck="pitch-decks/the_line_pitch_deck.pdf"
-            data-onesheet="one-sheets/the-line-one-sheet.pdf"
-            data-treatment="assets/the-line-treatment.pdf"
-            data-trailer="assets/the-line-teaser.mp4">
-            <div class="card-media" style="background-image:url('images/the-line.png')"></div>
-            <div class="card-body">
-              <div class="title">The Line</div>
-              <div class="meta">
-                <span class="badge">Network Series</span>
-                <span class="badge">📺</span>
-                <span class="badge">Gen Z; Women 25–40</span>
-              </div>
-              <p class="muted">
-                A by-the-book FBI agent and a music exec collide while uncovering a conspiracy in Atlanta's music scene.
-              </p>
-              <div class="actions">
-                <button class="chip js-open" data-open>View Details</button>
-                <a href="assets/the-line-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Rhythm & Blooms -->
-          <article class="card project-card"
-            data-title="Rhythm &amp; Blooms"
-            data-genre="Rom-Com"
-            data-format="MOW"
-            data-audience="Women 25–40 | Black Audiences"
-            data-desc="A structured landscape designer and a jazz club owner fall in love while reviving a rooftop garden."
-            data-deck="pitch-decks/rhythm_and_blooms_pitch_deck.pdf"
-            data-onesheet="one-sheets/rhythm-and-blooms-one-sheet.pdf"
-            data-treatment="assets/rhythm-and-blooms-treatment.pdf"
-            data-trailer="assets/rhythm-and-blooms-teaser.mp4">
-            <div class="card-media" style="background-image:url('images/rhythm-and-blooms.png')"></div>
-            <div class="card-body">
-              <div class="title">Rhythm &amp; Blooms</div>
-              <div class="meta">
-                <span class="badge">Rom-Com</span>
-                <span class="badge">❤ MOW</span>
-                <span class="badge">Women 25–40 | Black Audiences</span>
-              </div>
-              <p class="muted">
-                A structured landscape designer and a jazz club owner fall in love while reviving a rooftop garden.
-              </p>
-              <div class="actions">
-                <button class="chip js-open" data-open>View Details</button>
-                <a href="assets/rhythm-and-blooms-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- The Feed -->
-          <article class="card project-card"
-            data-title="The Feed"
-            data-genre="Drama"
-            data-format="MOW"
-            data-audience="Women 25–40 | Black Audiences"
-            data-desc="A Black tech entrepreneur moves into a smart-home community and uncovers a biased surveillance system."
-            data-deck="pitch-decks/the_feed_pitch_deck.pdf"
-            data-onesheet="one-sheets/the-feed-one-sheet.pdf"
-            data-treatment="assets/the-feed-treatment.pdf"
-            data-trailer="assets/the-feed-teaser.mp4">
-            <div class="card-media" style="background-image:url('images/the-feed.png')"></div>
-            <div class="card-body">
-              <div class="title">The Feed</div>
-              <div class="meta">
-                <span class="badge">Drama</span>
-                <span class="badge">🗡 MOW</span>
-                <span class="badge">Women 25–40 | Black Audiences</span>
-              </div>
-              <p class="muted">
-                A Black tech entrepreneur moves into a smart-home community and uncovers a biased surveillance system.
-              </p>
-              <div class="actions">
-                <button class="chip js-open" data-open>View Details</button>
-                <a href="assets/the-feed-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Divine Deception -->
-          <article class="card project-card"
-            data-title="Divine Deception"
-            data-genre="Film Noir"
-            data-format="MOW"
-            data-audience="Women 25–40 | Black Audiences"
-            data-desc="A Southern Gospel noir that exposes the dark underbelly of faith and corruption in Atlanta's religious community."
-            data-deck="pitch-decks/divine_deception_pitch_deck.pdf"
-            data-onesheet="one-sheets/divine-deception-one-sheet.pdf"
-            data-treatment="assets/divine-deception-treatment.pdf"
-            data-trailer="assets/divine-deception-teaser.mp4">
-            <div class="card-media" style="background-image:url('images/divine-deception.png')"></div>
-            <div class="card-body">
-              <div class="title">Divine Deception</div>
-              <div class="meta">
-                <span class="badge">Film Noir</span>
-                <span class="badge">🗡 MOW</span>
-                <span class="badge">Women 25–40 | Black Audiences</span>
-                <div class="platform-logos">
-                  <span class="platform-logo" data-platform="BET+">B+</span>
-                  <span class="platform-logo" data-platform="OWN">OWN</span>
-                  <span class="platform-logo" data-platform="Lifetime">L</span>
-                </div>
-              </div>
-              <p class="muted">
-                A Southern Gospel noir that exposes the dark underbelly of faith and corruption in Atlanta's religious community.
-              </p>
-              <div class="actions">
-                <button class="chip js-open" data-open>View Details</button>
-                <a href="assets/divine-deception-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Past Due -->
-          <article class="card project-card"
-            data-title="Past Due"
-            data-genre="Thriller"
-            data-format="MOW"
-            data-audience="Women 25–40"
-            data-desc="A debt collector discovers her targets are being systematically eliminated."
-            data-deck="pitch-decks/past_due_pitch_deck.pdf"
-            data-onesheet="one-sheets/past-due-one-sheet.pdf"
-            data-treatment="assets/past-due-treatment.pdf"
-            data-trailer="assets/past-due-teaser.mp4">
-            <div class="card-media" style="background-image:url('images/past-due.png')"></div>
-            <div class="card-body">
-              <div class="title">Past Due</div>
-              <div class="meta">
-                <span class="badge">Thriller</span>
-                <span class="badge">⚡ MOW</span>
-                <span class="badge">Women 25–40</span>
-                <div class="platform-logos">
-                  <span class="platform-logo" data-platform="Netflix">N</span>
-                  <span class="platform-logo" data-platform="HBO">HBO</span>
-                  <span class="platform-logo" data-platform="Apple">🍎</span>
-                </div>
-              </div>
-              <p class="muted">
-                A debt collector discovers her targets are being systematically eliminated.
-              </p>
-              <div class="actions">
-                <button class="chip js-open" data-open>View Details</button>
-                <a href="assets/past-due-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Refractions -->
-          <article class="card project-card"
-            data-title="Refractions"
-            data-genre="Thriller"
-            data-format="Feature"
-            data-audience="Gen Z"
-            data-desc="A photographer's reality fractures when her images begin predicting the future."
-            data-deck="pitch-decks/refractions_pitch_deck.pdf"
-            data-onesheet="one-sheets/refractions-one-sheet.pdf"
-            data-treatment="assets/refractions-treatment.pdf"
-            data-trailer="assets/refractions-teaser.mp4">
-            <div class="card-media" style="background-image:url('images/refractions.png')"></div>
-            <div class="card-body">
-              <div class="title">Refractions</div>
-              <div class="meta">
-                <span class="badge">Thriller</span>
-                <span class="badge">⚡ Feature</span>
-                <span class="badge">Gen Z</span>
-                <div class="platform-logos">
-                  <span class="platform-logo" data-platform="Netflix">N</span>
-                  <span class="platform-logo" data-platform="HBO">HBO</span>
-                  <span class="platform-logo" data-platform="Apple">🍎</span>
-                </div>
-              </div>
-              <p class="muted">
-                A photographer's reality fractures when her images begin predicting the future.
-              </p>
-              <div class="actions">
-                <button class="chip js-open" data-open>View Details</button>
-                <a href="assets/refractions-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Digital Shadows -->
-          <article class="card project-card"
-            data-title="Digital Shadows"
-            data-format="Docuseries"
-            data-genre="Docuseries"
-            data-audience="Gen Z"
-            data-desc="An investigative docuseries exploring the dark side of social media and digital privacy."
-            data-deck="pitch-decks/digital_shadows_pitch_deck.pdf"
-            data-onesheet="one-sheets/digital-shadows-one-sheet.pdf"
-            data-treatment="assets/digital-shadows-treatment.pdf"
-            data-trailer="assets/digital-shadows-teaser.mp4">
-            <div class="card-media" style="background-image:url('images/digital-shadows.png')"></div>
-            <div class="card-body">
-              <div class="title">Digital Shadows</div>
-              <div class="meta">
-                <span class="badge">Docuseries</span>
-                <span class="badge">📺 Docuseries</span>
-                <span class="badge">Gen Z</span>
-                <div class="platform-logos">
-                  <span class="platform-logo" data-platform="Netflix">N</span>
-                  <span class="platform-logo" data-platform="HBO">HBO</span>
-                  <span class="platform-logo" data-platform="Apple">🍎</span>
-                  <span class="platform-logo" data-platform="Paramount+">P+</span>
-                  <span class="platform-logo" data-platform="Peacock">P</span>
-                </div>
-              </div>
-              <p class="muted">
-                An investigative docuseries exploring the dark side of social media and digital privacy.
-              </p>
-              <div class="actions">
-                <button class="chip js-open" data-open>View Details</button>
-                <a href="assets/digital-shadows-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Exposed -->
-          <article class="card project-card"
-            data-title="Exposed"
-            data-format="Docuseries"
-            data-genre="Docuseries"
-            data-audience="Women 25–40"
-            data-desc="True crime is not always about murder. It is also about the unseen crimes that steal lives in silence."
-            data-deck="pitch-decks/exposed_pitch_deck.pdf"
-            data-onesheet="one-sheets/exposed-one-sheet.pdf"
-            data-treatment="assets/exposed-treatment.pdf"
-            data-trailer="assets/exposed-teaser.mp4">
-            <div class="card-media" style="background-image:url('images/exposed.png')"></div>
-            <div class="card-body">
-              <div class="title">Exposed</div>
-              <div class="meta">
-                <span class="badge">Docuseries</span>
-                <span class="badge">Docuseries</span>
-                <span class="badge">Women 25–40</span>
-                <div class="platform-logos">
-                  <span class="platform-logo" data-platform="Paramount+">P+</span>
-                  <span class="platform-logo" data-platform="Peacock">P</span>
-                  <span class="platform-logo" data-platform="Netflix">N</span>
-                  <span class="platform-logo" data-platform="HBO">HBO</span>
-                  <span class="platform-logo" data-platform="Apple">🍎</span>
-                </div>
-              </div>
-              <p class="muted">
-                True crime is not always about murder. It is also about the unseen crimes that steal lives in silence.
-              </p>
-              <div class="actions">
-                <button class="chip js-open" data-open>View Details</button>
-                <a href="assets/exposed-teaser.mp4" class="chip" target="_blank" rel="noopener">Watch Trailer</a>
-              </div>
-            </div>
-          </article>
-
-        </div><!-- /projectsGrid -->
-      </div><!-- /projectsWrap -->
-    </div>
-  </section>
-
-
   <!-- MUSIC -->
   <section id="music" class="section">
     <div class="container">
@@ -3835,6 +3549,73 @@
   </div>
 </footer>
 
+
+
+  <script>
+    // Filter functionality for chip buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      const chips = document.querySelectorAll('.chip[data-filter], .chip[data-reset]');
+      
+      chips.forEach(chip => {
+        chip.addEventListener('click', function() {
+          // Remove active class from all chips
+          chips.forEach(c => c.classList.remove('active'));
+          
+          // Add active class to clicked chip
+          this.classList.add('active');
+          
+          // Check if this is a reset button
+          if (this.hasAttribute('data-reset')) {
+            // Clear all filters - just scroll to all projects
+            window.location.hash = 'all-projects';
+            return;
+          }
+          
+          // Get filter data
+          const filterData = this.getAttribute('data-filter');
+          if (filterData) {
+            try {
+              const filter = JSON.parse(filterData);
+              console.log('Filter:', filter);
+              
+              // For now, just scroll to the All Projects section
+              // Users can browse through pages to find their desired genre/format
+              window.location.hash = 'all-projects';
+              
+              // Optional: Show a message about which filter was selected
+              const pageInfo = document.getElementById('pageInfo');
+              if (pageInfo && filter.genre) {
+                setTimeout(() => {
+                  pageInfo.textContent = `Showing all projects - Browse for ${filter.genre}`;
+                  setTimeout(() => {
+                    pageInfo.textContent = `Page 1 of ${document.querySelectorAll('.project-page').length}`;
+                  }, 3000);
+                }, 100);
+              } else if (pageInfo && filter.format) {
+                setTimeout(() => {
+                  pageInfo.textContent = `Showing all projects - Browse for ${filter.format}`;
+                  setTimeout(() => {
+                    pageInfo.textContent = `Page 1 of ${document.querySelectorAll('.project-page').length}`;
+                  }, 3000);
+                }, 100);
+              }
+            } catch (e) {
+              console.error('Error parsing filter:', e);
+            }
+          }
+        });
+      });
+      
+      // Clear filter button in All Projects section
+      const clearBtn = document.getElementById('clearFiltersBtn');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+          chips.forEach(c => c.classList.remove('active'));
+          window.location.hash = 'all-projects';
+        });
+      }
+    });
+  </script>
 
   <script>
     // Pagination functionality
