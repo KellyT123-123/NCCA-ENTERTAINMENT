@@ -4153,15 +4153,15 @@
       }
       
       // Hide current page
-      const currentPageEl = document.getElementById('page' + currentPage);
+      const currentPageEl = document.querySelector(`.project-page[data-page="${currentPage}"]`);
       if (currentPageEl) {
         currentPageEl.style.display = 'none';
       }
       
       // Show new page
-      const newPageEl = document.getElementById('page' + newPage);
+      const newPageEl = document.querySelector(`.project-page[data-page="${newPage}"]`);
       if (newPageEl) {
-        newPageEl.style.display = 'grid';
+        newPageEl.style.display = 'block';
       }
       
       currentPage = newPage;
@@ -4170,8 +4170,8 @@
       document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
       
       // Update button states
-      document.getElementById('prevPage').disabled = (currentPage === 1);
-      document.getElementById('nextPage').disabled = (currentPage === totalPages);
+      document.getElementById('prevBtn').disabled = (currentPage === 1);
+      document.getElementById('nextBtn').disabled = (currentPage === totalPages);
       
       // Scroll to top of All Projects section
       document.getElementById('all-projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -4179,11 +4179,11 @@
 
     // Initialize button states on page load
     document.addEventListener('DOMContentLoaded', function() {
-      if (document.getElementById('prevPage')) {
-        document.getElementById('prevPage').disabled = true;
+      if (document.getElementById('prevBtn')) {
+        document.getElementById('prevBtn').disabled = true;
       }
-      if (totalPages <= 1 && document.getElementById('nextPage')) {
-        document.getElementById('nextPage').disabled = true;
+      if (totalPages <= 1 && document.getElementById('nextBtn')) {
+        document.getElementById('nextBtn').disabled = true;
       }
     });
   </script>
