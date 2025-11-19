@@ -28,6 +28,11 @@
       --brand-bg:#0A0A0A;
       --brand-muted:#B9A98F;
       --brand-rule:rgba(255,255,255,.10);
+      --success: #4CAF50;
+      --warning: #FF9800;
+      --info: #2196F3;
+      --priority-high: #D32F2F;
+      --priority-med: #FFA726;
       --card-min:320px;
       --gap:1rem;
     }
@@ -39,10 +44,80 @@
       background:var(--brand-bg);
       color:#f5f3ee;
       line-height:1.6;
+      font-size:16px;
     }
 
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline;color:var(--brand-hover)}
+
+    /* Skip to Content Link - Accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--brand);
+      color: #111;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: 700;
+      z-index: 9999;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Utility Bar */
+    .utility-bar{
+      background:rgba(212,139,60,.08);
+      border-bottom:1px solid rgba(212,139,60,.2);
+      padding:.5rem 0;
+    }
+    .utility-wrap{
+      max-width:1400px;
+      margin:0 auto;
+      padding:0 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1.5rem;
+      font-size:.85rem;
+      flex-wrap: wrap;
+    }
+    .utility-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .utility-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .utility-link{
+      color:var(--brand-ink);
+      display:flex;
+      align-items:center;
+      gap:.4rem;
+      transition:color 0.2s ease;
+      text-decoration: none;
+    }
+    .utility-link:hover{
+      color:var(--brand);
+      text-decoration: none;
+    }
+    .executive-view {
+      background: var(--brand);
+      color: #111;
+      padding: .4rem .8rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .executive-view:hover {
+      background: var(--brand-hover);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
 
     /* Sticky Header */
     .site-header{
@@ -77,6 +152,7 @@
     .brand:hover{
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(212, 139, 60, 0.3);
+      text-decoration: none;
     }
 
     .nav{margin-left:auto;display:flex;align-items:center;gap:1rem;}
@@ -117,7 +193,152 @@
       border-color:var(--brand-hover);
     }
 
-    /* Mega Menu */
+    /* Search in Navigation */
+    .nav-search {
+      position: relative;
+      margin-left: .5rem;
+    }
+    .search-trigger {
+      background: none;
+      border: 1px solid rgba(255,255,255,.2);
+      color: #e7e7ea;
+      padding: .5rem .7rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: .95rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      transition: all 0.2s ease;
+    }
+    .search-trigger:hover {
+      background: #191b20;
+      border-color: #2a2c31;
+    }
+    .search-expanded {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: rgba(17,18,22,.98);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 1rem;
+      min-width: 400px;
+      display: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
+      backdrop-filter: blur(12px);
+      z-index: 3001;
+    }
+    .search-expanded.active {
+      display: block;
+      animation: fadeInDown 0.2s ease;
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .search-input-wrap {
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: .75rem 1rem;
+      padding-right: 3rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      color: #f5f3ee;
+      font-size: .95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .search-input:focus {
+      border-color: var(--brand);
+      background: rgba(255,255,255,.08);
+    }
+    .search-input::placeholder {
+      color: rgba(255,255,255,.4);
+    }
+    .search-clear {
+      position: absolute;
+      right: .75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255,255,255,.5);
+      cursor: pointer;
+      font-size: 1.25rem;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      display: none;
+    }
+    .search-clear.visible {
+      display: block;
+    }
+    .search-results {
+      margin-top: 1rem;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .search-result-item {
+      padding: .75rem;
+      border-radius: 8px;
+      margin-bottom: .5rem;
+      background: rgba(255,255,255,.03);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      gap: 1rem;
+      align-items: start;
+    }
+    .search-result-item:hover {
+      background: rgba(212,139,60,.15);
+      transform: translateX(4px);
+    }
+    .search-result-thumb {
+      width: 60px;
+      height: 40px;
+      border-radius: 4px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .search-result-content {
+      flex: 1;
+    }
+    .search-result-title {
+      color: var(--brand);
+      font-weight: 600;
+      font-size: .9rem;
+      margin-bottom: .25rem;
+    }
+    .search-result-meta {
+      font-size: .8rem;
+      color: rgba(255,255,255,.6);
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .search-result-tag {
+      background: rgba(255,255,255,.1);
+      padding: .15rem .4rem;
+      border-radius: 4px;
+      font-size: .75rem;
+    }
+    .search-no-results {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: rgba(255,255,255,.5);
+    }
+
+    /* Enhanced Mega Menu */
     .nav-item.has-mega{position:relative;}
     .mega-menu{
       position:absolute;
@@ -127,8 +348,8 @@
       background:rgba(17,18,22,.98);
       border:1px solid rgba(255,255,255,.12);
       border-radius:12px;
-      padding:1.5rem;
-      min-width:600px;
+      padding:2rem;
+      min-width:700px;
       display:none;
       opacity:0;
       box-shadow:0 8px 32px rgba(0,0,0,.5);
@@ -136,7 +357,7 @@
       z-index:3000;
     }
     .nav-item.has-mega:hover .mega-menu{
-      display:grid;
+      display:block;
       animation:fadeIn 0.2s ease forwards;
     }
     @keyframes fadeIn{
@@ -149,11 +370,13 @@
     }
     .mega-menu-col h4{
       color:var(--brand);
-      font-size:.85rem;
+      font-size:.8rem;
       text-transform:uppercase;
-      letter-spacing:1px;
-      margin-bottom:.75rem;
+      letter-spacing:1.2px;
+      margin-bottom:1rem;
       font-weight:700;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid rgba(212,139,60,.3);
     }
     .mega-menu-col ul{
       list-style:none;
@@ -166,8 +389,11 @@
       font-size:.9rem;
       padding:.4rem .6rem;
       border-radius:6px;
-      display:block;
+      display:flex;
+      align-items: center;
+      gap: .5rem;
       transition:all 0.2s ease;
+      position: relative;
     }
     .mega-menu-col a:hover{
       background:rgba(212,139,60,.15);
@@ -175,35 +401,828 @@
       text-decoration:none;
       padding-left:1rem;
     }
+    .mega-menu-col a::before {
+      content: '→';
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      position: absolute;
+      left: .5rem;
+    }
+    .mega-menu-col a:hover::before {
+      opacity: 1;
+    }
+    .mega-menu-footer {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.1);
+      text-align: center;
+    }
+    .mega-menu-footer a {
+      color: var(--brand);
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .5rem 1rem;
+      border-radius: 8px;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+    .mega-menu-footer a:hover {
+      background: rgba(212,139,60,.15);
+      text-decoration: none;
+    }
 
-    /* Utility Bar */
-    .utility-bar{
-      background:rgba(212,139,60,.08);
-      border-bottom:1px solid rgba(212,139,60,.2);
-      padding:.5rem 0;
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(255,255,255,.2);
+      color: #e7e7ea;
+      padding: .5rem .7rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.25rem;
+      align-items: center;
+      margin-left: auto;
     }
-    .utility-wrap{
-      max-width:1400px;
-      margin:0 auto;
-      padding:0 24px;
-      display:flex;
-      justify-content:flex-end;
-      align-items:center;
-      gap:1.5rem;
-      font-size:.85rem;
-    }
-    .utility-link{
-      color:var(--brand-ink);
-      display:flex;
-      align-items:center;
-      gap:.4rem;
-      transition:color 0.2s ease;
-    }
-    .utility-link:hover{
-      color:var(--brand);
+    .mobile-menu-toggle:hover {
+      background: #191b20;
+      border-color: #2a2c31;
     }
 
-    /* Back to Top Button - Phase 1 */
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10,10,10,.98);
+      z-index: 4000;
+      display: none;
+      overflow-y: auto;
+      padding: 2rem 1.5rem;
+    }
+    .mobile-menu-overlay.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .mobile-menu-close {
+      background: none;
+      border: none;
+      color: #e7e7ea;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-menu-content {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .mobile-nav-list {
+      list-style: none;
+    }
+    .mobile-nav-item {
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .mobile-nav-item > a {
+      display: block;
+      padding: 1rem 0;
+      color: #e7e7ea;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .mobile-nav-item > a:hover {
+      color: var(--brand);
+    }
+    .mobile-nav-item.has-submenu > a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .mobile-submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .mobile-submenu.active {
+      max-height: 1000px;
+    }
+    .mobile-submenu ul {
+      list-style: none;
+      padding: .5rem 0 1rem 1rem;
+    }
+    .mobile-submenu li {
+      margin-bottom: .75rem;
+    }
+    .mobile-submenu a {
+      color: #d0d0d5;
+      font-size: .95rem;
+      text-decoration: none;
+      display: block;
+    }
+    .mobile-submenu a:hover {
+      color: var(--brand);
+    }
+    .mobile-submenu h5 {
+      color: var(--brand);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 24px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(212,139,60,.05) 0%, transparent 100%);
+    }
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+    .brand-text {
+      color: #ffd166;
+      font-weight: 900;
+    }
+    .accent-text {
+      color: var(--brand);
+      font-weight: 700;
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--brand-ink);
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Quick Stats */
+    .quick-stats {
+      padding: 3rem 24px;
+      background: rgba(255,255,255,.02);
+      border-top: 1px solid var(--brand-rule);
+      border-bottom: 1px solid var(--brand-rule);
+    }
+    .stats-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      display: block;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--brand);
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .stat-label {
+      display: block;
+      color: var(--brand-ink);
+      font-size: .95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* Filter Bar Section */
+    .filter-section {
+      padding: 2rem 24px;
+      background: rgba(17,18,22,.95);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      position: sticky;
+      top: 0;
+      z-index: 1500;
+      margin-top: 0;
+    }
+    .filter-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .filter-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    .filter-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .filter-count {
+      background: rgba(212,139,60,.15);
+      padding: .5rem 1rem;
+      border-radius: 8px;
+      font-size: .9rem;
+      color: var(--brand-ink);
+    }
+    .filter-count strong {
+      color: var(--brand);
+      font-weight: 700;
+    }
+    .filter-clear {
+      background: rgba(211,47,47,.2);
+      color: #ff6b6b;
+      border: 1px solid rgba(211,47,47,.4);
+      padding: .5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: none;
+    }
+    .filter-clear.visible {
+      display: block;
+    }
+    .filter-clear:hover {
+      background: rgba(211,47,47,.3);
+      border-color: rgba(211,47,47,.6);
+    }
+
+    /* Filter Controls */
+    .filter-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .filter-group {
+      position: relative;
+    }
+    .filter-label {
+      display: block;
+      font-size: .85rem;
+      color: var(--brand-ink);
+      margin-bottom: .5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .filter-select {
+      width: 100%;
+      padding: .75rem 1rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      color: #f5f3ee;
+      font-size: .95rem;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f5f3ee' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 3rem;
+    }
+    .filter-select:focus {
+      border-color: var(--brand);
+      background: rgba(255,255,255,.08);
+    }
+    .filter-select option {
+      background: #17181b;
+      color: #f5f3ee;
+    }
+
+    /* Active Filters Display */
+    .active-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1rem;
+      min-height: 32px;
+    }
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(212,139,60,.2);
+      color: var(--brand);
+      padding: .4rem .75rem;
+      border-radius: 20px;
+      font-size: .85rem;
+      font-weight: 600;
+      border: 1px solid rgba(212,139,60,.4);
+      animation: slideIn 0.2s ease;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .filter-chip-remove {
+      background: none;
+      border: none;
+      color: var(--brand);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+    .filter-chip-remove:hover {
+      transform: scale(1.2);
+    }
+
+    /* Sort Controls */
+    .sort-controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .sort-label {
+      font-size: .9rem;
+      color: var(--brand-ink);
+      font-weight: 600;
+    }
+    .sort-select {
+      padding: .5rem 1rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      color: #f5f3ee;
+      font-size: .9rem;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .sort-select:focus {
+      border-color: var(--brand);
+      background: rgba(255,255,255,.08);
+    }
+    .sort-select option {
+      background: #17181b;
+      color: #f5f3ee;
+    }
+    .view-toggle {
+      display: flex;
+      gap: .5rem;
+      background: rgba(255,255,255,.05);
+      padding: .25rem;
+      border-radius: 8px;
+    }
+    .view-btn {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,.5);
+      padding: .5rem .75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+    .view-btn.active {
+      background: var(--brand);
+      color: #111;
+    }
+    .view-btn:hover {
+      color: var(--brand);
+    }
+
+    /* Featured Projects Section */
+    .featured-section {
+      padding: 4rem 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-header h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--brand);
+      margin-bottom: 1rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    .section-header p {
+      color: var(--brand-ink);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Enhanced Project Cards */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .project-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.5);
+      border-color: rgba(212,139,60,.4);
+    }
+    .project-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover .project-image {
+      transform: scale(1.1);
+    }
+    .project-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--brand);
+      color: #111;
+      padding: .35rem .75rem;
+      border-radius: 6px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      z-index: 10;
+    }
+    .project-badge.new {
+      background: var(--success);
+    }
+    .project-badge.featured {
+      background: var(--brand);
+    }
+    .project-priority {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(0,0,0,.8);
+      color: #fff;
+      padding: .35rem .75rem;
+      border-radius: 6px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      z-index: 10;
+    }
+    .project-priority.high {
+      border-left: 3px solid var(--priority-high);
+    }
+    .project-priority.medium {
+      border-left: 3px solid var(--priority-med);
+    }
+    .priority-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .priority-dot.high {
+      background: var(--priority-high);
+    }
+    .priority-dot.medium {
+      background: var(--priority-med);
+    }
+    .project-content {
+      padding: 1.5rem;
+    }
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+      color: #f5f3ee;
+      line-height: 1.3;
+    }
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .project-tag {
+      background: rgba(255,255,255,.08);
+      color: var(--brand-ink);
+      padding: .25rem .6rem;
+      border-radius: 4px;
+      font-size: .8rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+    .project-platforms {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .platform-badge {
+      background: rgba(212,139,60,.2);
+      color: var(--brand);
+      padding: .3rem .6rem;
+      border-radius: 4px;
+      font-size: .8rem;
+      font-weight: 700;
+      border: 1px solid rgba(212,139,60,.4);
+      cursor: help;
+      position: relative;
+    }
+    .platform-badge:hover::after {
+      content: attr(data-full-name);
+      position: absolute;
+      bottom: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(17,18,22,.98);
+      padding: .5rem .75rem;
+      border-radius: 6px;
+      font-size: .75rem;
+      white-space: nowrap;
+      border: 1px solid rgba(255,255,255,.2);
+      z-index: 100;
+    }
+    .materials-indicators {
+      display: flex;
+      gap: .75rem;
+      margin-bottom: 1rem;
+      padding: .75rem;
+      background: rgba(255,255,255,.02);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .material-item {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .8rem;
+      color: rgba(255,255,255,.6);
+    }
+    .material-item.available {
+      color: var(--success);
+    }
+    .material-icon {
+      font-size: 1rem;
+    }
+    .project-description {
+      color: rgba(255,255,255,.8);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      font-size: .95rem;
+    }
+    .project-actions {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: .65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: .9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #111;
+    }
+    .btn-primary:hover {
+      background: var(--brand-hover);
+      text-decoration: none;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(212,139,60,.4);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.08);
+      color: var(--brand-ink);
+      border: 1px solid rgba(255,255,255,.2);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.3);
+      text-decoration: none;
+    }
+    .btn-large {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+
+    /* Quick View Modal */
+    .quick-view-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,.9);
+      z-index: 5000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    .quick-view-overlay.active {
+      display: flex;
+    }
+    .quick-view-modal {
+      background: rgba(17,18,22,.98);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 16px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalSlideIn 0.3s ease;
+    }
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .quick-view-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0,0,0,.8);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.2s ease;
+    }
+    .quick-view-close:hover {
+      background: rgba(212,139,60,.8);
+      transform: rotate(90deg);
+    }
+    .quick-view-content {
+      padding: 2rem;
+    }
+
+    /* CTA Center */
+    .cta-center {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 4rem 24px;
+      background: rgba(255,255,255,.02);
+      border-top: 1px solid var(--brand-rule);
+    }
+    .about-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .about-card {
+      background: rgba(255,255,255,.03);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .about-card h3 {
+      color: var(--brand);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    .about-card p {
+      color: rgba(255,255,255,.8);
+      line-height: 1.7;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 4rem 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,.03);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .contact-card h3 {
+      color: var(--brand);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    .contact-card p {
+      color: rgba(255,255,255,.8);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .contact-link {
+      display: block;
+      color: var(--brand);
+      margin-top: .75rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-link:hover {
+      color: var(--brand-hover);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: rgba(255,255,255,.02);
+      border-top: 1px solid var(--brand-rule);
+      padding: 2rem 24px;
+      text-align: center;
+    }
+    .footer-content p {
+      color: rgba(255,255,255,.6);
+      font-size: .9rem;
+    }
+
+    /* Back to Top Button */
     .back-to-top{
       position:fixed;
       bottom:2rem;
@@ -233,642 +1252,681 @@
     .back-to-top:hover{
       background:var(--brand-hover);
       transform:translateY(-4px);
-      box-shadow:0 6px 20px rgba(212,139,60,.4);
+      box-shadow:0 8px 16px rgba(212,139,60,.4);
     }
 
-    /* Hero */
-    .hero{
-      min-height:80vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:3rem 24px;
-      background:linear-gradient(180deg,rgba(10,10,10,0) 0%,rgba(10,10,10,.8) 100%),
-                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%230a0a0a"/></svg>');
-      background-size:cover;
-      background-position:center;
-    }
-    .hero-content{max-width:900px;margin:0 auto;}
-    .hero h1{
-      font-size:clamp(2.5rem,8vw,5rem);
-      font-weight:900;
-      margin-bottom:1rem;
-      line-height:1.1;
-      letter-spacing:-1px;
-    }
-    .hero h1 .brand-text{color:#fff;}
-    .hero h1 .accent-text{
-      color:var(--brand);
-      display:block;
-    }
-    .hero-tagline{
-      font-size:clamp(1.1rem,2.5vw,1.4rem);
-      color:var(--brand-ink);
-      margin-bottom:2rem;
-      font-weight:400;
-      max-width:700px;
-      margin-left:auto;
-      margin-right:auto;
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .mega-menu {
+        min-width: 500px;
+      }
+      .mega-menu-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
     }
 
-    /* Quick Stats */
-    .quick-stats{
-      background:rgba(255,255,255,.03);
-      border-top:1px solid rgba(255,255,255,.08);
-      border-bottom:1px solid rgba(255,255,255,.08);
-      padding:2rem 24px;
-    }
-    .stats-grid{
-      max-width:1200px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:2rem;
-      text-align:center;
-    }
-    .stat-item{
-      padding:1rem;
-    }
-    .stat-number{
-      font-size:2.5rem;
-      font-weight:900;
-      color:var(--brand);
-      display:block;
-      line-height:1;
-      margin-bottom:.5rem;
-    }
-    .stat-label{
-      color:var(--brand-ink);
-      font-size:.95rem;
-      font-weight:600;
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
-
-    /* Featured Projects Grid */
-    .featured-section{
-      padding:4rem 24px;
-      max-width:1400px;
-      margin:0 auto;
-    }
-    .section-header{
-      text-align:center;
-      margin-bottom:3rem;
-    }
-    .section-header h2{
-      font-size:clamp(2rem,5vw,3rem);
-      font-weight:900;
-      margin-bottom:1rem;
-      color:#fff;
-    }
-    .section-header p{
-      color:var(--brand-ink);
-      font-size:1.1rem;
-      max-width:700px;
-      margin:0 auto;
+    @media (max-width: 768px) {
+      .nav-list,
+      .nav-search {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      .utility-wrap {
+        font-size: .8rem;
+        gap: 1rem;
+      }
+      .utility-right {
+        gap: 1rem;
+      }
+      .filter-controls {
+        grid-template-columns: 1fr;
+      }
+      .filter-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .filter-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .sort-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .stat-number {
+        font-size: 2.5rem;
+      }
+      .search-expanded {
+        min-width: 320px;
+        right: -50%;
+      }
     }
 
-    .featured-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-      gap:2rem;
-      margin-bottom:2rem;
+    @media (max-width: 480px) {
+      .hero {
+        padding: 3rem 1rem;
+      }
+      .quick-stats {
+        padding: 2rem 1rem;
+      }
+      .featured-section,
+      .about-section,
+      .contact-section {
+        padding: 3rem 1rem;
+      }
+      .nav-wrap {
+        padding: .75rem 1rem;
+      }
+      .utility-wrap {
+        padding: 0 1rem;
+      }
+      .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+      }
     }
 
-    /* Project Cards */
-    .project-card{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:12px;
-      overflow:hidden;
-      transition:all 0.3s ease;
-      display:flex;
-      flex-direction:column;
-    }
-    .project-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 8px 24px rgba(0,0,0,.4);
-      border-color:rgba(212,139,60,.3);
-    }
-    .project-image{
-      width:100%;
-      aspect-ratio:16/9;
-      object-fit:cover;
-      background:#1a1a1a;
-      display:block;
-    }
-    .project-content{
-      padding:1.5rem;
-      flex:1;
-      display:flex;
-      flex-direction:column;
-    }
-    .project-title{
-      font-size:1.3rem;
-      font-weight:700;
-      margin-bottom:.5rem;
-      color:#fff;
-    }
-    .project-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      margin-bottom:1rem;
-    }
-    .project-tag{
-      background:rgba(212,139,60,.15);
-      color:var(--brand);
-      padding:.25rem .6rem;
-      border-radius:6px;
-      font-size:.8rem;
-      font-weight:600;
-      border:1px solid rgba(212,139,60,.3);
-    }
-    .project-description{
-      color:#d0d0d5;
-      font-size:.95rem;
-      margin-bottom:1rem;
-      flex:1;
-      line-height:1.5;
-    }
-    .project-platforms{
-      display:flex;
-      gap:.5rem;
-      margin-bottom:1rem;
-      flex-wrap:wrap;
-    }
-    .platform-badge{
-      background:rgba(255,255,255,.08);
-      padding:.3rem .6rem;
-      border-radius:6px;
-      font-size:.75rem;
-      font-weight:600;
-      color:#e0e0e5;
-      border:1px solid rgba(255,255,255,.12);
-      cursor:help;
-      position:relative;
-    }
-    .platform-badge:hover{
-      background:rgba(212,139,60,.2);
-      border-color:var(--brand);
-      color:var(--brand);
-    }
-    /* Tooltip for platform badges - Phase 1 */
-    .platform-badge::after{
-      content:attr(data-full-name);
-      position:absolute;
-      bottom:100%;
-      left:50%;
-      transform:translateX(-50%) translateY(-8px);
-      background:rgba(17,18,22,.95);
-      color:#fff;
-      padding:.4rem .8rem;
-      border-radius:6px;
-      font-size:.75rem;
-      white-space:nowrap;
-      opacity:0;
-      pointer-events:none;
-      transition:all 0.2s ease;
-      border:1px solid rgba(255,255,255,.2);
-      z-index:100;
-    }
-    .platform-badge:hover::after{
-      opacity:1;
-      transform:translateX(-50%) translateY(-4px);
+    /* Print Styles */
+    @media print {
+      .site-header,
+      .utility-bar,
+      .filter-section,
+      .back-to-top,
+      .mobile-menu-toggle,
+      .btn {
+        display: none;
+      }
+      body {
+        background: white;
+        color: black;
+      }
+      .project-card {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+      }
     }
 
-    .project-actions{
-      display:flex;
-      gap:.75rem;
-    }
-    .btn{
-      flex:1;
-      padding:.7rem 1rem;
-      border-radius:8px;
-      font-weight:700;
-      font-size:.9rem;
-      text-align:center;
-      cursor:pointer;
-      transition:all 0.2s ease;
-      border:1px solid;
-      text-decoration:none;
-      display:inline-block;
-    }
-    .btn-primary{
-      background:var(--brand);
-      color:#111;
-      border-color:var(--brand);
-    }
-    .btn-primary:hover{
-      background:var(--brand-hover);
-      border-color:var(--brand-hover);
-      transform:translateY(-2px);
-      box-shadow:0 4px 12px rgba(212,139,60,.3);
-    }
-    .btn-secondary{
-      background:transparent;
-      color:var(--brand);
-      border-color:var(--brand);
-    }
-    .btn-secondary:hover{
-      background:rgba(212,139,60,.1);
-      border-color:var(--brand-hover);
+    /* Focus Visible for Accessibility */
+    *:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
     }
 
-    .cta-center{
-      text-align:center;
-      margin-top:2rem;
-    }
-    .btn-large{
-      padding:1rem 2.5rem;
-      font-size:1.1rem;
-    }
-
-    /* About Section */
-    .about-section{
-      padding:4rem 24px;
-      background:rgba(255,255,255,.02);
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-    .about-content{
-      max-width:1200px;
-      margin:0 auto;
-    }
-    .about-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:2rem;
-      margin-top:2rem;
-    }
-    .about-card{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:12px;
-      padding:2rem;
-    }
-    .about-card h3{
-      color:var(--brand);
-      font-size:1.3rem;
-      margin-bottom:1rem;
-      font-weight:700;
-    }
-    .about-card p{
-      color:#d0d0d5;
-      line-height:1.7;
-    }
-
-    /* Contact Section */
-    .contact-section{
-      padding:4rem 24px;
-      max-width:1000px;
-      margin:0 auto;
-    }
-    .contact-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:2rem;
-      margin-top:2rem;
-    }
-    .contact-card{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:12px;
-      padding:2rem;
-      text-align:center;
-    }
-    .contact-card h3{
-      color:#fff;
-      font-size:1.2rem;
-      margin-bottom:1rem;
-    }
-    .contact-card p{
-      color:#d0d0d5;
-      margin-bottom:1rem;
-      line-height:1.6;
-    }
-    .contact-link{
-      color:var(--brand);
-      font-weight:600;
-      font-size:1.1rem;
-      display:block;
-      margin-top:.5rem;
-    }
-
-    /* Footer */
-    .site-footer{
-      background:rgba(0,0,0,.5);
-      border-top:1px solid rgba(255,255,255,.08);
-      padding:2rem 24px;
-      text-align:center;
-      color:#999;
-      font-size:.9rem;
-    }
-    .footer-content{
-      max-width:1200px;
-      margin:0 auto;
-    }
-
-    /* Responsive */
-    @media(max-width:768px){
-      .nav-list{flex-direction:column;gap:.3rem;}
-      .nav{margin-left:0;width:100%;}
-      .nav-wrap{flex-direction:column;padding:1rem 24px;}
-      .mega-menu{min-width:90vw;left:5vw;transform:none;}
-      .mega-menu-grid{grid-template-columns:1fr;}
-      .nav-item.has-mega:hover .mega-menu{transform:translateY(0);}
-      .utility-wrap{flex-direction:column;gap:.5rem;font-size:.8rem;}
-      .featured-grid{grid-template-columns:1fr;}
-      .back-to-top{bottom:1rem;right:1rem;width:45px;height:45px;}
-    }
-
-    /* Loading animation for lazy images */
-    img[loading="lazy"]{
-      background:linear-gradient(90deg,#1a1a1a 25%,#2a2a2a 50%,#1a1a1a 75%);
-      background-size:200% 100%;
-      animation:loading 1.5s infinite;
-    }
-    @keyframes loading{
-      0%{background-position:200% 0;}
-      100%{background-position:-200% 0;}
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Utility Bar for Professionals -->
+  <!-- Utility Bar -->
   <div class="utility-bar">
     <div class="utility-wrap">
-      <a href="#" class="utility-link" onclick="alert('Full catalog download will be available soon. Please contact us directly.'); return false;">
-        📊 Download Full Catalog
-      </a>
-      <a href="mailto:NCCAEntertainment@gmail.com?subject=Script%20Request" class="utility-link">
-        📧 Request Scripts
-      </a>
-      <a href="mailto:NCCAEntertainment@gmail.com?subject=Meeting%20Request" class="utility-link">
-        📞 Schedule Meeting
-      </a>
+      <div class="utility-left">
+        <span style="color: var(--brand-ink); font-weight: 600;">🎬 47 Original Projects</span>
+      </div>
+      <div class="utility-right">
+        <a href="#" class="utility-link executive-view">📊 Executive Dashboard</a>
+        <a href="mailto:info@nccaentertainment.com" class="utility-link">✉️ Contact</a>
+        <a href="tel:+19102629307" class="utility-link">📞 (910) 262-9307</a>
+      </div>
     </div>
   </div>
 
-  <!-- Header with improved navigation -->
+  <!-- Header -->
   <header class="site-header">
     <div class="nav-wrap">
-      <a href="index.html" class="brand">NCCA</a>
-      <nav class="nav">
+      <a href="index.html" class="brand" aria-label="NCCA Entertainment Home">NCCA</a>
+      
+      <!-- Desktop Navigation -->
+      <nav class="nav" aria-label="Main navigation">
         <ul class="nav-list">
-          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="#about">About</a></li>
+          
+          <!-- Mega Menu - Projects -->
           <li class="nav-item has-mega">
-            <a href="slate.html">Slate</a>
-            <!-- Mega Menu -->
-            <div class="mega-menu">
+            <a href="slate.html" aria-haspopup="true" aria-expanded="false">Projects ▾</a>
+            <div class="mega-menu" role="menu">
               <div class="mega-menu-grid">
-                <div class="mega-menu-col">
-                  <h4>By Genre</h4>
-                  <ul>
-                    <li><a href="slate.html?genre=drama">Drama</a></li>
-                    <li><a href="slate.html?genre=comedy">Comedy</a></li>
-                    <li><a href="slate.html?genre=romance">Romance</a></li>
-                    <li><a href="slate.html?genre=thriller">Thriller</a></li>
-                    <li><a href="slate.html?genre=horror">Horror / Southern Gothic</a></li>
-                    <li><a href="slate.html?genre=action">Action</a></li>
-                  </ul>
-                </div>
-                <div class="mega-menu-col">
-                  <h4>By Format</h4>
-                  <ul>
-                    <li><a href="slate.html?format=mow">MOW (Movie of the Week)</a></li>
-                    <li><a href="slate.html?format=limited">Limited Series</a></li>
-                    <li><a href="slate.html?format=network">Network Series</a></li>
-                    <li><a href="slate.html?format=feature">Feature Film</a></li>
-                    <li><a href="slate.html?format=docuseries">Docuseries</a></li>
-                  </ul>
-                </div>
+                <!-- Column 1: By Platform -->
                 <div class="mega-menu-col">
                   <h4>By Platform</h4>
-                  <ul>
-                    <li><a href="slate.html?platform=netflix">Netflix</a></li>
-                    <li><a href="slate.html?platform=hbo">HBO</a></li>
-                    <li><a href="slate.html?platform=bet">BET+</a></li>
-                    <li><a href="slate.html?platform=own">OWN</a></li>
-                    <li><a href="slate.html?platform=lifetime">Lifetime</a></li>
-                    <li><a href="slate.html?platform=peacock">Peacock</a></li>
-                    <li><a href="slate.html?platform=paramount">Paramount+</a></li>
+                  <ul role="none">
+                    <li><a href="slate.html?platform=netflix" role="menuitem">Netflix Projects</a></li>
+                    <li><a href="slate.html?platform=hbo" role="menuitem">HBO/Max Projects</a></li>
+                    <li><a href="slate.html?platform=bet-plus" role="menuitem">BET+ Projects</a></li>
+                    <li><a href="slate.html?platform=own" role="menuitem">OWN Projects</a></li>
+                    <li><a href="slate.html?platform=lifetime" role="menuitem">Lifetime Projects</a></li>
+                    <li><a href="slate.html?platform=paramount" role="menuitem">Paramount+/Peacock</a></li>
+                    <li><a href="slate.html?platform=theatrical" role="menuitem">Theatrical Features</a></li>
+                  </ul>
+                </div>
+
+                <!-- Column 2: By Format -->
+                <div class="mega-menu-col">
+                  <h4>By Format</h4>
+                  <ul role="none">
+                    <li><a href="slate.html?format=mow" role="menuitem">TV Movies (MOW)</a></li>
+                    <li><a href="slate.html?format=limited-series" role="menuitem">Limited Series (6-10 eps)</a></li>
+                    <li><a href="slate.html?format=network-series" role="menuitem">Network Series</a></li>
+                    <li><a href="slate.html?format=feature" role="menuitem">Feature Films</a></li>
+                    <li><a href="slate.html?format=docuseries" role="menuitem">Docuseries</a></li>
+                  </ul>
+                </div>
+
+                <!-- Column 3: By Genre -->
+                <div class="mega-menu-col">
+                  <h4>By Genre</h4>
+                  <ul role="none">
+                    <li><a href="slate.html?genre=drama" role="menuitem">Drama</a></li>
+                    <li><a href="slate.html?genre=thriller" role="menuitem">Thriller/Noir</a></li>
+                    <li><a href="slate.html?genre=romance" role="menuitem">Romance</a></li>
+                    <li><a href="slate.html?genre=comedy" role="menuitem">Comedy</a></li>
+                    <li><a href="slate.html?genre=horror" role="menuitem">Horror/Southern Gothic</a></li>
+                    <li><a href="slate.html?genre=action" role="menuitem">Action</a></li>
                   </ul>
                 </div>
               </div>
+              <div class="mega-menu-footer">
+                <a href="slate.html">View All 47 Projects →</a>
+              </div>
             </div>
           </li>
-          <li class="nav-item"><a href="music.html">Music</a></li>
-          <li class="nav-item"><a href="#contact">Contact</a></li>
+          
+          <li class="nav-item cta"><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+
+      <!-- Search -->
+      <div class="nav-search">
+        <button class="search-trigger" id="searchTrigger" aria-label="Open search" aria-expanded="false">
+          <span>🔍</span>
+          <span>Search</span>
+        </button>
+        <div class="search-expanded" id="searchExpanded" role="search">
+          <div class="search-input-wrap">
+            <input 
+              type="search" 
+              class="search-input" 
+              id="searchInput"
+              placeholder="Search projects, genres, platforms..." 
+              aria-label="Search projects"
+              autocomplete="off"
+            />
+            <button class="search-clear" id="searchClear" aria-label="Clear search">×</button>
+          </div>
+          <div class="search-results" id="searchResults"></div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open menu" aria-expanded="false">
+        ☰
+      </button>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>
-        <span class="brand-text">NCCA</span>
-        <span class="accent-text">ENTERTAINMENT</span>
-      </h1>
-      <p class="hero-tagline">
-        A boutique content studio delivering premium, culturally rich scripted series and films. Where Atlanta's soul meets global storytelling.
-      </p>
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="brand">NCCA</a>
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">×</button>
     </div>
-  </section>
-
-  <!-- Quick Stats -->
-  <section class="quick-stats">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <span class="stat-number">47</span>
-        <span class="stat-label">Original Projects</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">8</span>
-        <span class="stat-label">Genres</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">10+</span>
-        <span class="stat-label">Target Platforms</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">ATL</span>
-        <span class="stat-label">Based Production</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Projects -->
-  <section class="featured-section">
-    <div class="section-header">
-      <h2>FEATURED PROJECTS</h2>
-      <p>Showcasing our most market-ready projects with comprehensive materials available.</p>
-    </div>
-
-    <div class="featured-grid">
-      <!-- Project 1 -->
-      <article class="project-card">
-        <img src="images/influencers-last-post.png" alt="The Influencer's Last Post" class="project-image" loading="lazy">
-        <div class="project-content">
-          <h3 class="project-title">The Influencer's Last Post</h3>
-          <div class="project-meta">
-            <span class="project-tag">Film Noir</span>
-            <span class="project-tag">MOW</span>
+    <div class="mobile-menu-content">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item">
+          <a href="index.html">🏠 Home</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#about">ℹ️ About</a>
+        </li>
+        <li class="mobile-nav-item has-submenu">
+          <a href="#" id="mobileProjectsToggle">
+            🎬 Projects (47)
+            <span>▾</span>
+          </a>
+          <div class="mobile-submenu" id="mobileProjectsSubmenu">
+            <ul>
+              <li><a href="slate.html">⭐ Featured Projects</a></li>
+              <li><a href="slate.html">📋 All Projects</a></li>
+              
+              <h5>By Platform</h5>
+              <li><a href="slate.html?platform=netflix">Netflix</a></li>
+              <li><a href="slate.html?platform=hbo">HBO/Max</a></li>
+              <li><a href="slate.html?platform=bet-plus">BET+</a></li>
+              <li><a href="slate.html?platform=own">OWN</a></li>
+              <li><a href="slate.html?platform=lifetime">Lifetime</a></li>
+              
+              <h5>By Format</h5>
+              <li><a href="slate.html?format=mow">TV Movies</a></li>
+              <li><a href="slate.html?format=limited-series">Limited Series</a></li>
+              <li><a href="slate.html?format=network-series">Network Series</a></li>
+              
+              <h5>By Genre</h5>
+              <li><a href="slate.html?genre=drama">Drama</a></li>
+              <li><a href="slate.html?genre=thriller">Thriller</a></li>
+              <li><a href="slate.html?genre=comedy">Comedy</a></li>
+            </ul>
           </div>
-          <p class="project-description">
-            A social media influencer's final post becomes the key to solving her own murder.
-          </p>
-          <div class="project-actions">
-            <a href="projects/the-influencers-last-post.html" class="btn btn-primary">View Details</a>
-            <a href="assets/influencers-last-post-teaser.mp4" class="btn btn-secondary">Trailer</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#contact">📧 Contact</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#" style="color: var(--brand); font-weight: 700;">📊 Executive Dashboard</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>
+          <span class="brand-text">NCCA</span>
+          <span class="accent-text">ENTERTAINMENT</span>
+        </h1>
+        <p class="hero-tagline">
+          A boutique content studio delivering premium, culturally rich scripted series and films. Where Atlanta's soul meets global storytelling.
+        </p>
+      </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="quick-stats">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">47</span>
+          <span class="stat-label">Original Projects</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">8</span>
+          <span class="stat-label">Genres</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">Target Platforms</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">ATL</span>
+          <span class="stat-label">Based Production</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section (Hidden on homepage, shown on slate.html) -->
+    <section class="filter-section" id="filterSection" style="display: none;">
+      <div class="filter-container">
+        <div class="filter-header">
+          <h2 class="filter-title">Filter Projects</h2>
+          <div class="filter-actions">
+            <div class="filter-count">
+              Showing <strong id="resultCount">47</strong> projects
+            </div>
+            <button class="filter-clear" id="clearFilters" aria-label="Clear all filters">
+              Clear Filters
+            </button>
           </div>
         </div>
-      </article>
 
-      <!-- Project 2 -->
-      <article class="project-card">
-        <img src="images/the-line.png" alt="The Line" class="project-image" loading="lazy">
-        <div class="project-content">
-          <h3 class="project-title">The Line</h3>
-          <div class="project-meta">
-            <span class="project-tag">Network Series</span>
+        <div class="filter-controls">
+          <div class="filter-group">
+            <label for="platformFilter" class="filter-label">Platform</label>
+            <select id="platformFilter" class="filter-select" aria-label="Filter by platform">
+              <option value="">All Platforms</option>
+              <option value="netflix">Netflix</option>
+              <option value="hbo">HBO/Max</option>
+              <option value="bet-plus">BET+</option>
+              <option value="own">OWN</option>
+              <option value="lifetime">Lifetime</option>
+              <option value="paramount">Paramount+</option>
+              <option value="peacock">Peacock</option>
+              <option value="apple-tv">Apple TV+</option>
+              <option value="theatrical">Theatrical</option>
+            </select>
           </div>
-          <div class="project-platforms">
-            <span class="platform-badge" data-full-name="Paramount+">P+</span>
-            <span class="platform-badge" data-full-name="Peacock">P</span>
-            <span class="platform-badge" data-full-name="BET+">B+</span>
-            <span class="platform-badge" data-full-name="OWN">OWN</span>
+
+          <div class="filter-group">
+            <label for="formatFilter" class="filter-label">Format</label>
+            <select id="formatFilter" class="filter-select" aria-label="Filter by format">
+              <option value="">All Formats</option>
+              <option value="mow">TV Movie (MOW)</option>
+              <option value="limited-series">Limited Series</option>
+              <option value="network-series">Network Series</option>
+              <option value="feature">Feature Film</option>
+              <option value="docuseries">Docuseries</option>
+            </select>
           </div>
-          <p class="project-description">
-            A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.
-          </p>
-          <div class="project-actions">
-            <a href="projects/the-line.html" class="btn btn-primary">View Details</a>
-            <a href="assets/the-line-teaser.mp4" class="btn btn-secondary">Trailer</a>
+
+          <div class="filter-group">
+            <label for="genreFilter" class="filter-label">Genre</label>
+            <select id="genreFilter" class="filter-select" aria-label="Filter by genre">
+              <option value="">All Genres</option>
+              <option value="drama">Drama</option>
+              <option value="thriller">Thriller/Noir</option>
+              <option value="romance">Romance</option>
+              <option value="comedy">Comedy</option>
+              <option value="horror">Horror/Southern Gothic</option>
+              <option value="action">Action</option>
+              <option value="faith-based">Faith-Based</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="statusFilter" class="filter-label">Status</label>
+            <select id="statusFilter" class="filter-select" aria-label="Filter by status">
+              <option value="">All Status</option>
+              <option value="development-ready">Development Ready</option>
+              <option value="packaging">Packaging Stage</option>
+              <option value="script-complete">Script Complete</option>
+              <option value="pitch-ready">Pitch Materials Available</option>
+            </select>
           </div>
         </div>
-      </article>
 
-      <!-- Project 3 -->
-      <article class="project-card">
-        <img src="images/the-last-dynasty.png" alt="The Last Dynasty" class="project-image" loading="lazy">
-        <div class="project-content">
-          <h3 class="project-title">The Last Dynasty</h3>
-          <div class="project-meta">
-            <span class="project-tag">Drama</span>
-            <span class="project-tag">Musical</span>
-            <span class="project-tag">MOW</span>
-          </div>
-          <div class="project-platforms">
-            <span class="platform-badge" data-full-name="Netflix">N</span>
-            <span class="platform-badge" data-full-name="HBO">HBO</span>
-            <span class="platform-badge" data-full-name="Apple TV+">🍎</span>
-          </div>
-          <p class="project-description">
-            The final generation of a powerful family fights to preserve their legacy.
-          </p>
-          <div class="project-actions">
-            <a href="projects/the-last-dynasty.html" class="btn btn-primary">View Details</a>
-            <a href="assets/the-last-dynasty-teaser.mp4" class="btn btn-secondary">Trailer</a>
+        <div class="active-filters" id="activeFilters" aria-live="polite"></div>
+
+        <div class="sort-controls">
+          <label for="sortSelect" class="sort-label">Sort by:</label>
+          <select id="sortSelect" class="sort-select" aria-label="Sort projects">
+            <option value="recent">Most Recent</option>
+            <option value="title-asc">Title (A-Z)</option>
+            <option value="title-desc">Title (Z-A)</option>
+            <option value="priority">Priority Level</option>
+          </select>
+          
+          <div class="view-toggle" role="group" aria-label="View layout">
+            <button class="view-btn active" id="viewGrid" aria-label="Grid view" title="Grid view">
+              ⊞
+            </button>
+            <button class="view-btn" id="viewList" aria-label="List view" title="List view">
+              ☰
+            </button>
           </div>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <!-- Project 4 -->
-      <article class="project-card">
-        <img src="images/black-girls-guide.png" alt="Black Girl's Guide to Vengeance" class="project-image" loading="lazy">
-        <div class="project-content">
-          <h3 class="project-title">Black Girl's Guide to Vengeance (and Vodka)</h3>
-          <div class="project-meta">
-            <span class="project-tag">Comedy</span>
-            <span class="project-tag">MOW</span>
-          </div>
-          <div class="project-platforms">
-            <span class="platform-badge" data-full-name="BET+">B+</span>
-            <span class="platform-badge" data-full-name="OWN">OWN</span>
-            <span class="platform-badge" data-full-name="Lifetime">L</span>
-          </div>
-          <p class="project-description">
-            Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women.
-          </p>
-          <div class="project-actions">
-            <a href="projects/black-girls-guide-to-vengeance.html" class="btn btn-primary">View Details</a>
-            <a href="#" class="btn btn-secondary">Trailer</a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="cta-center">
-      <a href="slate.html" class="btn btn-primary btn-large">View All 47 Projects</a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about-section" id="about">
-    <div class="about-content">
+    <!-- Featured Projects -->
+    <section class="featured-section">
       <div class="section-header">
-        <h2>About NCCA Entertainment</h2>
-        <p>A boutique content studio delivering premium, culturally rich scripted series and films — where Atlanta's soul meets global storytelling.</p>
+        <h2>FEATURED PROJECTS</h2>
+        <p>Showcasing our most market-ready projects with comprehensive materials available.</p>
       </div>
 
-      <div class="about-grid">
-        <div class="about-card">
-          <h3>Our Mission</h3>
-          <p>
-            NCCA Entertainment specializes in developing and producing market-ready film and television projects that center diverse voices, Southern authenticity, and commercial viability. We create content that resonates across platforms while maintaining cultural integrity and artistic excellence.
-          </p>
+      <div class="featured-grid" id="projectsGrid">
+        <!-- Project 1 -->
+        <article class="project-card" data-project-id="1" data-platforms="lifetime,bet-plus" data-format="mow" data-genre="thriller" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/influencers-last-post.png" alt="The Influencer's Last Post" class="project-image" loading="lazy">
+            <span class="project-badge featured">📌 Featured</span>
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Influencer's Last Post</h3>
+            <div class="project-meta">
+              <span class="project-tag">Film Noir</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available" title="Treatment available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available" title="Teaser available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available" title="Script available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A social media influencer's final post becomes the key to solving her own murder.
+            </p>
+            <div class="project-actions">
+              <button class="btn btn-primary quick-view-btn" data-project="1">Quick View</button>
+              <a href="projects/the-influencers-last-post.html" class="btn btn-secondary">Full Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card" data-project-id="2" data-platforms="paramount,peacock,bet-plus,own" data-format="network-series" data-genre="drama" data-status="development-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-line.png" alt="The Line" class="project-image" loading="lazy">
+            <span class="project-badge new">✨ New</span>
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Line</h3>
+            <div class="project-meta">
+              <span class="project-tag">Network Series</span>
+              <span class="project-tag">Drama</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Paramount+">P+</span>
+              <span class="platform-badge" data-full-name="Peacock">P</span>
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">OWN</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📖</span>
+                <span>Bible</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.
+            </p>
+            <div class="project-actions">
+              <button class="btn btn-primary quick-view-btn" data-project="2">Quick View</button>
+              <a href="projects/the-line.html" class="btn btn-secondary">Full Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card" data-project-id="3" data-platforms="netflix,hbo,apple-tv" data-format="mow" data-genre="drama" data-status="script-complete">
+          <div class="project-image-wrapper">
+            <img src="images/the-last-dynasty.png" alt="The Last Dynasty" class="project-image" loading="lazy">
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Last Dynasty</h3>
+            <div class="project-meta">
+              <span class="project-tag">Drama</span>
+              <span class="project-tag">Musical</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO">HBO</span>
+              <span class="platform-badge" data-full-name="Apple TV+">🍎</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              The final generation of a powerful family fights to preserve their legacy.
+            </p>
+            <div class="project-actions">
+              <button class="btn btn-primary quick-view-btn" data-project="3">Quick View</button>
+              <a href="projects/the-last-dynasty.html" class="btn btn-secondary">Full Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card" data-project-id="4" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="comedy" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/black-girls-guide.png" alt="Black Girl's Guide to Vengeance" class="project-image" loading="lazy">
+            <span class="project-badge featured">📌 Featured</span>
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Black Girl's Guide to Vengeance (and Vodka)</h3>
+            <div class="project-meta">
+              <span class="project-tag">Comedy</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">OWN</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+              <div class="material-item">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+            </div>
+            <p class="project-description">
+              Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women.
+            </p>
+            <div class="project-actions">
+              <button class="btn btn-primary quick-view-btn" data-project="4">Quick View</button>
+              <a href="projects/black-girls-guide-to-vengeance.html" class="btn btn-secondary">Full Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="cta-center">
+        <a href="slate.html" class="btn btn-primary btn-large">View All 47 Projects</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="about-content">
+        <div class="section-header">
+          <h2>About NCCA Entertainment</h2>
+          <p>A boutique content studio delivering premium, culturally rich scripted series and films — where Atlanta's soul meets global storytelling.</p>
         </div>
 
-        <div class="about-card">
-          <h3>What We Do</h3>
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>Our Mission</h3>
+            <p>
+              NCCA Entertainment specializes in developing and producing market-ready film and television projects that center diverse voices, Southern authenticity, and commercial viability. We create content that resonates across platforms while maintaining cultural integrity and artistic excellence.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3>What We Do</h3>
+            <p>
+              We develop scripted features, TV movies (MOW), limited series, network series, and docuseries across multiple genres including drama, thriller, romance, comedy, horror, and Southern Gothic. Our projects are designed for leading platforms including BET+, OWN, Lifetime, Netflix, HBO, Peacock, Paramount+, and major broadcast networks.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3>Our Approach</h3>
+            <p>
+              Atlanta-forward. Culture-first. Franchise-minded. We combine deep cultural knowledge with strategic market positioning to create projects that serve both artistic vision and commercial objectives. Every project is developed with clear target buyers, comprehensive pitch materials, and production readiness.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <p>For meetings, materials, script access, or packaging conversations</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>NCCA Entertainment</h3>
           <p>
-            We develop scripted features, TV movies (MOW), limited series, network series, and docuseries across multiple genres including drama, thriller, romance, comedy, horror, and Southern Gothic. Our projects are designed for leading platforms including BET+, OWN, Lifetime, Netflix, HBO, Peacock, Paramount+, and major broadcast networks.
+            Atlanta, GA<br>
+            Development • Packaging • Physical Production
           </p>
+          <a href="mailto:info@nccaentertainment.com" class="contact-link">info@nccaentertainment.com</a>
+          <a href="tel:+19102629307" class="contact-link">(910) 262-9307</a>
         </div>
 
-        <div class="about-card">
-          <h3>Our Approach</h3>
+        <div class="contact-card">
+          <h3>Let's Work</h3>
           <p>
-            Atlanta-forward. Culture-first. Franchise-minded. We combine deep cultural knowledge with strategic market positioning to create projects that serve both artistic vision and commercial objectives. Every project is developed with clear target buyers, comprehensive pitch materials, and production readiness.
+            Scripted Features • TV Movies (MOW) • Limited Series • Docuseries
+          </p>
+          <p style="margin-top:1rem;">
+            <strong>Atlanta-forward. Culture-first. Franchise-minded.</strong>
           </p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact-section" id="contact">
-    <div class="section-header">
-      <h2>Contact</h2>
-      <p>For meetings, materials, script access, or packaging conversations</p>
-    </div>
-
-    <div class="contact-grid">
-      <div class="contact-card">
-        <h3>NCCA Entertainment</h3>
-        <p>
-          Atlanta, GA<br>
-          Development • Packaging • Physical Production
-        </p>
-        <a href="mailto:NCCAEntertainment@gmail.com" class="contact-link">NCCAEntertainment@gmail.com</a>
-        <a href="tel:+19102629307" class="contact-link">(910) 262-9307</a>
-      </div>
-
-      <div class="contact-card">
-        <h3>Let's Work</h3>
-        <p>
-          Scripted Features • TV Movies (MOW) • Limited Series • Docuseries
-        </p>
-        <p style="margin-top:1rem;">
-          <strong>Atlanta-forward. Culture-first. Franchise-minded.</strong>
-        </p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -878,11 +1936,444 @@
     </div>
   </footer>
 
-  <!-- Back to Top Button (Phase 1) -->
+  <!-- Quick View Modal -->
+  <div class="quick-view-overlay" id="quickViewOverlay">
+    <div class="quick-view-modal">
+      <button class="quick-view-close" id="quickViewClose" aria-label="Close quick view">×</button>
+      <div class="quick-view-content" id="quickViewContent">
+        <!-- Dynamic content will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
-    // Back to Top Button functionality
+    // ==========================================
+    // SEARCH FUNCTIONALITY
+    // ==========================================
+    
+    // Sample project data (in production, this would come from your backend/CMS)
+    const projectsData = [
+      {
+        id: 1,
+        title: "The Influencer's Last Post",
+        genre: "Film Noir",
+        format: "MOW",
+        platforms: ["Lifetime", "BET+"],
+        description: "A social media influencer's final post becomes the key to solving her own murder.",
+        image: "images/influencers-last-post.png",
+        url: "projects/the-influencers-last-post.html"
+      },
+      {
+        id: 2,
+        title: "The Line",
+        genre: "Drama",
+        format: "Network Series",
+        platforms: ["Paramount+", "Peacock", "BET+", "OWN"],
+        description: "A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.",
+        image: "images/the-line.png",
+        url: "projects/the-line.html"
+      },
+      {
+        id: 3,
+        title: "The Last Dynasty",
+        genre: "Drama",
+        format: "MOW",
+        platforms: ["Netflix", "HBO", "Apple TV+"],
+        description: "The final generation of a powerful family fights to preserve their legacy.",
+        image: "images/the-last-dynasty.png",
+        url: "projects/the-last-dynasty.html"
+      },
+      {
+        id: 4,
+        title: "Black Girl's Guide to Vengeance (and Vodka)",
+        genre: "Comedy",
+        format: "MOW",
+        platforms: ["BET+", "OWN", "Lifetime"],
+        description: "Dumped for an AI clone, a software engineer launches a revenge app for wronged women.",
+        image: "images/black-girls-guide.png",
+        url: "projects/black-girls-guide-to-vengeance.html"
+      }
+      // Add more projects here
+    ];
+
+    const searchTrigger = document.getElementById('searchTrigger');
+    const searchExpanded = document.getElementById('searchExpanded');
+    const searchInput = document.getElementById('searchInput');
+    const searchClear = document.getElementById('searchClear');
+    const searchResults = document.getElementById('searchResults');
+
+    // Toggle search expanded view
+    searchTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isActive = searchExpanded.classList.toggle('active');
+      searchTrigger.setAttribute('aria-expanded', isActive);
+      if (isActive) {
+        searchInput.focus();
+      }
+    });
+
+    // Close search when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!searchExpanded.contains(e.target) && !searchTrigger.contains(e.target)) {
+        searchExpanded.classList.remove('active');
+        searchTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Search functionality
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.trim().toLowerCase();
+      
+      if (query.length === 0) {
+        searchClear.classList.remove('visible');
+        searchResults.innerHTML = '';
+        return;
+      }
+
+      searchClear.classList.add('visible');
+
+      // Filter projects
+      const filtered = projectsData.filter(project => {
+        return project.title.toLowerCase().includes(query) ||
+               project.genre.toLowerCase().includes(query) ||
+               project.format.toLowerCase().includes(query) ||
+               project.description.toLowerCase().includes(query) ||
+               project.platforms.some(p => p.toLowerCase().includes(query));
+      });
+
+      // Display results
+      if (filtered.length === 0) {
+        searchResults.innerHTML = `
+          <div class="search-no-results">
+            <p>No projects found for "${query}"</p>
+            <p style="font-size: .85rem; margin-top: .5rem; color: rgba(255,255,255,.4);">
+              Try searching for genres, platforms, or keywords
+            </p>
+          </div>
+        `;
+      } else {
+        searchResults.innerHTML = filtered.map(project => `
+          <a href="${project.url}" class="search-result-item">
+            <img src="${project.image}" alt="${project.title}" class="search-result-thumb">
+            <div class="search-result-content">
+              <div class="search-result-title">${highlightQuery(project.title, query)}</div>
+              <div class="search-result-meta">
+                <span class="search-result-tag">${project.genre}</span>
+                <span class="search-result-tag">${project.format}</span>
+                ${project.platforms.slice(0, 2).map(p => `<span class="search-result-tag">${p}</span>`).join('')}
+              </div>
+            </div>
+          </a>
+        `).join('');
+      }
+    });
+
+    // Highlight matched query in results
+    function highlightQuery(text, query) {
+      const regex = new RegExp(`(${query})`, 'gi');
+      return text.replace(regex, '<mark style="background: rgba(212,139,60,.3); color: var(--brand);">$1</mark>');
+    }
+
+    // Clear search
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      searchClear.classList.remove('visible');
+      searchResults.innerHTML = '';
+      searchInput.focus();
+    });
+
+    // ==========================================
+    // MOBILE MENU
+    // ==========================================
+    
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileProjectsToggle = document.getElementById('mobileProjectsToggle');
+    const mobileProjectsSubmenu = document.getElementById('mobileProjectsSubmenu');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenuOverlay.classList.add('active');
+      mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+
+    mobileMenuClose.addEventListener('click', () => {
+      mobileMenuOverlay.classList.remove('active');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+
+    mobileProjectsToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      mobileProjectsSubmenu.classList.toggle('active');
+    });
+
+    // ==========================================
+    // FILTER FUNCTIONALITY
+    // ==========================================
+    
+    const platformFilter = document.getElementById('platformFilter');
+    const formatFilter = document.getElementById('formatFilter');
+    const genreFilter = document.getElementById('genreFilter');
+    const statusFilter = document.getElementById('statusFilter');
+    const activeFilters = document.getElementById('activeFilters');
+    const clearFiltersBtn = document.getElementById('clearFilters');
+    const resultCount = document.getElementById('resultCount');
+    const projectsGrid = document.getElementById('projectsGrid');
+    const sortSelect = document.getElementById('sortSelect');
+
+    let currentFilters = {
+      platform: '',
+      format: '',
+      genre: '',
+      status: ''
+    };
+
+    function updateFilters() {
+      currentFilters.platform = platformFilter.value;
+      currentFilters.format = formatFilter.value;
+      currentFilters.genre = genreFilter.value;
+      currentFilters.status = statusFilter.value;
+
+      updateActiveFiltersDisplay();
+      filterProjects();
+    }
+
+    function updateActiveFiltersDisplay() {
+      const filterLabels = {
+        platform: 'Platform',
+        format: 'Format',
+        genre: 'Genre',
+        status: 'Status'
+      };
+
+      const chips = [];
+      Object.keys(currentFilters).forEach(key => {
+        if (currentFilters[key]) {
+          const select = document.getElementById(`${key}Filter`);
+          const selectedOption = select.options[select.selectedIndex].text;
+          chips.push({ key, label: filterLabels[key], value: selectedOption });
+        }
+      });
+
+      if (chips.length === 0) {
+        activeFilters.innerHTML = '';
+        clearFiltersBtn.classList.remove('visible');
+      } else {
+        clearFiltersBtn.classList.add('visible');
+        activeFilters.innerHTML = chips.map(chip => `
+          <div class="filter-chip">
+            <span>${chip.label}: ${chip.value}</span>
+            <button class="filter-chip-remove" data-filter="${chip.key}" aria-label="Remove ${chip.label} filter">×</button>
+          </div>
+        `).join('');
+
+        // Add click handlers to remove buttons
+        document.querySelectorAll('.filter-chip-remove').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const filterKey = e.target.getAttribute('data-filter');
+            document.getElementById(`${filterKey}Filter`).value = '';
+            updateFilters();
+          });
+        });
+      }
+    }
+
+    function filterProjects() {
+      const allCards = document.querySelectorAll('.project-card');
+      let visibleCount = 0;
+
+      allCards.forEach(card => {
+        let show = true;
+
+        // Check platform filter
+        if (currentFilters.platform) {
+          const platforms = card.getAttribute('data-platforms');
+          if (!platforms || !platforms.includes(currentFilters.platform)) {
+            show = false;
+          }
+        }
+
+        // Check format filter
+        if (currentFilters.format && show) {
+          const format = card.getAttribute('data-format');
+          if (format !== currentFilters.format) {
+            show = false;
+          }
+        }
+
+        // Check genre filter
+        if (currentFilters.genre && show) {
+          const genre = card.getAttribute('data-genre');
+          if (genre !== currentFilters.genre) {
+            show = false;
+          }
+        }
+
+        // Check status filter
+        if (currentFilters.status && show) {
+          const status = card.getAttribute('data-status');
+          if (status !== currentFilters.status) {
+            show = false;
+          }
+        }
+
+        if (show) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      resultCount.textContent = visibleCount;
+    }
+
+    function clearAllFilters() {
+      platformFilter.value = '';
+      formatFilter.value = '';
+      genreFilter.value = '';
+      statusFilter.value = '';
+      updateFilters();
+    }
+
+    // Event listeners for filters
+    platformFilter.addEventListener('change', updateFilters);
+    formatFilter.addEventListener('change', updateFilters);
+    genreFilter.addEventListener('change', updateFilters);
+    statusFilter.addEventListener('change', updateFilters);
+    clearFiltersBtn.addEventListener('click', clearAllFilters);
+
+    // Sort functionality
+    sortSelect.addEventListener('change', (e) => {
+      const sortValue = e.target.value;
+      const cards = Array.from(document.querySelectorAll('.project-card'));
+      const grid = document.getElementById('projectsGrid');
+
+      cards.sort((a, b) => {
+        switch(sortValue) {
+          case 'title-asc':
+            return a.querySelector('.project-title').textContent.localeCompare(
+              b.querySelector('.project-title').textContent
+            );
+          case 'title-desc':
+            return b.querySelector('.project-title').textContent.localeCompare(
+              a.querySelector('.project-title').textContent
+            );
+          case 'priority':
+            const getPriority = (card) => {
+              if (card.querySelector('.project-priority.high')) return 3;
+              if (card.querySelector('.project-priority.medium')) return 2;
+              return 1;
+            };
+            return getPriority(b) - getPriority(a);
+          default: // recent
+            return 0;
+        }
+      });
+
+      // Re-append sorted cards
+      cards.forEach(card => grid.appendChild(card));
+    });
+
+    // View toggle
+    const viewGrid = document.getElementById('viewGrid');
+    const viewList = document.getElementById('viewList');
+
+    viewGrid.addEventListener('click', () => {
+      projectsGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(340px, 1fr))';
+      viewGrid.classList.add('active');
+      viewList.classList.remove('active');
+    });
+
+    viewList.addEventListener('click', () => {
+      projectsGrid.style.gridTemplateColumns = '1fr';
+      viewList.classList.add('active');
+      viewGrid.classList.remove('active');
+    });
+
+    // Check URL parameters and apply filters
+    function applyUrlFilters() {
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      if (urlParams.has('platform')) {
+        platformFilter.value = urlParams.get('platform');
+      }
+      if (urlParams.has('format')) {
+        formatFilter.value = urlParams.get('format');
+      }
+      if (urlParams.has('genre')) {
+        genreFilter.value = urlParams.get('genre');
+      }
+      
+      if (urlParams.has('platform') || urlParams.has('format') || urlParams.has('genre')) {
+        updateFilters();
+      }
+    }
+
+    // Apply URL filters on page load
+    applyUrlFilters();
+
+    // ==========================================
+    // QUICK VIEW MODAL
+    // ==========================================
+    
+    const quickViewOverlay = document.getElementById('quickViewOverlay');
+    const quickViewClose = document.getElementById('quickViewClose');
+    const quickViewContent = document.getElementById('quickViewContent');
+
+    document.querySelectorAll('.quick-view-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const projectId = e.target.getAttribute('data-project');
+        const project = projectsData.find(p => p.id == projectId);
+        
+        if (project) {
+          quickViewContent.innerHTML = `
+            <img src="${project.image}" alt="${project.title}" style="width: 100%; border-radius: 12px 12px 0 0;">
+            <div style="padding: 2rem;">
+              <h2 style="color: var(--brand); margin-bottom: 1rem;">${project.title}</h2>
+              <div style="display: flex; gap: .5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                <span class="project-tag">${project.genre}</span>
+                <span class="project-tag">${project.format}</span>
+              </div>
+              <p style="color: rgba(255,255,255,.9); line-height: 1.7; margin-bottom: 1.5rem;">
+                ${project.description}
+              </p>
+              <div style="display: flex; gap: .5rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                ${project.platforms.map(p => `<span class="platform-badge">${p}</span>`).join('')}
+              </div>
+              <div style="display: flex; gap: 1rem;">
+                <a href="${project.url}" class="btn btn-primary">View Full Details</a>
+                <button class="btn btn-secondary" onclick="document.getElementById('quickViewOverlay').classList.remove('active')">Close</button>
+              </div>
+            </div>
+          `;
+          quickViewOverlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    quickViewClose.addEventListener('click', () => {
+      quickViewOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    quickViewOverlay.addEventListener('click', (e) => {
+      if (e.target === quickViewOverlay) {
+        quickViewOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // ==========================================
+    // BACK TO TOP BUTTON
+    // ==========================================
+    
     const backToTopBtn = document.getElementById('backToTop');
     
     window.addEventListener('scroll', () => {
@@ -900,17 +2391,19 @@
       });
     });
 
-    // Lazy loading fallback for older browsers
-    if ('loading' in HTMLImageElement.prototype) {
-      // Browser supports lazy loading
-    } else {
-      // Fallback for browsers that don't support lazy loading
-      const images = document.querySelectorAll('img[loading="lazy"]');
-      images.forEach(img => {
-        img.src = img.src;
-      });
-    }
+    // ==========================================
+    // KEYBOARD NAVIGATION
+    // ==========================================
+    
+    // ESC key to close modals/search
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchExpanded.classList.remove('active');
+        quickViewOverlay.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   </script>
-
 </body>
 </html>
