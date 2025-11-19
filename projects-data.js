@@ -35,7 +35,7 @@ const projectsData = [
     "genre": "Drama",
     "format": "MOW",
     "audience": "Adults 25-54",
-    "description": "",
+    "description": "King Carter dies during his fi nal party, his estranged daughter Jasmine must navigate locked gates, rising fl ames, and a web of betrayal to solve his murder",
     "deck": "pitch-decks/the-last-dynasty-pitch-deck.pdf",
     "onesheet": "one-sheets/the-last-dynasty-one-sheet.pdf",
     "treatment": "assets/the-last-dynasty-treatment.pdf",
