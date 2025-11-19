@@ -154,7 +154,7 @@ const projectsData = [
   {
     "title": "Slice of Paradise",
     "genre": "Network Series",
-    "format": "Series",
+    "format": "Network Series",
     "audience": "YA | Gen Z",
     "description": "A directionless thirty-something finds purpose in the last place he expected: a retirement community.",
     "deck": "pitch-decks/slice-of-paradise-pitch-deck.pdf",
@@ -173,7 +173,7 @@ const projectsData = [
   {
     "title": "The Archive",
     "genre": "Network Series",
-    "format": "Series",
+    "format": "Network Series",
     "audience": "Gen Z",
     "description": "A renegade historian protects a library of suppressed stories from corporate erasure.",
     "deck": "pitch-decks/the-archive-pitch-deck.pdf",
