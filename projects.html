@@ -360,7 +360,8 @@
       margin-top:auto;
     }
     
-    .chip{
+    .chip,
+    button.chip{
       background:rgba(255,255,255,.08);
       color:#fff;
       padding:.6rem 1.1rem;
@@ -373,7 +374,8 @@
       text-decoration:none;
       display:inline-block;
     }
-    .chip:hover{
+    .chip:hover,
+    button.chip:hover{
       background:var(--brand);
       color:#111;
       border-color:var(--brand);
@@ -457,7 +459,8 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html">Home</a></li>
           <li class="nav-item"><a href="projects.html">Projects</a></li>
-          <li class="nav-item"><a href="index.html#for-pros">For Professionals</a></li>
+          <li class="nav-item"><a href="for-professionals.html">For Professionals</a></li>
+          <li class="nav-item"><a href="music.html">Music</a></li>
           <li class="nav-item"><a href="index.html#about">About</a></li>
           <li class="nav-item"><a href="index.html#contact">Contact</a></li>
         </ul>
@@ -656,6 +659,7 @@
   </main>
 
   <script src="projects-data.js"></script>
+  <script src="project-modal.js"></script>
   <script>
     // Load projects from external data file
     const allProjects = projectsData || [];
@@ -831,7 +835,7 @@
       const projectsToShow = filteredProjects.slice(startIndex, endIndex);
 
       // Render project cards
-      grid.innerHTML = projectsToShow.map(project => `
+      grid.innerHTML = projectsToShow.map((project, idx) => `
         <article class="card">
           <div class="card-media" style="background-image:url('${project.image}')"></div>
           <div class="card-body">
@@ -848,7 +852,7 @@
             ` : ''}
             <p class="muted">${project.description}</p>
             <div class="actions">
-              <a href="#" class="chip">View Details</a>
+              <button class="chip" onclick="openProjectModal(projectsData.find(p => p.title === '${project.title.replace(/'/g, "\\'")}')); return false;">View Details</button>
               ${project.trailer ? `<a href="${project.trailer}" class="chip" target="_blank">Watch Trailer</a>` : ''}
             </div>
           </div>

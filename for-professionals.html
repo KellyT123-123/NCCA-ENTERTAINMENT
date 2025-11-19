@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>For Industry Professionals — NCCA Entertainment</title>
+
+  <meta name="description" content="Access pitch decks, one-sheets, treatments, and materials for NCCA Entertainment's market-ready film and television projects."/>
+  
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <style>
+    :root{
+      --brand:#D48B3C;
+      --brand-hover:#E3A463;
+      --brand-ink:#F2E6D0;
+      --brand-bg:#0A0A0A;
+      --brand-muted:#B9A98F;
+      --brand-rule:rgba(255,255,255,.10);
+      --card-min:320px;
+      --gap:1rem;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--brand-bg);
+      color:#f5f3ee;
+      line-height:1.6;
+    }
+
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline;color:var(--brand-hover)}
+
+    /* Header */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:2000;
+      background:rgba(11,11,12,.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .nav-wrap{
+      max-width:1400px;
+      margin:0 auto;
+      padding:.75rem 24px;
+      display:flex;
+      align-items:center;
+      gap:1rem
+    }
+    .brand{
+      font-weight:900;
+      letter-spacing:.5px;
+      padding:.25rem .6rem;
+      border-radius:8px;
+      background:linear-gradient(180deg,#2a2c31,#17181b);
+      color:#ffd166;
+      text-decoration:none;
+      font-size:1rem;
+      line-height:1;
+    }
+    .nav{margin-left:auto}
+    .nav-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:.5rem;
+      align-items:center
+    }
+    .nav-item>a{
+      color:#e7e7ea;
+      text-decoration:none;
+      padding:.5rem .7rem;
+      border-radius:8px;
+      font-weight:700;
+      background:none;
+      border:1px solid transparent;
+      cursor:pointer;
+      font-size:.95rem;
+      line-height:1.2;
+    }
+    .nav-item>a:hover{
+      background:#191b20;
+      border-color:#2a2c31;
+    }
+
+    /* Hero Section */
+    .hero{
+      background:linear-gradient(135deg,#1a1a1f,#0f0f13);
+      border-bottom:2px solid var(--brand);
+      padding:4rem 24px;
+      text-align:center;
+    }
+    
+    .hero h1{
+      font-size:clamp(2.5rem,5vw,4rem);
+      font-weight:900;
+      margin-bottom:1rem;
+      background:linear-gradient(135deg,#fff,var(--brand-ink));
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    
+    .hero-intro{
+      font-size:1.2rem;
+      color:var(--brand-muted);
+      max-width:900px;
+      margin:0 auto 2rem;
+      line-height:1.7;
+    }
+    
+    .hero-features{
+      display:flex;
+      justify-content:center;
+      gap:2rem;
+      flex-wrap:wrap;
+      margin-top:2rem;
+    }
+    
+    .hero-feature{
+      text-align:center;
+      max-width:250px;
+    }
+    
+    .hero-feature h3{
+      color:var(--brand);
+      font-size:1.1rem;
+      margin-bottom:.5rem;
+    }
+    
+    .hero-feature p{
+      color:var(--brand-muted);
+      font-size:.95rem;
+    }
+
+    /* Main Content */
+    .container{
+      max-width:1400px;
+      margin:0 auto;
+      padding:3rem 24px;
+    }
+    
+    .section{
+      padding:3rem 0;
+    }
+    
+    .section h2{
+      font-size:2.5rem;
+      font-weight:900;
+      margin-bottom:1rem;
+      text-align:center;
+      color:#fff;
+    }
+    
+    .section-intro{
+      text-align:center;
+      font-size:1.1rem;
+      color:var(--brand-muted);
+      max-width:800px;
+      margin:0 auto 3rem;
+    }
+
+    /* Project Grid */
+    .grid{
+      display:grid;
+      gap:var(--gap);
+      grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
+    }
+
+    .card{
+      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
+      border-radius:20px;
+      overflow:hidden;
+      transition:all .4s ease;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 8px 32px rgba(0,0,0,.3);
+      display:flex;
+      flex-direction:column;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 60px rgba(0,0,0,.4);
+      border-color:rgba(212,139,60,.28)
+    }
+    
+    .card-media{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      overflow:hidden;
+      background:#111;
+      background-size:cover;
+      background-position:center;
+    }
+    
+    .card-body{
+      padding:1.1rem 1.25rem;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    }
+    
+    .title{
+      font-size:1.25rem;
+      font-weight:800;
+      margin-bottom:.6rem;
+      color:#fff;
+      line-height:1.2;
+    }
+    
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.45rem;
+      margin-bottom:.8rem;
+      align-items:center;
+      font-size:.8rem;
+      line-height:1.3;
+    }
+    
+    .badge{
+      background:rgba(212,139,60,.18);
+      color:var(--brand);
+      padding:.25rem .6rem;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:700;
+      border:1px solid rgba(212,139,60,.3);
+      white-space:nowrap;
+    }
+    
+    .platform-logos{
+      display:flex;
+      gap:.4rem;
+      align-items:center;
+      font-size:.7rem;
+      font-weight:700;
+      color:#fff;
+      flex-wrap:wrap;
+      margin-bottom:.8rem;
+    }
+    
+    .platform-logo{
+      background:rgba(255,255,255,.1);
+      padding:.2rem .5rem;
+      border-radius:4px;
+      font-size:.75rem;
+    }
+    
+    .muted{
+      color:var(--brand-muted);
+      line-height:1.55;
+      margin-bottom:1rem;
+      font-size:.95rem;
+      flex:1;
+    }
+    
+    .actions{
+      display:flex;
+      gap:.6rem;
+      flex-wrap:wrap;
+      margin-top:auto;
+    }
+    
+    .btn{
+      background:var(--brand);
+      color:#111;
+      padding:.75rem 1.5rem;
+      border-radius:999px;
+      border:none;
+      font-weight:800;
+      cursor:pointer;
+      font-size:.95rem;
+      line-height:1.2;
+      text-decoration:none;
+      display:inline-block;
+      transition:all .3s ease;
+    }
+    .btn:hover{
+      background:var(--brand-hover);
+      transform:translateY(-2px);
+      text-decoration:none;
+    }
+    
+    .btn-secondary{
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.15);
+      color:#fff;
+    }
+
+    /* Browse All Section */
+    .browse-all{
+      background:linear-gradient(135deg,#1a1a1f,#0f0f13);
+      border-top:2px solid var(--brand);
+      border-bottom:2px solid var(--brand);
+      padding:3rem 24px;
+      text-align:center;
+    }
+    
+    .browse-all h2{
+      margin-bottom:1rem;
+    }
+    
+    .browse-all p{
+      color:var(--brand-muted);
+      font-size:1.1rem;
+      margin-bottom:2rem;
+    }
+
+    /* Contact Section */
+    .contact-section{
+      padding:3rem 24px;
+    }
+    
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:2rem;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    
+    .contact-card{
+      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
+      border-radius:12px;
+      padding:2rem;
+      border:1px solid rgba(255,255,255,.08);
+    }
+    
+    .contact-card h3{
+      color:var(--brand);
+      font-size:1.3rem;
+      margin-bottom:1rem;
+    }
+    
+    .contact-card p{
+      color:var(--brand-muted);
+      line-height:1.7;
+      margin-bottom:.75rem;
+    }
+    
+    .contact-card a{
+      color:var(--brand-hover);
+      font-weight:700;
+    }
+
+    /* Form */
+    .form-group{
+      margin-bottom:1.5rem;
+    }
+    
+    .form-group label{
+      display:block;
+      color:var(--brand-ink);
+      font-weight:700;
+      margin-bottom:.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea{
+      width:100%;
+      background:#191b20;
+      border:1px solid #2a2c31;
+      color:#e7e7ea;
+      padding:.75rem 1rem;
+      border-radius:8px;
+      font-size:.95rem;
+      font-family:inherit;
+    }
+    
+    .form-group textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus{
+      outline:none;
+      border-color:var(--brand);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="NCCA Home">NCCA</a>
+      <nav class="nav" role="navigation" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="projects.html">Projects</a></li>
+          <li class="nav-item"><a href="for-professionals.html">For Professionals</a></li>
+          <li class="nav-item"><a href="music.html">Music</a></li>
+          <li class="nav-item"><a href="index.html#about">About</a></li>
+          <li class="nav-item"><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Resources for Industry Professionals</h1>
+      <p class="hero-intro">
+        Access comprehensive pitch materials, one-sheets, and treatments for NCCA Entertainment's market-ready film and television projects. We develop scripted features, TV movies (MOW), limited series, network series, and docuseries designed for leading platforms including BET+, OWN, Lifetime, Netflix, HBO, Peacock, Paramount+, and major broadcast networks.
+      </p>
+      
+      <div class="hero-features">
+        <div class="hero-feature">
+          <h3>Pitch Materials</h3>
+          <p>Investor decks, network decks, one-sheets, beat sheets, and treatments packaged for every project</p>
+        </div>
+        <div class="hero-feature">
+          <h3>Target Buyers</h3>
+          <p>Clear platform targeting with natural buyer identification for fast routing</p>
+        </div>
+        <div class="hero-feature">
+          <h3>Script Access</h3>
+          <p>Request full scripts, sizzles, and additional materials with NDAs and watermarking available</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects for Buyers -->
+    <div class="container">
+      <section class="section">
+        <h2>Featured Projects for Buyers</h2>
+        <p class="section-intro">
+          Market-ready projects strategically positioned for immediate consideration. Each project includes comprehensive pitch materials and clear target buyer identification.
+        </p>
+
+        <div class="grid" id="featuredProjects">
+          <!-- Projects will be loaded here -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Browse All Projects -->
+    <section class="browse-all">
+      <h2>Explore Our Complete Catalog</h2>
+      <p>Browse all 94 projects with advanced filtering by genre, format, platform, and audience.</p>
+      <a href="projects.html" class="btn">View All Projects</a>
+    </section>
+
+    <!-- Downloadable Catalog -->
+    <div class="container">
+      <section class="section" style="text-align:center;">
+        <h2>Downloadable Project Catalog</h2>
+        <p class="section-intro">
+          Download a comprehensive PDF catalog of all NCCA Entertainment projects for offline review. Includes project summaries, target platforms, and contact information.
+        </p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <button onclick="generateCatalogPDF()" class="btn" style="font-size:1.1rem;padding:1rem 2rem;">
+            📥 Download Full Catalog (PDF)
+          </button>
+          <a href="mailto:NCCAEntertainment@gmail.com?subject=Request: Custom Project Catalog&body=I would like to request a customized project catalog focusing on specific genres or platforms." class="btn" style="font-size:1.1rem;padding:1rem 2rem;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.12);">
+            📧 Request Custom Catalog
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Contact for Meetings -->
+    <section class="contact-section">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:1rem;">Contact for Meetings & Materials</h2>
+        <p class="section-intro">
+          For script access, meeting requests, packaging conversations, or additional materials, please reach out directly or use the form below.
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Direct Contact</h3>
+            <p>
+              <strong>NCCA Entertainment</strong><br/>
+              Atlanta, GA<br/>
+              Development • Packaging • Physical Production
+            </p>
+            <p>
+              Email: <a href="mailto:NCCAEntertainment@gmail.com">NCCAEntertainment@gmail.com</a><br/>
+              Phone: <a href="tel:+19102629307">(910) 262-9307</a>
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Request Materials</h3>
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="company">Company/Organization *</label>
+                <input type="text" id="company" name="company" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="message">Request Details *</label>
+                <textarea id="message" name="message" placeholder="Please specify which projects you're interested in and what materials you need (script, pitch deck, one-sheet, etc.)" required></textarea>
+              </div>
+              <button type="submit" class="btn">Submit Request</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="projects-data.js"></script>
+  <script>
+    // Load featured projects (first 8 market-ready projects)
+    const featuredProjectsContainer = document.getElementById('featuredProjects');
+    
+    // Get the first 8 projects as featured
+    const featuredProjects = projectsData.slice(0, 8);
+    
+    featuredProjects.forEach(project => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      
+      const platformLogos = project.platforms && project.platforms.length > 0 
+        ? `<div class="platform-logos">
+            ${project.platforms.map(p => `<span class="platform-logo">${p}</span>`).join('')}
+          </div>`
+        : '';
+      
+      card.innerHTML = `
+        <div class="card-media" style="background-image:url('${project.image}')"></div>
+        <div class="card-body">
+          <div class="title">${project.title}</div>
+          <div class="meta">
+            <span class="badge">${project.genre}</span>
+            <span class="badge">${project.format}</span>
+            ${project.audience ? `<span class="badge">${project.audience}</span>` : ''}
+          </div>
+          ${platformLogos}
+          <p class="muted">${project.description}</p>
+          <div class="actions" style="display:flex;flex-direction:column;gap:.8rem;">
+            <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
+              ${project.deck ? `<a href="${project.deck}" class="btn" download style="flex:1;min-width:140px;text-align:center;">📄 Pitch Deck</a>` : ''}
+              ${project.onesheet ? `<a href="${project.onesheet}" class="btn" download style="flex:1;min-width:140px;text-align:center;">📋 One-Sheet</a>` : ''}
+              ${project.treatment ? `<a href="${project.treatment}" class="btn" download style="flex:1;min-width:140px;text-align:center;">📝 Treatment</a>` : ''}
+            </div>
+            <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
+              <a href="mailto:NCCAEntertainment@gmail.com?subject=Script Request: ${encodeURIComponent(project.title)}&body=I would like to request the full script for '${encodeURIComponent(project.title)}'." class="btn btn-secondary" style="flex:1;">Request Script</a>
+              ${project.trailer ? `<a href="${project.trailer}" class="btn btn-secondary" target="_blank" style="flex:1;">Watch Trailer</a>` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      featuredProjectsContainer.appendChild(card);
+    });
+
+    // Form submission handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const company = document.getElementById('company').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      const subject = `Material Request from ${name} (${company})`;
+      const body = `Name: ${name}%0D%0ACompany: ${company}%0D%0AEmail: ${email}%0D%0A%0D%0ARequest:%0D%0A${encodeURIComponent(message)}`;
+      
+      window.location.href = `mailto:NCCAEntertainment@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    });
+
+    // Generate PDF catalog
+    function generateCatalogPDF() {
+      // Create a simple text-based catalog that can be printed/saved as PDF
+      let catalogContent = `NCCA ENTERTAINMENT\nPROJECT CATALOG\n\n`;
+      catalogContent += `A boutique content studio delivering premium, culturally rich scripted series and films\n`;
+      catalogContent += `Atlanta, GA | NCCAEntertainment@gmail.com | (910) 262-9307\n\n`;
+      catalogContent += `=`.repeat(80) + `\n\n`;
+      
+      projectsData.forEach((project, index) => {
+        catalogContent += `${index + 1}. ${project.title}\n`;
+        catalogContent += `-`.repeat(project.title.length + 3) + `\n`;
+        catalogContent += `Genre: ${project.genre} | Format: ${project.format}\n`;
+        if (project.audience) catalogContent += `Audience: ${project.audience}\n`;
+        if (project.platforms && project.platforms.length > 0) {
+          catalogContent += `Target Platforms: ${project.platforms.join(', ')}\n`;
+        }
+        catalogContent += `\nSynopsis: ${project.description}\n`;
+        if (project.deck || project.onesheet || project.treatment) {
+          catalogContent += `\nMaterials Available: `;
+          const materials = [];
+          if (project.deck) materials.push('Pitch Deck');
+          if (project.onesheet) materials.push('One-Sheet');
+          if (project.treatment) materials.push('Treatment');
+          catalogContent += materials.join(', ') + `\n`;
+        }
+        catalogContent += `\n` + `=`.repeat(80) + `\n\n`;
+      });
+      
+      catalogContent += `\n\nFor full materials, script access, or meeting requests:\n`;
+      catalogContent += `Email: NCCAEntertainment@gmail.com\n`;
+      catalogContent += `Phone: (910) 262-9307\n`;
+      
+      // Create blob and download
+      const blob = new Blob([catalogContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'NCCA-Entertainment-Project-Catalog.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      alert('Catalog downloaded! You can print this file to PDF or save it for offline review.');
+    }
+  </script>
+</body>
+</html>
