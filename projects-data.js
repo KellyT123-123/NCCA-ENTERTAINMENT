@@ -51,7 +51,7 @@ const projectsData = [
     "title": "Black Girl's Guide to Vengeance (and Vodka)",
     "genre": "Comedy",
     "format": "MOW",
-    "audience": "Women 25\u201340 | Black Audiences",
+    "audience": "Women 25–40 | Black Audiences",
     "description": "Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women.",
     "deck": "pitch-decks/black-girls-guide-to-vengeance-and-vodka-pitch-deck.pdf",
     "onesheet": "one-sheets/black-girls-guide-to-vengeance-and-vodka-one-sheet.pdf",
