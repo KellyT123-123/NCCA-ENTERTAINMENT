@@ -3,7 +3,7 @@ const projectsData = [
     "title": "The Influencer's Last Post",
     "genre": "Film Noir",
     "format": "MOW",
-    "audience": "Women 25\u201340 | Gen Z",
+    "audience": "Women 25–40 | Gen Z",
     "description": "A social media influencer's final post becomes the key to solving her own murder.",
     "deck": "pitch-decks/influencers-last-post-pitch-deck.pdf",
     "onesheet": "one-sheets/influencers-last-post-one-sheet.pdf",
