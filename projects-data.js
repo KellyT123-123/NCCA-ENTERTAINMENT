@@ -33,7 +33,7 @@ const projectsData = [
   {
     "title": "The Last Dynasty",
     "genre": "Drama",
-    "format": "Musical",
+    "format": "MOW",
     "audience": "Adults 25-54",
     "description": "",
     "deck": "pitch-decks/the-last-dynasty-pitch-deck.pdf",
@@ -226,7 +226,7 @@ const projectsData = [
   {
     "title": "Southern (Dis)comfort",
     "genre": "Romance",
-    "format": "Feature",
+    "format": "MOW",
     "audience": "Women 25\u201340 | Black Audiences",
     "description": "",
     "deck": "pitch-decks/southern-discomfort-pitch-deck.pdf",
@@ -447,7 +447,7 @@ const projectsData = [
   {
     "title": "This Is Me Now",
     "genre": "Drama",
-    "format": "Feature",
+    "format": "MOW",
     "audience": "YA | Gen Z",
     "description": "After a private video leaks, a quiet overachiever is forced into unwanted virality and has to decide who she is when the whole city is watching.",
     "deck": "pitch-decks/this-is-me-now-pitch-deck.pdf",
