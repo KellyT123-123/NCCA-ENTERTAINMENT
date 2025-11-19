@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{{PROJECT_TITLE}} — NCCA Entertainment</title>
+  
+  <meta name="description" content="{{PROJECT_DESCRIPTION}}"/>
+  <meta property="og:title" content="{{PROJECT_TITLE}} — NCCA Entertainment"/>
+  <meta property="og:description" content="{{PROJECT_DESCRIPTION}}"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="../{{PROJECT_IMAGE}}"/>
+  
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <style>
+    :root{
+      --brand:#D48B3C;
+      --brand-hover:#E3A463;
+      --brand-ink:#F2E6D0;
+      --brand-bg:#0A0A0A;
+      --brand-muted:#B9A98F;
+      --brand-rule:rgba(255,255,255,.10);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--brand-bg);
+      color:#f5f3ee;
+      line-height:1.6;
+    }
+
+    /* Skip to main content link for accessibility */
+    .skip-link{
+      position:absolute;
+      top:-40px;
+      left:0;
+      background:var(--brand);
+      color:#111;
+      padding:8px;
+      text-decoration:none;
+      z-index:100;
+      font-weight:700;
+    }
+    .skip-link:focus{
+      top:0;
+    }
+
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline;color:var(--brand-hover)}
+
+    /* Header */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:2000;
+      background:rgba(11,11,12,.95);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      box-shadow:0 2px 8px rgba(0,0,0,0.3);
+    }
+    .nav-wrap{
+      max-width:1400px;
+      margin:0 auto;
+      padding:.75rem 24px;
+      display:flex;
+      align-items:center;
+      gap:1rem
+    }
+    .brand{
+      font-weight:900;
+      letter-spacing:.5px;
+      padding:.25rem .6rem;
+      border-radius:8px;
+      background:linear-gradient(180deg,#2a2c31,#17181b);
+      color:#ffd166;
+      text-decoration:none;
+      font-size:1rem;
+      line-height:1;
+      transition:all 0.3s ease;
+    }
+    .brand:hover{
+      transform:translateY(-1px);
+      box-shadow:0 4px 12px rgba(212,139,60,0.3);
+    }
+    .brand:focus{
+      outline:2px solid var(--brand);
+      outline-offset:2px;
+    }
+    .nav{margin-left:auto}
+    .nav-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:.5rem;
+      align-items:center
+    }
+    .nav-item>a{
+      color:#e7e7ea;
+      text-decoration:none;
+      padding:.5rem .7rem;
+      border-radius:8px;
+      font-weight:600;
+      background:none;
+      border:1px solid transparent;
+      font-size:.95rem;
+      line-height:1.2;
+      transition:all 0.2s ease;
+    }
+    .nav-item>a:hover{
+      background:#191b20;
+      border-color:#2a2c31;
+      text-decoration:none;
+    }
+    .nav-item>a:focus{
+      outline:2px solid var(--brand);
+      outline-offset:2px;
+    }
+
+    /* Back to Top */
+    .back-to-top{
+      position:fixed;
+      bottom:2rem;
+      right:2rem;
+      background:var(--brand);
+      color:#111;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.5rem;
+      font-weight:700;
+      cursor:pointer;
+      opacity:0;
+      visibility:hidden;
+      transition:all 0.3s ease;
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
+      z-index:1500;
+      border:none;
+    }
+    .back-to-top.visible{
+      opacity:1;
+      visibility:visible;
+    }
+    .back-to-top:hover, .back-to-top:focus{
+      background:var(--brand-hover);
+      transform:translateY(-4px);
+      box-shadow:0 6px 20px rgba(212,139,60,.4);
+      outline:2px solid var(--brand);
+      outline-offset:2px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb{
+      max-width:1200px;
+      margin:0 auto;
+      padding:1rem 24px;
+      display:flex;
+      gap:.5rem;
+      font-size:.9rem;
+      color:#999;
+    }
+    .breadcrumb a{
+      color:#ccc;
+      transition:color 0.2s ease;
+    }
+    .breadcrumb a:hover{
+      color:var(--brand);
+    }
+    .breadcrumb span{
+      color:#666;
+    }
+
+    /* Hero Section */
+    .project-hero{
+      position:relative;
+      min-height:60vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:3rem 24px;
+      background:linear-gradient(180deg,rgba(10,10,10,.7) 0%,rgba(10,10,10,.9) 100%),
+                 url('{{PROJECT_IMAGE}}') center/cover;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .project-hero-content{
+      max-width:900px;
+      position:relative;
+      z-index:1;
+    }
+    .project-hero h1{
+      font-size:clamp(2rem,5vw,3.5rem);
+      font-weight:900;
+      margin-bottom:1rem;
+      color:#fff;
+      line-height:1.1;
+    }
+    .project-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      justify-content:center;
+      margin-bottom:1.5rem;
+    }
+    .project-tag{
+      background:rgba(212,139,60,.2);
+      color:var(--brand);
+      padding:.4rem .8rem;
+      border-radius:8px;
+      font-size:.9rem;
+      font-weight:600;
+      border:1px solid rgba(212,139,60,.4);
+    }
+    .project-description{
+      font-size:1.2rem;
+      color:var(--brand-ink);
+      line-height:1.6;
+      max-width:700px;
+      margin:0 auto;
+    }
+
+    /* Main Content */
+    .main-content{
+      max-width:1200px;
+      margin:0 auto;
+      padding:3rem 24px;
+    }
+
+    .content-section{
+      margin-bottom:4rem;
+    }
+    .section-title{
+      font-size:2rem;
+      font-weight:900;
+      margin-bottom:1.5rem;
+      color:#fff;
+      border-bottom:2px solid var(--brand);
+      padding-bottom:.5rem;
+    }
+
+    /* Project Details Grid */
+    .details-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:2rem;
+      margin-bottom:3rem;
+    }
+    .detail-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:1.5rem;
+    }
+    .detail-card h3{
+      color:var(--brand);
+      font-size:1rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:.75rem;
+      font-weight:700;
+    }
+    .detail-card p{
+      color:#d0d0d5;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    /* Video Section */
+    .video-container{
+      position:relative;
+      width:100%;
+      max-width:900px;
+      margin:0 auto 3rem;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 8px 32px rgba(0,0,0,.5);
+    }
+    .video-container video{
+      width:100%;
+      display:block;
+      background:#000;
+    }
+
+    /* Materials Section - Enhanced */
+    .materials-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:2rem;
+    }
+    .material-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:1.5rem;
+      transition:all 0.3s ease;
+      position:relative;
+    }
+    .material-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 8px 24px rgba(0,0,0,.4);
+      border-color:rgba(212,139,60,.3);
+    }
+    .material-icon{
+      font-size:2.5rem;
+      margin-bottom:1rem;
+      display:block;
+    }
+    .material-card h3{
+      color:#fff;
+      font-size:1.3rem;
+      margin-bottom:.75rem;
+      font-weight:700;
+    }
+    .material-card p{
+      color:#d0d0d5;
+      font-size:.95rem;
+      margin-bottom:1.5rem;
+      line-height:1.5;
+    }
+    .material-card .btn{
+      width:100%;
+    }
+
+    /* Inquiry Form - Phase 3 */
+    .inquiry-form{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:2rem;
+      max-width:700px;
+      margin:0 auto;
+    }
+    .form-group{
+      margin-bottom:1.5rem;
+    }
+    .form-group label{
+      display:block;
+      color:#fff;
+      font-weight:600;
+      margin-bottom:.5rem;
+      font-size:.95rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
+      width:100%;
+      padding:.8rem 1rem;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:8px;
+      color:#fff;
+      font-size:1rem;
+      font-family:inherit;
+      transition:all 0.2s ease;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus{
+      outline:none;
+      border-color:var(--brand);
+      background:rgba(255,255,255,.08);
+    }
+    .form-group textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+
+    /* Social Sharing - Phase 3 */
+    .social-sharing{
+      display:flex;
+      gap:1rem;
+      justify-content:center;
+      margin-top:2rem;
+    }
+    .social-btn{
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.7rem 1.2rem;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:8px;
+      color:#fff;
+      font-weight:600;
+      font-size:.9rem;
+      transition:all 0.2s ease;
+      cursor:pointer;
+      text-decoration:none;
+    }
+    .social-btn:hover{
+      background:rgba(212,139,60,.2);
+      border-color:var(--brand);
+      color:var(--brand);
+      transform:translateY(-2px);
+    }
+    .social-btn:focus{
+      outline:2px solid var(--brand);
+      outline-offset:2px;
+    }
+
+    /* Related Projects - Phase 3 */
+    .related-projects{
+      background:rgba(255,255,255,.02);
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:4rem 24px;
+    }
+    .related-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+      gap:2rem;
+      max-width:1200px;
+      margin:2rem auto 0;
+    }
+    .related-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      overflow:hidden;
+      transition:all 0.3s ease;
+    }
+    .related-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 8px 24px rgba(0,0,0,.4);
+      border-color:rgba(212,139,60,.3);
+    }
+    .related-card img{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      display:block;
+    }
+    .related-card-content{
+      padding:1.5rem;
+    }
+    .related-card h3{
+      font-size:1.2rem;
+      font-weight:700;
+      margin-bottom:.5rem;
+      color:#fff;
+    }
+    .related-card p{
+      color:#d0d0d5;
+      font-size:.9rem;
+      line-height:1.5;
+    }
+
+    /* Buttons */
+    .btn{
+      padding:.9rem 1.5rem;
+      border-radius:8px;
+      font-weight:700;
+      font-size:1rem;
+      text-align:center;
+      cursor:pointer;
+      transition:all 0.2s ease;
+      border:1px solid;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .btn-primary{
+      background:var(--brand);
+      color:#111;
+      border-color:var(--brand);
+    }
+    .btn-primary:hover, .btn-primary:focus{
+      background:var(--brand-hover);
+      border-color:var(--brand-hover);
+      transform:translateY(-2px);
+      box-shadow:0 4px 12px rgba(212,139,60,.3);
+    }
+    .btn-primary:focus{
+      outline:2px solid var(--brand);
+      outline-offset:2px;
+    }
+    .btn-secondary{
+      background:transparent;
+      color:var(--brand);
+      border-color:var(--brand);
+    }
+    .btn-secondary:hover, .btn-secondary:focus{
+      background:rgba(212,139,60,.1);
+      border-color:var(--brand-hover);
+    }
+    .btn-large{
+      padding:1.1rem 2rem;
+      font-size:1.1rem;
+    }
+
+    /* Footer */
+    .site-footer{
+      background:rgba(0,0,0,.5);
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:2rem 24px;
+      text-align:center;
+      color:#999;
+      font-size:.9rem;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .nav-list{flex-direction:column;gap:.3rem;}
+      .nav{margin-left:0;width:100%;}
+      .nav-wrap{flex-direction:column;padding:1rem 24px;}
+      .project-hero{min-height:50vh;}
+      .details-grid{grid-template-columns:1fr;}
+      .materials-grid{grid-template-columns:1fr;}
+      .related-grid{grid-template-columns:1fr;}
+      .social-sharing{flex-direction:column;}
+      .back-to-top{bottom:1rem;right:1rem;width:45px;height:45px;}
+    }
+
+    /* Loading animation */
+    img[loading="lazy"]{
+      background:linear-gradient(90deg,#1a1a1a 25%,#2a2a2a 50%,#1a1a1a 75%);
+      background-size:200% 100%;
+      animation:loading 1.5s infinite;
+    }
+    @keyframes loading{
+      0%{background-position:200% 0;}
+      100%{background-position:-200% 0;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="nav-wrap">
+      <a href="../index.html" class="brand" aria-label="NCCA Entertainment Home">NCCA</a>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html">Home</a></li>
+          <li class="nav-item"><a href="../slate.html">Slate</a></li>
+          <li class="nav-item"><a href="../music.html">Music</a></li>
+          <li class="nav-item"><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span aria-hidden="true">›</span>
+    <a href="../slate.html">Slate</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">{{PROJECT_TITLE}}</span>
+  </nav>
+
+  <!-- Project Hero -->
+  <section class="project-hero" role="banner">
+    <div class="project-hero-content">
+      <h1>{{PROJECT_TITLE}}</h1>
+      <div class="project-meta">
+        <span class="project-tag">{{GENRE}}</span>
+        <span class="project-tag">{{FORMAT}}</span>
+        <span class="project-tag">{{AUDIENCE}}</span>
+      </div>
+      <p class="project-description">{{PROJECT_DESCRIPTION}}</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main id="main-content" class="main-content" role="main">
+    
+    <!-- Project Details -->
+    <section class="content-section">
+      <h2 class="section-title">Project Details</h2>
+      <div class="details-grid">
+        <div class="detail-card">
+          <h3>Genre</h3>
+          <p>{{GENRE}}</p>
+        </div>
+        <div class="detail-card">
+          <h3>Format</h3>
+          <p>{{FORMAT}}</p>
+        </div>
+        <div class="detail-card">
+          <h3>Target Audience</h3>
+          <p>{{AUDIENCE}}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trailer Section -->
+    {{#if TRAILER}}
+    <section class="content-section">
+      <h2 class="section-title">Watch Trailer</h2>
+      <div class="video-container">
+        <video controls preload="metadata" aria-label="Project trailer video">
+          <source src="../{{TRAILER}}" type="video/mp4">
+          <track kind="captions" src="../{{TRAILER_CAPTIONS}}" srclang="en" label="English" default>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+    {{/if}}
+
+    <!-- Available Materials - Enhanced -->
+    <section class="content-section">
+      <h2 class="section-title">Available Materials</h2>
+      <div class="materials-grid">
+        <article class="material-card">
+          <span class="material-icon" aria-hidden="true">📊</span>
+          <h3>Pitch Deck</h3>
+          <p>Comprehensive presentation with market analysis, comparable titles, and creative vision. Designed for buyers and decision-makers.</p>
+          <a href="../{{PITCH_DECK}}" class="btn btn-primary" download aria-label="Download pitch deck PDF">Download Pitch Deck</a>
+        </article>
+
+        <article class="material-card">
+          <span class="material-icon" aria-hidden="true">📄</span>
+          <h3>One-Sheet</h3>
+          <p>Quick reference guide with key project information, logline, and market positioning. Perfect for initial review.</p>
+          <a href="../{{ONE_SHEET}}" class="btn btn-primary" download aria-label="Download one-sheet PDF">Download One-Sheet</a>
+        </article>
+
+        <article class="material-card">
+          <span class="material-icon" aria-hidden="true">📝</span>
+          <h3>Treatment</h3>
+          <p>Detailed narrative breakdown and story structure. Provides in-depth look at character arcs and plot development.</p>
+          <a href="../{{TREATMENT}}" class="btn btn-primary" download aria-label="Download treatment PDF">Download Treatment</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Social Sharing - Phase 3 -->
+    <section class="content-section">
+      <div class="social-sharing">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{PAGE_URL}}" 
+           class="social-btn" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Share on LinkedIn">
+          <span aria-hidden="true">💼</span> Share on LinkedIn
+        </a>
+        <a href="https://twitter.com/intent/tweet?text={{PROJECT_TITLE}}&url={{PAGE_URL}}" 
+           class="social-btn" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Share on Twitter">
+          <span aria-hidden="true">🐦</span> Share on Twitter
+        </a>
+        <a href="mailto:?subject={{PROJECT_TITLE}}&body=Check out this project: {{PAGE_URL}}" 
+           class="social-btn"
+           aria-label="Share via email">
+          <span aria-hidden="true">📧</span> Share via Email
+        </a>
+      </div>
+    </section>
+
+    <!-- Project-Specific Inquiry Form - Phase 3 -->
+    <section class="content-section">
+      <h2 class="section-title">Interested in This Project?</h2>
+      <form class="inquiry-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="hidden" name="project" value="{{PROJECT_TITLE}}">
+        
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" required aria-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required aria-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company/Organization</label>
+          <input type="text" id="company" name="company">
+        </div>
+
+        <div class="form-group">
+          <label for="inquiry-type">Inquiry Type *</label>
+          <select id="inquiry-type" name="inquiry_type" required aria-required="true">
+            <option value="">Select an option</option>
+            <option value="script">Request Full Script</option>
+            <option value="meeting">Schedule Pitch Meeting</option>
+            <option value="packaging">Discuss Packaging Opportunities</option>
+            <option value="general">General Questions</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" required aria-required="true"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-large">Send Inquiry</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Related Projects - Phase 3 -->
+  <section class="related-projects">
+    <div class="main-content">
+      <h2 class="section-title" style="text-align:center;">You May Also Like</h2>
+      <div class="related-grid">
+        <!-- Related projects will be dynamically inserted -->
+        {{#each RELATED_PROJECTS}}
+        <article class="related-card">
+          <a href="{{slug}}.html">
+            <img src="../{{image}}" alt="{{title}}" loading="lazy">
+            <div class="related-card-content">
+              <h3>{{title}}</h3>
+              <p>{{description}}</p>
+            </div>
+          </a>
+        </article>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <p>&copy; 2025 NCCA Entertainment. All rights reserved.</p>
+    <p style="margin-top:.5rem;">Boutique content studio delivering premium, culturally rich scripted stories where Atlanta's soul meets global market lines.</p>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Keyboard accessibility for video
+    const video = document.querySelector('video');
+    if (video) {
+      video.addEventListener('keydown', (e) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

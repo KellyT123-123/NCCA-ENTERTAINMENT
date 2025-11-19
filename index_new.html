@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NCCA Entertainment — Cinematic Storytelling</title>
+
+  <meta name="description" content="NCCA Entertainment is a boutique content studio delivering premium, culturally rich scripted series and films. Where Atlanta's soul meets global storytelling."/>
+  <meta property="og:title" content="NCCA ENTERTAINMENT"/>
+  <meta property="og:description" content="Film & Television Production"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="og-image.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="NCCA ENTERTAINMENT"/>
+  <meta name="twitter:description" content="Film & Television Production"/>
+  <meta name="twitter:image" content="og-image.png"/>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <style>
+    :root{
+      --brand:#D48B3C;
+      --brand-hover:#E3A463;
+      --brand-ink:#F2E6D0;
+      --brand-bg:#0A0A0A;
+      --brand-muted:#B9A98F;
+      --brand-rule:rgba(255,255,255,.10);
+      --card-min:320px;
+      --gap:1rem;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--brand-bg);
+      color:#f5f3ee;
+      line-height:1.6;
+    }
+
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline;color:var(--brand-hover)}
+
+    /* Sticky Header */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:2000;
+      background:rgba(11,11,12,.95);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .nav-wrap{
+      max-width:1400px;
+      margin:0 auto;
+      padding:.75rem 24px;
+      display:flex;
+      align-items:center;
+      gap:1rem
+    }
+    .brand{
+      font-weight:900;
+      letter-spacing:.5px;
+      padding:.25rem .6rem;
+      border-radius:8px;
+      background:linear-gradient(180deg,#2a2c31,#17181b);
+      color:#ffd166;
+      text-decoration:none;
+      font-size:1rem;
+      line-height:1;
+      transition: all 0.3s ease;
+    }
+    .brand:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(212, 139, 60, 0.3);
+    }
+
+    .nav{margin-left:auto;display:flex;align-items:center;gap:1rem;}
+    .nav-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:.5rem;
+      align-items:center
+    }
+    .nav-item>a{
+      color:#e7e7ea;
+      text-decoration:none;
+      padding:.5rem .7rem;
+      border-radius:8px;
+      font-weight:600;
+      background:none;
+      border:1px solid transparent;
+      font-size:.95rem;
+      line-height:1.2;
+      transition: all 0.2s ease;
+    }
+    .nav-item>a:hover{
+      background:#191b20;
+      border-color:#2a2c31;
+      text-decoration:none;
+      transform: translateY(-1px);
+    }
+    .nav-item.cta>a{
+      background:var(--brand);
+      color:#111;
+      border-color:var(--brand);
+      font-weight:700;
+    }
+    .nav-item.cta>a:hover{
+      background:var(--brand-hover);
+      border-color:var(--brand-hover);
+    }
+
+    /* Mega Menu */
+    .nav-item.has-mega{position:relative;}
+    .mega-menu{
+      position:absolute;
+      top:100%;
+      left:50%;
+      transform:translateX(-50%) translateY(10px);
+      background:rgba(17,18,22,.98);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      padding:1.5rem;
+      min-width:600px;
+      display:none;
+      opacity:0;
+      box-shadow:0 8px 32px rgba(0,0,0,.5);
+      backdrop-filter:blur(12px);
+      z-index:3000;
+    }
+    .nav-item.has-mega:hover .mega-menu{
+      display:grid;
+      animation:fadeIn 0.2s ease forwards;
+    }
+    @keyframes fadeIn{
+      to{opacity:1;transform:translateX(-50%) translateY(0);}
+    }
+    .mega-menu-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:2rem;
+    }
+    .mega-menu-col h4{
+      color:var(--brand);
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:.75rem;
+      font-weight:700;
+    }
+    .mega-menu-col ul{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:.5rem;
+    }
+    .mega-menu-col a{
+      color:#d0d0d5;
+      font-size:.9rem;
+      padding:.4rem .6rem;
+      border-radius:6px;
+      display:block;
+      transition:all 0.2s ease;
+    }
+    .mega-menu-col a:hover{
+      background:rgba(212,139,60,.15);
+      color:var(--brand);
+      text-decoration:none;
+      padding-left:1rem;
+    }
+
+    /* Utility Bar */
+    .utility-bar{
+      background:rgba(212,139,60,.08);
+      border-bottom:1px solid rgba(212,139,60,.2);
+      padding:.5rem 0;
+    }
+    .utility-wrap{
+      max-width:1400px;
+      margin:0 auto;
+      padding:0 24px;
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:1.5rem;
+      font-size:.85rem;
+    }
+    .utility-link{
+      color:var(--brand-ink);
+      display:flex;
+      align-items:center;
+      gap:.4rem;
+      transition:color 0.2s ease;
+    }
+    .utility-link:hover{
+      color:var(--brand);
+    }
+
+    /* Back to Top Button - Phase 1 */
+    .back-to-top{
+      position:fixed;
+      bottom:2rem;
+      right:2rem;
+      background:var(--brand);
+      color:#111;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.5rem;
+      font-weight:700;
+      cursor:pointer;
+      opacity:0;
+      visibility:hidden;
+      transition:all 0.3s ease;
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
+      z-index:1500;
+      border:none;
+    }
+    .back-to-top.visible{
+      opacity:1;
+      visibility:visible;
+    }
+    .back-to-top:hover{
+      background:var(--brand-hover);
+      transform:translateY(-4px);
+      box-shadow:0 6px 20px rgba(212,139,60,.4);
+    }
+
+    /* Hero */
+    .hero{
+      min-height:80vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:3rem 24px;
+      background:linear-gradient(180deg,rgba(10,10,10,0) 0%,rgba(10,10,10,.8) 100%),
+                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%230a0a0a"/></svg>');
+      background-size:cover;
+      background-position:center;
+    }
+    .hero-content{max-width:900px;margin:0 auto;}
+    .hero h1{
+      font-size:clamp(2.5rem,8vw,5rem);
+      font-weight:900;
+      margin-bottom:1rem;
+      line-height:1.1;
+      letter-spacing:-1px;
+    }
+    .hero h1 .brand-text{color:#fff;}
+    .hero h1 .accent-text{
+      color:var(--brand);
+      display:block;
+    }
+    .hero-tagline{
+      font-size:clamp(1.1rem,2.5vw,1.4rem);
+      color:var(--brand-ink);
+      margin-bottom:2rem;
+      font-weight:400;
+      max-width:700px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    /* Quick Stats */
+    .quick-stats{
+      background:rgba(255,255,255,.03);
+      border-top:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding:2rem 24px;
+    }
+    .stats-grid{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:2rem;
+      text-align:center;
+    }
+    .stat-item{
+      padding:1rem;
+    }
+    .stat-number{
+      font-size:2.5rem;
+      font-weight:900;
+      color:var(--brand);
+      display:block;
+      line-height:1;
+      margin-bottom:.5rem;
+    }
+    .stat-label{
+      color:var(--brand-ink);
+      font-size:.95rem;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    /* Featured Projects Grid */
+    .featured-section{
+      padding:4rem 24px;
+      max-width:1400px;
+      margin:0 auto;
+    }
+    .section-header{
+      text-align:center;
+      margin-bottom:3rem;
+    }
+    .section-header h2{
+      font-size:clamp(2rem,5vw,3rem);
+      font-weight:900;
+      margin-bottom:1rem;
+      color:#fff;
+    }
+    .section-header p{
+      color:var(--brand-ink);
+      font-size:1.1rem;
+      max-width:700px;
+      margin:0 auto;
+    }
+
+    .featured-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+      gap:2rem;
+      margin-bottom:2rem;
+    }
+
+    /* Project Cards */
+    .project-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      overflow:hidden;
+      transition:all 0.3s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .project-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 8px 24px rgba(0,0,0,.4);
+      border-color:rgba(212,139,60,.3);
+    }
+    .project-image{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      background:#1a1a1a;
+      display:block;
+    }
+    .project-content{
+      padding:1.5rem;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    }
+    .project-title{
+      font-size:1.3rem;
+      font-weight:700;
+      margin-bottom:.5rem;
+      color:#fff;
+    }
+    .project-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-bottom:1rem;
+    }
+    .project-tag{
+      background:rgba(212,139,60,.15);
+      color:var(--brand);
+      padding:.25rem .6rem;
+      border-radius:6px;
+      font-size:.8rem;
+      font-weight:600;
+      border:1px solid rgba(212,139,60,.3);
+    }
+    .project-description{
+      color:#d0d0d5;
+      font-size:.95rem;
+      margin-bottom:1rem;
+      flex:1;
+      line-height:1.5;
+    }
+    .project-platforms{
+      display:flex;
+      gap:.5rem;
+      margin-bottom:1rem;
+      flex-wrap:wrap;
+    }
+    .platform-badge{
+      background:rgba(255,255,255,.08);
+      padding:.3rem .6rem;
+      border-radius:6px;
+      font-size:.75rem;
+      font-weight:600;
+      color:#e0e0e5;
+      border:1px solid rgba(255,255,255,.12);
+      cursor:help;
+      position:relative;
+    }
+    .platform-badge:hover{
+      background:rgba(212,139,60,.2);
+      border-color:var(--brand);
+      color:var(--brand);
+    }
+    /* Tooltip for platform badges - Phase 1 */
+    .platform-badge::after{
+      content:attr(data-full-name);
+      position:absolute;
+      bottom:100%;
+      left:50%;
+      transform:translateX(-50%) translateY(-8px);
+      background:rgba(17,18,22,.95);
+      color:#fff;
+      padding:.4rem .8rem;
+      border-radius:6px;
+      font-size:.75rem;
+      white-space:nowrap;
+      opacity:0;
+      pointer-events:none;
+      transition:all 0.2s ease;
+      border:1px solid rgba(255,255,255,.2);
+      z-index:100;
+    }
+    .platform-badge:hover::after{
+      opacity:1;
+      transform:translateX(-50%) translateY(-4px);
+    }
+
+    .project-actions{
+      display:flex;
+      gap:.75rem;
+    }
+    .btn{
+      flex:1;
+      padding:.7rem 1rem;
+      border-radius:8px;
+      font-weight:700;
+      font-size:.9rem;
+      text-align:center;
+      cursor:pointer;
+      transition:all 0.2s ease;
+      border:1px solid;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .btn-primary{
+      background:var(--brand);
+      color:#111;
+      border-color:var(--brand);
+    }
+    .btn-primary:hover{
+      background:var(--brand-hover);
+      border-color:var(--brand-hover);
+      transform:translateY(-2px);
+      box-shadow:0 4px 12px rgba(212,139,60,.3);
+    }
+    .btn-secondary{
+      background:transparent;
+      color:var(--brand);
+      border-color:var(--brand);
+    }
+    .btn-secondary:hover{
+      background:rgba(212,139,60,.1);
+      border-color:var(--brand-hover);
+    }
+
+    .cta-center{
+      text-align:center;
+      margin-top:2rem;
+    }
+    .btn-large{
+      padding:1rem 2.5rem;
+      font-size:1.1rem;
+    }
+
+    /* About Section */
+    .about-section{
+      padding:4rem 24px;
+      background:rgba(255,255,255,.02);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .about-content{
+      max-width:1200px;
+      margin:0 auto;
+    }
+    .about-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:2rem;
+      margin-top:2rem;
+    }
+    .about-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:2rem;
+    }
+    .about-card h3{
+      color:var(--brand);
+      font-size:1.3rem;
+      margin-bottom:1rem;
+      font-weight:700;
+    }
+    .about-card p{
+      color:#d0d0d5;
+      line-height:1.7;
+    }
+
+    /* Contact Section */
+    .contact-section{
+      padding:4rem 24px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:2rem;
+      margin-top:2rem;
+    }
+    .contact-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:2rem;
+      text-align:center;
+    }
+    .contact-card h3{
+      color:#fff;
+      font-size:1.2rem;
+      margin-bottom:1rem;
+    }
+    .contact-card p{
+      color:#d0d0d5;
+      margin-bottom:1rem;
+      line-height:1.6;
+    }
+    .contact-link{
+      color:var(--brand);
+      font-weight:600;
+      font-size:1.1rem;
+      display:block;
+      margin-top:.5rem;
+    }
+
+    /* Footer */
+    .site-footer{
+      background:rgba(0,0,0,.5);
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:2rem 24px;
+      text-align:center;
+      color:#999;
+      font-size:.9rem;
+    }
+    .footer-content{
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .nav-list{flex-direction:column;gap:.3rem;}
+      .nav{margin-left:0;width:100%;}
+      .nav-wrap{flex-direction:column;padding:1rem 24px;}
+      .mega-menu{min-width:90vw;left:5vw;transform:none;}
+      .mega-menu-grid{grid-template-columns:1fr;}
+      .nav-item.has-mega:hover .mega-menu{transform:translateY(0);}
+      .utility-wrap{flex-direction:column;gap:.5rem;font-size:.8rem;}
+      .featured-grid{grid-template-columns:1fr;}
+      .back-to-top{bottom:1rem;right:1rem;width:45px;height:45px;}
+    }
+
+    /* Loading animation for lazy images */
+    img[loading="lazy"]{
+      background:linear-gradient(90deg,#1a1a1a 25%,#2a2a2a 50%,#1a1a1a 75%);
+      background-size:200% 100%;
+      animation:loading 1.5s infinite;
+    }
+    @keyframes loading{
+      0%{background-position:200% 0;}
+      100%{background-position:-200% 0;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Utility Bar for Professionals -->
+  <div class="utility-bar">
+    <div class="utility-wrap">
+      <a href="#" class="utility-link" onclick="alert('Full catalog download will be available soon. Please contact us directly.'); return false;">
+        📊 Download Full Catalog
+      </a>
+      <a href="mailto:NCCAEntertainment@gmail.com?subject=Script%20Request" class="utility-link">
+        📧 Request Scripts
+      </a>
+      <a href="mailto:NCCAEntertainment@gmail.com?subject=Meeting%20Request" class="utility-link">
+        📞 Schedule Meeting
+      </a>
+    </div>
+  </div>
+
+  <!-- Header with improved navigation -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="brand">NCCA</a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item has-mega">
+            <a href="slate.html">Slate</a>
+            <!-- Mega Menu -->
+            <div class="mega-menu">
+              <div class="mega-menu-grid">
+                <div class="mega-menu-col">
+                  <h4>By Genre</h4>
+                  <ul>
+                    <li><a href="slate.html?genre=drama">Drama</a></li>
+                    <li><a href="slate.html?genre=comedy">Comedy</a></li>
+                    <li><a href="slate.html?genre=romance">Romance</a></li>
+                    <li><a href="slate.html?genre=thriller">Thriller</a></li>
+                    <li><a href="slate.html?genre=horror">Horror / Southern Gothic</a></li>
+                    <li><a href="slate.html?genre=action">Action</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu-col">
+                  <h4>By Format</h4>
+                  <ul>
+                    <li><a href="slate.html?format=mow">MOW (Movie of the Week)</a></li>
+                    <li><a href="slate.html?format=limited">Limited Series</a></li>
+                    <li><a href="slate.html?format=network">Network Series</a></li>
+                    <li><a href="slate.html?format=feature">Feature Film</a></li>
+                    <li><a href="slate.html?format=docuseries">Docuseries</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu-col">
+                  <h4>By Platform</h4>
+                  <ul>
+                    <li><a href="slate.html?platform=netflix">Netflix</a></li>
+                    <li><a href="slate.html?platform=hbo">HBO</a></li>
+                    <li><a href="slate.html?platform=bet">BET+</a></li>
+                    <li><a href="slate.html?platform=own">OWN</a></li>
+                    <li><a href="slate.html?platform=lifetime">Lifetime</a></li>
+                    <li><a href="slate.html?platform=peacock">Peacock</a></li>
+                    <li><a href="slate.html?platform=paramount">Paramount+</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"><a href="music.html">Music</a></li>
+          <li class="nav-item"><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>
+        <span class="brand-text">NCCA</span>
+        <span class="accent-text">ENTERTAINMENT</span>
+      </h1>
+      <p class="hero-tagline">
+        A boutique content studio delivering premium, culturally rich scripted series and films. Where Atlanta's soul meets global storytelling.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="quick-stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">47</span>
+        <span class="stat-label">Original Projects</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">8</span>
+        <span class="stat-label">Genres</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">10+</span>
+        <span class="stat-label">Target Platforms</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">ATL</span>
+        <span class="stat-label">Based Production</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="featured-section">
+    <div class="section-header">
+      <h2>FEATURED PROJECTS</h2>
+      <p>Showcasing our most market-ready projects with comprehensive materials available.</p>
+    </div>
+
+    <div class="featured-grid">
+      <!-- Project 1 -->
+      <article class="project-card">
+        <img src="images/influencers-last-post.png" alt="The Influencer's Last Post" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">The Influencer's Last Post</h3>
+          <div class="project-meta">
+            <span class="project-tag">Film Noir</span>
+            <span class="project-tag">MOW</span>
+          </div>
+          <p class="project-description">
+            A social media influencer's final post becomes the key to solving her own murder.
+          </p>
+          <div class="project-actions">
+            <a href="projects/the-influencers-last-post.html" class="btn btn-primary">View Details</a>
+            <a href="assets/influencers-last-post-teaser.mp4" class="btn btn-secondary">Trailer</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card">
+        <img src="images/the-line.png" alt="The Line" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">The Line</h3>
+          <div class="project-meta">
+            <span class="project-tag">Network Series</span>
+          </div>
+          <div class="project-platforms">
+            <span class="platform-badge" data-full-name="Paramount+">P+</span>
+            <span class="platform-badge" data-full-name="Peacock">P</span>
+            <span class="platform-badge" data-full-name="BET+">B+</span>
+            <span class="platform-badge" data-full-name="OWN">OWN</span>
+          </div>
+          <p class="project-description">
+            A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.
+          </p>
+          <div class="project-actions">
+            <a href="projects/the-line.html" class="btn btn-primary">View Details</a>
+            <a href="assets/the-line-teaser.mp4" class="btn btn-secondary">Trailer</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card">
+        <img src="images/the-last-dynasty.png" alt="The Last Dynasty" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">The Last Dynasty</h3>
+          <div class="project-meta">
+            <span class="project-tag">Drama</span>
+            <span class="project-tag">Musical</span>
+            <span class="project-tag">MOW</span>
+          </div>
+          <div class="project-platforms">
+            <span class="platform-badge" data-full-name="Netflix">N</span>
+            <span class="platform-badge" data-full-name="HBO">HBO</span>
+            <span class="platform-badge" data-full-name="Apple TV+">🍎</span>
+          </div>
+          <p class="project-description">
+            The final generation of a powerful family fights to preserve their legacy.
+          </p>
+          <div class="project-actions">
+            <a href="projects/the-last-dynasty.html" class="btn btn-primary">View Details</a>
+            <a href="assets/the-last-dynasty-teaser.mp4" class="btn btn-secondary">Trailer</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card">
+        <img src="images/black-girls-guide.png" alt="Black Girl's Guide to Vengeance" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">Black Girl's Guide to Vengeance (and Vodka)</h3>
+          <div class="project-meta">
+            <span class="project-tag">Comedy</span>
+            <span class="project-tag">MOW</span>
+          </div>
+          <div class="project-platforms">
+            <span class="platform-badge" data-full-name="BET+">B+</span>
+            <span class="platform-badge" data-full-name="OWN">OWN</span>
+            <span class="platform-badge" data-full-name="Lifetime">L</span>
+          </div>
+          <p class="project-description">
+            Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women.
+          </p>
+          <div class="project-actions">
+            <a href="projects/black-girls-guide-to-vengeance.html" class="btn btn-primary">View Details</a>
+            <a href="#" class="btn btn-secondary">Trailer</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cta-center">
+      <a href="slate.html" class="btn btn-primary btn-large">View All 47 Projects</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-content">
+      <div class="section-header">
+        <h2>About NCCA Entertainment</h2>
+        <p>A boutique content studio delivering premium, culturally rich scripted series and films — where Atlanta's soul meets global storytelling.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Our Mission</h3>
+          <p>
+            NCCA Entertainment specializes in developing and producing market-ready film and television projects that center diverse voices, Southern authenticity, and commercial viability. We create content that resonates across platforms while maintaining cultural integrity and artistic excellence.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h3>What We Do</h3>
+          <p>
+            We develop scripted features, TV movies (MOW), limited series, network series, and docuseries across multiple genres including drama, thriller, romance, comedy, horror, and Southern Gothic. Our projects are designed for leading platforms including BET+, OWN, Lifetime, Netflix, HBO, Peacock, Paramount+, and major broadcast networks.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h3>Our Approach</h3>
+          <p>
+            Atlanta-forward. Culture-first. Franchise-minded. We combine deep cultural knowledge with strategic market positioning to create projects that serve both artistic vision and commercial objectives. Every project is developed with clear target buyers, comprehensive pitch materials, and production readiness.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="section-header">
+      <h2>Contact</h2>
+      <p>For meetings, materials, script access, or packaging conversations</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>NCCA Entertainment</h3>
+        <p>
+          Atlanta, GA<br>
+          Development • Packaging • Physical Production
+        </p>
+        <a href="mailto:NCCAEntertainment@gmail.com" class="contact-link">NCCAEntertainment@gmail.com</a>
+        <a href="tel:+19102629307" class="contact-link">(910) 262-9307</a>
+      </div>
+
+      <div class="contact-card">
+        <h3>Let's Work</h3>
+        <p>
+          Scripted Features • TV Movies (MOW) • Limited Series • Docuseries
+        </p>
+        <p style="margin-top:1rem;">
+          <strong>Atlanta-forward. Culture-first. Franchise-minded.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 NCCA Entertainment. All rights reserved.</p>
+      <p style="margin-top:.5rem;">Boutique content studio delivering premium, culturally rich scripted stories where Atlanta's soul meets global market lines.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button (Phase 1) -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    // Back to Top Button functionality
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Lazy loading fallback for older browsers
+    if ('loading' in HTMLImageElement.prototype) {
+      // Browser supports lazy loading
+    } else {
+      // Fallback for browsers that don't support lazy loading
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      images.forEach(img => {
+        img.src = img.src;
+      });
+    }
+  </script>
+
+</body>
+</html>
