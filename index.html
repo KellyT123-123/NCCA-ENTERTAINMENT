@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>NCCA Entertainment — Cinematic Storytelling</title>
 
-  <meta name="description" content="NCCA Entertainment is a boutique content studio delivering premium, culturally rich scripted series and films.  Where Atlanta's soul meets global storytelling."/>
+  <meta name="description" content="NCCA Entertainment is a boutique content studio delivering premium, culturally rich scripted series and films. Where Atlanta's soul meets global storytelling."/>
   <meta property="og:title" content="NCCA ENTERTAINMENT"/>
   <meta property="og:description" content="Film & Television Production"/>
   <meta property="og:type" content="website"/>
@@ -49,9 +49,10 @@
       position:sticky;
       top:0;
       z-index:2000;
-      background:rgba(11,11,12,.92);
-      backdrop-filter:blur(8px);
-      border-bottom:1px solid rgba(255,255,255,.08)
+      background:rgba(11,11,12,.95);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
     .nav-wrap{
       max-width:1400px;
@@ -71,9 +72,14 @@
       text-decoration:none;
       font-size:1rem;
       line-height:1;
+      transition: all 0.3s ease;
+    }
+    .brand:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(212, 139, 60, 0.3);
     }
 
-    .nav{margin-left:auto}
+    .nav{margin-left:auto;display:flex;align-items:center;gap:1rem;}
     .nav-list{
       list-style:none;
       margin:0;
@@ -87,704 +93,824 @@
       text-decoration:none;
       padding:.5rem .7rem;
       border-radius:8px;
-      font-weight:700;
+      font-weight:600;
       background:none;
       border:1px solid transparent;
       font-size:.95rem;
       line-height:1.2;
+      transition: all 0.2s ease;
     }
     .nav-item>a:hover{
       background:#191b20;
       border-color:#2a2c31;
       text-decoration:none;
+      transform: translateY(-1px);
     }
     .nav-item.cta>a{
       background:var(--brand);
       color:#111;
       border-color:var(--brand);
+      font-weight:700;
     }
     .nav-item.cta>a:hover{
       background:var(--brand-hover);
       border-color:var(--brand-hover);
     }
 
-    .nav-toggle{
+    /* Mega Menu */
+    .nav-item.has-mega{position:relative;}
+    .mega-menu{
+      position:absolute;
+      top:100%;
+      left:50%;
+      transform:translateX(-50%) translateY(10px);
+      background:rgba(17,18,22,.98);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      padding:1.5rem;
+      min-width:600px;
       display:none;
-      margin-left:auto;
-      font-size:1.25rem;
-      line-height:1;
-      background:#191b20;
-      color:#e7e7ea;
-      border:1px solid #2a2c31;
-      border-radius:8px;
+      opacity:0;
+      box-shadow:0 8px 32px rgba(0,0,0,.5);
+      backdrop-filter:blur(12px);
+      z-index:3000;
+    }
+    .nav-item.has-mega:hover .mega-menu{
+      display:grid;
+      animation:fadeIn 0.2s ease forwards;
+    }
+    @keyframes fadeIn{
+      to{opacity:1;transform:translateX(-50%) translateY(0);}
+    }
+    .mega-menu-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:2rem;
+    }
+    .mega-menu-col h4{
+      color:var(--brand);
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:.75rem;
+      font-weight:700;
+    }
+    .mega-menu-col ul{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:.5rem;
+    }
+    .mega-menu-col a{
+      color:#d0d0d5;
+      font-size:.9rem;
       padding:.4rem .6rem;
+      border-radius:6px;
+      display:block;
+      transition:all 0.2s ease;
+    }
+    .mega-menu-col a:hover{
+      background:rgba(212,139,60,.15);
+      color:var(--brand);
+      text-decoration:none;
+      padding-left:1rem;
+    }
+
+    /* Utility Bar */
+    .utility-bar{
+      background:rgba(212,139,60,.08);
+      border-bottom:1px solid rgba(212,139,60,.2);
+      padding:.5rem 0;
+    }
+    .utility-wrap{
+      max-width:1400px;
+      margin:0 auto;
+      padding:0 24px;
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:1.5rem;
+      font-size:.85rem;
+    }
+    .utility-link{
+      color:var(--brand-ink);
+      display:flex;
+      align-items:center;
+      gap:.4rem;
+      transition:color 0.2s ease;
+    }
+    .utility-link:hover{
+      color:var(--brand);
+    }
+
+    /* Back to Top Button - Phase 1 */
+    .back-to-top{
+      position:fixed;
+      bottom:2rem;
+      right:2rem;
+      background:var(--brand);
+      color:#111;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.5rem;
+      font-weight:700;
       cursor:pointer;
+      opacity:0;
+      visibility:hidden;
+      transition:all 0.3s ease;
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
+      z-index:1500;
+      border:none;
+    }
+    .back-to-top.visible{
+      opacity:1;
+      visibility:visible;
+    }
+    .back-to-top:hover{
+      background:var(--brand-hover);
+      transform:translateY(-4px);
+      box-shadow:0 6px 20px rgba(212,139,60,.4);
     }
 
     /* Hero */
     .hero{
-      position:relative;
-      min-height:72vh;
+      min-height:80vh;
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
-      overflow:hidden;
-      background:#000;
-      padding:4rem 1rem;
-    }
-    .hero-inner{max-width:900px;padding:2rem}
-    .hero h1{
-      font-size:clamp(3rem,8vw,7rem);
-      font-weight:900;
-      margin-bottom:1.5rem;
-      letter-spacing:-.03em;
-      line-height:0.9;
-    }
-    .hero h1 span{
-      color:var(--brand);
-      background:linear-gradient(135deg,var(--brand),var(--brand-hover));
-      -webkit-background-clip:text;
-      background-clip:text;
-      -webkit-text-fill-color:transparent
-    }
-    .hero p{
-      font-size:clamp(1.1rem,2.5vw,1.4rem);
-      opacity:.95;
-      margin:0 auto 2.5rem;
-      max-width:800px;
-      color:var(--brand-ink);
-    }
-
-    /* Audience Gateway */
-    .audience-gateway{
-      padding:4rem 0;
-      background:linear-gradient(135deg, #1a1a1f, #0f0f13);
-    }
-    .container{max-width:1400px;margin:0 auto;padding:0 24px}
-    .gateway-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-      gap:2rem;
-      margin-top:2rem;
-    }
-    .gateway-card{
-      background:linear-gradient(145deg,#2a2c31,#17181b);
-      border-radius:20px;
-      padding:3rem 2rem;
-      border:2px solid rgba(255,255,255,.08);
-      transition:all .4s ease;
-      text-align:center;
-    }
-    .gateway-card:hover{
-      transform:translateY(-8px);
-      border-color:var(--brand);
-      box-shadow:0 20px 60px rgba(212,139,60,.3);
-    }
-    .gateway-card h3{
-      font-size:2rem;
-      font-weight:900;
-      margin-bottom:1rem;
-      color:#fff;
-    }
-    .gateway-card p{
-      font-size:1.1rem;
-      color:var(--brand-muted);
-      margin-bottom:1.5rem;
-      line-height:1.6;
-    }
-    .gateway-card ul{
-      list-style:none;
-      padding:0;
-      margin:0 0 2rem 0;
-      text-align:left;
-    }
-    .gateway-card li{
-      padding:.5rem 0;
-      color:var(--brand-ink);
-      font-size:.95rem;
-    }
-    .gateway-card li:before{
-      content:"✓ ";
-      color:var(--brand);
-      font-weight:bold;
-      margin-right:.5rem;
-    }
-
-    .btn{
-      display:inline-block;
-      background:var(--brand);
-      color:#111;
-      border:none;
-      padding:1rem 2rem;
-      border-radius:999px;
-      font-weight:800;
-      font-size:1rem;
-      transition:all .3s ease;
-      box-shadow:0 8px 30px rgba(212,139,60,.3);
-      text-transform:uppercase;
-      letter-spacing:.05em;
-      cursor:pointer;
-      text-decoration:none;
-      line-height:1.2;
-    }
-    .btn:hover{
-      background:var(--brand-hover);
-      text-decoration:none;
-      transform:translateY(-2px);
-      box-shadow:0 12px 40px rgba(212,139,60,.4)
-    }
-    .btn.secondary{
-      background:transparent;
-      color:#fff;
-      border:2px solid rgba(255,255,255,.3)
-    }
-    .btn.secondary:hover{
-      background:rgba(255,255,255,.1);
-      border-color:rgba(255,255,255,.5)
-    }
-
-    .section{padding:4rem 0;position:relative}
-    .section h2{
-      font-size:clamp(2.2rem,5vw,3.6rem);
-      font-weight:900;
-      text-align:center;
-      margin-bottom:1.25rem;
-      letter-spacing:-.02em;
-      background:linear-gradient(135deg,#fff,var(--brand-ink));
-      -webkit-background-clip:text;
-      background-clip:text;
-      -webkit-text-fill-color:transparent
-    }
-    .section-intro{
-      text-align:center;
-      font-size:1.1rem;
-      color:var(--brand-muted);
-      max-width:800px;
-      margin:0 auto 2.2rem;
-      line-height:1.6
-    }
-
-    /* Featured Projects Carousel */
-    .carousel-container{
-      position:relative;
-      max-width:1000px;
-      margin:0 auto;
-      overflow:hidden;
-    }
-    .carousel{
-      display:flex;
-      transition:transform .5s ease;
-    }
-    .carousel-slide{
-      min-width:100%;
-      padding:1rem;
-    }
-    .featured-card{
-      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:0 8px 32px rgba(0,0,0,.3);
-      max-width:800px;
-      margin:0 auto;
-    }
-    .featured-card-media{
-      width:100%;
-      aspect-ratio:16/9;
+      padding:3rem 24px;
+      background:linear-gradient(180deg,rgba(10,10,10,0) 0%,rgba(10,10,10,.8) 100%),
+                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%230a0a0a"/></svg>');
       background-size:cover;
       background-position:center;
     }
-    .featured-card-body{
-      padding:2rem;
+    .hero-content{max-width:900px;margin:0 auto;}
+    .hero h1{
+      font-size:clamp(2.5rem,8vw,5rem);
+      font-weight:900;
+      margin-bottom:1rem;
+      line-height:1.1;
+      letter-spacing:-1px;
     }
-    .featured-card h3{
-      font-size:2rem;
-      font-weight:800;
+    .hero h1 .brand-text{color:#fff;}
+    .hero h1 .accent-text{
+      color:var(--brand);
+      display:block;
+    }
+    .hero-tagline{
+      font-size:clamp(1.1rem,2.5vw,1.4rem);
+      color:var(--brand-ink);
+      margin-bottom:2rem;
+      font-weight:400;
+      max-width:700px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    /* Quick Stats */
+    .quick-stats{
+      background:rgba(255,255,255,.03);
+      border-top:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding:2rem 24px;
+    }
+    .stats-grid{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:2rem;
+      text-align:center;
+    }
+    .stat-item{
+      padding:1rem;
+    }
+    .stat-number{
+      font-size:2.5rem;
+      font-weight:900;
+      color:var(--brand);
+      display:block;
+      line-height:1;
+      margin-bottom:.5rem;
+    }
+    .stat-label{
+      color:var(--brand-ink);
+      font-size:.95rem;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    /* Featured Projects Grid */
+    .featured-section{
+      padding:4rem 24px;
+      max-width:1400px;
+      margin:0 auto;
+    }
+    .section-header{
+      text-align:center;
+      margin-bottom:3rem;
+    }
+    .section-header h2{
+      font-size:clamp(2rem,5vw,3rem);
+      font-weight:900;
       margin-bottom:1rem;
       color:#fff;
     }
-    .meta{
+    .section-header p{
+      color:var(--brand-ink);
+      font-size:1.1rem;
+      max-width:700px;
+      margin:0 auto;
+    }
+
+    .featured-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+      gap:2rem;
+      margin-bottom:2rem;
+    }
+
+    /* Project Cards */
+    .project-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      overflow:hidden;
+      transition:all 0.3s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .project-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 8px 24px rgba(0,0,0,.4);
+      border-color:rgba(212,139,60,.3);
+    }
+    .project-image{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      background:#1a1a1a;
+      display:block;
+    }
+    .project-content{
+      padding:1.5rem;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    }
+    .project-title{
+      font-size:1.3rem;
+      font-weight:700;
+      margin-bottom:.5rem;
+      color:#fff;
+    }
+    .project-meta{
       display:flex;
       flex-wrap:wrap;
-      gap:.45rem;
-      margin-bottom:.8rem;
-      align-items:center;
-      font-size:.8rem;
-      line-height:1.3;
+      gap:.5rem;
+      margin-bottom:1rem;
     }
-    .badge{
-      background:rgba(212,139,60,.18);
+    .project-tag{
+      background:rgba(212,139,60,.15);
       color:var(--brand);
       padding:.25rem .6rem;
-      border-radius:999px;
+      border-radius:6px;
       font-size:.8rem;
-      font-weight:700;
-      border:1px solid rgba(212,139,60,.3)
+      font-weight:600;
+      border:1px solid rgba(212,139,60,.3);
     }
-    .featured-card p{
-      font-size:1.1rem;
-      color:var(--brand-muted);
-      margin-bottom:1.5rem;
-      line-height:1.6;
+    .project-description{
+      color:#d0d0d5;
+      font-size:.95rem;
+      margin-bottom:1rem;
+      flex:1;
+      line-height:1.5;
     }
-    .carousel-controls{
+    .project-platforms{
       display:flex;
-      justify-content:center;
-      gap:1rem;
-      margin-top:2rem;
+      gap:.5rem;
+      margin-bottom:1rem;
+      flex-wrap:wrap;
     }
-    .carousel-btn{
+    .platform-badge{
+      background:rgba(255,255,255,.08);
+      padding:.3rem .6rem;
+      border-radius:6px;
+      font-size:.75rem;
+      font-weight:600;
+      color:#e0e0e5;
+      border:1px solid rgba(255,255,255,.12);
+      cursor:help;
+      position:relative;
+    }
+    .platform-badge:hover{
+      background:rgba(212,139,60,.2);
+      border-color:var(--brand);
+      color:var(--brand);
+    }
+    /* Tooltip for platform badges - Phase 1 */
+    .platform-badge::after{
+      content:attr(data-full-name);
+      position:absolute;
+      bottom:100%;
+      left:50%;
+      transform:translateX(-50%) translateY(-8px);
+      background:rgba(17,18,22,.95);
+      color:#fff;
+      padding:.4rem .8rem;
+      border-radius:6px;
+      font-size:.75rem;
+      white-space:nowrap;
+      opacity:0;
+      pointer-events:none;
+      transition:all 0.2s ease;
+      border:1px solid rgba(255,255,255,.2);
+      z-index:100;
+    }
+    .platform-badge:hover::after{
+      opacity:1;
+      transform:translateX(-50%) translateY(-4px);
+    }
+
+    .project-actions{
+      display:flex;
+      gap:.75rem;
+    }
+    .btn{
+      flex:1;
+      padding:.7rem 1rem;
+      border-radius:8px;
+      font-weight:700;
+      font-size:.9rem;
+      text-align:center;
+      cursor:pointer;
+      transition:all 0.2s ease;
+      border:1px solid;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .btn-primary{
       background:var(--brand);
       color:#111;
-      border:none;
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      font-size:1.5rem;
-      cursor:pointer;
-      transition:all .3s ease;
+      border-color:var(--brand);
     }
-    .carousel-btn:hover{
+    .btn-primary:hover{
       background:var(--brand-hover);
-      transform:scale(1.1);
+      border-color:var(--brand-hover);
+      transform:translateY(-2px);
+      box-shadow:0 4px 12px rgba(212,139,60,.3);
     }
-    .carousel-dots{
-      display:flex;
-      justify-content:center;
-      gap:.5rem;
-      margin-top:1rem;
+    .btn-secondary{
+      background:transparent;
+      color:var(--brand);
+      border-color:var(--brand);
     }
-    .carousel-dot{
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      background:rgba(255,255,255,.2);
-      border:none;
-      cursor:pointer;
-      transition:all .3s ease;
-    }
-    .carousel-dot.active{
-      background:var(--brand);
-      width:30px;
-      border-radius:6px;
+    .btn-secondary:hover{
+      background:rgba(212,139,60,.1);
+      border-color:var(--brand-hover);
     }
 
-    /* About Cards */
-    .grid{
+    .cta-center{
+      text-align:center;
+      margin-top:2rem;
+    }
+    .btn-large{
+      padding:1rem 2.5rem;
+      font-size:1.1rem;
+    }
+
+    /* About Section */
+    .about-section{
+      padding:4rem 24px;
+      background:rgba(255,255,255,.02);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .about-content{
+      max-width:1200px;
+      margin:0 auto;
+    }
+    .about-grid{
       display:grid;
-      gap:var(--gap);
-      grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:2rem;
+      margin-top:2rem;
     }
-    .card{
-      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
-      border-radius:20px;
-      overflow:hidden;
-      transition:all .4s ease;
+    .about-card{
+      background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.08);
-      box-shadow:0 8px 32px rgba(0,0,0,.3)
+      border-radius:12px;
+      padding:2rem;
     }
-    .card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 20px 60px rgba(0,0,0,.4);
-      border-color:rgba(212,139,60,.28)
+    .about-card h3{
+      color:var(--brand);
+      font-size:1.3rem;
+      margin-bottom:1rem;
+      font-weight:700;
     }
-    .card-body{padding:1.5rem 1.75rem}
-    .title{
-      font-size:1.4rem;
-      font-weight:800;
-      margin-bottom:.8rem;
-      color:#fff;
-      line-height:1.2;
-    }
-    .muted{
-      color:var(--brand-muted);
-      line-height:1.55;
-      font-size:.95rem
+    .about-card p{
+      color:#d0d0d5;
+      line-height:1.7;
     }
 
-    footer{
-      border-top:1px solid var(--brand-rule);
-      background:#0a0a0a;
+    /* Contact Section */
+    .contact-section{
+      padding:4rem 24px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:2rem;
+      margin-top:2rem;
+    }
+    .contact-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:2rem;
+      text-align:center;
+    }
+    .contact-card h3{
+      color:#fff;
+      font-size:1.2rem;
+      margin-bottom:1rem;
+    }
+    .contact-card p{
+      color:#d0d0d5;
+      margin-bottom:1rem;
+      line-height:1.6;
+    }
+    .contact-link{
+      color:var(--brand);
+      font-weight:600;
+      font-size:1.1rem;
+      display:block;
+      margin-top:.5rem;
+    }
+
+    /* Footer */
+    .site-footer{
+      background:rgba(0,0,0,.5);
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:2rem 24px;
+      text-align:center;
       color:#999;
-      padding:3rem 24px 4rem;
       font-size:.9rem;
     }
-    .footer-inner{
-      max-width:1400px;
+    .footer-content{
+      max-width:1200px;
       margin:0 auto;
-      display:grid;
-      gap:2rem;
-    }
-    .footer-brand{
-      font-weight:800;
-      color:#fff;
-      font-size:1rem;
-      line-height:1.4;
-    }
-    .footer-grid{
-      display:grid;
-      gap:1.5rem;
-    }
-    @media(min-width:700px){
-      .footer-inner{
-        grid-template-columns:1fr auto auto;
-      }
-      .footer-grid{
-        text-align:right;
-      }
     }
 
-    @media(max-width:900px){
-      .nav-toggle{display:inline-block}
-      .nav{display:none;width:100%;margin-left:0;}
-      .nav.open{display:block}
-      .nav-list{
-        flex-direction:column;
-        align-items:stretch;
-        gap:.25rem;
-        margin-top:.5rem
-      }
-      .gateway-grid{
-        grid-template-columns:1fr;
-      }
+    /* Responsive */
+    @media(max-width:768px){
+      .nav-list{flex-direction:column;gap:.3rem;}
+      .nav{margin-left:0;width:100%;}
+      .nav-wrap{flex-direction:column;padding:1rem 24px;}
+      .mega-menu{min-width:90vw;left:5vw;transform:none;}
+      .mega-menu-grid{grid-template-columns:1fr;}
+      .nav-item.has-mega:hover .mega-menu{transform:translateY(0);}
+      .utility-wrap{flex-direction:column;gap:.5rem;font-size:.8rem;}
+      .featured-grid{grid-template-columns:1fr;}
+      .back-to-top{bottom:1rem;right:1rem;width:45px;height:45px;}
     }
 
-    [id]{scroll-margin-top:96px}
-
-    .skip-link{
-      position:absolute;
-      left:-999px;
-      top:auto;
-      width:1px;
-      height:1px;
-      overflow:hidden;
+    /* Loading animation for lazy images */
+    img[loading="lazy"]{
+      background:linear-gradient(90deg,#1a1a1a 25%,#2a2a2a 50%,#1a1a1a 75%);
+      background-size:200% 100%;
+      animation:loading 1.5s infinite;
     }
-    .skip-link:focus{
-      position:static;
-      width:auto;
-      height:auto;
-      background:#000;
-      color:#fff;
-      padding:.5rem 1rem;
-      z-index:4000;
+    @keyframes loading{
+      0%{background-position:200% 0;}
+      100%{background-position:-200% 0;}
     }
-
   </style>
 </head>
+<body>
 
-<body id="top">
-<a href="#main" class="skip-link">Skip to main content</a>
-
-<header class="site-header" role="banner">
-  <div class="nav-wrap">
-    <a class="brand" href="index.html" aria-label="NCCA Home">NCCA</a>
-
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">☰</button>
-
-    <nav id="primaryNav" class="nav" role="navigation" aria-label="Main">
-      <ul class="nav-list">
-        <li class="nav-item"><a href="projects.html">Projects</a></li>
-        <li class="nav-item"><a href="about.html">About</a></li>
-        <li class="nav-item"><a href="music.html">Music</a></li>
-        <li class="nav-item"><a href="contact.html">Contact</a></li>
-        <li class="nav-item cta"><a href="for-professionals.html">For Professionals</a></li>
-      </ul>
-    </nav>
+  <!-- Utility Bar for Professionals -->
+  <div class="utility-bar">
+    <div class="utility-wrap">
+      <a href="#" class="utility-link" onclick="alert('Full catalog download will be available soon. Please contact us directly.'); return false;">
+        📊 Download Full Catalog
+      </a>
+      <a href="mailto:NCCAEntertainment@gmail.com?subject=Script%20Request" class="utility-link">
+        📧 Request Scripts
+      </a>
+      <a href="mailto:NCCAEntertainment@gmail.com?subject=Meeting%20Request" class="utility-link">
+        📞 Schedule Meeting
+      </a>
+    </div>
   </div>
-</header>
 
-<main id="main">
+  <!-- Header with improved navigation -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="brand">NCCA</a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item has-mega">
+            <a href="slate.html">Slate</a>
+            <!-- Mega Menu -->
+            <div class="mega-menu">
+              <div class="mega-menu-grid">
+                <div class="mega-menu-col">
+                  <h4>By Genre</h4>
+                  <ul>
+                    <li><a href="slate.html?genre=drama">Drama</a></li>
+                    <li><a href="slate.html?genre=comedy">Comedy</a></li>
+                    <li><a href="slate.html?genre=romance">Romance</a></li>
+                    <li><a href="slate.html?genre=thriller">Thriller</a></li>
+                    <li><a href="slate.html?genre=horror">Horror / Southern Gothic</a></li>
+                    <li><a href="slate.html?genre=action">Action</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu-col">
+                  <h4>By Format</h4>
+                  <ul>
+                    <li><a href="slate.html?format=mow">MOW (Movie of the Week)</a></li>
+                    <li><a href="slate.html?format=limited">Limited Series</a></li>
+                    <li><a href="slate.html?format=network">Network Series</a></li>
+                    <li><a href="slate.html?format=feature">Feature Film</a></li>
+                    <li><a href="slate.html?format=docuseries">Docuseries</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu-col">
+                  <h4>By Platform</h4>
+                  <ul>
+                    <li><a href="slate.html?platform=netflix">Netflix</a></li>
+                    <li><a href="slate.html?platform=hbo">HBO</a></li>
+                    <li><a href="slate.html?platform=bet">BET+</a></li>
+                    <li><a href="slate.html?platform=own">OWN</a></li>
+                    <li><a href="slate.html?platform=lifetime">Lifetime</a></li>
+                    <li><a href="slate.html?platform=peacock">Peacock</a></li>
+                    <li><a href="slate.html?platform=paramount">Paramount+</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"><a href="music.html">Music</a></li>
+          <li class="nav-item"><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <h1>NCCA <span>ENTERTAINMENT</span></h1>
-      <p>A boutique content studio delivering premium, culturally rich scripted series and films.  Where Atlanta's soul meets global storytelling.</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>
+        <span class="brand-text">NCCA</span>
+        <span class="accent-text">ENTERTAINMENT</span>
+      </h1>
+      <p class="hero-tagline">
+        A boutique content studio delivering premium, culturally rich scripted series and films. Where Atlanta's soul meets global storytelling.
+      </p>
     </div>
   </section>
 
-  <!-- AUDIENCE GATEWAY -->
-  <section class="audience-gateway">
-    <div class="container">
-      <h2 style="text-align:center;margin-bottom:1rem;color:#fff;">Choose Your Path</h2>
-      <p class="section-intro">Whether you're an industry professional or exploring our creative slate, we have resources tailored for you.</p>
-      
-      <div class="gateway-grid">
-        <div class="gateway-card">
-          <h3>🎬 For Industry Professionals</h3>
-          <p>Access comprehensive pitch materials, one-sheets, and project packages designed for buyers and decision-makers.</p>
-          <ul>
-            <li>Pitch Decks & One-Sheets</li>
-            <li>Script Access Requests</li>
-            <li>Target Platform Analysis</li>
-            <li>Direct Contact for Meetings</li>
-          </ul>
-          <a href="for-professionals.html" class="btn">Professional Resources</a>
-        </div>
-
-        <div class="gateway-card">
-          <h3>🎥 Explore Our Slate</h3>
-          <p>Browse our complete catalog of 47 market-ready projects across multiple genres and formats.</p>
-          <ul>
-            <li>47 Original Projects</li>
-            <li>Multiple Genres & Formats</li>
-            <li>Trailers & Visual Materials</li>
-            <li>Detailed Project Information</li>
-          </ul>
-          <a href="projects.html" class="btn secondary">View All Projects</a>
-        </div>
+  <!-- Quick Stats -->
+  <section class="quick-stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">47</span>
+        <span class="stat-label">Original Projects</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">8</span>
+        <span class="stat-label">Genres</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">10+</span>
+        <span class="stat-label">Target Platforms</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">ATL</span>
+        <span class="stat-label">Based Production</span>
       </div>
     </div>
   </section>
 
-  <!-- FEATURED PROJECTS CAROUSEL -->
-  <section id="featured" class="section">
-    <div class="container">
+  <!-- Featured Projects -->
+  <section class="featured-section">
+    <div class="section-header">
       <h2>FEATURED PROJECTS</h2>
-      <p class="section-intro">Showcasing our most market-ready projects with comprehensive materials available.</p>
+      <p>Showcasing our most market-ready projects with comprehensive materials available.</p>
+    </div>
 
-      <div class="carousel-container">
-        <div class="carousel" id="featuredCarousel">
-          <!-- Slide 1 -->
-          <div class="carousel-slide">
-            <div class="featured-card">
-              <div class="featured-card-media" style="background-image:url('images/influencers-last-post.png')"></div>
-              <div class="featured-card-body">
-                <h3>The Influencer's Last Post</h3>
-                <div class="meta">
-                  <span class="badge">Film Noir</span>
-                  <span class="badge">MOW</span>
-                  <span class="badge">Women 25–40 | Gen Z</span>
-                </div>
-                <p>A social media influencer's final post becomes the key to solving her own murder.</p>
-                <a href="projects/the-influencers-last-post.html" class="btn">View Project Details</a>
-              </div>
-            </div>
+    <div class="featured-grid">
+      <!-- Project 1 -->
+      <article class="project-card">
+        <img src="images/influencers-last-post.png" alt="The Influencer's Last Post" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">The Influencer's Last Post</h3>
+          <div class="project-meta">
+            <span class="project-tag">Film Noir</span>
+            <span class="project-tag">MOW</span>
           </div>
-
-          <!-- Slide 2 -->
-          <div class="carousel-slide">
-            <div class="featured-card">
-              <div class="featured-card-media" style="background-image:url('images/the-line.png')"></div>
-              <div class="featured-card-body">
-                <h3>The Line</h3>
-                <div class="meta">
-                  <span class="badge">Network Series</span>
-                  <span class="badge">Gen Z; Women 25–40</span>
-                </div>
-                <p>A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.</p>
-                <a href="projects/the-line.html" class="btn">View Project Details</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="carousel-slide">
-            <div class="featured-card">
-              <div class="featured-card-media" style="background-image:url('images/the-last-dynasty.png')"></div>
-              <div class="featured-card-body">
-                <h3>The Last Dynasty</h3>
-                <div class="meta">
-                  <span class="badge">Drama</span>
-                  <span class="badge">Musical</span>
-                  <span class="badge">Adults 25-54</span>
-                </div>
-                <p>The final generation of a powerful family fights to preserve their legacy.</p>
-                <a href="projects/the-last-dynasty.html" class="btn">View Project Details</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="carousel-slide">
-            <div class="featured-card">
-              <div class="featured-card-media" style="background-image:url('images/black-girls-guide-to-vengeance-and-vodka.png')"></div>
-              <div class="featured-card-body">
-                <h3>Black Girl's Guide to Vengeance (and Vodka)</h3>
-                <div class="meta">
-                  <span class="badge">Comedy</span>
-                  <span class="badge">MOW</span>
-                  <span class="badge">Women 25–40</span>
-                </div>
-                <p>Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women.</p>
-                <a href="projects/black-girls-guide-to-vengeance-and-vodka.html" class="btn">View Project Details</a>
-              </div>
-            </div>
+          <p class="project-description">
+            A social media influencer's final post becomes the key to solving her own murder.
+          </p>
+          <div class="project-actions">
+            <a href="projects/the-influencers-last-post.html" class="btn btn-primary">View Details</a>
+            <a href="assets/influencers-last-post-teaser.mp4" class="btn btn-secondary">Trailer</a>
           </div>
         </div>
+      </article>
 
-        <div class="carousel-controls">
-          <button class="carousel-btn" id="prevBtn" aria-label="Previous project">‹</button>
-          <button class="carousel-btn" id="nextBtn" aria-label="Next project">›</button>
+      <!-- Project 2 -->
+      <article class="project-card">
+        <img src="images/the-line.png" alt="The Line" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">The Line</h3>
+          <div class="project-meta">
+            <span class="project-tag">Network Series</span>
+          </div>
+          <div class="project-platforms">
+            <span class="platform-badge" data-full-name="Paramount+">P+</span>
+            <span class="platform-badge" data-full-name="Peacock">P</span>
+            <span class="platform-badge" data-full-name="BET+">B+</span>
+            <span class="platform-badge" data-full-name="OWN">OWN</span>
+          </div>
+          <p class="project-description">
+            A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.
+          </p>
+          <div class="project-actions">
+            <a href="projects/the-line.html" class="btn btn-primary">View Details</a>
+            <a href="assets/the-line-teaser.mp4" class="btn btn-secondary">Trailer</a>
+          </div>
         </div>
-        <div class="carousel-dots" id="carouselDots"></div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card">
+        <img src="images/the-last-dynasty.png" alt="The Last Dynasty" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">The Last Dynasty</h3>
+          <div class="project-meta">
+            <span class="project-tag">Drama</span>
+            <span class="project-tag">Musical</span>
+            <span class="project-tag">MOW</span>
+          </div>
+          <div class="project-platforms">
+            <span class="platform-badge" data-full-name="Netflix">N</span>
+            <span class="platform-badge" data-full-name="HBO">HBO</span>
+            <span class="platform-badge" data-full-name="Apple TV+">🍎</span>
+          </div>
+          <p class="project-description">
+            The final generation of a powerful family fights to preserve their legacy.
+          </p>
+          <div class="project-actions">
+            <a href="projects/the-last-dynasty.html" class="btn btn-primary">View Details</a>
+            <a href="assets/the-last-dynasty-teaser.mp4" class="btn btn-secondary">Trailer</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card">
+        <img src="images/black-girls-guide.png" alt="Black Girl's Guide to Vengeance" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">Black Girl's Guide to Vengeance (and Vodka)</h3>
+          <div class="project-meta">
+            <span class="project-tag">Comedy</span>
+            <span class="project-tag">MOW</span>
+          </div>
+          <div class="project-platforms">
+            <span class="platform-badge" data-full-name="BET+">B+</span>
+            <span class="platform-badge" data-full-name="OWN">OWN</span>
+            <span class="platform-badge" data-full-name="Lifetime">L</span>
+          </div>
+          <p class="project-description">
+            Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women.
+          </p>
+          <div class="project-actions">
+            <a href="projects/black-girls-guide-to-vengeance.html" class="btn btn-primary">View Details</a>
+            <a href="#" class="btn btn-secondary">Trailer</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cta-center">
+      <a href="slate.html" class="btn btn-primary btn-large">View All 47 Projects</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-content">
+      <div class="section-header">
+        <h2>About NCCA Entertainment</h2>
+        <p>A boutique content studio delivering premium, culturally rich scripted series and films — where Atlanta's soul meets global storytelling.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Our Mission</h3>
+          <p>
+            NCCA Entertainment specializes in developing and producing market-ready film and television projects that center diverse voices, Southern authenticity, and commercial viability. We create content that resonates across platforms while maintaining cultural integrity and artistic excellence.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h3>What We Do</h3>
+          <p>
+            We develop scripted features, TV movies (MOW), limited series, network series, and docuseries across multiple genres including drama, thriller, romance, comedy, horror, and Southern Gothic. Our projects are designed for leading platforms including BET+, OWN, Lifetime, Netflix, HBO, Peacock, Paramount+, and major broadcast networks.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h3>Our Approach</h3>
+          <p>
+            Atlanta-forward. Culture-first. Franchise-minded. We combine deep cultural knowledge with strategic market positioning to create projects that serve both artistic vision and commercial objectives. Every project is developed with clear target buyers, comprehensive pitch materials, and production readiness.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About NCCA Entertainment</h2>
-      <p class="section-intro">
-        A boutique content studio delivering premium, culturally rich scripted series and films — where Atlanta's soul meets global storytelling.
-      </p>
-
-      <div class="grid">
-        <article class="card">
-          <div class="card-body">
-            <div class="title">Our Mission</div>
-            <p class="muted">
-              NCCA Entertainment specializes in developing and producing market-ready film and television projects that center diverse voices, Southern authenticity, and commercial viability. We create content that resonates across platforms while maintaining cultural integrity and artistic excellence.
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-body">
-            <div class="title">What We Do</div>
-            <p class="muted">
-              We develop scripted features, TV movies (MOW), limited series, network series, and docuseries across multiple genres including drama, thriller, romance, comedy, horror, and Southern Gothic. Our projects are designed for leading platforms including BET+, OWN, Lifetime, Netflix, HBO, Peacock, Paramount+, and major broadcast networks.
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-body">
-            <div class="title">Our Approach</div>
-            <p class="muted">
-              Atlanta-forward. Culture-first. Franchise-minded. We combine deep cultural knowledge with strategic market positioning to create projects that serve both artistic vision and commercial objectives. Every project is developed with clear target buyers, comprehensive pitch materials, and production readiness.
-            </p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="section-header">
       <h2>Contact</h2>
-      <p class="section-intro">
-        For meetings, materials, script access, or packaging conversations:
-      </p>
+      <p>For meetings, materials, script access, or packaging conversations</p>
+    </div>
 
-      <div class="grid">
-        <article class="card">
-          <div class="card-body">
-            <div class="title">NCCA Entertainment</div>
-            <p class="muted">
-              Atlanta, GA<br/>
-              Development • Packaging • Physical Production
-            </p>
-            <p class="muted">
-              Email: <a href="mailto:NCCAEntertainment@gmail.com">NCCAEntertainment@gmail.com</a><br/>
-              Phone: <a href="tel:+19102629307">(910) 262-9307</a>
-            </p>
-          </div>
-        </article>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>NCCA Entertainment</h3>
+        <p>
+          Atlanta, GA<br>
+          Development • Packaging • Physical Production
+        </p>
+        <a href="mailto:NCCAEntertainment@gmail.com" class="contact-link">NCCAEntertainment@gmail.com</a>
+        <a href="tel:+19102629307" class="contact-link">(910) 262-9307</a>
+      </div>
 
-        <article class="card">
-          <div class="card-body">
-            <div class="title">Let's Work</div>
-            <p class="muted">
-              Scripted Features • TV Movies (MOW) • Limited Series • Docuseries.<br/>
-              Atlanta-forward. Culture-first. Franchise-minded.
-            </p>
-          </div>
-        </article>
+      <div class="contact-card">
+        <h3>Let's Work</h3>
+        <p>
+          Scripted Features • TV Movies (MOW) • Limited Series • Docuseries
+        </p>
+        <p style="margin-top:1rem;">
+          <strong>Atlanta-forward. Culture-first. Franchise-minded.</strong>
+        </p>
       </div>
     </div>
   </section>
 
-</main>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">NCCA ENTERTAINMENT</div>
-      <div class="muted" style="font-size:.8rem;margin-top:.5rem;line-height:1.5;color:#777;">
-        Boutique content studio delivering premium, culturally rich scripted stories where Atlanta's soul meets global market lanes.
-      </div>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 NCCA Entertainment. All rights reserved.</p>
+      <p style="margin-top:.5rem;">Boutique content studio delivering premium, culturally rich scripted stories where Atlanta's soul meets global market lines.</p>
     </div>
-    <div class="footer-grid">
-      <div class="footer-brand" style="font-size:.9rem;">For Buyers</div>
-      <div style="color:#777;font-size:.8rem;line-height:1.5;">
-        MOW • Limited Series • Features<br/>
-        BET+ • OWN • Lifetime • Netflix • Peacock • Paramount+ • Hallmark
-      </div>
-    </div>
-    <div class="footer-grid">
-      <div class="footer-brand" style="font-size:.9rem;">Contact</div>
-      <div style="color:#777;font-size:.8rem;line-height:1.5;">
-        <a href="mailto:NCCAEntertainment@gmail.com" style="color:#ccc;text-decoration:none;">NCCAEntertainment@gmail.com</a><br/>
-        <a href="tel:+19102629307" style="color:#ccc;text-decoration:none;">(910) 262-9307</a>
-      </div>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  // Mobile Navigation
-  const navToggle = document.getElementById('navToggle');
-  const nav = document.getElementById('primaryNav');
+  <!-- Back to Top Button (Phase 1) -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-  if (navToggle && nav) {
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open', !expanded);
-    });
-  }
-
-  // Featured Projects Carousel
-  const carousel = document.getElementById('featuredCarousel');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const dotsContainer = document.getElementById('carouselDots');
-  const slides = carousel.querySelectorAll('.carousel-slide');
-  let currentSlide = 0;
-
-  // Create dots
-  slides.forEach((_, index) => {
-    const dot = document.createElement('button');
-    dot.classList.add('carousel-dot');
-    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-    if (index === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToSlide(index));
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = dotsContainer.querySelectorAll('.carousel-dot');
-
-  function goToSlide(index) {
-    currentSlide = index;
-    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+  <script>
+    // Back to Top Button functionality
+    const backToTopBtn = document.getElementById('backToTop');
     
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentSlide);
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
     });
-  }
 
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    goToSlide(currentSlide);
-  }
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
 
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    goToSlide(currentSlide);
-  }
-
-  prevBtn.addEventListener('click', prevSlide);
-  nextBtn.addEventListener('click', nextSlide);
-
-  // Auto-advance carousel every 5 seconds
-  setInterval(nextSlide, 5000);
-});
-</script>
+    // Lazy loading fallback for older browsers
+    if ('loading' in HTMLImageElement.prototype) {
+      // Browser supports lazy loading
+    } else {
+      // Fallback for browsers that don't support lazy loading
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      images.forEach(img => {
+        img.src = img.src;
+      });
+    }
+  </script>
 
 </body>
 </html>

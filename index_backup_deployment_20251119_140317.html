@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NCCA Entertainment — Cinematic Storytelling</title>
+
+  <meta name="description" content="NCCA Entertainment is a boutique content studio delivering premium, culturally rich scripted series and films.  Where Atlanta's soul meets global storytelling."/>
+  <meta property="og:title" content="NCCA ENTERTAINMENT"/>
+  <meta property="og:description" content="Film & Television Production"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="og-image.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="NCCA ENTERTAINMENT"/>
+  <meta name="twitter:description" content="Film & Television Production"/>
+  <meta name="twitter:image" content="og-image.png"/>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <style>
+    :root{
+      --brand:#D48B3C;
+      --brand-hover:#E3A463;
+      --brand-ink:#F2E6D0;
+      --brand-bg:#0A0A0A;
+      --brand-muted:#B9A98F;
+      --brand-rule:rgba(255,255,255,.10);
+      --card-min:320px;
+      --gap:1rem;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--brand-bg);
+      color:#f5f3ee;
+      line-height:1.6;
+    }
+
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline;color:var(--brand-hover)}
+
+    /* Sticky Header */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:2000;
+      background:rgba(11,11,12,.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .nav-wrap{
+      max-width:1400px;
+      margin:0 auto;
+      padding:.75rem 24px;
+      display:flex;
+      align-items:center;
+      gap:1rem
+    }
+    .brand{
+      font-weight:900;
+      letter-spacing:.5px;
+      padding:.25rem .6rem;
+      border-radius:8px;
+      background:linear-gradient(180deg,#2a2c31,#17181b);
+      color:#ffd166;
+      text-decoration:none;
+      font-size:1rem;
+      line-height:1;
+    }
+
+    .nav{margin-left:auto}
+    .nav-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:.5rem;
+      align-items:center
+    }
+    .nav-item>a{
+      color:#e7e7ea;
+      text-decoration:none;
+      padding:.5rem .7rem;
+      border-radius:8px;
+      font-weight:700;
+      background:none;
+      border:1px solid transparent;
+      font-size:.95rem;
+      line-height:1.2;
+    }
+    .nav-item>a:hover{
+      background:#191b20;
+      border-color:#2a2c31;
+      text-decoration:none;
+    }
+    .nav-item.cta>a{
+      background:var(--brand);
+      color:#111;
+      border-color:var(--brand);
+    }
+    .nav-item.cta>a:hover{
+      background:var(--brand-hover);
+      border-color:var(--brand-hover);
+    }
+
+    .nav-toggle{
+      display:none;
+      margin-left:auto;
+      font-size:1.25rem;
+      line-height:1;
+      background:#191b20;
+      color:#e7e7ea;
+      border:1px solid #2a2c31;
+      border-radius:8px;
+      padding:.4rem .6rem;
+      cursor:pointer;
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      min-height:72vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow:hidden;
+      background:#000;
+      padding:4rem 1rem;
+    }
+    .hero-inner{max-width:900px;padding:2rem}
+    .hero h1{
+      font-size:clamp(3rem,8vw,7rem);
+      font-weight:900;
+      margin-bottom:1.5rem;
+      letter-spacing:-.03em;
+      line-height:0.9;
+    }
+    .hero h1 span{
+      color:var(--brand);
+      background:linear-gradient(135deg,var(--brand),var(--brand-hover));
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent
+    }
+    .hero p{
+      font-size:clamp(1.1rem,2.5vw,1.4rem);
+      opacity:.95;
+      margin:0 auto 2.5rem;
+      max-width:800px;
+      color:var(--brand-ink);
+    }
+
+    /* Audience Gateway */
+    .audience-gateway{
+      padding:4rem 0;
+      background:linear-gradient(135deg, #1a1a1f, #0f0f13);
+    }
+    .container{max-width:1400px;margin:0 auto;padding:0 24px}
+    .gateway-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+      gap:2rem;
+      margin-top:2rem;
+    }
+    .gateway-card{
+      background:linear-gradient(145deg,#2a2c31,#17181b);
+      border-radius:20px;
+      padding:3rem 2rem;
+      border:2px solid rgba(255,255,255,.08);
+      transition:all .4s ease;
+      text-align:center;
+    }
+    .gateway-card:hover{
+      transform:translateY(-8px);
+      border-color:var(--brand);
+      box-shadow:0 20px 60px rgba(212,139,60,.3);
+    }
+    .gateway-card h3{
+      font-size:2rem;
+      font-weight:900;
+      margin-bottom:1rem;
+      color:#fff;
+    }
+    .gateway-card p{
+      font-size:1.1rem;
+      color:var(--brand-muted);
+      margin-bottom:1.5rem;
+      line-height:1.6;
+    }
+    .gateway-card ul{
+      list-style:none;
+      padding:0;
+      margin:0 0 2rem 0;
+      text-align:left;
+    }
+    .gateway-card li{
+      padding:.5rem 0;
+      color:var(--brand-ink);
+      font-size:.95rem;
+    }
+    .gateway-card li:before{
+      content:"✓ ";
+      color:var(--brand);
+      font-weight:bold;
+      margin-right:.5rem;
+    }
+
+    .btn{
+      display:inline-block;
+      background:var(--brand);
+      color:#111;
+      border:none;
+      padding:1rem 2rem;
+      border-radius:999px;
+      font-weight:800;
+      font-size:1rem;
+      transition:all .3s ease;
+      box-shadow:0 8px 30px rgba(212,139,60,.3);
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      cursor:pointer;
+      text-decoration:none;
+      line-height:1.2;
+    }
+    .btn:hover{
+      background:var(--brand-hover);
+      text-decoration:none;
+      transform:translateY(-2px);
+      box-shadow:0 12px 40px rgba(212,139,60,.4)
+    }
+    .btn.secondary{
+      background:transparent;
+      color:#fff;
+      border:2px solid rgba(255,255,255,.3)
+    }
+    .btn.secondary:hover{
+      background:rgba(255,255,255,.1);
+      border-color:rgba(255,255,255,.5)
+    }
+
+    .section{padding:4rem 0;position:relative}
+    .section h2{
+      font-size:clamp(2.2rem,5vw,3.6rem);
+      font-weight:900;
+      text-align:center;
+      margin-bottom:1.25rem;
+      letter-spacing:-.02em;
+      background:linear-gradient(135deg,#fff,var(--brand-ink));
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent
+    }
+    .section-intro{
+      text-align:center;
+      font-size:1.1rem;
+      color:var(--brand-muted);
+      max-width:800px;
+      margin:0 auto 2.2rem;
+      line-height:1.6
+    }
+
+    /* Featured Projects Carousel */
+    .carousel-container{
+      position:relative;
+      max-width:1000px;
+      margin:0 auto;
+      overflow:hidden;
+    }
+    .carousel{
+      display:flex;
+      transition:transform .5s ease;
+    }
+    .carousel-slide{
+      min-width:100%;
+      padding:1rem;
+    }
+    .featured-card{
+      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 8px 32px rgba(0,0,0,.3);
+      max-width:800px;
+      margin:0 auto;
+    }
+    .featured-card-media{
+      width:100%;
+      aspect-ratio:16/9;
+      background-size:cover;
+      background-position:center;
+    }
+    .featured-card-body{
+      padding:2rem;
+    }
+    .featured-card h3{
+      font-size:2rem;
+      font-weight:800;
+      margin-bottom:1rem;
+      color:#fff;
+    }
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.45rem;
+      margin-bottom:.8rem;
+      align-items:center;
+      font-size:.8rem;
+      line-height:1.3;
+    }
+    .badge{
+      background:rgba(212,139,60,.18);
+      color:var(--brand);
+      padding:.25rem .6rem;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:700;
+      border:1px solid rgba(212,139,60,.3)
+    }
+    .featured-card p{
+      font-size:1.1rem;
+      color:var(--brand-muted);
+      margin-bottom:1.5rem;
+      line-height:1.6;
+    }
+    .carousel-controls{
+      display:flex;
+      justify-content:center;
+      gap:1rem;
+      margin-top:2rem;
+    }
+    .carousel-btn{
+      background:var(--brand);
+      color:#111;
+      border:none;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      font-size:1.5rem;
+      cursor:pointer;
+      transition:all .3s ease;
+    }
+    .carousel-btn:hover{
+      background:var(--brand-hover);
+      transform:scale(1.1);
+    }
+    .carousel-dots{
+      display:flex;
+      justify-content:center;
+      gap:.5rem;
+      margin-top:1rem;
+    }
+    .carousel-dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:rgba(255,255,255,.2);
+      border:none;
+      cursor:pointer;
+      transition:all .3s ease;
+    }
+    .carousel-dot.active{
+      background:var(--brand);
+      width:30px;
+      border-radius:6px;
+    }
+
+    /* About Cards */
+    .grid{
+      display:grid;
+      gap:var(--gap);
+      grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
+    }
+    .card{
+      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
+      border-radius:20px;
+      overflow:hidden;
+      transition:all .4s ease;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 8px 32px rgba(0,0,0,.3)
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 60px rgba(0,0,0,.4);
+      border-color:rgba(212,139,60,.28)
+    }
+    .card-body{padding:1.5rem 1.75rem}
+    .title{
+      font-size:1.4rem;
+      font-weight:800;
+      margin-bottom:.8rem;
+      color:#fff;
+      line-height:1.2;
+    }
+    .muted{
+      color:var(--brand-muted);
+      line-height:1.55;
+      font-size:.95rem
+    }
+
+    footer{
+      border-top:1px solid var(--brand-rule);
+      background:#0a0a0a;
+      color:#999;
+      padding:3rem 24px 4rem;
+      font-size:.9rem;
+    }
+    .footer-inner{
+      max-width:1400px;
+      margin:0 auto;
+      display:grid;
+      gap:2rem;
+    }
+    .footer-brand{
+      font-weight:800;
+      color:#fff;
+      font-size:1rem;
+      line-height:1.4;
+    }
+    .footer-grid{
+      display:grid;
+      gap:1.5rem;
+    }
+    @media(min-width:700px){
+      .footer-inner{
+        grid-template-columns:1fr auto auto;
+      }
+      .footer-grid{
+        text-align:right;
+      }
+    }
+
+    @media(max-width:900px){
+      .nav-toggle{display:inline-block}
+      .nav{display:none;width:100%;margin-left:0;}
+      .nav.open{display:block}
+      .nav-list{
+        flex-direction:column;
+        align-items:stretch;
+        gap:.25rem;
+        margin-top:.5rem
+      }
+      .gateway-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    [id]{scroll-margin-top:96px}
+
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+    .skip-link:focus{
+      position:static;
+      width:auto;
+      height:auto;
+      background:#000;
+      color:#fff;
+      padding:.5rem 1rem;
+      z-index:4000;
+    }
+
+  </style>
+</head>
+
+<body id="top">
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="site-header" role="banner">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="NCCA Home">NCCA</a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">☰</button>
+
+    <nav id="primaryNav" class="nav" role="navigation" aria-label="Main">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="projects.html">Projects</a></li>
+        <li class="nav-item"><a href="about.html">About</a></li>
+        <li class="nav-item"><a href="music.html">Music</a></li>
+        <li class="nav-item"><a href="contact.html">Contact</a></li>
+        <li class="nav-item cta"><a href="for-professionals.html">For Professionals</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <h1>NCCA <span>ENTERTAINMENT</span></h1>
+      <p>A boutique content studio delivering premium, culturally rich scripted series and films.  Where Atlanta's soul meets global storytelling.</p>
+    </div>
+  </section>
+
+  <!-- AUDIENCE GATEWAY -->
+  <section class="audience-gateway">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:1rem;color:#fff;">Choose Your Path</h2>
+      <p class="section-intro">Whether you're an industry professional or exploring our creative slate, we have resources tailored for you.</p>
+      
+      <div class="gateway-grid">
+        <div class="gateway-card">
+          <h3>🎬 For Industry Professionals</h3>
+          <p>Access comprehensive pitch materials, one-sheets, and project packages designed for buyers and decision-makers.</p>
+          <ul>
+            <li>Pitch Decks & One-Sheets</li>
+            <li>Script Access Requests</li>
+            <li>Target Platform Analysis</li>
+            <li>Direct Contact for Meetings</li>
+          </ul>
+          <a href="for-professionals.html" class="btn">Professional Resources</a>
+        </div>
+
+        <div class="gateway-card">
+          <h3>🎥 Explore Our Slate</h3>
+          <p>Browse our complete catalog of 47 market-ready projects across multiple genres and formats.</p>
+          <ul>
+            <li>47 Original Projects</li>
+            <li>Multiple Genres & Formats</li>
+            <li>Trailers & Visual Materials</li>
+            <li>Detailed Project Information</li>
+          </ul>
+          <a href="projects.html" class="btn secondary">View All Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS CAROUSEL -->
+  <section id="featured" class="section">
+    <div class="container">
+      <h2>FEATURED PROJECTS</h2>
+      <p class="section-intro">Showcasing our most market-ready projects with comprehensive materials available.</p>
+
+      <div class="carousel-container">
+        <div class="carousel" id="featuredCarousel">
+          <!-- Slide 1 -->
+          <div class="carousel-slide">
+            <div class="featured-card">
+              <div class="featured-card-media" style="background-image:url('images/influencers-last-post.png')"></div>
+              <div class="featured-card-body">
+                <h3>The Influencer's Last Post</h3>
+                <div class="meta">
+                  <span class="badge">Film Noir</span>
+                  <span class="badge">MOW</span>
+                  <span class="badge">Women 25–40 | Gen Z</span>
+                </div>
+                <p>A social media influencer's final post becomes the key to solving her own murder.</p>
+                <a href="projects/the-influencers-last-post.html" class="btn">View Project Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-slide">
+            <div class="featured-card">
+              <div class="featured-card-media" style="background-image:url('images/the-line.png')"></div>
+              <div class="featured-card-body">
+                <h3>The Line</h3>
+                <div class="meta">
+                  <span class="badge">Network Series</span>
+                  <span class="badge">Gen Z; Women 25–40</span>
+                </div>
+                <p>A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.</p>
+                <a href="projects/the-line.html" class="btn">View Project Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-slide">
+            <div class="featured-card">
+              <div class="featured-card-media" style="background-image:url('images/the-last-dynasty.png')"></div>
+              <div class="featured-card-body">
+                <h3>The Last Dynasty</h3>
+                <div class="meta">
+                  <span class="badge">Drama</span>
+                  <span class="badge">Musical</span>
+                  <span class="badge">Adults 25-54</span>
+                </div>
+                <p>The final generation of a powerful family fights to preserve their legacy.</p>
+                <a href="projects/the-last-dynasty.html" class="btn">View Project Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="carousel-slide">
+            <div class="featured-card">
+              <div class="featured-card-media" style="background-image:url('images/black-girls-guide-to-vengeance-and-vodka.png')"></div>
+              <div class="featured-card-body">
+                <h3>Black Girl's Guide to Vengeance (and Vodka)</h3>
+                <div class="meta">
+                  <span class="badge">Comedy</span>
+                  <span class="badge">MOW</span>
+                  <span class="badge">Women 25–40</span>
+                </div>
+                <p>Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women.</p>
+                <a href="projects/black-girls-guide-to-vengeance-and-vodka.html" class="btn">View Project Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous project">‹</button>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next project">›</button>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About NCCA Entertainment</h2>
+      <p class="section-intro">
+        A boutique content studio delivering premium, culturally rich scripted series and films — where Atlanta's soul meets global storytelling.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-body">
+            <div class="title">Our Mission</div>
+            <p class="muted">
+              NCCA Entertainment specializes in developing and producing market-ready film and television projects that center diverse voices, Southern authenticity, and commercial viability. We create content that resonates across platforms while maintaining cultural integrity and artistic excellence.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <div class="title">What We Do</div>
+            <p class="muted">
+              We develop scripted features, TV movies (MOW), limited series, network series, and docuseries across multiple genres including drama, thriller, romance, comedy, horror, and Southern Gothic. Our projects are designed for leading platforms including BET+, OWN, Lifetime, Netflix, HBO, Peacock, Paramount+, and major broadcast networks.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <div class="title">Our Approach</div>
+            <p class="muted">
+              Atlanta-forward. Culture-first. Franchise-minded. We combine deep cultural knowledge with strategic market positioning to create projects that serve both artistic vision and commercial objectives. Every project is developed with clear target buyers, comprehensive pitch materials, and production readiness.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="section-intro">
+        For meetings, materials, script access, or packaging conversations:
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-body">
+            <div class="title">NCCA Entertainment</div>
+            <p class="muted">
+              Atlanta, GA<br/>
+              Development • Packaging • Physical Production
+            </p>
+            <p class="muted">
+              Email: <a href="mailto:NCCAEntertainment@gmail.com">NCCAEntertainment@gmail.com</a><br/>
+              Phone: <a href="tel:+19102629307">(910) 262-9307</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <div class="title">Let's Work</div>
+            <p class="muted">
+              Scripted Features • TV Movies (MOW) • Limited Series • Docuseries.<br/>
+              Atlanta-forward. Culture-first. Franchise-minded.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">NCCA ENTERTAINMENT</div>
+      <div class="muted" style="font-size:.8rem;margin-top:.5rem;line-height:1.5;color:#777;">
+        Boutique content studio delivering premium, culturally rich scripted stories where Atlanta's soul meets global market lanes.
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand" style="font-size:.9rem;">For Buyers</div>
+      <div style="color:#777;font-size:.8rem;line-height:1.5;">
+        MOW • Limited Series • Features<br/>
+        BET+ • OWN • Lifetime • Netflix • Peacock • Paramount+ • Hallmark
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand" style="font-size:.9rem;">Contact</div>
+      <div style="color:#777;font-size:.8rem;line-height:1.5;">
+        <a href="mailto:NCCAEntertainment@gmail.com" style="color:#ccc;text-decoration:none;">NCCAEntertainment@gmail.com</a><br/>
+        <a href="tel:+19102629307" style="color:#ccc;text-decoration:none;">(910) 262-9307</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Mobile Navigation
+  const navToggle = document.getElementById('navToggle');
+  const nav = document.getElementById('primaryNav');
+
+  if (navToggle && nav) {
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open', !expanded);
+    });
+  }
+
+  // Featured Projects Carousel
+  const carousel = document.getElementById('featuredCarousel');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsContainer = document.getElementById('carouselDots');
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  let currentSlide = 0;
+
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.classList.add('carousel-dot');
+    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+  function goToSlide(index) {
+    currentSlide = index;
+    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    goToSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    goToSlide(currentSlide);
+  }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+
+  // Auto-advance carousel every 5 seconds
+  setInterval(nextSlide, 5000);
+});
+</script>
+
+</body>
+</html>
