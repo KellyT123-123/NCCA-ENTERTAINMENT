@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>All Projects — NCCA Entertainment</title>
+
+  <meta name="description" content="Browse the complete catalog of NCCA Entertainment projects across all genres and formats."/>
+  
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <style>
+    :root{
+      --brand:#D48B3C;
+      --brand-hover:#E3A463;
+      --brand-ink:#F2E6D0;
+      --brand-bg:#0A0A0A;
+      --brand-muted:#B9A98F;
+      --brand-rule:rgba(255,255,255,.10);
+      --card-min:320px;
+      --gap:1rem;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--brand-bg);
+      color:#f5f3ee;
+      line-height:1.6;
+    }
+
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline;color:var(--brand-hover)}
+
+    /* Header */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:2000;
+      background:rgba(11,11,12,.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .nav-wrap{
+      max-width:1400px;
+      margin:0 auto;
+      padding:.75rem 24px;
+      display:flex;
+      align-items:center;
+      gap:1rem
+    }
+    .brand{
+      font-weight:900;
+      letter-spacing:.5px;
+      padding:.25rem .6rem;
+      border-radius:8px;
+      background:linear-gradient(180deg,#2a2c31,#17181b);
+      color:#ffd166;
+      text-decoration:none;
+      font-size:1rem;
+      line-height:1;
+    }
+    .nav{margin-left:auto}
+    .nav-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:.5rem;
+      align-items:center
+    }
+    .nav-item>a{
+      color:#e7e7ea;
+      text-decoration:none;
+      padding:.5rem .7rem;
+      border-radius:8px;
+      font-weight:700;
+      background:none;
+      border:1px solid transparent;
+      cursor:pointer;
+      font-size:.95rem;
+      line-height:1.2;
+    }
+    .nav-item>a:hover{
+      background:#191b20;
+      border-color:#2a2c31;
+    }
+
+    /* Main Layout */
+    .page-container{
+      max-width:1400px;
+      margin:0 auto;
+      padding:2rem 24px;
+    }
+    
+    .page-header{
+      text-align:center;
+      margin-bottom:2rem;
+    }
+    
+    .page-header h1{
+      font-size:clamp(2.5rem,5vw,4rem);
+      font-weight:900;
+      margin-bottom:1rem;
+      background:linear-gradient(135deg,#fff,var(--brand-ink));
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    
+    .page-intro{
+      font-size:1.1rem;
+      color:var(--brand-muted);
+      max-width:800px;
+      margin:0 auto;
+    }
+
+    /* Controls Bar */
+    .controls-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:2rem;
+      padding:1rem;
+      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      flex-wrap:wrap;
+      gap:1rem;
+    }
+    
+    .filter-toggle{
+      background:var(--brand);
+      color:#111;
+      border:none;
+      padding:.75rem 1.5rem;
+      border-radius:999px;
+      font-weight:800;
+      font-size:.95rem;
+      cursor:pointer;
+      transition:all .3s ease;
+    }
+    .filter-toggle:hover{
+      background:var(--brand-hover);
+      transform:translateY(-2px);
+    }
+    
+    .sort-control{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+    }
+    
+    .sort-control label{
+      font-weight:700;
+      color:var(--brand-ink);
+    }
+    
+    .sort-control select{
+      background:#191b20;
+      color:#e7e7ea;
+      border:1px solid #2a2c31;
+      padding:.5rem 1rem;
+      border-radius:8px;
+      font-size:.95rem;
+      font-weight:600;
+      cursor:pointer;
+    }
+    
+    .results-count{
+      color:var(--brand-muted);
+      font-weight:600;
+    }
+
+    /* Layout with Sidebar */
+    .content-layout{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:2rem;
+      align-items:start;
+    }
+    
+    @media(max-width:900px){
+      .content-layout{
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* Filter Sidebar */
+    .filter-sidebar{
+      position:sticky;
+      top:80px;
+      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      padding:1.5rem;
+      max-height:calc(100vh - 100px);
+      overflow-y:auto;
+    }
+    
+    .filter-sidebar.hidden{
+      display:none;
+    }
+    
+    .filter-group{
+      margin-bottom:1.5rem;
+    }
+    
+    .filter-group h3{
+      font-size:.9rem;
+      font-weight:800;
+      color:var(--brand);
+      margin-bottom:.75rem;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
+    
+    .filter-option{
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.4rem 0;
+      cursor:pointer;
+    }
+    
+    .filter-option input[type="checkbox"]{
+      width:18px;
+      height:18px;
+      cursor:pointer;
+    }
+    
+    .filter-option label{
+      font-size:.9rem;
+      color:#e7e7ea;
+      cursor:pointer;
+      flex:1;
+    }
+    
+    .filter-clear{
+      width:100%;
+      background:transparent;
+      color:var(--brand);
+      border:1px solid var(--brand);
+      padding:.6rem;
+      border-radius:8px;
+      font-weight:700;
+      cursor:pointer;
+      margin-top:1rem;
+    }
+    .filter-clear:hover{
+      background:rgba(212,139,60,.1);
+    }
+
+    /* Project Grid */
+    .projects-grid{
+      display:grid;
+      gap:var(--gap);
+      grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
+    }
+
+    .card{
+      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
+      border-radius:20px;
+      overflow:hidden;
+      transition:all .4s ease;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 8px 32px rgba(0,0,0,.3);
+      display:flex;
+      flex-direction:column;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 60px rgba(0,0,0,.4);
+      border-color:rgba(212,139,60,.28)
+    }
+    
+    .card-media{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      overflow:hidden;
+      background:#111;
+      background-size:cover;
+      background-position:center;
+    }
+    
+    .card-body{
+      padding:1.1rem 1.25rem;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    }
+    
+    .title{
+      font-size:1.25rem;
+      font-weight:800;
+      margin-bottom:.6rem;
+      color:#fff;
+      line-height:1.2;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+    
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.45rem;
+      margin-bottom:.8rem;
+      align-items:center;
+      font-size:.8rem;
+      line-height:1.3;
+    }
+    
+    .badge{
+      background:rgba(212,139,60,.18);
+      color:var(--brand);
+      padding:.25rem .6rem;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:700;
+      border:1px solid rgba(212,139,60,.3);
+      white-space:nowrap;
+    }
+    
+    .platform-logos{
+      display:flex;
+      gap:.4rem;
+      align-items:center;
+      font-size:.7rem;
+      font-weight:700;
+      color:#fff;
+      flex-wrap:wrap;
+    }
+    
+    .platform-logo{
+      background:rgba(255,255,255,.1);
+      padding:.2rem .5rem;
+      border-radius:4px;
+      font-size:.75rem;
+    }
+    
+    .muted{
+      color:var(--brand-muted);
+      line-height:1.55;
+      margin-bottom:1rem;
+      font-size:.95rem;
+      flex:1;
+    }
+    
+    .actions{
+      display:flex;
+      gap:.6rem;
+      flex-wrap:wrap;
+      margin-top:auto;
+    }
+    
+    .chip{
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      padding:.6rem 1.1rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      font-weight:700;
+      cursor:pointer;
+      font-size:.9rem;
+      line-height:1.2;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .chip:hover{
+      background:var(--brand);
+      color:#111;
+      border-color:var(--brand);
+      text-decoration:none;
+    }
+
+    /* Pagination */
+    .pagination{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:1rem;
+      margin-top:3rem;
+      padding:2rem 0;
+    }
+    
+    .page-btn{
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+      padding:.75rem 1.25rem;
+      border-radius:8px;
+      font-weight:700;
+      cursor:pointer;
+      transition:all .3s ease;
+    }
+    .page-btn:hover:not(:disabled){
+      background:var(--brand);
+      color:#111;
+      border-color:var(--brand);
+    }
+    .page-btn:disabled{
+      opacity:.3;
+      cursor:not-allowed;
+    }
+    
+    .page-numbers{
+      display:flex;
+      gap:.5rem;
+    }
+    
+    .page-num{
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+      padding:.75rem 1rem;
+      border-radius:8px;
+      font-weight:700;
+      cursor:pointer;
+      min-width:45px;
+      text-align:center;
+    }
+    .page-num.active{
+      background:var(--brand);
+      color:#111;
+      border-color:var(--brand);
+    }
+    .page-num:hover:not(.active){
+      background:rgba(212,139,60,.2);
+    }
+
+    /* No Results */
+    .no-results{
+      text-align:center;
+      padding:4rem 2rem;
+      color:var(--brand-muted);
+    }
+    .no-results h3{
+      font-size:2rem;
+      margin-bottom:1rem;
+      color:var(--brand-ink);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="NCCA Home">NCCA</a>
+      <nav class="nav" role="navigation" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="projects.html">Projects</a></li>
+          <li class="nav-item"><a href="index.html#for-pros">For Professionals</a></li>
+          <li class="nav-item"><a href="index.html#about">About</a></li>
+          <li class="nav-item"><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <div class="page-header">
+      <h1>All Projects</h1>
+      <p class="page-intro">Browse our complete catalog of market-ready projects across multiple genres and formats.</p>
+    </div>
+
+    <div class="controls-bar">
+      <button class="filter-toggle" id="filterToggle">🔍 Show Filters</button>
+      
+      <div class="sort-control">
+        <label for="sortSelect">Sort by:</label>
+        <select id="sortSelect">
+          <option value="featured">Featured</option>
+          <option value="alpha">Alphabetical (A-Z)</option>
+          <option value="genre">Genre</option>
+          <option value="format">Format</option>
+        </select>
+      </div>
+      
+      <div class="results-count">
+        <span id="resultsCount">0</span> projects
+      </div>
+    </div>
+
+    <div class="content-layout">
+      <!-- Filter Sidebar -->
+      <aside class="filter-sidebar hidden" id="filterSidebar">
+        <div class="filter-group">
+          <h3>Genre</h3>
+          <div class="filter-option">
+            <input type="checkbox" id="genre-christmas" value="Christmas">
+            <label for="genre-christmas">Christmas</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="genre-horror" value="Horror">
+            <label for="genre-horror">Horror / Southern Gothic</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="genre-comedy" value="Comedy">
+            <label for="genre-comedy">Comedy</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="genre-romance" value="Romance">
+            <label for="genre-romance">Romance</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="genre-thriller" value="Thriller">
+            <label for="genre-thriller">Thriller</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="genre-drama" value="Drama">
+            <label for="genre-drama">Drama</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="genre-action" value="Action">
+            <label for="genre-action">Action</label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>Format</h3>
+          <div class="filter-option">
+            <input type="checkbox" id="format-mow" value="MOW">
+            <label for="format-mow">MOW (Movie of the Week)</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="format-feature" value="Feature">
+            <label for="format-feature">Feature Film</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="format-limited" value="Limited Series">
+            <label for="format-limited">Limited Series</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="format-network" value="Network Series">
+            <label for="format-network">Network Series</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="format-docuseries" value="Docuseries">
+            <label for="format-docuseries">Docuseries</label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>Target Platform</h3>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-bet" value="BET+">
+            <label for="platform-bet">BET+</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-own" value="OWN">
+            <label for="platform-own">OWN</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-lifetime" value="Lifetime">
+            <label for="platform-lifetime">Lifetime</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-netflix" value="Netflix">
+            <label for="platform-netflix">Netflix</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-hbo" value="HBO">
+            <label for="platform-hbo">HBO</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-peacock" value="Peacock">
+            <label for="platform-peacock">Peacock</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-paramount" value="Paramount+">
+            <label for="platform-paramount">Paramount+</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-abc" value="ABC">
+            <label for="platform-abc">ABC</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-nbc" value="NBC">
+            <label for="platform-nbc">NBC</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-fox" value="FOX">
+            <label for="platform-fox">FOX</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-cbs" value="CBS">
+            <label for="platform-cbs">CBS</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="platform-hallmark" value="Hallmark">
+            <label for="platform-hallmark">Hallmark</label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>Target Audience</h3>
+          <div class="filter-option">
+            <input type="checkbox" id="audience-women" value="Women 25-40">
+            <label for="audience-women">Women 25-40</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="audience-genz" value="Gen Z">
+            <label for="audience-genz">Gen Z</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="audience-adults1849" value="Adults 18-49">
+            <label for="audience-adults1849">Adults 18-49</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="audience-adults2554" value="Adults 25-54">
+            <label for="audience-adults2554">Adults 25-54</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="audience-black" value="Black Audiences">
+            <label for="audience-black">Black Audiences</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="audience-horror" value="Horror Fans">
+            <label for="audience-horror">Horror Fans</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="audience-ya" value="YA">
+            <label for="audience-ya">YA (Young Adult)</label>
+          </div>
+        </div>
+
+        <button class="filter-clear" id="clearFilters">Clear All Filters</button>
+      </aside>
+
+      <!-- Projects Grid -->
+      <div>
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Projects will be loaded here via JavaScript -->
+        </div>
+
+        <div class="no-results hidden" id="noResults">
+          <h3>No projects found</h3>
+          <p>Try adjusting your filters or clearing them to see more results.</p>
+        </div>
+
+        <div class="pagination" id="pagination">
+          <button class="page-btn" id="prevPage">← Previous</button>
+          <div class="page-numbers" id="pageNumbers"></div>
+          <button class="page-btn" id="nextPage">Next →</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="projects-data.js"></script>
+  <script>
+    // Load projects from external data file
+    const allProjects = projectsData || [];
+    
+    // Pagination settings
+    const projectsPerPage = 12;
+    let currentPage = 1;
+    let filteredProjects = [];
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProjectsFromIndexHTML();
+      setupEventListeners();
+      applyFiltersAndSort();
+    });
+
+    function setupEventListeners() {
+      // Filter toggle
+      document.getElementById('filterToggle').addEventListener('click', () => {
+        const sidebar = document.getElementById('filterSidebar');
+        const toggle = document.getElementById('filterToggle');
+        sidebar.classList.toggle('hidden');
+        toggle.textContent = sidebar.classList.contains('hidden') ? '🔍 Show Filters' : '✕ Hide Filters';
+      });
+
+      // Sort change
+      document.getElementById('sortSelect').addEventListener('change', () => {
+        currentPage = 1;
+        applyFiltersAndSort();
+      });
+
+      // Filter checkboxes
+      document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          currentPage = 1;
+          applyFiltersAndSort();
+        });
+      });
+
+      // Clear filters
+      document.getElementById('clearFilters').addEventListener('click', () => {
+        document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => cb.checked = false);
+        currentPage = 1;
+        applyFiltersAndSort();
+      });
+
+      // Pagination
+      document.getElementById('prevPage').addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          applyFiltersAndSort();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+
+      document.getElementById('nextPage').addEventListener('click', () => {
+        const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+        if (currentPage < totalPages) {
+          currentPage++;
+          applyFiltersAndSort();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    }
+
+    function loadProjectsFromIndexHTML() {
+      console.log('Projects loaded:', allProjects.length);
+      // Projects are already loaded from projects-data.js
+      if (allProjects.length > 0) {
+        applyFiltersAndSort();
+      }
+    }
+
+    function getActiveFilters() {
+      const filters = {
+        genres: [],
+        formats: [],
+        platforms: [],
+        audiences: []
+      };
+
+      document.querySelectorAll('#filterSidebar input[type="checkbox"]:checked').forEach(cb => {
+        const id = cb.id;
+        if (id.startsWith('genre-')) filters.genres.push(cb.value);
+        else if (id.startsWith('format-')) filters.formats.push(cb.value);
+        else if (id.startsWith('platform-')) filters.platforms.push(cb.value);
+        else if (id.startsWith('audience-')) filters.audiences.push(cb.value);
+      });
+
+      return filters;
+    }
+
+    function applyFiltersAndSort() {
+      const filters = getActiveFilters();
+      const sortBy = document.getElementById('sortSelect').value;
+
+      // Filter projects
+      filteredProjects = allProjects.filter(project => {
+        // Apply genre filter
+        if (filters.genres.length > 0) {
+          const hasGenre = filters.genres.some(g => 
+            project.genre.toLowerCase().includes(g.toLowerCase())
+          );
+          if (!hasGenre) return false;
+        }
+
+        // Apply format filter
+        if (filters.formats.length > 0) {
+          const hasFormat = filters.formats.some(f => 
+            project.format.toLowerCase().includes(f.toLowerCase())
+          );
+          if (!hasFormat) return false;
+        }
+
+        // Apply platform filter
+        if (filters.platforms.length > 0) {
+          const hasPlatform = filters.platforms.some(p => 
+            project.platforms && project.platforms.includes(p)
+          );
+          if (!hasPlatform) return false;
+        }
+
+        // Apply audience filter
+        if (filters.audiences.length > 0) {
+          const hasAudience = filters.audiences.some(a => 
+            project.audience.toLowerCase().includes(a.toLowerCase())
+          );
+          if (!hasAudience) return false;
+        }
+
+        return true;
+      });
+
+      // Sort projects
+      switch(sortBy) {
+        case 'alpha':
+          filteredProjects.sort((a, b) => a.title.localeCompare(b.title));
+          break;
+        case 'genre':
+          filteredProjects.sort((a, b) => a.genre.localeCompare(b.genre));
+          break;
+        case 'format':
+          filteredProjects.sort((a, b) => a.format.localeCompare(b.format));
+          break;
+        case 'featured':
+        default:
+          // Keep original order (featured first)
+          break;
+      }
+
+      renderProjects();
+      updatePagination();
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      const noResults = document.getElementById('noResults');
+      const resultsCount = document.getElementById('resultsCount');
+
+      resultsCount.textContent = filteredProjects.length;
+
+      if (filteredProjects.length === 0) {
+        grid.innerHTML = '';
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+
+      // Calculate pagination
+      const startIndex = (currentPage - 1) * projectsPerPage;
+      const endIndex = startIndex + projectsPerPage;
+      const projectsToShow = filteredProjects.slice(startIndex, endIndex);
+
+      // Render project cards
+      grid.innerHTML = projectsToShow.map(project => `
+        <article class="card">
+          <div class="card-media" style="background-image:url('${project.image}')"></div>
+          <div class="card-body">
+            <div class="title">${project.title}</div>
+            <div class="meta">
+              <span class="badge">${project.genre}</span>
+              <span class="badge">${project.format}</span>
+              ${project.audience ? `<span class="badge">${project.audience}</span>` : ''}
+            </div>
+            ${project.platforms ? `
+              <div class="platform-logos">
+                ${project.platforms.map(p => `<span class="platform-logo">${p}</span>`).join('')}
+              </div>
+            ` : ''}
+            <p class="muted">${project.description}</p>
+            <div class="actions">
+              <a href="#" class="chip">View Details</a>
+              ${project.trailer ? `<a href="${project.trailer}" class="chip" target="_blank">Watch Trailer</a>` : ''}
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function updatePagination() {
+      const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+      const prevBtn = document.getElementById('prevPage');
+      const nextBtn = document.getElementById('nextPage');
+      const pageNumbers = document.getElementById('pageNumbers');
+
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+
+      // Generate page numbers
+      let pages = [];
+      if (totalPages <= 7) {
+        pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+      } else {
+        if (currentPage <= 4) {
+          pages = [1, 2, 3, 4, 5, '...', totalPages];
+        } else if (currentPage >= totalPages - 3) {
+          pages = [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+        } else {
+          pages = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
+        }
+      }
+
+      pageNumbers.innerHTML = pages.map(page => {
+        if (page === '...') {
+          return `<span class="page-num" style="cursor:default;background:transparent;border:none;">...</span>`;
+        }
+        return `<button class="page-num ${page === currentPage ? 'active' : ''}" onclick="goToPage(${page})">${page}</button>`;
+      }).join('');
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      applyFiltersAndSort();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Music — NCCA Entertainment</title>
+
+  <meta name="description" content="Original music and themes from NCCA Entertainment's slate of projects."/>
+  
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <style>
+    :root{
+      --brand:#D48B3C;
+      --brand-hover:#E3A463;
+      --brand-ink:#F2E6D0;
+      --brand-bg:#0A0A0A;
+      --brand-muted:#B9A98F;
+      --brand-rule:rgba(255,255,255,.10);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--brand-bg);
+      color:#f5f3ee;
+      line-height:1.6;
+      padding:2rem;
+    }
+
+    .container{max-width:1200px;margin:0 auto}
+    h1{
+      font-size:3rem;
+      font-weight:900;
+      margin-bottom:1rem;
+      text-align:center;
+      background:linear-gradient(135deg,#fff,var(--brand-ink));
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    
+    .intro{
+      text-align:center;
+      font-size:1.2rem;
+      color:var(--brand-muted);
+      margin-bottom:3rem;
+    }
+
+    .back-link{
+      display:inline-block;
+      margin-bottom:2rem;
+      color:var(--brand);
+      text-decoration:none;
+      font-weight:700;
+    }
+    .back-link:hover{text-decoration:underline}
+
+    /* Audio Player */
+    .audio-player{
+      --accent:#ffd166;
+      --bg:#111;
+      --text:#e7e7ea;
+      --muted:#a9acb6;
+      width:100%;
+      border:1px solid #2a2c31;
+      border-radius:12px;
+      background:var(--bg);
+      box-shadow:0 6px 18px rgba(0,0,0,.25);
+      overflow:hidden;
+      font:14px/1.4 Inter,system-ui,sans-serif;
+      margin:1.5rem 0 0
+    }
+    .audio-row{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      padding:.75rem .9rem
+    }
+    .ap-button{
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:1px solid #2a2c31;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      background:#191b20;
+      color:var(--text);
+      font-size:.9rem;
+      font-weight:700;
+      line-height:1;
+    }
+    .ap-button:hover{transform:translateY(-1px)}
+    .track-meta{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+    }
+    .track-title{
+      font-weight:700;
+      color:var(--text);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis
+    }
+    .track-artist{
+      color:var(--muted);
+      font-size:.9rem;
+      margin-top:2px
+    }
+    .time{
+      color:var(--muted);
+      font-variant-numeric:tabular-nums;
+      font-size:.8rem
+    }
+    .time-wrap{
+      display:flex;
+      gap:.5rem;
+      align-items:center;
+      margin-left:auto;
+    }
+    .scrub{
+      width:100%;
+      height:6px;
+      background:#1b1d22;
+      border-radius:999px;
+      position:relative;
+      cursor:pointer;
+      margin:.25rem .9rem .75rem .9rem;
+    }
+    .scrub>.bar{
+      height:100%;
+      width:0%;
+      background:var(--accent);
+      border-radius:inherit
+    }
+    .playlist{
+      border-top:1px solid #2a2c31;
+      max-height:500px;
+      overflow:auto
+    }
+    .track{
+      display:flex;
+      gap:.75rem;
+      align-items:center;
+      padding:.6rem .9rem;
+      cursor:pointer;
+      font-size:.9rem;
+      line-height:1.4;
+    }
+    .track:hover{background:#15161a}
+    .track.active{background:#1a1b20}
+    .track .dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:#2a2c31
+    }
+    .track.active .dot{background:#ffd166}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a href="index.html" class="back-link">← Back to Home</a>
+    
+    <h1>Music</h1>
+    <p class="intro">Cues and themes from our slate. Tap play to begin.</p>
+
+    <div class="audio-player" id="nccaPlayer">
+      <div class="audio-row">
+        <button class="ap-button" id="playPauseBtn" aria-label="Play/Pause">▶</button>
+        <div class="track-meta">
+          <div class="track-title" id="trackTitle">—</div>
+          <div class="track-artist" id="trackArtist">NCCA Entertainment</div>
+        </div>
+        <div class="time-wrap">
+          <div class="time" id="currentTime">0:00</div>
+          <div class="time" id="totalTime">0:00</div>
+        </div>
+      </div>
+
+      <div class="scrub" id="scrubBar" aria-label="Seek"><div class="bar" id="progressBar"></div></div>
+      <audio id="audioElement" preload="metadata" crossorigin="anonymous"></audio>
+
+      <div class="playlist" id="playlist"></div>
+    </div>
+  </div>
+
+  <script>
+    // Audio player playlist
+    const tracks = [
+      { title: "Forever You", file: "assets/audio/forever-you.mp3", duration: "3:46" },
+      { title: "The Line - War Ready", file: "assets/audio/the-line-war-ready.mp3", duration: "1:59" },
+      { title: "The Line - House Built on Lies", file: "assets/audio/the-line-house-built-on-lies.mp3", duration: "3:18" },
+      { title: "Dirty Hymn - Velvet", file: "assets/audio/dirty-hymn-velvet.mp3", duration: "3:34" },
+      { title: "Take Back - Velvet", file: "assets/audio/take-back-velvet.mp3", duration: "3:31" },
+      { title: "The Last Dynasty", file: "assets/audio/the-last-dynasty.mp3", duration: "3:20" },
+      { title: "Curtain Call", file: "assets/audio/curtain-call.mp3", duration: "3:54" },
+      { title: "Soul On Fire - Love Ain't A Loan", file: "assets/audio/soul-on-fire-love-aint-a-loan.mp3", duration: "3:10" },
+      { title: "Soul On Fire - Who's Gonna Sing For Me?", file: "assets/audio/soul-on-fire-whos-gonna-sing-for-me.mp3", duration: "3:20" },
+      { title: "Who Was I", file: "assets/audio/who-was-i.mp3", duration: "3:30" },
+      { title: "Heaven Don't Lie", file: "assets/audio/heaven-dont-lie.mp3", duration: "3:45" },
+      { title: "Rhythm and Blooms - Theme Song", file: "assets/audio/rhythm-and-blooms-theme.mp3", duration: "3:15" }
+    ];
+
+    let currentTrack = 0;
+    const audio = document.getElementById('audioElement');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const trackTitle = document.getElementById('trackTitle');
+    const trackArtist = document.getElementById('trackArtist');
+    const currentTime = document.getElementById('currentTime');
+    const totalTime = document.getElementById('totalTime');
+    const progressBar = document.getElementById('progressBar');
+    const scrubBar = document.getElementById('scrubBar');
+    const playlistEl = document.getElementById('playlist');
+
+    // Build playlist UI
+    tracks.forEach((track, index) => {
+      const trackEl = document.createElement('div');
+      trackEl.className = 'track' + (index === 0 ? ' active' : '');
+      trackEl.innerHTML = `
+        <div class="dot"></div>
+        <div style="flex:1">${track.title}</div>
+        <div class="time">NCCA Entertainment</div>
+        <div class="time">${track.duration}</div>
+      `;
+      trackEl.addEventListener('click', () => loadTrack(index));
+      playlistEl.appendChild(trackEl);
+    });
+
+    function loadTrack(index) {
+      currentTrack = index;
+      const track = tracks[index];
+      audio.src = track.file;
+      trackTitle.textContent = track.title;
+      totalTime.textContent = track.duration;
+      
+      document.querySelectorAll('.track').forEach((el, i) => {
+        el.classList.toggle('active', i === index);
+      });
+    }
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    playPauseBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = '⏸';
+      } else {
+        audio.pause();
+        playPauseBtn.textContent = '▶';
+      }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = percent + '%';
+        currentTime.textContent = formatTime(audio.currentTime);
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      loadTrack(currentTrack);
+      audio.play();
+    });
+
+    scrubBar.addEventListener('click', (e) => {
+      const rect = scrubBar.getBoundingClientRect();
+      const percent = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = percent * audio.duration;
+    });
+
+    // Load first track
+    loadTrack(0);
+  </script>
+</body>
+</html>
