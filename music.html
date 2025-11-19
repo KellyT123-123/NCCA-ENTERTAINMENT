@@ -65,6 +65,29 @@
     .nav-item>a:hover{
       background:#191b20;
       border-color:#2a2c31;
+      text-decoration:none;
+    }
+    .nav-item.cta>a{
+      background:var(--brand);
+      color:#111;
+      border-color:var(--brand);
+    }
+    .nav-item.cta>a:hover{
+      background:var(--brand-hover);
+      border-color:var(--brand-hover);
+    }
+
+    .nav-toggle{
+      display:none;
+      margin-left:auto;
+      font-size:1.25rem;
+      line-height:1;
+      background:#191b20;
+      color:#e7e7ea;
+      border:1px solid #2a2c31;
+      border-radius:8px;
+      padding:.4rem .6rem;
+      cursor:pointer;
     }
 
     :root{
@@ -217,6 +240,18 @@
       background:#2a2c31
     }
     .track.active .dot{background:#ffd166}
+
+    @media(max-width:900px){
+      .nav-toggle{display:inline-block}
+      .nav{display:none;width:100%;margin-left:0;}
+      .nav.open{display:block}
+      .nav-list{
+        flex-direction:column;
+        align-items:stretch;
+        gap:.25rem;
+        margin-top:.5rem
+      }
+    }
   </style>
 </head>
 
@@ -224,14 +259,16 @@
   <header class="site-header" role="banner">
     <div class="nav-wrap">
       <a class="brand" href="index.html" aria-label="NCCA Home">NCCA</a>
-      <nav class="nav" role="navigation" aria-label="Main">
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">☰</button>
+
+      <nav id="primaryNav" class="nav" role="navigation" aria-label="Main">
         <ul class="nav-list">
-          <li class="nav-item"><a href="index.html">Home</a></li>
           <li class="nav-item"><a href="projects.html">Projects</a></li>
-          <li class="nav-item"><a href="for-professionals.html">For Professionals</a></li>
-          <li class="nav-item"><a href="music.html">Music</a></li>
           <li class="nav-item"><a href="index.html#about">About</a></li>
+          <li class="nav-item"><a href="music.html">Music</a></li>
           <li class="nav-item"><a href="index.html#contact">Contact</a></li>
+          <li class="nav-item cta"><a href="for-professionals.html">For Professionals</a></li>
         </ul>
       </nav>
     </div>
@@ -240,7 +277,11 @@
   <div class="container" style="margin-top:2rem;">
     
     <h1>Music</h1>
-    <p class="intro">Cues and themes from our slate. Tap play to begin.</p>
+    <p class="intro">Original music and themes from our slate of projects. Each track is tied to specific projects in development.</p>
+    
+    <div style="text-align:center;margin-bottom:2rem;">
+      <a href="projects.html" style="display:inline-block;background:var(--brand);color:#111;padding:.8rem 1.5rem;border-radius:999px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:.05em;">Explore All Projects</a>
+    </div>
 
     <div class="audio-player" id="nccaPlayer">
       <div class="audio-row">
@@ -354,6 +395,18 @@
 
     // Load first track
     loadTrack(0);
+
+    // Mobile Navigation
+    const navToggle = document.getElementById('navToggle');
+    const nav = document.getElementById('primaryNav');
+
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open', !expanded);
+      });
+    }
   </script>
 </body>
 </html>
