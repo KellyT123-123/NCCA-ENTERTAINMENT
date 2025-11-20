@@ -1009,7 +1009,7 @@
       noResults.style.display = 'none';
 
       grid.innerHTML = filteredProjects.map(project => {
-        const slug = project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        const slug = project.title.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
         
         // Platform badges
         const platformBadges = project.platforms.map(p => {
