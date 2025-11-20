@@ -3,1114 +3,2271 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Slate — NCCA Entertainment</title>
-
-  <meta name="description" content="Browse NCCA Entertainment's complete catalog of 47 market-ready projects. Filter by genre, format, platform, and audience."/>
+  <title>Project Slate — NCCA Entertainment</title>
+  <meta name="description" content="Browse our complete portfolio of 47 original projects across drama, thriller, comedy, and more for Netflix, HBO, BET+, Lifetime, and other platforms."/>
   
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
+  <link rel="stylesheet" href="css/styles.css">
+  
   <style>
-    :root{
-      --brand:#D48B3C;
-      --brand-hover:#E3A463;
-      --brand-ink:#F2E6D0;
-      --brand-bg:#0A0A0A;
-      --brand-muted:#B9A98F;
-      --brand-rule:rgba(255,255,255,.10);
-      --card-min:280px;
-      --gap:1rem;
-    }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:var(--brand-bg);
-      color:#f5f3ee;
-      line-height:1.6;
-    }
-
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline;color:var(--brand-hover)}
-
-    /* Header */
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:2000;
-      background:rgba(11,11,12,.95);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(255,255,255,.08);
-      box-shadow:0 2px 8px rgba(0,0,0,0.3);
-    }
-    .nav-wrap{
-      max-width:1400px;
-      margin:0 auto;
-      padding:.75rem 24px;
-      display:flex;
-      align-items:center;
-      gap:1rem
-    }
-    .brand{
-      font-weight:900;
-      letter-spacing:.5px;
-      padding:.25rem .6rem;
-      border-radius:8px;
-      background:linear-gradient(180deg,#2a2c31,#17181b);
-      color:#ffd166;
-      text-decoration:none;
-      font-size:1rem;
-      line-height:1;
-      transition:all 0.3s ease;
-    }
-    .brand:hover{
-      transform:translateY(-1px);
-      box-shadow:0 4px 12px rgba(212,139,60,0.3);
-    }
-    .nav{margin-left:auto}
-    .nav-list{
-      list-style:none;
-      margin:0;
-      padding:0;
-      display:flex;
-      gap:.5rem;
-      align-items:center
-    }
-    .nav-item>a{
-      color:#e7e7ea;
-      text-decoration:none;
-      padding:.5rem .7rem;
-      border-radius:8px;
-      font-weight:600;
-      background:none;
-      border:1px solid transparent;
-      font-size:.95rem;
-      line-height:1.2;
-      transition:all 0.2s ease;
-    }
-    .nav-item>a:hover{
-      background:#191b20;
-      border-color:#2a2c31;
-      text-decoration:none;
-    }
-    .nav-item.active>a{
-      background:rgba(212,139,60,.15);
-      border-color:var(--brand);
-      color:var(--brand);
-    }
-
-    /* Back to Top */
-    .back-to-top{
-      position:fixed;
-      bottom:2rem;
-      right:2rem;
-      background:var(--brand);
-      color:#111;
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:1.5rem;
-      font-weight:700;
-      cursor:pointer;
-      opacity:0;
-      visibility:hidden;
-      transition:all 0.3s ease;
-      box-shadow:0 4px 12px rgba(0,0,0,.3);
-      z-index:1500;
-      border:none;
-    }
-    .back-to-top.visible{
-      opacity:1;
-      visibility:visible;
-    }
-    .back-to-top:hover{
-      background:var(--brand-hover);
-      transform:translateY(-4px);
-      box-shadow:0 6px 20px rgba(212,139,60,.4);
-    }
-
-    /* Page Header */
-    .page-header{
-      padding:3rem 24px 2rem;
-      text-align:center;
-      background:linear-gradient(180deg,rgba(255,255,255,.02) 0%,transparent 100%);
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .page-header h1{
-      font-size:clamp(2rem,5vw,3rem);
-      font-weight:900;
-      margin-bottom:1rem;
-      color:#fff;
-    }
-    .page-header p{
-      color:var(--brand-ink);
-      font-size:1.1rem;
-      max-width:800px;
-      margin:0 auto;
-    }
-
-    /* Main Layout */
-    .main-layout{
-      max-width:1600px;
-      margin:0 auto;
-      padding:2rem 24px;
-      display:grid;
-      grid-template-columns:280px 1fr;
-      gap:2rem;
-      align-items:start;
-    }
-
-    /* Sidebar Filters */
-    .filters-sidebar{
-      position:sticky;
-      top:100px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:12px;
-      padding:1.5rem;
-      max-height:calc(100vh - 120px);
-      overflow-y:auto;
-    }
-    .filters-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:1.5rem;
-      padding-bottom:1rem;
-      border-bottom:1px solid rgba(255,255,255,.1);
-    }
-    .filters-header h3{
-      font-size:1.1rem;
-      color:#fff;
-      font-weight:700;
-    }
-    .clear-filters{
-      background:none;
-      border:none;
-      color:var(--brand);
-      font-size:.85rem;
-      cursor:pointer;
-      font-weight:600;
-      padding:.3rem .6rem;
-      border-radius:6px;
-      transition:all 0.2s ease;
-    }
-    .clear-filters:hover{
-      background:rgba(212,139,60,.15);
-    }
-
-    .filter-group{
-      margin-bottom:1.5rem;
-    }
-    .filter-group h4{
-      font-size:.9rem;
-      color:var(--brand);
-      text-transform:uppercase;
-      letter-spacing:1px;
-      margin-bottom:.75rem;
-      font-weight:700;
-    }
-    .filter-options{
-      display:flex;
-      flex-direction:column;
-      gap:.5rem;
-    }
-    .filter-option{
-      display:flex;
-      align-items:center;
-      gap:.5rem;
-      cursor:pointer;
-      padding:.4rem;
-      border-radius:6px;
-      transition:background 0.2s ease;
-    }
-    .filter-option:hover{
-      background:rgba(255,255,255,.05);
-    }
-    .filter-option input[type="checkbox"]{
-      width:18px;
-      height:18px;
-      cursor:pointer;
-      accent-color:var(--brand);
-    }
-    .filter-option label{
-      cursor:pointer;
-      font-size:.9rem;
-      color:#d0d0d5;
-      flex:1;
-    }
-    .filter-count{
-      font-size:.75rem;
-      color:#888;
-      background:rgba(255,255,255,.08);
-      padding:.15rem .4rem;
-      border-radius:4px;
-    }
-
-    /* Content Area */
-    .content-area{
-      min-height:60vh;
-    }
-
-    /* Search and Controls */
-    .search-controls{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:12px;
-      padding:1.5rem;
-      margin-bottom:2rem;
-    }
-    .search-box{
-      position:relative;
-      margin-bottom:1rem;
-    }
-    .search-box input{
-      width:100%;
-      padding:1rem 1rem 1rem 3rem;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:8px;
-      color:#fff;
-      font-size:1rem;
-      transition:all 0.2s ease;
-    }
-    .search-box input:focus{
-      outline:none;
-      border-color:var(--brand);
-      background:rgba(255,255,255,.08);
-    }
-    .search-box::before{
-      content:'🔍';
-      position:absolute;
-      left:1rem;
-      top:50%;
-      transform:translateY(-50%);
-      font-size:1.2rem;
-    }
-
-    .controls-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:1rem;
-    }
-    .results-info{
-      color:var(--brand-ink);
-      font-size:.95rem;
-      font-weight:600;
-    }
-    .results-count{
-      color:var(--brand);
-      font-weight:700;
-    }
-
-    .view-controls{
-      display:flex;
-      gap:1rem;
-      align-items:center;
-    }
-    .sort-select{
-      padding:.6rem 1rem;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:8px;
-      color:#fff;
-      font-size:.9rem;
-      cursor:pointer;
-      transition:all 0.2s ease;
-    }
-    .sort-select:focus{
-      outline:none;
-      border-color:var(--brand);
-    }
-
-    .view-toggle{
-      display:flex;
-      gap:.5rem;
-      background:rgba(255,255,255,.06);
-      padding:.3rem;
-      border-radius:8px;
-      border:1px solid rgba(255,255,255,.12);
-    }
-    .view-btn{
-      padding:.5rem .8rem;
-      background:none;
-      border:none;
-      color:#999;
-      cursor:pointer;
-      border-radius:6px;
-      font-size:.9rem;
-      transition:all 0.2s ease;
-    }
-    .view-btn.active{
-      background:var(--brand);
-      color:#111;
-      font-weight:700;
-    }
-    .view-btn:hover:not(.active){
-      background:rgba(255,255,255,.08);
-      color:#fff;
-    }
-
-    /* Projects Grid */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
-      gap:1.5rem;
-    }
-    .projects-grid.list-view{
-      grid-template-columns:1fr;
-    }
-
-    /* Project Card */
-    .project-card{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:12px;
-      overflow:hidden;
-      transition:all 0.3s ease;
-      display:flex;
-      flex-direction:column;
-    }
-    .project-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 8px 24px rgba(0,0,0,.4);
-      border-color:rgba(212,139,60,.3);
-    }
-    .projects-grid.list-view .project-card{
-      flex-direction:row;
-    }
-    .projects-grid.list-view .project-card:hover{
-      transform:translateX(4px);
-    }
-
-    .project-image{
-      width:100%;
-      aspect-ratio:16/9;
-      object-fit:cover;
-      background:#1a1a1a;
-      display:block;
-    }
-    .projects-grid.list-view .project-image{
-      width:300px;
-      aspect-ratio:16/9;
-    }
-
-    .project-content{
-      padding:1.5rem;
-      flex:1;
-      display:flex;
-      flex-direction:column;
-    }
-    .project-title{
-      font-size:1.2rem;
-      font-weight:700;
-      margin-bottom:.5rem;
-      color:#fff;
-    }
-    .project-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      margin-bottom:.75rem;
-    }
-    .project-tag{
-      background:rgba(212,139,60,.15);
-      color:var(--brand);
-      padding:.25rem .6rem;
-      border-radius:6px;
-      font-size:.75rem;
-      font-weight:600;
-      border:1px solid rgba(212,139,60,.3);
-    }
-    .project-description{
-      color:#d0d0d5;
-      font-size:.9rem;
-      margin-bottom:.75rem;
-      flex:1;
-      line-height:1.5;
-    }
-    .project-platforms{
-      display:flex;
-      gap:.4rem;
-      margin-bottom:.75rem;
-      flex-wrap:wrap;
-    }
-    .platform-badge{
-      background:rgba(255,255,255,.08);
-      padding:.25rem .5rem;
-      border-radius:6px;
-      font-size:.7rem;
-      font-weight:600;
-      color:#e0e0e5;
-      border:1px solid rgba(255,255,255,.12);
-      cursor:help;
-      position:relative;
-    }
-    .platform-badge:hover{
-      background:rgba(212,139,60,.2);
-      border-color:var(--brand);
-      color:var(--brand);
-    }
-    .platform-badge::after{
-      content:attr(data-full-name);
-      position:absolute;
-      bottom:100%;
-      left:50%;
-      transform:translateX(-50%) translateY(-8px);
-      background:rgba(17,18,22,.95);
-      color:#fff;
-      padding:.4rem .8rem;
-      border-radius:6px;
-      font-size:.75rem;
-      white-space:nowrap;
-      opacity:0;
-      pointer-events:none;
-      transition:all 0.2s ease;
-      border:1px solid rgba(255,255,255,.2);
-      z-index:100;
-    }
-    .platform-badge:hover::after{
-      opacity:1;
-      transform:translateX(-50%) translateY(-4px);
-    }
-
-    .project-materials{
-      display:flex;
-      gap:.4rem;
-      margin-bottom:.75rem;
-      flex-wrap:wrap;
-    }
-    .material-badge{
-      background:rgba(100,200,100,.15);
-      color:#90ee90;
-      padding:.2rem .5rem;
-      border-radius:6px;
-      font-size:.7rem;
-      font-weight:600;
-      border:1px solid rgba(100,200,100,.3);
-    }
-
-    .project-actions{
-      display:flex;
-      gap:.75rem;
-    }
-    .btn{
-      flex:1;
-      padding:.6rem .9rem;
-      border-radius:8px;
-      font-weight:700;
-      font-size:.85rem;
-      text-align:center;
-      cursor:pointer;
-      transition:all 0.2s ease;
-      border:1px solid;
-      text-decoration:none;
-      display:inline-block;
-    }
-    .btn-primary{
-      background:var(--brand);
-      color:#111;
-      border-color:var(--brand);
-    }
-    .btn-primary:hover{
-      background:var(--brand-hover);
-      border-color:var(--brand-hover);
-      transform:translateY(-2px);
-      box-shadow:0 4px 12px rgba(212,139,60,.3);
-    }
-    .btn-secondary{
-      background:transparent;
-      color:var(--brand);
-      border-color:var(--brand);
-    }
-    .btn-secondary:hover{
-      background:rgba(212,139,60,.1);
-      border-color:var(--brand-hover);
-    }
-
-    .no-results{
-      text-align:center;
-      padding:4rem 2rem;
-      color:#999;
-    }
-    .no-results h3{
-      font-size:1.5rem;
-      margin-bottom:1rem;
-      color:#ccc;
-    }
-
-    /* Mobile Responsive */
-    @media(max-width:1024px){
-      .main-layout{
-        grid-template-columns:1fr;
-      }
-      .filters-sidebar{
-        position:relative;
-        top:0;
-        max-height:none;
+    /* Import shared styles from index page */
+    /* For production, move shared CSS to separate file */
+    
+    /* Page-specific styles */
+    .slate-hero {
+      padding: 3rem 24px 2rem;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(212,139,60,.08) 0%, transparent 100%);
+    }
+    
+    .slate-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--brand);
+      margin-bottom: 1rem;
+      font-weight: 900;
+    }
+    
+    .slate-hero p {
+      font-size: 1.1rem;
+      color: var(--brand-ink);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .filter-section {
+      display: block !important;
+    }
+    
+    /* List view styles */
+    .project-card.list-view {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    
+    .project-card.list-view .project-image-wrapper {
+      aspect-ratio: 16/10;
+    }
+    
+    .project-card.list-view .project-content {
+      padding: 1rem 1.5rem 1rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .project-card.list-view {
+        grid-template-columns: 1fr;
       }
     }
-
-    @media(max-width:768px){
-      .nav-list{flex-direction:column;gap:.3rem;}
-      .nav{margin-left:0;width:100%;}
-      .nav-wrap{flex-direction:column;padding:1rem 24px;}
-      .projects-grid{grid-template-columns:1fr;}
-      .projects-grid.list-view .project-card{flex-direction:column;}
-      .projects-grid.list-view .project-image{width:100%;}
-      .controls-row{flex-direction:column;align-items:stretch;}
-      .view-controls{justify-content:space-between;}
-      .back-to-top{bottom:1rem;right:1rem;width:45px;height:45px;}
+    
+    .no-results {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: rgba(255,255,255,.6);
     }
-
-    /* Loading animation */
-    img[loading="lazy"]{
-      background:linear-gradient(90deg,#1a1a1a 25%,#2a2a2a 50%,#1a1a1a 75%);
-      background-size:200% 100%;
-      animation:loading 1.5s infinite;
+    
+    .no-results h3 {
+      color: var(--brand);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
-    @keyframes loading{
-      0%{background-position:200% 0;}
-      100%{background-position:-200% 0;}
+    
+    .no-results p {
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
 <body>
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Header -->
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-wrap">
+      <div class="utility-left">
+        <span style="color: var(--brand-ink); font-weight: 600;">🎬 47 Original Projects</span>
+      </div>
+      <div class="utility-right">
+        <a href="#" class="utility-link executive-view">📊 Executive Dashboard</a>
+        <a href="mailto:info@nccaentertainment.com" class="utility-link">✉️ Contact</a>
+        <a href="tel:+19102629307" class="utility-link">📞 (910) 262-9307</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header (same as index page) -->
   <header class="site-header">
     <div class="nav-wrap">
       <a href="index.html" class="brand">NCCA</a>
+      
       <nav class="nav">
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html">Home</a></li>
-          <li class="nav-item active"><a href="slate.html">Slate</a></li>
-          <li class="nav-item"><a href="music.html">Music</a></li>
-          <li class="nav-item"><a href="index.html#contact">Contact</a></li>
+          <li class="nav-item"><a href="index.html#about">About</a></li>
+          <li class="nav-item has-mega">
+            <a href="slate.html" class="active">Projects ▾</a>
+            <!-- Mega menu content here -->
+          </li>
+          <li class="nav-item cta"><a href="index.html#contact">Contact</a></li>
         </ul>
       </nav>
+
+      <div class="nav-search">
+        <button class="search-trigger" id="searchTrigger">
+          <span>🔍</span>
+          <span>Search</span>
+        </button>
+        <div class="search-expanded" id="searchExpanded">
+          <div class="search-input-wrap">
+            <input type="search" class="search-input" id="searchInput" placeholder="Search projects..."/>
+            <button class="search-clear" id="searchClear">×</button>
+          </div>
+          <div class="search-results" id="searchResults"></div>
+        </div>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
     </div>
   </header>
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <h1>Our Complete Slate</h1>
-    <p>Browse our catalog of 47 market-ready projects across multiple genres and formats. Use the advanced filters to find exactly what you're looking for.</p>
-  </section>
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="slate-hero">
+      <h1>Complete Project Slate</h1>
+      <p>Explore our full portfolio of 47 original projects designed for premium platforms. Filter by platform, format, genre, or development status to find exactly what you're looking for.</p>
+    </section>
 
-  <!-- Main Layout -->
-  <div class="main-layout">
-    <!-- Filters Sidebar -->
-    <aside class="filters-sidebar">
-      <div class="filters-header">
-        <h3>Filters</h3>
-        <button class="clear-filters" onclick="clearAllFilters()">Clear All</button>
-      </div>
-
-      <!-- Genre Filters -->
-      <div class="filter-group">
-        <h4>Genre</h4>
-        <div class="filter-options" id="genreFilters">
-          <label class="filter-option">
-            <input type="checkbox" value="Drama" onchange="applyFilters()">
-            <span>Drama</span>
-            <span class="filter-count" data-genre="Drama">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Comedy" onchange="applyFilters()">
-            <span>Comedy</span>
-            <span class="filter-count" data-genre="Comedy">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Romance" onchange="applyFilters()">
-            <span>Romance</span>
-            <span class="filter-count" data-genre="Romance">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Thriller" onchange="applyFilters()">
-            <span>Thriller</span>
-            <span class="filter-count" data-genre="Thriller">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Horror" onchange="applyFilters()">
-            <span>Horror / Southern Gothic</span>
-            <span class="filter-count" data-genre="Horror">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Action" onchange="applyFilters()">
-            <span>Action</span>
-            <span class="filter-count" data-genre="Action">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Christmas" onchange="applyFilters()">
-            <span>Christmas</span>
-            <span class="filter-count" data-genre="Christmas">0</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Format Filters -->
-      <div class="filter-group">
-        <h4>Format</h4>
-        <div class="filter-options" id="formatFilters">
-          <label class="filter-option">
-            <input type="checkbox" value="MOW" onchange="applyFilters()">
-            <span>MOW (Movie of the Week)</span>
-            <span class="filter-count" data-format="MOW">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Limited Series" onchange="applyFilters()">
-            <span>Limited Series</span>
-            <span class="filter-count" data-format="Limited Series">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Network Series" onchange="applyFilters()">
-            <span>Network Series</span>
-            <span class="filter-count" data-format="Network Series">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Feature" onchange="applyFilters()">
-            <span>Feature Film</span>
-            <span class="filter-count" data-format="Feature">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Docuseries" onchange="applyFilters()">
-            <span>Docuseries</span>
-            <span class="filter-count" data-format="Docuseries">0</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Platform Filters -->
-      <div class="filter-group">
-        <h4>Platform</h4>
-        <div class="filter-options" id="platformFilters">
-          <label class="filter-option">
-            <input type="checkbox" value="Netflix" onchange="applyFilters()">
-            <span>Netflix</span>
-            <span class="filter-count" data-platform="Netflix">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="HBO" onchange="applyFilters()">
-            <span>HBO</span>
-            <span class="filter-count" data-platform="HBO">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="BET+" onchange="applyFilters()">
-            <span>BET+</span>
-            <span class="filter-count" data-platform="BET+">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="OWN" onchange="applyFilters()">
-            <span>OWN</span>
-            <span class="filter-count" data-platform="OWN">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Lifetime" onchange="applyFilters()">
-            <span>Lifetime</span>
-            <span class="filter-count" data-platform="Lifetime">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Peacock" onchange="applyFilters()">
-            <span>Peacock</span>
-            <span class="filter-count" data-platform="Peacock">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Paramount+" onchange="applyFilters()">
-            <span>Paramount+</span>
-            <span class="filter-count" data-platform="Paramount+">0</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="Broadcast" onchange="applyFilters()">
-            <span>Broadcast Networks</span>
-            <span class="filter-count" data-platform="Broadcast">0</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Availability Filters -->
-      <div class="filter-group">
-        <h4>Availability</h4>
-        <div class="filter-options">
-          <label class="filter-option">
-            <input type="checkbox" value="has-trailer" onchange="applyFilters()">
-            <span>Has Trailer</span>
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" value="has-materials" onchange="applyFilters()">
-            <span>Materials Available</span>
-          </label>
-        </div>
-      </div>
-    </aside>
-
-    <!-- Content Area -->
-    <main class="content-area">
-      <!-- Search and Controls -->
-      <div class="search-controls">
-        <div class="search-box">
-          <input type="text" id="searchInput" placeholder="Search by title, genre, platform, or audience..." oninput="applyFilters()">
-        </div>
-
-        <div class="controls-row">
-          <div class="results-info">
-            Showing <span class="results-count" id="resultsCount">47</span> of 47 projects
+    <!-- Filter Section (Always Visible on This Page) -->
+    <section class="filter-section">
+      <div class="filter-container">
+        <div class="filter-header">
+          <h2 class="filter-title">Filter Projects</h2>
+          <div class="filter-actions">
+            <div class="filter-count">
+              Showing <strong id="resultCount">47</strong> projects
+            </div>
+            <button class="filter-clear" id="clearFilters">Clear Filters</button>
           </div>
+        </div>
 
-          <div class="view-controls">
-            <select class="sort-select" id="sortSelect" onchange="applyFilters()">
-              <option value="featured">Featured</option>
-              <option value="alpha-asc">Alphabetical (A-Z)</option>
-              <option value="alpha-desc">Alphabetical (Z-A)</option>
-              <option value="genre">By Genre</option>
-              <option value="format">By Format</option>
+        <div class="filter-controls">
+          <div class="filter-group">
+            <label for="platformFilter" class="filter-label">Platform</label>
+            <select id="platformFilter" class="filter-select">
+              <option value="">All Platforms</option>
+              <option value="netflix">Netflix</option>
+              <option value="hbo">HBO/Max</option>
+              <option value="bet-plus">BET+</option>
+              <option value="own">OWN</option>
+              <option value="lifetime">Lifetime</option>
+              <option value="paramount">Paramount+</option>
+              <option value="peacock">Peacock</option>
+              <option value="apple-tv">Apple TV+</option>
+              <option value="hallmark">Hallmark</option>
+              <option value="theatrical">Theatrical</option>
             </select>
+          </div>
 
-            <div class="view-toggle">
-              <button class="view-btn active" data-view="grid" onclick="toggleView('grid')">Grid</button>
-              <button class="view-btn" data-view="list" onclick="toggleView('list')">List</button>
-            </div>
+          <div class="filter-group">
+            <label for="formatFilter" class="filter-label">Format</label>
+            <select id="formatFilter" class="filter-select">
+              <option value="">All Formats</option>
+              <option value="mow">TV Movie (MOW)</option>
+              <option value="limited-series">Limited Series</option>
+              <option value="network-series">Network Series</option>
+              <option value="feature">Feature Film</option>
+              <option value="docuseries">Docuseries</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="genreFilter" class="filter-label">Genre</label>
+            <select id="genreFilter" class="filter-select">
+              <option value="">All Genres</option>
+              <option value="drama">Drama</option>
+              <option value="thriller">Thriller/Noir</option>
+              <option value="romance">Romance</option>
+              <option value="comedy">Comedy</option>
+              <option value="horror">Horror/Southern Gothic</option>
+              <option value="action">Action</option>
+              <option value="faith-based">Faith-Based</option>
+              <option value="musical">Musical</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="statusFilter" class="filter-label">Status</label>
+            <select id="statusFilter" class="filter-select">
+              <option value="">All Status</option>
+              <option value="development-ready">Development Ready</option>
+              <option value="packaging">Packaging Stage</option>
+              <option value="script-complete">Script Complete</option>
+              <option value="pitch-ready">Pitch Materials Available</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="active-filters" id="activeFilters"></div>
+
+        <div class="sort-controls">
+          <label for="sortSelect" class="sort-label">Sort by:</label>
+          <select id="sortSelect" class="sort-select">
+            <option value="recent">Most Recent</option>
+            <option value="title-asc">Title (A-Z)</option>
+            <option value="title-desc">Title (Z-A)</option>
+            <option value="priority">Priority Level</option>
+            <option value="genre">Genre</option>
+          </select>
+          
+          <div class="view-toggle">
+            <button class="view-btn active" id="viewGrid" title="Grid view">⊞</button>
+            <button class="view-btn" id="viewList" title="List view">☰</button>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Projects Grid -->
-      <div class="projects-grid" id="projectsGrid">
-        <!-- Projects will be dynamically inserted here -->
-      </div>
-
-      <!-- No Results Message -->
-      <div class="no-results" id="noResults" style="display:none;">
-        <h3>No projects found</h3>
-        <p>Try adjusting your filters or search terms</p>
-      </div>
-    </main>
-  </div>
-
-  <!-- Back to Top Button -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-
-  <!-- Load Projects Data -->
-  <script src="projects-data.js"></script>
-
-  <script>
-    // Platform name mappings
-    const platformNames = {
-      'N': 'Netflix',
-      'HBO': 'HBO',
-      'B+': 'BET+',
-      'OWN': 'OWN',
-      'L': 'Lifetime',
-      'P': 'Peacock',
-      'P+': 'Paramount+',
-      'Apple': 'Apple TV+',
-      '🍎': 'Apple TV+',
-      'ABC': 'ABC',
-      'NBC': 'NBC',
-      'FOX': 'FOX',
-      'CBS': 'CBS',
-      'Hallmark': 'Hallmark'
-    };
-
-    let currentView = 'grid';
-    let filteredProjects = [...projectsData];
-
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      // Check URL parameters for pre-filtering
-      const urlParams = new URLSearchParams(window.location.search);
-      
-      // Apply URL filters if present
-      if (urlParams.has('genre')) {
-        const genre = urlParams.get('genre');
-        const checkbox = document.querySelector(`#genreFilters input[value="${capitalizeFirst(genre)}"]`);
-        if (checkbox) checkbox.checked = true;
-      }
-      if (urlParams.has('format')) {
-        const format = urlParams.get('format');
-        const formatMap = {
-          'mow': 'MOW',
-          'limited': 'Limited Series',
-          'network': 'Network Series',
-          'feature': 'Feature',
-          'docuseries': 'Docuseries'
-        };
-        const checkbox = document.querySelector(`#formatFilters input[value="${formatMap[format]}"]`);
-        if (checkbox) checkbox.checked = true;
-      }
-      if (urlParams.has('platform')) {
-        const platform = urlParams.get('platform');
-        const platformMap = {
-          'netflix': 'Netflix',
-          'hbo': 'HBO',
-          'bet': 'BET+',
-          'own': 'OWN',
-          'lifetime': 'Lifetime',
-          'peacock': 'Peacock',
-          'paramount': 'Paramount+'
-        };
-        const checkbox = document.querySelector(`#platformFilters input[value="${platformMap[platform]}"]`);
-        if (checkbox) checkbox.checked = true;
-      }
-
-      updateFilterCounts();
-      applyFilters();
-    });
-
-    function capitalizeFirst(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
-    function updateFilterCounts() {
-      // Count projects by genre
-      const genreCounts = {};
-      const formatCounts = {};
-      const platformCounts = {};
-
-      projectsData.forEach(project => {
-        // Genre counts
-        const genre = project.genre;
-        genreCounts[genre] = (genreCounts[genre] || 0) + 1;
-
-        // Format counts
-        const format = project.format;
-        formatCounts[format] = (formatCounts[format] || 0) + 1;
-
-        // Platform counts
-        project.platforms.forEach(platform => {
-          if (platform === 'ABC' || platform === 'NBC' || platform === 'FOX' || platform === 'CBS') {
-            platformCounts['Broadcast'] = (platformCounts['Broadcast'] || 0) + 1;
-          } else {
-            platformCounts[platform] = (platformCounts[platform] || 0) + 1;
-          }
-        });
-      });
-
-      // Update genre counts
-      document.querySelectorAll('[data-genre]').forEach(el => {
-        const genre = el.getAttribute('data-genre');
-        el.textContent = genreCounts[genre] || 0;
-      });
-
-      // Update format counts
-      document.querySelectorAll('[data-format]').forEach(el => {
-        const format = el.getAttribute('data-format');
-        el.textContent = formatCounts[format] || 0;
-      });
-
-      // Update platform counts
-      document.querySelectorAll('[data-platform]').forEach(el => {
-        const platform = el.getAttribute('data-platform');
-        el.textContent = platformCounts[platform] || 0;
-      });
-    }
-
-    function applyFilters() {
-      // Get selected filters
-      const selectedGenres = Array.from(document.querySelectorAll('#genreFilters input:checked')).map(cb => cb.value);
-      const selectedFormats = Array.from(document.querySelectorAll('#formatFilters input:checked')).map(cb => cb.value);
-      const selectedPlatforms = Array.from(document.querySelectorAll('#platformFilters input:checked')).map(cb => cb.value);
-      const hasTrailer = document.querySelector('input[value="has-trailer"]')?.checked;
-      const hasMaterials = document.querySelector('input[value="has-materials"]')?.checked;
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      const sortBy = document.getElementById('sortSelect').value;
-
-      // Filter projects
-      filteredProjects = projectsData.filter(project => {
-        // Genre filter
-        if (selectedGenres.length > 0 && !selectedGenres.includes(project.genre)) {
-          return false;
-        }
-
-        // Format filter
-        if (selectedFormats.length > 0 && !selectedFormats.includes(project.format)) {
-          return false;
-        }
-
-        // Platform filter
-        if (selectedPlatforms.length > 0) {
-          const projectPlatforms = project.platforms;
-          const hasBroadcast = projectPlatforms.some(p => ['ABC', 'NBC', 'FOX', 'CBS'].includes(p));
-          const hasSelectedPlatform = selectedPlatforms.some(sp => {
-            if (sp === 'Broadcast') return hasBroadcast;
-            return projectPlatforms.includes(sp);
-          });
-          if (!hasSelectedPlatform) return false;
-        }
-
-        // Trailer filter
-        if (hasTrailer && !project.trailer) {
-          return false;
-        }
-
-        // Materials filter
-        if (hasMaterials && (!project.deck || !project.onesheet)) {
-          return false;
-        }
-
-        // Search filter
-        if (searchTerm) {
-          const searchableText = `${project.title} ${project.genre} ${project.format} ${project.description} ${project.audience} ${project.platforms.join(' ')}`.toLowerCase();
-          if (!searchableText.includes(searchTerm)) {
-            return false;
-          }
-        }
-
-        return true;
-      });
-
-      // Sort projects
-      sortProjects(sortBy);
-
-      // Update display
-      renderProjects();
-      updateResultsCount();
-    }
-
-    function sortProjects(sortBy) {
-      switch(sortBy) {
-        case 'alpha-asc':
-          filteredProjects.sort((a, b) => a.title.localeCompare(b.title));
-          break;
-        case 'alpha-desc':
-          filteredProjects.sort((a, b) => b.title.localeCompare(a.title));
-          break;
-        case 'genre':
-          filteredProjects.sort((a, b) => a.genre.localeCompare(b.genre) || a.title.localeCompare(b.title));
-          break;
-        case 'format':
-          filteredProjects.sort((a, b) => a.format.localeCompare(b.format) || a.title.localeCompare(b.title));
-          break;
-        default:
-          // Featured - keep original order
-          break;
-      }
-    }
-
-    function renderProjects() {
-      const grid = document.getElementById('projectsGrid');
-      const noResults = document.getElementById('noResults');
-
-      if (filteredProjects.length === 0) {
-        grid.style.display = 'none';
-        noResults.style.display = 'block';
-        return;
-      }
-
-      grid.style.display = 'grid';
-      noResults.style.display = 'none';
-
-      grid.innerHTML = filteredProjects.map(project => {
-        const slug = project.title.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-        
-        // Platform badges
-        const platformBadges = project.platforms.map(p => {
-          let abbr = p;
-          if (p === 'Netflix') abbr = 'N';
-          else if (p === 'BET+') abbr = 'B+';
-          else if (p === 'Paramount+') abbr = 'P+';
-          else if (p === 'Peacock') abbr = 'P';
-          else if (p === 'Lifetime') abbr = 'L';
-          else if (p === 'Apple') abbr = '🍎';
-          
-          return `<span class="platform-badge" data-full-name="${platformNames[abbr] || p}">${abbr}</span>`;
-        }).join('');
-
-        // Material badges
-        const materials = [];
-        if (project.deck) materials.push('Pitch Deck');
-        if (project.onesheet) materials.push('One-Sheet');
-        if (project.treatment) materials.push('Treatment');
-        const materialBadges = materials.map(m => `<span class="material-badge">${m}</span>`).join('');
-
-        return `
-          <article class="project-card">
-            <img src="${project.image}" alt="${project.title}" class="project-image" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 900%22%3E%3Crect fill=%22%231a1a1a%22 width=%221600%22 height=%22900%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22system-ui%22 font-size=%2248%22 fill=%22%23666%22%3E${project.title}%3C/text%3E%3C/svg%3E'">
-            <div class="project-content">
-              <h3 class="project-title">${project.title}</h3>
-              <div class="project-meta">
-                <span class="project-tag">${project.genre}</span>
-                <span class="project-tag">${project.format}</span>
+    <!-- Projects Grid -->
+    <section class="featured-section">
+      <div class="featured-grid" id="projectsGrid">
+        <!-- Project 1 -->
+        <article class="project-card" data-project-id="1" data-platforms="network" data-format="mow" data-genre="thriller" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/influencers-last-post.png" alt="The Influencer's Last Post" class="project-image" loading="lazy">
+            <span class="project-badge featured">📌 Featured</span>
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Influencer's Last Post</h3>
+            <div class="project-meta">
+              <span class="project-tag">Film Noir</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
               </div>
-              ${platformBadges ? `<div class="project-platforms">${platformBadges}</div>` : ''}
-              ${project.description ? `<p class="project-description">${project.description}</p>` : ''}
-              ${materialBadges ? `<div class="project-materials">${materialBadges}</div>` : ''}
-              <div class="project-actions">
-                <a href="projects/${slug}.html" class="btn btn-primary">View Details</a>
-                ${project.trailer ? `<a href="${project.trailer}" class="btn btn-secondary">Trailer</a>` : ''}
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
               </div>
             </div>
-          </article>
-        `;
-      }).join('');
-    }
+            <p class="project-description">
+              A social media influencer's final post becomes the key to solving her own murder.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="1">Quick View</button>
+              <a href="projects/the-influencer-s-last-post.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
 
-    function updateResultsCount() {
-      document.getElementById('resultsCount').textContent = filteredProjects.length;
-    }
+        <!-- Project 2 -->
+        <article class="project-card" data-project-id="2" data-platforms="paramount,peacock,bet-plus,own" data-format="network-series" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-line.png" alt="The Line" class="project-image" loading="lazy">
+            <span class="project-badge featured">📌 Featured</span>
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Line</h3>
+            <div class="project-meta">
+              <span class="project-tag">Network Series</span>
+              <span class="project-tag">Network Series</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Paramount+">P+</span>
+              <span class="platform-badge" data-full-name="Peacock">Pk</span>
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="2">Quick View</button>
+              <a href="projects/the-line.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
 
-    function toggleView(view) {
-      currentView = view;
-      const grid = document.getElementById('projectsGrid');
-      const buttons = document.querySelectorAll('.view-btn');
+        <!-- Project 3 -->
+        <article class="project-card" data-project-id="3" data-platforms="netflix,hbo,apple-tv" data-format="mow" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-last-dynasty.png" alt="The Last Dynasty" class="project-image" loading="lazy">
+            <span class="project-badge featured">📌 Featured</span>
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Last Dynasty</h3>
+            <div class="project-meta">
+              <span class="project-tag">Drama</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              King Carter dies during his fi nal party, his estranged daughter Jasmine must navigate locked gates, rising fl ames, and a web of betrayal to solve his murder
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="3">Quick View</button>
+              <a href="projects/the-last-dynasty.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
 
-      buttons.forEach(btn => {
-        if (btn.dataset.view === view) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
+        <!-- Project 4 -->
+        <article class="project-card" data-project-id="4" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="comedy" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/black-girls-guide-to-vengeance-and-vodka.png" alt="Black Girl's Guide to Vengeance (and Vodka)" class="project-image" loading="lazy">
+            
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Black Girl's Guide to Vengeance (and Vodka)</h3>
+            <div class="project-meta">
+              <span class="project-tag">Comedy</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="4">Quick View</button>
+              <a href="projects/black-girl-s-guide-to-vengeance-and-vodka.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
 
-      if (view === 'list') {
-        grid.classList.add('list-view');
-      } else {
-        grid.classList.remove('list-view');
-      }
-    }
+        <!-- Project 5 -->
+        <article class="project-card" data-project-id="5" data-platforms="network" data-format="network-series" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/echo-chamber.png" alt="Echo Chamber" class="project-image" loading="lazy">
+            
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Echo Chamber</h3>
+            <div class="project-meta">
+              <span class="project-tag">Network Series</span>
+              <span class="project-tag">Network Series</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Network TV">TV</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A social media algorithm engineer discovers her creation is manipulating elections.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="5">Quick View</button>
+              <a href="projects/echo-chamber.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
 
-    function clearAllFilters() {
-      // Uncheck all checkboxes
-      document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => {
-        cb.checked = false;
-      });
+        <!-- Project 6 -->
+        <article class="project-card" data-project-id="6" data-platforms="network" data-format="network-series" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/just-jack.png" alt="Just Jack" class="project-image" loading="lazy">
+            
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Just Jack</h3>
+            <div class="project-meta">
+              <span class="project-tag">Network Series</span>
+              <span class="project-tag">Network Series</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Network TV">TV</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A regular guy navigates extraordinary situations with ordinary solutions.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="6">Quick View</button>
+              <a href="projects/just-jack.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
 
-      // Clear search
-      document.getElementById('searchInput').value = '';
+        <!-- Project 7 -->
+        <article class="project-card" data-project-id="7" data-platforms="netflix,hbo,apple-tv" data-format="limited-series" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/soul-on-fire.png" alt="Soul on Fire" class="project-image" loading="lazy">
+            
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Soul on Fire</h3>
+            <div class="project-meta">
+              <span class="project-tag">Drama</span>
+              <span class="project-tag">Limited Series</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A gospel singer's rise to fame threatens to destroy her family and faith.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="7">Quick View</button>
+              <a href="projects/soul-on-fire.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
 
-      // Reset sort
-      document.getElementById('sortSelect').value = 'featured';
+        <!-- Project 8 -->
+        <article class="project-card" data-project-id="8" data-platforms="netflix,hbo,apple-tv" data-format="limited-series" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/sinners-and-saints.png" alt="Sinners & Saints" class="project-image" loading="lazy">
+            
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Sinners & Saints</h3>
+            <div class="project-meta">
+              <span class="project-tag">Limited Series</span>
+              <span class="project-tag">Limited Series</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A preacher's daughter marries an ex-con and must choose between faith and survival when his past comes calling.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="8">Quick View</button>
+              <a href="projects/sinners-saints.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
 
-      // Reapply filters
-      applyFilters();
-    }
+        <!-- Project 9 -->
+        <article class="project-card" data-project-id="9" data-platforms="hbo,netflix,apple-tv" data-format="limited-series" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/she-who-watches.png" alt="She Who Watches" class="project-image" loading="lazy">
+            
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">She Who Watches</h3>
+            <div class="project-meta">
+              <span class="project-tag">Limited Series</span>
+              <span class="project-tag">Limited Series</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              If you see something, say nothing. A chilling limited series about surveillance, secrets, and the price of silence.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="9">Quick View</button>
+              <a href="projects/she-who-watches.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
 
-    // Back to Top Button
-    const backToTopBtn = document.getElementById('backToTop');
+        <!-- Project 10 -->
+        <article class="project-card" data-project-id="10" data-platforms="paramount,peacock,network" data-format="network-series" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/slice-of-paradise.png" alt="Slice of Paradise" class="project-image" loading="lazy">
+            
+            <span class="project-priority high">
+              <span class="priority-dot high"></span>
+              High Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Slice of Paradise</h3>
+            <div class="project-meta">
+              <span class="project-tag">Network Series</span>
+              <span class="project-tag">Network Series</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Paramount+">P+</span>
+              <span class="platform-badge" data-full-name="Peacock">Pk</span>
+              <span class="platform-badge" data-full-name="Network TV">TV</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A directionless thirty-something finds purpose in the last place he expected: a retirement community.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="10">Quick View</button>
+              <a href="projects/slice-of-paradise.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 11 -->
+        <article class="project-card" data-project-id="11" data-platforms="paramount,peacock,netflix,hbo,apple-tv" data-format="network-series" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-archive.png" alt="The Archive" class="project-image" loading="lazy">
+            
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Archive</h3>
+            <div class="project-meta">
+              <span class="project-tag">Network Series</span>
+              <span class="project-tag">Network Series</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Paramount+">P+</span>
+              <span class="platform-badge" data-full-name="Peacock">Pk</span>
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A renegade historian protects a library of suppressed stories from corporate erasure.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="11">Quick View</button>
+              <a href="projects/the-archive.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 12 -->
+        <article class="project-card" data-project-id="12" data-platforms="netflix,peacock,bet-plus" data-format="mow" data-genre="romance" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/love-after-likes.png" alt="Love After Likes" class="project-image" loading="lazy">
+            
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Love After Likes</h3>
+            <div class="project-meta">
+              <span class="project-tag">Romance</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="Peacock">Pk</span>
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              Two Atlanta creators fake a relationship for clout — until their feelings stop faking.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="12">Quick View</button>
+              <a href="projects/love-after-likes.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 13 -->
+        <article class="project-card" data-project-id="13" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="romance" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/flip-side-of-love.png" alt="Flip Side of Love" class="project-image" loading="lazy">
+            
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Flip Side of Love</h3>
+            <div class="project-meta">
+              <span class="project-tag">Romance</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              When a driven TV producer returns home to film a historic home renovation, she's shocked to discover the project's contractor is her ex, the man who broke her heart.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="13">Quick View</button>
+              <a href="projects/flip-side-of-love.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 14 -->
+        <article class="project-card" data-project-id="14" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="romance" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/southern-discomfort.png" alt="Southern (Dis)comfort" class="project-image" loading="lazy">
+            
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Southern (Dis)comfort</h3>
+            <div class="project-meta">
+              <span class="project-tag">Romance</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              After a scathing review tanks a struggling soul food restaurant, a feared Atlanta food critic is forced to team up with her ex-fiancé chef.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="14">Quick View</button>
+              <a href="projects/southern-dis-comfort.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 15 -->
+        <article class="project-card" data-project-id="15" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="romance" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/second-first-date.png" alt="Second First Date" class="project-image" loading="lazy">
+            
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Second First Date</h3>
+            <div class="project-meta">
+              <span class="project-tag">Romance</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              When a dating app matches two former college sweethearts, who once vowed never to speak again, they reluctantly agree to three dates as a dare.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="15">Quick View</button>
+              <a href="projects/second-first-date.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 16 -->
+        <article class="project-card" data-project-id="16" data-platforms="hallmark,own,bet-plus" data-format="mow" data-genre="romance" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/rhythm-and-blooms.png" alt="Rhythm & Blooms" class="project-image" loading="lazy">
+            
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Rhythm & Blooms</h3>
+            <div class="project-meta">
+              <span class="project-tag">Romance</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Hallmark">Hm</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A structured landscape designer and a jazz club owner fall in love while reviving a rooftop garden.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="16">Quick View</button>
+              <a href="projects/rhythm-blooms.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 17 -->
+        <article class="project-card" data-project-id="17" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="romance" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/ex-files.png" alt="The Ex-Files" class="project-image" loading="lazy">
+            
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Ex-Files</h3>
+            <div class="project-meta">
+              <span class="project-tag">Romance</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A divorce attorney's latest high-profile client is the man she thought she annulled years ago.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="17">Quick View</button>
+              <a href="projects/the-ex-files.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 18 -->
+        <article class="project-card" data-project-id="18" data-platforms="netflix,hbo,apple-tv" data-format="mow" data-genre="thriller" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/mirror-image.png" alt="Mirror Image" class="project-image" loading="lazy">
+            
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Mirror Image</h3>
+            <div class="project-meta">
+              <span class="project-tag">Thriller</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A rising fashion influencer is digitally framed by her estranged sister using deepfakes, stolen biometrics, and weaponized clout.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="18">Quick View</button>
+              <a href="projects/mirror-image.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 19 -->
+        <article class="project-card" data-project-id="19" data-platforms="netflix,hbo,apple-tv" data-format="mow" data-genre="thriller" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/past-due.png" alt="Past Due" class="project-image" loading="lazy">
+            
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Past Due</h3>
+            <div class="project-meta">
+              <span class="project-tag">Thriller</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A ruthless debt collector starts tracking down her clients, only to realize someone else is hunting them first.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="19">Quick View</button>
+              <a href="projects/past-due.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 20 -->
+        <article class="project-card" data-project-id="20" data-platforms="netflix,hbo,apple-tv" data-format="feature" data-genre="thriller" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/refractions.png" alt="Refractions" class="project-image" loading="lazy">
+            
+            <span class="project-priority medium">
+              <span class="priority-dot medium"></span>
+              Medium Priority
+            </span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Refractions</h3>
+            <div class="project-meta">
+              <span class="project-tag">Thriller</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A photographer’s world unravels when her portraits start showing crimes that have not happened yet.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="20">Quick View</button>
+              <a href="projects/refractions.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 21 -->
+        <article class="project-card" data-project-id="21" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="thriller" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-proxy.png" alt="The Proxy" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Proxy</h3>
+            <div class="project-meta">
+              <span class="project-tag">Thriller</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              Mistaken for someone she isn't, an artist is pulled into the dark underworld of stolen identities.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="21">Quick View</button>
+              <a href="projects/the-proxy.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 22 -->
+        <article class="project-card" data-project-id="22" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="thriller" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-alibi.png" alt="The Alibi" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Alibi</h3>
+            <div class="project-meta">
+              <span class="project-tag">Thriller</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              Four women with everything to lose may also be covering for one another's crime.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="22">Quick View</button>
+              <a href="projects/the-alibi.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 23 -->
+        <article class="project-card" data-project-id="23" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="thriller" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/somebody-you-know.png" alt="It's Somebody You Know" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">It's Somebody You Know</h3>
+            <div class="project-meta">
+              <span class="project-tag">Thriller</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              The greatest threat may come from the faces you trust most.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="23">Quick View</button>
+              <a href="projects/it-s-somebody-you-know.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 24 -->
+        <article class="project-card" data-project-id="24" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="thriller" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/atl-soul-poster.png" alt="ATL Soul: The Velvet LaRou Story" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">ATL Soul: The Velvet LaRou Story</h3>
+            <div class="project-meta">
+              <span class="project-tag">Thriller</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              In 1979 Atlanta, a fallen soul singer turns her greatest betrayal into a revolution.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="24">Quick View</button>
+              <a href="projects/atl-soul-the-velvet-larou-story.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 25 -->
+        <article class="project-card" data-project-id="25" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="thriller" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-other-mrs-jamison.png" alt="The Other Mrs. Jamison" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Other Mrs. Jamison</h3>
+            <div class="project-meta">
+              <span class="project-tag">Thriller</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A psychological thriller where a woman discovers her husband's first wife may not be as dead as everyone believes.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="25">Quick View</button>
+              <a href="projects/the-other-mrs-jamison.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 26 -->
+        <article class="project-card" data-project-id="26" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-feed.png" alt="The Feed" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Feed</h3>
+            <div class="project-meta">
+              <span class="project-tag">Drama</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A Black tech entrepreneur moves his family into a smart-home community and uncovers a racially biased surveillance system built to destroy him.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="26">Quick View</button>
+              <a href="projects/the-feed.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 27 -->
+        <article class="project-card" data-project-id="27" data-platforms="paramount,peacock,network" data-format="mow" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/this-is-me-now.png" alt="This Is Me Now" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">This Is Me Now</h3>
+            <div class="project-meta">
+              <span class="project-tag">Drama</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Paramount+">P+</span>
+              <span class="platform-badge" data-full-name="Peacock">Pk</span>
+              <span class="platform-badge" data-full-name="Network TV">TV</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              After a private video leaks, a quiet overachiever is forced into unwanted virality and has to decide who she is when the whole city is watching.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="27">Quick View</button>
+              <a href="projects/this-is-me-now.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 28 -->
+        <article class="project-card" data-project-id="28" data-platforms="network" data-format="feature" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/lifeart.png" alt="LifeArt" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">LifeArt</h3>
+            <div class="project-meta">
+              <span class="project-tag">Drama</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A European artist builds a lucrative career by posing as a reclusive Chinese painter, until one commission threatens to expose the lie and destroy the woman he loves.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="28">Quick View</button>
+              <a href="projects/lifeart.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 29 -->
+        <article class="project-card" data-project-id="29" data-platforms="netflix,hbo,apple-tv" data-format="mow" data-genre="comedy" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/hot-mess-express.png" alt="Hot Mess Express" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Hot Mess Express</h3>
+            <div class="project-meta">
+              <span class="project-tag">Comedy</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A disaster-prone woman tries to fix her life before her life fixes her first.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="29">Quick View</button>
+              <a href="projects/hot-mess-express.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 30 -->
+        <article class="project-card" data-project-id="30" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="comedy" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/miss-juneteenth-blues.png" alt="Miss Juneteenth Blues" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Miss Juneteenth Blues</h3>
+            <div class="project-meta">
+              <span class="project-tag">Comedy</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A down-on-her-luck mom re-enters the Juneteenth pageant world she swore off, under a fake identity, to secure her daughter's future.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="30">Quick View</button>
+              <a href="projects/miss-juneteenth-blues.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 31 -->
+        <article class="project-card" data-project-id="31" data-platforms="netflix,hbo,apple-tv" data-format="feature" data-genre="comedy" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/sneakerheads-anonymous.png" alt="Sneakerheads Anonymous" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Sneakerheads Anonymous</h3>
+            <div class="project-meta">
+              <span class="project-tag">Comedy</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A fake support group for sneaker addicts blows up into a real movement, whether the founder is ready or not.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="31">Quick View</button>
+              <a href="projects/sneakerheads-anonymous.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 32 -->
+        <article class="project-card" data-project-id="32" data-platforms="netflix,hbo,apple-tv" data-format="feature" data-genre="comedy" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/trap-house-sitting.png" alt="Trap House Sitting" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Trap House Sitting</h3>
+            <div class="project-meta">
+              <span class="project-tag">Comedy</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A house-sitter agrees to watch a 'nice place' and realizes too late it is an active trap house.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="32">Quick View</button>
+              <a href="projects/trap-house-sitting.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 33 -->
+        <article class="project-card" data-project-id="33" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="horror" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-southern-belles-secret.png" alt="The Southern Belle's Secret" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Southern Belle's Secret</h3>
+            <div class="project-meta">
+              <span class="project-tag">Southern Gothic</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              When a polished Atlanta debutante uncovers her family’s tie to a decades-old lynching, the perfect Beaumont legacy begins to crack.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="33">Quick View</button>
+              <a href="projects/the-southern-belle-s-secret.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 34 -->
+        <article class="project-card" data-project-id="34" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="horror" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/beneath-the-magnolia-tree.png" alt="Beneath the Magnolia Tree" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Beneath the Magnolia Tree</h3>
+            <div class="project-meta">
+              <span class="project-tag">Southern Gothic</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A fractured Georgia family reunites to sell the old house, only to discover the land itself is keeping score.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="34">Quick View</button>
+              <a href="projects/beneath-the-magnolia-tree.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 35 -->
+        <article class="project-card" data-project-id="35" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="horror" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/divine-deception.png" alt="Divine Deception" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Divine Deception</h3>
+            <div class="project-meta">
+              <span class="project-tag">Southern Gothic</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A Southern Gospel noir that exposes the dark underbelly of faith and corruption in Atlanta's religious community.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="35">Quick View</button>
+              <a href="projects/divine-deception.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 36 -->
+        <article class="project-card" data-project-id="36" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/a-spelman-christmas.png" alt="A Spelman Christmas" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">A Spelman Christmas</h3>
+            <div class="project-meta">
+              <span class="project-tag">Christmas</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              One family's holiday grief turns into the reunion they never expected.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="36">Quick View</button>
+              <a href="projects/a-spelman-christmas.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 37 -->
+        <article class="project-card" data-project-id="37" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/grannys-house-home-for-the-holidays.png" alt="Granny's House for the Holidays" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Granny's House for the Holidays</h3>
+            <div class="project-meta">
+              <span class="project-tag">Christmas</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A family returns to Granny's house for Christmas and discovers the true meaning of home.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="37">Quick View</button>
+              <a href="projects/granny-s-house-for-the-holidays.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 38 -->
+        <article class="project-card" data-project-id="38" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/twelve-dates-christmas-tree-lot.png" alt="Twelve Dates at the Christmas Tree Lot" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Twelve Dates at the Christmas Tree Lot</h3>
+            <div class="project-meta">
+              <span class="project-tag">Christmas</span>
+              <span class="project-tag">MOW</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="BET+">B+</span>
+              <span class="platform-badge" data-full-name="OWN">O</span>
+              <span class="platform-badge" data-full-name="Lifetime">L</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A woman finds love through twelve different dates at a Christmas tree lot.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="38">Quick View</button>
+              <a href="projects/twelve-dates-at-the-christmas-tree-lot.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 39 -->
+        <article class="project-card" data-project-id="39" data-platforms="network" data-format="docuseries" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/digital-shadows.png" alt="Digital Shadows" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Digital Shadows</h3>
+            <div class="project-meta">
+              <span class="project-tag">Docuseries</span>
+              <span class="project-tag">Docuseries</span>
+            </div>
+            <div class="project-platforms">
+              
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              An investigative docuseries exploring the dark side of social media and digital privacy.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="39">Quick View</button>
+              <a href="projects/digital-shadows.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 40 -->
+        <article class="project-card" data-project-id="40" data-platforms="network" data-format="docuseries" data-genre="drama" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/exposed.png" alt="Exposed" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Exposed</h3>
+            <div class="project-meta">
+              <span class="project-tag">Docuseries</span>
+              <span class="project-tag">Docuseries</span>
+            </div>
+            <div class="project-platforms">
+              
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              True crime is not always about murder. It is also about the unseen crimes that steal lives in silence.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="40">Quick View</button>
+              <a href="projects/exposed.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 41 -->
+        <article class="project-card" data-project-id="41" data-platforms="network" data-format="feature" data-genre="action" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/reflections.png" alt="Reflections" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Reflections</h3>
+            <div class="project-meta">
+              <span class="project-tag">Action</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              An Atlanta designer becomes the bait to catch a calculating stalker hiding in plain sight.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="41">Quick View</button>
+              <a href="projects/reflections.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 42 -->
+        <article class="project-card" data-project-id="42" data-platforms="paramount,peacock,netflix,hbo" data-format="feature" data-genre="action" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-architect.png" alt="The Architect" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Architect</h3>
+            <div class="project-meta">
+              <span class="project-tag">Action</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Paramount+">P+</span>
+              <span class="platform-badge" data-full-name="Peacock">Pk</span>
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A disgraced detective learns the city’s vigilante is her ‘dead’ ex-partner and only she can stop him.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="42">Quick View</button>
+              <a href="projects/the-architect.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 43 -->
+        <article class="project-card" data-project-id="43" data-platforms="paramount,peacock,netflix,hbo" data-format="feature" data-genre="action" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/queen-of-thorns.png" alt="Queen of Thorns" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Queen of Thorns</h3>
+            <div class="project-meta">
+              <span class="project-tag">Action</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Paramount+">P+</span>
+              <span class="platform-badge" data-full-name="Peacock">Pk</span>
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              Framed by her lover, lethal arms broker must dismantle the syndicate she built and decide whether revenge is worth burning her last clean ally.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="43">Quick View</button>
+              <a href="projects/queen-of-thorns.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 44 -->
+        <article class="project-card" data-project-id="44" data-platforms="paramount,peacock,netflix,hbo" data-format="feature" data-genre="action" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-ghostmaker.png" alt="Ghostmaker" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Ghostmaker</h3>
+            <div class="project-meta">
+              <span class="project-tag">Action</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Paramount+">P+</span>
+              <span class="platform-badge" data-full-name="Peacock">Pk</span>
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A disgraced CIA operative, a master of erasing identities, is brutally hunted by her own agency after a botched mission.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="44">Quick View</button>
+              <a href="projects/ghostmaker.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 45 -->
+        <article class="project-card" data-project-id="45" data-platforms="paramount,peacock,netflix,hbo" data-format="feature" data-genre="action" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/blood-covenant.png" alt="Blood Covenant" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Blood Covenant</h3>
+            <div class="project-meta">
+              <span class="project-tag">Action</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Paramount+">P+</span>
+              <span class="platform-badge" data-full-name="Peacock">Pk</span>
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              Bound by a childhood oath, two men climb a criminal ladder until one becomes a pastor. When the syndicate demands blood, both must decide which covenant they’ll keep.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="45">Quick View</button>
+              <a href="projects/blood-covenant.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 46 -->
+        <article class="project-card" data-project-id="46" data-platforms="netflix,hbo,apple-tv" data-format="feature" data-genre="horror" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/second-skin.png" alt="Second Skin" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Second Skin</h3>
+            <div class="project-meta">
+              <span class="project-tag">Horror</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              A chilling horror film that explores transformation and identity. Features practical effects and atmospheric cinematography that creates genuine tension.
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="46">Quick View</button>
+              <a href="projects/second-skin.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 47 -->
+        <article class="project-card" data-project-id="47" data-platforms="netflix,hbo,apple-tv" data-format="feature" data-genre="horror" data-status="pitch-ready">
+          <div class="project-image-wrapper">
+            <img src="images/the-bone-collectors-daughter.png" alt="The Bone Collector's Daughter" class="project-image" loading="lazy">
+            
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Bone Collector's Daughter</h3>
+            <div class="project-meta">
+              <span class="project-tag">Horror</span>
+              <span class="project-tag">Feature</span>
+            </div>
+            <div class="project-platforms">
+              <span class="platform-badge" data-full-name="Netflix">N</span>
+              <span class="platform-badge" data-full-name="HBO/Max">H</span>
+              <span class="platform-badge" data-full-name="Apple TV+">A</span>
+            </div>
+            <div class="materials-indicators">
+              <div class="material-item available">
+                <span class="material-icon">📄</span>
+                <span>Treatment</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📺</span>
+                <span>Teaser</span>
+              </div>
+              <div class="material-item available">
+                <span class="material-icon">📝</span>
+                <span>Script</span>
+              </div>
+            </div>
+            <p class="project-description">
+              Haunted by vengeful spirits known as the Hollow-Eyed, a daughter must embrace her bloodline's dark rituals or be consumed the spirit
+            </p>
+            <div class="project-actions">
+              <button class="btn-secondary quick-view" data-project-id="47">Quick View</button>
+              <a href="projects/the-bone-collector-s-daughter.html" class="btn-primary">Full Details →</a>
+            </div>
+          </div>
+        </article>
+
+        </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 NCCA Entertainment. All rights reserved.</p>
+      <p style="margin-top:.5rem;">Boutique content studio delivering premium, culturally rich scripted stories where Atlanta's soul meets global market lines.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop">↑</button>
+
+  <script src="js/filter-system.js"></script>
+  <script>
+    // Additional slate-specific functionality
     
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add('visible');
+    // Show/hide no results message
+    function updateNoResultsDisplay() {
+      const visibleCards = document.querySelectorAll('.project-card[style=""]').length;
+      const noResults = document.getElementById('noResults');
+      const projectsGrid = document.getElementById('projectsGrid');
+      
+      if (visibleCards === 0) {
+        noResults.style.display = 'block';
+        projectsGrid.style.display = 'none';
       } else {
-        backToTopBtn.classList.remove('visible');
+        noResults.style.display = 'none';
+        projectsGrid.style.display = 'grid';
       }
-    });
+    }
 
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
+    // Override the filterProjects function to include no results check
+    const originalFilterProjects = window.filterProjects;
+    if (originalFilterProjects) {
+      window.filterProjects = function() {
+        originalFilterProjects();
+        updateNoResultsDisplay();
+      };
+    }
   </script>
-
 </body>
 </html>
