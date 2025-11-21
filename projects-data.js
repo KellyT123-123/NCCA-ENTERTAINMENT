@@ -40,7 +40,7 @@ const projectsData = [
     "genre": "Drama",
     "format": "MOW",
     "audience": "Adults 25-54 | Black Audiences",
-    "description": "King Carter dies during his fi nal party, his estranged daughter Jasmine must navigate locked gates, rising fl ames, and a web of betrayal to solve his murder",
+    "description": "King Carter dies during his fi nal party, his estranged daughter Jasmine must navigate locked gates, rising flames, and a web of betrayal to solve his murder",
     "deck": "pitch-decks/the-last-dynasty-pitch-deck.pdf",
     "onesheet": "one-sheets/the-last-dynasty-one-sheet.pdf",
     "treatment": "assets/the-last-dynasty-treatment.pdf",
@@ -89,9 +89,9 @@ const projectsData = [
   },
   {
     "title": "Just Jack",
-    "genre": "Network Series",
+    "genre": "Comedy",
     "format": "Network Series",
-    "audience": "Adults 18\u201349",
+    "audience": "Adults 18\u201349 | Gen Z",
     "description": "A regular guy navigates extraordinary situations with ordinary solutions.",
     "deck": "pitch-decks/just-jack-pitch-deck.pdf",
     "onesheet": "one-sheets/just-jack-one-sheet.pdf",
@@ -124,7 +124,7 @@ const projectsData = [
   },
   {
     "title": "Sinners & Saints",
-    "genre": "Limited Series",
+    "genre": "Drama",
     "format": "Limited Series",
     "audience": "Women 25\u201340",
     "description": "A preacher's daughter marries an ex-con and must choose between faith and survival when his past comes calling.",
@@ -141,7 +141,7 @@ const projectsData = [
   },
   {
     "title": "She Who Watches",
-    "genre": "Limited Series",
+    "genre": "Thriller",
     "format": "Limited Series",
     "audience": "Women 25\u201340 | Gen Z",
     "description": "If you see something, say nothing. A chilling limited series about surveillance, secrets, and the price of silence.",
@@ -158,7 +158,7 @@ const projectsData = [
   },
   {
     "title": "Slice of Paradise",
-    "genre": "Network Series",
+    "genre": "Comedy",
     "format": "Network Series",
     "audience": "YA | Gen Z",
     "description": "A directionless thirty-something finds purpose in the last place he expected: a retirement community.",
@@ -177,7 +177,7 @@ const projectsData = [
   },
   {
     "title": "The Archive",
-    "genre": "Network Series",
+    "genre": "Thriller",
     "format": "Network Series",
     "audience": "Gen Z",
     "description": "A renegade historian protects a library of suppressed stories from corporate erasure.",
@@ -300,7 +300,7 @@ const projectsData = [
     "title": "Mirror Image",
     "genre": "Thriller",
     "format": "MOW",
-    "audience": "Women 25\u201340",
+    "audience": "Women 25\u201340 | Gen Z"",
     "description": "A rising fashion influencer is digitally framed by her estranged sister using deepfakes, stolen biometrics, and weaponized clout.",
     "deck": "pitch-decks/mirror-image-pitch-deck.pdf",
     "onesheet": "one-sheets/mirror-one-liner.pdf",
@@ -344,7 +344,8 @@ const projectsData = [
     "platforms": [
       "Netflix",
       "HBO",
-      "Apple"
+      "Apple",
+      "Theatrical"
     ]
   },
   {
@@ -487,7 +488,8 @@ const projectsData = [
       "Paramount+",
       "Peacock",
       "Netflix",
-      "HBO"
+      "HBO",
+      "Theatrical"
     ]
   },
   {
@@ -538,7 +540,8 @@ const projectsData = [
     "platforms": [
       "Netflix",
       "HBO",
-      "Apple"
+      "Apple",
+      "Theatrical"
     ]
   },
   {
@@ -555,7 +558,8 @@ const projectsData = [
     "platforms": [
       "Netflix",
       "HBO",
-      "Apple"
+      "Apple",
+      "Theatrical"
     ]
   },
   {
@@ -662,7 +666,7 @@ const projectsData = [
   },
   {
     "title": "Digital Shadows",
-    "genre": "Docuseries",
+    "genre": "Drama",
     "format": "Docuseries",
     "audience": "Gen Z",
     "description": "An investigative docuseries exploring the dark side of social media and digital privacy.",
@@ -679,7 +683,7 @@ const projectsData = [
   },
   {
     "title": "Exposed",
-    "genre": "Docuseries",
+    "genre": "Drama",
     "format": "Docuseries",
     "audience": "Women 25\u201340",
     "description": "True crime is not always about murder. It is also about the unseen crimes that steal lives in silence.",
@@ -727,7 +731,8 @@ const projectsData = [
       "Paramount+",
       "Peacock",
       "Netflix",
-      "HBO"
+      "HBO",
+      "Theatrical"
     ]
   },
   {
@@ -745,7 +750,8 @@ const projectsData = [
       "Paramount+",
       "Peacock",
       "Netflix",
-      "HBO"
+      "HBO",
+      "Theatrical"
     ]
   },
   {
@@ -763,7 +769,8 @@ const projectsData = [
       "Paramount+",
       "Peacock",
       "Netflix",
-      "HBO"
+      "HBO",
+      "Theatrical"
     ]
   },
   {
@@ -781,7 +788,8 @@ const projectsData = [
       "Paramount+",
       "Peacock",
       "Netflix",
-      "HBO"
+      "HBO",
+      "Theatrical"
     ]
   },
   {
@@ -798,7 +806,8 @@ const projectsData = [
     "platforms": [
       "Netflix",
       "HBO",
-      "Apple"
+      "Apple",
+      "Theatrical"
     ]
   },
   {
@@ -815,7 +824,8 @@ const projectsData = [
     "platforms": [
       "Netflix",
       "HBO",
-      "Apple"
+      "Apple",
+      "Theatrical"
     ]
   }
 ];
