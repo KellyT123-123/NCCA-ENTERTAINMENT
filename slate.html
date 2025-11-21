@@ -2242,6 +2242,16 @@
   <!-- Back to Top -->
   <button class="back-to-top" id="backToTop">↑</button>
 
+  <!-- Quick View Modal -->
+  <div class="quick-view-overlay" id="quickViewOverlay">
+    <div class="quick-view-modal">
+      <button class="quick-view-close" id="quickViewClose" aria-label="Close quick view">×</button>
+      <div class="quick-view-content" id="quickViewContent">
+        <!-- Content will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+
   <script src="js/filter-system.js"></script>
   <script>
     // Additional slate-specific functionality
@@ -2268,6 +2278,28 @@
         originalFilterProjects();
         updateNoResultsDisplay();
       };
+    }
+
+    // Quick View modal close handlers
+    const quickViewOverlay = document.getElementById('quickViewOverlay');
+    const quickViewClose = document.getElementById('quickViewClose');
+    
+    if (quickViewClose) {
+      quickViewClose.addEventListener('click', () => {
+        if (typeof FilterSystem !== 'undefined' && FilterSystem.closeQuickView) {
+          FilterSystem.closeQuickView();
+        }
+      });
+    }
+    
+    if (quickViewOverlay) {
+      quickViewOverlay.addEventListener('click', (e) => {
+        if (e.target === quickViewOverlay) {
+          if (typeof FilterSystem !== 'undefined' && FilterSystem.closeQuickView) {
+            FilterSystem.closeQuickView();
+          }
+        }
+      });
     }
   </script>
 </body>

@@ -144,8 +144,8 @@ const FilterSystem = {
     document.addEventListener('keydown', (e) => this.handleKeyDown(e));
     
     // Quick view buttons
-    document.querySelectorAll('.quick-view-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => this.showQuickView(e.target.getAttribute('data-project')));
+    document.querySelectorAll('.quick-view-btn, .quick-view').forEach(btn => {
+      btn.addEventListener('click', (e) => this.showQuickView(e.target));
     });
   },
   
@@ -583,29 +583,41 @@ const FilterSystem = {
   // QUICK VIEW
   // ==========================================
   
-  showQuickView(projectId) {
-    const project = this.projectsData.find(p => p.id == projectId);
+  showQuickView(buttonElement) {
     const quickViewOverlay = document.getElementById('quickViewOverlay');
     const quickViewContent = document.getElementById('quickViewContent');
     
-    if (!project || !quickViewOverlay || !quickViewContent) return;
+    if (!quickViewOverlay || !quickViewContent) return;
     
+    // Find the project card that contains this button
+    const projectCard = buttonElement.closest('.project-card');
+    if (!projectCard) return;
+    
+    // Extract data from the project card DOM
+    const projectId = projectCard.getAttribute('data-project-id');
+    const title = projectCard.querySelector('.project-title')?.textContent || '';
+    const description = projectCard.querySelector('.project-description')?.textContent || '';
+    const image = projectCard.querySelector('.project-image')?.src || '';
+    const tags = Array.from(projectCard.querySelectorAll('.project-tag')).map(tag => tag.textContent);
+    const platforms = Array.from(projectCard.querySelectorAll('.platform-badge')).map(badge => badge.textContent);
+    const detailsLink = projectCard.querySelector('.btn-primary')?.href || '#';
+    
+    // Build the quick view content
     quickViewContent.innerHTML = `
-      <img src="${project.image}" alt="${this.escapeHtml(project.title)}" style="width: 100%; border-radius: 12px 12px 0 0;" loading="lazy">
+      <img src="${image}" alt="${this.escapeHtml(title)}" style="width: 100%; border-radius: 12px 12px 0 0;" loading="lazy">
       <div style="padding: 2rem;">
-        <h2 style="color: var(--brand); margin-bottom: 1rem;">${this.escapeHtml(project.title)}</h2>
+        <h2 style="color: var(--brand); margin-bottom: 1rem;">${this.escapeHtml(title)}</h2>
         <div style="display: flex; gap: .5rem; margin-bottom: 1rem; flex-wrap: wrap;">
-          <span class="project-tag">${project.genre}</span>
-          <span class="project-tag">${project.format}</span>
+          ${tags.map(tag => `<span class="project-tag">${this.escapeHtml(tag)}</span>`).join('')}
         </div>
         <p style="color: rgba(255,255,255,.9); line-height: 1.7; margin-bottom: 1.5rem;">
-          ${this.escapeHtml(project.description)}
+          ${this.escapeHtml(description)}
         </p>
         <div style="display: flex; gap: .5rem; margin-bottom: 2rem; flex-wrap: wrap;">
-          ${project.platforms.map(p => `<span class="platform-badge">${p}</span>`).join('')}
+          ${platforms.map(p => `<span class="platform-badge">${this.escapeHtml(p)}</span>`).join('')}
         </div>
         <div style="display: flex; gap: 1rem;">
-          <a href="${project.url}" class="btn btn-primary">View Full Details</a>
+          <a href="${detailsLink}" class="btn btn-primary">View Full Details</a>
           <button class="btn btn-secondary" onclick="FilterSystem.closeQuickView()">Close</button>
         </div>
       </div>
