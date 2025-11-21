@@ -600,7 +600,10 @@ const FilterSystem = {
     const image = projectCard.querySelector('.project-image')?.src || '';
     const tags = Array.from(projectCard.querySelectorAll('.project-tag')).map(tag => tag.textContent);
     const platforms = Array.from(projectCard.querySelectorAll('.platform-badge')).map(badge => badge.textContent);
-    const detailsLink = projectCard.querySelector('.btn-primary')?.href || '#';
+    // Get the details link - try .btn-primary first (Slate page), then .btn-secondary (homepage)
+    const detailsLink = projectCard.querySelector('.project-actions a.btn-primary')?.href || 
+                        projectCard.querySelector('.project-actions a.btn-secondary')?.href || 
+                        projectCard.querySelector('.project-actions a')?.href || '#';
     
     // Build the quick view content
     quickViewContent.innerHTML = `
