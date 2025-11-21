@@ -813,7 +813,7 @@ const projectsData = [
   {
     "title": "The Bone Collector's Daughter",
     "genre": "Horror",
-    "format": "Feature",
+    "format": "Feature | Theatrical",
     "audience": "Gen Z | Horror Fans",
     "description": "Haunted by vengeful spirits known as the Hollow-Eyed, a daughter must embrace her bloodline's dark rituals or be consumed the spirit",
     "deck": "pitch-decks/the-bone-collectors-daughter-pitch-deck.pdf",
