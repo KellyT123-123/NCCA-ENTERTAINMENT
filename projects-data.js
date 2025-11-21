@@ -199,7 +199,7 @@ const projectsData = [
     "genre": "Romance",
     "format": "MOW",
     "audience": "Women 25\u201340 | Gen Z",
-    "description": "Two Atlanta creators fake a relationship for clout \u2014 until their feelings stop faking.",
+    "description": "Two Atlanta creators fake a relationship for clout, until their feelings stop faking.",
     "deck": "pitch-decks/love-after-likes-pitch-deck.pdf",
     "onesheet": "one-sheets/love-after-likes-one-sheet.pdf",
     "treatment": "assets/love-after-likes-treatment.pdf",
