@@ -10,7 +10,12 @@ const projectsData = [
     "treatment": "assets/influencers-last-post-treatment.pdf",
     "trailer": "assets/influencers-last-post-teaser.mp4",
     "image": "images/influencers-last-post.png",
-    "platforms": []
+    "platforms": [
+      "Paramount+",
+      "Peacock",
+      "BET+",
+      "OWN"
+    ]
   },
   {
     "title": "The Line",
@@ -34,7 +39,7 @@ const projectsData = [
     "title": "The Last Dynasty",
     "genre": "Drama",
     "format": "MOW",
-    "audience": "Adults 25-54",
+    "audience": "Adults 25-54 | Black Audiences",
     "description": "King Carter dies during his fi nal party, his estranged daughter Jasmine must navigate locked gates, rising fl ames, and a web of betrayal to solve his murder",
     "deck": "pitch-decks/the-last-dynasty-pitch-deck.pdf",
     "onesheet": "one-sheets/the-last-dynasty-one-sheet.pdf",
@@ -138,7 +143,7 @@ const projectsData = [
     "title": "She Who Watches",
     "genre": "Limited Series",
     "format": "Limited Series",
-    "audience": "Women 25\u201340 | Black Audiences",
+    "audience": "Women 25\u201340 | Gen Z",
     "description": "If you see something, say nothing. A chilling limited series about surveillance, secrets, and the price of silence.",
     "deck": "pitch-decks/she-who-watches-pitch-deck.pdf",
     "onesheet": "one-sheets/she-who-watches-one-sheet.pdf",
@@ -356,7 +361,8 @@ const projectsData = [
     "platforms": [
       "BET+",
       "OWN",
-      "Lifetime"
+      "Lifetime",
+      "Paramount+",
     ]
   },
   {
@@ -390,7 +396,8 @@ const projectsData = [
     "platforms": [
       "BET+",
       "OWN",
-      "Lifetime"
+      "Lifetime",
+      "Paramount+",
     ]
   },
   {
@@ -407,7 +414,8 @@ const projectsData = [
     "platforms": [
       "BET+",
       "OWN",
-      "Lifetime"
+      "Lifetime",
+      "Paramount+",
     ]
   },
   {
@@ -424,7 +432,8 @@ const projectsData = [
     "platforms": [
       "BET+",
       "OWN",
-      "Lifetime"
+      "Lifetime",
+      "Paramount+",
     ]
   },
   {
@@ -474,7 +483,12 @@ const projectsData = [
     "treatment": "assets/lifeart-treatment.pdf",
     "trailer": "assets/lifeart-teaser.mp4",
     "image": "images/lifeart.png",
-    "platforms": []
+    "platforms": [
+      "Paramount+",
+      "Peacock",
+      "Netflix",
+      "HBO"
+    ]
   },
   {
     "title": "Hot Mess Express",
@@ -657,7 +671,11 @@ const projectsData = [
     "treatment": "assets/digital-shadows-treatment.pdf",
     "trailer": "assets/digital-shadows-teaser.mp4",
     "image": "images/digital-shadows.png",
-    "platforms": []
+    "platforms": [
+      "Netflix",
+      "HBO",
+      "Apple"
+    ]
   },
   {
     "title": "Exposed",
@@ -670,7 +688,11 @@ const projectsData = [
     "treatment": "assets/exposed-treatment.pdf",
     "trailer": "assets/exposed-teaser.mp4",
     "image": "images/exposed.png",
-    "platforms": []
+    "platforms": [
+      "Netflix",
+      "HBO",
+      "Apple"
+    ]
   },
   {
     "title": "Reflections",
@@ -683,7 +705,12 @@ const projectsData = [
     "treatment": "assets/reflections-treatment.pdf",
     "trailer": "assets/reflections-teaser.mp4",
     "image": "images/reflections.png",
-    "platforms": []
+    "platforms": [
+      "Paramount+",
+      "Peacock",
+      "Netflix",
+      "HBO"
+    ]
   },
   {
     "title": "The Architect",
