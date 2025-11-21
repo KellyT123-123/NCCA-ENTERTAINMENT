@@ -19,7 +19,7 @@ const projectsData = [
   },
   {
     "title": "The Line",
-    "genre": "Network Series",
+    "genre": "Musical | Action",
     "format": "Network Series",
     "audience": "Gen Z; Women 25\u201340",
     "description": "A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.",
@@ -37,7 +37,7 @@ const projectsData = [
   },
   {
     "title": "The Last Dynasty",
-    "genre": "Drama",
+    "genre": "Drama | Musical",
     "format": "MOW",
     "audience": "Adults 25-54 | Black Audiences",
     "description": "King Carter dies during his fi nal party, his estranged daughter Jasmine must navigate locked gates, rising flames, and a web of betrayal to solve his murder",
