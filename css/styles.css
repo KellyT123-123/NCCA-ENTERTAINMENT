@@ -1146,6 +1146,46 @@ button {
   transform: scale(1.1);
 }
 
+/* Hover Overlay */
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  z-index: 5;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.overlay-btn {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--brand) 0%, #B87333 100%);
+  color: #0B0B0C;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all var(--transition-base);
+}
+
+.overlay-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(212, 139, 60, 0.4);
+  text-decoration: none;
+}
+
 /* Badges */
 
 .project-badge {
