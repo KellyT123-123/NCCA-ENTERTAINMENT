@@ -656,6 +656,11 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function filterAndSortProjects() {
+    if (typeof projectsData === 'undefined' || !projectsData) {
+      console.error('projectsData is not loaded!');
+      projectsGrid.innerHTML = '<p style="color:#f00;padding:2rem;text-align:center;">Error: Project data failed to load. Please refresh the page.</p>';
+      return;
+    }
     let filtered = [...projectsData];
 
     // Apply genre filters
@@ -798,6 +803,11 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   // Initial render
+  console.log('Initializing projects page...');
+  console.log('projectsData loaded:', typeof projectsData !== 'undefined');
+  if (typeof projectsData !== 'undefined') {
+    console.log('Number of projects:', projectsData.length);
+  }
   filterAndSortProjects();
 });
 </script>
