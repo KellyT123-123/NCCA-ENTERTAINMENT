@@ -615,9 +615,20 @@
   <p style="margin-top:.5rem">Atlanta, GA | <a href="mailto:NCCAEntertainment@gmail.com">NCCAEntertainment@gmail.com</a> | (910) 262-9307</p>
 </footer>
 
-<script src="projects-data.js?v=3"></script>
+<script src="projects-data.js?v=4"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function(){
+// Wait for both DOM and scripts to be ready
+function initProjects() {
+  if (typeof projectsData === 'undefined') {
+    console.log('Waiting for projectsData...');
+    setTimeout(initProjects, 100);
+    return;
+  }
+  console.log('projectsData loaded successfully with', projectsData.length, 'projects');
+  startProjectsPage();
+}
+
+function startProjectsPage() {
   // Mobile Navigation
   const navToggle = document.getElementById('navToggle');
   const nav = document.getElementById('primaryNav');
@@ -809,7 +820,14 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log('Number of projects:', projectsData.length);
   }
   filterAndSortProjects();
-});
+}
+
+// Start initialization when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initProjects);
+} else {
+  initProjects();
+}
 </script>
 
 </body>
