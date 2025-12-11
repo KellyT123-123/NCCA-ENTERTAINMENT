@@ -773,23 +773,21 @@ const projectsData = [
       "Theatrical"
     ]
   },
-  {
-    "title": "Blood Covenant",
-    "genre": "Action",
-    "format": "Feature",
-    "audience": "Gen Z",
-    "description": "Bound by a childhood oath, two men climb a criminal ladder until one becomes a pastor. When the syndicate demands blood, both must decide which covenant they’ll keep.",
-    "deck": "pitch-decks/blood-covenant-pitch-deck.pdf",
-    "onesheet": "one-sheets/blood-covenant-one-sheet.pdf",
-    "treatment": "assets/blood-covenant-treatment.pdf",
-    "trailer": "assets/blood-covenant-teaser.mp4",
-    "image": "images/blood-covenant.png",
+ {
+    "title": "Cheer Heist",
+    "genre": "Comedy",
+    "format": "Feature | Y/A",
+    "audience": "Gen Z | Young Adults",
+    "description": "When a ruthless elite cheer team steals their championship routine, a scrappy squad of outcasts infiltrates a Vegas mega-intensive to steal it back in a live streamed heist that flips the entire cheer industry on its head.",
+    "deck": "pitch-decks/cheer-heist-pitch-deck.pdf",
+    "onesheet": "one-sheets/cheer-heist-one-sheet.pdf",
+    "treatment": "assets/cheer-heist-treatment.pdf",
+    "trailer": "music/cheer-heist-take-it-back.mp3",
+    "image": "images/cheer-heist.png",
     "platforms": [
-      "Paramount+",
-      "Peacock",
       "Netflix",
-      "HBO",
-      "Theatrical"
+      "HBO/MAX",
+      "Amazon"
     ]
   },
   {
