@@ -773,7 +773,7 @@ const projectsData = [
       "Theatrical"
     ]
   },
- {
+  {
     "title": "Cheer Heist",
     "genre": "Comedy",
     "format": "Feature | Y/A",
@@ -827,3 +827,4 @@ const projectsData = [
     ]
   }
 ];
+
