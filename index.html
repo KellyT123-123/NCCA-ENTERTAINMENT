@@ -1,2412 +1,1082 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NCCA Entertainment — Cinematic Storytelling</title>
-
-  <meta name="description" content="NCCA Entertainment is a boutique content studio delivering premium, culturally rich scripted series and films. Where America's soul meets global storytelling."/>
-  <meta property="og:title" content="NCCA ENTERTAINMENT"/>
-  <meta property="og:description" content="Film & Television Production"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="og-image.png"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="NCCA ENTERTAINMENT"/>
-  <meta name="twitter:description" content="Film & Television Production"/>
-  <meta name="twitter:image" content="og-image.png"/>
-
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="Boutique content studio delivering premium, culturally rich scripted series and films. 47 original projects targeting Netflix, HBO, BET+, OWN, Lifetime, and major networks." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      --brand:#D48B3C;
-      --brand-hover:#E3A463;
-      --brand-ink:#F2E6D0;
-      --brand-bg:#0A0A0A;
-      --brand-muted:#B9A98F;
-      --brand-rule:rgba(255,255,255,.10);
-      --success: #4CAF50;
-      --warning: #FF9800;
-      --info: #2196F3;
-      --priority-high: #D32F2F;
-      --priority-med: #FFA726;
-      --card-min:320px;
-      --gap:1rem;
+    :root {
+      --black:      #0A0A0A;
+      --off-black:  #111111;
+      --dark-gray:  #1A1A1A;
+      --mid-gray:   #2A2A2A;
+      --border:     #2E2E2E;
+      --muted:      #666666;
+      --light-muted:#999999;
+      --text:       #E8E4DC;
+      --text-dim:   #B0AAA0;
+      --gold:       #C9A84C;
+      --gold-light: #E8C96B;
+      --gold-dim:   rgba(201,168,76,0.15);
+      --gold-border:rgba(201,168,76,0.35);
+      --white:      #FFFFFF;
+      --nav-h:      72px;
+      --nav-h-sm:   56px;
+      --utility-h:  38px;
+      --radius:     4px;
+      --radius-md:  8px;
+      --transition: 0.25s ease;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
     }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.65; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul { list-style: none; }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:var(--brand-bg);
-      color:#f5f3ee;
-      line-height:1.6;
-      font-size:16px;
-    }
+    /* SKIP LINK */
+    .skip-link { position: absolute; top: -100px; left: 16px; background: var(--gold); color: var(--black); padding: 8px 16px; font-weight: 600; font-size: 13px; border-radius: var(--radius); z-index: 9999; transition: top 0.2s; }
+    .skip-link:focus { top: 8px; }
 
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline;color:var(--brand-hover)}
+    /* UTILITY BAR */
+    .utility-bar { position: fixed; top: 0; left: 0; right: 0; height: var(--utility-h); background: var(--off-black); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; z-index: 1000; font-size: 12px; color: var(--text-dim); }
+    .utility-bar__left { display: flex; align-items: center; gap: 20px; }
+    .utility-pulse { display: flex; align-items: center; gap: 6px; font-weight: 500; color: var(--gold); letter-spacing: 0.04em; }
+    .pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.75)} }
+    .utility-bar__right { display: flex; align-items: center; gap: 16px; }
+    .utility-bar a { color: var(--text-dim); transition: color var(--transition); font-size: 12px; }
+    .utility-bar a:hover { color: var(--gold); }
+    .util-pitch-badge { background: var(--gold); color: var(--black) !important; padding: 3px 10px; border-radius: 20px; font-weight: 600; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; transition: background var(--transition); }
+    .util-pitch-badge:hover { background: var(--gold-light) !important; }
 
-    /* Skip to Content Link - Accessibility */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--brand);
-      color: #111;
-      padding: 8px 16px;
-      text-decoration: none;
-      font-weight: 700;
-      z-index: 9999;
-    }
-    .skip-link:focus {
-      top: 0;
-    }
+    /* NAV */
+    .site-nav { position: fixed; top: var(--utility-h); left: 0; right: 0; height: var(--nav-h); background: rgba(10,10,10,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; z-index: 999; transition: height var(--transition), box-shadow var(--transition); }
+    .site-nav.scrolled { height: var(--nav-h-sm); box-shadow: 0 4px 24px rgba(0,0,0,.5); }
+    .nav__logo { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--white); letter-spacing: 0.06em; transition: color var(--transition); }
+    .nav__logo span { color: var(--gold); }
+    .nav__logo:hover { color: var(--gold); }
+    .nav__links { display: flex; align-items: center; gap: 4px; }
+    .nav__links > li { position: relative; }
+    .nav__links > li > a, .nav__links > li > button { display: flex; align-items: center; gap: 4px; padding: 8px 14px; font-size: 13.5px; font-weight: 500; color: var(--text-dim); letter-spacing: 0.03em; border-radius: var(--radius); transition: color var(--transition), background var(--transition); white-space: nowrap; }
+    .nav__links > li > a:hover, .nav__links > li > button:hover { color: var(--white); background: rgba(255,255,255,.05); }
+    .nav__cta { background: var(--gold) !important; color: var(--black) !important; font-weight: 600 !important; padding: 7px 16px !important; font-size: 12.5px !important; letter-spacing: 0.05em !important; text-transform: uppercase; }
+    .nav__cta:hover { background: var(--gold-light) !important; }
+    .nav__right { display: flex; align-items: center; gap: 8px; }
+    .nav__search-btn { display: flex; align-items: center; gap: 6px; padding: 7px 12px; color: var(--text-dim); border: 1px solid var(--border); border-radius: var(--radius); font-size: 12.5px; transition: all var(--transition); }
+    .nav__search-btn:hover { color: var(--white); border-color: var(--gold-border); }
+    .kbd { font-size: 10px; padding: 1px 5px; border: 1px solid var(--border); border-radius: 3px; color: var(--muted); font-family: monospace; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; color: var(--text-dim); }
+    .hamburger span { display: block; width: 22px; height: 2px; background: currentColor; transition: all var(--transition); }
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-    /* Utility Bar */
-    .utility-bar{
-      background:rgba(212,139,60,.08);
-      border-bottom:1px solid rgba(212,139,60,.2);
-      padding:.5rem 0;
-    }
-    .utility-wrap{
-      max-width:1400px;
-      margin:0 auto;
-      padding:0 24px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:1.5rem;
-      font-size:.85rem;
-      flex-wrap: wrap;
-    }
-    .utility-left {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .utility-right {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .utility-link{
-      color:var(--brand-ink);
-      display:flex;
-      align-items:center;
-      gap:.4rem;
-      transition:color 0.2s ease;
-      text-decoration: none;
-    }
-    .utility-link:hover{
-      color:var(--brand);
-      text-decoration: none;
-    }
-    .executive-view {
-      background: var(--brand);
-      color: #111;
-      padding: .4rem .8rem;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: all 0.2s ease;
-    }
-    .executive-view:hover {
-      background: var(--brand-hover);
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
+    /* MEGA MENU */
+    .mega-menu { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(-8px); width: 680px; background: var(--off-black); border: 1px solid var(--border); border-top: 2px solid var(--gold); border-radius: 0 0 var(--radius-md) var(--radius-md); padding: 24px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 20px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity var(--transition), transform var(--transition), visibility var(--transition); box-shadow: 0 16px 48px rgba(0,0,0,.6); z-index: 100; }
+    .nav__links > li:hover .mega-menu, .nav__links > li:focus-within .mega-menu { opacity: 1; visibility: visible; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .mega-col__label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .mega-col a { display: block; padding: 6px 0; font-size: 13px; color: var(--text-dim); transition: color var(--transition), padding-left var(--transition); }
+    .mega-col a:hover { color: var(--gold); padding-left: 4px; }
+    .mega-view-all { grid-column: 1/-1; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; justify-content: center; }
+    .mega-view-all a { font-size: 13px; font-weight: 600; color: var(--gold); letter-spacing: 0.04em; display: flex; align-items: center; gap: 6px; transition: gap var(--transition); }
+    .mega-view-all a:hover { gap: 10px; }
 
-    /* Sticky Header */
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:2000;
-      background:rgba(11,11,12,.95);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(255,255,255,.08);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .nav-wrap{
-      max-width:1400px;
-      margin:0 auto;
-      padding:.75rem 24px;
-      display:flex;
-      align-items:center;
-      gap:1rem
-    }
-    .brand{
-      font-weight:900;
-      letter-spacing:.5px;
-      padding:.25rem .6rem;
-      border-radius:8px;
-      background:linear-gradient(180deg,#2a2c31,#17181b);
-      color:#ffd166;
-      text-decoration:none;
-      font-size:1rem;
-      line-height:1;
-      transition: all 0.3s ease;
-    }
-    .brand:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(212, 139, 60, 0.3);
-      text-decoration: none;
-    }
+    /* SEARCH OVERLAY */
+    .search-overlay { position: fixed; inset: 0; background: rgba(10,10,10,.96); backdrop-filter: blur(16px); z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px; opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+    .search-overlay.open { opacity: 1; visibility: visible; }
+    .search-overlay__inner { width: 100%; max-width: 640px; }
+    .search-overlay__label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .search-overlay__input { width: 100%; background: none; border: none; border-bottom: 2px solid var(--gold); padding: 12px 0; font-family: var(--font-display); font-size: clamp(28px,5vw,48px); color: var(--white); outline: none; caret-color: var(--gold); }
+    .search-overlay__input::placeholder { color: var(--muted); }
+    .search-hints { margin-top: 24px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .search-hint-chip { padding: 6px 14px; background: var(--dark-gray); border: 1px solid var(--border); border-radius: 20px; font-size: 12px; color: var(--text-dim); cursor: pointer; transition: all var(--transition); }
+    .search-hint-chip:hover { border-color: var(--gold-border); color: var(--gold); }
+    .search-keyboard { margin-top: 32px; display: flex; gap: 20px; font-size: 12px; color: var(--muted); }
+    .search-keyboard span { display: flex; align-items: center; gap: 6px; }
+    .search-close { position: absolute; top: calc(var(--utility-h) + 16px); right: 24px; color: var(--text-dim); font-size: 28px; line-height: 1; padding: 4px; transition: color var(--transition); background: none; border: none; cursor: pointer; }
+    .search-close:hover { color: var(--white); }
 
-    .nav{margin-left:auto;display:flex;align-items:center;gap:1rem;}
-    .nav-list{
-      list-style:none;
-      margin:0;
-      padding:0;
-      display:flex;
-      gap:.5rem;
-      align-items:center
-    }
-    .nav-item>a{
-      color:#e7e7ea;
-      text-decoration:none;
-      padding:.5rem .7rem;
-      border-radius:8px;
-      font-weight:600;
-      background:none;
-      border:1px solid transparent;
-      font-size:.95rem;
-      line-height:1.2;
-      transition: all 0.2s ease;
-    }
-    .nav-item>a:hover{
-      background:#191b20;
-      border-color:#2a2c31;
-      text-decoration:none;
-      transform: translateY(-1px);
-    }
-    .nav-item.cta>a{
-      background:var(--brand);
-      color:#111;
-      border-color:var(--brand);
-      font-weight:700;
-    }
-    .nav-item.cta>a:hover{
-      background:var(--brand-hover);
-      border-color:var(--brand-hover);
-    }
+    /* MOBILE DRAWER */
+    .mobile-drawer { position: fixed; top: 0; right: -100%; width: min(320px,85vw); height: 100dvh; background: var(--off-black); border-left: 1px solid var(--border); z-index: 1100; overflow-y: auto; transition: right .3s cubic-bezier(.4,0,.2,1); padding: calc(var(--utility-h) + var(--nav-h-sm) + 16px) 0 32px; }
+    .mobile-drawer.open { right: 0; }
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 1099; opacity: 0; visibility: hidden; transition: all .3s; }
+    .drawer-overlay.open { opacity: 1; visibility: visible; }
+    .drawer-nav > li > a, .drawer-nav > li > button { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 24px; font-size: 15px; color: var(--text-dim); border-bottom: 1px solid var(--border); transition: color var(--transition), background var(--transition); }
+    .drawer-nav > li > a:hover, .drawer-nav > li > button:hover { color: var(--white); background: rgba(255,255,255,.03); }
+    .drawer-accordion__content { display: none; background: var(--dark-gray); padding: 8px 0; }
+    .drawer-accordion__content.open { display: block; }
+    .drawer-accordion__section { padding: 8px 24px 4px 32px; }
+    .drawer-accordion__section-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .drawer-accordion__content a { display: block; padding: 6px 0; font-size: 13.5px; color: var(--text-dim); transition: color var(--transition); }
+    .drawer-accordion__content a:hover { color: var(--gold); }
+    .drawer-cta { margin: 20px 24px 0; display: block; text-align: center; background: var(--gold); color: var(--black) !important; font-weight: 600; font-size: 13px; padding: 12px; border-radius: var(--radius); letter-spacing: 0.05em; text-transform: uppercase; }
+    .drawer-cta:hover { background: var(--gold-light) !important; }
 
-    /* Search in Navigation */
-    .nav-search {
-      position: relative;
-      margin-left: .5rem;
-    }
-    .search-trigger {
-      background: none;
-      border: 1px solid rgba(255,255,255,.2);
-      color: #e7e7ea;
-      padding: .5rem .7rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: .95rem;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      transition: all 0.2s ease;
-    }
-    .search-trigger:hover {
-      background: #191b20;
-      border-color: #2a2c31;
-    }
-    .search-expanded {
-      position: absolute;
-      top: calc(100% + 10px);
-      right: 0;
-      background: rgba(17,18,22,.98);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 12px;
-      padding: 1rem;
-      min-width: 400px;
-      display: none;
-      box-shadow: 0 8px 32px rgba(0,0,0,.5);
-      backdrop-filter: blur(12px);
-      z-index: 3001;
-    }
-    .search-expanded.active {
-      display: block;
-      animation: fadeInDown 0.2s ease;
-    }
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .search-input-wrap {
-      position: relative;
-    }
-    .search-input {
-      width: 100%;
-      padding: .75rem 1rem;
-      padding-right: 3rem;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 8px;
-      color: #f5f3ee;
-      font-size: .95rem;
-      outline: none;
-      transition: all 0.2s ease;
-    }
-    .search-input:focus {
-      border-color: var(--brand);
-      background: rgba(255,255,255,.08);
-    }
-    .search-input::placeholder {
-      color: rgba(255,255,255,.4);
-    }
-    .search-clear {
-      position: absolute;
-      right: .75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: rgba(255,255,255,.5);
-      cursor: pointer;
-      font-size: 1.25rem;
-      padding: 0;
-      width: 24px;
-      height: 24px;
-      display: none;
-    }
-    .search-clear.visible {
-      display: block;
-    }
-    .search-results {
-      margin-top: 1rem;
-      max-height: 400px;
-      overflow-y: auto;
-    }
-    .search-result-item {
-      padding: .75rem;
-      border-radius: 8px;
-      margin-bottom: .5rem;
-      background: rgba(255,255,255,.03);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      gap: 1rem;
-      align-items: start;
-    }
-    .search-result-item:hover {
-      background: rgba(212,139,60,.15);
-      transform: translateX(4px);
-    }
-    .search-result-thumb {
-      width: 60px;
-      height: 40px;
-      border-radius: 4px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-    .search-result-content {
-      flex: 1;
-    }
-    .search-result-title {
-      color: var(--brand);
-      font-weight: 600;
-      font-size: .9rem;
-      margin-bottom: .25rem;
-    }
-    .search-result-meta {
-      font-size: .8rem;
-      color: rgba(255,255,255,.6);
-      display: flex;
-      gap: .5rem;
-      flex-wrap: wrap;
-    }
-    .search-result-tag {
-      background: rgba(255,255,255,.1);
-      padding: .15rem .4rem;
-      border-radius: 4px;
-      font-size: .75rem;
-    }
-    .search-no-results {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: rgba(255,255,255,.5);
-    }
+    /* MAIN */
+    #main-content { padding-top: calc(var(--utility-h) + var(--nav-h)); }
 
-    /* Enhanced Mega Menu */
-    .nav-item.has-mega{position:relative;}
-    .mega-menu{
-      position:absolute;
-      top:100%;
-      left:50%;
-      transform:translateX(-50%) translateY(10px);
-      background:rgba(17,18,22,.98);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:12px;
-      padding:2rem;
-      min-width:700px;
-      display:none;
-      opacity:0;
-      box-shadow:0 8px 32px rgba(0,0,0,.5);
-      backdrop-filter:blur(12px);
-      z-index:3000;
-    }
-    .nav-item.has-mega:hover .mega-menu{
-      display:block;
-      animation:fadeIn 0.2s ease forwards;
-    }
-    @keyframes fadeIn{
-      to{opacity:1;transform:translateX(-50%) translateY(0);}
-    }
-    .mega-menu-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:2rem;
-    }
-    .mega-menu-col h4{
-      color:var(--brand);
-      font-size:.8rem;
-      text-transform:uppercase;
-      letter-spacing:1.2px;
-      margin-bottom:1rem;
-      font-weight:700;
-      padding-bottom: .5rem;
-      border-bottom: 2px solid rgba(212,139,60,.3);
-    }
-    .mega-menu-col ul{
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap:.5rem;
-    }
-    .mega-menu-col a{
-      color:#d0d0d5;
-      font-size:.9rem;
-      padding:.4rem .6rem;
-      border-radius:6px;
-      display:flex;
-      align-items: center;
-      gap: .5rem;
-      transition:all 0.2s ease;
-      position: relative;
-    }
-    .mega-menu-col a:hover{
-      background:rgba(212,139,60,.15);
-      color:var(--brand);
-      text-decoration:none;
-      padding-left:1rem;
-    }
-    .mega-menu-col a::before {
-      content: '→';
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      position: absolute;
-      left: .5rem;
-    }
-    .mega-menu-col a:hover::before {
-      opacity: 1;
-    }
-    .mega-menu-footer {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255,255,255,.1);
-      text-align: center;
-    }
-    .mega-menu-footer a {
-      color: var(--brand);
-      font-weight: 600;
-      font-size: .95rem;
-      padding: .5rem 1rem;
-      border-radius: 8px;
-      display: inline-block;
-      transition: all 0.2s ease;
-    }
-    .mega-menu-footer a:hover {
-      background: rgba(212,139,60,.15);
-      text-decoration: none;
-    }
+    /* BREADCRUMB */
+    .breadcrumb { background: var(--off-black); border-bottom: 1px solid var(--border); padding: 10px 32px; font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--muted); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb__sep { color: var(--border); }
+    .breadcrumb__current { color: var(--gold); }
 
-    /* Mobile Menu Toggle */
-    .mobile-menu-toggle {
-      display: none;
-      background: none;
-      border: 1px solid rgba(255,255,255,.2);
-      color: #e7e7ea;
-      padding: .5rem .7rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.25rem;
-      align-items: center;
-      margin-left: auto;
-    }
-    .mobile-menu-toggle:hover {
-      background: #191b20;
-      border-color: #2a2c31;
-    }
+    /* HERO */
+    .hero { min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 80px 32px; position: relative; overflow: hidden; }
+    .hero::before { content:''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 40%,rgba(201,168,76,.07) 0%,transparent 70%); pointer-events: none; }
+    .hero::after { content:''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg,transparent,var(--gold-border),transparent); }
+    .hero__inner { position: relative; z-index: 1; max-width: 760px; }
+    .hero__eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 20px; }
+    .hero__title { font-family: var(--font-display); font-size: clamp(44px,8vw,88px); font-weight: 700; line-height: 1.0; color: var(--white); margin-bottom: 20px; }
+    .hero__subtitle { font-size: 17px; color: var(--text-dim); line-height: 1.6; max-width: 540px; margin: 0 auto 36px; }
+    .hero__stats { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .hero__stat { text-align: center; }
+    .hero__stat-num { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--gold); line-height: 1; }
+    .hero__stat-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+    .hero__stat-divider { width: 1px; height: 40px; background: var(--border); }
 
-    /* Mobile Menu Overlay */
-    .mobile-menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(10,10,10,.98);
-      z-index: 4000;
-      display: none;
-      overflow-y: auto;
-      padding: 2rem 1.5rem;
-    }
-    .mobile-menu-overlay.active {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
-    .mobile-menu-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-    .mobile-menu-close {
-      background: none;
-      border: none;
-      color: #e7e7ea;
-      font-size: 2rem;
-      cursor: pointer;
-      padding: 0;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .mobile-menu-content {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    .mobile-nav-list {
-      list-style: none;
-    }
-    .mobile-nav-item {
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-    .mobile-nav-item > a {
-      display: block;
-      padding: 1rem 0;
-      color: #e7e7ea;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .mobile-nav-item > a:hover {
-      color: var(--brand);
-    }
-    .mobile-nav-item.has-submenu > a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .mobile-submenu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    .mobile-submenu.active {
-      max-height: 1000px;
-    }
-    .mobile-submenu ul {
-      list-style: none;
-      padding: .5rem 0 1rem 1rem;
-    }
-    .mobile-submenu li {
-      margin-bottom: .75rem;
-    }
-    .mobile-submenu a {
-      color: #d0d0d5;
-      font-size: .95rem;
-      text-decoration: none;
-      display: block;
-    }
-    .mobile-submenu a:hover {
-      color: var(--brand);
-    }
-    .mobile-submenu h5 {
-      color: var(--brand);
-      font-size: .75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 1rem;
-      margin-bottom: .5rem;
-    }
+    /* PLATFORM BAR */
+    .platform-bar { background: var(--off-black); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 32px; }
+    .platform-bar__inner { display: flex; align-items: center; gap: 40px; justify-content: center; flex-wrap: wrap; }
+    .platform-bar__label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+    .platform-names { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; justify-content: center; }
+    .platform-name { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-muted); transition: color var(--transition); }
+    .platform-name:hover { color: var(--gold); }
 
-    /* Hero Section */
-    .hero {
-      padding: 4rem 24px;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(212,139,60,.05) 0%, transparent 100%);
-    }
-    .hero-content {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 6vw, 4rem);
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-    }
-    .brand-text {
-      color: #ffd166;
-      font-weight: 900;
-    }
-    .accent-text {
-      color: var(--brand);
-      font-weight: 700;
-    }
-    .hero-tagline {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--brand-ink);
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+    /* FILTER BAR */
+    .filter-bar { position: sticky; top: calc(var(--utility-h) + var(--nav-h)); z-index: 90; background: var(--off-black); border-bottom: 1px solid var(--border); padding: 0 32px; transition: top var(--transition); }
+    .filter-bar.nav-shrunk { top: calc(var(--utility-h) + var(--nav-h-sm)); }
+    .filter-bar__top { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .filter-bar__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .filter-selects { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+    .filter-select { appearance: none; -webkit-appearance: none; background: var(--dark-gray) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 10px center; border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-dim); font-family: var(--font-body); font-size: 12.5px; padding: 7px 28px 7px 12px; cursor: pointer; transition: all var(--transition); }
+    .filter-select:hover { border-color: var(--gold-border); color: var(--white); }
+    .filter-select:focus { outline: none; border-color: var(--gold); }
+    .filter-select option { background: var(--dark-gray); }
+    .filter-bar__right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+    .view-toggle { display: flex; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .view-btn { padding: 7px 10px; font-size: 14px; color: var(--muted); background: none; transition: all var(--transition); line-height: 1; }
+    .view-btn.active { background: var(--gold-dim); color: var(--gold); }
+    .view-btn:hover { color: var(--white); }
+    .filter-count { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .filter-count strong { color: var(--gold); }
+    .clear-filters-btn { font-size: 11.5px; color: var(--muted); padding: 4px 8px; border: 1px solid var(--border); border-radius: var(--radius); transition: all var(--transition); display: none; }
+    .clear-filters-btn.visible { display: block; }
+    .clear-filters-btn:hover { color: var(--white); border-color: var(--gold-border); }
+    .active-chips { display: flex; gap: 8px; padding: 8px 0; flex-wrap: wrap; }
+    .active-chips:empty { display: none; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 20px; font-size: 12px; color: var(--gold); animation: chipIn .2s ease; }
+    @keyframes chipIn { from{opacity:0;transform:scale(.8)} to{opacity:1;transform:scale(1)} }
+    .chip__remove { color: var(--gold); font-size: 14px; line-height: 1; cursor: pointer; opacity: .7; transition: opacity var(--transition); background: none; border: none; }
+    .chip__remove:hover { opacity: 1; }
 
-    /* Quick Stats */
-    .quick-stats {
-      padding: 3rem 24px;
-      background: rgba(255,255,255,.02);
-      border-top: 1px solid var(--brand-rule);
-      border-bottom: 1px solid var(--brand-rule);
-    }
-    .stats-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-    }
-    .stat-item {
-      text-align: center;
-    }
-    .stat-number {
-      display: block;
-      font-size: 3rem;
-      font-weight: 900;
-      color: var(--brand);
-      line-height: 1;
-      margin-bottom: .5rem;
-    }
-    .stat-label {
-      display: block;
-      color: var(--brand-ink);
-      font-size: .95rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
-    }
+    /* PROJECTS SECTION */
+    .projects-section { padding: 48px 32px 80px; }
+    .section-header { margin-bottom: 32px; }
+    .section-eyebrow { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(24px,4vw,36px); font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .section-desc { font-size: 14px; color: var(--text-dim); max-width: 560px; }
 
-    /* Filter Bar Section */
-    .filter-section {
-      padding: 2rem 24px;
-      background: rgba(17,18,22,.95);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      position: sticky;
-      top: 0;
-      z-index: 1500;
-      margin-top: 0;
-    }
-    .filter-container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .filter-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .filter-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--brand);
-    }
-    .filter-actions {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-    .filter-count {
-      background: rgba(212,139,60,.15);
-      padding: .5rem 1rem;
-      border-radius: 8px;
-      font-size: .9rem;
-      color: var(--brand-ink);
-    }
-    .filter-count strong {
-      color: var(--brand);
-      font-weight: 700;
-    }
-    .filter-clear {
-      background: rgba(211,47,47,.2);
-      color: #ff6b6b;
-      border: 1px solid rgba(211,47,47,.4);
-      padding: .5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: .9rem;
-      font-weight: 600;
-      transition: all 0.2s ease;
-      display: none;
-    }
-    .filter-clear.visible {
-      display: block;
-    }
-    .filter-clear:hover {
-      background: rgba(211,47,47,.3);
-      border-color: rgba(211,47,47,.6);
-    }
+    /* CARDS */
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 24px; }
+    .project-grid.list-view { grid-template-columns: 1fr; }
+    .project-card { background: var(--off-black); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition); display: flex; flex-direction: column; }
+    .project-card:hover { border-color: var(--gold-border); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.4); }
+    .card__image-wrap { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--dark-gray); }
+    .card__image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .project-card:hover .card__image-wrap img { transform: scale(1.04); }
+    .card__badges { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+    .badge { padding: 3px 9px; border-radius: 20px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .badge--featured { background: rgba(201,168,76,.9); color: var(--black); }
+    .badge--new { background: rgba(30,120,80,.9); color: #fff; }
+    .badge--priority { background: rgba(139,30,30,.9); color: #fff; }
+    .card__ip-status { position: absolute; bottom: 10px; right: 10px; padding: 3px 9px; background: rgba(10,10,10,.8); border: 1px solid var(--border); border-radius: 3px; font-size: 10px; letter-spacing: 0.08em; color: var(--text-dim); text-transform: uppercase; }
+    .card__body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; }
+    .card__meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .card__genre, .card__format { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+    .card__meta-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
+    .card__title { font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--white); margin-bottom: 10px; line-height: 1.25; transition: color var(--transition); }
+    .project-card:hover .card__title { color: var(--gold); }
+    .card__synopsis { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1; margin-bottom: 16px; }
+    .card__platforms { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+    .platform-tag { padding: 3px 8px; background: var(--dark-gray); border: 1px solid var(--border); border-radius: 3px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); }
+    .card__materials { display: flex; gap: 8px; margin-bottom: 16px; }
+    .material-tag { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 3px; }
+    .card__actions { display: flex; gap: 8px; }
+    .btn-quick-view { flex: 1; padding: 9px 0; border: 1px solid var(--border); border-radius: var(--radius); font-size: 12.5px; font-weight: 500; color: var(--text-dim); text-align: center; transition: all var(--transition); }
+    .btn-quick-view:hover { border-color: var(--gold-border); color: var(--gold); }
+    .btn-full-details { flex: 1; padding: 9px 0; background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: var(--radius); font-size: 12.5px; font-weight: 600; color: var(--gold); text-align: center; display: flex; align-items: center; justify-content: center; transition: all var(--transition); }
+    .btn-full-details:hover { background: var(--gold); color: var(--black); }
 
-    /* Filter Controls */
-    .filter-controls {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .filter-group {
-      position: relative;
-    }
-    .filter-label {
-      display: block;
-      font-size: .85rem;
-      color: var(--brand-ink);
-      margin-bottom: .5rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-    .filter-select {
-      width: 100%;
-      padding: .75rem 1rem;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 8px;
-      color: #f5f3ee;
-      font-size: .95rem;
-      cursor: pointer;
-      outline: none;
-      transition: all 0.2s ease;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f5f3ee' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      padding-right: 3rem;
-    }
-    .filter-select:focus {
-      border-color: var(--brand);
-      background: rgba(255,255,255,.08);
-    }
-    .filter-select option {
-      background: #17181b;
-      color: #f5f3ee;
-    }
+    /* LOAD MORE */
+    .load-more-section { margin-top: 40px; text-align: center; }
+    .load-progress { max-width: 400px; margin: 0 auto 20px; }
+    .load-progress__label { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .load-progress__bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .load-progress__fill { height: 100%; background: var(--gold); border-radius: 2px; width: 8.5%; }
+    .load-more-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-load-more { padding: 12px 28px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13.5px; font-weight: 500; color: var(--text-dim); transition: all var(--transition); }
+    .btn-load-more:hover { border-color: var(--gold-border); color: var(--gold); }
+    .btn-view-all-link { padding: 12px 28px; background: var(--gold); color: var(--black); border-radius: var(--radius); font-size: 13.5px; font-weight: 600; letter-spacing: 0.04em; display: flex; align-items: center; gap: 8px; transition: background var(--transition); }
+    .btn-view-all-link:hover { background: var(--gold-light); color: var(--black); }
 
-    /* Active Filters Display */
-    .active-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-top: 1rem;
-      min-height: 32px;
-    }
-    .filter-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      background: rgba(212,139,60,.2);
-      color: var(--brand);
-      padding: .4rem .75rem;
-      border-radius: 20px;
-      font-size: .85rem;
-      font-weight: 600;
-      border: 1px solid rgba(212,139,60,.4);
-      animation: slideIn 0.2s ease;
-    }
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    .filter-chip-remove {
-      background: none;
-      border: none;
-      color: var(--brand);
-      cursor: pointer;
-      font-size: 1.1rem;
-      padding: 0;
-      width: 16px;
-      height: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease;
-    }
-    .filter-chip-remove:hover {
-      transform: scale(1.2);
-    }
+    /* ABOUT */
+    .about-section { background: var(--off-black); border-top: 1px solid var(--border); padding: 80px 32px; }
+    .about-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-headline { font-family: var(--font-display); font-size: clamp(28px,4vw,42px); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 20px; margin-top: 12px; }
+    .about-body { font-size: 15px; color: var(--text-dim); line-height: 1.75; margin-bottom: 16px; }
+    .track-record { margin-top: 28px; padding: 20px; background: var(--dark-gray); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+    .track-record__label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+    .track-record__items { display: flex; flex-direction: column; gap: 7px; }
+    .track-item { font-size: 13px; color: var(--text-dim); display: flex; align-items: baseline; gap: 8px; }
+    .track-item::before { content:''; display: block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .about-pillars { display: flex; flex-direction: column; gap: 20px; }
+    .pillar { padding: 24px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--dark-gray); transition: border-color var(--transition), transform var(--transition); }
+    .pillar:hover { border-color: var(--gold-border); transform: translateX(4px); }
+    .pillar__icon { font-size: 22px; margin-bottom: 10px; }
+    .pillar__title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .pillar__desc { font-size: 13.5px; color: var(--text-dim); line-height: 1.65; }
 
-    /* Sort Controls */
-    .sort-controls {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      justify-content: flex-end;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-    .sort-label {
-      font-size: .9rem;
-      color: var(--brand-ink);
-      font-weight: 600;
-    }
-    .sort-select {
-      padding: .5rem 1rem;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 8px;
-      color: #f5f3ee;
-      font-size: .9rem;
-      cursor: pointer;
-      outline: none;
-      transition: all 0.2s ease;
-    }
-    .sort-select:focus {
-      border-color: var(--brand);
-      background: rgba(255,255,255,.08);
-    }
-    .sort-select option {
-      background: #17181b;
-      color: #f5f3ee;
-    }
-    .view-toggle {
-      display: flex;
-      gap: .5rem;
-      background: rgba(255,255,255,.05);
-      padding: .25rem;
-      border-radius: 8px;
-    }
-    .view-btn {
-      background: none;
-      border: none;
-      color: rgba(255,255,255,.5);
-      padding: .5rem .75rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.2s ease;
-    }
-    .view-btn.active {
-      background: var(--brand);
-      color: #111;
-    }
-    .view-btn:hover {
-      color: var(--brand);
-    }
+    /* CONTACT */
+    .contact-section { padding: 80px 32px; border-top: 1px solid var(--border); }
+    .contact-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-headline { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 20px; margin-top: 12px; }
+    .contact-intro { font-size: 14.5px; color: var(--text-dim); line-height: 1.7; margin-bottom: 28px; }
+    .contact-items { display: flex; flex-direction: column; gap: 14px; }
+    .contact-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-dim); }
+    .contact-item__icon { width: 36px; height: 36px; background: var(--dark-gray); border: 1px solid var(--border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .contact-item a { color: var(--text-dim); transition: color var(--transition); }
+    .contact-item a:hover { color: var(--gold); }
+    .response-time-note { margin-top: 20px; padding: 12px 16px; background: var(--dark-gray); border: 1px solid var(--border); border-radius: var(--radius); font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-field { display: flex; flex-direction: column; gap: 5px; }
+    .form-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+    .form-input, .form-select, .form-textarea { background: var(--dark-gray); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-family: var(--font-body); font-size: 14px; padding: 10px 14px; outline: none; transition: border-color var(--transition); width: 100%; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
+    .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-color: var(--dark-gray); padding-right: 32px; }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-submit { padding: 13px 28px; background: var(--gold); color: var(--black); border-radius: var(--radius); font-size: 13.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; transition: background var(--transition); align-self: flex-start; cursor: pointer; border: none; font-family: var(--font-body); }
+    .form-submit:hover { background: var(--gold-light); }
 
-    /* Featured Projects Section */
-    .featured-section {
-      padding: 4rem 24px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .section-header h2 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      color: var(--brand);
-      margin-bottom: 1rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-    .section-header p {
-      color: var(--brand-ink);
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+    /* FOOTER */
+    .site-footer { background: var(--off-black); border-top: 1px solid var(--border); padding: 48px 32px 24px; }
+    .footer-grid { max-width: 1100px; margin: 0 auto 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer-brand__logo { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--white); letter-spacing: 0.06em; margin-bottom: 12px; }
+    .footer-brand__logo span { color: var(--gold); }
+    .footer-brand__tagline { font-size: 13px; color: var(--text-dim); line-height: 1.65; max-width: 240px; }
+    .footer-col__label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 9px; }
+    .footer-col a { font-size: 13px; color: var(--text-dim); transition: color var(--transition); }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 8px; }
 
-    /* Enhanced Project Cards */
-    .featured-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    .project-card {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 32px rgba(0,0,0,.5);
-      border-color: rgba(212,139,60,.4);
-    }
-    .project-image-wrapper {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 16/9;
-    }
-    .project-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    .project-card:hover .project-image {
-      transform: scale(1.1);
-    }
-    .project-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: var(--brand);
-      color: #111;
-      padding: .35rem .75rem;
-      border-radius: 6px;
-      font-size: .75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      z-index: 10;
-    }
-    .project-badge.new {
-      background: var(--success);
-    }
-    .project-badge.featured {
-      background: var(--brand);
-    }
-    .project-priority {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: rgba(0,0,0,.8);
-      color: #fff;
-      padding: .35rem .75rem;
-      border-radius: 6px;
-      font-size: .75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      display: flex;
-      align-items: center;
-      gap: .35rem;
-      z-index: 10;
-    }
-    .project-priority.high {
-      border-left: 3px solid var(--priority-high);
-    }
-    .project-priority.medium {
-      border-left: 3px solid var(--priority-med);
-    }
-    .priority-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: currentColor;
-    }
-    .priority-dot.high {
-      background: var(--priority-high);
-    }
-    .priority-dot.medium {
-      background: var(--priority-med);
-    }
-    .project-content {
-      padding: 1.5rem;
-    }
-    .project-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: .75rem;
-      color: #f5f3ee;
-      line-height: 1.3;
-    }
-    .project-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 1rem;
-    }
-    .project-tag {
-      background: rgba(255,255,255,.08);
-      color: var(--brand-ink);
-      padding: .25rem .6rem;
-      border-radius: 4px;
-      font-size: .8rem;
-      font-weight: 600;
-      border: 1px solid rgba(255,255,255,.15);
-    }
-    .project-platforms {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 1rem;
-    }
-    .platform-badge {
-      background: rgba(212,139,60,.2);
-      color: var(--brand);
-      padding: .3rem .6rem;
-      border-radius: 4px;
-      font-size: .8rem;
-      font-weight: 700;
-      border: 1px solid rgba(212,139,60,.4);
-      cursor: help;
-      position: relative;
-    }
-    .platform-badge:hover::after {
-      content: attr(data-full-name);
-      position: absolute;
-      bottom: calc(100% + 5px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(17,18,22,.98);
-      padding: .5rem .75rem;
-      border-radius: 6px;
-      font-size: .75rem;
-      white-space: nowrap;
-      border: 1px solid rgba(255,255,255,.2);
-      z-index: 100;
-    }
-    .materials-indicators {
-      display: flex;
-      gap: .75rem;
-      margin-bottom: 1rem;
-      padding: .75rem;
-      background: rgba(255,255,255,.02);
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    .material-item {
-      display: flex;
-      align-items: center;
-      gap: .35rem;
-      font-size: .8rem;
-      color: rgba(255,255,255,.6);
-    }
-    .material-item.available {
-      color: var(--success);
-    }
-    .material-icon {
-      font-size: 1rem;
-    }
-    .project-description {
-      color: rgba(255,255,255,.8);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-      font-size: .95rem;
-    }
-    .project-actions {
-      display: flex;
-      gap: .75rem;
-      flex-wrap: wrap;
-    }
-    .btn {
-      padding: .65rem 1.25rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: .9rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      transition: all 0.2s ease;
-      border: none;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--brand);
-      color: #111;
-    }
-    .btn-primary:hover {
-      background: var(--brand-hover);
-      text-decoration: none;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(212,139,60,.4);
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,.08);
-      color: var(--brand-ink);
-      border: 1px solid rgba(255,255,255,.2);
-    }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,.12);
-      border-color: rgba(255,255,255,.3);
-      text-decoration: none;
-    }
-    .btn-large {
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-    }
+    /* MODAL */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.8); backdrop-filter: blur(8px); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal { background: var(--off-black); border: 1px solid var(--border); border-radius: var(--radius-md); max-width: 720px; width: 100%; max-height: 90vh; overflow-y: auto; transform: scale(.95) translateY(12px); transition: transform .3s ease; position: relative; }
+    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+    .modal__image { aspect-ratio: 16/9; overflow: hidden; background: var(--dark-gray); }
+    .modal__image img { width: 100%; height: 100%; object-fit: cover; }
+    .modal__body { padding: 28px; }
+    .modal__tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .modal__tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .modal__title { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--white); margin-bottom: 12px; line-height: 1.2; }
+    .modal__synopsis { font-size: 14.5px; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; }
+    .modal__meta-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+    .modal__meta-item__label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .modal__meta-item__val { font-size: 13.5px; color: var(--text); font-weight: 500; }
+    .modal__actions { display: flex; gap: 10px; }
+    .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; background: var(--dark-gray); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 18px; transition: all var(--transition); cursor: pointer; }
+    .modal-close:hover { background: var(--mid-gray); color: var(--white); }
 
-    /* Quick View Modal */
-    .quick-view-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,.9);
-      z-index: 5000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      overflow-y: auto;
-    }
-    .quick-view-overlay.active {
-      display: flex;
-    }
-    .quick-view-modal {
-      background: rgba(17,18,22,.98);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 16px;
-      max-width: 800px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      animation: modalSlideIn 0.3s ease;
-    }
-    @keyframes modalSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .quick-view-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(0,0,0,.8);
-      border: none;
-      color: #fff;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      transition: all 0.2s ease;
-    }
-    .quick-view-close:hover {
-      background: rgba(212,139,60,.8);
-      transform: rotate(90deg);
-    }
-    .quick-view-content {
-      padding: 2rem;
-    }
+    /* FLOATING */
+    .floating-cta { position: fixed; bottom: 28px; right: 24px; z-index: 500; background: var(--gold); color: var(--black) !important; padding: 12px 20px; border-radius: 28px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(201,168,76,.35); transform: translateY(80px); opacity: 0; transition: transform .3s ease, opacity .3s ease, background var(--transition); pointer-events: none; }
+    .floating-cta.visible { transform: translateY(0); opacity: 1; pointer-events: all; }
+    .floating-cta:hover { background: var(--gold-light) !important; }
+    .back-to-top { position: fixed; bottom: 28px; left: 24px; z-index: 500; width: 44px; height: 44px; background: var(--dark-gray); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 18px; transform: translateY(80px); opacity: 0; transition: transform .3s ease, opacity .3s ease, all var(--transition); pointer-events: none; cursor: pointer; }
+    .back-to-top.visible { transform: translateY(0); opacity: 1; pointer-events: all; }
+    .back-to-top:hover { border-color: var(--gold-border); color: var(--gold); }
 
-    /* CTA Center */
-    .cta-center {
-      text-align: center;
-      margin-top: 3rem;
+    /* RESPONSIVE */
+    @media (max-width:1024px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .mega-menu { display: none; }
     }
-
-    /* About Section */
-    .about-section {
-      padding: 4rem 24px;
-      background: rgba(255,255,255,.02);
-      border-top: 1px solid var(--brand-rule);
+    @media (max-width:768px) {
+      :root { --nav-h: 56px; --utility-h: 34px; }
+      .nav__links, .nav__right .nav__search-btn, .nav__cta { display: none; }
+      .hamburger { display: flex; }
+      .utility-bar { padding: 0 16px; }
+      .util-hide-mobile { display: none; }
+      .hero__stats { gap: 24px; }
+      .hero__stat-divider { display: none; }
+      .projects-section, .about-section, .contact-section { padding-left: 16px; padding-right: 16px; }
+      .filter-bar { padding: 0 16px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .breadcrumb { padding: 8px 16px; }
+      .site-nav { padding: 0 16px; }
+      .modal__meta-grid { grid-template-columns: 1fr 1fr; }
     }
-    .about-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .about-card {
-      background: rgba(255,255,255,.03);
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.1);
-    }
-    .about-card h3 {
-      color: var(--brand);
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-    .about-card p {
-      color: rgba(255,255,255,.8);
-      line-height: 1.7;
-    }
-
-    /* Contact Section */
-    .contact-section {
-      padding: 4rem 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .contact-card {
-      background: rgba(255,255,255,.03);
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.1);
-    }
-    .contact-card h3 {
-      color: var(--brand);
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-    .contact-card p {
-      color: rgba(255,255,255,.8);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    .contact-link {
-      display: block;
-      color: var(--brand);
-      margin-top: .75rem;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .contact-link:hover {
-      color: var(--brand-hover);
-    }
-
-    /* Footer */
-    .site-footer {
-      background: rgba(255,255,255,.02);
-      border-top: 1px solid var(--brand-rule);
-      padding: 2rem 24px;
-      text-align: center;
-    }
-    .footer-content p {
-      color: rgba(255,255,255,.6);
-      font-size: .9rem;
-    }
-
-    /* Back to Top Button */
-    .back-to-top{
-      position:fixed;
-      bottom:2rem;
-      right:2rem;
-      background:var(--brand);
-      color:#111;
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:1.5rem;
-      font-weight:700;
-      cursor:pointer;
-      opacity:0;
-      visibility:hidden;
-      transition:all 0.3s ease;
-      box-shadow:0 4px 12px rgba(0,0,0,.3);
-      z-index:1500;
-      border:none;
-    }
-    .back-to-top.visible{
-      opacity:1;
-      visibility:visible;
-    }
-    .back-to-top:hover{
-      background:var(--brand-hover);
-      transform:translateY(-4px);
-      box-shadow:0 8px 16px rgba(212,139,60,.4);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .mega-menu {
-        min-width: 500px;
-      }
-      .mega-menu-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-list,
-      .nav-search {
-        display: none;
-      }
-      .mobile-menu-toggle {
-        display: flex;
-      }
-      .utility-wrap {
-        font-size: .8rem;
-        gap: 1rem;
-      }
-      .utility-right {
-        gap: 1rem;
-      }
-      .filter-controls {
-        grid-template-columns: 1fr;
-      }
-      .filter-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .filter-actions {
-        width: 100%;
-        justify-content: space-between;
-      }
-      .sort-controls {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .featured-grid {
-        grid-template-columns: 1fr;
-      }
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-      .stat-number {
-        font-size: 2.5rem;
-      }
-      .search-expanded {
-        min-width: 320px;
-        right: -50%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero {
-        padding: 3rem 1rem;
-      }
-      .quick-stats {
-        padding: 2rem 1rem;
-      }
-      .featured-section,
-      .about-section,
-      .contact-section {
-        padding: 3rem 1rem;
-      }
-      .nav-wrap {
-        padding: .75rem 1rem;
-      }
-      .utility-wrap {
-        padding: 0 1rem;
-      }
-      .back-to-top {
-        bottom: 1rem;
-        right: 1rem;
-        width: 45px;
-        height: 45px;
-      }
-    }
-
-    /* Print Styles */
-    @media print {
-      .site-header,
-      .utility-bar,
-      .filter-section,
-      .back-to-top,
-      .mobile-menu-toggle,
-      .btn {
-        display: none;
-      }
-      body {
-        background: white;
-        color: black;
-      }
-      .project-card {
-        break-inside: avoid;
-        border: 1px solid #ccc;
-      }
-    }
-
-    /* Focus Visible for Accessibility */
-    *:focus-visible {
-      outline: 2px solid var(--brand);
-      outline-offset: 2px;
-    }
-
-    /* Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+    @media (max-width:480px) {
+      .hero__title { font-size: 38px; }
+      .hero { padding: 60px 20px; }
+      .modal__meta-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <!-- Skip to Content Link -->
-  <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Utility Bar -->
-  <div class="utility-bar">
-    <div class="utility-wrap">
-      <div class="utility-left">
-        <span style="color: var(--brand-ink); font-weight: 600;">🎬 47 Original Projects</span>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar" role="banner">
+  <div class="utility-bar__left">
+    <div class="utility-pulse">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      47 Original Projects
+    </div>
+    <a href="tel:+19102629307" class="util-hide-mobile">📞 (910) 262-9307</a>
+    <a href="mailto:info@nccaentertainment.com" class="util-hide-mobile">✉️ info@nccaentertainment.com</a>
+  </div>
+  <div class="utility-bar__right">
+    <a href="slate.html?status=pitch-ready" class="util-pitch-badge">📊 Pitch-Ready Projects</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+  <a href="index.html" class="nav__logo">NCCA<span>.</span></a>
+  <ul class="nav__links" role="list">
+    <li><a href="#about">About</a></li>
+    <li>
+      <button aria-haspopup="true" aria-expanded="false">Projects &#9660;</button>
+      <div class="mega-menu" role="region" aria-label="Projects submenu">
+        <div class="mega-col">
+          <div class="mega-col__label">By Platform</div>
+          <a href="slate.html?platform=netflix">Netflix</a>
+          <a href="slate.html?platform=hbo">HBO / Max</a>
+          <a href="slate.html?platform=bet-plus">BET+</a>
+          <a href="slate.html?platform=own">OWN</a>
+          <a href="slate.html?platform=lifetime">Lifetime</a>
+          <a href="slate.html?platform=paramount">Paramount+ / Peacock</a>
+          <a href="slate.html?platform=theatrical">Theatrical</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-col__label">By Format</div>
+          <a href="slate.html?format=mow">TV Movie (MOW)</a>
+          <a href="slate.html?format=limited-series">Limited Series</a>
+          <a href="slate.html?format=network-series">Network Series</a>
+          <a href="slate.html?format=feature">Feature Film</a>
+          <a href="slate.html?format=docuseries">Docuseries</a>
+          <div class="mega-col__label" style="margin-top:14px">By Genre</div>
+          <a href="slate.html?genre=drama">Drama</a>
+          <a href="slate.html?genre=thriller">Thriller / Noir</a>
+          <a href="slate.html?genre=comedy">Comedy</a>
+          <a href="slate.html?genre=horror">Horror / Southern Gothic</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-col__label">Quick Access</div>
+          <a href="slate.html?status=pitch-ready">&#11088; Pitch-Ready</a>
+          <a href="slate.html?status=script-complete">&#128221; Script Complete</a>
+          <a href="slate.html?status=packaging">&#128230; Packaging Stage</a>
+          <a href="slate.html">&#128203; All 47 Projects</a>
+        </div>
+        <div class="mega-view-all">
+          <a href="slate.html">Explore All 47 Projects &rarr;</a>
+        </div>
       </div>
-      <div class="utility-right">
-        <a href="slate.html?status=pitch-ready" class="utility-link executive-view">📊 Pitch-Ready Projects</a>
-        <a href="mailto:info@nccaentertainment.com" class="utility-link">✉️ Contact</a>
-        <a href="tel:+19102629307" class="utility-link">📞 (910) 262-9307</a>
+    </li>
+    <li><a href="music.html">Music</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="slate.html?status=pitch-ready" class="nav__cta">&#128202; Pitch-Ready</a></li>
+  </ul>
+  <div class="nav__right">
+    <button class="nav__search-btn" id="search-open-btn" aria-label="Open search (Ctrl+K)">
+      &#128269; Search <span class="kbd">Ctrl+K</span>
+    </button>
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search" aria-hidden="true">
+  <button class="search-close" id="search-close-btn" aria-label="Close search">&times;</button>
+  <div class="search-overlay__inner">
+    <p class="search-overlay__label">Search projects, genres &amp; platforms</p>
+    <input type="text" class="search-overlay__input" id="search-input" placeholder="e.g. Thriller, Netflix, MOW&hellip;" autocomplete="off" aria-label="Search" />
+    <div class="search-hints">
+      <a href="slate.html?genre=thriller" class="search-hint-chip">Thriller</a>
+      <a href="slate.html?platform=netflix" class="search-hint-chip">Netflix</a>
+      <a href="slate.html?format=mow" class="search-hint-chip">TV Movie</a>
+      <a href="slate.html?genre=drama" class="search-hint-chip">Drama</a>
+      <a href="slate.html?platform=bet-plus" class="search-hint-chip">BET+</a>
+      <a href="slate.html?status=pitch-ready" class="search-hint-chip">Pitch-Ready</a>
+      <a href="slate.html?genre=comedy" class="search-hint-chip">Comedy</a>
+      <a href="slate.html?platform=own" class="search-hint-chip">OWN</a>
+    </div>
+    <div class="search-keyboard" aria-hidden="true">
+      <span><span class="kbd">&#8629;</span> Search</span>
+      <span><span class="kbd">ESC</span> Close</span>
+      <span><span class="kbd">Ctrl+K</span> Toggle</span>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
+  <ul class="drawer-nav">
+    <li><a href="index.html">&#127968; Home</a></li>
+    <li><a href="#about">&#8505;&#65039; About</a></li>
+    <li>
+      <button id="drawer-projects-btn" aria-expanded="false">&#127916; Projects (47) &#9660;</button>
+      <div class="drawer-accordion__content" id="drawer-projects-content">
+        <div class="drawer-accordion__section">
+          <div class="drawer-accordion__section-label">By Platform</div>
+          <a href="slate.html?platform=netflix">Netflix</a>
+          <a href="slate.html?platform=hbo">HBO / Max</a>
+          <a href="slate.html?platform=bet-plus">BET+</a>
+          <a href="slate.html?platform=own">OWN</a>
+          <a href="slate.html?platform=lifetime">Lifetime</a>
+        </div>
+        <div class="drawer-accordion__section">
+          <div class="drawer-accordion__section-label">By Format</div>
+          <a href="slate.html?format=mow">TV Movie (MOW)</a>
+          <a href="slate.html?format=limited-series">Limited Series</a>
+          <a href="slate.html?format=network-series">Network Series</a>
+        </div>
+        <div class="drawer-accordion__section">
+          <div class="drawer-accordion__section-label">By Genre</div>
+          <a href="slate.html?genre=drama">Drama</a>
+          <a href="slate.html?genre=thriller">Thriller</a>
+          <a href="slate.html?genre=comedy">Comedy</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="music.html">&#127925; Music</a></li>
+    <li><a href="#contact">&#128231; Contact</a></li>
+  </ul>
+  <a href="slate.html?status=pitch-ready" class="drawer-cta">&#128202; View Pitch-Ready Projects</a>
+</nav>
+
+<!-- MAIN -->
+<main id="main-content">
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb__sep" aria-hidden="true">&#8250;</span>
+    <span class="breadcrumb__current">Featured Projects</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Atlanta-Forward &bull; Culture-First &bull; Franchise-Minded</p>
+      <h1 class="hero__title" id="hero-title">NCCA<br>ENTERTAINMENT</h1>
+      <p class="hero__subtitle">A boutique content studio delivering premium, culturally rich scripted series and films. Where America&rsquo;s soul meets global storytelling.</p>
+      <div class="hero__stats" role="list" aria-label="Studio statistics">
+        <div class="hero__stat" role="listitem">
+          <div class="hero__stat-num">47</div>
+          <div class="hero__stat-label">Original Projects</div>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat" role="listitem">
+          <div class="hero__stat-num">8</div>
+          <div class="hero__stat-label">Genres</div>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat" role="listitem">
+          <div class="hero__stat-num">10+</div>
+          <div class="hero__stat-label">Target Platforms</div>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat" role="listitem">
+          <div class="hero__stat-num">ATL</div>
+          <div class="hero__stat-label">Based Production</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM BAR -->
+  <div class="platform-bar" aria-label="Target platforms">
+    <div class="platform-bar__inner">
+      <span class="platform-bar__label">Targeting</span>
+      <div class="platform-names">
+        <span class="platform-name">Netflix</span>
+        <span class="platform-name">HBO/Max</span>
+        <span class="platform-name">BET+</span>
+        <span class="platform-name">OWN</span>
+        <span class="platform-name">Lifetime</span>
+        <span class="platform-name">Paramount+</span>
+        <span class="platform-name">Peacock</span>
+        <span class="platform-name">Apple TV+</span>
       </div>
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="nav-wrap">
-      <a href="index.html" class="brand" aria-label="NCCA Entertainment Home">NCCA</a>
-      
-      <!-- Desktop Navigation -->
-      <nav class="nav" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li class="nav-item"><a href="#about">About</a></li>
-          
-          <!-- Mega Menu - Projects -->
-          <li class="nav-item has-mega">
-            <a href="slate.html" aria-haspopup="true" aria-expanded="false">Projects ▾</a>
-            <div class="mega-menu" role="menu">
-              <div class="mega-menu-grid">
-                <!-- Column 1: By Platform -->
-                <div class="mega-menu-col">
-                  <h4>By Platform</h4>
-                  <ul role="none">
-                    <li><a href="slate.html?platform=netflix" role="menuitem">Netflix Projects</a></li>
-                    <li><a href="slate.html?platform=hbo" role="menuitem">HBO/Max Projects</a></li>
-                    <li><a href="slate.html?platform=bet-plus" role="menuitem">BET+ Projects</a></li>
-                    <li><a href="slate.html?platform=own" role="menuitem">OWN Projects</a></li>
-                    <li><a href="slate.html?platform=lifetime" role="menuitem">Lifetime Projects</a></li>
-                    <li><a href="slate.html?platform=paramount" role="menuitem">Paramount+/Peacock</a></li>
-                    <li><a href="slate.html?platform=theatrical" role="menuitem">Theatrical Features</a></li>
-                  </ul>
-                </div>
-
-                <!-- Column 2: By Format -->
-                <div class="mega-menu-col">
-                  <h4>By Format</h4>
-                  <ul role="none">
-                    <li><a href="slate.html?format=mow" role="menuitem">TV Movies (MOW)</a></li>
-                    <li><a href="slate.html?format=limited-series" role="menuitem">Limited Series (6-10 eps)</a></li>
-                    <li><a href="slate.html?format=network-series" role="menuitem">Network Series</a></li>
-                    <li><a href="slate.html?format=feature" role="menuitem">Feature Films</a></li>
-                    <li><a href="slate.html?format=docuseries" role="menuitem">Docuseries</a></li>
-                  </ul>
-                </div>
-
-                <!-- Column 3: By Genre -->
-                <div class="mega-menu-col">
-                  <h4>By Genre</h4>
-                  <ul role="none">
-                    <li><a href="slate.html?genre=drama" role="menuitem">Drama</a></li>
-                    <li><a href="slate.html?genre=thriller" role="menuitem">Thriller/Noir</a></li>
-                    <li><a href="slate.html?genre=romance" role="menuitem">Romance</a></li>
-                    <li><a href="slate.html?genre=comedy" role="menuitem">Comedy</a></li>
-                    <li><a href="slate.html?genre=horror" role="menuitem">Horror/Southern Gothic</a></li>
-                    <li><a href="slate.html?genre=action" role="menuitem">Action</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="mega-menu-footer">
-                <a href="slate.html">View All 47 Projects →</a>
-              </div>
-            </div>
-          </li>
-          
-          <li class="nav-item"><a href="music.html">Music</a></li>
-          <li class="nav-item cta"><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <!-- Search -->
-      <div class="nav-search">
-        <button class="search-trigger" id="searchTrigger" aria-label="Open search" aria-expanded="false">
-          <span>🔍</span>
-          <span>Search</span>
-        </button>
-        <div class="search-expanded" id="searchExpanded" role="search">
-          <div class="search-input-wrap">
-            <input 
-              type="search" 
-              class="search-input" 
-              id="searchInput"
-              placeholder="Search projects, genres, platforms..." 
-              aria-label="Search projects"
-              autocomplete="off"
-            />
-            <button class="search-clear" id="searchClear" aria-label="Clear search">×</button>
-          </div>
-          <div class="search-results" id="searchResults"></div>
+  <!-- FILTER BAR -->
+  <div class="filter-bar" id="filter-bar" role="search" aria-label="Filter projects">
+    <div class="filter-bar__top">
+      <span class="filter-bar__label">Filter</span>
+      <div class="filter-selects">
+        <select class="filter-select" id="filter-platform" aria-label="Filter by platform">
+          <option value="">All Platforms</option>
+          <option value="netflix">Netflix</option>
+          <option value="hbo">HBO/Max</option>
+          <option value="bet-plus">BET+</option>
+          <option value="own">OWN</option>
+          <option value="lifetime">Lifetime</option>
+          <option value="paramount">Paramount+</option>
+          <option value="peacock">Peacock</option>
+          <option value="apple">Apple TV+</option>
+          <option value="theatrical">Theatrical</option>
+        </select>
+        <select class="filter-select" id="filter-format" aria-label="Filter by format">
+          <option value="">All Formats</option>
+          <option value="mow">TV Movie (MOW)</option>
+          <option value="limited-series">Limited Series</option>
+          <option value="network-series">Network Series</option>
+          <option value="feature">Feature Film</option>
+          <option value="docuseries">Docuseries</option>
+        </select>
+        <select class="filter-select" id="filter-genre" aria-label="Filter by genre">
+          <option value="">All Genres</option>
+          <option value="drama">Drama</option>
+          <option value="thriller">Thriller/Noir</option>
+          <option value="romance">Romance</option>
+          <option value="comedy">Comedy</option>
+          <option value="horror">Horror/Southern Gothic</option>
+          <option value="action">Action</option>
+          <option value="faith">Faith-Based</option>
+        </select>
+        <select class="filter-select" id="filter-status" aria-label="Filter by status">
+          <option value="">All Status</option>
+          <option value="pitch-ready">Pitch Materials Available</option>
+          <option value="script-complete">Script Complete</option>
+          <option value="packaging">Packaging Stage</option>
+          <option value="development">Development Ready</option>
+        </select>
+      </div>
+      <div class="filter-bar__right">
+        <button class="clear-filters-btn" id="clear-filters-btn">Clear All</button>
+        <span class="filter-count" id="filter-count">Showing <strong>4</strong> featured projects</span>
+        <div class="view-toggle" role="group" aria-label="View mode">
+          <button class="view-btn active" id="grid-view-btn" aria-label="Grid view" aria-pressed="true">&#8862;</button>
+          <button class="view-btn" id="list-view-btn" aria-label="List view" aria-pressed="false">&#9776;</button>
         </div>
       </div>
-
-      <!-- Mobile Menu Toggle -->
-      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open menu" aria-expanded="false">
-        ☰
-      </button>
     </div>
-  </header>
+    <div class="active-chips" id="active-chips" role="list" aria-live="polite" aria-label="Active filters"></div>
+  </div>
 
-  <!-- Mobile Menu Overlay -->
-  <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-    <div class="mobile-menu-header">
-      <a href="index.html" class="brand">NCCA</a>
-      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">×</button>
+  <!-- PROJECTS -->
+  <section class="projects-section" aria-labelledby="projects-title">
+    <div class="section-header">
+      <p class="section-eyebrow">Portfolio</p>
+      <h2 class="section-title" id="projects-title">Featured Projects</h2>
+      <p class="section-desc">Our most market-ready projects with comprehensive pitch materials available.</p>
     </div>
-    <div class="mobile-menu-content">
-      <ul class="mobile-nav-list">
-        <li class="mobile-nav-item">
-          <a href="index.html">🏠 Home</a>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#about">ℹ️ About</a>
-        </li>
-        <li class="mobile-nav-item has-submenu">
-          <a href="#" id="mobileProjectsToggle">
-            🎬 Projects (47)
-            <span>▾</span>
-          </a>
-          <div class="mobile-submenu" id="mobileProjectsSubmenu">
-            <ul>
-              <li><a href="slate.html">⭐ Featured Projects</a></li>
-              <li><a href="slate.html">📋 All Projects</a></li>
-              
-              <h5>By Platform</h5>
-              <li><a href="slate.html?platform=netflix">Netflix</a></li>
-              <li><a href="slate.html?platform=hbo">HBO/Max</a></li>
-              <li><a href="slate.html?platform=bet-plus">BET+</a></li>
-              <li><a href="slate.html?platform=own">OWN</a></li>
-              <li><a href="slate.html?platform=lifetime">Lifetime</a></li>
-              
-              <h5>By Format</h5>
-              <li><a href="slate.html?format=mow">TV Movies</a></li>
-              <li><a href="slate.html?format=limited-series">Limited Series</a></li>
-              <li><a href="slate.html?format=network-series">Network Series</a></li>
-              
-              <h5>By Genre</h5>
-              <li><a href="slate.html?genre=drama">Drama</a></li>
-              <li><a href="slate.html?genre=thriller">Thriller</a></li>
-              <li><a href="slate.html?genre=comedy">Comedy</a></li>
-            </ul>
+
+    <div class="project-grid" id="project-grid">
+
+      <article class="project-card" data-platform="lifetime,bet-plus" data-format="mow" data-genre="thriller" data-status="pitch-ready">
+        <div class="card__image-wrap">
+          <img src="images/influencers-last-post.png" alt="The Influencer's Last Post" loading="lazy" />
+          <div class="card__badges">
+            <span class="badge badge--featured">&#128204; Featured</span>
+            <span class="badge badge--priority">High Priority</span>
           </div>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#contact">📧 Contact</a>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#" style="color: var(--brand); font-weight: 700;">📊 Executive Dashboard</a>
-        </li>
+          <span class="card__ip-status">Original IP</span>
+        </div>
+        <div class="card__body">
+          <div class="card__meta">
+            <span class="card__genre">Film Noir</span>
+            <span class="card__meta-sep" aria-hidden="true"></span>
+            <span class="card__format">MOW</span>
+          </div>
+          <h3 class="card__title">The Influencer&rsquo;s Last Post</h3>
+          <p class="card__synopsis">A social media influencer&rsquo;s final post becomes the key to solving her own murder. When the algorithm knows who did it before the detective does, truth becomes the most viral content of all.</p>
+          <div class="card__platforms">
+            <span class="platform-tag">Lifetime</span>
+            <span class="platform-tag">BET+</span>
+          </div>
+          <div class="card__materials">
+            <span class="material-tag">&#128196; Treatment</span>
+            <span class="material-tag">&#128250; Teaser</span>
+            <span class="material-tag">&#128221; Script</span>
+          </div>
+          <div class="card__actions">
+            <button class="btn-quick-view" onclick="openModal('influencers-last-post')">Quick View</button>
+            <a href="projects/the-influencers-last-post.html" class="btn-full-details">Full Details &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-platform="paramount,peacock,bet-plus,own" data-format="network-series" data-genre="drama" data-status="pitch-ready">
+        <div class="card__image-wrap">
+          <img src="images/the-line.png" alt="The Line" loading="lazy" />
+          <div class="card__badges">
+            <span class="badge badge--new">&#10024; New</span>
+            <span class="badge badge--priority">High Priority</span>
+          </div>
+          <span class="card__ip-status">Original IP</span>
+        </div>
+        <div class="card__body">
+          <div class="card__meta">
+            <span class="card__genre">Drama</span>
+            <span class="card__meta-sep" aria-hidden="true"></span>
+            <span class="card__format">Network Series</span>
+          </div>
+          <h3 class="card__title">The Line</h3>
+          <p class="card__synopsis">A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy buried inside Atlanta&rsquo;s music scene. Every groove hides a wire. Every handshake seals a deal or a fate.</p>
+          <div class="card__platforms">
+            <span class="platform-tag">Paramount+</span>
+            <span class="platform-tag">Peacock</span>
+            <span class="platform-tag">BET+</span>
+            <span class="platform-tag">OWN</span>
+          </div>
+          <div class="card__materials">
+            <span class="material-tag">&#128196; Treatment</span>
+            <span class="material-tag">&#128250; Teaser</span>
+            <span class="material-tag">&#128214; Bible</span>
+          </div>
+          <div class="card__actions">
+            <button class="btn-quick-view" onclick="openModal('the-line')">Quick View</button>
+            <a href="projects/the-line.html" class="btn-full-details">Full Details &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-platform="netflix,hbo,apple" data-format="mow" data-genre="drama" data-status="script-complete">
+        <div class="card__image-wrap">
+          <img src="images/the-last-dynasty.png" alt="The Last Dynasty" loading="lazy" />
+          <div class="card__badges">
+            <span class="badge badge--priority">High Priority</span>
+          </div>
+          <span class="card__ip-status">Original IP</span>
+        </div>
+        <div class="card__body">
+          <div class="card__meta">
+            <span class="card__genre">Drama / Musical</span>
+            <span class="card__meta-sep" aria-hidden="true"></span>
+            <span class="card__format">MOW</span>
+          </div>
+          <h3 class="card__title">The Last Dynasty</h3>
+          <p class="card__synopsis">The final generation of a powerful family fights to preserve their legacy as the empire their grandparents built threatens to consume everything they love. Power has a price. The music never lies.</p>
+          <div class="card__platforms">
+            <span class="platform-tag">Netflix</span>
+            <span class="platform-tag">HBO</span>
+            <span class="platform-tag">Apple TV+</span>
+          </div>
+          <div class="card__materials">
+            <span class="material-tag">&#128196; Treatment</span>
+            <span class="material-tag">&#128250; Teaser</span>
+            <span class="material-tag">&#128221; Script</span>
+          </div>
+          <div class="card__actions">
+            <button class="btn-quick-view" onclick="openModal('the-last-dynasty')">Quick View</button>
+            <a href="projects/the-last-dynasty.html" class="btn-full-details">Full Details &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="comedy" data-status="pitch-ready">
+        <div class="card__image-wrap">
+          <img src="images/black-girls-guide.png" alt="Black Girl's Guide to Vengeance (and Vodka)" loading="lazy" />
+          <div class="card__badges">
+            <span class="badge badge--featured">&#128204; Featured</span>
+            <span class="badge badge--priority">High Priority</span>
+          </div>
+          <span class="card__ip-status">Original IP</span>
+        </div>
+        <div class="card__body">
+          <div class="card__meta">
+            <span class="card__genre">Comedy</span>
+            <span class="card__meta-sep" aria-hidden="true"></span>
+            <span class="card__format">MOW</span>
+          </div>
+          <h3 class="card__title">Black Girl&rsquo;s Guide to Vengeance (and Vodka)</h3>
+          <p class="card__synopsis">Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women. Every swipe is a reckoning. Every user is a weapon.</p>
+          <div class="card__platforms">
+            <span class="platform-tag">BET+</span>
+            <span class="platform-tag">OWN</span>
+            <span class="platform-tag">Lifetime</span>
+          </div>
+          <div class="card__materials">
+            <span class="material-tag">&#128196; Treatment</span>
+            <span class="material-tag">&#128221; Script</span>
+            <span class="material-tag">&#128250; Teaser</span>
+          </div>
+          <div class="card__actions">
+            <button class="btn-quick-view" onclick="openModal('black-girls-guide')">Quick View</button>
+            <a href="projects/black-girls-guide-to-vengeance-and-vodka.html" class="btn-full-details">Full Details &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="load-more-section">
+      <div class="load-progress" aria-label="Projects viewed: 4 of 47">
+        <div class="load-progress__label">
+          <span>Viewing 4 of 47 projects</span>
+          <span>8%</span>
+        </div>
+        <div class="load-progress__bar">
+          <div class="load-progress__fill"></div>
+        </div>
+      </div>
+      <div class="load-more-actions">
+        <button class="btn-load-more" onclick="window.location='slate.html'">Load More Projects</button>
+        <a href="slate.html" class="btn-view-all-link">Explore All 47 Projects &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about" aria-labelledby="about-title">
+    <div class="about-grid">
+      <div class="about-left">
+        <p class="section-eyebrow">About NCCA Entertainment</p>
+        <h2 class="about-headline" id="about-title">Where America&rsquo;s Soul Meets Global Storytelling</h2>
+        <p class="about-body">NCCA Entertainment is a boutique content studio specializing in developing and producing market-ready film and television projects that center diverse voices, Southern authenticity, and worldwide commercial viability.</p>
+        <p class="about-body">We create content that resonates across platforms while maintaining cultural integrity and artistic excellence. Atlanta isn&rsquo;t just where we&rsquo;re based. It&rsquo;s who we are.</p>
+        <div class="track-record">
+          <div class="track-record__label">Our Track Record</div>
+          <div class="track-record__items">
+            <div class="track-item">Co-Producer, One Tree Hill &mdash; 9 seasons</div>
+            <div class="track-item">47 original scripted projects developed</div>
+            <div class="track-item">DGA &amp; IATSE affiliated producer</div>
+            <div class="track-item">20+ years of industry experience</div>
+            <div class="track-item">Line Producer / UPM, TV movies &amp; features</div>
+            <div class="track-item">Projects targeting 10+ major platforms</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar__icon">&#127916;</div>
+          <h3 class="pillar__title">What We Do</h3>
+          <p class="pillar__desc">Scripted features, TV movies (MOW), limited series, network series, and docuseries across drama, thriller, romance, comedy, horror, and Southern Gothic. Designed for BET+, OWN, Lifetime, Netflix, HBO, Peacock, Paramount+, and major broadcast networks.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar__icon">&#129517;</div>
+          <h3 class="pillar__title">Our Approach</h3>
+          <p class="pillar__desc">Culture-first. Franchise-minded. Deep cultural knowledge meets strategic market positioning. Every project ships with clear target buyers, comprehensive pitch materials, and production readiness from day one.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar__icon">&#128205;</div>
+          <h3 class="pillar__title">Atlanta-Forward</h3>
+          <p class="pillar__desc">We don&rsquo;t just work in Atlanta. We tell Atlanta&rsquo;s stories. Our projects leverage the city&rsquo;s rich culture, world-class production infrastructure, and distinct voice as a creative and commercial asset.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact" aria-labelledby="contact-title">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <p class="section-eyebrow">Get In Touch</p>
+        <h2 class="contact-headline" id="contact-title">Meetings. Materials. Packaging Conversations.</h2>
+        <p class="contact-intro">For script access, partnership discussions, or to review pitch-ready materials, reach out directly. We move fast and come prepared.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item__icon">&#9993;&#65039;</div>
+            <a href="mailto:info@nccaentertainment.com">info@nccaentertainment.com</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">&#128222;</div>
+            <a href="tel:+19102629307">(910) 262-9307</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">&#128205;</div>
+            <span>Atlanta, GA &mdash; Development &bull; Packaging &bull; Physical Production</span>
+          </div>
+        </div>
+        <div class="response-time-note">
+          <span>&#9200;</span>
+          <span>We typically respond within 24&ndash;48 business hours.</span>
+        </div>
+      </div>
+      <div class="contact-right">
+        <form class="contact-form" id="contact-form" aria-label="Contact form">
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label" for="cf-name">Name</label>
+              <input type="text" id="cf-name" class="form-input" placeholder="Your name" required />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="cf-email">Email</label>
+              <input type="email" id="cf-email" class="form-input" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="cf-company">Company / Organization</label>
+            <input type="text" id="cf-company" class="form-input" placeholder="Studio, network, or agency" />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="cf-type">Inquiry Type</label>
+            <select id="cf-type" class="form-select">
+              <option value="">Select inquiry type&hellip;</option>
+              <option value="pitch">Project Pitch</option>
+              <option value="partnership">Partnership / Co-Production</option>
+              <option value="materials">Script / Materials Access</option>
+              <option value="packaging">Packaging Conversation</option>
+              <option value="media">Media Inquiry</option>
+              <option value="general">General Contact</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="cf-message">Message</label>
+            <textarea id="cf-message" class="form-textarea" placeholder="Tell us what you&rsquo;re looking for&hellip;"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand__logo">NCCA<span>.</span></div>
+      <p class="footer-brand__tagline">Boutique content studio delivering premium, culturally rich scripted stories where America&rsquo;s soul meets global market lines.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col__label">Projects</div>
+      <ul>
+        <li><a href="slate.html">All 47 Projects</a></li>
+        <li><a href="slate.html?status=pitch-ready">Pitch-Ready</a></li>
+        <li><a href="slate.html?format=mow">TV Movies</a></li>
+        <li><a href="slate.html?format=limited-series">Limited Series</a></li>
+        <li><a href="slate.html?format=network-series">Network Series</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col__label">Platforms</div>
+      <ul>
+        <li><a href="slate.html?platform=netflix">Netflix</a></li>
+        <li><a href="slate.html?platform=hbo">HBO / Max</a></li>
+        <li><a href="slate.html?platform=bet-plus">BET+</a></li>
+        <li><a href="slate.html?platform=own">OWN</a></li>
+        <li><a href="slate.html?platform=lifetime">Lifetime</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col__label">Company</div>
+      <ul>
+        <li><a href="#about">About NCCA</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="mailto:info@nccaentertainment.com">Email Us</a></li>
       </ul>
     </div>
   </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 NCCA Entertainment. All rights reserved.</span>
+    <span>Atlanta-forward. Culture-first. Franchise-minded.</span>
+  </div>
+</footer>
 
-  <!-- Main Content -->
-  <main id="main-content">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1>
-          <span class="brand-text">NCCA</span>
-          <span class="accent-text">ENTERTAINMENT</span>
-        </h1>
-        <p class="hero-tagline">
-          A boutique content studio delivering premium, culturally rich scripted series and films. Where America's soul meets global storytelling.
-        </p>
-      </div>
-    </section>
-
-    <!-- Quick Stats -->
-    <section class="quick-stats">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <span class="stat-number">47</span>
-          <span class="stat-label">Original Projects</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">8</span>
-          <span class="stat-label">Genres</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">10+</span>
-          <span class="stat-label">Target Platforms</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">ATL</span>
-          <span class="stat-label">Based Production</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Filter Section (Hidden on homepage, shown on slate.html) -->
-    <section class="filter-section" id="filterSection" style="display: none;">
-      <div class="filter-container">
-        <div class="filter-header">
-          <h2 class="filter-title">Filter Projects</h2>
-          <div class="filter-actions">
-            <div class="filter-count">
-              Showing <strong id="resultCount">47</strong> projects
-            </div>
-            <button class="filter-clear" id="clearFilters" aria-label="Clear all filters">
-              Clear Filters
-            </button>
-          </div>
-        </div>
-
-        <div class="filter-controls">
-          <div class="filter-group">
-            <label for="platformFilter" class="filter-label">Platform</label>
-            <select id="platformFilter" class="filter-select" aria-label="Filter by platform">
-              <option value="">All Platforms</option>
-              <option value="netflix">Netflix</option>
-              <option value="hbo">HBO/Max</option>
-              <option value="bet-plus">BET+</option>
-              <option value="own">OWN</option>
-              <option value="lifetime">Lifetime</option>
-              <option value="paramount">Paramount+</option>
-              <option value="peacock">Peacock</option>
-              <option value="apple-tv">Apple TV+</option>
-              <option value="theatrical">Theatrical</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label for="formatFilter" class="filter-label">Format</label>
-            <select id="formatFilter" class="filter-select" aria-label="Filter by format">
-              <option value="">All Formats</option>
-              <option value="mow">TV Movie (MOW)</option>
-              <option value="limited-series">Limited Series</option>
-              <option value="network-series">Network Series</option>
-              <option value="feature">Feature Film</option>
-              <option value="docuseries">Docuseries</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label for="genreFilter" class="filter-label">Genre</label>
-            <select id="genreFilter" class="filter-select" aria-label="Filter by genre">
-              <option value="">All Genres</option>
-              <option value="drama">Drama</option>
-              <option value="thriller">Thriller/Noir</option>
-              <option value="romance">Romance</option>
-              <option value="comedy">Comedy</option>
-              <option value="horror">Horror/Southern Gothic</option>
-              <option value="action">Action</option>
-              <option value="faith-based">Faith-Based</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label for="statusFilter" class="filter-label">Status</label>
-            <select id="statusFilter" class="filter-select" aria-label="Filter by status">
-              <option value="">All Status</option>
-              <option value="development-ready">Development Ready</option>
-              <option value="packaging">Packaging Stage</option>
-              <option value="script-complete">Script Complete</option>
-              <option value="pitch-ready">Pitch Materials Available</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="active-filters" id="activeFilters" aria-live="polite"></div>
-
-        <div class="sort-controls">
-          <label for="sortSelect" class="sort-label">Sort by:</label>
-          <select id="sortSelect" class="sort-select" aria-label="Sort projects">
-            <option value="recent">Most Recent</option>
-            <option value="title-asc">Title (A-Z)</option>
-            <option value="title-desc">Title (Z-A)</option>
-            <option value="priority">Priority Level</option>
-          </select>
-          
-          <div class="view-toggle" role="group" aria-label="View layout">
-            <button class="view-btn active" id="viewGrid" aria-label="Grid view" title="Grid view">
-              ⊞
-            </button>
-            <button class="view-btn" id="viewList" aria-label="List view" title="List view">
-              ☰
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Featured Projects -->
-    <section class="featured-section">
-      <div class="section-header">
-        <h2>FEATURED PROJECTS</h2>
-        <p>Showcasing our most market-ready projects with comprehensive materials available.</p>
-      </div>
-
-      <div class="featured-grid" id="projectsGrid">
-        <!-- Project 1 -->
-        <article class="project-card" data-project-id="1" data-platforms="lifetime,bet-plus" data-format="mow" data-genre="thriller" data-status="pitch-ready">
-          <div class="project-image-wrapper">
-            <img src="images/influencers-last-post.png" alt="The Influencer's Last Post" class="project-image" loading="lazy">
-            <span class="project-badge featured">📌 Featured</span>
-            <span class="project-priority high">
-              <span class="priority-dot high"></span>
-              High Priority
-            </span>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">The Influencer's Last Post</h3>
-            <div class="project-meta">
-              <span class="project-tag">Film Noir</span>
-              <span class="project-tag">MOW</span>
-            </div>
-            <div class="project-platforms">
-              <span class="platform-badge" data-full-name="Lifetime">L</span>
-              <span class="platform-badge" data-full-name="BET+">B+</span>
-            </div>
-            <div class="materials-indicators">
-              <div class="material-item available" title="Treatment available">
-                <span class="material-icon">📄</span>
-                <span>Treatment</span>
-              </div>
-              <div class="material-item available" title="Teaser available">
-                <span class="material-icon">📺</span>
-                <span>Teaser</span>
-              </div>
-              <div class="material-item available" title="Script available">
-                <span class="material-icon">📝</span>
-                <span>Script</span>
-              </div>
-            </div>
-            <p class="project-description">
-              A social media influencer's final post becomes the key to solving her own murder.
-            </p>
-            <div class="project-actions">
-              <button class="btn btn-primary quick-view-btn" data-project="1">Quick View</button>
-              <a href="projects/the-influencers-last-post.html" class="btn btn-secondary">Full Details</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card" data-project-id="2" data-platforms="paramount,peacock,bet-plus,own" data-format="network-series" data-genre="drama" data-status="development-ready">
-          <div class="project-image-wrapper">
-            <img src="images/the-line.png" alt="The Line" class="project-image" loading="lazy">
-            <span class="project-badge new">✨ New</span>
-            <span class="project-priority high">
-              <span class="priority-dot high"></span>
-              High Priority
-            </span>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">The Line</h3>
-            <div class="project-meta">
-              <span class="project-tag">Network Series</span>
-              <span class="project-tag">Drama</span>
-            </div>
-            <div class="project-platforms">
-              <span class="platform-badge" data-full-name="Paramount+">P+</span>
-              <span class="platform-badge" data-full-name="Peacock">P</span>
-              <span class="platform-badge" data-full-name="BET+">B+</span>
-              <span class="platform-badge" data-full-name="OWN">OWN</span>
-            </div>
-            <div class="materials-indicators">
-              <div class="material-item available">
-                <span class="material-icon">📄</span>
-                <span>Treatment</span>
-              </div>
-              <div class="material-item available">
-                <span class="material-icon">📺</span>
-                <span>Teaser</span>
-              </div>
-              <div class="material-item available">
-                <span class="material-icon">📖</span>
-                <span>Bible</span>
-              </div>
-            </div>
-            <p class="project-description">
-              A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.
-            </p>
-            <div class="project-actions">
-              <button class="btn btn-primary quick-view-btn" data-project="2">Quick View</button>
-              <a href="projects/the-line.html" class="btn btn-secondary">Full Details</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card" data-project-id="3" data-platforms="netflix,hbo,apple-tv" data-format="mow" data-genre="drama" data-status="script-complete">
-          <div class="project-image-wrapper">
-            <img src="images/the-last-dynasty.png" alt="The Last Dynasty" class="project-image" loading="lazy">
-            <span class="project-priority high">
-              <span class="priority-dot high"></span>
-              High Priority
-            </span>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">The Last Dynasty</h3>
-            <div class="project-meta">
-              <span class="project-tag">Drama</span>
-              <span class="project-tag">Musical</span>
-              <span class="project-tag">MOW</span>
-            </div>
-            <div class="project-platforms">
-              <span class="platform-badge" data-full-name="Netflix">N</span>
-              <span class="platform-badge" data-full-name="HBO">HBO</span>
-              <span class="platform-badge" data-full-name="Apple TV+">🍎</span>
-            </div>
-            <div class="materials-indicators">
-              <div class="material-item available">
-                <span class="material-icon">📄</span>
-                <span>Treatment</span>
-              </div>
-              <div class="material-item available">
-                <span class="material-icon">📺</span>
-                <span>Teaser</span>
-              </div>
-              <div class="material-item">
-                <span class="material-icon">📝</span>
-                <span>Script</span>
-              </div>
-            </div>
-            <p class="project-description">
-              The final generation of a powerful family fights to preserve their legacy.
-            </p>
-            <div class="project-actions">
-              <button class="btn btn-primary quick-view-btn" data-project="3">Quick View</button>
-              <a href="projects/the-last-dynasty.html" class="btn btn-secondary">Full Details</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project-card" data-project-id="4" data-platforms="bet-plus,own,lifetime" data-format="mow" data-genre="comedy" data-status="pitch-ready">
-          <div class="project-image-wrapper">
-            <img src="images/black-girls-guide.png" alt="Black Girls Guide to Vengeance" class="project-image" loading="lazy">
-            <span class="project-badge featured">📌 Featured</span>
-            <span class="project-priority high">
-              <span class="priority-dot high"></span>
-              High Priority
-            </span>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Black Girl's Guide to Vengeance (and Vodka)</h3>
-            <div class="project-meta">
-              <span class="project-tag">Comedy</span>
-              <span class="project-tag">MOW</span>
-            </div>
-            <div class="project-platforms">
-              <span class="platform-badge" data-full-name="BET+">B+</span>
-              <span class="platform-badge" data-full-name="OWN">OWN</span>
-              <span class="platform-badge" data-full-name="Lifetime">L</span>
-            </div>
-            <div class="materials-indicators">
-              <div class="material-item available">
-                <span class="material-icon">📄</span>
-                <span>Treatment</span>
-              </div>
-              <div class="material-item available">
-                <span class="material-icon">📝</span>
-                <span>Script</span>
-              </div>
-              <div class="material-item">
-                <span class="material-icon">📺</span>
-                <span>Teaser</span>
-              </div>
-            </div>
-            <p class="project-description">
-              Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women.
-            </p>
-            <div class="project-actions">
-              <button class="btn btn-primary quick-view-btn" data-project="4">Quick View</button>
-              <a href="projects/black-girls-guide-to-vengeance-and-vodka.html" class="btn btn-secondary">Full Details</a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="cta-center">
-        <a href="slate.html" class="btn btn-primary btn-large">View All 47 Projects</a>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section" id="about">
-      <div class="about-content">
-        <div class="section-header">
-          <h2>About NCCA Entertainment</h2>
-          <p>A boutique content studio delivering premium, culturally rich scripted series and films, where America's soul meets global storytelling.</p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-card">
-            <h3>Our Mission</h3>
-            <p>
-              NCCA Entertainment specializes in developing and producing market-ready film and television projects that center diverse voices, Southern authenticity, and World-Wide commercial viability. We create content that resonates across platforms while maintaining cultural integrity and artistic excellence.
-            </p>
-          </div>
-
-          <div class="about-card">
-            <h3>What We Do</h3>
-            <p>
-              We develop scripted features, TV movies (MOW), limited series, network series, and docuseries across multiple genres including drama, thriller, romance, comedy, horror, and Southern Gothic. Our projects are designed for leading platforms including BET+, OWN, Lifetime, Netflix, HBO, Peacock, Paramount+, and major broadcast networks.
-            </p>
-          </div>
-
-          <div class="about-card">
-            <h3>Our Approach</h3>
-            <p>
-              Culture-first. Franchise-minded. We combine deep cultural knowledge with strategic market positioning to create projects that serve both artistic vision and commercial objectives. Every project is developed with clear target buyers, comprehensive pitch materials, and production readiness.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-      <div class="section-header">
-        <h2>Contact</h2>
-        <p>For meetings, materials, script access, or packaging conversations</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3>NCCA Entertainment</h3>
-          <p>
-            Atlanta, GA<br>
-            Development • Packaging • Physical Production
-          </p>
-          <a href="mailto:info@nccaentertainment.com" class="contact-link">info@nccaentertainment.com</a>
-          <a href="tel:+19102629307" class="contact-link">(910) 262-9307</a>
-        </div>
-
-        <div class="contact-card">
-          <h3>Let's Work</h3>
-          <p>
-            Scripted Features • TV Movies (MOW) • Limited Series • Docuseries
-          </p>
-          <p style="margin-top:1rem;">
-            <strong>Atlanta-forward. Culture-first. Franchise-minded.</strong>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-content">
-      <p>&copy; 2025 NCCA Entertainment. All rights reserved.</p>
-      <p style="margin-top:.5rem;">Boutique content studio delivering premium, culturally rich scripted stories where America's soul meets global market lines.</p>
-    </div>
-  </footer>
-
-  <!-- Quick View Modal -->
-  <div class="quick-view-overlay" id="quickViewOverlay">
-    <div class="quick-view-modal">
-      <button class="quick-view-close" id="quickViewClose" aria-label="Close quick view">×</button>
-      <div class="quick-view-content" id="quickViewContent">
-        <!-- Dynamic content will be loaded here -->
-      </div>
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+    <div class="modal__image"><img id="modal-img" src="" alt="" /></div>
+    <div class="modal__body">
+      <div class="modal__tags" id="modal-tags"></div>
+      <h2 class="modal__title" id="modal-title"></h2>
+      <p class="modal__synopsis" id="modal-synopsis"></p>
+      <div class="modal__meta-grid" id="modal-meta"></div>
+      <div class="modal__actions" id="modal-actions"></div>
     </div>
   </div>
+</div>
 
-  <!-- Back to Top Button -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+<!-- FLOATING + BACK TO TOP -->
+<a href="slate.html?status=pitch-ready" class="floating-cta" id="floating-cta" aria-label="View pitch-ready projects">
+  &#128202; Pitch-Ready Projects
+</a>
+<button class="back-to-top" id="back-to-top-btn" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 
-  <script>
-    // ==========================================
-    // SEARCH FUNCTIONALITY
-    // ==========================================
-    
-    // Sample project data (in production, this would come from your backend/CMS)
-    const projectsData = [
-      {
-        id: 1,
-        title: "The Influencer's Last Post",
-        genre: "Film Noir",
-        format: "MOW",
-        platforms: ["Lifetime", "BET+"],
-        description: "A social media influencer's final post becomes the key to solving her own murder.",
-        image: "images/influencers-last-post.png",
-        url: "projects/the-influencers-last-post.html"
-      },
-      {
-        id: 2,
-        title: "The Line",
-        genre: "Drama",
-        format: "Network Series",
-        platforms: ["Paramount+", "Peacock", "BET+", "OWN"],
-        description: "A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy in Atlanta's music scene.",
-        image: "images/the-line.png",
-        url: "projects/the-line.html"
-      },
-      {
-        id: 3,
-        title: "The Last Dynasty",
-        genre: "Drama",
-        format: "MOW",
-        platforms: ["Netflix", "HBO", "Apple TV+"],
-        description: "The final generation of a powerful family fights to preserve their legacy.",
-        image: "images/the-last-dynasty.png",
-        url: "projects/the-last-dynasty.html"
-      },
-      {
-        id: 4,
-        title: "Black Girl's Guide to Vengeance (and Vodka)",
-        genre: "Comedy",
-        format: "MOW",
-        platforms: ["BET+", "OWN", "Lifetime"],
-        description: "Dumped for an AI clone, a software engineer launches a revenge app for wronged women.",
-        image: "images/black-girls-guide.png",
-        url: "projects/black-girls-guide-to-vengeance-and-vodka.html"
-      }
-      // Add more projects here
-    ];
+<script>
+const MODAL_DATA = {
+  'influencers-last-post': {
+    img:'images/influencers-last-post.png', tags:['Film Noir','MOW'],
+    title:"The Influencer\u2019s Last Post",
+    synopsis:"A social media influencer\u2019s final post becomes the key to solving her own murder. When the algorithm knows who did it before the detective does, truth becomes the most viral content of all. Atlanta\u2019s influencer culture serves as backdrop to a tightly-wound noir that asks: what do we leave behind when we go offline for good?",
+    meta:[{label:'Format',val:'TV Movie (MOW)'},{label:'Genre',val:'Film Noir / Thriller'},{label:'Platforms',val:'Lifetime, BET+'},{label:'Status',val:'Pitch-Ready'},{label:'IP Status',val:'Original IP'},{label:'Materials',val:'Treatment, Teaser, Script'}],
+    link:'projects/the-influencers-last-post.html'
+  },
+  'the-line': {
+    img:'images/the-line.png', tags:['Drama','Network Series'],
+    title:'The Line',
+    synopsis:"A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy buried inside Atlanta\u2019s music scene. Every groove hides a wire. Every handshake seals a deal \u2014 or a fate. The Line is a propulsive procedural drama about loyalty, power, and the dangerous space between law and culture.",
+    meta:[{label:'Format',val:'Network Series'},{label:'Genre',val:'Drama / Procedural'},{label:'Platforms',val:'Paramount+, Peacock, BET+, OWN'},{label:'Status',val:'Pitch-Ready'},{label:'IP Status',val:'Original IP'},{label:'Materials',val:'Treatment, Teaser, Bible'}],
+    link:'projects/the-line.html'
+  },
+  'the-last-dynasty': {
+    img:'images/the-last-dynasty.png', tags:['Drama','Musical','MOW'],
+    title:'The Last Dynasty',
+    synopsis:"The final generation of a powerful family fights to preserve their legacy as the empire their grandparents built threatens to consume everything they love. Power has a price. The music never lies. A prestige drama-musical hybrid targeting the convergence of legacy IP and live-event television.",
+    meta:[{label:'Format',val:'TV Movie (MOW)'},{label:'Genre',val:'Drama / Musical'},{label:'Platforms',val:'Netflix, HBO, Apple TV+'},{label:'Status',val:'Script Complete'},{label:'IP Status',val:'Original IP'},{label:'Materials',val:'Treatment, Teaser, Script'}],
+    link:'projects/the-last-dynasty.html'
+  },
+  'black-girls-guide': {
+    img:'images/black-girls-guide.png', tags:['Comedy','MOW'],
+    title:"Black Girl\u2019s Guide to Vengeance (and Vodka)",
+    synopsis:"Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women. Every swipe is a reckoning. Every user is a weapon. Sharp, satirical, and impossibly timely, this high-concept comedy MOW is designed for today\u2019s cultural moment.",
+    meta:[{label:'Format',val:'TV Movie (MOW)'},{label:'Genre',val:'Comedy / Satire'},{label:'Platforms',val:'BET+, OWN, Lifetime'},{label:'Status',val:'Pitch-Ready'},{label:'IP Status',val:'Original IP'},{label:'Materials',val:'Treatment, Script, Teaser'}],
+    link:'projects/black-girls-guide-to-vengeance-and-vodka.html'
+  }
+};
 
-    const searchTrigger = document.getElementById('searchTrigger');
-    const searchExpanded = document.getElementById('searchExpanded');
-    const searchInput = document.getElementById('searchInput');
-    const searchClear = document.getElementById('searchClear');
-    const searchResults = document.getElementById('searchResults');
+// SCROLL
+const nav=document.getElementById('site-nav');
+const filterBar=document.getElementById('filter-bar');
+const floatingCta=document.getElementById('floating-cta');
+const backToTopBtn=document.getElementById('back-to-top-btn');
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY>80;
+  nav.classList.toggle('scrolled',s);
+  filterBar.classList.toggle('nav-shrunk',s);
+  const f=window.scrollY>400;
+  floatingCta.classList.toggle('visible',f);
+  backToTopBtn.classList.toggle('visible',f);
+},{passive:true});
 
-    // Toggle search expanded view
-    searchTrigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isActive = searchExpanded.classList.toggle('active');
-      searchTrigger.setAttribute('aria-expanded', isActive);
-      if (isActive) {
-        searchInput.focus();
-      }
-    });
+// SEARCH
+const searchOverlay=document.getElementById('search-overlay');
+const searchInput=document.getElementById('search-input');
+function openSearch(){searchOverlay.classList.add('open');searchOverlay.setAttribute('aria-hidden','false');setTimeout(()=>searchInput.focus(),50);document.body.style.overflow='hidden';}
+function closeSearch(){searchOverlay.classList.remove('open');searchOverlay.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+document.getElementById('search-open-btn').addEventListener('click',openSearch);
+document.getElementById('search-close-btn').addEventListener('click',closeSearch);
+searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){const q=searchInput.value.trim();if(q)window.location=`slate.html?q=${encodeURIComponent(q)}`;}});
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();searchOverlay.classList.contains('open')?closeSearch():openSearch();}
+  if(e.key==='Escape'){if(searchOverlay.classList.contains('open'))closeSearch();if(document.getElementById('modal-overlay').classList.contains('open'))closeModal();}
+});
 
-    // Close search when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!searchExpanded.contains(e.target) && !searchTrigger.contains(e.target)) {
-        searchExpanded.classList.remove('active');
-        searchTrigger.setAttribute('aria-expanded', 'false');
-      }
-    });
+// DRAWER
+const hamburgerBtn=document.getElementById('hamburger-btn');
+const mobileDrawer=document.getElementById('mobile-drawer');
+const drawerOverlay=document.getElementById('drawer-overlay');
+function openDrawer(){mobileDrawer.classList.add('open');drawerOverlay.classList.add('open');hamburgerBtn.classList.add('open');hamburgerBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeDrawer(){mobileDrawer.classList.remove('open');drawerOverlay.classList.remove('open');hamburgerBtn.classList.remove('open');hamburgerBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+hamburgerBtn.addEventListener('click',()=>mobileDrawer.classList.contains('open')?closeDrawer():openDrawer());
+drawerOverlay.addEventListener('click',closeDrawer);
+const drawerProjectsBtn=document.getElementById('drawer-projects-btn');
+const drawerProjectsContent=document.getElementById('drawer-projects-content');
+drawerProjectsBtn.addEventListener('click',()=>{const o=drawerProjectsContent.classList.toggle('open');drawerProjectsBtn.setAttribute('aria-expanded',o);});
+mobileDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDrawer));
 
-    // Search functionality
-    searchInput.addEventListener('input', (e) => {
-      const query = e.target.value.trim().toLowerCase();
-      
-      if (query.length === 0) {
-        searchClear.classList.remove('visible');
-        searchResults.innerHTML = '';
-        return;
-      }
-
-      searchClear.classList.add('visible');
-
-      // Filter projects
-      const filtered = projectsData.filter(project => {
-        return project.title.toLowerCase().includes(query) ||
-               project.genre.toLowerCase().includes(query) ||
-               project.format.toLowerCase().includes(query) ||
-               project.description.toLowerCase().includes(query) ||
-               project.platforms.some(p => p.toLowerCase().includes(query));
-      });
-
-      // Display results
-      if (filtered.length === 0) {
-        searchResults.innerHTML = `
-          <div class="search-no-results">
-            <p>No projects found for "${query}"</p>
-            <p style="font-size: .85rem; margin-top: .5rem; color: rgba(255,255,255,.4);">
-              Try searching for genres, platforms, or keywords
-            </p>
-          </div>
-        `;
-      } else {
-        searchResults.innerHTML = filtered.map(project => `
-          <a href="${project.url}" class="search-result-item">
-            <img src="${project.image}" alt="${project.title}" class="search-result-thumb">
-            <div class="search-result-content">
-              <div class="search-result-title">${highlightQuery(project.title, query)}</div>
-              <div class="search-result-meta">
-                <span class="search-result-tag">${project.genre}</span>
-                <span class="search-result-tag">${project.format}</span>
-                ${project.platforms.slice(0, 2).map(p => `<span class="search-result-tag">${p}</span>`).join('')}
-              </div>
-            </div>
-          </a>
-        `).join('');
-      }
-    });
-
-    // Highlight matched query in results
-    function highlightQuery(text, query) {
-      const regex = new RegExp(`(${query})`, 'gi');
-      return text.replace(regex, '<mark style="background: rgba(212,139,60,.3); color: var(--brand);">$1</mark>');
+// FILTERS
+const filterPlatform=document.getElementById('filter-platform');
+const filterFormat=document.getElementById('filter-format');
+const filterGenre=document.getElementById('filter-genre');
+const filterStatus=document.getElementById('filter-status');
+const clearFiltersBtn=document.getElementById('clear-filters-btn');
+const filterCount=document.getElementById('filter-count');
+const activeChips=document.getElementById('active-chips');
+const cards=document.querySelectorAll('.project-card');
+function applyFilters(){
+  const f={platform:filterPlatform.value,format:filterFormat.value,genre:filterGenre.value,status:filterStatus.value};
+  let visible=0;
+  cards.forEach(card=>{
+    const show=(!f.platform||card.dataset.platform.includes(f.platform))&&(!f.format||card.dataset.format===f.format)&&(!f.genre||card.dataset.genre.includes(f.genre))&&(!f.status||card.dataset.status===f.status);
+    card.style.display=show?'':'none';
+    if(show)visible++;
+  });
+  filterCount.innerHTML=`Showing <strong>${visible}</strong> featured project${visible!==1?'s':''}`;
+  renderChips(f);
+  clearFiltersBtn.classList.toggle('visible',!!(f.platform||f.format||f.genre||f.status));
+}
+function renderChips(f){
+  activeChips.innerHTML='';
+  [{key:'platform',el:filterPlatform,label:'Platform'},{key:'format',el:filterFormat,label:'Format'},{key:'genre',el:filterGenre,label:'Genre'},{key:'status',el:filterStatus,label:'Status'}].forEach(({key,el,label})=>{
+    if(f[key]){
+      const text=el.options[el.selectedIndex].text;
+      const chip=document.createElement('div');
+      chip.className='chip';chip.setAttribute('role','listitem');
+      chip.innerHTML=`${label}: ${text} <button class="chip__remove" aria-label="Remove ${text} filter">&times;</button>`;
+      chip.querySelector('.chip__remove').addEventListener('click',()=>{el.value='';applyFilters();});
+      activeChips.appendChild(chip);
     }
+  });
+}
+[filterPlatform,filterFormat,filterGenre,filterStatus].forEach(el=>el.addEventListener('change',applyFilters));
+clearFiltersBtn.addEventListener('click',()=>{filterPlatform.value='';filterFormat.value='';filterGenre.value='';filterStatus.value='';applyFilters();});
+const params=new URLSearchParams(window.location.search);
+if(params.get('platform'))filterPlatform.value=params.get('platform');
+if(params.get('format'))filterFormat.value=params.get('format');
+if(params.get('genre'))filterGenre.value=params.get('genre');
+if(params.get('status'))filterStatus.value=params.get('status');
+applyFilters();
 
-    // Clear search
-    searchClear.addEventListener('click', () => {
-      searchInput.value = '';
-      searchClear.classList.remove('visible');
-      searchResults.innerHTML = '';
-      searchInput.focus();
-    });
+// VIEW TOGGLE
+document.getElementById('grid-view-btn').addEventListener('click',()=>{
+  const g=document.getElementById('project-grid');g.classList.remove('list-view');
+  document.getElementById('grid-view-btn').classList.add('active');document.getElementById('list-view-btn').classList.remove('active');
+  document.getElementById('grid-view-btn').setAttribute('aria-pressed','true');document.getElementById('list-view-btn').setAttribute('aria-pressed','false');
+});
+document.getElementById('list-view-btn').addEventListener('click',()=>{
+  const g=document.getElementById('project-grid');g.classList.add('list-view');
+  document.getElementById('list-view-btn').classList.add('active');document.getElementById('grid-view-btn').classList.remove('active');
+  document.getElementById('list-view-btn').setAttribute('aria-pressed','true');document.getElementById('grid-view-btn').setAttribute('aria-pressed','false');
+});
 
-    // ==========================================
-    // MOBILE MENU
-    // ==========================================
-    
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    const mobileMenuClose = document.getElementById('mobileMenuClose');
-    const mobileProjectsToggle = document.getElementById('mobileProjectsToggle');
-    const mobileProjectsSubmenu = document.getElementById('mobileProjectsSubmenu');
+// MODAL
+const modalOverlay=document.getElementById('modal-overlay');
+function openModal(id){
+  const d=MODAL_DATA[id];if(!d)return;
+  document.getElementById('modal-img').src=d.img;document.getElementById('modal-img').alt=d.title;
+  document.getElementById('modal-title').textContent=d.title;
+  document.getElementById('modal-synopsis').textContent=d.synopsis;
+  document.getElementById('modal-tags').innerHTML=d.tags.map(t=>`<span class="modal__tag">${t}</span>`).join('<span style="color:var(--border);margin:0 4px">&middot;</span>');
+  document.getElementById('modal-meta').innerHTML=d.meta.map(m=>`<div class="modal__meta-item"><div class="modal__meta-item__label">${m.label}</div><div class="modal__meta-item__val">${m.val}</div></div>`).join('');
+  document.getElementById('modal-actions').innerHTML=`<a href="${d.link}" class="btn-full-details" style="flex:1;display:flex;align-items:center;justify-content:center;">Full Details &rarr;</a><button class="btn-quick-view" style="flex:1;" onclick="closeModal()">Close</button>`;
+  modalOverlay.classList.add('open');document.body.style.overflow='hidden';
+}
+function closeModal(){modalOverlay.classList.remove('open');document.body.style.overflow='';}
+document.getElementById('modal-close-btn').addEventListener('click',closeModal);
+modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay)closeModal();});
 
-    mobileMenuToggle.addEventListener('click', () => {
-      mobileMenuOverlay.classList.add('active');
-      mobileMenuToggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    });
-
-    mobileMenuClose.addEventListener('click', () => {
-      mobileMenuOverlay.classList.remove('active');
-      mobileMenuToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
-
-    mobileProjectsToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      mobileProjectsSubmenu.classList.toggle('active');
-    });
-
-    // ==========================================
-    // FILTER FUNCTIONALITY
-    // ==========================================
-    
-    const platformFilter = document.getElementById('platformFilter');
-    const formatFilter = document.getElementById('formatFilter');
-    const genreFilter = document.getElementById('genreFilter');
-    const statusFilter = document.getElementById('statusFilter');
-    const activeFilters = document.getElementById('activeFilters');
-    const clearFiltersBtn = document.getElementById('clearFilters');
-    const resultCount = document.getElementById('resultCount');
-    const projectsGrid = document.getElementById('projectsGrid');
-    const sortSelect = document.getElementById('sortSelect');
-
-    let currentFilters = {
-      platform: '',
-      format: '',
-      genre: '',
-      status: ''
-    };
-
-    function updateFilters() {
-      currentFilters.platform = platformFilter.value;
-      currentFilters.format = formatFilter.value;
-      currentFilters.genre = genreFilter.value;
-      currentFilters.status = statusFilter.value;
-
-      updateActiveFiltersDisplay();
-      filterProjects();
-    }
-
-    function updateActiveFiltersDisplay() {
-      const filterLabels = {
-        platform: 'Platform',
-        format: 'Format',
-        genre: 'Genre',
-        status: 'Status'
-      };
-
-      const chips = [];
-      Object.keys(currentFilters).forEach(key => {
-        if (currentFilters[key]) {
-          const select = document.getElementById(`${key}Filter`);
-          const selectedOption = select.options[select.selectedIndex].text;
-          chips.push({ key, label: filterLabels[key], value: selectedOption });
-        }
-      });
-
-      if (chips.length === 0) {
-        activeFilters.innerHTML = '';
-        clearFiltersBtn.classList.remove('visible');
-      } else {
-        clearFiltersBtn.classList.add('visible');
-        activeFilters.innerHTML = chips.map(chip => `
-          <div class="filter-chip">
-            <span>${chip.label}: ${chip.value}</span>
-            <button class="filter-chip-remove" data-filter="${chip.key}" aria-label="Remove ${chip.label} filter">×</button>
-          </div>
-        `).join('');
-
-        // Add click handlers to remove buttons
-        document.querySelectorAll('.filter-chip-remove').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            const filterKey = e.target.getAttribute('data-filter');
-            document.getElementById(`${filterKey}Filter`).value = '';
-            updateFilters();
-          });
-        });
-      }
-    }
-
-    function filterProjects() {
-      const allCards = document.querySelectorAll('.project-card');
-      let visibleCount = 0;
-
-      allCards.forEach(card => {
-        let show = true;
-
-        // Check platform filter
-        if (currentFilters.platform) {
-          const platforms = card.getAttribute('data-platforms');
-          if (!platforms || !platforms.includes(currentFilters.platform)) {
-            show = false;
-          }
-        }
-
-        // Check format filter
-        if (currentFilters.format && show) {
-          const format = card.getAttribute('data-format');
-          if (format !== currentFilters.format) {
-            show = false;
-          }
-        }
-
-        // Check genre filter
-        if (currentFilters.genre && show) {
-          const genre = card.getAttribute('data-genre');
-          if (genre !== currentFilters.genre) {
-            show = false;
-          }
-        }
-
-        // Check status filter
-        if (currentFilters.status && show) {
-          const status = card.getAttribute('data-status');
-          if (status !== currentFilters.status) {
-            show = false;
-          }
-        }
-
-        if (show) {
-          card.style.display = '';
-          visibleCount++;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      resultCount.textContent = visibleCount;
-    }
-
-    function clearAllFilters() {
-      platformFilter.value = '';
-      formatFilter.value = '';
-      genreFilter.value = '';
-      statusFilter.value = '';
-      updateFilters();
-    }
-
-    // Event listeners for filters
-    platformFilter.addEventListener('change', updateFilters);
-    formatFilter.addEventListener('change', updateFilters);
-    genreFilter.addEventListener('change', updateFilters);
-    statusFilter.addEventListener('change', updateFilters);
-    clearFiltersBtn.addEventListener('click', clearAllFilters);
-
-    // Sort functionality
-    sortSelect.addEventListener('change', (e) => {
-      const sortValue = e.target.value;
-      const cards = Array.from(document.querySelectorAll('.project-card'));
-      const grid = document.getElementById('projectsGrid');
-
-      cards.sort((a, b) => {
-        switch(sortValue) {
-          case 'title-asc':
-            return a.querySelector('.project-title').textContent.localeCompare(
-              b.querySelector('.project-title').textContent
-            );
-          case 'title-desc':
-            return b.querySelector('.project-title').textContent.localeCompare(
-              a.querySelector('.project-title').textContent
-            );
-          case 'priority':
-            const getPriority = (card) => {
-              if (card.querySelector('.project-priority.high')) return 3;
-              if (card.querySelector('.project-priority.medium')) return 2;
-              return 1;
-            };
-            return getPriority(b) - getPriority(a);
-          default: // recent
-            return 0;
-        }
-      });
-
-      // Re-append sorted cards
-      cards.forEach(card => grid.appendChild(card));
-    });
-
-    // View toggle
-    const viewGrid = document.getElementById('viewGrid');
-    const viewList = document.getElementById('viewList');
-
-    viewGrid.addEventListener('click', () => {
-      projectsGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(340px, 1fr))';
-      viewGrid.classList.add('active');
-      viewList.classList.remove('active');
-    });
-
-    viewList.addEventListener('click', () => {
-      projectsGrid.style.gridTemplateColumns = '1fr';
-      viewList.classList.add('active');
-      viewGrid.classList.remove('active');
-    });
-
-    // Check URL parameters and apply filters
-    function applyUrlFilters() {
-      const urlParams = new URLSearchParams(window.location.search);
-      
-      if (urlParams.has('platform')) {
-        platformFilter.value = urlParams.get('platform');
-      }
-      if (urlParams.has('format')) {
-        formatFilter.value = urlParams.get('format');
-      }
-      if (urlParams.has('genre')) {
-        genreFilter.value = urlParams.get('genre');
-      }
-      
-      if (urlParams.has('platform') || urlParams.has('format') || urlParams.has('genre')) {
-        updateFilters();
-      }
-    }
-
-    // Apply URL filters on page load
-    applyUrlFilters();
-
-    // ==========================================
-    // QUICK VIEW MODAL
-    // ==========================================
-    
-    const quickViewOverlay = document.getElementById('quickViewOverlay');
-    const quickViewClose = document.getElementById('quickViewClose');
-    const quickViewContent = document.getElementById('quickViewContent');
-
-    document.querySelectorAll('.quick-view-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const projectId = e.target.getAttribute('data-project');
-        const project = projectsData.find(p => p.id == projectId);
-        
-        if (project) {
-          quickViewContent.innerHTML = `
-            <img src="${project.image}" alt="${project.title}" style="width: 100%; border-radius: 12px 12px 0 0;">
-            <div style="padding: 2rem;">
-              <h2 style="color: var(--brand); margin-bottom: 1rem;">${project.title}</h2>
-              <div style="display: flex; gap: .5rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                <span class="project-tag">${project.genre}</span>
-                <span class="project-tag">${project.format}</span>
-              </div>
-              <p style="color: rgba(255,255,255,.9); line-height: 1.7; margin-bottom: 1.5rem;">
-                ${project.description}
-              </p>
-              <div style="display: flex; gap: .5rem; margin-bottom: 2rem; flex-wrap: wrap;">
-                ${project.platforms.map(p => `<span class="platform-badge">${p}</span>`).join('')}
-              </div>
-              <div style="display: flex; gap: 1rem;">
-                <a href="${project.url}" class="btn btn-primary">View Full Details</a>
-                <button class="btn btn-secondary" onclick="document.getElementById('quickViewOverlay').classList.remove('active')">Close</button>
-              </div>
-            </div>
-          `;
-          quickViewOverlay.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        }
-      });
-    });
-
-    quickViewClose.addEventListener('click', () => {
-      quickViewOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-
-    quickViewOverlay.addEventListener('click', (e) => {
-      if (e.target === quickViewOverlay) {
-        quickViewOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-
-    // ==========================================
-    // BACK TO TOP BUTTON
-    // ==========================================
-    
-    const backToTopBtn = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
-    });
-
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    // ==========================================
-    // KEYBOARD NAVIGATION
-    // ==========================================
-    
-    // ESC key to close modals/search
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        searchExpanded.classList.remove('active');
-        quickViewOverlay.classList.remove('active');
-        mobileMenuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-  </script>
-  <script src="js/filter-system.js"></script>
+// CONTACT
+document.getElementById('contact-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  const name=document.getElementById('cf-name').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const company=document.getElementById('cf-company').value.trim();
+  const typeEl=document.getElementById('cf-type');
+  const type=typeEl.options[typeEl.selectedIndex].text;
+  const message=document.getElementById('cf-message').value.trim();
+  const subject=encodeURIComponent(`[NCCA Inquiry - ${type}] from ${name}`);
+  const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry Type: ${type}\n\n${message}`);
+  window.location.href=`mailto:info@nccaentertainment.com?subject=${subject}&body=${body}`;
+});
+</script>
 </body>
 </html>
