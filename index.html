@@ -308,6 +308,17 @@
     .back-to-top.visible { transform: translateY(0); opacity: 1; pointer-events: all; }
     .back-to-top:hover { border-color: var(--gold-border); color: var(--gold); }
 
+    /* CARD ENTRANCE ANIMATIONS */
+    .project-card { opacity: 0; transform: translateY(28px); transition: border-color var(--transition), box-shadow var(--transition), opacity 0.45s ease, transform 0.45s ease; }
+    .project-card.card-visible { opacity: 1; transform: translateY(0); }
+    .project-card:hover { border-color: var(--gold-border); transform: translateY(-4px) !important; box-shadow: 0 12px 40px rgba(0,0,0,.4); }
+    @media (prefers-reduced-motion: reduce) {
+      .project-card { opacity: 1; transform: none; transition: border-color var(--transition), box-shadow var(--transition); }
+    }
+
+    /* MODAL POLISH */
+    .modal { transition: transform .4s cubic-bezier(.22,1,.36,1); }
+
     /* RESPONSIVE */
     @media (max-width:1024px) {
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -757,7 +768,7 @@
       <div class="about-left">
         <p class="section-eyebrow">About NCCA Entertainment</p>
         <h2 class="about-headline" id="about-title">Where America&rsquo;s Soul Meets Global Storytelling</h2>
-        <p class="about-body">NCCA Entertainment is a boutique studio crafting market-ready film and TV that hits different. We bridge the gap between Southern authenticity and worldwide scale, centering diverse voices without losing the plot. We don’t just make content; we create moments that stick. Born and bred in Atlanta, we bring that cultural integrity to every screen, everywhere.</p>
+        <p class="about-body">NCCA Entertainment is a boutique content studio specializing in developing and producing market-ready film and television projects that center diverse voices, Southern authenticity, and worldwide commercial viability.</p>
         <p class="about-body">We create content that resonates across platforms while maintaining cultural integrity and artistic excellence. Atlanta isn&rsquo;t just where we&rsquo;re based. It&rsquo;s who we are.</p>
         <div class="track-record">
           <div class="track-record__label">Our Track Record</div>
@@ -780,14 +791,12 @@
         <div class="pillar">
           <div class="pillar__icon">&#129517;</div>
           <h3 class="pillar__title">Our Approach</h3>
-          <p class="pillar__desc">Culture First. Franchise Focused.
-We blend deep cultural literacy with ruthless market strategy. We don't just "develop" we prep for launch. Every project arrives with a locked-in target audience, elite pitch assets, and day-one production readiness. We aren't just making movies; we’re building brands.</p>
+          <p class="pillar__desc">Culture-first. Franchise-minded. Deep cultural knowledge meets strategic market positioning. Every project ships with clear target buyers, comprehensive pitch materials, and production readiness from day one.</p>
         </div>
         <div class="pillar">
           <div class="pillar__icon">&#128205;</div>
           <h3 class="pillar__title">Atlanta-Forward</h3>
-          <p class="pillar__desc">Atlanta Isn't a Backdrop. It’s the Main Character.
-We don’t just film here; we live the narrative. NCCA Entertainment taps into the city’s electric culture and elite production infrastructure to turn Southern authenticity into a global commercial flex. Atlanta’s voice is our secret sauce, and we’re making sure the whole world hears it.</p>
+          <p class="pillar__desc">We don&rsquo;t just work in Atlanta. We tell Atlanta&rsquo;s stories. Our projects leverage the city&rsquo;s rich culture, world-class production infrastructure, and distinct voice as a creative and commercial asset.</p>
         </div>
       </div>
     </div>
@@ -803,7 +812,7 @@ We don’t just film here; we live the narrative. NCCA Entertainment taps into t
         <div class="contact-items">
           <div class="contact-item">
             <div class="contact-item__icon">&#9993;&#65039;</div>
-            <a href="mailto:nccaentertainment@gmail.com">nccaentertainment@gmail.com</a>
+            <a href="mailto:info@nccaentertainment.com">info@nccaentertainment.com</a>
           </div>
           <div class="contact-item">
             <div class="contact-item__icon">&#128222;</div>
@@ -1079,6 +1088,23 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
   const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry Type: ${type}\n\n${message}`);
   window.location.href=`mailto:info@nccaentertainment.com?subject=${subject}&body=${body}`;
 });
+
+// CARD ENTRANCE ANIMATIONS
+const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const projectCards=Array.from(document.querySelectorAll('.project-card'));
+if(!prefersReducedMotion){
+  const cardObserver=new IntersectionObserver((entries)=>{
+    entries.forEach((entry,i)=>{
+      if(entry.isIntersecting){
+        setTimeout(()=>{entry.target.classList.add('card-visible');},i*80);
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  projectCards.forEach(card=>cardObserver.observe(card));
+} else {
+  projectCards.forEach(card=>card.classList.add('card-visible'));
+}
 </script>
 </body>
 </html>
