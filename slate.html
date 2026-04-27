@@ -233,6 +233,101 @@
     .back-to-top.visible { transform: translateY(0); opacity: 1; pointer-events: all; }
     .back-to-top:hover { border-color: var(--gold-border); color: var(--gold); }
 
+    /* CARD ENTRANCE ANIMATIONS (Intersection Observer) */
+    .project-card { opacity: 0; transform: translateY(28px); transition: border-color var(--transition), box-shadow var(--transition), opacity 0.45s ease, transform 0.45s ease; }
+    .project-card.card-visible { opacity: 1; transform: translateY(0); }
+    .project-card:hover { border-color: var(--gold-border); transform: translateY(-4px) !important; box-shadow: 0 12px 40px rgba(0,0,0,.4); }
+    @media (prefers-reduced-motion: reduce) {
+      .project-card { opacity: 1; transform: none; transition: border-color var(--transition), box-shadow var(--transition); }
+    }
+
+    /* STICKY CTA BAR */
+    .sticky-cta-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 480; background: rgba(17,17,17,0.97); border-top: 1px solid var(--border); padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transform: translateY(100%); opacity: 0; transition: transform 0.35s ease, opacity 0.35s ease; pointer-events: none; backdrop-filter: blur(12px); }
+    .sticky-cta-bar.visible { transform: translateY(0); opacity: 1; pointer-events: all; }
+    .sticky-cta-bar__text { font-size: 13px; color: var(--text-dim); }
+    .sticky-cta-bar__text strong { color: var(--gold); }
+    .sticky-cta-bar__actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+    .sticky-cta-btn { padding: 9px 20px; background: var(--gold); color: var(--black); border-radius: var(--radius); font-size: 12.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; transition: background var(--transition); white-space: nowrap; }
+    .sticky-cta-btn:hover { background: var(--gold-light); color: var(--black); }
+    .sticky-cta-btn.secondary { background: none; border: 1px solid var(--border); color: var(--text-dim); font-weight: 500; text-transform: none; letter-spacing: 0; }
+    .sticky-cta-btn.secondary:hover { border-color: var(--gold-border); color: var(--gold); }
+    .sticky-cta-close { background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 0 4px; transition: color var(--transition); line-height: 1; }
+    .sticky-cta-close:hover { color: var(--white); }
+
+    /* COMPARISON */
+    .compare-checkbox-wrap { position: absolute; top: 10px; right: 10px; z-index: 20; }
+    .compare-checkbox { display: none; }
+    .compare-label { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; background: rgba(10,10,10,0.75); border: 2px solid var(--border); border-radius: 5px; cursor: pointer; transition: all var(--transition); font-size: 13px; }
+    .compare-checkbox:checked + .compare-label { background: var(--gold); border-color: var(--gold); color: var(--black); }
+    .compare-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 490; background: var(--off-black); border-top: 2px solid var(--gold); padding: 14px 32px; display: flex; align-items: center; gap: 16px; transform: translateY(100%); transition: transform 0.3s ease; flex-wrap: wrap; }
+    .compare-bar.visible { transform: translateY(0); }
+    .compare-bar__label { font-size: 13px; color: var(--text-dim); }
+    .compare-bar__label strong { color: var(--gold); }
+    .compare-bar__actions { display: flex; gap: 10px; margin-left: auto; }
+    .compare-btn { padding: 9px 20px; background: var(--gold); color: var(--black); border-radius: var(--radius); font-size: 12.5px; font-weight: 700; cursor: pointer; border: none; font-family: var(--font-body); transition: background var(--transition); }
+    .compare-btn:hover { background: var(--gold-light); }
+    .compare-clear { padding: 9px 16px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 12.5px; color: var(--text-dim); cursor: pointer; background: none; font-family: var(--font-body); transition: all var(--transition); }
+    .compare-clear:hover { border-color: var(--gold-border); color: var(--gold); }
+
+    /* COMPARISON MODAL */
+    .compare-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.85); backdrop-filter: blur(10px); z-index: 4000; display: flex; align-items: flex-start; justify-content: center; padding: 24px; overflow-y: auto; opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+    .compare-modal-overlay.open { opacity: 1; visibility: visible; }
+    .compare-modal { background: var(--off-black); border: 1px solid var(--border); border-radius: var(--radius-md); width: 100%; max-width: 1100px; overflow: hidden; transform: scale(.96) translateY(16px); transition: transform .35s cubic-bezier(.22,1,.36,1); }
+    .compare-modal-overlay.open .compare-modal { transform: scale(1) translateY(0); }
+    .compare-modal__header { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid var(--border); }
+    .compare-modal__title { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--white); }
+    .compare-modal__close { width: 36px; height: 36px; background: var(--dark-gray); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 18px; cursor: pointer; transition: all var(--transition); }
+    .compare-modal__close:hover { background: var(--mid-gray); color: var(--white); }
+    .compare-grid { display: grid; gap: 0; }
+    .compare-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .compare-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .compare-col { border-right: 1px solid var(--border); }
+    .compare-col:last-child { border-right: none; }
+    .compare-col__img { aspect-ratio: 16/9; overflow: hidden; background: var(--dark-gray); }
+    .compare-col__img img { width: 100%; height: 100%; object-fit: cover; }
+    .compare-col__body { padding: 20px; }
+    .compare-col__title { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 12px; line-height: 1.3; }
+    .compare-row { padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row__label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .compare-row__val { font-size: 13px; color: var(--text); }
+
+    /* FILTER PRESETS */
+    .preset-bar { display: flex; align-items: center; gap: 8px; padding: 8px 0 0; flex-wrap: wrap; }
+    .preset-bar__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .preset-chip { padding: 4px 12px; background: var(--dark-gray); border: 1px solid var(--border); border-radius: 20px; font-size: 11.5px; color: var(--text-dim); cursor: pointer; transition: all var(--transition); font-family: var(--font-body); }
+    .preset-chip:hover { border-color: var(--gold-border); color: var(--gold); background: var(--gold-dim); }
+    .preset-chip.save-preset { border-style: dashed; }
+    .preset-chip.save-preset:hover { border-color: var(--gold-border); color: var(--gold); }
+
+    /* EXIT INTENT MODAL */
+    .exit-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.75); backdrop-filter: blur(8px); z-index: 5000; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+    .exit-overlay.open { opacity: 1; visibility: visible; }
+    .exit-modal { background: var(--off-black); border: 1px solid var(--gold-border); border-radius: var(--radius-md); max-width: 480px; width: 100%; padding: 40px 36px; text-align: center; transform: scale(.94) translateY(16px); transition: transform .35s cubic-bezier(.22,1,.36,1); position: relative; }
+    .exit-overlay.open .exit-modal { transform: scale(1) translateY(0); }
+    .exit-modal__close { position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; border-radius: 50%; background: var(--dark-gray); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 16px; cursor: pointer; transition: all var(--transition); }
+    .exit-modal__close:hover { color: var(--white); }
+    .exit-modal__icon { font-size: 36px; margin-bottom: 16px; }
+    .exit-modal__title { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.2; }
+    .exit-modal__sub { font-size: 14px; color: var(--text-dim); line-height: 1.65; margin-bottom: 24px; }
+    .exit-modal__form { display: flex; flex-direction: column; gap: 10px; }
+    .exit-modal__input { background: var(--dark-gray); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-family: var(--font-body); font-size: 14px; padding: 11px 14px; outline: none; transition: border-color var(--transition); }
+    .exit-modal__input:focus { border-color: var(--gold); }
+    .exit-modal__submit { padding: 12px; background: var(--gold); color: var(--black); border-radius: var(--radius); font-size: 13.5px; font-weight: 700; letter-spacing: 0.04em; border: none; font-family: var(--font-body); cursor: pointer; transition: background var(--transition); }
+    .exit-modal__submit:hover { background: var(--gold-light); }
+    .exit-modal__skip { margin-top: 12px; font-size: 12px; color: var(--muted); cursor: pointer; background: none; border: none; font-family: var(--font-body); transition: color var(--transition); }
+    .exit-modal__skip:hover { color: var(--text-dim); }
+
+    /* VOICE SEARCH */
+    .voice-btn { padding: 7px 10px; border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-dim); font-size: 16px; transition: all var(--transition); line-height: 1; }
+    .voice-btn:hover { border-color: var(--gold-border); color: var(--gold); }
+    .voice-btn.listening { border-color: #c0392b; color: #c0392b; animation: voicePulse 1s infinite; }
+    @keyframes voicePulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+
+    /* MODAL POLISH */
+    .modal { transition: transform .4s cubic-bezier(.22,1,.36,1); }
+    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+
     /* FOOTER */
     .site-footer { background: var(--off-black); border-top: 1px solid var(--border); padding: 48px 32px 24px; }
     .footer-grid { max-width: 1100px; margin: 0 auto 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
@@ -478,9 +573,20 @@
           <button class="view-btn active" id="grid-view-btn" aria-label="Grid view" aria-pressed="true">&#8862;</button>
           <button class="view-btn" id="list-view-btn" aria-label="List view" aria-pressed="false">&#9776;</button>
         </div>
+        <button class="voice-btn" id="voice-btn" aria-label="Voice search" title="Voice search">&#127908;</button>
       </div>
     </div>
     <div class="active-chips" id="active-chips" role="list" aria-live="polite" aria-label="Active filters"></div>
+    <div class="preset-bar" id="preset-bar">
+      <span class="preset-bar__label">Presets</span>
+      <button class="preset-chip" onclick="applyPreset('hbo','limited-series','drama','')">HBO Drama Series</button>
+      <button class="preset-chip" onclick="applyPreset('bet-plus','mow','comedy','')">BET+ Comedy MOW</button>
+      <button class="preset-chip" onclick="applyPreset('lifetime','mow','romance','')">Lifetime Romance</button>
+      <button class="preset-chip" onclick="applyPreset('','','','pitch-ready')">&#11088; Pitch-Ready</button>
+      <button class="preset-chip" onclick="applyPreset('netflix','','','')">All Netflix</button>
+      <button class="preset-chip" onclick="applyPreset('','','action','')">Action Features</button>
+      <button class="preset-chip save-preset" id="save-preset-btn">+ Save Current</button>
+    </div>
   </div>
 
   <!-- PROJECTS -->
@@ -497,6 +603,10 @@
 
       <article class="project-card" data-title="The Influencer's Last Post" data-platform="lifetime,bet-plus" data-format="mow" data-genre="thriller" data-status="pitch-ready" data-priority="1" data-featured="true">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-1" />
+            <label class="compare-label" for="cmp-1" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/influencers-last-post.png" alt="The Influencer's Last Post" loading="lazy" />
           <div class="card__badges"><span class="badge badge--featured">&#128204; Featured</span><span class="badge badge--priority-high">High Priority</span></div>
         </div>
@@ -512,6 +622,10 @@
 
       <article class="project-card" data-title="The Line" data-platform="paramount,peacock,bet-plus,own" data-format="network-series" data-genre="drama" data-status="pitch-ready" data-priority="1" data-featured="true">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-2" />
+            <label class="compare-label" for="cmp-2" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-line.png" alt="The Line" loading="lazy" />
           <div class="card__badges"><span class="badge badge--featured">&#128204; Featured</span><span class="badge badge--priority-high">High Priority</span></div>
         </div>
@@ -527,6 +641,10 @@
 
       <article class="project-card" data-title="The Last Dynasty" data-platform="netflix,hbo,apple-tv" data-format="mow" data-genre="drama" data-status="pitch-ready" data-priority="1" data-featured="true">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-3" />
+            <label class="compare-label" for="cmp-3" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-last-dynasty.png" alt="The Last Dynasty" loading="lazy" />
           <div class="card__badges"><span class="badge badge--featured">&#128204; Featured</span><span class="badge badge--priority-high">High Priority</span></div>
         </div>
@@ -542,6 +660,10 @@
 
       <article class="project-card" data-title="Black Girl's Guide to Vengeance (and Vodka)" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="comedy" data-status="pitch-ready" data-priority="1" data-featured="true">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-4" />
+            <label class="compare-label" for="cmp-4" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/black-girls-guide-to-vengeance-and-vodka.png" alt="Black Girl's Guide to Vengeance (and Vodka)" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-high">High Priority</span></div>
         </div>
@@ -557,6 +679,10 @@
 
       <article class="project-card" data-title="Echo Chamber" data-platform="broadcast" data-format="network-series" data-genre="drama" data-status="pitch-ready" data-priority="1">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-5" />
+            <label class="compare-label" for="cmp-5" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/echo-chamber.png" alt="Echo Chamber" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-high">High Priority</span></div>
         </div>
@@ -572,6 +698,10 @@
 
       <article class="project-card" data-title="Just Jack" data-platform="broadcast" data-format="network-series" data-genre="comedy" data-status="pitch-ready" data-priority="1">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-6" />
+            <label class="compare-label" for="cmp-6" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/just-jack.png" alt="Just Jack" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-high">High Priority</span></div>
         </div>
@@ -587,6 +717,10 @@
 
       <article class="project-card" data-title="Soul on Fire" data-platform="netflix,hbo,apple-tv" data-format="limited-series" data-genre="drama" data-status="pitch-ready" data-priority="1">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-7" />
+            <label class="compare-label" for="cmp-7" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/soul-on-fire.png" alt="Soul on Fire" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-high">High Priority</span></div>
         </div>
@@ -602,6 +736,10 @@
 
       <article class="project-card" data-title="Sinners & Saints" data-platform="netflix,hbo,apple-tv" data-format="limited-series" data-genre="drama" data-status="pitch-ready" data-priority="1">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-8" />
+            <label class="compare-label" for="cmp-8" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/sinners-and-saints.png" alt="Sinners &amp; Saints" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-high">High Priority</span></div>
         </div>
@@ -617,6 +755,10 @@
 
       <article class="project-card" data-title="She Who Watches" data-platform="hbo,netflix,apple-tv" data-format="limited-series" data-genre="thriller" data-status="script-complete" data-priority="1">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-9" />
+            <label class="compare-label" for="cmp-9" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/she-who-watches.png" alt="She Who Watches" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-high">High Priority</span></div>
         </div>
@@ -632,6 +774,10 @@
 
       <article class="project-card" data-title="Slice of Paradise" data-platform="paramount,peacock,broadcast" data-format="network-series" data-genre="comedy" data-status="pitch-ready" data-priority="1">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-10" />
+            <label class="compare-label" for="cmp-10" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/slice-of-paradise.png" alt="Slice of Paradise" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-high">High Priority</span></div>
         </div>
@@ -649,6 +795,10 @@
 
       <article class="project-card" data-title="The Archive" data-platform="paramount,peacock,netflix,hbo" data-format="network-series" data-genre="drama" data-status="pitch-ready" data-priority="2">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-11" />
+            <label class="compare-label" for="cmp-11" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-archive.png" alt="The Archive" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-med">Medium Priority</span></div>
         </div>
@@ -664,6 +814,10 @@
 
       <article class="project-card" data-title="Love After Likes" data-platform="netflix,peacock,bet-plus" data-format="mow" data-genre="romance" data-status="pitch-ready" data-priority="2">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-12" />
+            <label class="compare-label" for="cmp-12" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/love-after-likes.png" alt="Love After Likes" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-med">Medium Priority</span></div>
         </div>
@@ -679,6 +833,10 @@
 
       <article class="project-card" data-title="Flip Side of Love" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="romance" data-status="pitch-ready" data-priority="2">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-13" />
+            <label class="compare-label" for="cmp-13" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/flip-side-of-love.png" alt="Flip Side of Love" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-med">Medium Priority</span></div>
         </div>
@@ -694,6 +852,10 @@
 
       <article class="project-card" data-title="Southern (Dis)comfort" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="romance" data-status="pitch-ready" data-priority="2">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-14" />
+            <label class="compare-label" for="cmp-14" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/southern-discomfort.png" alt="Southern (Dis)comfort" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-med">Medium Priority</span></div>
         </div>
@@ -709,6 +871,10 @@
 
       <article class="project-card" data-title="Second First Date" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="romance" data-status="pitch-ready" data-priority="2">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-15" />
+            <label class="compare-label" for="cmp-15" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/second-first-date.png" alt="Second First Date" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-med">Medium Priority</span></div>
         </div>
@@ -724,6 +890,10 @@
 
       <article class="project-card" data-title="Rhythm & Blooms" data-platform="hallmark,own,bet-plus" data-format="mow" data-genre="romance" data-status="pitch-ready" data-priority="2">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-16" />
+            <label class="compare-label" for="cmp-16" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/rhythm-and-blooms.png" alt="Rhythm &amp; Blooms" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-med">Medium Priority</span></div>
         </div>
@@ -739,6 +909,10 @@
 
       <article class="project-card" data-title="The Ex-Files" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="romance" data-status="pitch-ready" data-priority="2">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-17" />
+            <label class="compare-label" for="cmp-17" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/ex-files.png" alt="The Ex-Files" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-med">Medium Priority</span></div>
         </div>
@@ -754,6 +928,10 @@
 
       <article class="project-card" data-title="Mirror Image" data-platform="netflix,hbo,apple-tv" data-format="mow" data-genre="thriller" data-status="pitch-ready" data-priority="2">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-18" />
+            <label class="compare-label" for="cmp-18" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/mirror-image.png" alt="Mirror Image" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-med">Medium Priority</span></div>
         </div>
@@ -769,6 +947,10 @@
 
       <article class="project-card" data-title="Past Due" data-platform="netflix,hbo,apple-tv" data-format="mow" data-genre="thriller" data-status="pitch-ready" data-priority="2">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-19" />
+            <label class="compare-label" for="cmp-19" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/past-due.png" alt="Past Due" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-med">Medium Priority</span></div>
         </div>
@@ -784,6 +966,10 @@
 
       <article class="project-card" data-title="Refractions" data-platform="netflix,hbo,apple-tv" data-format="feature" data-genre="thriller" data-status="pitch-ready" data-priority="2">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-20" />
+            <label class="compare-label" for="cmp-20" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/refractions.png" alt="Refractions" loading="lazy" />
           <div class="card__badges"><span class="badge badge--priority-med">Medium Priority</span></div>
         </div>
@@ -801,6 +987,10 @@
 
       <article class="project-card" data-title="The Proxy" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="thriller" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-21" />
+            <label class="compare-label" for="cmp-21" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-proxy.png" alt="The Proxy" loading="lazy" />
         </div>
         <div class="card__body">
@@ -815,6 +1005,10 @@
 
       <article class="project-card" data-title="The Alibi" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="thriller" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-22" />
+            <label class="compare-label" for="cmp-22" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-alibi.png" alt="The Alibi" loading="lazy" />
         </div>
         <div class="card__body">
@@ -829,6 +1023,10 @@
 
       <article class="project-card" data-title="It's Somebody You Know" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="thriller" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-23" />
+            <label class="compare-label" for="cmp-23" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/somebody-you-know.png" alt="It's Somebody You Know" loading="lazy" />
         </div>
         <div class="card__body">
@@ -843,6 +1041,10 @@
 
       <article class="project-card" data-title="ATL Soul: The Velvet LaRou Story" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="thriller" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-24" />
+            <label class="compare-label" for="cmp-24" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/atl-soul-poster.png" alt="ATL Soul: The Velvet LaRou Story" loading="lazy" />
         </div>
         <div class="card__body">
@@ -857,6 +1059,10 @@
 
       <article class="project-card" data-title="The Other Mrs. Jamison" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="thriller" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-25" />
+            <label class="compare-label" for="cmp-25" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-other-mrs-jamison.png" alt="The Other Mrs. Jamison" loading="lazy" />
         </div>
         <div class="card__body">
@@ -871,6 +1077,10 @@
 
       <article class="project-card" data-title="The Feed" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="drama" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-26" />
+            <label class="compare-label" for="cmp-26" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-feed.png" alt="The Feed" loading="lazy" />
         </div>
         <div class="card__body">
@@ -885,6 +1095,10 @@
 
       <article class="project-card" data-title="This Is Me Now" data-platform="paramount,peacock,broadcast" data-format="mow" data-genre="drama" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-27" />
+            <label class="compare-label" for="cmp-27" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/this-is-me-now.png" alt="This Is Me Now" loading="lazy" />
         </div>
         <div class="card__body">
@@ -899,6 +1113,10 @@
 
       <article class="project-card" data-title="LifeArt" data-platform="" data-format="feature" data-genre="drama" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-28" />
+            <label class="compare-label" for="cmp-28" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/lifeart.png" alt="LifeArt" loading="lazy" />
         </div>
         <div class="card__body">
@@ -913,6 +1131,10 @@
 
       <article class="project-card" data-title="Hot Mess Express" data-platform="netflix,hbo,apple-tv" data-format="mow" data-genre="comedy" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-29" />
+            <label class="compare-label" for="cmp-29" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/hot-mess-express.png" alt="Hot Mess Express" loading="lazy" />
         </div>
         <div class="card__body">
@@ -927,6 +1149,10 @@
 
       <article class="project-card" data-title="Miss Juneteenth Blues" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="comedy" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-30" />
+            <label class="compare-label" for="cmp-30" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/miss-juneteenth-blues.png" alt="Miss Juneteenth Blues" loading="lazy" />
         </div>
         <div class="card__body">
@@ -941,6 +1167,10 @@
 
       <article class="project-card" data-title="Sneakerheads Anonymous" data-platform="netflix,hbo,apple-tv" data-format="feature" data-genre="comedy" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-31" />
+            <label class="compare-label" for="cmp-31" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/sneakerheads-anonymous.png" alt="Sneakerheads Anonymous" loading="lazy" />
         </div>
         <div class="card__body">
@@ -955,6 +1185,10 @@
 
       <article class="project-card" data-title="Trap House Sitting" data-platform="netflix,hbo,apple-tv" data-format="feature" data-genre="comedy" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-32" />
+            <label class="compare-label" for="cmp-32" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/trap-house-sitting.png" alt="Trap House Sitting" loading="lazy" />
         </div>
         <div class="card__body">
@@ -971,6 +1205,10 @@
 
       <article class="project-card" data-title="The Southern Belle's Secret" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="southern-gothic" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-33" />
+            <label class="compare-label" for="cmp-33" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-southern-belles-secret.png" alt="The Southern Belle's Secret" loading="lazy" />
         </div>
         <div class="card__body">
@@ -985,6 +1223,10 @@
 
       <article class="project-card" data-title="Beneath the Magnolia Tree" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="southern-gothic" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-34" />
+            <label class="compare-label" for="cmp-34" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/beneath-the-magnolia-tree.png" alt="Beneath the Magnolia Tree" loading="lazy" />
         </div>
         <div class="card__body">
@@ -999,6 +1241,10 @@
 
       <article class="project-card" data-title="Divine Deception" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="southern-gothic" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-35" />
+            <label class="compare-label" for="cmp-35" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/divine-deception.png" alt="Divine Deception" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1015,6 +1261,10 @@
 
       <article class="project-card" data-title="A Spelman Christmas" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="christmas" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-36" />
+            <label class="compare-label" for="cmp-36" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/a-spelman-christmas.png" alt="A Spelman Christmas" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1029,6 +1279,10 @@
 
       <article class="project-card" data-title="Granny's House for the Holidays" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="christmas" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-37" />
+            <label class="compare-label" for="cmp-37" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/grannys-house-home-for-the-holidays.png" alt="Granny's House for the Holidays" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1043,6 +1297,10 @@
 
       <article class="project-card" data-title="Twelve Dates at the Christmas Tree Lot" data-platform="bet-plus,own,lifetime" data-format="mow" data-genre="christmas" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-38" />
+            <label class="compare-label" for="cmp-38" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/twelve-dates-christmas-tree-lot.png" alt="Twelve Dates at the Christmas Tree Lot" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1059,6 +1317,10 @@
 
       <article class="project-card" data-title="Digital Shadows" data-platform="" data-format="docuseries" data-genre="docuseries" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-39" />
+            <label class="compare-label" for="cmp-39" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/digital-shadows.png" alt="Digital Shadows" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1073,6 +1335,10 @@
 
       <article class="project-card" data-title="Exposed" data-platform="" data-format="docuseries" data-genre="docuseries" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-40" />
+            <label class="compare-label" for="cmp-40" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/exposed.png" alt="Exposed" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1089,6 +1355,10 @@
 
       <article class="project-card" data-title="Reflections" data-platform="" data-format="feature" data-genre="action" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-41" />
+            <label class="compare-label" for="cmp-41" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/reflections.png" alt="Reflections" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1103,6 +1373,10 @@
 
       <article class="project-card" data-title="The Architect" data-platform="paramount,peacock,netflix,hbo" data-format="feature" data-genre="action" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-42" />
+            <label class="compare-label" for="cmp-42" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-architect.png" alt="The Architect" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1117,6 +1391,10 @@
 
       <article class="project-card" data-title="Queen of Thorns" data-platform="paramount,peacock,netflix,hbo" data-format="feature" data-genre="action" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-43" />
+            <label class="compare-label" for="cmp-43" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/queen-of-thorns.png" alt="Queen of Thorns" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1131,6 +1409,10 @@
 
       <article class="project-card" data-title="Ghostmaker" data-platform="paramount,peacock,netflix,hbo" data-format="feature" data-genre="action" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-44" />
+            <label class="compare-label" for="cmp-44" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-ghostmaker.png" alt="Ghostmaker" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1147,6 +1429,10 @@
 
       <article class="project-card" data-title="Cheer Heist" data-platform="netflix,hbo,apple-tv" data-format="feature" data-genre="comedy" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-45" />
+            <label class="compare-label" for="cmp-45" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/cheer-heist.png" alt="Cheer Heist" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1163,6 +1449,10 @@
 
       <article class="project-card" data-title="Second Skin" data-platform="netflix,hbo,apple-tv" data-format="feature" data-genre="horror" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-46" />
+            <label class="compare-label" for="cmp-46" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/second-skin.png" alt="Second Skin" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1177,6 +1467,10 @@
 
       <article class="project-card" data-title="The Bone Collector's Daughter" data-platform="netflix,hbo,apple-tv,theatrical" data-format="feature" data-genre="horror" data-status="development" data-priority="3">
         <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-47" />
+            <label class="compare-label" for="cmp-47" title="Add to compare">&#10003;</label>
+          </div>
           <img src="images/the-bone-collectors-daughter.png" alt="The Bone Collector's Daughter" loading="lazy" />
         </div>
         <div class="card__body">
@@ -1254,8 +1548,55 @@
 
 <button class="back-to-top" id="back-to-top-btn" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 
+<!-- STICKY CTA BAR -->
+<div class="sticky-cta-bar" id="sticky-cta-bar" role="complementary" aria-label="Quick actions">
+  <div class="sticky-cta-bar__text">
+    <strong>47 original projects.</strong> Pitch materials available for select titles.
+  </div>
+  <div class="sticky-cta-bar__actions">
+    <a href="index.html#contact" class="sticky-cta-btn secondary">Get in Touch</a>
+    <a href="slate.html?status=pitch-ready" class="sticky-cta-btn">&#128202; View Pitch-Ready</a>
+    <button class="sticky-cta-close" id="sticky-cta-close" aria-label="Dismiss">&times;</button>
+  </div>
+</div>
+
+<!-- COMPARE BAR -->
+<div class="compare-bar" id="compare-bar" role="status" aria-live="polite">
+  <div class="compare-bar__label"><strong id="compare-count">0</strong> projects selected for comparison</div>
+  <div class="compare-bar__actions">
+    <button class="compare-clear" id="compare-clear">Clear</button>
+    <button class="compare-btn" id="compare-go">Compare Side-by-Side &rarr;</button>
+  </div>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="compare-modal-overlay" id="compare-modal-overlay" role="dialog" aria-modal="true" aria-label="Project comparison">
+  <div class="compare-modal" id="compare-modal">
+    <div class="compare-modal__header">
+      <h2 class="compare-modal__title">Side-by-Side Comparison</h2>
+      <button class="compare-modal__close" id="compare-modal-close" aria-label="Close comparison">&times;</button>
+    </div>
+    <div id="compare-grid-inner"></div>
+  </div>
+</div>
+
+<!-- EXIT INTENT MODAL -->
+<div class="exit-overlay" id="exit-overlay" role="dialog" aria-modal="true" aria-label="Before you go">
+  <div class="exit-modal">
+    <button class="exit-modal__close" id="exit-modal-close" aria-label="Close">&times;</button>
+    <div class="exit-modal__icon">&#127916;</div>
+    <h2 class="exit-modal__title">Before You Go</h2>
+    <p class="exit-modal__sub">Get our curated one-sheet featuring the 10 most pitch-ready projects, delivered directly to your inbox.</p>
+    <div class="exit-modal__form">
+      <input type="email" class="exit-modal__input" id="exit-email" placeholder="your@studio.com" aria-label="Email address" />
+      <button class="exit-modal__submit" id="exit-submit">Send Me the One-Sheet</button>
+    </div>
+    <button class="exit-modal__skip" id="exit-skip">No thanks, I&rsquo;ll keep browsing</button>
+  </div>
+</div>
+
 <script>
-// NAV SCROLL
+// ---- NAV SCROLL ----
 const nav=document.getElementById('site-nav');
 const filterBar=document.getElementById('filter-bar');
 window.addEventListener('scroll',()=>{
@@ -1264,6 +1605,359 @@ window.addEventListener('scroll',()=>{
   filterBar.classList.toggle('nav-shrunk',s);
   document.getElementById('back-to-top-btn').classList.toggle('visible',window.scrollY>400);
 },{passive:true});
+
+// ---- SEARCH ----
+const searchOverlay=document.getElementById('search-overlay');
+const searchInput=document.getElementById('search-input');
+function openSearch(){searchOverlay.classList.add('open');searchOverlay.setAttribute('aria-hidden','false');setTimeout(()=>searchInput.focus(),50);document.body.style.overflow='hidden';}
+function closeSearch(){searchOverlay.classList.remove('open');searchOverlay.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+document.getElementById('search-open-btn').addEventListener('click',openSearch);
+document.getElementById('search-close-btn').addEventListener('click',closeSearch);
+searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){const q=searchInput.value.trim();if(q)filterByText(q);}});
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();searchOverlay.classList.contains('open')?closeSearch():openSearch();}
+  if(e.key==='Escape'){
+    if(searchOverlay.classList.contains('open'))closeSearch();
+    if(document.getElementById('modal-overlay').classList.contains('open'))closeModal();
+    if(document.getElementById('compare-modal-overlay').classList.contains('open'))closeCompareModal();
+    if(document.getElementById('exit-overlay').classList.contains('open'))closeExitModal();
+  }
+});
+
+// ---- DRAWER ----
+const hamburgerBtn=document.getElementById('hamburger-btn');
+const mobileDrawer=document.getElementById('mobile-drawer');
+const drawerOverlay=document.getElementById('drawer-overlay');
+function openDrawer(){mobileDrawer.classList.add('open');drawerOverlay.classList.add('open');hamburgerBtn.classList.add('open');hamburgerBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeDrawer(){mobileDrawer.classList.remove('open');drawerOverlay.classList.remove('open');hamburgerBtn.classList.remove('open');hamburgerBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+hamburgerBtn.addEventListener('click',()=>mobileDrawer.classList.contains('open')?closeDrawer():openDrawer());
+drawerOverlay.addEventListener('click',closeDrawer);
+const dpBtn=document.getElementById('drawer-projects-btn');
+const dpContent=document.getElementById('drawer-projects-content');
+dpBtn.addEventListener('click',()=>{const o=dpContent.classList.toggle('open');dpBtn.setAttribute('aria-expanded',o);});
+mobileDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDrawer));
+
+// ---- FILTERS ----
+const selPlatform=document.getElementById('filter-platform');
+const selFormat=document.getElementById('filter-format');
+const selGenre=document.getElementById('filter-genre');
+const selStatus=document.getElementById('filter-status');
+const selSort=document.getElementById('sort-select');
+const clearBtn=document.getElementById('clear-filters-btn');
+const countEl=document.getElementById('filter-count');
+const chipsEl=document.getElementById('active-chips');
+const noResults=document.getElementById('no-results');
+const grid=document.getElementById('project-grid');
+const allCards=Array.from(document.querySelectorAll('.project-card'));
+let textQuery='';
+
+function applyFilters(){
+  const p=selPlatform.value, f=selFormat.value, g=selGenre.value, st=selStatus.value;
+  let visible=0;
+  allCards.forEach(card=>{
+    const titleMatch=!textQuery||card.dataset.title.toLowerCase().includes(textQuery)||card.querySelector('.card__synopsis').textContent.toLowerCase().includes(textQuery);
+    const show=titleMatch&&(!p||card.dataset.platform.includes(p))&&(!f||card.dataset.format===f)&&(!g||card.dataset.genre===g)&&(!st||card.dataset.status===st);
+    card.style.display=show?'':'none';
+    if(show)visible++;
+  });
+  countEl.innerHTML=`Showing <strong>${visible}</strong> project${visible!==1?'s':''}`;
+  noResults.style.display=visible===0?'block':'none';
+  renderChips({p,f,g,st});
+  clearBtn.classList.toggle('visible',!!(p||f||g||st||textQuery));
+}
+
+function renderChips({p,f,g,st}){
+  chipsEl.innerHTML='';
+  [{el:selPlatform,val:p,label:'Platform'},{el:selFormat,val:f,label:'Format'},{el:selGenre,val:g,label:'Genre'},{el:selStatus,val:st,label:'Status'}].forEach(({el,val,label})=>{
+    if(val){
+      const text=el.options[el.selectedIndex].text;
+      const chip=document.createElement('div');
+      chip.className='chip';chip.setAttribute('role','listitem');
+      chip.innerHTML=`${label}: ${text} <button class="chip__remove" aria-label="Remove ${text} filter">&times;</button>`;
+      chip.querySelector('.chip__remove').addEventListener('click',()=>{el.value='';applyFilters();});
+      chipsEl.appendChild(chip);
+    }
+  });
+  if(textQuery){
+    const chip=document.createElement('div');
+    chip.className='chip';chip.setAttribute('role','listitem');
+    chip.innerHTML=`Search: "${textQuery}" <button class="chip__remove" aria-label="Clear search">&times;</button>`;
+    chip.querySelector('.chip__remove').addEventListener('click',()=>{textQuery='';applyFilters();closeSearch();});
+    chipsEl.appendChild(chip);
+  }
+}
+
+function filterByText(q){
+  textQuery=q.toLowerCase();
+  closeSearch();
+  applyFilters();
+}
+
+[selPlatform,selFormat,selGenre,selStatus].forEach(el=>el.addEventListener('change',applyFilters));
+clearBtn.addEventListener('click',()=>{selPlatform.value='';selFormat.value='';selGenre.value='';selStatus.value='';textQuery='';applyFilters();});
+
+// ---- SORT ----
+selSort.addEventListener('change',()=>{
+  const val=selSort.value;
+  const sorted=[...allCards].sort((a,b)=>{
+    if(val==='title-asc')return a.dataset.title.localeCompare(b.dataset.title);
+    if(val==='title-desc')return b.dataset.title.localeCompare(a.dataset.title);
+    if(val==='genre')return a.dataset.genre.localeCompare(b.dataset.genre);
+    return parseInt(a.dataset.priority)-parseInt(b.dataset.priority);
+  });
+  sorted.forEach(c=>grid.appendChild(c));
+});
+
+// ---- URL PARAMS ----
+const params=new URLSearchParams(window.location.search);
+if(params.get('platform'))selPlatform.value=params.get('platform');
+if(params.get('format'))selFormat.value=params.get('format');
+if(params.get('genre'))selGenre.value=params.get('genre');
+if(params.get('status'))selStatus.value=params.get('status');
+if(params.get('q'))textQuery=params.get('q').toLowerCase();
+applyFilters();
+
+// ---- FILTER PRESETS ----
+function applyPreset(platform,format,genre,status){
+  selPlatform.value=platform;
+  selFormat.value=format;
+  selGenre.value=genre;
+  selStatus.value=status;
+  applyFilters();
+  filterBar.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// Save custom preset
+const savePresetBtn=document.getElementById('save-preset-btn');
+savePresetBtn.addEventListener('click',()=>{
+  const p=selPlatform.value,f=selFormat.value,g=selGenre.value,st=selStatus.value;
+  if(!p&&!f&&!g&&!st){alert('Set at least one filter before saving a preset.');return;}
+  const name=prompt('Name this preset:');
+  if(!name||!name.trim())return;
+  const presets=JSON.parse(localStorage.getItem('ncca-presets')||'[]');
+  presets.push({name:name.trim(),p,f,g,st});
+  localStorage.setItem('ncca-presets',JSON.stringify(presets));
+  renderSavedPresets();
+});
+
+function renderSavedPresets(){
+  document.querySelectorAll('.preset-chip.user-preset').forEach(el=>el.remove());
+  const presets=JSON.parse(localStorage.getItem('ncca-presets')||'[]');
+  const bar=document.getElementById('preset-bar');
+  presets.forEach(pr=>{
+    const btn=document.createElement('button');
+    btn.className='preset-chip user-preset';
+    btn.textContent='&#9733; '+pr.name;
+    btn.title='Click to apply. Right-click to delete.';
+    btn.addEventListener('click',()=>applyPreset(pr.p,pr.f,pr.g,pr.st));
+    btn.addEventListener('contextmenu',e=>{
+      e.preventDefault();
+      if(confirm(`Delete preset "${pr.name}"?`)){
+        const updated=JSON.parse(localStorage.getItem('ncca-presets')||'[]').filter(x=>x.name!==pr.name);
+        localStorage.setItem('ncca-presets',JSON.stringify(updated));
+        renderSavedPresets();
+      }
+    });
+    bar.insertBefore(btn,savePresetBtn);
+  });
+}
+renderSavedPresets();
+
+// ---- VIEW TOGGLE ----
+document.getElementById('grid-view-btn').addEventListener('click',()=>{
+  grid.classList.remove('list-view');
+  document.getElementById('grid-view-btn').classList.add('active');document.getElementById('list-view-btn').classList.remove('active');
+  document.getElementById('grid-view-btn').setAttribute('aria-pressed','true');document.getElementById('list-view-btn').setAttribute('aria-pressed','false');
+});
+document.getElementById('list-view-btn').addEventListener('click',()=>{
+  grid.classList.add('list-view');
+  document.getElementById('list-view-btn').classList.add('active');document.getElementById('grid-view-btn').classList.remove('active');
+  document.getElementById('list-view-btn').setAttribute('aria-pressed','true');document.getElementById('grid-view-btn').setAttribute('aria-pressed','false');
+});
+
+// ---- INTERSECTION OBSERVER: CARD ENTRANCE ANIMATIONS ----
+const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!prefersReducedMotion){
+  const cardObserver=new IntersectionObserver((entries)=>{
+    entries.forEach((entry,i)=>{
+      if(entry.isIntersecting){
+        setTimeout(()=>{entry.target.classList.add('card-visible');},i*60);
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  allCards.forEach(card=>cardObserver.observe(card));
+} else {
+  allCards.forEach(card=>card.classList.add('card-visible'));
+}
+
+// ---- QUICK VIEW MODAL ----
+const modalOverlay=document.getElementById('modal-overlay');
+function openModal(btn){
+  const card=btn.closest('.project-card');
+  const img=card.querySelector('.card__image-wrap img');
+  const title=card.querySelector('.card__title').textContent;
+  const synopsis=card.querySelector('.card__synopsis').textContent;
+  const genre=card.querySelector('.card__genre').textContent;
+  const format=card.querySelector('.card__format').textContent;
+  const platforms=Array.from(card.querySelectorAll('.platform-tag')).map(t=>t.textContent).join(', ');
+  const materials=Array.from(card.querySelectorAll('.material-tag')).map(t=>t.textContent.trim()).join(', ');
+  const link=card.querySelector('.btn-full-details').href;
+  const statusMap={development:'Development Ready','pitch-ready':'Pitch Materials Available','script-complete':'Script Complete',packaging:'Packaging Stage'};
+
+  document.getElementById('modal-img').src=img?img.src:'';
+  document.getElementById('modal-img').alt=title;
+  document.getElementById('modal-title').textContent=title;
+  document.getElementById('modal-synopsis').textContent=synopsis;
+  document.getElementById('modal-tags').innerHTML=`<span class="modal__tag">${genre}</span><span style="color:var(--border);margin:0 4px">&middot;</span><span class="modal__tag">${format}</span>`;
+  document.getElementById('modal-meta').innerHTML=`
+    <div class="modal__meta-item"><div class="modal__meta-item__label">Format</div><div class="modal__meta-item__val">${format}</div></div>
+    <div class="modal__meta-item"><div class="modal__meta-item__label">Genre</div><div class="modal__meta-item__val">${genre}</div></div>
+    <div class="modal__meta-item"><div class="modal__meta-item__label">Platforms</div><div class="modal__meta-item__val">${platforms}</div></div>
+    <div class="modal__meta-item"><div class="modal__meta-item__label">Status</div><div class="modal__meta-item__val">${statusMap[card.dataset.status]||card.dataset.status}</div></div>
+    <div class="modal__meta-item"><div class="modal__meta-item__label">IP Status</div><div class="modal__meta-item__val">Original IP</div></div>
+    <div class="modal__meta-item"><div class="modal__meta-item__label">Materials</div><div class="modal__meta-item__val">${materials}</div></div>
+  `;
+  document.getElementById('modal-actions').innerHTML=`<a href="${link}" class="btn-full-details" style="flex:1;display:flex;align-items:center;justify-content:center;">Full Details &rarr;</a><button class="btn-quick-view" style="flex:1;" onclick="closeModal()">Close</button>`;
+  modalOverlay.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){modalOverlay.classList.remove('open');document.body.style.overflow='';}
+document.getElementById('modal-close-btn').addEventListener('click',closeModal);
+modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay)closeModal();});
+
+// ---- STICKY CTA BAR ----
+const stickyCta=document.getElementById('sticky-cta-bar');
+let stickyDismissed=sessionStorage.getItem('sticky-dismissed');
+let stickyShown=false;
+window.addEventListener('scroll',()=>{
+  if(stickyDismissed)return;
+  const firstRow=document.querySelector('.project-card');
+  if(!firstRow)return;
+  const firstRowBottom=firstRow.getBoundingClientRect().bottom;
+  if(firstRowBottom<0&&!stickyShown){stickyCta.classList.add('visible');stickyShown=true;}
+  else if(firstRowBottom>=0&&stickyShown){stickyCta.classList.remove('visible');stickyShown=false;}
+},{passive:true});
+document.getElementById('sticky-cta-close').addEventListener('click',()=>{
+  stickyCta.classList.remove('visible');
+  stickyDismissed=true;
+  sessionStorage.setItem('sticky-dismissed','1');
+});
+
+// ---- COMPARISON FEATURE ----
+const compareBar=document.getElementById('compare-bar');
+const compareCountEl=document.getElementById('compare-count');
+let compareSelected=[];
+
+document.querySelectorAll('.compare-checkbox').forEach(cb=>{
+  cb.addEventListener('change',()=>{
+    const card=cb.closest('.project-card');
+    if(cb.checked){
+      if(compareSelected.length>=3){cb.checked=false;alert('You can compare up to 3 projects at once.');return;}
+      compareSelected.push(card);
+    } else {
+      compareSelected=compareSelected.filter(c=>c!==card);
+    }
+    compareCountEl.textContent=compareSelected.length;
+    compareBar.classList.toggle('visible',compareSelected.length>=2);
+  });
+});
+
+document.getElementById('compare-clear').addEventListener('click',()=>{
+  compareSelected=[];
+  document.querySelectorAll('.compare-checkbox').forEach(cb=>cb.checked=false);
+  compareCountEl.textContent=0;
+  compareBar.classList.remove('visible');
+});
+
+document.getElementById('compare-go').addEventListener('click',()=>{
+  if(compareSelected.length<2)return;
+  const inner=document.getElementById('compare-grid-inner');
+  const cols=compareSelected.length;
+  inner.innerHTML=`<div class="compare-grid cols-${cols}">${compareSelected.map(card=>{
+    const img=card.querySelector('.card__image-wrap img');
+    const title=card.querySelector('.card__title').textContent;
+    const synopsis=card.querySelector('.card__synopsis').textContent;
+    const genre=card.querySelector('.card__genre').textContent;
+    const format=card.querySelector('.card__format').textContent;
+    const platforms=Array.from(card.querySelectorAll('.platform-tag')).map(t=>t.textContent).join(', ');
+    const materials=Array.from(card.querySelectorAll('.material-tag')).map(t=>t.textContent.trim()).join(' · ');
+    const statusMap={development:'Development Ready','pitch-ready':'Pitch-Ready','script-complete':'Script Complete',packaging:'Packaging'};
+    return `<div class="compare-col">
+      <div class="compare-col__img"><img src="${img?img.src:''}" alt="${title}" /></div>
+      <div class="compare-col__body">
+        <div class="compare-col__title">${title}</div>
+        <div class="compare-row"><div class="compare-row__label">Genre</div><div class="compare-row__val">${genre}</div></div>
+        <div class="compare-row"><div class="compare-row__label">Format</div><div class="compare-row__val">${format}</div></div>
+        <div class="compare-row"><div class="compare-row__label">Platforms</div><div class="compare-row__val">${platforms}</div></div>
+        <div class="compare-row"><div class="compare-row__label">Status</div><div class="compare-row__val">${statusMap[card.dataset.status]||card.dataset.status}</div></div>
+        <div class="compare-row"><div class="compare-row__label">Materials</div><div class="compare-row__val">${materials}</div></div>
+        <div class="compare-row"><div class="compare-row__label">Synopsis</div><div class="compare-row__val" style="font-size:12px;color:var(--text-dim)">${synopsis}</div></div>
+      </div>
+    </div>`;
+  }).join('')}</div>`;
+  document.getElementById('compare-modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+});
+
+function closeCompareModal(){document.getElementById('compare-modal-overlay').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('compare-modal-close').addEventListener('click',closeCompareModal);
+document.getElementById('compare-modal-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('compare-modal-overlay'))closeCompareModal();});
+
+// ---- VOICE SEARCH ----
+const voiceBtn=document.getElementById('voice-btn');
+if('webkitSpeechRecognition' in window||'SpeechRecognition' in window){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  const recognition=new SR();
+  recognition.lang='en-US';
+  recognition.interimResults=false;
+  recognition.onresult=e=>{
+    const transcript=e.results[0][0].transcript;
+    filterByText(transcript);
+    voiceBtn.classList.remove('listening');
+    voiceBtn.title='Voice search';
+  };
+  recognition.onerror=()=>{voiceBtn.classList.remove('listening');};
+  recognition.onend=()=>{voiceBtn.classList.remove('listening');};
+  voiceBtn.addEventListener('click',()=>{
+    voiceBtn.classList.add('listening');
+    voiceBtn.title='Listening...';
+    recognition.start();
+  });
+} else {
+  voiceBtn.style.display='none';
+}
+
+// ---- EXIT INTENT ----
+let exitShown=sessionStorage.getItem('exit-shown');
+let exitTimeout;
+function showExitModal(){
+  if(exitShown)return;
+  exitShown=true;
+  sessionStorage.setItem('exit-shown','1');
+  document.getElementById('exit-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeExitModal(){document.getElementById('exit-overlay').classList.remove('open');document.body.style.overflow='';}
+
+// Mouse-leave exit intent (desktop)
+document.addEventListener('mouseleave',e=>{
+  if(e.clientY<=0&&!exitShown){
+    exitTimeout=setTimeout(showExitModal,200);
+  }
+});
+document.addEventListener('mouseenter',()=>clearTimeout(exitTimeout));
+
+document.getElementById('exit-modal-close').addEventListener('click',closeExitModal);
+document.getElementById('exit-skip').addEventListener('click',closeExitModal);
+document.getElementById('exit-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('exit-overlay'))closeExitModal();});
+document.getElementById('exit-submit').addEventListener('click',()=>{
+  const email=document.getElementById('exit-email').value.trim();
+  if(!email||!email.includes('@')){document.getElementById('exit-email').focus();return;}
+  window.location.href=`mailto:info@nccaentertainment.com?subject=One-Sheet%20Request&body=Please%20send%20the%20NCCA%20Entertainment%20one-sheet%20to%20${encodeURIComponent(email)}`;
+  closeExitModal();
+});
+</script>
 
 // SEARCH
 const searchOverlay=document.getElementById('search-overlay');
