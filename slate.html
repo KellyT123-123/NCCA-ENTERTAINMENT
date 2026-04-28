@@ -379,7 +379,7 @@
       47 Original Projects
     </div>
     <a href="tel:+19102629307" class="util-hide-mobile">&#128222; (910) 262-9307</a>
-    <a href="mailto:info@nccaentertainment.com" class="util-hide-mobile">&#9993;&#65039; info@nccaentertainment.com</a>
+    <a href="mailto:nccaentertainment@gmail.com" class="util-hide-mobile">&#9993;&#65039; nccaentertainment@gmail.com</a>
   </div>
   <div class="utility-bar__right">
     <a href="slate.html?status=pitch-ready" class="util-pitch-badge">&#128202; Pitch-Ready Projects</a>
@@ -1492,8 +1492,8 @@
 <footer class="site-footer" role="contentinfo">
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="footer-brand__logo">NCCA ENTERTAINMENT<span>.</span></div>
-      <p class="footer-brand__tagline">NCCA Entertainment is a boutique studio crafting market-ready film and TV that hits different. We bridge the gap between Southern authenticity and worldwide scale, centering diverse voices without losing the plot. We don’t just make content; we create moments that stick. Born and bred in Atlanta, we bring that cultural integrity to every screen, everywhere.</p>
+      <div class="footer-brand__logo">NCCA<span>.</span></div>
+      <p class="footer-brand__tagline">NCCA Entertainment develops film and television projects where cultural integrity meets commercial power. We specialize in diverse narratives that feel authentic to the American South yet translate to global audiences. Based in Atlanta, we produce artistic excellence that’s ready for the world stage.</p>
     </div>
     <div class="footer-col">
       <div class="footer-col__label">Projects</div>
@@ -1518,16 +1518,16 @@
     <div class="footer-col">
       <div class="footer-col__label">Company</div>
       <ul>
-        <li><a href="index.html#about">About NCCA</a></li>
+        <li><a href="index.html#about">About NCCA ENTERTAINMENT</a></li>
         <li><a href="music.html">Music</a></li>
         <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="nccaentertainment@gmail.com">Email Us</a></li>
+        <li><a href="mailto:nccaentertainment@gmail.com">Email Us</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 NCCA Entertainment. All rights reserved.</span>
-    <span>Culture First. Franchise Focused..</span>
+    <span>“High-concept storytelling designed for audience, market, and scale.”</span>
   </div>
 </footer>
 
@@ -1957,149 +1957,6 @@ document.getElementById('exit-submit').addEventListener('click',()=>{
   window.location.href=`mailto:info@nccaentertainment.com?subject=One-Sheet%20Request&body=Please%20send%20the%20NCCA%20Entertainment%20one-sheet%20to%20${encodeURIComponent(email)}`;
   closeExitModal();
 });
-</script>
-
-// SEARCH
-const searchOverlay=document.getElementById('search-overlay');
-const searchInput=document.getElementById('search-input');
-function openSearch(){searchOverlay.classList.add('open');searchOverlay.setAttribute('aria-hidden','false');setTimeout(()=>searchInput.focus(),50);document.body.style.overflow='hidden';}
-function closeSearch(){searchOverlay.classList.remove('open');searchOverlay.setAttribute('aria-hidden','true');document.body.style.overflow='';}
-document.getElementById('search-open-btn').addEventListener('click',openSearch);
-document.getElementById('search-close-btn').addEventListener('click',closeSearch);
-searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){const q=searchInput.value.trim();if(q)window.location=`slate.html?q=${encodeURIComponent(q)}`;}});
-document.addEventListener('keydown',e=>{
-  if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();searchOverlay.classList.contains('open')?closeSearch():openSearch();}
-  if(e.key==='Escape'){if(searchOverlay.classList.contains('open'))closeSearch();if(document.getElementById('modal-overlay').classList.contains('open'))closeModal();}
-});
-
-// DRAWER
-const hamburgerBtn=document.getElementById('hamburger-btn');
-const mobileDrawer=document.getElementById('mobile-drawer');
-const drawerOverlay=document.getElementById('drawer-overlay');
-function openDrawer(){mobileDrawer.classList.add('open');drawerOverlay.classList.add('open');hamburgerBtn.classList.add('open');hamburgerBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
-function closeDrawer(){mobileDrawer.classList.remove('open');drawerOverlay.classList.remove('open');hamburgerBtn.classList.remove('open');hamburgerBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
-hamburgerBtn.addEventListener('click',()=>mobileDrawer.classList.contains('open')?closeDrawer():openDrawer());
-drawerOverlay.addEventListener('click',closeDrawer);
-const dpBtn=document.getElementById('drawer-projects-btn');
-const dpContent=document.getElementById('drawer-projects-content');
-dpBtn.addEventListener('click',()=>{const o=dpContent.classList.toggle('open');dpBtn.setAttribute('aria-expanded',o);});
-mobileDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDrawer));
-
-// FILTERS + SORT
-const selPlatform=document.getElementById('filter-platform');
-const selFormat=document.getElementById('filter-format');
-const selGenre=document.getElementById('filter-genre');
-const selStatus=document.getElementById('filter-status');
-const selSort=document.getElementById('sort-select');
-const clearBtn=document.getElementById('clear-filters-btn');
-const countEl=document.getElementById('filter-count');
-const chipsEl=document.getElementById('active-chips');
-const noResults=document.getElementById('no-results');
-const grid=document.getElementById('project-grid');
-const allCards=Array.from(document.querySelectorAll('.project-card'));
-
-function applyFilters(){
-  const p=selPlatform.value, f=selFormat.value, g=selGenre.value, st=selStatus.value;
-  let visible=0;
-  allCards.forEach(card=>{
-    const show=
-      (!p||card.dataset.platform.includes(p))&&
-      (!f||card.dataset.format===f)&&
-      (!g||card.dataset.genre===g)&&
-      (!st||card.dataset.status===st);
-    card.style.display=show?'':'none';
-    if(show)visible++;
-  });
-  countEl.innerHTML=`Showing <strong>${visible}</strong> project${visible!==1?'s':''}`;
-  noResults.style.display=visible===0?'block':'none';
-  renderChips({p,f,g,st});
-  clearBtn.classList.toggle('visible',!!(p||f||g||st));
-}
-
-function renderChips({p,f,g,st}){
-  chipsEl.innerHTML='';
-  [{el:selPlatform,val:p,label:'Platform'},{el:selFormat,val:f,label:'Format'},{el:selGenre,val:g,label:'Genre'},{el:selStatus,val:st,label:'Status'}].forEach(({el,val,label})=>{
-    if(val){
-      const text=el.options[el.selectedIndex].text;
-      const chip=document.createElement('div');
-      chip.className='chip';chip.setAttribute('role','listitem');
-      chip.innerHTML=`${label}: ${text} <button class="chip__remove" aria-label="Remove ${text} filter">&times;</button>`;
-      chip.querySelector('.chip__remove').addEventListener('click',()=>{el.value='';applyFilters();});
-      chipsEl.appendChild(chip);
-    }
-  });
-}
-
-[selPlatform,selFormat,selGenre,selStatus].forEach(el=>el.addEventListener('change',applyFilters));
-clearBtn.addEventListener('click',()=>{selPlatform.value='';selFormat.value='';selGenre.value='';selStatus.value='';applyFilters();});
-
-// SORT
-selSort.addEventListener('change',()=>{
-  const val=selSort.value;
-  const visible=allCards.filter(c=>c.style.display!=='none');
-  const sorted=[...allCards].sort((a,b)=>{
-    if(val==='title-asc')return a.dataset.title.localeCompare(b.dataset.title);
-    if(val==='title-desc')return b.dataset.title.localeCompare(a.dataset.title);
-    if(val==='genre')return a.dataset.genre.localeCompare(b.dataset.genre);
-    return parseInt(a.dataset.priority)-parseInt(b.dataset.priority);
-  });
-  sorted.forEach(c=>grid.appendChild(c));
-});
-
-// URL PARAMS
-const params=new URLSearchParams(window.location.search);
-if(params.get('platform'))selPlatform.value=params.get('platform');
-if(params.get('format'))selFormat.value=params.get('format');
-if(params.get('genre'))selGenre.value=params.get('genre');
-if(params.get('status'))selStatus.value=params.get('status');
-applyFilters();
-
-// VIEW TOGGLE
-document.getElementById('grid-view-btn').addEventListener('click',()=>{
-  grid.classList.remove('list-view');
-  document.getElementById('grid-view-btn').classList.add('active');document.getElementById('list-view-btn').classList.remove('active');
-  document.getElementById('grid-view-btn').setAttribute('aria-pressed','true');document.getElementById('list-view-btn').setAttribute('aria-pressed','false');
-});
-document.getElementById('list-view-btn').addEventListener('click',()=>{
-  grid.classList.add('list-view');
-  document.getElementById('list-view-btn').classList.add('active');document.getElementById('grid-view-btn').classList.remove('active');
-  document.getElementById('list-view-btn').setAttribute('aria-pressed','true');document.getElementById('grid-view-btn').setAttribute('aria-pressed','false');
-});
-
-// MODAL - reads data off the card DOM, no separate data object needed
-const modalOverlay=document.getElementById('modal-overlay');
-function openModal(btn){
-  const card=btn.closest('.project-card');
-  const img=card.querySelector('.card__image-wrap img');
-  const title=card.querySelector('.card__title').textContent;
-  const synopsis=card.querySelector('.card__synopsis').textContent;
-  const genre=card.querySelector('.card__genre').textContent;
-  const format=card.querySelector('.card__format').textContent;
-  const platforms=Array.from(card.querySelectorAll('.platform-tag')).map(t=>t.textContent).join(', ');
-  const materials=Array.from(card.querySelectorAll('.material-tag')).map(t=>t.textContent.trim()).join(', ');
-  const link=card.querySelector('.btn-full-details').href;
-  const statusMap={development:'Development Ready','pitch-ready':'Pitch Materials Available','script-complete':'Script Complete',packaging:'Packaging Stage'};
-
-  document.getElementById('modal-img').src=img?img.src:'';
-  document.getElementById('modal-img').alt=title;
-  document.getElementById('modal-title').textContent=title;
-  document.getElementById('modal-synopsis').textContent=synopsis;
-  document.getElementById('modal-tags').innerHTML=`<span class="modal__tag">${genre}</span><span style="color:var(--border);margin:0 4px">&middot;</span><span class="modal__tag">${format}</span>`;
-  document.getElementById('modal-meta').innerHTML=`
-    <div class="modal__meta-item"><div class="modal__meta-item__label">Format</div><div class="modal__meta-item__val">${format}</div></div>
-    <div class="modal__meta-item"><div class="modal__meta-item__label">Genre</div><div class="modal__meta-item__val">${genre}</div></div>
-    <div class="modal__meta-item"><div class="modal__meta-item__label">Platforms</div><div class="modal__meta-item__val">${platforms}</div></div>
-    <div class="modal__meta-item"><div class="modal__meta-item__label">Status</div><div class="modal__meta-item__val">${statusMap[card.dataset.status]||card.dataset.status}</div></div>
-    <div class="modal__meta-item"><div class="modal__meta-item__label">IP Status</div><div class="modal__meta-item__val">Original IP</div></div>
-    <div class="modal__meta-item"><div class="modal__meta-item__label">Materials</div><div class="modal__meta-item__val">${materials}</div></div>
-  `;
-  document.getElementById('modal-actions').innerHTML=`<a href="${link}" class="btn-full-details" style="flex:1;display:flex;align-items:center;justify-content:center;">Full Details &rarr;</a><button class="btn-quick-view" style="flex:1;" onclick="closeModal()">Close</button>`;
-  modalOverlay.classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){modalOverlay.classList.remove('open');document.body.style.overflow='';}
-document.getElementById('modal-close-btn').addEventListener('click',closeModal);
-modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay)closeModal();});
 </script>
 </body>
 </html>
