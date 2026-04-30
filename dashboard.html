@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Executive Dashboard — NCCA Entertainment</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --black:#0A0A0A; --off-black:#111111; --dark-gray:#1A1A1A;
+  --border:#2E2E2E; --muted:#666666; --light-muted:#999999;
+  --text:#E8E4DC; --text-dim:#B0AAA0;
+  --gold:#C9A84C; --gold-light:#E8C96B; --gold-dim:rgba(201,168,76,0.15); --gold-border:rgba(201,168,76,0.35);
+  --white:#FFFFFF;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --radius:4px; --radius-md:8px; --transition:0.25s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--black);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.65;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;font-family:inherit}
+
+/* ---- LOCK SCREEN ---- */
+#lock-screen {
+  position:fixed;inset:0;background:var(--black);z-index:9999;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+}
+.lock-card {
+  background:var(--off-black);border:1px solid var(--border);border-top:3px solid var(--gold);
+  border-radius:var(--radius-md);padding:48px 40px;max-width:420px;width:100%;text-align:center;
+}
+.lock-logo {font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--white);letter-spacing:0.04em;margin-bottom:8px;}
+.lock-badge {display:inline-flex;align-items:center;gap:6px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:28px;}
+.lock-title {font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--white);margin-bottom:8px;line-height:1.2;}
+.lock-sub {font-size:13.5px;color:var(--text-dim);line-height:1.6;margin-bottom:28px;}
+.lock-input {
+  width:100%;background:var(--dark-gray);border:1px solid var(--border);border-radius:var(--radius);
+  color:var(--text);font-family:var(--font-body);font-size:15px;padding:12px 16px;outline:none;
+  transition:border-color var(--transition);text-align:center;letter-spacing:0.1em;margin-bottom:12px;
+}
+.lock-input:focus{border-color:var(--gold);}
+.lock-input::placeholder{color:var(--muted);letter-spacing:0}
+.lock-btn {
+  width:100%;padding:13px;background:var(--gold);color:var(--black);border-radius:var(--radius);
+  font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  transition:background var(--transition);
+}
+.lock-btn:hover{background:var(--gold-light);}
+.lock-error {font-size:12px;color:#c0392b;margin-top:10px;min-height:18px;}
+.lock-back {margin-top:20px;font-size:12px;color:var(--muted);}
+.lock-back a {color:var(--gold);transition:color var(--transition);}
+.lock-back a:hover{color:var(--gold-light);}
+
+/* ---- DASHBOARD CONTENT (hidden until unlocked) ---- */
+#dashboard {display:none;}
+
+/* TOP BAR */
+.dash-topbar {
+  background:var(--off-black);border-bottom:1px solid var(--border);
+  padding:14px 40px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+.dash-topbar__logo {font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--white);letter-spacing:0.04em;}
+.dash-topbar__right {display:flex;align-items:center;gap:14px;font-size:12px;color:var(--text-dim);}
+.dash-topbar__date {font-size:12px;color:var(--muted);}
+.dash-print-btn {
+  padding:7px 16px;background:var(--gold-dim);border:1px solid var(--gold-border);
+  border-radius:var(--radius);font-size:12px;font-weight:600;color:var(--gold);
+  transition:all var(--transition);
+}
+.dash-print-btn:hover{background:var(--gold);color:var(--black);}
+.dash-lock-btn {
+  padding:7px 14px;border:1px solid var(--border);border-radius:var(--radius);
+  font-size:12px;color:var(--text-dim);transition:all var(--transition);background:none;
+}
+.dash-lock-btn:hover{border-color:var(--border);color:var(--white);}
+
+/* HEADER */
+.dash-header {
+  padding:56px 40px 40px;border-bottom:1px solid var(--border);
+  background:linear-gradient(135deg,var(--off-black) 0%,var(--black) 100%);
+  position:relative;overflow:hidden;
+}
+.dash-header::before {
+  content:'';position:absolute;top:-40%;right:-10%;width:500px;height:500px;
+  background:radial-gradient(circle,rgba(201,168,76,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.dash-header__eyebrow {font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:10px;}
+.dash-header__title {font-family:var(--font-display);font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.1;}
+.dash-header__sub {font-size:14px;color:var(--text-dim);max-width:560px;line-height:1.65;}
+.dash-header__confidential {
+  display:inline-flex;align-items:center;gap:6px;margin-top:16px;
+  background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.35);
+  border-radius:20px;padding:4px 14px;font-size:11px;color:#e74c3c;
+  letter-spacing:0.1em;text-transform:uppercase;font-weight:600;
+}
+
+/* STATS ROW */
+.dash-stats {
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+  background:var(--border);border-bottom:1px solid var(--border);
+}
+.dash-stat {
+  background:var(--off-black);padding:24px 28px;text-align:center;
+  transition:background var(--transition);
+}
+.dash-stat:hover{background:var(--dark-gray);}
+.dash-stat__num {font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--gold);line-height:1;}
+.dash-stat__label {font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+
+/* MAIN CONTENT */
+.dash-body {padding:40px;max-width:1200px;margin:0 auto;}
+
+.dash-section-title {
+  font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--white);
+  margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;
+}
+.dash-section-title span {font-size:12px;font-weight:400;color:var(--muted);font-family:var(--font-body);letter-spacing:0.06em;text-transform:uppercase;}
+
+/* PROJECT TABLE */
+.dash-table {width:100%;border-collapse:collapse;margin-bottom:48px;}
+.dash-table th {
+  font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);
+  background:var(--off-black);white-space:nowrap;
+}
+.dash-table td {
+  padding:14px;border-bottom:1px solid var(--border);font-size:13.5px;
+  color:var(--text-dim);vertical-align:middle;
+}
+.dash-table tr:hover td{background:rgba(255,255,255,0.02);}
+.dash-table tr:last-child td{border-bottom:none;}
+.dash-title-cell {font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--white);}
+.dash-title-cell a:hover{color:var(--gold);}
+.status-pill {
+  display:inline-block;padding:3px 10px;border-radius:20px;font-size:10.5px;
+  font-weight:600;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;
+}
+.status-pill.pitch-ready {background:rgba(39,174,96,0.15);color:#2ecc71;border:1px solid rgba(39,174,96,0.3);}
+.status-pill.script-complete {background:rgba(52,152,219,0.15);color:#3498db;border:1px solid rgba(52,152,219,0.3);}
+.status-pill.packaging {background:rgba(155,89,182,0.15);color:#9b59b6;border:1px solid rgba(155,89,182,0.3);}
+.status-pill.development {background:rgba(201,168,76,0.15);color:var(--gold);border:1px solid var(--gold-border);}
+.platform-chips {display:flex;gap:4px;flex-wrap:wrap;}
+.ptag {padding:2px 7px;background:var(--dark-gray);border:1px solid var(--border);border-radius:3px;font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--light-muted);}
+
+/* GENRE BREAKDOWN */
+.dash-grid-2 {display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;}
+.dash-card {background:var(--off-black);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;}
+.dash-card__title {font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px;}
+.genre-row {display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.genre-row__label {font-size:13px;color:var(--text-dim);min-width:140px;}
+.genre-row__bar-wrap {flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+.genre-row__bar {height:100%;background:var(--gold);border-radius:3px;transition:width 1s ease;}
+.genre-row__count {font-size:12px;color:var(--muted);min-width:28px;text-align:right;}
+
+/* CONTACT BLOCK */
+.dash-contact {
+  background:var(--off-black);border:1px solid var(--gold-border);border-radius:var(--radius-md);
+  padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+  flex-wrap:wrap;margin-bottom:48px;
+}
+.dash-contact__text h3 {font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.dash-contact__text p {font-size:13.5px;color:var(--text-dim);line-height:1.6;}
+.dash-contact__actions {display:flex;gap:10px;flex-wrap:wrap;}
+.dash-btn {padding:11px 22px;border-radius:var(--radius);font-size:13px;font-weight:600;letter-spacing:0.04em;transition:all var(--transition);}
+.dash-btn.primary {background:var(--gold);color:var(--black);}
+.dash-btn.primary:hover{background:var(--gold-light);}
+.dash-btn.secondary {background:none;border:1px solid var(--border);color:var(--text-dim);}
+.dash-btn.secondary:hover{border-color:var(--gold-border);color:var(--gold);}
+
+/* FOOTER */
+.dash-footer {
+  border-top:1px solid var(--border);padding:20px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;color:var(--muted);flex-wrap:wrap;gap:8px;
+}
+
+/* PRINT */
+@media print {
+  #lock-screen{display:none!important;}
+  #dashboard{display:block!important;}
+  .dash-topbar,.dash-lock-btn,.dash-print-btn,.dash-contact__actions{display:none!important;}
+  body{background:#fff;color:#000;}
+  .dash-header{background:#fff;border-bottom:2pt solid #C9A84C;}
+  .dash-header__title,.dash-section-title{color:#000;}
+  .dash-table th{background:#f5f5f5;color:#333;}
+  .dash-table td{color:#333;}
+  .dash-title-cell{color:#000;}
+  .dash-stat{background:#f9f9f9;}
+  .dash-stat__num{color:#C9A84C;}
+  .dash-card{background:#f9f9f9;border:1pt solid #ccc;}
+  .dash-contact{background:#f9f9f9;}
+}
+
+@media(max-width:768px){
+  .dash-topbar{padding:12px 16px;}
+  .dash-header{padding:32px 16px 24px;}
+  .dash-stats{grid-template-columns:repeat(3,1fr);}
+  .dash-body{padding:24px 16px;}
+  .dash-grid-2{grid-template-columns:1fr;}
+  .dash-contact{flex-direction:column;}
+  .dash-table{display:block;overflow-x:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lock-screen">
+  <div class="lock-card">
+    <div class="lock-logo">NCCA Entertainment</div>
+    <div class="lock-badge">&#128274; Confidential Access</div>
+    <h1 class="lock-title">Executive Dashboard</h1>
+    <p class="lock-sub">This area is restricted to authorized industry partners, executives, and stakeholders. Please enter the access code to continue.</p>
+    <input type="password" class="lock-input" id="lock-input" placeholder="Enter access code" autocomplete="off" />
+    <button class="lock-btn" id="lock-btn">Access Dashboard</button>
+    <div class="lock-error" id="lock-error"></div>
+    <p class="lock-back"><a href="index.html">&#8592; Return to main site</a></p>
+  </div>
+</div>
+
+<!-- DASHBOARD CONTENT -->
+<div id="dashboard">
+
+  <!-- TOP BAR -->
+  <div class="dash-topbar">
+    <div class="dash-topbar__logo">NCCA Entertainment &mdash; Executive Dashboard</div>
+    <div class="dash-topbar__right">
+      <span class="dash-topbar__date" id="dash-date"></span>
+      <button class="dash-print-btn" onclick="window.print()">&#128438; Print / Save PDF</button>
+      <button class="dash-lock-btn" id="dash-lock-btn">&#128274; Lock</button>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="dash-header">
+    <p class="dash-header__eyebrow">NCCA Entertainment &mdash; Project Portfolio Overview</p>
+    <h1 class="dash-header__title">Pitch-Ready Slate &amp; Development Pipeline</h1>
+    <p class="dash-header__sub">A curated overview of our highest-priority projects with available pitch materials, target platforms, and development status. For full project details, script access, or packaging discussions, contact us directly.</p>
+    <div class="dash-header__confidential">&#128274; Confidential &mdash; For Authorized Recipients Only</div>
+  </div>
+
+  <!-- STATS ROW -->
+  <div class="dash-stats">
+    <div class="dash-stat"><div class="dash-stat__num">47</div><div class="dash-stat__label">Total Projects</div></div>
+    <div class="dash-stat"><div class="dash-stat__num">12</div><div class="dash-stat__label">Pitch-Ready</div></div>
+    <div class="dash-stat"><div class="dash-stat__num">8</div><div class="dash-stat__label">Genres</div></div>
+    <div class="dash-stat"><div class="dash-stat__num">10+</div><div class="dash-stat__label">Target Platforms</div></div>
+    <div class="dash-stat"><div class="dash-stat__num">20+</div><div class="dash-stat__label">Years Experience</div></div>
+  </div>
+
+  <!-- BODY -->
+  <div class="dash-body">
+
+    <!-- TOP 10 PITCH-READY TABLE -->
+    <h2 class="dash-section-title">Top Pitch-Ready Projects <span>Materials Available on Request</span></h2>
+    <table class="dash-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Project Title</th>
+          <th>Format</th>
+          <th>Genre</th>
+          <th>Target Platforms</th>
+          <th>Materials</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--gold);font-weight:700">01</td>
+          <td><div class="dash-title-cell"><a href="projects/the-influencers-last-post.html">The Influencer&rsquo;s Last Post</a></div></td>
+          <td>MOW</td>
+          <td>Film Noir / Thriller</td>
+          <td><div class="platform-chips"><span class="ptag">Lifetime</span><span class="ptag">BET+</span></div></td>
+          <td>Treatment &bull; Script &bull; Teaser</td>
+          <td><span class="status-pill pitch-ready">Pitch-Ready</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-weight:700">02</td>
+          <td><div class="dash-title-cell"><a href="projects/the-line.html">The Line</a></div></td>
+          <td>Network Series</td>
+          <td>Drama / Procedural</td>
+          <td><div class="platform-chips"><span class="ptag">Paramount+</span><span class="ptag">Peacock</span><span class="ptag">BET+</span><span class="ptag">OWN</span></div></td>
+          <td>Treatment &bull; Bible &bull; Teaser</td>
+          <td><span class="status-pill pitch-ready">Pitch-Ready</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-weight:700">03</td>
+          <td><div class="dash-title-cell"><a href="projects/the-last-dynasty.html">The Last Dynasty</a></div></td>
+          <td>MOW</td>
+          <td>Drama / Musical</td>
+          <td><div class="platform-chips"><span class="ptag">Netflix</span><span class="ptag">HBO</span><span class="ptag">Apple TV+</span></div></td>
+          <td>Treatment &bull; Script &bull; Teaser</td>
+          <td><span class="status-pill script-complete">Script Complete</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-weight:700">04</td>
+          <td><div class="dash-title-cell"><a href="projects/black-girls-guide-to-vengeance-and-vodka.html">Black Girl&rsquo;s Guide to Vengeance (and Vodka)</a></div></td>
+          <td>MOW</td>
+          <td>Comedy / Satire</td>
+          <td><div class="platform-chips"><span class="ptag">BET+</span><span class="ptag">OWN</span><span class="ptag">Lifetime</span></div></td>
+          <td>Treatment &bull; Script &bull; Teaser</td>
+          <td><span class="status-pill pitch-ready">Pitch-Ready</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-weight:700">05</td>
+          <td><div class="dash-title-cell"><a href="projects/echo-chamber.html">Echo Chamber</a></div></td>
+          <td>Network Series</td>
+          <td>Drama</td>
+          <td><div class="platform-chips"><span class="ptag">Broadcast</span></div></td>
+          <td>Treatment &bull; Script &bull; Teaser</td>
+          <td><span class="status-pill pitch-ready">Pitch-Ready</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-weight:700">06</td>
+          <td><div class="dash-title-cell"><a href="projects/soul-on-fire.html">Soul on Fire</a></div></td>
+          <td>Limited Series</td>
+          <td>Drama</td>
+          <td><div class="platform-chips"><span class="ptag">Netflix</span><span class="ptag">HBO</span><span class="ptag">Apple TV+</span></div></td>
+          <td>Treatment &bull; Script &bull; Teaser</td>
+          <td><span class="status-pill pitch-ready">Pitch-Ready</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-weight:700">07</td>
+          <td><div class="dash-title-cell"><a href="projects/sinners-saints.html">Sinners &amp; Saints</a></div></td>
+          <td>Limited Series</td>
+          <td>Drama</td>
+          <td><div class="platform-chips"><span class="ptag">Netflix</span><span class="ptag">HBO</span><span class="ptag">Apple TV+</span></div></td>
+          <td>Treatment &bull; Script &bull; Teaser</td>
+          <td><span class="status-pill pitch-ready">Pitch-Ready</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-weight:700">08</td>
+          <td><div class="dash-title-cell"><a href="projects/she-who-watches.html">She Who Watches</a></div></td>
+          <td>Limited Series</td>
+          <td>Thriller</td>
+          <td><div class="platform-chips"><span class="ptag">HBO</span><span class="ptag">Netflix</span><span class="ptag">Apple TV+</span></div></td>
+          <td>Treatment &bull; Script</td>
+          <td><span class="status-pill script-complete">Script Complete</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-weight:700">09</td>
+          <td><div class="dash-title-cell"><a href="projects/just-jack.html">Just Jack</a></div></td>
+          <td>Network Series</td>
+          <td>Comedy</td>
+          <td><div class="platform-chips"><span class="ptag">Broadcast</span></div></td>
+          <td>Treatment &bull; Script &bull; Teaser</td>
+          <td><span class="status-pill pitch-ready">Pitch-Ready</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--gold);font-weight:700">10</td>
+          <td><div class="dash-title-cell"><a href="projects/slice-of-paradise.html">Slice of Paradise</a></div></td>
+          <td>Network Series</td>
+          <td>Comedy</td>
+          <td><div class="platform-chips"><span class="ptag">Paramount+</span><span class="ptag">Peacock</span><span class="ptag">Broadcast</span></div></td>
+          <td>Treatment &bull; Script &bull; Teaser</td>
+          <td><span class="status-pill pitch-ready">Pitch-Ready</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- BREAKDOWNS -->
+    <div class="dash-grid-2">
+      <div class="dash-card">
+        <div class="dash-card__title">Portfolio by Genre</div>
+        <div id="genre-chart">
+          <div class="genre-row"><div class="genre-row__label">Thriller / Noir</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="29" style="width:0%"></div></div><div class="genre-row__count">11</div></div>
+          <div class="genre-row"><div class="genre-row__label">Drama</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="22" style="width:0%"></div></div><div class="genre-row__count">9</div></div>
+          <div class="genre-row"><div class="genre-row__label">Romance</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="16" style="width:0%"></div></div><div class="genre-row__count">6</div></div>
+          <div class="genre-row"><div class="genre-row__label">Comedy</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="16" style="width:0%"></div></div><div class="genre-row__count">6</div></div>
+          <div class="genre-row"><div class="genre-row__label">Action</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="11" style="width:0%"></div></div><div class="genre-row__count">4</div></div>
+          <div class="genre-row"><div class="genre-row__label">Southern Gothic</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="8" style="width:0%"></div></div><div class="genre-row__count">3</div></div>
+          <div class="genre-row"><div class="genre-row__label">Horror</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="5" style="width:0%"></div></div><div class="genre-row__count">2</div></div>
+          <div class="genre-row"><div class="genre-row__label">Christmas / Holiday</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="8" style="width:0%"></div></div><div class="genre-row__count">3</div></div>
+          <div class="genre-row"><div class="genre-row__label">Docuseries</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="5" style="width:0%"></div></div><div class="genre-row__count">2</div></div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card__title">Portfolio by Format</div>
+        <div>
+          <div class="genre-row"><div class="genre-row__label">TV Movie (MOW)</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="55" style="width:0%"></div></div><div class="genre-row__count">22</div></div>
+          <div class="genre-row"><div class="genre-row__label">Feature Film</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="32" style="width:0%"></div></div><div class="genre-row__count">13</div></div>
+          <div class="genre-row"><div class="genre-row__label">Network Series</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="13" style="width:0%"></div></div><div class="genre-row__count">5</div></div>
+          <div class="genre-row"><div class="genre-row__label">Limited Series</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="8" style="width:0%"></div></div><div class="genre-row__count">3</div></div>
+          <div class="genre-row"><div class="genre-row__label">Docuseries</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="5" style="width:0%"></div></div><div class="genre-row__count">2</div></div>
+        </div>
+        <div class="dash-card__title" style="margin-top:28px">Development Status</div>
+        <div>
+          <div class="genre-row"><div class="genre-row__label">Pitch-Ready</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="26" style="width:0%"></div></div><div class="genre-row__count">12</div></div>
+          <div class="genre-row"><div class="genre-row__label">Script Complete</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="13" style="width:0%"></div></div><div class="genre-row__count">6</div></div>
+          <div class="genre-row"><div class="genre-row__label">Packaging Stage</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="8" style="width:0%"></div></div><div class="genre-row__count">4</div></div>
+          <div class="genre-row"><div class="genre-row__label">Development Ready</div><div class="genre-row__bar-wrap"><div class="genre-row__bar" data-pct="53" style="width:0%"></div></div><div class="genre-row__count">25</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCER BIO -->
+    <h2 class="dash-section-title">Producer &amp; Studio Profile</h2>
+    <div class="dash-card" style="margin-bottom:48px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+        <div>
+          <div class="dash-card__title">Kelly R. Tenney &mdash; Founder &amp; Producer</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text-dim)">
+            <li style="display:flex;gap:8px;align-items:baseline"><span style="color:var(--gold);font-size:10px">&#9632;</span>Co-Producer, <em>One Tree Hill</em> &mdash; 9 seasons (The CW)</li>
+            <li style="display:flex;gap:8px;align-items:baseline"><span style="color:var(--gold);font-size:10px">&#9632;</span>DGA &amp; IATSE affiliated producer</li>
+            <li style="display:flex;gap:8px;align-items:baseline"><span style="color:var(--gold);font-size:10px">&#9632;</span>20+ years of film &amp; television experience</li>
+            <li style="display:flex;gap:8px;align-items:baseline"><span style="color:var(--gold);font-size:10px">&#9632;</span>Line Producer / UPM across TV movies &amp; features</li>
+            <li style="display:flex;gap:8px;align-items:baseline"><span style="color:var(--gold);font-size:10px">&#9632;</span>Atlanta-based production operations</li>
+          </ul>
+        </div>
+        <div>
+          <div class="dash-card__title">NCCA Entertainment</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text-dim)">
+            <li style="display:flex;gap:8px;align-items:baseline"><span style="color:var(--gold);font-size:10px">&#9632;</span>Boutique content studio &mdash; Atlanta, Georgia</li>
+            <li style="display:flex;gap:8px;align-items:baseline"><span style="color:var(--gold);font-size:10px">&#9632;</span>47 original scripted projects across 8 genres</li>
+            <li style="display:flex;gap:8px;align-items:baseline"><span style="color:var(--gold);font-size:10px">&#9632;</span>Focus: culturally rich, commercially driven storytelling</li>
+            <li style="display:flex;gap:8px;align-items:baseline"><span style="color:var(--gold);font-size:10px">&#9632;</span>Targets: Netflix, HBO, BET+, OWN, Lifetime, Paramount+, Peacock, Apple TV+</li>
+            <li style="display:flex;gap:8px;align-items:baseline"><span style="color:var(--gold);font-size:10px">&#9632;</span>All projects arrive with pitch materials on day one</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT BLOCK -->
+    <div class="dash-contact">
+      <div class="dash-contact__text">
+        <h3>Ready to Move Forward?</h3>
+        <p>For script access, packaging discussions, or to schedule a meeting, contact us directly. We move fast and come fully prepared.</p>
+      </div>
+      <div class="dash-contact__actions">
+        <a href="mailto:nccaentertainment@gmail.com?subject=[Executive Dashboard] Meeting Request" class="dash-btn primary">&#9993; Schedule a Meeting</a>
+        <a href="slate.html" class="dash-btn secondary">&#128202; Full Slate</a>
+        <a href="index.html" class="dash-btn secondary">&#127968; Main Site</a>
+      </div>
+    </div>
+
+  </div><!-- /.dash-body -->
+
+  <!-- FOOTER -->
+  <div class="dash-footer">
+    <span>&copy; 2026 NCCA Entertainment. All rights reserved. Confidential &mdash; Not for distribution.</span>
+    <span>nccaentertainment@gmail.com &bull; (910) 262-9307 &bull; Atlanta, GA</span>
+  </div>
+
+</div><!-- /#dashboard -->
+
+<script>
+// ---- PASSWORD ----
+// Default password: NCCA2026  — change this to whatever you want
+// To update: replace the string below with your new password
+const ACCESS_CODE = 'NCCA2026';
+const STORAGE_KEY = 'ncca-dash-unlocked';
+
+const lockScreen = document.getElementById('lock-screen');
+const dashboard  = document.getElementById('dashboard');
+const lockInput  = document.getElementById('lock-input');
+const lockBtn    = document.getElementById('lock-btn');
+const lockError  = document.getElementById('lock-error');
+
+function unlock() {
+  lockScreen.style.display = 'none';
+  dashboard.style.display  = 'block';
+  localStorage.setItem(STORAGE_KEY, '1');
+  animateBars();
+  setDate();
+}
+
+function lock() {
+  localStorage.removeItem(STORAGE_KEY);
+  lockScreen.style.display = 'flex';
+  dashboard.style.display  = 'none';
+  lockInput.value = '';
+  lockError.textContent = '';
+}
+
+// Auto-unlock if previously authenticated (same browser)
+if (localStorage.getItem(STORAGE_KEY)) {
+  unlock();
+}
+
+lockBtn.addEventListener('click', () => {
+  if (lockInput.value.trim() === ACCESS_CODE) {
+    lockError.textContent = '';
+    unlock();
+  } else {
+    lockError.textContent = 'Incorrect access code. Please try again.';
+    lockInput.value = '';
+    lockInput.focus();
+  }
+});
+
+lockInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') lockBtn.click();
+});
+
+document.getElementById('dash-lock-btn').addEventListener('click', lock);
+
+// ---- DATE ----
+function setDate() {
+  const d = new Date();
+  document.getElementById('dash-date').textContent = d.toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'});
+}
+
+// ---- ANIMATE BARS ----
+function animateBars() {
+  setTimeout(() => {
+    document.querySelectorAll('.genre-row__bar').forEach(bar => {
+      const pct = bar.dataset.pct;
+      bar.style.width = pct + '%';
+    });
+  }, 300);
+}
+</script>
+</body>
+</html>
