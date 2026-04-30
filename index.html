@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>NCCA Entertainment — Cinematic Storytelling</title>
-<meta name="description" content="From high-concept thrillers to emotionally driven dramas, NCCA Entertainment develops film and series designed to move culture and captivate markets. 47 original projects targeting Netflix, HBO, BET+, OWN, Lifetime, and major networks." />
+<meta name="description" content="Boutique content studio delivering premium, culturally rich scripted series and films. 47 original projects targeting Netflix, HBO, BET+, OWN, Lifetime, and major networks." />
 
 <!-- Open Graph / Social Meta -->
 <meta property="og:type" content="website" />
@@ -21,6 +21,7 @@
 <meta name="twitter:image" content="https://nccaentertainment.com/images/og-preview.png" />
 
 <!-- Canonical -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
 <link rel="canonical" href="https://nccaentertainment.com/" />
 
 <!-- Fonts with display=swap to prevent FOIT -->
@@ -379,6 +380,95 @@ ul{list-style:none}
   .hero{padding:60px 20px}
   .modal__meta-grid{grid-template-columns:1fr}
 }
+
+/* ---- HERO VIDEO ---- */
+.hero{position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center;justify-content:center}
+.hero__video-wrap{position:absolute;inset:0;z-index:0;background:var(--black)}
+.hero__video-wrap video{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+.hero__video-wrap video.loaded{opacity:1}
+.hero__video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.55) 0%,rgba(10,10,10,0.35) 40%,rgba(10,10,10,0.75) 85%,rgba(10,10,10,1) 100%)}
+.hero__video-wrap.no-video{background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(201,168,76,.07) 0%,transparent 70%)}
+.hero__video-controls{position:absolute;bottom:28px;right:24px;z-index:10;display:flex;align-items:center;gap:8px}
+.hero__vid-btn{width:36px;height:36px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.8);font-size:14px;transition:all var(--transition);cursor:pointer;backdrop-filter:blur(4px)}
+.hero__vid-btn:hover{background:rgba(0,0,0,0.85);border-color:var(--gold-border);color:var(--gold)}
+.hero__skip-btn{padding:6px 14px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.2);border-radius:20px;font-size:11px;font-weight:500;color:rgba(255,255,255,0.7);letter-spacing:0.06em;text-transform:uppercase;transition:all var(--transition);cursor:pointer;backdrop-filter:blur(4px)}
+.hero__skip-btn:hover{background:rgba(0,0,0,0.85);border-color:var(--gold-border);color:var(--gold)}
+.hero__inner{position:relative;z-index:5;max-width:780px;text-align:center;padding:80px 32px}
+
+/* ---- VALUE PROP HEADLINE ---- */
+.hero__value-prop{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:8px 20px;background:rgba(201,168,76,0.1);border:1px solid var(--gold-border);border-radius:3px;font-size:13px;font-weight:600;letter-spacing:0.06em;color:var(--gold);text-transform:uppercase;animation:vpulse 3s ease-in-out infinite}
+@keyframes vpulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(201,168,76,0)}50%{opacity:0.85;box-shadow:0 0 12px 2px rgba(201,168,76,0.15)}}
+
+/* ---- MARKET INDICATORS ---- */
+.card__market{margin-bottom:14px;padding:10px 12px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius);display:none}
+.card__market.open{display:block}
+.card__market-toggle{width:100%;text-align:left;padding:0 0 8px;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:600;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:none;border:none;border-bottom:1px solid rgba(201,168,76,0.15);margin-bottom:10px;font-family:var(--font-body)}
+.card__market-toggle .toggle-icon{transition:transform var(--transition)}
+.card__market-toggle.open .toggle-icon{transform:rotate(180deg)}
+.market-row{display:flex;flex-direction:column;gap:3px;margin-bottom:8px}
+.market-row:last-child{margin-bottom:0}
+.market-row__label{font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.market-row__val{font-size:12px;color:var(--text-dim);line-height:1.5}
+.market-row__val em{color:var(--gold-light);font-style:normal;font-weight:500}
+
+/* ---- ROI CALCULATOR ---- */
+.calc-section{padding:80px 32px;border-top:1px solid var(--border);background:var(--black)}
+.calc-inner{max-width:1100px;margin:0 auto}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:32px}
+.calc-form,.calc-results{background:var(--off-black);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px}
+.calc-form__title,.calc-results__title{font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.calc-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.calc-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.calc-select,.calc-input{background:var(--dark-gray);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:14px;padding:10px 14px;outline:none;transition:border-color var(--transition);width:100%}
+.calc-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-color:var(--dark-gray);padding-right:32px}
+.calc-select:focus,.calc-input:focus{border-color:var(--gold)}
+.calc-select option{background:var(--dark-gray)}
+.calc-range-wrap{display:flex;align-items:center;gap:12px}
+.calc-range{flex:1;-webkit-appearance:none;height:4px;background:var(--border);border-radius:2px;outline:none;cursor:pointer}
+.calc-range::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--gold);border-radius:50%;cursor:pointer}
+.calc-range-val{font-size:14px;color:var(--gold);font-weight:600;min-width:60px;text-align:right}
+.calc-btn{width:100%;padding:13px;background:var(--gold);color:var(--black);border-radius:var(--radius);font-size:14px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;transition:background var(--transition);margin-top:8px;border:none;font-family:var(--font-body);cursor:pointer}
+.calc-btn:hover{background:var(--gold-light)}
+.calc-disclaimer{font-size:11px;color:var(--muted);line-height:1.55;margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+.calc-results{min-height:300px;display:flex;flex-direction:column}
+.calc-results__placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--muted);gap:12px}
+.calc-results__placeholder-icon{font-size:36px;opacity:0.4}
+.calc-results__placeholder p{font-size:13px;line-height:1.6;max-width:220px}
+.result-metric{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.result-metric:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.result-metric__label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.result-metric__val{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--gold);line-height:1}
+.result-metric__sub{font-size:12px;color:var(--text-dim);margin-top:3px}
+.result-gate{margin-top:16px;padding:14px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:var(--radius);text-align:center}
+.result-gate p{font-size:12.5px;color:var(--text-dim);margin-bottom:10px}
+.result-gate-form{display:flex;gap:8px}
+.result-gate-input{flex:1;background:var(--dark-gray);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:13px;padding:9px 12px;outline:none;transition:border-color var(--transition)}
+.result-gate-input:focus{border-color:var(--gold)}
+.result-gate-btn{padding:9px 16px;background:var(--gold);color:var(--black);border-radius:var(--radius);font-size:12.5px;font-weight:700;border:none;cursor:pointer;font-family:var(--font-body);white-space:nowrap;transition:background var(--transition)}
+.result-gate-btn:hover{background:var(--gold-light)}
+
+/* ---- CONTACT TABS ---- */
+.contact-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:24px;gap:0}
+.contact-tab{padding:10px 20px;font-size:13px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all var(--transition);cursor:pointer;background:none;font-family:var(--font-body)}
+.contact-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.contact-tab:hover{color:var(--text)}
+.contact-tab-panel{display:none}
+.contact-tab-panel.active{display:block}
+.meeting-types{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.meeting-type{padding:14px 16px;background:var(--dark-gray);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all var(--transition);display:flex;align-items:flex-start;gap:12px}
+.meeting-type:hover{border-color:var(--gold-border)}
+.meeting-type.selected{border-color:var(--gold);background:var(--gold-dim)}
+.meeting-type__icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.meeting-type__title{font-size:13.5px;font-weight:600;color:var(--white);margin-bottom:3px}
+.meeting-type__desc{font-size:12px;color:var(--text-dim);line-height:1.5}
+.meeting-type__dur{font-size:11px;color:var(--gold);font-weight:500;margin-top:4px}
+.calendly-launch-btn{width:100%;padding:13px;background:var(--gold);color:var(--black);border-radius:var(--radius);font-size:14px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;transition:background var(--transition);border:none;font-family:var(--font-body);cursor:pointer}
+.calendly-launch-btn:hover{background:var(--gold-light)}
+.calendly-note{font-size:12px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.55}
+
+@media(max-width:1024px){.calc-grid{grid-template-columns:1fr;gap:24px}}
+@media(max-width:480px){.result-gate-form{flex-direction:column}}
+
 </style>
 </head>
 <body>
@@ -521,9 +611,24 @@ ul{list-style:none}
 
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-title">
+    <!-- Video background (lazy-loaded after page render) -->
+    <div class="hero__video-wrap no-video" id="hero-video-wrap">
+      <video id="hero-video" autoplay muted loop playsinline preload="none" aria-hidden="true">
+        <!-- Upload hero-video.webm and hero-video.mp4 to your /images/ folder -->
+        <source src="images/hero-video.webm" type="video/webm" />
+        <source src="images/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__video-overlay"></div>
+    </div>
+    <div class="hero__video-controls" id="hero-video-controls" style="display:none">
+      <button class="hero__vid-btn" id="vid-mute-btn" aria-label="Toggle sound" title="Toggle sound">&#128263;</button>
+      <button class="hero__vid-btn" id="vid-pause-btn" aria-label="Pause video" title="Pause/play">&#9646;&#9646;</button>
+      <button class="hero__skip-btn" id="vid-skip-btn">Skip to Content &#8595;</button>
+    </div>
     <div class="hero__inner">
       <p class="hero__eyebrow">Atlanta-Forward &bull; Culture-First &bull; Franchise-Minded</p>
       <h1 class="hero__title" id="hero-title">NCCA<br>ENTERTAINMENT</h1>
+      <div class="hero__value-prop" role="text">&#9670; Production-Ready IP Built for Platform Economics</div>
       <p class="hero__subtitle">A boutique content studio delivering premium, culturally rich scripted series and films. Where America&rsquo;s soul meets global storytelling.</p>
       <div class="hero__stats" role="list" aria-label="Studio statistics">
         <div class="hero__stat" role="listitem"><div class="hero__stat-num">47</div><div class="hero__stat-label">Original Projects</div></div>
@@ -617,6 +722,12 @@ ul{list-style:none}
           <p class="card__synopsis">A social media influencer&rsquo;s final post becomes the key to solving her own murder. When the algorithm knows who did it before the detective does, truth becomes the most viral content of all.</p>
           <div class="card__platforms"><span class="platform-tag">Lifetime</span><span class="platform-tag">BET+</span></div>
           <div class="card__materials"><span class="material-tag">&#128196; Treatment</span><span class="material-tag">&#128250; Teaser</span><span class="material-tag">&#128221; Script</span></div>
+          <button class="card__market-toggle" onclick="toggleMarket(this)" aria-expanded="false">&#128200; Market Indicators <span class="toggle-icon">&#9660;</span></button>
+          <div class="card__market">
+            <div class="market-row"><div class="market-row__label">Comparable Titles</div><div class="market-row__val"><em>Deadly Influencer</em> (Lifetime) meets <em>The Circle</em> (Netflix) &mdash; social media thriller with built-in millennial &amp; Gen Z audience</div></div>
+            <div class="market-row"><div class="market-row__label">Target Demographics</div><div class="market-row__val">Women 25&ndash;49 &bull; Social media users &bull; True crime fans &bull; Multicultural audiences</div></div>
+            <div class="market-row"><div class="market-row__label">Social Buzz Potential</div><div class="market-row__val">High &mdash; influencer storyline drives organic TikTok &amp; Instagram sharing; built-in viral marketing hooks</div></div>
+          </div>
           <div class="card__actions"><button class="btn-quick-view" onclick="openModal('influencers-last-post')">Quick View</button><a href="projects/the-influencers-last-post.html" class="btn-full-details">Full Details &rarr;</a></div>
         </div>
       </article>
@@ -633,6 +744,12 @@ ul{list-style:none}
           <p class="card__synopsis">A by-the-book FBI agent and a rap music exec collide while uncovering a conspiracy buried inside Atlanta&rsquo;s music scene. Every groove hides a wire. Every handshake seals a deal or a fate.</p>
           <div class="card__platforms"><span class="platform-tag">Paramount+</span><span class="platform-tag">Peacock</span><span class="platform-tag">BET+</span><span class="platform-tag">OWN</span></div>
           <div class="card__materials"><span class="material-tag">&#128196; Treatment</span><span class="material-tag">&#128250; Teaser</span><span class="material-tag">&#128214; Bible</span></div>
+          <button class="card__market-toggle" onclick="toggleMarket(this)" aria-expanded="false">&#128200; Market Indicators <span class="toggle-icon">&#9660;</span></button>
+          <div class="card__market">
+            <div class="market-row"><div class="market-row__label">Comparable Titles</div><div class="market-row__val"><em>Empire</em> (Fox) meets <em>The Wire</em> (HBO) &mdash; music industry procedural with Atlanta&rsquo;s cultural capital driving global appeal</div></div>
+            <div class="market-row"><div class="market-row__label">Target Demographics</div><div class="market-row__val">Adults 25&ndash;54 &bull; Music &amp; crime drama fans &bull; Black &amp; urban demographic stronghold</div></div>
+            <div class="market-row"><div class="market-row__label">Social Buzz Potential</div><div class="market-row__val">Very High &mdash; Atlanta hip-hop has global reach; music licensing adds revenue streams</div></div>
+          </div>
           <div class="card__actions"><button class="btn-quick-view" onclick="openModal('the-line')">Quick View</button><a href="projects/the-line.html" class="btn-full-details">Full Details &rarr;</a></div>
         </div>
       </article>
@@ -649,6 +766,12 @@ ul{list-style:none}
           <p class="card__synopsis">The final generation of a powerful family fights to preserve their legacy as the empire their grandparents built threatens to consume everything they love. Power has a price. The music never lies.</p>
           <div class="card__platforms"><span class="platform-tag">Netflix</span><span class="platform-tag">HBO</span><span class="platform-tag">Apple TV+</span></div>
           <div class="card__materials"><span class="material-tag">&#128196; Treatment</span><span class="material-tag">&#128250; Teaser</span><span class="material-tag">&#128221; Script</span></div>
+          <button class="card__market-toggle" onclick="toggleMarket(this)" aria-expanded="false">&#128200; Market Indicators <span class="toggle-icon">&#9660;</span></button>
+          <div class="card__market">
+            <div class="market-row"><div class="market-row__label">Comparable Titles</div><div class="market-row__val"><em>The Color Purple</em> (Warner Bros.) meets <em>Succession</em> (HBO) &mdash; prestige family drama with musical elements and awards season positioning</div></div>
+            <div class="market-row"><div class="market-row__label">Target Demographics</div><div class="market-row__val">Adults 35&ndash;64 &bull; Prestige drama fans &bull; Gospel &amp; R&amp;B audiences &bull; Awards-season subscribers</div></div>
+            <div class="market-row"><div class="market-row__label">Social Buzz Potential</div><div class="market-row__val">High &mdash; musical elements drive soundtrack revenue; prestige positioning attracts A-list talent</div></div>
+          </div>
           <div class="card__actions"><button class="btn-quick-view" onclick="openModal('the-last-dynasty')">Quick View</button><a href="projects/the-last-dynasty.html" class="btn-full-details">Full Details &rarr;</a></div>
         </div>
       </article>
@@ -665,6 +788,12 @@ ul{list-style:none}
           <p class="card__synopsis">Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women. Every swipe is a reckoning. Every user is a weapon.</p>
           <div class="card__platforms"><span class="platform-tag">BET+</span><span class="platform-tag">OWN</span><span class="platform-tag">Lifetime</span></div>
           <div class="card__materials"><span class="material-tag">&#128196; Treatment</span><span class="material-tag">&#128221; Script</span><span class="material-tag">&#128250; Teaser</span></div>
+          <button class="card__market-toggle" onclick="toggleMarket(this)" aria-expanded="false">&#128200; Market Indicators <span class="toggle-icon">&#9660;</span></button>
+          <div class="card__market">
+            <div class="market-row"><div class="market-row__label">Comparable Titles</div><div class="market-row__val"><em>Girlfriends</em> meets <em>Get Out</em> with a satirical AI edge &mdash; timely premise drives cultural conversation and repeat viewership</div></div>
+            <div class="market-row"><div class="market-row__label">Target Demographics</div><div class="market-row__val">Women 18&ndash;44 &bull; Black women audiences &bull; Tech-savvy millennials &bull; Feminist comedy fans</div></div>
+            <div class="market-row"><div class="market-row__label">Social Buzz Potential</div><div class="market-row__val">Extremely High &mdash; AI dating premise is zeitgeist gold; title alone is highly shareable; meme-ready concept</div></div>
+          </div>
           <div class="card__actions"><button class="btn-quick-view" onclick="openModal('black-girls-guide')">Quick View</button><a href="projects/black-girls-guide-to-vengeance-and-vodka.html" class="btn-full-details">Full Details &rarr;</a></div>
         </div>
       </article>
@@ -723,6 +852,73 @@ ul{list-style:none}
     </div>
   </section>
 
+  <!-- ROI CALCULATOR -->
+  <section class="calc-section" aria-labelledby="calc-title">
+    <div class="calc-inner">
+      <p class="section-eyebrow">Investment Intelligence</p>
+      <h2 class="section-title" id="calc-title">Content ROI Scenario Planner</h2>
+      <p class="section-desc">Explore illustrative revenue scenarios based on comparable title performance. All projections are estimates for planning purposes only.</p>
+      <div class="calc-grid">
+        <div class="calc-form">
+          <div class="calc-form__title">Project Parameters</div>
+          <div class="calc-field">
+            <label class="calc-label" for="calc-format">Format</label>
+            <select class="calc-select" id="calc-format">
+              <option value="mow">TV Movie (MOW)</option>
+              <option value="limited">Limited Series (4&ndash;6 eps)</option>
+              <option value="network">Network Series (10 eps)</option>
+              <option value="feature">Feature Film</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="calc-platform">Primary Platform</label>
+            <select class="calc-select" id="calc-platform">
+              <option value="premium">Premium Streamer (Netflix / HBO / Apple)</option>
+              <option value="mid">Mid-Tier Streamer (Paramount+ / Peacock / BET+)</option>
+              <option value="basic">Basic Cable / Broadcast (Lifetime / OWN)</option>
+              <option value="theatrical">Theatrical Release</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="calc-genre">Genre</label>
+            <select class="calc-select" id="calc-genre">
+              <option value="drama">Drama</option>
+              <option value="thriller">Thriller / Noir</option>
+              <option value="comedy">Comedy</option>
+              <option value="action">Action</option>
+              <option value="horror">Horror</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label class="calc-label">Production Budget Range</label>
+            <div class="calc-range-wrap">
+              <input type="range" class="calc-range" id="calc-budget" min="1" max="10" value="3" step="1" />
+              <span class="calc-range-val" id="calc-budget-val">$2M</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="calc-talent">Talent / IP Attachment</label>
+            <select class="calc-select" id="calc-talent">
+              <option value="none">No attachment yet</option>
+              <option value="emerging">Emerging talent attached</option>
+              <option value="mid">Mid-level name attached</option>
+              <option value="a-list">A-list talent attached</option>
+            </select>
+          </div>
+          <button class="calc-btn" onclick="runCalculator()">&#128200; Calculate Scenarios</button>
+          <p class="calc-disclaimer">&#9432; All projections are illustrative estimates based on publicly available industry data for comparable titles. Actual results vary significantly. Not financial advice.</p>
+        </div>
+        <div class="calc-results" id="calc-results">
+          <div class="calc-results__placeholder" id="calc-placeholder">
+            <div class="calc-results__placeholder-icon">&#128200;</div>
+            <p>Set your project parameters and click Calculate to see illustrative revenue scenarios.</p>
+          </div>
+          <div id="calc-output" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="contact-section" id="contact" aria-labelledby="contact-title">
     <div class="contact-grid">
@@ -738,6 +934,11 @@ ul{list-style:none}
         <div class="response-time-note"><span>&#9200;</span><span>We typically respond within 24&ndash;48 business hours.</span></div>
       </div>
       <div class="contact-right">
+        <div class="contact-tabs" role="tablist">
+          <button class="contact-tab active" role="tab" aria-selected="true" onclick="switchTab('form', this)">&#9993; Send a Message</button>
+          <button class="contact-tab" role="tab" aria-selected="false" onclick="switchTab('meeting', this)">&#128197; Schedule a Meeting</button>
+        </div>
+        <div class="contact-tab-panel active" id="tab-form">
         <form class="contact-form" id="contact-form" aria-label="Contact form">
           <div class="form-row">
             <div class="form-field"><label class="form-label" for="cf-name">Name</label><input type="text" id="cf-name" class="form-input" placeholder="Your name" required /></div>
@@ -759,6 +960,37 @@ ul{list-style:none}
           <div class="form-field"><label class="form-label" for="cf-message">Message</label><textarea id="cf-message" class="form-textarea" placeholder="Tell us what you&rsquo;re looking for&hellip;"></textarea></div>
           <button type="submit" class="form-submit">Send Message</button>
         </form>
+        </div><!-- /#tab-form -->
+        <div class="contact-tab-panel" id="tab-meeting">
+          <div class="meeting-types" role="radiogroup" aria-label="Meeting type">
+            <div class="meeting-type selected" onclick="selectMeeting(this,'initial')" role="radio" aria-checked="true" tabindex="0">
+              <div class="meeting-type__icon">&#128172;</div>
+              <div class="meeting-type__body">
+                <div class="meeting-type__title">Initial Discovery Call</div>
+                <div class="meeting-type__desc">Intro conversation about our slate and your current acquisition interests.</div>
+                <div class="meeting-type__dur">&#9200; 30 minutes &bull; Zoom / Phone</div>
+              </div>
+            </div>
+            <div class="meeting-type" onclick="selectMeeting(this,'project')" role="radio" aria-checked="false" tabindex="0">
+              <div class="meeting-type__icon">&#127916;</div>
+              <div class="meeting-type__body">
+                <div class="meeting-type__title">Project Review Session</div>
+                <div class="meeting-type__desc">Deep dive on specific projects with pitch materials, scripts, and Q&amp;A.</div>
+                <div class="meeting-type__dur">&#9200; 60 minutes &bull; Zoom</div>
+              </div>
+            </div>
+            <div class="meeting-type" onclick="selectMeeting(this,'partnership')" role="radio" aria-checked="false" tabindex="0">
+              <div class="meeting-type__icon">&#129309;</div>
+              <div class="meeting-type__body">
+                <div class="meeting-type__title">Partnership Discussion</div>
+                <div class="meeting-type__desc">Co-production, packaging, or investment structure conversations.</div>
+                <div class="meeting-type__dur">&#9200; 60 minutes &bull; Zoom / In-Person (Atlanta)</div>
+              </div>
+            </div>
+          </div>
+          <button class="calendly-launch-btn" onclick="openCalendly()">&#128197; Book Your Meeting</button>
+          <p class="calendly-note">You&rsquo;ll be taken to our scheduling page. Select a time and we&rsquo;ll send a calendar invite with a Zoom link.<br><strong>To activate:</strong> Add your Calendly URL in the JS at the bottom of this file.</p>
+        </div><!-- /#tab-meeting -->
       </div>
     </div>
   </section>
@@ -950,6 +1182,155 @@ if(!prefersReducedMotion){
   const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('card-visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
   projectCards.forEach(c=>obs.observe(c));
 }else{projectCards.forEach(c=>c.classList.add('card-visible'));}
+
+// ---- HERO VIDEO (lazy init after page load) ----
+window.addEventListener('load', () => {
+  const video = document.getElementById('hero-video');
+  if (!video) return;
+  const wrap = document.getElementById('hero-video-wrap');
+  const controls = document.getElementById('hero-video-controls');
+  const muteBtn = document.getElementById('vid-mute-btn');
+  const pauseBtn = document.getElementById('vid-pause-btn');
+  const skipBtn = document.getElementById('vid-skip-btn');
+
+  video.addEventListener('canplay', () => {
+    wrap.classList.remove('no-video');
+    video.classList.add('loaded');
+    controls.style.display = 'flex';
+  }, { once: true });
+
+  video.load();
+
+  muteBtn.addEventListener('click', () => {
+    video.muted = !video.muted;
+    muteBtn.textContent = video.muted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
+  });
+
+  pauseBtn.addEventListener('click', () => {
+    if (video.paused) { video.play(); pauseBtn.innerHTML = '&#9646;&#9646;'; }
+    else { video.pause(); pauseBtn.innerHTML = '&#9654;'; }
+  });
+
+  skipBtn.addEventListener('click', () => {
+    const target = document.querySelector('.platform-bar') || document.querySelector('.filter-bar');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// ---- MARKET INDICATORS TOGGLE ----
+function toggleMarket(btn) {
+  const body = btn.closest('.card__body');
+  const panel = body.querySelector('.card__market');
+  const isOpen = panel.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-expanded', isOpen);
+}
+
+// ---- CONTACT TABS ----
+function switchTab(tab, btn) {
+  document.querySelectorAll('.contact-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+  document.querySelectorAll('.contact-tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active'); btn.setAttribute('aria-selected', 'true');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+// ---- MEETING TYPE SELECTION ----
+let selectedMeetingType = 'initial';
+function selectMeeting(el, type) {
+  document.querySelectorAll('.meeting-type').forEach(m => { m.classList.remove('selected'); m.setAttribute('aria-checked', 'false'); });
+  el.classList.add('selected'); el.setAttribute('aria-checked', 'true');
+  selectedMeetingType = type;
+}
+
+// ---- CALENDLY ----
+// *** REPLACE THESE WITH YOUR ACTUAL CALENDLY LINKS ***
+const CALENDLY_URLS = {
+  initial:     'https://calendly.com/nccaentertainment/discovery-call',
+  project:     'https://calendly.com/nccaentertainment/project-review',
+  partnership: 'https://calendly.com/nccaentertainment/partnership-discussion'
+};
+function openCalendly() {
+  const url = CALENDLY_URLS[selectedMeetingType] || CALENDLY_URLS.initial;
+  if (typeof Calendly !== 'undefined') {
+    Calendly.initPopupWidget({ url });
+  } else {
+    window.open(url, '_blank');
+  }
+}
+
+// ---- BUDGET SLIDER ----
+const budgetSlider = document.getElementById('calc-budget');
+const budgetValEl = document.getElementById('calc-budget-val');
+const budgetMap = ['$500K','$1M','$2M','$3M','$5M','$7M','$10M','$15M','$20M','$30M'];
+if (budgetSlider) {
+  budgetSlider.addEventListener('input', () => {
+    budgetValEl.textContent = budgetMap[budgetSlider.value - 1] || '$' + budgetSlider.value + 'M';
+  });
+}
+
+// ---- ROI CALCULATOR ----
+function runCalculator() {
+  const format   = document.getElementById('calc-format').value;
+  const platform = document.getElementById('calc-platform').value;
+  const genre    = document.getElementById('calc-genre').value;
+  const budgetIdx = parseInt(budgetSlider.value) - 1;
+  const talent   = document.getElementById('calc-talent').value;
+  const budgetRaw = [0.5,1,2,3,5,7,10,15,20,30][budgetIdx];
+
+  const platformMult = { premium:3.2, mid:2.1, basic:1.6, theatrical:4.5 };
+  const genreMult    = { drama:1.1, thriller:1.2, comedy:1.0, action:1.3, horror:1.4 };
+  const formatMult   = { mow:1.0, limited:2.2, network:3.5, feature:2.8 };
+  const talentMult   = { none:1.0, emerging:1.15, mid:1.35, 'a-list':1.7 };
+
+  const totalRev = budgetRaw * (platformMult[platform]||2) * (genreMult[genre]||1) * (formatMult[format]||1) * (talentMult[talent]||1);
+  const breakEven = budgetRaw * 1.25;
+  const roi = Math.round((totalRev - budgetRaw) / budgetRaw * 100);
+  const margin = Math.max(10, Math.round((totalRev - breakEven) / totalRev * 100));
+
+  const fmt = n => n >= 1000 ? '$' + (n/1000).toFixed(1) + 'B' : '$' + n.toFixed(1) + 'M';
+  const roiLow = Math.max(0, roi - 30), roiHigh = Math.min(500, roi + 40);
+
+  document.getElementById('calc-placeholder').style.display = 'none';
+  const out = document.getElementById('calc-output');
+  out.style.display = 'block';
+  out.innerHTML = `
+    <div class="calc-results__title">Illustrative Scenario</div>
+    <div class="result-metric">
+      <div class="result-metric__label">Projected Licensing Revenue</div>
+      <div class="result-metric__val">${fmt(totalRev)}</div>
+      <div class="result-metric__sub">Based on comparable ${genre} titles on similar platforms</div>
+    </div>
+    <div class="result-metric">
+      <div class="result-metric__label">Break-Even Threshold</div>
+      <div class="result-metric__val">${fmt(breakEven)}</div>
+      <div class="result-metric__sub">Estimated at 1.25x production budget incl. P&A</div>
+    </div>
+    <div class="result-metric">
+      <div class="result-metric__label">Illustrative ROI Range</div>
+      <div class="result-metric__val">${roiLow}% &ndash; ${roiHigh}%</div>
+      <div class="result-metric__sub">Conservative to optimistic, based on talent and platform performance</div>
+    </div>
+    <div class="result-metric">
+      <div class="result-metric__label">Est. Net Margin (if successful)</div>
+      <div class="result-metric__val">${margin}%</div>
+      <div class="result-metric__sub">Before ancillary rights, syndication &amp; international sales</div>
+    </div>
+    <div class="result-gate">
+      <p>Get a detailed breakdown with comparable title data and risk factors sent to your inbox.</p>
+      <div class="result-gate-form">
+        <input type="email" class="result-gate-input" id="gate-email" placeholder="your@studio.com" />
+        <button class="result-gate-btn" onclick="sendDetailedReport()">Send Report</button>
+      </div>
+    </div>`;
+}
+
+function sendDetailedReport() {
+  const email = document.getElementById('gate-email').value.trim();
+  if (!email || !email.includes('@')) { document.getElementById('gate-email').focus(); return; }
+  window.location.href = 'mailto:nccaentertainment@gmail.com?subject=ROI%20Report%20Request&body=Please%20send%20the%20detailed%20ROI%20breakdown%20to%3A%20' + encodeURIComponent(email);
+}
+
 </script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
