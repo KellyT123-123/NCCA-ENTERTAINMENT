@@ -837,6 +837,32 @@ const projectsData = [
     "platforms": [
       "Theatrical"
     ]
+  },
+  {
+    "title": "The Extraction",
+    "genre": "Thriller",
+    "format": "Limited Series",
+    "audience": "Adults 25–54 | Thriller Audiences",
+    "description": "A hostage negotiator whose career was built on never losing a life is forced to negotiate for her own daughter’s kidnapping by the man she put in federal prison fifteen years ago.",
+    "onesheet": "one-sheets/the-extraction-one-sheet.pdf",
+    "image": "images/the-extraction-poster.png",
+    "platforms": [
+      "Netflix",
+      "HBO"
+    ]
+  },
+  {
+    "title": "Page 41",
+    "genre": "Thriller | Espionage",
+    "format": "Limited Series",
+    "audience": "Adults 25–54 | Global Prestige Audiences",
+    "description": "A visionary NATO treaty architect survives the ambush that kills the man she secretly loves, only to discover that the mentor guiding her grief is quietly editing her memories and remaking her into the conspiracy’s instrument.",
+    "onesheet": "one-sheets/page-41-one-sheet.pdf",
+    "image": "images/page-41-poster.png",
+    "platforms": [
+      "Netflix",
+      "HBO"
+    ]
   }
 ];
 

@@ -48,3 +48,5 @@
 46. [Second Skin](second-skin.html)
 47. [The Bone Collector's Daughter](the-bone-collectors-daughter.html)
 48. [Final Walk](final-walk.html)
+49. [The Extraction](the-extraction.html)
+50. [Page 41](page-41.html)
