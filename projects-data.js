@@ -844,6 +844,7 @@ const projectsData = [
     "format": "Limited Series",
     "audience": "Adults 25–54 | Thriller Audiences",
     "description": "A hostage negotiator whose career was built on never losing a life is forced to negotiate for her own daughter’s kidnapping by the man she put in federal prison fifteen years ago.",
+    "deck": "pitch-decks/the-extraction-studio-pitch-deck.pptx",
     "onesheet": "one-sheets/the-extraction-one-sheet.pdf",
     "image": "images/the-extraction-poster.png",
     "platforms": [
@@ -857,6 +858,7 @@ const projectsData = [
     "format": "Limited Series",
     "audience": "Adults 25–54 | Global Prestige Audiences",
     "description": "A visionary NATO treaty architect survives the ambush that kills the man she secretly loves, only to discover that the mentor guiding her grief is quietly editing her memories and remaking her into the conspiracy’s instrument.",
+    "deck": "pitch-decks/page-41-studio-pitch-deck.pptx",
     "onesheet": "one-sheets/page-41-one-sheet.pdf",
     "image": "images/page-41-poster.png",
     "platforms": [
@@ -870,6 +872,7 @@ const projectsData = [
     "format": "MOW",
     "audience": "Adult Audiences",
     "description": "A ruthless gentrification attorney inherits her dead aunt’s crumbling house and uncovers the secret of her own erased childhood, forcing her to choose between the armored life she built on forgetting and the truth that can bring a beloved pastor down.",
+    "deck": "pitch-decks/the-devon-house-studio-pitch-deck.pptx",
     "onesheet": "one-sheets/the-devon-house-one-sheet.pdf",
     "image": "images/the-devon-house-poster.png",
     "platforms": [
@@ -884,6 +887,7 @@ const projectsData = [
     "format": "MOW",
     "audience": "Adult Audiences",
     "description": "When a gospel superstar collapses mid-concert, her invisible assistant is handed the spotlight as her replacement, then discovers the collapse was a slow poisoning and that her own hands delivered the dose.",
+    "deck": "pitch-decks/the-understudy-studio-pitch-deck.pptx",
     "onesheet": "one-sheets/the-understudy-one-sheet.pdf",
     "image": "images/the-understudy-poster.png",
     "platforms": [
@@ -898,6 +902,7 @@ const projectsData = [
     "format": "MOW",
     "audience": "Adult Audiences",
     "description": "A celebrated Atlanta therapist is framed for the murder of the ex-husband who built a machine of police, courts, and even her own marriage to destroy her from beyond the grave.",
+    "deck": "pitch-decks/twice-betrayed-studio-pitch-deck.pptx",
     "onesheet": "one-sheets/twice-betrayed-one-sheet.pdf",
     "image": "images/twice-betrayed-poster.png",
     "platforms": [
@@ -912,6 +917,7 @@ const projectsData = [
     "format": "MOW",
     "audience": "Adult Audiences",
     "description": "With 86 days to stop an execution, a burned-out Atlanta prosecutor discovers that evidence clearing an innocent man was buried by the same prosecutor now poised for the Supreme Court, and risks everything to expose the truth before the real killer closes in.",
+    "deck": "pitch-decks/the-cost-of-truth-studio-pitch-deck.pptx",
     "onesheet": "one-sheets/the-cost-of-truth-one-sheet.pdf",
     "image": "images/the-cost-of-truth-poster.png",
     "platforms": [
