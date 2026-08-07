@@ -300,7 +300,7 @@ const projectsData = [
     "title": "Mirror Image",
     "genre": "Thriller",
     "format": "MOW",
-    "audience": "Women 25\u201340 | Gen Z"",
+    "audience": "Women 25\u201340 | Gen Z",
     "description": "A rising fashion influencer is digitally framed by her estranged sister using deepfakes, stolen biometrics, and weaponized clout.",
     "deck": "pitch-decks/mirror-image-pitch-deck.pdf",
     "onesheet": "one-sheets/mirror-one-liner.pdf",
@@ -363,7 +363,7 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime",
-      "Paramount+",
+      "Paramount+"
     ]
   },
   {
@@ -398,7 +398,7 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime",
-      "Paramount+",
+      "Paramount+"
     ]
   },
   {
@@ -416,7 +416,7 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime",
-      "Paramount+",
+      "Paramount+"
     ]
   },
   {
@@ -434,7 +434,7 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime",
-      "Paramount+",
+      "Paramount+"
     ]
   },
   {
@@ -823,6 +823,18 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Apple",
+      "Theatrical"
+    ]
+  },
+  {
+    "title": "Final Walk",
+    "genre": "Action",
+    "format": "Feature",
+    "audience": "Adult Audiences",
+    "description": "A top model becomes an unwitting operative in a cross-border intelligence war, exposing an empire built on beauty and forcing her to decide how far she will go to bring it down.",
+    "onesheet": "one-sheets/final-walk-one-sheet.pdf",
+    "image": "images/final-walk-poster-a.png",
+    "platforms": [
       "Theatrical"
     ]
   }
