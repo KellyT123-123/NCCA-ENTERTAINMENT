@@ -50,3 +50,7 @@
 48. [Final Walk](final-walk.html)
 49. [The Extraction](the-extraction.html)
 50. [Page 41](page-41.html)
+51. [The Devon House](the-devon-house.html)
+52. [The Understudy](the-understudy.html)
+53. [Twice Betrayed](twice-betrayed.html)
+54. [The Cost of Truth](the-cost-of-truth.html)

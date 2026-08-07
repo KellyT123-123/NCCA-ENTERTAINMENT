@@ -863,6 +863,62 @@ const projectsData = [
       "Netflix",
       "HBO"
     ]
+  },
+  {
+    "title": "The Devon House",
+    "genre": "Thriller",
+    "format": "MOW",
+    "audience": "Adult Audiences",
+    "description": "A ruthless gentrification attorney inherits her dead aunt’s crumbling house and uncovers the secret of her own erased childhood, forcing her to choose between the armored life she built on forgetting and the truth that can bring a beloved pastor down.",
+    "onesheet": "one-sheets/the-devon-house-one-sheet.pdf",
+    "image": "images/the-devon-house-poster.png",
+    "platforms": [
+      "BET+",
+      "OWN",
+      "Lifetime"
+    ]
+  },
+  {
+    "title": "The Understudy",
+    "genre": "Thriller",
+    "format": "MOW",
+    "audience": "Adult Audiences",
+    "description": "When a gospel superstar collapses mid-concert, her invisible assistant is handed the spotlight as her replacement, then discovers the collapse was a slow poisoning and that her own hands delivered the dose.",
+    "onesheet": "one-sheets/the-understudy-one-sheet.pdf",
+    "image": "images/the-understudy-poster.png",
+    "platforms": [
+      "BET+",
+      "OWN",
+      "Lifetime"
+    ]
+  },
+  {
+    "title": "Twice Betrayed",
+    "genre": "Thriller",
+    "format": "MOW",
+    "audience": "Adult Audiences",
+    "description": "A celebrated Atlanta therapist is framed for the murder of the ex-husband who built a machine of police, courts, and even her own marriage to destroy her from beyond the grave.",
+    "onesheet": "one-sheets/twice-betrayed-one-sheet.pdf",
+    "image": "images/twice-betrayed-poster.png",
+    "platforms": [
+      "BET+",
+      "OWN",
+      "Lifetime"
+    ]
+  },
+  {
+    "title": "The Cost of Truth",
+    "genre": "Thriller",
+    "format": "MOW",
+    "audience": "Adult Audiences",
+    "description": "With 86 days to stop an execution, a burned-out Atlanta prosecutor discovers that evidence clearing an innocent man was buried by the same prosecutor now poised for the Supreme Court, and risks everything to expose the truth before the real killer closes in.",
+    "onesheet": "one-sheets/the-cost-of-truth-one-sheet.pdf",
+    "image": "images/the-cost-of-truth-poster.png",
+    "platforms": [
+      "BET+",
+      "OWN",
+      "Lifetime"
+    ]
   }
 ];
 
