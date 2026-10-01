@@ -379,7 +379,7 @@
       54 Original Projects
     </div>
     <a href="tel:+19102629307" class="util-hide-mobile">&#128222; (910) 262-9307</a>
-    <a href="mailto:nccaentertainment@gmail.com" class="util-hide-mobile">&#9993;&#65039; nccaentertainment@gmail.com</a>
+    <a href="index.html#contact" class="util-hide-mobile">&#9993;&#65039; Contact the studio</a>
   </div>
   <div class="utility-bar__right">
     <a href="slate.html?status=pitch-ready" class="util-pitch-badge">&#128202; Pitch-Ready Projects</a>
@@ -1647,7 +1647,7 @@
         <li><a href="index.html#about">About NCCA</a></li>
         <li><a href="music.html">Music</a></li>
         <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="mailto:nccaentertainment@gmail.com">Email Us</a></li>
+        <li><a href="index.html#contact">Email Us</a></li>
       </ul>
     </div>
   </div>
@@ -1711,11 +1711,10 @@
   <div class="exit-modal">
     <button class="exit-modal__close" id="exit-modal-close" aria-label="Close">&times;</button>
     <div class="exit-modal__icon">&#127916;</div>
-    <h2 class="exit-modal__title">Before You Go</h2>
-    <p class="exit-modal__sub">Get our curated one-sheet featuring the 10 most pitch-ready projects, delivered directly to your inbox.</p>
+    <h2 class="exit-modal__title">Request Materials</h2>
+    <p class="exit-modal__sub">Request project-specific pitch materials through a confidential studio inquiry. We will follow up with the appropriate next step.</p>
     <div class="exit-modal__form">
-      <input type="email" class="exit-modal__input" id="exit-email" placeholder="your@studio.com" aria-label="Email address" />
-      <button class="exit-modal__submit" id="exit-submit">Send Me the One-Sheet</button>
+      <a class="exit-modal__submit" href="index.html#contact">Request Project Materials</a>
     </div>
     <button class="exit-modal__skip" id="exit-skip">No thanks, I&rsquo;ll keep browsing</button>
   </div>
@@ -2077,12 +2076,7 @@ document.addEventListener('mouseenter',()=>clearTimeout(exitTimeout));
 document.getElementById('exit-modal-close').addEventListener('click',closeExitModal);
 document.getElementById('exit-skip').addEventListener('click',closeExitModal);
 document.getElementById('exit-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('exit-overlay'))closeExitModal();});
-document.getElementById('exit-submit').addEventListener('click',()=>{
-  const email=document.getElementById('exit-email').value.trim();
-  if(!email||!email.includes('@')){document.getElementById('exit-email').focus();return;}
-  window.location.href=`mailto:nccaentertainment@gmail.com?subject=One-Sheet%20Request&body=Please%20send%20the%20NCCA%20Entertainment%20one-sheet%20to%20${encodeURIComponent(email)}`;
-  closeExitModal();
-});
+
 </script>
 </body>
 </html>
