@@ -424,6 +424,41 @@ ul{list-style:none}
 @media(max-width:1024px){.comparable-grid{grid-template-columns:1fr;gap:14px}}
 @media(max-width:480px){.result-gate-form{flex-direction:column}}
 
+
+/* ---- NCCA BUYER SHORTLIST ---- */
+.buyer-shortlist{padding:96px 32px 86px;background:linear-gradient(180deg,#0b0b0b 0%,#10100f 100%);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.buyer-shortlist::before{content:'BUYER\00a0 SHORTLIST';position:absolute;right:-1vw;top:26px;color:rgba(201,168,76,.04);font-family:var(--font-display);font-size:clamp(64px,13vw,188px);font-weight:700;letter-spacing:-.06em;line-height:.8;pointer-events:none;white-space:nowrap}
+.buyer-shortlist__inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.buyer-shortlist__head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.75fr);gap:64px;align-items:end;margin-bottom:36px}
+.buyer-shortlist__title{font-family:var(--font-display);font-size:clamp(32px,4.8vw,54px);font-weight:600;line-height:1.03;color:var(--white);max-width:690px;margin:10px 0 0}
+.buyer-shortlist__copy{font-size:14.5px;line-height:1.75;color:var(--text-dim);max-width:410px;margin-left:auto}
+.buyer-shortlist__copy strong{display:block;color:var(--gold);font-size:10px;line-height:1.55;letter-spacing:.12em;text-transform:uppercase;margin-top:16px;font-weight:600}
+.buyer-shortlist__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.shortlist-card{min-height:100%;background:var(--off-black);border:1px solid var(--border);display:flex;flex-direction:column;transition:border-color var(--transition),transform var(--transition),box-shadow var(--transition)}
+.shortlist-card:hover{border-color:var(--gold-border);transform:translateY(-5px);box-shadow:0 18px 42px rgba(0,0,0,.34)}
+.shortlist-card__art{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--dark-gray)}
+.shortlist-card__art img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease,filter .55s ease;filter:saturate(.86) contrast(1.04)}
+.shortlist-card:hover .shortlist-card__art img{transform:scale(1.045);filter:saturate(1) contrast(1.08)}
+.shortlist-card__number{position:absolute;top:14px;left:14px;padding:5px 8px;background:rgba(10,10,10,.88);border:1px solid rgba(232,228,220,.22);color:var(--gold);font-size:10px;letter-spacing:.13em;font-weight:600;text-transform:uppercase}
+.shortlist-card__status{position:absolute;bottom:13px;right:13px;padding:4px 8px;background:rgba(10,10,10,.9);border:1px solid var(--gold-border);color:var(--gold);font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.shortlist-card__body{padding:24px 24px 22px;display:flex;flex:1;flex-direction:column}
+.shortlist-card__meta{font-size:10px;color:var(--gold);letter-spacing:.13em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
+.shortlist-card__title{font-family:var(--font-display);font-size:31px;line-height:1.05;color:var(--white);margin:0 0 12px}
+.shortlist-card__logline{font-size:13.5px;color:var(--text-dim);line-height:1.68;margin:0 0 18px;flex:1}
+.shortlist-card__lens{border-top:1px solid var(--border);padding-top:13px;margin-top:auto;font-size:11px;color:var(--light-muted);letter-spacing:.035em;line-height:1.55}
+.shortlist-card__lens span{color:var(--gold);letter-spacing:.1em;font-size:9px;text-transform:uppercase;font-weight:600}
+.shortlist-card__actions{display:flex;gap:10px;align-items:center;margin-top:20px}
+.shortlist-card__link{display:inline-flex;align-items:center;gap:7px;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.03em;transition:gap var(--transition),color var(--transition)}
+.shortlist-card__link:hover{gap:11px;color:var(--gold-light)}
+.shortlist-card__discuss{font-size:11.5px;color:var(--text-dim);margin-left:auto;border-bottom:1px solid transparent;transition:color var(--transition),border-color var(--transition)}
+.shortlist-card__discuss:hover{color:var(--white);border-color:var(--gold-border)}
+.buyer-shortlist__footer{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:28px;margin-top:26px;border-top:1px solid var(--border)}
+.buyer-shortlist__footer p{max-width:710px;margin:0;color:var(--muted);font-size:12.5px;line-height:1.65}
+.buyer-shortlist__all{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.05em;white-space:nowrap}
+.buyer-shortlist__all:hover{color:var(--gold-light)}
+@media(max-width:1024px){.buyer-shortlist__head{grid-template-columns:1fr;gap:18px}.buyer-shortlist__copy{margin-left:0}.buyer-shortlist__grid{grid-template-columns:1fr 1fr}.shortlist-card:last-child{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}.shortlist-card:last-child .shortlist-card__art{aspect-ratio:auto;min-height:260px}}
+@media(max-width:640px){.buyer-shortlist{padding:66px 16px}.buyer-shortlist__grid{grid-template-columns:1fr}.shortlist-card:last-child{display:flex}.shortlist-card:last-child .shortlist-card__art{aspect-ratio:16/9;min-height:0}.buyer-shortlist__footer{align-items:flex-start;flex-direction:column}.buyer-shortlist__all{white-space:normal}.shortlist-card__title{font-size:28px}}
+
 </style>
 </head>
 <body>
@@ -581,7 +616,7 @@ ul{list-style:none}
     <div class="hero__inner">
       <p class="hero__eyebrow">Atlanta-Forward &bull; Culture-First &bull; Franchise-Minded</p>
       <h1 class="hero__title" id="hero-title">NCCA<br>ENTERTAINMENT</h1>
-      <div class="hero__value-prop" role="text">&#9670; Production-Ready IP Built for Platform Economics</div>
+      <div class="hero__value-prop" role="text">&#9670; Development-Ready Original IP</div>
       <p class="hero__subtitle">A boutique content studio delivering premium, culturally rich scripted series and films. Where America&rsquo;s soul meets global storytelling.</p>
       <div class="hero__stats" role="list" aria-label="Studio statistics">
         <div class="hero__stat" role="listitem"><div class="hero__stat-num">54</div><div class="hero__stat-label">Original Projects</div></div>
@@ -607,6 +642,53 @@ ul{list-style:none}
       </div>
     </div>
   </div>
+
+
+  <!-- BUYER SHORTLIST -->
+  <section class="buyer-shortlist" id="buyer-shortlist" aria-labelledby="buyer-shortlist-title">
+    <div class="buyer-shortlist__inner">
+      <div class="buyer-shortlist__head">
+        <div>
+          <p class="section-eyebrow">NCCA Buyer Shortlist</p>
+          <h2 class="buyer-shortlist__title" id="buyer-shortlist-title">Three distinct story engines. One studio point of view.</h2>
+        </div>
+        <p class="buyer-shortlist__copy">Start with the titles that best show the range of the NCCA slate, then move into the full archive when a lane calls for a deeper look.<strong>All titles are original IP in development. Confidential materials are approved title by title.</strong></p>
+      </div>
+      <div class="buyer-shortlist__grid">
+        <article class="shortlist-card">
+          <a class="shortlist-card__art" href="projects/final-walk.html" aria-label="View Final Walk Project Passport"><img src="images/final-walk-poster-a.png" alt="Final Walk key art" loading="lazy"><span class="shortlist-card__number">01 / Feature</span><span class="shortlist-card__status">In Development</span></a>
+          <div class="shortlist-card__body">
+            <p class="shortlist-card__meta">Action / Feature</p>
+            <h3 class="shortlist-card__title">Final Walk</h3>
+            <p class="shortlist-card__logline">A top model becomes an unwitting operative in a cross-border intelligence war, exposing an empire built on beauty and forcing her to decide how far she will go to bring it down.</p>
+            <p class="shortlist-card__lens"><span>Story lens</span><br>Image, access, and escalating danger inside an international action engine.</p>
+            <div class="shortlist-card__actions"><a class="shortlist-card__link" href="projects/final-walk.html">View Project Passport <span aria-hidden="true">→</span></a><a class="shortlist-card__discuss" href="#contact">Discuss title</a></div>
+          </div>
+        </article>
+        <article class="shortlist-card">
+          <a class="shortlist-card__art" href="projects/page-41.html" aria-label="View Page 41 Project Passport"><img src="images/page-41-poster.png" alt="Page 41 key art" loading="lazy"><span class="shortlist-card__number">02 / Limited Series</span><span class="shortlist-card__status">In Development</span></a>
+          <div class="shortlist-card__body">
+            <p class="shortlist-card__meta">Thriller / Espionage</p>
+            <h3 class="shortlist-card__title">Page 41</h3>
+            <p class="shortlist-card__logline">A visionary NATO treaty architect survives an ambush that kills the man she loves, only to discover that the mentor guiding her grief is editing her memories and remaking her into the conspiracy&rsquo;s instrument.</p>
+            <p class="shortlist-card__lens"><span>Story lens</span><br>Elegant statecraft, psychological control, and a repeatable conspiracy engine.</p>
+            <div class="shortlist-card__actions"><a class="shortlist-card__link" href="projects/page-41.html">View Project Passport <span aria-hidden="true">→</span></a><a class="shortlist-card__discuss" href="#contact">Discuss title</a></div>
+          </div>
+        </article>
+        <article class="shortlist-card">
+          <a class="shortlist-card__art" href="projects/the-influencers-last-post.html" aria-label="View The Influencer&rsquo;s Last Post Project Passport"><img src="images/influencers-last-post.png" alt="The Influencer&rsquo;s Last Post key art" loading="lazy"><span class="shortlist-card__number">03 / Television Movie</span><span class="shortlist-card__status">In Development</span></a>
+          <div class="shortlist-card__body">
+            <p class="shortlist-card__meta">Contemporary Noir / Television Movie</p>
+            <h3 class="shortlist-card__title">The Influencer&rsquo;s Last Post</h3>
+            <p class="shortlist-card__logline">A social media influencer&rsquo;s final post becomes the key to solving her own murder.</p>
+            <p class="shortlist-card__lens"><span>Story lens</span><br>Image, evidence, and the pressure of a public identity under investigation.</p>
+            <div class="shortlist-card__actions"><a class="shortlist-card__link" href="projects/the-influencers-last-post.html">View Project Passport <span aria-hidden="true">→</span></a><a class="shortlist-card__discuss" href="#contact">Discuss title</a></div>
+          </div>
+        </article>
+      </div>
+      <div class="buyer-shortlist__footer"><p>Need a different tone, format, or audience lane? The full NCCA archive remains available for discovery, while confidential development materials are handled through project-specific clearance.</p><a class="buyer-shortlist__all" href="slate.html">Explore all 54 original projects <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
 
   <!-- FILTER BAR -->
   <div class="filter-bar" id="filter-bar" role="search" aria-label="Filter projects">
@@ -658,8 +740,8 @@ ul{list-style:none}
   <section class="projects-section" aria-labelledby="projects-title">
     <div class="section-header">
       <p class="section-eyebrow">Portfolio</p>
-      <h2 class="section-title" id="projects-title">Featured Projects</h2>
-      <p class="section-desc">Our most market-ready projects with comprehensive pitch materials available.</p>
+      <h2 class="section-title" id="projects-title">Archive Preview</h2>
+      <p class="section-desc">A wider cross-section of the 54-title NCCA archive. Confidential development materials are available only through project-specific clearance.</p>
     </div>
     <div class="project-grid" id="project-grid">
 
@@ -794,7 +876,7 @@ ul{list-style:none}
         <div class="pillar">
           <div class="pillar__icon">&#129517;</div>
           <h3 class="pillar__title">Our Approach</h3>
-          <p class="pillar__desc">Built for Story. Designed for Market. Every project ships with clear target buyers, comprehensive pitch materials, and production readiness from day one.</p>
+          <p class="pillar__desc">Built for Story. Designed for Market. Every project is developed with clear audience, format, and buyer-conversation framing from day one.</p>
         </div>
         <div class="pillar">
           <div class="pillar__icon">&#128205;</div>
