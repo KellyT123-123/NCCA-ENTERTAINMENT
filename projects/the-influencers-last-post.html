@@ -1,521 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>The Influencer's Last Post — NCCA Entertainment</title>
-  
-  <meta name="description" content="A social media influencer's final post becomes the key to solving her own murder."/>
-  <meta property="og:title" content="The Influencer's Last Post — NCCA Entertainment"/>
-  <meta property="og:description" content="A social media influencer's final post becomes the key to solving her own murder."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="../images/influencers-last-post.png"/>
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A social media influencer’s final post becomes the key to solving her own murder.">
+  <meta name="theme-color" content="#080908">
+  <link rel="canonical" href="https://nccaentertainment.com/projects/the-influencers-last-post.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Influencer’s Last Post — NCCA Entertainment">
+  <meta property="og:description" content="A social media influencer’s final post becomes the key to solving her own murder.">
+  <meta property="og:image" content="https://nccaentertainment.com/images/influencers-last-post.png">
+  <title>The Influencer’s Last Post — Project Passport | NCCA Entertainment</title>
   <link rel="icon" href="../favicon.ico" type="image/x-icon">
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-
-  <style>
-    :root{
-      --brand:#D48B3C;
-      --brand-hover:#E3A463;
-      --brand-ink:#F2E6D0;
-      --brand-bg:#0A0A0A;
-      --brand-muted:#B9A98F;
-      --brand-rule:rgba(255,255,255,.10);
-    }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:var(--brand-bg);
-      color:#f5f3ee;
-      line-height:1.6;
-    }
-
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline;color:var(--brand-hover)}
-
-    /* Sticky Header */
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:2000;
-      background:rgba(11,11,12,.92);
-      backdrop-filter:blur(8px);
-      border-bottom:1px solid rgba(255,255,255,.08)
-    }
-    .nav-wrap{
-      max-width:1400px;
-      margin:0 auto;
-      padding:.75rem 24px;
-      display:flex;
-      align-items:center;
-      gap:1rem
-    }
-    .brand{
-      font-weight:900;
-      letter-spacing:.5px;
-      padding:.25rem .6rem;
-      border-radius:8px;
-      background:linear-gradient(180deg,#2a2c31,#17181b);
-      color:#ffd166;
-      text-decoration:none;
-      font-size:1rem;
-      line-height:1;
-    }
-
-    .nav{margin-left:auto}
-    .nav-list{
-      list-style:none;
-      margin:0;
-      padding:0;
-      display:flex;
-      gap:.5rem;
-      align-items:center
-    }
-    .nav-item>a{
-      color:#e7e7ea;
-      text-decoration:none;
-      padding:.5rem .7rem;
-      border-radius:8px;
-      font-weight:700;
-      background:none;
-      border:1px solid transparent;
-      font-size:.95rem;
-      line-height:1.2;
-    }
-    .nav-item>a:hover{
-      background:#191b20;
-      border-color:#2a2c31;
-      text-decoration:none;
-    }
-    .nav-item.cta>a{
-      background:var(--brand);
-      color:#111;
-      border-color:var(--brand);
-    }
-    .nav-item.cta>a:hover{
-      background:var(--brand-hover);
-      border-color:var(--brand-hover);
-    }
-
-    .container{max-width:1200px;margin:0 auto;padding:0 24px}
-    
-    .breadcrumb{
-      padding:1.5rem 0;
-      font-size:.9rem;
-      color:var(--brand-muted);
-    }
-    .breadcrumb a{
-      color:var(--brand-muted);
-    }
-    .breadcrumb a:hover{
-      color:var(--brand);
-    }
-    .breadcrumb span{
-      margin:0 .5rem;
-    }
-
-    .project-hero{
-      position:relative;
-      min-height:60vh;
-      display:flex;
-      align-items:center;
-      background:#000;
-      overflow:hidden;
-      margin-bottom:3rem;
-    }
-    .project-hero-bg{
-      position:absolute;
-      inset:0;
-      background-size:cover;
-      background-position:center;
-      opacity:.3;
-      filter:blur(8px);
-    }
-    .project-hero-content{
-      position:relative;
-      z-index:1;
-      max-width:1200px;
-      margin:0 auto;
-      padding:3rem 24px;
-      width:100%;
-    }
-    .project-hero h1{
-      font-size:clamp(2.5rem,6vw,4.5rem);
-      font-weight:900;
-      margin-bottom:1rem;
-      letter-spacing:-.02em;
-      line-height:1.1;
-    }
-    .project-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      margin-bottom:1.5rem;
-      align-items:center;
-    }
-    .badge{
-      background:rgba(212,139,60,.18);
-      color:var(--brand);
-      padding:.35rem .8rem;
-      border-radius:999px;
-      font-size:.9rem;
-      font-weight:700;
-      border:1px solid rgba(212,139,60,.3)
-    }
-    .platform-logos{
-      display:flex;
-      gap:.5rem;
-      align-items:center;
-      font-size:.85rem;
-      font-weight:700;
-      color:#fff;
-      padding:.35rem .8rem;
-      background:rgba(255,255,255,.08);
-      border-radius:999px;
-    }
-    .platform-logo{
-      padding:0 .25rem;
-    }
-
-    .project-description{
-      font-size:1.3rem;
-      line-height:1.6;
-      color:var(--brand-ink);
-      max-width:900px;
-    }
-
-    .section{
-      padding:3rem 0;
-    }
-    .section h2{
-      font-size:clamp(1.8rem,4vw,2.5rem);
-      font-weight:900;
-      margin-bottom:1.5rem;
-      letter-spacing:-.02em;
-    }
-
-    .info-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:1.5rem;
-      margin-bottom:2rem;
-    }
-    .info-card{
-      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
-      border-radius:16px;
-      padding:1.5rem;
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .info-card h3{
-      font-size:1rem;
-      color:var(--brand-muted);
-      margin-bottom:.5rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.5px;
-    }
-    .info-card p{
-      font-size:1.1rem;
-      color:#fff;
-      font-weight:600;
-    }
-
-    .video-container{
-      position:relative;
-      width:100%;
-      max-width:900px;
-      margin:2rem auto;
-      border-radius:16px;
-      overflow:hidden;
-      box-shadow:0 20px 60px rgba(0,0,0,.4);
-    }
-    .video-container video{
-      width:100%;
-      display:block;
-    }
-
-    .materials-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:1rem;
-      margin-top:1.5rem;
-    }
-    .material-card{
-      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
-      border-radius:12px;
-      padding:1.5rem;
-      border:1px solid rgba(255,255,255,.08);
-      transition:all .3s ease;
-      text-align:center;
-    }
-    .material-card:hover{
-      transform:translateY(-4px);
-      border-color:rgba(212,139,60,.28);
-    }
-    .material-card h3{
-      font-size:1.1rem;
-      margin-bottom:.75rem;
-      color:#fff;
-    }
-    .material-card p{
-      font-size:.9rem;
-      color:var(--brand-muted);
-      margin-bottom:1rem;
-    }
-    .btn{
-      display:inline-block;
-      background:var(--brand);
-      color:#111;
-      padding:.8rem 1.5rem;
-      border-radius:999px;
-      font-weight:800;
-      font-size:.95rem;
-      transition:all .3s ease;
-      text-transform:uppercase;
-      letter-spacing:.05em;
-      text-decoration:none;
-    }
-    .btn:hover{
-      background:var(--brand-hover);
-      text-decoration:none;
-      transform:translateY(-2px);
-    }
-    .btn.secondary{
-      background:transparent;
-      color:#fff;
-      border:2px solid rgba(255,255,255,.3)
-    }
-    .btn.secondary:hover{
-      background:rgba(255,255,255,.1);
-      border-color:rgba(255,255,255,.5)
-    }
-
-    .related-projects{
-      background:linear-gradient(145deg,#1a1a1f,#0f0f13);
-      border-radius:16px;
-      padding:3rem 2rem;
-      margin:3rem 0;
-    }
-    .related-projects h2{
-      text-align:center;
-      margin-bottom:2rem;
-    }
-    .related-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:1.5rem;
-    }
-    .related-card{
-      background:#0f0f13;
-      border-radius:12px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
-      transition:all .3s ease;
-      text-decoration:none;
-      display:block;
-    }
-    .related-card:hover{
-      transform:translateY(-4px);
-      border-color:rgba(212,139,60,.28);
-      text-decoration:none;
-    }
-    .related-card-img{
-      width:100%;
-      aspect-ratio:16/9;
-      background-size:cover;
-      background-position:center;
-    }
-    .related-card-body{
-      padding:1.25rem;
-    }
-    .related-card h3{
-      font-size:1.2rem;
-      color:#fff;
-      margin-bottom:.5rem;
-    }
-    .related-card p{
-      font-size:.9rem;
-      color:var(--brand-muted);
-    }
-
-    footer{
-      border-top:1px solid var(--brand-rule);
-      background:#0a0a0a;
-      color:#999;
-      padding:3rem 24px;
-      font-size:.9rem;
-      text-align:center;
-    }
-
-    @media(max-width:900px){
-      .nav{display:none}
-      .project-hero{min-height:50vh}
-      .info-grid{grid-template-columns:1fr}
-    }
-  
-    /* Back Button */
-    .back-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background: rgba(212, 139, 60, 0.1);
-      border: 1px solid var(--brand);
-      border-radius: 8px;
-      color: var(--brand);
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      margin-bottom: 1.5rem;
-    }
-    .back-button:hover {
-      background: var(--brand);
-      color: #0A0A0A;
-      text-decoration: none;
-      transform: translateX(-4px);
-    }
-    .back-button svg {
-      width: 20px;
-      height: 20px;
-    }
-
-  </style>
-
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XYBV714K8T"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XYBV714K8T');
-</script>
+  <link rel="stylesheet" href="project-passport.css">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XYBV714K8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XYBV714K8T');
+  </script>
 </head>
-
-<body>
-<header class="site-header" role="banner">
-  <div class="nav-wrap">
-    <a class="brand" href="../index.html" aria-label="NCCA Home">NCCA</a>
-    <nav class="nav" role="navigation" aria-label="Main">
-      <ul class="nav-list">
-        <li class="nav-item"><a href="../slate.html">Projects</a></li>
-        <li class="nav-item"><a href="../index.html#about">About</a></li>
-        <li class="nav-item"><a href="../music.html">Music</a></li>
-        <li class="nav-item"><a href="../index.html#contact">Contact</a></li>
-        <li class="nav-item cta"><a href="../slate.html">For Professionals</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <div class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="../index.html">Home</a>
-      <span>›</span>
-      <a href="../slate.html">Projects</a>
-      <span>›</span>
-      <span>The Influencer's Last Post</span>
-    </nav>
-
-    <a href="../slate.html" class="back-button">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-      </svg>
-      Back to Projects
-    </a>
-
-  </div>
-
-  <section class="project-hero">
-    <div class="project-hero-bg" style="background-image:url('../images/influencers-last-post.png')"></div>
-    <div class="project-hero-content">
-      <h1>The Influencer's Last Post</h1>
-      <div class="project-meta">
-        <span class="badge">Film Noir</span>
-        <span class="badge">MOW</span>
-        <span class="badge">Women 25–40 | Gen Z</span>
-        
-      </div>
-      <p class="project-description">A social media influencer's final post becomes the key to solving her own murder.</p>
+<body style="--passport-art: url('../images/influencers-last-post.png'); --art-position: center center; --accent: #D88A55; --accent-rgb: 216, 138, 85;">
+  <a class="skip-link" href="#passport-main">Skip to project passport</a>
+  <header class="site-header" role="banner">
+    <div class="nav-wrap">
+      <a class="brand-lockup" href="../index.html" aria-label="NCCA Entertainment home"><span class="brand-mark">NCCA</span> Entertainment</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="../slate.html">Slate</a></li>
+          <li><a href="../index.html#about">Studio</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a class="nav-portal" href="../slate.html?status=pitch-ready">Pitch-Ready</a></li>
+        </ul>
+      </nav>
     </div>
-  </section>
-
-  <div class="container">
-    <section class="section">
-      <h2>Project Details</h2>
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>Genre</h3>
-          <p>Film Noir</p>
-        </div>
-        <div class="info-card">
-          <h3>Format</h3>
-          <p>MOW</p>
-        </div>
-        <div class="info-card">
-          <h3>Target Audience</h3>
-          <p>Women 25–40 | Gen Z</p>
-        </div>
-        
-      </div>
-    </section>
-
-    
-    <section class="section">
-      <h2>Watch Trailer</h2>
-      <div class="video-container">
-        <video controls>
-          <source src="../assets/influencers-last-post-teaser.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </section>
-    
-
-    <section class="section">
-      <h2>Available Materials</h2>
-      <div class="materials-grid">
-        
-        <div class="material-card">
-          <h3>📊 Pitch Deck</h3>
-          <p>Comprehensive presentation with market analysis and creative vision</p>
-          <a href="../pitch-decks/influencers-last-post-pitch-deck.pdf" class="btn" target="_blank" rel="noopener">Download Pitch Deck</a>
-        </div>
-        
-        
-        <div class="material-card">
-          <h3>📄 One-Sheet</h3>
-          <p>Quick reference guide with key project information</p>
-          <a href="../one-sheets/influencers-last-post-one-sheet.pdf" class="btn" target="_blank" rel="noopener">Download One-Sheet</a>
-        </div>
-        
-        
-        <div class="material-card">
-          <h3>📝 Treatment</h3>
-          <p>Detailed narrative breakdown and story structure</p>
-          <a href="../assets/influencers-last-post-treatment.pdf" class="btn" target="_blank" rel="noopener">Download Treatment</a>
-        </div>
-        
-      </div>
-    </section>
-
-    <section class="section" style="text-align:center;padding:3rem 0;">
-      <h2>Interested in This Project?</h2>
-      <p style="font-size:1.1rem;color:var(--brand-muted);margin:1rem 0 2rem;">Contact us for script access, packaging conversations, or additional materials.</p>
-      <a href="../index.html#contact" class="btn">Contact Us About This Project</a>
-    </section>
+  </header>
+  <div class="breadcrumb-wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">NCCA</a><span class="sep">/</span><a href="../slate.html">Project Slate</a><span class="sep">/</span><span>The Influencer’s Last Post</span>
+    </nav>
   </div>
-</main>
+  <main id="passport-main">
+    <section class="passport-hero" aria-labelledby="passport-title">
+      <div class="grain" aria-hidden="true"></div>
+      <div class="hero-frame">
+        <div class="hero-copy">
+          <p class="kicker">NCCA Development File // 03</p>
+          <h1 class="long-title" id="passport-title">The Influencer’s Last Post</h1>
+          <div class="hero-meta" aria-label="Project summary">
+            <span class="status">In development</span><span>Film Noir</span><span>Television Movie</span>
+          </div>
+          <p class="hero-logline">A social media influencer’s final post becomes the key to solving her own murder.</p>
+          <div class="hero-actions">
+            <a class="button" href="#materials">Request confidential materials</a>
+            <a class="button ghost" href="../index.html#contact">Start a conversation</a>
+          </div>
+        </div>
+        <aside class="dossier-stamp" aria-label="Project file status">
+          <p class="dossier-label">Project Passport</p>
+          <p class="dossier-value">03 / Television Movie File</p>
+          <p class="dossier-note">Original IP<br>Confidential materials<br>Available by request</p>
+        </aside>
+      </div>
+    </section>
 
-<footer>
-  <p>&copy; 2025 NCCA Entertainment. All rights reserved.</p>
-  <p style="margin-top:.5rem">Atlanta, GA | <a href="mailto:contact@nccaentertainment.com">contact@nccaentertainment.com</a> | (910) 262-9307</p>
-</footer>
+    <div class="passport-main">
+      <section class="dossier-rail" aria-label="Project at a glance">
+        <article class="dossier-cell"><p class="dossier-label">Genre</p><p>Film Noir</p></article>
+        <article class="dossier-cell"><p class="dossier-label">Format</p><p>Television Movie</p></article>
+        <article class="dossier-cell"><p class="dossier-label">Audience</p><p class="small">Women 25–40 / Gen Z</p></article>
+        <article class="dossier-cell"><p class="dossier-label">Development Lens</p><p class="small">Platform and television-movie conversation</p></article>
+      </section>
 
+      <section class="passport-section" aria-labelledby="story-heading">
+        <div class="manifesto">
+          <div>
+            <p class="section-label">The story engine</p>
+            <h2 id="story-heading">Her perfect image was shattered by murder.</h2>
+          </div>
+          <div>
+            <p class="section-copy"><strong>The Influencer’s Last Post</strong> is an original NCCA project in development. When a social media influencer’s final post becomes the key to solving her own murder, the story behind the screen becomes the only way to separate performance from evidence.</p>
+            <p class="manifesto-quote">“The algorithm knows who did it before the detective does.”</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="passport-section" aria-labelledby="passport-structure-heading">
+        <div class="section-heading">
+          <p class="section-label">Passport structure</p>
+          <div><h2 id="passport-structure-heading">The elements that hold the title together.</h2></div>
+        </div>
+        <div class="passport-grid" style="margin-top:42px;"><article class="passport-card">
+  <p class="card-index">01 / Engine</p>
+  <h3>A final post becomes evidence</h3>
+  <p>The central mystery begins where the public story ends: inside the digital record she left behind.</p>
+</article>
+<article class="passport-card">
+  <p class="card-index">02 / Tension</p>
+  <h3>Image versus truth</h3>
+  <p>A polished social identity fractures under the pressure of a murder investigation.</p>
+</article>
+<article class="passport-card">
+  <p class="card-index">03 / Tone</p>
+  <h3>Contemporary noir</h3>
+  <p>A dark, current mystery built around visibility, performance, and the danger of being watched.</p>
+</article>
+<article class="passport-card">
+  <p class="card-index">04 / Format</p>
+  <h3>A contained mystery</h3>
+  <p>A television-movie structure with a direct central question and an emotionally immediate hook.</p>
+</article></div>
+      </section>
+
+      <section class="passport-section" aria-labelledby="teaser-heading">
+  <div class="section-heading">
+    <p class="section-label">Development teaser</p>
+    <div>
+      <h2 id="teaser-heading">A visual introduction to the story world.</h2>
+      <p class="section-copy">This public development teaser is a pitch material, not a finished production or title screener.</p>
+    </div>
+  </div>
+  <div class="teaser-shell">
+    <div class="teaser-head">
+      <p class="section-label">NCCA / public pitch material</p>
+      <p class="teaser-note">Development teaser · sound optional</p>
+    </div>
+    <video controls preload="metadata" poster="../images/influencers-last-post.png">
+      <source src="../assets/influencers-last-post-teaser.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+
+      <section class="passport-section" id="materials" aria-labelledby="materials-heading">
+        <div class="material-wrap">
+          <div>
+            <p class="section-label">Controlled access</p>
+            <h2 id="materials-heading" style="margin:12px 0 18px;color:var(--paper);font-family:var(--display);font-size:clamp(2.2rem,4vw,3.7rem);font-weight:500;letter-spacing:-.04em;line-height:.98;">Confidential development materials.</h2>
+            <p class="section-copy" style="margin:0;">The material package is presented project-by-project for approved development conversations. Files are not publicly distributed from this page.</p>
+            <div class="material-ledger" style="margin-top:28px;"><article class="material-row">
+  <div class="material-icon" aria-hidden="true">01</div>
+  <div>
+    <p class="material-name">Pitch Deck</p>
+    <p class="material-note">Creative vision and story framing for a confidential development conversation.</p>
+  </div>
+  <p class="material-state">Confidential<br>by request</p>
+</article>
+<article class="material-row">
+  <div class="material-icon" aria-hidden="true">02</div>
+  <div>
+    <p class="material-name">Studio One-Pager</p>
+    <p class="material-note">A concise project reference for an initial review.</p>
+  </div>
+  <p class="material-state">Confidential<br>by request</p>
+</article>
+<article class="material-row">
+  <div class="material-icon" aria-hidden="true">03</div>
+  <div>
+    <p class="material-name">Treatment</p>
+    <p class="material-note">Narrative and story-structure material for approved review.</p>
+  </div>
+  <p class="material-state">Confidential<br>by request</p>
+</article></div>
+          </div>
+          <aside class="access-panel">
+            <p class="section-label">NCCA partner access</p>
+            <h3>Bring the right materials into the room.</h3>
+            <p>Request the project package for a focused conversation about the story, format, and available development materials.</p>
+            <a class="button" href="../index.html#contact">Request The Influencer’s Last Post materials</a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="next-step" aria-labelledby="next-step-heading">
+        <p class="section-label">Next step</p>
+        <h2 id="next-step-heading">Start with the title. Build the conversation from there.</h2>
+        <p>For confidential materials, script access, or a packaging discussion, contact NCCA Entertainment directly.</p>
+        <div class="hero-actions"><a class="button" href="../index.html#contact">Discuss The Influencer’s Last Post</a><a class="button ghost" href="../slate.html">Return to the project slate</a></div>
+      </section>
+    </div>
+  </main>
+  <footer class="passport-footer">
+    <div class="footer-inner"><p><span class="footer-label">NCCA Entertainment</span><br>Original IP in development.</p><p>Atlanta, GA&nbsp;&nbsp;·&nbsp;&nbsp;<a href="mailto:contact@nccaentertainment.com">contact@nccaentertainment.com</a>&nbsp;&nbsp;·&nbsp;&nbsp;(910) 262-9307</p></div>
+  </footer>
 </body>
 </html>
