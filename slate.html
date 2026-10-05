@@ -365,7 +365,13 @@
     @media (max-width:480px) {
       .modal__meta-grid { grid-template-columns: 1fr; }
     }
-  </style>
+
+    .card__image-wrap--ledger{background:linear-gradient(135deg,#17130e,#090909);display:grid;place-items:center;min-height:220px;border-bottom:1px solid rgba(212,139,60,.28)}
+    .ledger-art{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px;padding:28px;text-align:center;color:#f5f3ee;background:radial-gradient(circle at 50% 20%,rgba(212,139,60,.18),transparent 48%)}
+    .ledger-art span{color:#d48b3c;font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px}
+    .ledger-art strong{font-family:Georgia,serif;font-size:clamp(1.55rem,2.7vw,2.2rem);line-height:1.05;font-weight:500;max-width:18ch}
+    .ledger-art small{color:#b9a98f;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-top:16px}
+</style>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XYBV714K8T"></script>
@@ -385,7 +391,7 @@
   <div class="utility-bar__left">
     <div class="utility-pulse">
       <span class="pulse-dot" aria-hidden="true"></span>
-      54 Original Projects
+      63 Original Projects
     </div>
     <a href="tel:+19102629307" class="util-hide-mobile">&#128222; (910) 262-9307</a>
     <a href="mailto:contact@nccaentertainment.com" class="util-hide-mobile" aria-label="Email NCCA Entertainment">&#9993;&#65039; contact@nccaentertainment.com</a>
@@ -431,10 +437,10 @@
           <a href="slate.html?status=pitch-ready">&#11088; Pitch-Ready</a>
           <a href="slate.html?status=script-complete">&#128221; Script Complete</a>
           <a href="slate.html?status=packaging">&#128230; Packaging Stage</a>
-          <a href="slate.html">&#128203; All 54 Projects</a>
+          <a href="slate.html">&#128203; All 63 Projects</a>
         </div>
         <div class="mega-view-all">
-          <a href="slate.html">Explore All 54 Projects &rarr;</a>
+          <a href="slate.html">Explore All 63 Projects &rarr;</a>
         </div>
       </div>
     </li>
@@ -483,7 +489,7 @@
     <li><a href="index.html">&#127968; Home</a></li>
     <li><a href="index.html#about">&#8505;&#65039; About</a></li>
     <li>
-      <button id="drawer-projects-btn" aria-expanded="false">&#127916; Projects (54) &#9660;</button>
+      <button id="drawer-projects-btn" aria-expanded="false">&#127916; Projects (63) &#9660;</button>
       <div class="drawer-accordion__content" id="drawer-projects-content">
         <div class="drawer-accordion__section">
           <div class="drawer-accordion__section-label">By Platform</div>
@@ -519,7 +525,7 @@
   <div class="slate-header">
     <p class="slate-header__eyebrow">NCCA Entertainment Portfolio</p>
     <h1 class="slate-header__title">Complete Project Slate</h1>
-    <p class="slate-header__desc">54 original scripted projects designed for premium platforms. Filter by platform, format, genre, or development status.</p>
+    <p class="slate-header__desc">63 original scripted projects designed for premium platforms. Filter by platform, format, genre, or development status.</p>
   </div>
 
   <!-- FILTER BAR -->
@@ -1618,6 +1624,171 @@
         </div>
       </article>
 
+
+      <!-- ==================== NEWLY ADDED PROJECTS ==================== -->
+
+      <article class="project-card" data-title="Eminent Domain" data-platform="tv-one,bet,own,lifetime" data-format="feature" data-genre="psychological-thriller-drama" data-status="development" data-priority="3">
+        <div class="card__image-wrap card__image-wrap--ledger">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-new-1" />
+            <label class="compare-label" for="cmp-new-1" title="Add to compare">&#10003;</label>
+          </div>
+          <div class="ledger-art"><span>NCCA</span><strong>Eminent Domain</strong><small>Original project</small></div>
+        </div>
+        <div class="card__body">
+          <div class="card__meta"><span class="card__genre">Psychological Thriller | Drama</span><span class="card__meta-sep"></span><span class="card__format">Feature</span></div>
+          <h2 class="card__title">Eminent Domain</h2>
+          <p class="card__synopsis">A photographer documenting a historic Black Atlanta neighborhood before it is erased by redevelopment learns the family business behind the buyouts is tied to the man who raised her.</p>
+          <div class="card__platforms"><span class="platform-tag">TV One</span><span class="platform-tag">BET+</span><span class="platform-tag">OWN</span><span class="platform-tag">Lifetime</span></div>
+          <div class="card__materials"><span class="material-tag">&#128196; One-Sheet</span></div>
+          <div class="card__actions"><button class="btn-quick-view" onclick="openModal(this)">Quick View</button><a href="projects/eminent-domain.html" class="btn-full-details">Full Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="project-card" data-title="Fort Silence" data-platform="premium-streaming,specialty-feature" data-format="feature" data-genre="military-investigative-thriller" data-status="development" data-priority="3">
+        <div class="card__image-wrap card__image-wrap--ledger">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-new-2" />
+            <label class="compare-label" for="cmp-new-2" title="Add to compare">&#10003;</label>
+          </div>
+          <div class="ledger-art"><span>NCCA</span><strong>Fort Silence</strong><small>Original project</small></div>
+        </div>
+        <div class="card__body">
+          <div class="card__meta"><span class="card__genre">Military Investigative Thriller</span><span class="card__meta-sep"></span><span class="card__format">Feature</span></div>
+          <h2 class="card__title">Fort Silence</h2>
+          <p class="card__synopsis">When a young soldier dies at Fort Stewart, CID agent Jordan Hayes finds the hidden experiment that killed her father twenty years earlier and must defy the commander who raised her before another private becomes a closed case.</p>
+          <div class="card__platforms"><span class="platform-tag">Premium Streaming</span><span class="platform-tag">Specialty Feature</span></div>
+          <div class="card__materials"><span class="material-tag">&#128202; Pitch Deck</span></div>
+          <div class="card__actions"><button class="btn-quick-view" onclick="openModal(this)">Quick View</button><a href="projects/fort-silence.html" class="btn-full-details">Full Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="project-card" data-title="Last Exit on 285" data-platform="bet" data-format="feature" data-genre="action-thriller" data-status="development" data-priority="3">
+        <div class="card__image-wrap card__image-wrap--ledger">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-new-3" />
+            <label class="compare-label" for="cmp-new-3" title="Add to compare">&#10003;</label>
+          </div>
+          <div class="ledger-art"><span>NCCA</span><strong>Last Exit on 285</strong><small>Original project</small></div>
+        </div>
+        <div class="card__body">
+          <div class="card__meta"><span class="card__genre">Action Thriller</span><span class="card__meta-sep"></span><span class="card__format">Feature</span></div>
+          <h2 class="card__title">Last Exit on 285</h2>
+          <p class="card__synopsis">An ex-Army MP driving Atlanta’s Perimeter for rideshare money picks up a bookkeeper fleeing a trafficking ring. When the man running it kidnaps her daughter, she must confront the trauma that ended her military career and get them out before dawn.</p>
+          <div class="card__platforms"><span class="platform-tag">BET+</span></div>
+          <div class="card__materials"><span class="material-tag">&#128202; Pitch Deck</span></div>
+          <div class="card__actions"><button class="btn-quick-view" onclick="openModal(this)">Quick View</button><a href="projects/last-exit-on-285.html" class="btn-full-details">Full Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="project-card" data-title="RSVP Clause" data-platform="netflix" data-format="feature" data-genre="romantic-comedy" data-status="development" data-priority="3">
+        <div class="card__image-wrap card__image-wrap--ledger">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-new-4" />
+            <label class="compare-label" for="cmp-new-4" title="Add to compare">&#10003;</label>
+          </div>
+          <div class="ledger-art"><span>NCCA</span><strong>RSVP Clause</strong><small>Original project</small></div>
+        </div>
+        <div class="card__body">
+          <div class="card__meta"><span class="card__genre">Romantic Comedy</span><span class="card__meta-sep"></span><span class="card__format">Feature</span></div>
+          <h2 class="card__title">RSVP Clause</h2>
+          <p class="card__synopsis">To survive planning her ex-fiancé’s wedding and her family’s relentless matchmaking, a meticulous Chicago wedding planner signs a no-love pact with a commitment-averse designer, only to find their fake dates becoming real.</p>
+          <div class="card__platforms"><span class="platform-tag">Netflix</span></div>
+          <div class="card__materials"><span class="material-tag">&#128202; Pitch Deck</span><span class="material-tag">&#128196; One-Sheet</span></div>
+          <div class="card__actions"><button class="btn-quick-view" onclick="openModal(this)">Quick View</button><a href="projects/rsvp-clause.html" class="btn-full-details">Full Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="project-card" data-title="The 13th Passenger" data-platform="netflix" data-format="feature" data-genre="techno-thriller" data-status="development" data-priority="3">
+        <div class="card__image-wrap">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-new-5" />
+            <label class="compare-label" for="cmp-new-5" title="Add to compare">&#10003;</label>
+          </div>
+          <img src="images/the-13th-passenger.png" alt="The 13th Passenger" loading="lazy" />
+        </div>
+        <div class="card__body">
+          <div class="card__meta"><span class="card__genre">Techno-Thriller</span><span class="card__meta-sep"></span><span class="card__format">Feature</span></div>
+          <h2 class="card__title">The 13th Passenger</h2>
+          <p class="card__synopsis">After a passenger dies aboard an international flight and is erased from its digital manifest, a guilt-haunted accident investigator must expose a private intelligence contractor before everyone trapped inside a remote French airport is rewritten out of existence.</p>
+          <div class="card__platforms"><span class="platform-tag">Netflix</span></div>
+          <div class="card__materials"><span class="material-tag">&#128202; Pitch Deck</span></div>
+          <div class="card__actions"><button class="btn-quick-view" onclick="openModal(this)">Quick View</button><a href="projects/the-13th-passenger.html" class="btn-full-details">Full Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="project-card" data-title="The Cookout Confession" data-platform="bet,hbo,hulu" data-format="feature" data-genre="ensemble-dramedy" data-status="development" data-priority="3">
+        <div class="card__image-wrap card__image-wrap--ledger">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-new-6" />
+            <label class="compare-label" for="cmp-new-6" title="Add to compare">&#10003;</label>
+          </div>
+          <div class="ledger-art"><span>NCCA</span><strong>The Cookout Confession</strong><small>Original project</small></div>
+        </div>
+        <div class="card__body">
+          <div class="card__meta"><span class="card__genre">Ensemble Dramedy</span><span class="card__meta-sep"></span><span class="card__format">Feature</span></div>
+          <h2 class="card__title">The Cookout Confession</h2>
+          <p class="card__synopsis">On the day she plans to end her marriage in front of her oldest friends, a woman’s hunt for her husband’s mistress forces five women to confess the secrets they have been keeping from each other before the sun goes down.</p>
+          <div class="card__platforms"><span class="platform-tag">BET+</span><span class="platform-tag">HBO</span><span class="platform-tag">Hulu</span></div>
+          <div class="card__materials"><span class="material-tag">&#128196; One-Sheet</span></div>
+          <div class="card__actions"><button class="btn-quick-view" onclick="openModal(this)">Quick View</button><a href="projects/the-cookout-confession.html" class="btn-full-details">Full Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="project-card" data-title="The Layover" data-platform="tv-one,bet" data-format="mow" data-genre="locked-room-suspense-thriller" data-status="development" data-priority="3">
+        <div class="card__image-wrap card__image-wrap--ledger">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-new-7" />
+            <label class="compare-label" for="cmp-new-7" title="Add to compare">&#10003;</label>
+          </div>
+          <div class="ledger-art"><span>NCCA</span><strong>The Layover</strong><small>Original project</small></div>
+        </div>
+        <div class="card__body">
+          <div class="card__meta"><span class="card__genre">Locked-Room Suspense Thriller</span><span class="card__meta-sep"></span><span class="card__format">MOW</span></div>
+          <h2 class="card__title">The Layover</h2>
+          <p class="card__synopsis">During a historic Atlanta ice storm, five Black women trapped beneath the airport turn on one another when a federal witness’s deadly secret surfaces and a carbon monoxide leak leaves them forty-five minutes to decide who deserves to escape.</p>
+          <div class="card__platforms"><span class="platform-tag">TV One</span><span class="platform-tag">BET+</span></div>
+          <div class="card__materials"><span class="material-tag">&#128202; Pitch Deck</span><span class="material-tag">&#128196; One-Sheet</span></div>
+          <div class="card__actions"><button class="btn-quick-view" onclick="openModal(this)">Quick View</button><a href="projects/the-layover.html" class="btn-full-details">Full Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="project-card" data-title="The Perfect Assistant" data-platform="bet,lifetime,tv-one,allblk,tubi" data-format="feature" data-genre="psychological-thriller" data-status="development" data-priority="3">
+        <div class="card__image-wrap card__image-wrap--ledger">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-new-8" />
+            <label class="compare-label" for="cmp-new-8" title="Add to compare">&#10003;</label>
+          </div>
+          <div class="ledger-art"><span>NCCA</span><strong>The Perfect Assistant</strong><small>Original project</small></div>
+        </div>
+        <div class="card__body">
+          <div class="card__meta"><span class="card__genre">Psychological Thriller</span><span class="card__meta-sep"></span><span class="card__format">Feature</span></div>
+          <h2 class="card__title">The Perfect Assistant</h2>
+          <p class="card__synopsis">When an Atlanta fashion founder hires an assistant who anticipates her every need, the young woman’s growing access exposes a secret tied to her late father and forces the founder to confront the family history she has spent her life avoiding.</p>
+          <div class="card__platforms"><span class="platform-tag">BET+</span><span class="platform-tag">Lifetime</span><span class="platform-tag">TV One</span><span class="platform-tag">ALLBLK</span><span class="platform-tag">Tubi</span></div>
+          <div class="card__materials"><span class="material-tag">&#128202; Pitch Deck</span></div>
+          <div class="card__actions"><button class="btn-quick-view" onclick="openModal(this)">Quick View</button><a href="projects/the-perfect-assistant.html" class="btn-full-details">Full Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="project-card" data-title="Standby" data-platform="lifetime,tubi,tv-one" data-format="feature" data-genre="romantic-comedy" data-status="development" data-priority="3">
+        <div class="card__image-wrap card__image-wrap--ledger">
+          <div class="compare-checkbox-wrap">
+            <input type="checkbox" class="compare-checkbox" id="cmp-new-9" />
+            <label class="compare-label" for="cmp-new-9" title="Add to compare">&#10003;</label>
+          </div>
+          <div class="ledger-art"><span>NCCA</span><strong>Standby</strong><small>Original project</small></div>
+        </div>
+        <div class="card__body">
+          <div class="card__meta"><span class="card__genre">Romantic Comedy</span><span class="card__meta-sep"></span><span class="card__format">Feature</span></div>
+          <h2 class="card__title">Standby</h2>
+          <p class="card__synopsis">A woman paid to go on other people’s first dates falls for the man doing the same job for his best friend, and the only way either can be together for real means unraveling the identity fraud their whole business was built on.</p>
+          <div class="card__platforms"><span class="platform-tag">Lifetime</span><span class="platform-tag">Tubi</span><span class="platform-tag">TV One</span></div>
+          <div class="card__materials"><span class="material-tag">&#128196; One-Sheet</span></div>
+          <div class="card__actions"><button class="btn-quick-view" onclick="openModal(this)">Quick View</button><a href="projects/standby.html" class="btn-full-details">Full Details &rarr;</a></div>
+        </div>
+      </article>
+
     </div><!-- /#project-grid -->
   </section>
 
@@ -1633,7 +1804,7 @@
     <div class="footer-col">
       <div class="footer-col__label">Projects</div>
       <ul>
-        <li><a href="slate.html">All 54 Projects</a></li>
+        <li><a href="slate.html">All 63 Projects</a></li>
         <li><a href="slate.html?status=pitch-ready">Pitch-Ready</a></li>
         <li><a href="slate.html?format=mow">TV Movies</a></li>
         <li><a href="slate.html?format=limited-series">Limited Series</a></li>
@@ -1686,7 +1857,7 @@
 <!-- STICKY CTA BAR -->
 <div class="sticky-cta-bar" id="sticky-cta-bar" role="complementary" aria-label="Quick actions">
   <div class="sticky-cta-bar__text">
-    <strong>54 original projects.</strong> Pitch materials available for select titles.
+    <strong>63 original projects.</strong> Pitch materials available for select titles.
   </div>
   <div class="sticky-cta-bar__actions">
     <a href="index.html#contact" class="sticky-cta-btn secondary">Get in Touch</a>

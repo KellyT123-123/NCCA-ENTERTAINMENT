@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>All Projects — NCCA Entertainment</title>
   
-  <meta name="description" content="NCCA Entertainment - 54 original film and TV projects for Netflix, HBO, BET+, Lifetime. Premium, culturally rich scripted content.">
+  <meta name="description" content="NCCA Entertainment - 63 original film and TV projects for Netflix, HBO, BET+, Lifetime. Premium, culturally rich scripted content.">
   
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -311,6 +311,11 @@
       background-position:center;
     }
     
+
+    .card-media--ledger{display:grid;place-items:center;padding:1.25rem;background:linear-gradient(135deg,#17130e,#090909);border-bottom:1px solid rgba(212,139,60,.28);text-align:center}
+    .card-media--ledger span{color:var(--brand);font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+    .card-media--ledger strong{display:block;margin-top:.35rem;font-family:Georgia,serif;font-size:1.45rem;font-weight:500;line-height:1.1;color:#f5f3ee}
+
     .card-body{
       padding:1.25rem;
       flex:1;
@@ -477,7 +482,7 @@
     <div class="page-header">
       <h1>All Projects</h1>
       <p class="page-intro">
-        Browse our complete catalog of 54 market-ready projects across multiple genres and formats. Use the search and filters to find exactly what you're looking for.
+        Browse our complete catalog of 63 market-ready projects across multiple genres and formats. Use the search and filters to find exactly what you're looking for.
       </p>
     </div>
 
@@ -488,7 +493,7 @@
 
     <!-- Controls Bar -->
     <div class="controls-bar">
-      <div class="results-count" id="resultsCount">54 projects</div>
+      <div class="results-count" id="resultsCount">63 projects</div>
       <div class="sort-control">
         <label for="sortSelect">Sort by:</label>
         <select id="sortSelect">
@@ -624,7 +629,7 @@
   <p style="margin-top:.5rem">Atlanta, GA | <a href="mailto:contact@nccaentertainment.com">contact@nccaentertainment.com</a> | (910) 262-9307</p>
 </footer>
 
-<script src="projects-data.js?v=4"></script>
+<script src="projects-data.js?v=5"></script>
 <script>
 // Wait for both DOM and scripts to be ready
 function initProjects() {
@@ -759,7 +764,7 @@ function startProjectsPage() {
 
       return `
         <article class="card">
-          <div class="card-media" style="background-image:url('${project.image}')"></div>
+          ${project.image ? `<div class="card-media" style="background-image:url('${project.image}')"></div>` : `<div class="card-media card-media--ledger"><div><span>NCCA Original Project</span><strong>${project.title}</strong></div></div>`}
           <div class="card-body">
             <div class="title">${project.title}</div>
             <div class="meta">
