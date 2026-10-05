@@ -1039,6 +1039,7 @@ const projectsData = [
       "Lifetime",
       "Tubi",
       "TV One"
-    ]
+    ],
+    "casting": "one-sheets/standby-cast-suggestions.pdf"
   }
 ];
