@@ -950,7 +950,8 @@ const projectsData = [
     "platforms": [
       "Premium Streaming",
       "Specialty Feature"
-    ]
+    ],
+    "image": "images/fort-silence-poster.png"
   },
   {
     "title": "Last Exit on 285",
@@ -961,7 +962,8 @@ const projectsData = [
     "deck": "pitch-decks/last-exit-on-285-pitch-deck.pptx",
     "platforms": [
       "BET+"
-    ]
+    ],
+    "image": "images/last-exit-on-285-poster.png"
   },
   {
     "title": "RSVP Clause",
@@ -973,7 +975,8 @@ const projectsData = [
     "onesheet": "one-sheets/rsvp-clause-one-pager-and-cast.pdf",
     "platforms": [
       "Netflix"
-    ]
+    ],
+    "image": "images/rsvp-clause-poster.png"
   },
   {
     "title": "The 13th Passenger",
@@ -998,7 +1001,8 @@ const projectsData = [
       "BET+",
       "HBO",
       "Hulu"
-    ]
+    ],
+    "image": "images/the-cookout-confession-poster.png"
   },
   {
     "title": "The Layover",
@@ -1011,7 +1015,8 @@ const projectsData = [
     "platforms": [
       "TV One",
       "BET+"
-    ]
+    ],
+    "image": "images/the-layover-poster.png"
   },
   {
     "title": "The Perfect Assistant",
@@ -1026,7 +1031,8 @@ const projectsData = [
       "TV One",
       "ALLBLK",
       "Tubi"
-    ]
+    ],
+    "image": "images/the-perfect-assistant-poster.png"
   },
   {
     "title": "Standby",
