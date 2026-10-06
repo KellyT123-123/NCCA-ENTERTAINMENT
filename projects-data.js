@@ -993,7 +993,8 @@ const projectsData = [
       "OWN",
       "Lifetime"
     ],
-    "archiveLane": "Feature Films"
+    "archiveLane": "Feature Films",
+    "image": "images/eminent-domain-poster.png"
   },
   {
     "title": "Fort Silence",
@@ -1109,6 +1110,8 @@ const projectsData = [
       "TV One"
     ],
     "casting": "one-sheets/standby-cast-suggestions.pdf",
-    "archiveLane": "Feature Films"
+    "archiveLane": "Feature Films",
+    "image": "images/standby-poster.png",
+    "deck": "pitch-decks/standby-pitch-deck-2026-v2.pptx"
   }
 ];
