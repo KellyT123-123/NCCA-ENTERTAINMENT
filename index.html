@@ -58,7 +58,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 ul{list-style:none}
 
 .skip-link{position:absolute;top:-100px;left:16px;background:var(--gold);color:var(--black);padding:8px 16px;font-weight:600;font-size:13px;border-radius:var(--radius);z-index:9999;transition:top 0.2s}
-.skip-link:focus{top:8px}
+.skip-link:focus{top:calc(var(--utility-h) + 8px)}
 
 /* UTILITY BAR */
 .utility-bar{position:fixed;top:0;left:0;right:0;height:var(--utility-h);background:var(--off-black);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:1000;font-size:12px;color:var(--text-dim)}
@@ -137,15 +137,8 @@ ul{list-style:none}
 /* MAIN */
 #main-content{padding-top:calc(var(--utility-h) + var(--nav-h))}
 
-/* BREADCRUMB */
-.breadcrumb{background:var(--off-black);border-bottom:1px solid var(--border);padding:10px 32px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
-.breadcrumb a{color:var(--muted);transition:color var(--transition)}
-.breadcrumb a:hover{color:var(--gold)}
-.breadcrumb__sep{color:var(--border)}
-.breadcrumb__current{color:var(--gold)}
-
 /* HERO */
-.hero{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 32px;position:relative;overflow:hidden}
+.hero{min-height:64vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 32px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(201,168,76,.07) 0%,transparent 70%);pointer-events:none}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent)}
 .hero__inner{position:relative;z-index:1;max-width:760px}
@@ -156,6 +149,9 @@ ul{list-style:none}
 .hero__stat{text-align:center}
 .hero__stat-num{font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--gold);line-height:1}
 .hero__stat-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.hero__browse-link{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:9px 15px;border:1px solid rgba(232,228,220,.3);border-radius:20px;color:var(--text-dim);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:color var(--transition),border-color var(--transition),background var(--transition)}
+.hero__browse-link:hover,.hero__browse-link:focus-visible{color:var(--gold);border-color:var(--gold-border);background:rgba(10,10,10,.35);outline:none}
+.buyer-shortlist{scroll-margin-top:calc(var(--utility-h) + var(--nav-h-sm) + 20px)}
 .hero__stat-divider{width:1px;height:40px;background:var(--border)}
 
 /* PLATFORM BAR */
@@ -274,6 +270,7 @@ ul{list-style:none}
 .contact-item a:hover{color:var(--gold)}
 .response-time-note{margin-top:20px;padding:12px 16px;background:var(--dark-gray);border:1px solid var(--border);border-radius:var(--radius);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
 .contact-form{display:flex;flex-direction:column;gap:14px}
+.contact-context{margin:0;padding:10px 12px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:var(--radius);font-size:12px;color:var(--text-dim);line-height:1.45}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-field{display:flex;flex-direction:column;gap:5px}
 .form-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -315,16 +312,13 @@ ul{list-style:none}
 .modal-close:hover{background:var(--mid-gray);color:var(--white)}
 
 /* FLOATING */
-.floating-cta{position:fixed;bottom:28px;right:24px;z-index:500;background:var(--gold);color:var(--black)!important;padding:12px 20px;border-radius:28px;font-size:13px;font-weight:700;letter-spacing:0.04em;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(201,168,76,.35);transform:translateY(80px);opacity:0;transition:transform .3s ease,opacity .3s ease,background var(--transition);pointer-events:none}
-.floating-cta.visible{transform:translateY(0);opacity:1;pointer-events:all}
-.floating-cta:hover{background:var(--gold-light)!important}
 .back-to-top{position:fixed;bottom:28px;left:24px;z-index:500;width:44px;height:44px;background:var(--dark-gray);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:18px;transform:translateY(80px);opacity:0;transition:transform .3s ease,opacity .3s ease,all var(--transition);pointer-events:none;cursor:pointer}
 .back-to-top.visible{transform:translateY(0);opacity:1;pointer-events:all}
 .back-to-top:hover{border-color:var(--gold-border);color:var(--gold)}
 
 /* PRINT STYLESHEET */
 @media print {
-  .utility-bar,.site-nav,.filter-bar,.floating-cta,.back-to-top,.modal-overlay,
+  .utility-bar,.site-nav,.back-to-top,.modal-overlay,
   .search-overlay,.mobile-drawer,.drawer-overlay,.load-more-section,
   .btn-quick-view,.card__actions{display:none!important}
   body{background:#fff;color:#000;font-size:11pt}
@@ -347,8 +341,8 @@ ul{list-style:none}
   .site-footer{background:#fff;border-top:1pt solid #ccc}
   .footer-brand__logo,.footer-col a{color:#000}
   .footer-bottom{color:#666}
-  a[href]:after{content:" (" attr(href) ")";font-size:8pt;color:#666}
-  .nav__logo:after,.floating-cta:after,.back-to-top:after{content:none}
+  a[href]:after{content:none}
+  .nav__logo:after,.back-to-top:after{content:none}
 }
 
 /* RESPONSIVE */
@@ -381,7 +375,7 @@ ul{list-style:none}
 }
 
 /* ---- HERO VIDEO ---- */
-.hero{position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center;justify-content:center}
+.hero{position:relative;overflow:hidden;min-height:64vh;display:flex;align-items:center;justify-content:center}
 .hero__video-wrap{position:absolute;inset:0;z-index:0;background:var(--black)}
 .hero__video-wrap video{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
 .hero__video-wrap video.loaded{opacity:1}
@@ -471,9 +465,6 @@ ul{list-style:none}
     <div class="utility-pulse"><span class="pulse-dot" aria-hidden="true"></span>63 Original Projects</div>
     <a href="tel:+19102629307" class="util-hide-mobile">&#128222; (910) 262-9307</a>
     <a href="mailto:contact@nccaentertainment.com" class="util-hide-mobile" aria-label="Email NCCA Entertainment">&#9993;&#65039; contact@nccaentertainment.com</a>
-  </div>
-  <div class="utility-bar__right">
-    <a href="slate.html?status=pitch-ready" class="util-pitch-badge">&#128202; Pitch-Ready Projects</a>
   </div>
 </div>
 
@@ -593,11 +584,6 @@ ul{list-style:none}
 
 <!-- MAIN -->
 <main id="main-content">
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="index.html">Home</a>
-    <span class="breadcrumb__sep" aria-hidden="true">&#8250;</span>
-    <span class="breadcrumb__current">Featured Projects</span>
-  </nav>
 
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-title">
@@ -625,8 +611,9 @@ ul{list-style:none}
         <div class="hero__stat-divider" aria-hidden="true"></div>
         <div class="hero__stat" role="listitem"><div class="hero__stat-num">10+</div><div class="hero__stat-label">Target Platforms</div></div>
         <div class="hero__stat-divider" aria-hidden="true"></div>
-        <div class="hero__stat" role="listitem"><div class="hero__stat-num">ATL</div><div class="hero__stat-label">Based Production</div></div>
+        <div class="hero__stat" role="listitem"><div class="hero__stat-num">20+</div><div class="hero__stat-label">Years in Industry</div></div>
       </div>
+      <a class="hero__browse-link" href="#buyer-shortlist">Browse the Buyer Shortlist <span aria-hidden="true">&#8595;</span></a>
     </div>
   </section>
 
@@ -662,7 +649,7 @@ ul{list-style:none}
             <h3 class="shortlist-card__title">Final Walk</h3>
             <p class="shortlist-card__logline">A top model becomes an unwitting operative in a cross-border intelligence war, exposing an empire built on beauty and forcing her to decide how far she will go to bring it down.</p>
             <p class="shortlist-card__lens"><span>Story lens</span><br>Image, access, and escalating danger inside an international action engine.</p>
-            <div class="shortlist-card__actions"><a class="shortlist-card__link" href="projects/final-walk.html">View Project Passport <span aria-hidden="true">→</span></a><a class="shortlist-card__discuss" href="#contact">Discuss title</a></div>
+            <div class="shortlist-card__actions"><a class="shortlist-card__link" href="projects/final-walk.html">View Project Passport <span aria-hidden="true">→</span></a><a class="shortlist-card__discuss" href="?project=Final%20Walk#contact">Discuss title</a></div>
           </div>
         </article>
         <article class="shortlist-card">
@@ -672,7 +659,7 @@ ul{list-style:none}
             <h3 class="shortlist-card__title">Page 41</h3>
             <p class="shortlist-card__logline">A visionary NATO treaty architect survives an ambush that kills the man she loves, only to discover that the mentor guiding her grief is editing her memories and remaking her into the conspiracy&rsquo;s instrument.</p>
             <p class="shortlist-card__lens"><span>Story lens</span><br>Elegant statecraft, psychological control, and a repeatable conspiracy engine.</p>
-            <div class="shortlist-card__actions"><a class="shortlist-card__link" href="projects/page-41.html">View Project Passport <span aria-hidden="true">→</span></a><a class="shortlist-card__discuss" href="#contact">Discuss title</a></div>
+            <div class="shortlist-card__actions"><a class="shortlist-card__link" href="projects/page-41.html">View Project Passport <span aria-hidden="true">→</span></a><a class="shortlist-card__discuss" href="?project=Page%2041#contact">Discuss title</a></div>
           </div>
         </article>
         <article class="shortlist-card">
@@ -682,7 +669,7 @@ ul{list-style:none}
             <h3 class="shortlist-card__title">The Line</h3>
             <p class="shortlist-card__logline">A by-the-book FBI agent and a rap music executive collide while uncovering a conspiracy buried inside Atlanta&rsquo;s music scene.</p>
             <p class="shortlist-card__lens"><span>Story lens</span><br>Music, power, and a procedural conspiracy engine rooted in Atlanta.</p>
-            <div class="shortlist-card__actions"><a class="shortlist-card__link" href="projects/the-line.html">View Project Passport <span aria-hidden="true">→</span></a><a class="shortlist-card__discuss" href="#contact">Discuss title</a></div>
+            <div class="shortlist-card__actions"><a class="shortlist-card__link" href="projects/the-line.html">View Project Passport <span aria-hidden="true">→</span></a><a class="shortlist-card__discuss" href="?project=The%20Line#contact">Discuss title</a></div>
           </div>
         </article>
       </div>
@@ -690,58 +677,12 @@ ul{list-style:none}
     </div>
   </section>
 
-  <!-- FILTER BAR -->
-  <div class="filter-bar" id="filter-bar" role="search" aria-label="Filter projects">
-    <div class="filter-bar__top">
-      <span class="filter-bar__label">Filter</span>
-      <div class="filter-selects">
-        <select class="filter-select" id="filter-platform" aria-label="Filter by platform">
-          <option value="">All Platforms</option>
-          <option value="netflix">Netflix</option><option value="hbo">HBO/Max</option>
-          <option value="bet-plus">BET+</option><option value="own">OWN</option>
-          <option value="lifetime">Lifetime</option><option value="paramount">Paramount+</option>
-          <option value="peacock">Peacock</option><option value="apple">Apple TV+</option>
-          <option value="theatrical">Theatrical</option>
-        </select>
-        <select class="filter-select" id="filter-format" aria-label="Filter by format">
-          <option value="">All Formats</option>
-          <option value="mow">TV Movie (MOW)</option><option value="limited-series">Limited Series</option>
-          <option value="network-series">Network Series</option><option value="feature">Feature Film</option>
-          <option value="docuseries">Docuseries</option>
-        </select>
-        <select class="filter-select" id="filter-genre" aria-label="Filter by genre">
-          <option value="">All Genres</option>
-          <option value="drama">Drama</option><option value="thriller">Thriller/Noir</option>
-          <option value="romance">Romance</option><option value="comedy">Comedy</option>
-          <option value="horror">Horror/Southern Gothic</option><option value="action">Action</option>
-          <option value="faith">Faith-Based</option>
-        </select>
-        <select class="filter-select" id="filter-status" aria-label="Filter by status">
-          <option value="">All Status</option>
-          <option value="pitch-ready">Pitch Materials Available</option>
-          <option value="script-complete">Script Complete</option>
-          <option value="packaging">Packaging Stage</option>
-          <option value="development">Development Ready</option>
-        </select>
-      </div>
-      <div class="filter-bar__right">
-        <button class="clear-filters-btn" id="clear-filters-btn">Clear All</button>
-        <span class="filter-count" id="filter-count">Showing <strong>4</strong> featured projects</span>
-        <div class="view-toggle" role="group" aria-label="View mode">
-          <button class="view-btn active" id="grid-view-btn" aria-label="Grid view" aria-pressed="true">&#8862;</button>
-          <button class="view-btn" id="list-view-btn" aria-label="List view" aria-pressed="false">&#9776;</button>
-        </div>
-      </div>
-    </div>
-    <div class="active-chips" id="active-chips" role="list" aria-live="polite" aria-label="Active filters"></div>
-  </div>
-
   <!-- PROJECTS -->
   <section class="projects-section" aria-labelledby="projects-title">
     <div class="section-header">
       <p class="section-eyebrow">Portfolio</p>
-      <h2 class="section-title" id="projects-title">Archive Preview</h2>
-      <p class="section-desc">A wider cross-section of the 63-title NCCA archive. Confidential development materials are available only through project-specific clearance.</p>
+      <h2 class="section-title" id="projects-title">More From the NCCA Slate</h2>
+      <p class="section-desc">A focused sampling from the 63-title slate. Use the full Slate to search buyer lanes, platforms, formats, genres, and development stages.</p>
     </div>
     <div class="project-grid" id="project-grid">
 
@@ -836,12 +777,8 @@ ul{list-style:none}
     </div>
 
     <div class="load-more-section">
-      <div class="load-progress" aria-label="Projects viewed: 4 of 63">
-        <div class="load-progress__label"><span>Viewing 4 of 63 projects</span><span>8%</span></div>
-        <div class="load-progress__bar"><div class="load-progress__fill"></div></div>
-      </div>
+      <p class="section-desc" style="margin:0 auto 20px;max-width:560px;">Looking for a specific buyer lane or title? The complete Slate is built for deeper discovery.</p>
       <div class="load-more-actions">
-        <button class="btn-load-more" onclick="window.location='slate.html'">Load More Projects</button>
         <a href="slate.html" class="btn-view-all-link">Explore All 63 Projects &rarr;</a>
       </div>
     </div>
@@ -935,6 +872,7 @@ ul{list-style:none}
         </div>
         <div class="contact-tab-panel active" id="tab-form">
         <form class="contact-form" id="contact-form" aria-label="Contact form">
+          <p class="contact-context" id="contact-context" hidden aria-live="polite"></p>
           <div class="form-row">
             <div class="form-field"><label class="form-label" for="cf-name">Name</label><input type="text" id="cf-name" class="form-input" placeholder="Your name" required /></div>
             <div class="form-field"><label class="form-label" for="cf-email">Email</label><input type="email" id="cf-email" class="form-input" placeholder="your@email.com" required /></div>
@@ -1025,7 +963,6 @@ ul{list-style:none}
         <li><a href="dashboard.html">Executive Dashboard</a></li>
         <li><a href="music.html">Music</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#contact">Contact the Studio</a></li>
       </ul>
     </div>
   </div>
@@ -1050,7 +987,6 @@ ul{list-style:none}
   </div>
 </div>
 
-<a href="slate.html?status=pitch-ready" class="floating-cta" id="floating-cta" aria-label="View pitch-ready projects">&#128202; Pitch-Ready Projects</a>
 <button class="back-to-top" id="back-to-top-btn" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 
 <script>
@@ -1063,15 +999,11 @@ const MODAL_DATA={
 
 // SCROLL
 const nav=document.getElementById('site-nav');
-const filterBar=document.getElementById('filter-bar');
-const floatingCta=document.getElementById('floating-cta');
 const backToTopBtn=document.getElementById('back-to-top-btn');
 window.addEventListener('scroll',()=>{
   const s=window.scrollY>80;
   nav.classList.toggle('scrolled',s);
-  filterBar.classList.toggle('nav-shrunk',s);
   const f=window.scrollY>400;
-  floatingCta.classList.toggle('visible',f);
   backToTopBtn.classList.toggle('visible',f);
 },{passive:true});
 
@@ -1101,45 +1033,6 @@ const dpContent=document.getElementById('drawer-projects-content');
 dpBtn.addEventListener('click',()=>{const o=dpContent.classList.toggle('open');dpBtn.setAttribute('aria-expanded',o);});
 mobileDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDrawer));
 
-// FILTERS
-const selPlatform=document.getElementById('filter-platform');
-const selFormat=document.getElementById('filter-format');
-const selGenre=document.getElementById('filter-genre');
-const selStatus=document.getElementById('filter-status');
-const clearBtn=document.getElementById('clear-filters-btn');
-const countEl=document.getElementById('filter-count');
-const chipsEl=document.getElementById('active-chips');
-const cards=document.querySelectorAll('.project-card');
-function applyFilters(){
-  const p=selPlatform.value,f=selFormat.value,g=selGenre.value,st=selStatus.value;
-  let v=0;
-  cards.forEach(c=>{
-    const show=(!p||c.dataset.platform.includes(p))&&(!f||c.dataset.format===f)&&(!g||c.dataset.genre.includes(g))&&(!st||c.dataset.status===st);
-    c.style.display=show?'':'none';if(show)v++;
-  });
-  countEl.innerHTML=`Showing <strong>${v}</strong> featured project${v!==1?'s':''}`;
-  renderChips({p,f,g,st});
-  clearBtn.classList.toggle('visible',!!(p||f||g||st));
-}
-function renderChips({p,f,g,st}){
-  chipsEl.innerHTML='';
-  [{el:selPlatform,val:p,label:'Platform'},{el:selFormat,val:f,label:'Format'},{el:selGenre,val:g,label:'Genre'},{el:selStatus,val:st,label:'Status'}].forEach(({el,val,label})=>{
-    if(val){const text=el.options[el.selectedIndex].text;const chip=document.createElement('div');chip.className='chip';chip.setAttribute('role','listitem');chip.innerHTML=`${label}: ${text} <button class="chip__remove" aria-label="Remove ${text} filter">&times;</button>`;chip.querySelector('.chip__remove').addEventListener('click',()=>{el.value='';applyFilters();});chipsEl.appendChild(chip);}
-  });
-}
-[selPlatform,selFormat,selGenre,selStatus].forEach(el=>el.addEventListener('change',applyFilters));
-clearBtn.addEventListener('click',()=>{selPlatform.value='';selFormat.value='';selGenre.value='';selStatus.value='';applyFilters();});
-const params=new URLSearchParams(window.location.search);
-if(params.get('platform'))selPlatform.value=params.get('platform');
-if(params.get('format'))selFormat.value=params.get('format');
-if(params.get('genre'))selGenre.value=params.get('genre');
-if(params.get('status'))selStatus.value=params.get('status');
-applyFilters();
-
-// VIEW TOGGLE
-document.getElementById('grid-view-btn').addEventListener('click',()=>{document.getElementById('project-grid').classList.remove('list-view');document.getElementById('grid-view-btn').classList.add('active');document.getElementById('list-view-btn').classList.remove('active');});
-document.getElementById('list-view-btn').addEventListener('click',()=>{document.getElementById('project-grid').classList.add('list-view');document.getElementById('list-view-btn').classList.add('active');document.getElementById('grid-view-btn').classList.remove('active');});
-
 // MODAL
 const modalOverlay=document.getElementById('modal-overlay');
 function openModal(id){
@@ -1157,6 +1050,16 @@ document.getElementById('modal-close-btn').addEventListener('click',closeModal);
 modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay)closeModal();});
 
 // CONTACT
+const contactProject = new URLSearchParams(window.location.search).get('project');
+if (contactProject) {
+  const context = document.getElementById('contact-context');
+  const type = document.getElementById('cf-type');
+  const message = document.getElementById('cf-message');
+  context.hidden = false;
+  context.textContent = `Preparing an inquiry about ${contactProject}.`;
+  if (!type.value) type.value = 'pitch';
+  if (!message.value.trim()) message.value = `I’m interested in discussing ${contactProject}.\n\n`;
+}
 document.getElementById('contact-form').addEventListener('submit',function(e){
   e.preventDefault();
   const name=document.getElementById('cf-name').value.trim();
@@ -1166,7 +1069,8 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
   const type=typeEl.options[typeEl.selectedIndex].text;
   const message=document.getElementById('cf-message').value.trim();
   const subject=encodeURIComponent(`[NCCA Inquiry - ${type}] from ${name}`);
-  const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry Type: ${type}\n\n${message}`);
+  const projectLine=contactProject ? `Project: ${contactProject}\n` : '';
+  const body=encodeURIComponent(`${projectLine}Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry Type: ${type}\n\n${message}`);
   window.location.href=`mailto:contact@nccaentertainment.com?subject=${subject}&body=${body}`;
 });
 
