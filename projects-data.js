@@ -15,7 +15,8 @@ const projectsData = [
       "Peacock",
       "BET+",
       "OWN"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "The Line",
@@ -33,7 +34,8 @@ const projectsData = [
       "Peacock",
       "BET+",
       "OWN"
-    ]
+    ],
+    "archiveLane": "Network & Returning Series"
   },
   {
     "title": "The Last Dynasty",
@@ -50,7 +52,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Apple"
-    ]
+    ],
+    "archiveLane": "Southern Stories with Teeth"
   },
   {
     "title": "Black Girl's Guide to Vengeance (and Vodka)",
@@ -67,7 +70,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "Echo Chamber",
@@ -85,7 +89,8 @@ const projectsData = [
       "NBC",
       "FOX",
       "CBS"
-    ]
+    ],
+    "archiveLane": "Network & Returning Series"
   },
   {
     "title": "Just Jack",
@@ -103,7 +108,8 @@ const projectsData = [
       "NBC",
       "FOX",
       "CBS"
-    ]
+    ],
+    "archiveLane": "Network & Returning Series"
   },
   {
     "title": "Soul on Fire",
@@ -120,7 +126,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Apple"
-    ]
+    ],
+    "archiveLane": "Limited Series"
   },
   {
     "title": "Sinners & Saints",
@@ -137,7 +144,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Apple"
-    ]
+    ],
+    "archiveLane": "Limited Series"
   },
   {
     "title": "She Who Watches",
@@ -154,7 +162,8 @@ const projectsData = [
       "HBO",
       "Netflix",
       "Apple"
-    ]
+    ],
+    "archiveLane": "Limited Series"
   },
   {
     "title": "Slice of Paradise",
@@ -173,7 +182,8 @@ const projectsData = [
       "ABC",
       "NBC",
       "FOX"
-    ]
+    ],
+    "archiveLane": "Network & Returning Series"
   },
   {
     "title": "The Archive",
@@ -192,7 +202,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Apple"
-    ]
+    ],
+    "archiveLane": "Network & Returning Series"
   },
   {
     "title": "Love After Likes",
@@ -209,7 +220,8 @@ const projectsData = [
       "Netflix",
       "Peacock",
       "BET+"
-    ]
+    ],
+    "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "Flip Side of Love",
@@ -226,7 +238,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "Southern (Dis)comfort",
@@ -243,7 +256,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "Second First Date",
@@ -260,7 +274,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "Rhythm & Blooms",
@@ -277,7 +292,8 @@ const projectsData = [
       "Hallmark",
       "OWN",
       "BET+"
-    ]
+    ],
+    "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "The Ex-Files",
@@ -294,7 +310,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "Mirror Image",
@@ -311,7 +328,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Apple"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "Past Due",
@@ -328,7 +346,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Apple"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "Refractions",
@@ -346,7 +365,8 @@ const projectsData = [
       "HBO",
       "Apple",
       "Theatrical"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "The Proxy",
@@ -364,7 +384,8 @@ const projectsData = [
       "OWN",
       "Lifetime",
       "Paramount+"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "The Alibi",
@@ -381,7 +402,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "It's Somebody You Know",
@@ -399,7 +421,8 @@ const projectsData = [
       "OWN",
       "Lifetime",
       "Paramount+"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "ATL Soul: The Velvet LaRou Story",
@@ -417,7 +440,8 @@ const projectsData = [
       "OWN",
       "Lifetime",
       "Paramount+"
-    ]
+    ],
+    "archiveLane": "Southern Stories with Teeth"
   },
   {
     "title": "The Other Mrs. Jamison",
@@ -435,7 +459,8 @@ const projectsData = [
       "OWN",
       "Lifetime",
       "Paramount+"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "The Feed",
@@ -452,7 +477,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "This Is Me Now",
@@ -471,7 +497,8 @@ const projectsData = [
       "ABC",
       "NBC",
       "FOX"
-    ]
+    ],
+    "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "LifeArt",
@@ -490,7 +517,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Theatrical"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "Hot Mess Express",
@@ -507,7 +535,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Apple"
-    ]
+    ],
+    "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "Miss Juneteenth Blues",
@@ -524,7 +553,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Southern Stories with Teeth"
   },
   {
     "title": "Sneakerheads Anonymous",
@@ -542,7 +572,8 @@ const projectsData = [
       "HBO",
       "Apple",
       "Theatrical"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "Trap House Sitting",
@@ -560,7 +591,8 @@ const projectsData = [
       "HBO",
       "Apple",
       "Theatrical"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "The Southern Belle's Secret",
@@ -577,7 +609,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Southern Stories with Teeth"
   },
   {
     "title": "Beneath the Magnolia Tree",
@@ -594,7 +627,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Southern Stories with Teeth"
   },
   {
     "title": "Divine Deception",
@@ -611,7 +645,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Southern Stories with Teeth"
   },
   {
     "title": "A Spelman Christmas",
@@ -628,7 +663,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Holiday & Seasonal"
   },
   {
     "title": "Granny's House for the Holidays",
@@ -645,7 +681,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Holiday & Seasonal"
   },
   {
     "title": "Twelve Dates at the Christmas Tree Lot",
@@ -662,7 +699,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Holiday & Seasonal"
   },
   {
     "title": "Digital Shadows",
@@ -679,7 +717,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Apple"
-    ]
+    ],
+    "archiveLane": "Docuseries"
   },
   {
     "title": "Exposed",
@@ -696,7 +735,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Apple"
-    ]
+    ],
+    "archiveLane": "Docuseries"
   },
   {
     "title": "Reflections",
@@ -714,7 +754,8 @@ const projectsData = [
       "Peacock",
       "Netflix",
       "HBO"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "The Architect",
@@ -733,7 +774,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Theatrical"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "Queen of Thorns",
@@ -752,7 +794,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Theatrical"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "Ghostmaker",
@@ -771,7 +814,8 @@ const projectsData = [
       "Netflix",
       "HBO",
       "Theatrical"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "Cheer Heist",
@@ -788,7 +832,8 @@ const projectsData = [
       "Netflix",
       "HBO/MAX",
       "Amazon"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "Second Skin",
@@ -806,7 +851,8 @@ const projectsData = [
       "HBO",
       "Apple",
       "Theatrical"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "The Bone Collector's Daughter",
@@ -824,7 +870,8 @@ const projectsData = [
       "HBO",
       "Apple",
       "Theatrical"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "Final Walk",
@@ -836,7 +883,8 @@ const projectsData = [
     "image": "images/final-walk-poster-a.png",
     "platforms": [
       "Theatrical"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "The Extraction",
@@ -850,7 +898,8 @@ const projectsData = [
     "platforms": [
       "Netflix",
       "HBO"
-    ]
+    ],
+    "archiveLane": "Limited Series"
   },
   {
     "title": "Page 41",
@@ -864,7 +913,8 @@ const projectsData = [
     "platforms": [
       "Netflix",
       "HBO"
-    ]
+    ],
+    "archiveLane": "Limited Series"
   },
   {
     "title": "The Devon House",
@@ -879,7 +929,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "The Understudy",
@@ -894,7 +945,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "Twice Betrayed",
@@ -909,7 +961,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "The Cost of Truth",
@@ -924,7 +977,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "Eminent Domain",
@@ -938,7 +992,8 @@ const projectsData = [
       "BET+",
       "OWN",
       "Lifetime"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "Fort Silence",
@@ -951,7 +1006,8 @@ const projectsData = [
       "Premium Streaming",
       "Specialty Feature"
     ],
-    "image": "images/fort-silence-poster.png"
+    "image": "images/fort-silence-poster.png",
+    "archiveLane": "Feature Films"
   },
   {
     "title": "Last Exit on 285",
@@ -963,7 +1019,8 @@ const projectsData = [
     "platforms": [
       "BET+"
     ],
-    "image": "images/last-exit-on-285-poster.png"
+    "image": "images/last-exit-on-285-poster.png",
+    "archiveLane": "Feature Films"
   },
   {
     "title": "RSVP Clause",
@@ -976,7 +1033,8 @@ const projectsData = [
     "platforms": [
       "Netflix"
     ],
-    "image": "images/rsvp-clause-poster.png"
+    "image": "images/rsvp-clause-poster.png",
+    "archiveLane": "Feature Films"
   },
   {
     "title": "The 13th Passenger",
@@ -988,7 +1046,8 @@ const projectsData = [
     "image": "images/the-13th-passenger.png",
     "platforms": [
       "Netflix"
-    ]
+    ],
+    "archiveLane": "Feature Films"
   },
   {
     "title": "The Cookout Confession",
@@ -1002,7 +1061,8 @@ const projectsData = [
       "HBO",
       "Hulu"
     ],
-    "image": "images/the-cookout-confession-poster.png"
+    "image": "images/the-cookout-confession-poster.png",
+    "archiveLane": "Feature Films"
   },
   {
     "title": "The Layover",
@@ -1016,7 +1076,8 @@ const projectsData = [
       "TV One",
       "BET+"
     ],
-    "image": "images/the-layover-poster.png"
+    "image": "images/the-layover-poster.png",
+    "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "The Perfect Assistant",
@@ -1032,7 +1093,8 @@ const projectsData = [
       "ALLBLK",
       "Tubi"
     ],
-    "image": "images/the-perfect-assistant-poster.png"
+    "image": "images/the-perfect-assistant-poster.png",
+    "archiveLane": "Feature Films"
   },
   {
     "title": "Standby",
@@ -1046,6 +1108,7 @@ const projectsData = [
       "Tubi",
       "TV One"
     ],
-    "casting": "one-sheets/standby-cast-suggestions.pdf"
+    "casting": "one-sheets/standby-cast-suggestions.pdf",
+    "archiveLane": "Feature Films"
   }
 ];
