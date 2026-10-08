@@ -325,7 +325,7 @@ const projectsDataAll = [
     "genre": "Thriller",
     "format": "Feature",
     "audience": "Gen Z",
-    "description": "A photographer’s world unravels when her portraits start showing crimes that have not happened yet.",
+    "description": "When the world’s first human clone escapes a secret biotech program, she learns her life is fatally linked to the surgeon she was copied from, and must choose between protecting the life she was never meant to have and exposing the conspiracy that made her.",
     "deck": "pitch-decks/refractions-pitch-deck.pdf",
     "onesheet": "one-sheets/refractions-one-sheet.pdf",
     "treatment": "assets/refractions-treatment.pdf",
@@ -403,7 +403,7 @@ const projectsDataAll = [
     "archiveLane": "Southern Stories with Teeth"
   },
   {
-    "title": "The Other Mrs. Jamison",
+    "title": "The Other Mrs. Jameson",
     "genre": "Thriller",
     "format": "MOW",
     "audience": "Women 25–40 | Black Audiences",
@@ -541,6 +541,7 @@ const projectsDataAll = [
     "archiveLane": "Feature Films"
   },
   {
+    "hidden": true,
     "title": "The Southern Belle's Secret",
     "genre": "Southern Gothic",
     "format": "MOW",
