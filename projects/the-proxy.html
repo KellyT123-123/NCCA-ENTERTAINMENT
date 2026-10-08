@@ -401,13 +401,16 @@
   <div class="nav-wrap">
     <a class="brand" href="../index.html" aria-label="NCCA Home">NCCA</a>
     <nav class="nav" role="navigation" aria-label="Main">
-      <ul class="nav-list">
-        <li class="nav-item"><a href="../slate.html">Projects</a></li>
-        <li class="nav-item"><a href="../index.html#about">About</a></li>
+      <!-- GEN:NAV:START -->
+<ul class="nav-list">
+        <li class="nav-item"><a href="../slate.html">Slate</a></li>
+        <li class="nav-item"><a href="../slate.html#lanes">Buyer Lanes</a></li>
+        <li class="nav-item"><a href="../index.html#about">Studio</a></li>
         <li class="nav-item"><a href="../music.html">Music</a></li>
         <li class="nav-item"><a href="../index.html#contact">Contact</a></li>
-        <li class="nav-item cta"><a href="../slate.html">For Professionals</a></li>
+        <li class="nav-item cta"><a href="../index.html?project=The%20Proxy&amp;type=materials#contact">Request Materials</a></li>
       </ul>
+<!-- GEN:NAV:END -->
     </nav>
   </div>
 </header>
@@ -517,7 +520,42 @@
   </div>
 </main>
 
-<footer>
+<!-- GEN:MORE:START -->
+<style>
+.ncca-more{max-width:1100px;margin:64px auto 0;padding:40px 24px 8px;border-top:1px solid rgba(255,255,255,.12);color:inherit;font-family:inherit}
+.ncca-more__label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.65;margin:0 0 6px}
+.ncca-more h2{font-size:clamp(22px,3vw,30px);margin:0 0 20px}
+.ncca-more__pn{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:36px}
+.ncca-more__pn a{display:block;padding:14px 16px;border:1px solid rgba(255,255,255,.14);border-radius:8px;text-decoration:none;color:inherit}
+.ncca-more__pn a:hover,.ncca-more__card:hover{border-color:var(--accent,var(--brand,#d9ae67))}
+.ncca-more__pn small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:4px}
+.ncca-more__pn .is-next{text-align:right}
+.ncca-more__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ncca-more__card{display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.12);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit}
+.ncca-more__card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#111}
+.ncca-more__card div{padding:12px 14px 14px}
+.ncca-more__card strong{display:block;font-size:16px;margin-bottom:4px}
+.ncca-more__card span{font-size:13px;opacity:.7;line-height:1.45}
+.ncca-more__all{display:inline-block;margin-top:24px;color:var(--accent,var(--brand,#d9ae67))}
+/* Phones: keep the site menu reachable as a swipeable row under the logo. */
+@media (max-width:900px){.site-header .nav-wrap{flex-wrap:wrap;row-gap:10px}.site-header nav[aria-label^="Main"]{display:block!important;width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-header nav[aria-label^="Main"]::-webkit-scrollbar{display:none}.site-header .nav-list{display:flex!important;flex-wrap:nowrap;gap:8px;white-space:nowrap;margin:0;padding:0 0 2px}.site-header .nav-list li{display:list-item!important;list-style:none;flex:0 0 auto}}
+@media (max-width:700px){.ncca-more__pn{grid-template-columns:1fr}.ncca-more__pn .is-next{text-align:left}.ncca-more__grid{grid-template-columns:1fr 1fr}.ncca-more__grid a:nth-child(3){display:none}}
+</style>
+<section class="ncca-more" aria-labelledby="ncca-more-title">
+  <p class="ncca-more__label">Keep exploring</p>
+  <h2 id="ncca-more-title">More from Feature Films</h2>
+  <div class="ncca-more__pn">
+    <a href="mirror-image.html"><small>&larr; Previous in Feature Films</small>Mirror Image</a>
+    <a class="is-next" href="final-walk.html"><small>Next in Feature Films &rarr;</small>Final Walk</a>
+  </div>
+  <div class="ncca-more__grid">
+    <a class="ncca-more__card" href="the-13th-passenger.html"><img src="../images/the-13th-passenger.png" alt="The 13th Passenger key art" loading="lazy" /><div><strong>The 13th Passenger</strong><span>Feature</span></div></a>
+    <a class="ncca-more__card" href="refractions.html"><img src="../images/refractions.png" alt="Refractions key art" loading="lazy" /><div><strong>Refractions</strong><span>Feature</span></div></a>
+    <a class="ncca-more__card" href="ghostmaker.html"><img src="../images/the-ghostmaker.png" alt="Ghostmaker key art" loading="lazy" /><div><strong>Ghostmaker</strong><span>Feature</span></div></a>
+  </div>
+  <a class="ncca-more__all" href="../slate.html#feature-films">See the full Feature Films lane &rarr;</a>
+</section>
+<!-- GEN:MORE:END --><footer>
   <p>&copy; 2025 NCCA Entertainment. All rights reserved.</p>
   <p style="margin-top:.5rem">Atlanta, GA | <a href="mailto:contact@nccaentertainment.com">contact@nccaentertainment.com</a> | (910) 262-9307</p>
 </footer>

@@ -458,6 +458,7 @@ ul{list-style:none}
 @media(max-width:1024px){.buyer-shortlist__head{grid-template-columns:1fr;gap:18px}.buyer-shortlist__copy{margin-left:0}.buyer-shortlist__grid{grid-template-columns:1fr 1fr}.shortlist-card:last-child{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}.shortlist-card:last-child .shortlist-card__art{aspect-ratio:auto;min-height:260px}}
 @media(max-width:640px){.buyer-shortlist{padding:66px 16px}.buyer-shortlist__grid{grid-template-columns:1fr}.shortlist-card:last-child{display:flex}.shortlist-card:last-child .shortlist-card__art{aspect-ratio:16/9;min-height:0}.buyer-shortlist__footer{align-items:flex-start;flex-direction:column}.buyer-shortlist__all{white-space:normal}.shortlist-card__title{font-size:28px}}
 
+.mega-count{opacity:.55;font-size:.85em;margin-left:4px}
 </style>
 </head>
 <body>
@@ -467,7 +468,6 @@ ul{list-style:none}
 <!-- UTILITY BAR -->
 <div class="utility-bar" role="banner">
   <div class="utility-bar__left">
-    <div class="utility-pulse"><span class="pulse-dot" aria-hidden="true"></span>57 Original Projects</div>
     <a href="tel:+19102629307" class="util-hide-mobile">&#128222; (910) 262-9307</a>
     <a href="mailto:contact@nccaentertainment.com" class="util-hide-mobile" aria-label="Email NCCA Entertainment">&#9993;&#65039; contact@nccaentertainment.com</a>
   </div>
@@ -476,48 +476,52 @@ ul{list-style:none}
 <!-- NAV -->
 <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
   <a href="index.html" class="nav__logo">NCCA Entertainment</a>
-  <ul class="nav__links" role="list">
-    <li><a href="#about">About</a></li>
+  <!-- GEN:NAV:START -->
+<ul class="nav__links" role="list">
+    <li><a href="slate.html">Slate</a></li>
     <li>
-      <button aria-haspopup="true" aria-expanded="false">Projects &#9660;</button>
-      <div class="mega-menu" role="region" aria-label="Projects submenu">
+      <button aria-haspopup="true" aria-expanded="false">Buyer Lanes &#9660;</button>
+      <div class="mega-menu" role="region" aria-label="Buyer lanes">
         <div class="mega-col">
-          <div class="mega-col__label">By Platform</div>
-          <a href="slate.html?platform=netflix">Netflix</a>
-          <a href="slate.html?platform=bet-plus">BET+</a>
-          <a href="slate.html?platform=lifetime">Lifetime</a>
-          <a href="slate.html?platform=tubi">Tubi</a>
-          <a href="slate.html?platform=tv-one">TV One</a>
-          <a href="slate.html?platform=own">OWN</a>
-          <a href="slate.html?platform=theatrical">Theatrical</a>
+          <div class="mega-col__label">By Buyer</div>
+          <a href="slate.html?platform=bet-plus">BET+ <span class="mega-count">34</span></a>
+          <a href="slate.html?platform=netflix">Netflix <span class="mega-count">21</span></a>
+          <a href="slate.html?platform=tubi">Tubi <span class="mega-count">21</span></a>
+          <a href="slate.html?platform=lifetime">Lifetime <span class="mega-count">9</span></a>
+          <a href="slate.html?platform=tv-one">TV One <span class="mega-count">5</span></a>
+          <a href="slate.html?platform=hallmark">Hallmark <span class="mega-count">4</span></a>
+          <a href="slate.html?platform=own">OWN <span class="mega-count">4</span></a>
+          <a href="slate.html?platform=broadcast">Broadcast TV <span class="mega-count">3</span></a>
+          <a href="slate.html?platform=hbo">HBO / Max <span class="mega-count">3</span></a>
+          <a href="slate.html?platform=allblk">ALLBLK <span class="mega-count">2</span></a>
+          <a href="slate.html?platform=theatrical">Theatrical <span class="mega-count">2</span></a>
         </div>
         <div class="mega-col">
           <div class="mega-col__label">By Format</div>
-          <a href="slate.html?format=mow">TV Movie (MOW)</a>
-          <a href="slate.html?format=limited-series">Limited Series</a>
-          <a href="slate.html?format=network-series">Network Series</a>
-          <a href="slate.html?format=feature">Feature Film</a>
-          <a href="slate.html?format=docuseries">Docuseries</a>
-          <div class="mega-col__label" style="margin-top:14px">By Genre</div>
-          <a href="slate.html?genre=drama">Drama</a>
-          <a href="slate.html?genre=thriller">Thriller / Noir</a>
-          <a href="slate.html?genre=comedy">Comedy</a>
-          <a href="slate.html?genre=horror">Horror / Southern Gothic</a>
+          <a href="slate.html?format=feature">Feature Films <span class="mega-count">15</span></a>
+          <a href="slate.html?format=mow">TV Movies (MOW) <span class="mega-count">31</span></a>
+          <a href="slate.html?format=limited-series">Limited Series <span class="mega-count">4</span></a>
+          <a href="slate.html?format=network-series">Network Series <span class="mega-count">5</span></a>
+          <a href="slate.html?format=docuseries">Docuseries <span class="mega-count">2</span></a>
         </div>
         <div class="mega-col">
-          <div class="mega-col__label">Quick Access</div>
-          <a href="slate.html?status=pitch-ready">&#11088; Pitch-Ready</a>
-          <a href="slate.html?status=script-complete">&#128221; Script Complete</a>
-          <a href="slate.html?status=packaging">&#128230; Packaging Stage</a>
-          <a href="slate.html">&#128203; All 57 Projects</a>
+          <div class="mega-col__label">Collections</div>
+          <a href="slate.html#buyer-shortlist">Buyer Shortlist</a>
+          <a href="slate.html#thriller-mow">Thriller &amp; Suspense MOW <span class="mega-count">13</span></a>
+          <a href="slate.html#character-mow">Romance, Comedy &amp; Character MOW <span class="mega-count">11</span></a>
+          <a href="slate.html#holiday-seasonal">Holiday &amp; Seasonal <span class="mega-count">3</span></a>
+          <a href="slate.html#southern-stories">Southern Stories with Teeth <span class="mega-count">4</span></a>
+          <a href="slate.html?status=pitch-ready">Pitch-Ready <span class="mega-count">18</span></a>
         </div>
-        <div class="mega-view-all"><a href="slate.html">Explore All 57 Projects &rarr;</a></div>
+        <div class="mega-view-all"><a href="slate.html">Browse the full slate (57) &rarr;</a></div>
       </div>
     </li>
+    <li><a href="#about">Studio</a></li>
     <li><a href="music.html">Music</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="slate.html?status=pitch-ready" class="nav__cta">&#128202; Pitch-Ready</a></li>
+    <li><a href="index.html?type=materials#contact" class="nav__cta">Request Materials</a></li>
   </ul>
+<!-- GEN:NAV:END -->
   <div class="nav__right">
     <button class="nav__search-btn" id="search-open-btn" aria-label="Open search (Ctrl+K)">&#128269; Search <span class="kbd">Ctrl+K</span></button>
     <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button>
@@ -551,38 +555,52 @@ ul{list-style:none}
 <!-- MOBILE DRAWER -->
 <div class="drawer-overlay" id="drawer-overlay"></div>
 <nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
-  <ul class="drawer-nav">
-    <li><a href="index.html">&#127968; Home</a></li>
-    <li><a href="#about">&#8505;&#65039; About</a></li>
+  <!-- GEN:DRAWER:START -->
+<ul class="drawer-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="slate.html">Slate (57)</a></li>
     <li>
-      <button id="drawer-projects-btn" aria-expanded="false">&#127916; Projects (57) &#9660;</button>
+      <button id="drawer-projects-btn" aria-expanded="false">Buyer Lanes &#9660;</button>
       <div class="drawer-accordion__content" id="drawer-projects-content">
         <div class="drawer-accordion__section">
-          <div class="drawer-accordion__section-label">By Platform</div>
-          <a href="slate.html?platform=netflix">Netflix</a>
-          <a href="slate.html?platform=hbo">HBO / Max</a>
-          <a href="slate.html?platform=bet-plus">BET+</a>
-          <a href="slate.html?platform=own">OWN</a>
-          <a href="slate.html?platform=lifetime">Lifetime</a>
+          <div class="drawer-accordion__section-label">By Buyer</div>
+          <a href="slate.html?platform=bet-plus">BET+ <span class="mega-count">34</span></a>
+          <a href="slate.html?platform=netflix">Netflix <span class="mega-count">21</span></a>
+          <a href="slate.html?platform=tubi">Tubi <span class="mega-count">21</span></a>
+          <a href="slate.html?platform=lifetime">Lifetime <span class="mega-count">9</span></a>
+          <a href="slate.html?platform=tv-one">TV One <span class="mega-count">5</span></a>
+          <a href="slate.html?platform=hallmark">Hallmark <span class="mega-count">4</span></a>
+          <a href="slate.html?platform=own">OWN <span class="mega-count">4</span></a>
+          <a href="slate.html?platform=broadcast">Broadcast TV <span class="mega-count">3</span></a>
+          <a href="slate.html?platform=hbo">HBO / Max <span class="mega-count">3</span></a>
+          <a href="slate.html?platform=allblk">ALLBLK <span class="mega-count">2</span></a>
+          <a href="slate.html?platform=theatrical">Theatrical <span class="mega-count">2</span></a>
         </div>
         <div class="drawer-accordion__section">
           <div class="drawer-accordion__section-label">By Format</div>
-          <a href="slate.html?format=mow">TV Movie (MOW)</a>
-          <a href="slate.html?format=limited-series">Limited Series</a>
-          <a href="slate.html?format=network-series">Network Series</a>
+          <a href="slate.html?format=feature">Feature Films <span class="mega-count">15</span></a>
+          <a href="slate.html?format=mow">TV Movies (MOW) <span class="mega-count">31</span></a>
+          <a href="slate.html?format=limited-series">Limited Series <span class="mega-count">4</span></a>
+          <a href="slate.html?format=network-series">Network Series <span class="mega-count">5</span></a>
+          <a href="slate.html?format=docuseries">Docuseries <span class="mega-count">2</span></a>
         </div>
         <div class="drawer-accordion__section">
-          <div class="drawer-accordion__section-label">By Genre</div>
-          <a href="slate.html?genre=drama">Drama</a>
-          <a href="slate.html?genre=thriller">Thriller</a>
-          <a href="slate.html?genre=comedy">Comedy</a>
+          <div class="drawer-accordion__section-label">Collections</div>
+          <a href="slate.html#buyer-shortlist">Buyer Shortlist</a>
+          <a href="slate.html#thriller-mow">Thriller &amp; Suspense MOW <span class="mega-count">13</span></a>
+          <a href="slate.html#character-mow">Romance, Comedy &amp; Character MOW <span class="mega-count">11</span></a>
+          <a href="slate.html#holiday-seasonal">Holiday &amp; Seasonal <span class="mega-count">3</span></a>
+          <a href="slate.html#southern-stories">Southern Stories with Teeth <span class="mega-count">4</span></a>
+          <a href="slate.html?status=pitch-ready">Pitch-Ready <span class="mega-count">18</span></a>
         </div>
       </div>
     </li>
-    <li><a href="music.html">&#127925; Music</a></li>
-    <li><a href="#contact">&#128231; Contact</a></li>
+    <li><a href="#about">Studio</a></li>
+    <li><a href="music.html">Music</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="slate.html?status=pitch-ready" class="drawer-cta">&#128202; View Pitch-Ready Projects</a>
+  <a href="index.html?type=materials#contact" class="drawer-cta">Request Materials</a>
+<!-- GEN:DRAWER:END -->
 </nav>
 
 <!-- MAIN -->
@@ -744,9 +762,9 @@ ul{list-style:none}
           <div class="card__materials"><span class="material-tag">&#128196; Treatment</span><span class="material-tag">&#128250; Teaser</span><span class="material-tag">&#128221; Script</span></div>
           <button class="card__market-toggle" onclick="toggleMarket(this)" aria-expanded="false">&#128200; Market Indicators <span class="toggle-icon">&#9660;</span></button>
           <div class="card__market">
-            <div class="market-row"><div class="market-row__label">Comparable Titles</div><div class="market-row__val"><em>The Color Purple</em> (Warner Bros.) meets <em>Succession</em> (HBO) &mdash; prestige family drama with awards season positioning</div></div>
-            <div class="market-row"><div class="market-row__label">Target Demographics</div><div class="market-row__val">Adults 35&ndash;64 &bull; Prestige drama fans &bull; Gospel &amp; R&amp;B audiences &bull; Awards-season subscribers</div></div>
-            <div class="market-row"><div class="market-row__label">Social Buzz Potential</div><div class="market-row__val">High &mdash; musical elements drive soundtrack revenue; prestige positioning attracts A-list talent</div></div>
+            <div class="market-row"><div class="market-row__label">Comparable Titles</div><div class="market-row__val"><em>Knives Out</em> (Lionsgate) meets <em>Empire</em> (Fox): a one-night, locked-mansion whodunit inside a Black family dynasty</div></div>
+            <div class="market-row"><div class="market-row__label">Target Demographics</div><div class="market-row__val">Adults 35&ndash;64 &bull; Family drama fans &bull; Mystery and whodunit audiences &bull; Black women 25&ndash;54</div></div>
+            <div class="market-row"><div class="market-row__label">Social Buzz Potential</div><div class="market-row__val">High: the sunrise deadline and a house full of suspects invite live-tweet guessing; the patriarch role draws marquee casting</div></div>
           </div>
           <div class="card__actions"><button class="btn-quick-view" onclick="openModal('the-last-dynasty')">Quick View</button><a href="projects/the-last-dynasty.html" class="btn-full-details">Full Details &rarr;</a></div>
         </div>
@@ -754,7 +772,7 @@ ul{list-style:none}
 
       <article class="project-card" data-platform="bet-plus,tubi" data-format="mow" data-genre="comedy" data-status="pitch-ready">
         <div class="card__image-wrap">
-          <img src="images/black-girls-guide.png" alt="Black Girl's Guide to Vengeance (and Vodka)" loading="lazy" />
+          <img src="images/black-girls-guide-to-vengeance-and-vodka.png" alt="Black Girl's Guide to Vengeance (and Vodka)" loading="lazy" />
           <div class="card__badges"><span class="badge badge--featured">&#128204; Featured</span><span class="badge badge--priority">High Priority</span></div>
           <span class="card__ip-status">Original IP</span>
         </div>
@@ -894,6 +912,7 @@ ul{list-style:none}
             <div class="form-field">
               <label class="form-label" for="cf-project">Project</label>
               <select id="cf-project" class="form-select">
+              <!-- GEN:PROJECT-OPTIONS:START -->
               <option value="">General / not title-specific</option>
               <optgroup label="Feature Films">
                 <option value="The 13th Passenger">The 13th Passenger</option>
@@ -962,6 +981,7 @@ ul{list-style:none}
                 <option value="Digital Shadows">Digital Shadows</option>
                 <option value="Exposed">Exposed</option>
               </optgroup>
+<!-- GEN:PROJECT-OPTIONS:END -->
               </select>
             </div>
             <div class="form-field">
@@ -1084,7 +1104,7 @@ const MODAL_DATA={
   'influencers-last-post':{img:'images/influencers-last-post.png',tags:['Film Noir','Feature'],title:"The Influencer\u2019s Last Post",synopsis:"A social media influencer\u2019s final post becomes the key to solving her own murder. When the algorithm knows who did it before the detective does, truth becomes the most viral content of all. Atlanta\u2019s influencer culture serves as backdrop to a tightly-wound noir that asks: what do we leave behind when we go offline for good?",meta:[{label:'Format',val:'Feature Film'},{label:'Genre',val:'Film Noir / Thriller'},{label:'Platforms',val:'Tubi, BET+'},{label:'Status',val:'Pitch-Ready'},{label:'IP Status',val:'Original IP'},{label:'Materials',val:'Treatment, Teaser, Script'}],link:'projects/the-influencers-last-post.html'},
   'the-line':{img:'images/the-line.png',tags:['Drama','Network Series'],title:'The Line',synopsis:"After a fatal shooting at an Atlanta label, a disgraced FBI agent is assigned to protect a fiercely independent music agent who isn’t just running from a criminal empire. She’s maneuvering to take it over.",meta:[{label:'Format',val:'Network Series'},{label:'Genre',val:'Drama / Procedural'},{label:'Platforms',val:'BET+, Netflix'},{label:'Status',val:'Pitch-Ready'},{label:'IP Status',val:'Original IP'},{label:'Materials',val:'Treatment, Teaser, Bible'}],link:'projects/the-line.html'},
   'the-last-dynasty':{img:'images/the-last-dynasty.png',tags:['Drama','MOW'],title:'The Last Dynasty',synopsis:"On the night of King Carter’s final party, his estranged daughter Jasmine returns for the money that could pay for her life-saving treatment, but when he turns up murdered and the mansion locks down, she has until sunrise to find the killer.",meta:[{label:'Format',val:'TV Movie (MOW)'},{label:'Genre',val:'Drama'},{label:'Platforms',val:'BET+, Netflix'},{label:'Status',val:'Script Complete'},{label:'IP Status',val:'Original IP'},{label:'Materials',val:'Treatment, Teaser, Script'}],link:'projects/the-last-dynasty.html'},
-  'black-girls-guide':{img:'images/black-girls-guide.png',tags:['Comedy','MOW'],title:"Black Girl\u2019s Guide to Vengeance (and Vodka)",synopsis:"Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women. Every swipe is a reckoning. Every user is a weapon.",meta:[{label:'Format',val:'TV Movie (MOW)'},{label:'Genre',val:'Comedy / Satire'},{label:'Platforms',val:'BET+, Tubi'},{label:'Status',val:'Pitch-Ready'},{label:'IP Status',val:'Original IP'},{label:'Materials',val:'Treatment, Script, Teaser'}],link:'projects/black-girls-guide-to-vengeance-and-vodka.html'}
+  'black-girls-guide':{img:'images/black-girls-guide-to-vengeance-and-vodka.png',tags:['Comedy','MOW'],title:"Black Girl\u2019s Guide to Vengeance (and Vodka)",synopsis:"Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women. Every swipe is a reckoning. Every user is a weapon.",meta:[{label:'Format',val:'TV Movie (MOW)'},{label:'Genre',val:'Comedy / Satire'},{label:'Platforms',val:'BET+, Tubi'},{label:'Status',val:'Pitch-Ready'},{label:'IP Status',val:'Original IP'},{label:'Materials',val:'Treatment, Script, Teaser'}],link:'projects/black-girls-guide-to-vengeance-and-vodka.html'}
 };
 
 // SCROLL
@@ -1154,6 +1174,11 @@ selectOrAdd(projectSelect, contactParams.get('project'));
 selectOrAdd(materialsSelect, contactParams.get('materials'));
 const urlProject = contactParams.get('project');
 const urlMaterials = contactParams.get('materials');
+// ?type=materials (from "Request Materials" buttons) preselects the inquiry type.
+const urlType = contactParams.get('type');
+if (urlType && document.querySelector(`#cf-type option[value="${CSS.escape(urlType)}"]`)) {
+  document.getElementById('cf-type').value = urlType;
+}
 if (urlProject) {
   const context = document.getElementById('contact-context');
   const type = document.getElementById('cf-type');
