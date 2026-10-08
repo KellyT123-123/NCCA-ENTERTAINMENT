@@ -273,6 +273,11 @@ ul{list-style:none}
 .contact-context{margin:0;padding:10px 12px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:var(--radius);font-size:12px;color:var(--text-dim);line-height:1.45}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-field{display:flex;flex-direction:column;gap:5px}
+.form-honey{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-status{margin-top:12px;font-size:14px;line-height:1.5}
+.form-status.is-ok{color:#7fd18b}
+.form-status.is-err{color:#f0a37a}
+.form-submit[disabled]{opacity:.6;cursor:wait}
 .form-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
 .form-input,.form-select,.form-textarea{background:var(--dark-gray);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:14px;padding:10px 14px;outline:none;transition:border-color var(--transition);width:100%}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold)}
@@ -886,7 +891,9 @@ ul{list-style:none}
             </select>
           </div>
           <div class="form-field"><label class="form-label" for="cf-message">Message</label><textarea id="cf-message" class="form-textarea" placeholder="Tell us what you&rsquo;re looking for&hellip;"></textarea></div>
-          <button type="submit" class="form-submit">Send Message</button>
+          <div class="form-honey" aria-hidden="true"><label for="cf-website">Website</label><input type="text" id="cf-website" name="_honey" tabindex="-1" autocomplete="off" /></div>
+          <button type="submit" class="form-submit" id="cf-submit">Send Message</button>
+          <p class="form-status" id="cf-status" role="status" aria-live="polite" hidden></p>
         </form>
         </div><!-- /#tab-form -->
         <div class="contact-tab-panel" id="tab-meeting">
@@ -1062,18 +1069,47 @@ if (contactProject) {
     if (!message.value.trim()) message.value = `I’m interested in discussing ${contactProject}.\n\n`;
   }
 }
-document.getElementById('contact-form').addEventListener('submit',function(e){
+// Form delivery: posts straight to the studio inbox. To switch services (e.g. Formspree),
+// change FORM_ENDPOINT only. If delivery fails, the visitor's email app opens as a fallback.
+const FORM_ENDPOINT='https://formsubmit.co/ajax/contact@nccaentertainment.com';
+document.getElementById('contact-form').addEventListener('submit',async function(e){
   e.preventDefault();
+  const form=this;
+  const status=document.getElementById('cf-status');
+  const btn=document.getElementById('cf-submit');
+  if(document.getElementById('cf-website').value) return;
   const name=document.getElementById('cf-name').value.trim();
   const email=document.getElementById('cf-email').value.trim();
   const company=document.getElementById('cf-company').value.trim();
   const typeEl=document.getElementById('cf-type');
-  const type=typeEl.options[typeEl.selectedIndex].text;
+  const type=typeEl.value ? typeEl.options[typeEl.selectedIndex].text : 'General Contact';
   const message=document.getElementById('cf-message').value.trim();
-  const subject=encodeURIComponent(`[NCCA Inquiry - ${type}] from ${name}`);
+  const subjectText=`[NCCA Inquiry - ${type}]${contactProject ? ' '+contactProject+' -' : ''} from ${name}`;
   const projectLine=(contactProject ? `Project: ${contactProject}\n` : '')+(contactMaterials ? `Materials requested: ${contactMaterials}\n` : '');
-  const body=encodeURIComponent(`${projectLine}Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry Type: ${type}\n\n${message}`);
-  window.location.href=`mailto:contact@nccaentertainment.com?subject=${subject}&body=${body}`;
+  const mailtoFallback=()=>{
+    const body=encodeURIComponent(`${projectLine}Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry Type: ${type}\n\n${message}`);
+    window.location.href=`mailto:contact@nccaentertainment.com?subject=${encodeURIComponent(subjectText)}&body=${body}`;
+  };
+  btn.disabled=true; btn.textContent='Sending…';
+  status.hidden=true; status.className='form-status';
+  try{
+    const res=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({_subject:subjectText,_replyto:email,_template:'table',_captcha:'false',
+        Name:name,Email:email,Company:company||'(not given)','Inquiry Type':type,
+        Project:contactProject||'(none)','Materials Requested':contactMaterials||'(none)',Message:message||'(no message)',
+        'Sent From':window.location.href})});
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok || data.success==='false' || data.success===false) throw new Error(data.message||res.status);
+    status.textContent=`Thanks, ${name.split(' ')[0]||'there'}. Your message is in. The studio replies within 24–48 business hours.`;
+    status.classList.add('is-ok'); status.hidden=false;
+    form.reset();
+  }catch(err){
+    status.textContent='We couldn’t send that from here, so we’re opening your email app with your message ready to go.';
+    status.classList.add('is-err'); status.hidden=false;
+    mailtoFallback();
+  }finally{
+    btn.disabled=false; btn.textContent='Send Message';
+  }
 });
 
 // CARD ENTRANCE ANIMATIONS
