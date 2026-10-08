@@ -890,6 +890,95 @@ ul{list-style:none}
               <option value="general">General Contact</option>
             </select>
           </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label" for="cf-project">Project</label>
+              <select id="cf-project" class="form-select">
+              <option value="">General / not title-specific</option>
+              <optgroup label="Feature Films">
+                <option value="The 13th Passenger">The 13th Passenger</option>
+                <option value="The Bone Collector&#x27;s Daughter">The Bone Collector&#x27;s Daughter</option>
+                <option value="Cheer Heist">Cheer Heist</option>
+                <option value="Final Walk">Final Walk</option>
+                <option value="Ghostmaker">Ghostmaker</option>
+                <option value="The Influencer&#x27;s Last Post">The Influencer&#x27;s Last Post</option>
+                <option value="LifeArt">LifeArt</option>
+                <option value="Mirror Image">Mirror Image</option>
+                <option value="The Proxy">The Proxy</option>
+                <option value="Refractions">Refractions</option>
+                <option value="RSVP Clause">RSVP Clause</option>
+                <option value="Second Skin">Second Skin</option>
+                <option value="Sneakerheads Anonymous">Sneakerheads Anonymous</option>
+                <option value="Standby">Standby</option>
+                <option value="Trap House Sitting">Trap House Sitting</option>
+              </optgroup>
+              <optgroup label="TV Movies (MOW)">
+                <option value="The Alibi">The Alibi</option>
+                <option value="ATL Soul: The Velvet LaRou Story">ATL Soul: The Velvet LaRou Story</option>
+                <option value="Beneath the Magnolia Tree">Beneath the Magnolia Tree</option>
+                <option value="Black Girl&#x27;s Guide to Vengeance (and Vodka)">Black Girl&#x27;s Guide to Vengeance (and Vodka)</option>
+                <option value="The Cookout Confession">The Cookout Confession</option>
+                <option value="The Cost of Truth">The Cost of Truth</option>
+                <option value="The Devon House">The Devon House</option>
+                <option value="Divine Deception">Divine Deception</option>
+                <option value="Eminent Domain">Eminent Domain</option>
+                <option value="The Ex-Files">The Ex-Files</option>
+                <option value="The Feed">The Feed</option>
+                <option value="Flip Side of Love">Flip Side of Love</option>
+                <option value="Fort Silence">Fort Silence</option>
+                <option value="Granny&#x27;s House for the Holidays">Granny&#x27;s House for the Holidays</option>
+                <option value="Hot Mess Express">Hot Mess Express</option>
+                <option value="It&#x27;s Somebody You Know">It&#x27;s Somebody You Know</option>
+                <option value="The Last Dynasty">The Last Dynasty</option>
+                <option value="Last Exit on 285">Last Exit on 285</option>
+                <option value="The Layover">The Layover</option>
+                <option value="Love After Likes">Love After Likes</option>
+                <option value="The Other Mrs. Jameson">The Other Mrs. Jameson</option>
+                <option value="Past Due">Past Due</option>
+                <option value="The Perfect Assistant">The Perfect Assistant</option>
+                <option value="Rhythm &amp; Blooms">Rhythm &amp; Blooms</option>
+                <option value="Second First Date">Second First Date</option>
+                <option value="Southern (Dis)comfort">Southern (Dis)comfort</option>
+                <option value="A Spelman Christmas">A Spelman Christmas</option>
+                <option value="This Is Me Now">This Is Me Now</option>
+                <option value="Twelve Dates at the Christmas Tree Lot">Twelve Dates at the Christmas Tree Lot</option>
+                <option value="Twice Betrayed">Twice Betrayed</option>
+                <option value="The Understudy">The Understudy</option>
+              </optgroup>
+              <optgroup label="Limited Series">
+                <option value="The Extraction">The Extraction</option>
+                <option value="Page 41">Page 41</option>
+                <option value="She Who Watches">She Who Watches</option>
+                <option value="Soul on Fire">Soul on Fire</option>
+              </optgroup>
+              <optgroup label="Network Series">
+                <option value="The Archive">The Archive</option>
+                <option value="Echo Chamber">Echo Chamber</option>
+                <option value="Just Jack">Just Jack</option>
+                <option value="The Line">The Line</option>
+                <option value="Slice of Paradise">Slice of Paradise</option>
+              </optgroup>
+              <optgroup label="Docuseries">
+                <option value="Digital Shadows">Digital Shadows</option>
+                <option value="Exposed">Exposed</option>
+              </optgroup>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="cf-materials">Materials Requested</label>
+              <select id="cf-materials" class="form-select">
+              <option value="">None / just a conversation</option>
+              <option value="Pitch Deck">Pitch Deck</option>
+              <option value="One-Sheet">One-Sheet</option>
+              <option value="Treatment">Treatment</option>
+              <option value="Script">Script</option>
+              <option value="Teaser">Teaser</option>
+              <option value="Series Bible">Series Bible</option>
+              <option value="Casting Suggestions">Casting Suggestions</option>
+              <option value="Full Package">Full Package</option>
+              </select>
+            </div>
+          </div>
           <div class="form-field"><label class="form-label" for="cf-message">Message</label><textarea id="cf-message" class="form-textarea" placeholder="Tell us what you&rsquo;re looking for&hellip;"></textarea></div>
           <div class="form-honey" aria-hidden="true"><label for="cf-website">Website</label><input type="text" id="cf-website" name="_honey" tabindex="-1" autocomplete="off" /></div>
           <button type="submit" class="form-submit" id="cf-submit">Send Message</button>
@@ -1052,23 +1141,36 @@ modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay)closeModal(
 
 // CONTACT
 const contactParams = new URLSearchParams(window.location.search);
-const contactProject = contactParams.get('project');
-const contactMaterials = contactParams.get('materials');
-if (contactProject) {
+const projectSelect = document.getElementById('cf-project');
+const materialsSelect = document.getElementById('cf-materials');
+// Select a value in a dropdown, adding it if the list doesn't have it yet.
+function selectOrAdd(sel, val){
+  if(!val) return;
+  const match=[...sel.options].find(o=>o.value.toLowerCase()===val.toLowerCase());
+  if(match){ sel.value=match.value; return; }
+  sel.add(new Option(val,val)); sel.value=val;
+}
+selectOrAdd(projectSelect, contactParams.get('project'));
+selectOrAdd(materialsSelect, contactParams.get('materials'));
+const urlProject = contactParams.get('project');
+const urlMaterials = contactParams.get('materials');
+if (urlProject) {
   const context = document.getElementById('contact-context');
   const type = document.getElementById('cf-type');
-  const message = document.getElementById('cf-message');
   context.hidden = false;
-  if (contactMaterials) {
-    context.textContent = `Requesting ${contactMaterials} for ${contactProject}. Materials are shared after studio review.`;
+  if (urlMaterials) {
+    context.textContent = `Requesting ${urlMaterials} for ${urlProject}. Materials are shared after studio review.`;
     if (!type.value) type.value = 'materials';
-    if (!message.value.trim()) message.value = `I’d like to request the ${contactMaterials} for ${contactProject}.\n\n`;
   } else {
-    context.textContent = `Preparing an inquiry about ${contactProject}.`;
+    context.textContent = `Preparing an inquiry about ${urlProject}.`;
     if (!type.value) type.value = 'pitch';
-    if (!message.value.trim()) message.value = `I’m interested in discussing ${contactProject}.\n\n`;
   }
 }
+// Picking materials nudges the inquiry type to Materials Access when nothing else is chosen.
+materialsSelect.addEventListener('change',()=>{
+  const type=document.getElementById('cf-type');
+  if(materialsSelect.value && !type.value) type.value='materials';
+});
 // Form delivery: posts straight to the studio inbox. To switch services (e.g. Formspree),
 // change FORM_ENDPOINT only. If delivery fails, the visitor's email app opens as a fallback.
 const FORM_ENDPOINT='https://formsubmit.co/ajax/contact@nccaentertainment.com';
@@ -1084,6 +1186,8 @@ document.getElementById('contact-form').addEventListener('submit',async function
   const typeEl=document.getElementById('cf-type');
   const type=typeEl.value ? typeEl.options[typeEl.selectedIndex].text : 'General Contact';
   const message=document.getElementById('cf-message').value.trim();
+  const contactProject=projectSelect.value;
+  const contactMaterials=materialsSelect.value;
   const subjectText=`[NCCA Inquiry - ${type}]${contactProject ? ' '+contactProject+' -' : ''} from ${name}`;
   const projectLine=(contactProject ? `Project: ${contactProject}\n` : '')+(contactMaterials ? `Materials requested: ${contactMaterials}\n` : '');
   const mailtoFallback=()=>{
