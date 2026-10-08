@@ -1,10 +1,10 @@
-const projectsData = [
+const projectsDataAll = [
   {
     "title": "The Influencer's Last Post",
     "genre": "Film Noir",
     "format": "MOW",
     "audience": "Women 25–40 | Gen Z",
-    "description": "A social media influencer's final post becomes the key to solving her own murder.",
+    "description": "A social media influencer’s final post becomes the only key to solving her own murder.",
     "deck": "pitch-decks/influencers-last-post-pitch-deck.pdf",
     "onesheet": "one-sheets/influencers-last-post-one-sheet.pdf",
     "treatment": "assets/influencers-last-post-treatment.pdf",
@@ -39,10 +39,10 @@ const projectsData = [
   },
   {
     "title": "The Last Dynasty",
-    "genre": "Drama | Musical",
+    "genre": "Drama",
     "format": "MOW",
     "audience": "Adults 25-54 | Black Audiences",
-    "description": "King Carter dies during his fi nal party, his estranged daughter Jasmine must navigate locked gates, rising flames, and a web of betrayal to solve his murder",
+    "description": "When King Carter dies during his final party, his estranged daughter Jasmine must fight through locked gates, rising flames, and a web of betrayal to solve his murder.",
     "deck": "pitch-decks/the-last-dynasty-pitch-deck.pdf",
     "onesheet": "one-sheets/the-last-dynasty-one-sheet.pdf",
     "treatment": "assets/the-last-dynasty-treatment.pdf",
@@ -60,7 +60,7 @@ const projectsData = [
     "genre": "Comedy",
     "format": "MOW",
     "audience": "Women 25–40 | Black Audiences",
-    "description": "Dumped for an AI clone assembled from her own data, a software engineer goes viral by launching a revenge app for wronged women.",
+    "description": "Dumped for an AI clone built from her own data, a software engineer goes viral by launching a revenge app for wronged women.",
     "deck": "pitch-decks/black-girls-guide-to-vengeance-and-vodka-pitch-deck.pdf",
     "onesheet": "one-sheets/black-girls-guide-to-vengeance-and-vodka-one-sheet.pdf",
     "treatment": "assets/black-girls-guide-to-vengeance-and-vodka-treatment.pdf",
@@ -130,6 +130,7 @@ const projectsData = [
     "archiveLane": "Limited Series"
   },
   {
+    "hidden": true,
     "title": "Sinners & Saints",
     "genre": "Drama",
     "format": "Limited Series",
@@ -228,7 +229,7 @@ const projectsData = [
     "genre": "Romance",
     "format": "MOW",
     "audience": "Women 25–40 | Black Audiences",
-    "description": "When a driven TV producer returns home to film a historic home renovation, she's shocked to discover the project's contractor is her ex, the man who broke her heart.",
+    "description": "When a driven TV producer returns home to film a historic home renovation, she finds the contractor is the ex who broke her heart.",
     "deck": "pitch-decks/flip-side-of-love-pitch-deck.pdf",
     "onesheet": "one-sheets/flip-side-of-love-one-sheet.pdf",
     "treatment": "assets/flip-side-of-love-treatment.pdf",
@@ -246,7 +247,7 @@ const projectsData = [
     "genre": "Romance",
     "format": "MOW",
     "audience": "Women 25–40 | Black Audiences",
-    "description": "After a scathing review tanks a struggling soul food restaurant, a feared Atlanta food critic is forced to team up with her ex-fiancé chef.",
+    "description": "After her scathing review tanks a struggling soul food restaurant, a feared Atlanta food critic is forced to team up with its chef: her ex-fiancé.",
     "deck": "pitch-decks/southern-discomfort-pitch-deck.pdf",
     "onesheet": "one-sheets/southern-discomfort-one-sheet.pdf",
     "treatment": "assets/southern-discomfort-treatment.pdf",
@@ -539,6 +540,7 @@ const projectsData = [
     "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
+    "hidden": true,
     "title": "Miss Juneteenth Blues",
     "genre": "Comedy",
     "format": "MOW",
@@ -739,6 +741,7 @@ const projectsData = [
     "archiveLane": "Docuseries"
   },
   {
+    "hidden": true,
     "title": "Reflections",
     "genre": "Action",
     "format": "Feature",
@@ -758,6 +761,7 @@ const projectsData = [
     "archiveLane": "Feature Films"
   },
   {
+    "hidden": true,
     "title": "The Architect",
     "genre": "Action",
     "format": "Feature",
@@ -778,6 +782,7 @@ const projectsData = [
     "archiveLane": "Feature Films"
   },
   {
+    "hidden": true,
     "title": "Queen of Thorns",
     "genre": "Action",
     "format": "Feature",
@@ -859,7 +864,7 @@ const projectsData = [
     "genre": "Horror",
     "format": "Feature | Theatrical",
     "audience": "Gen Z | Horror Fans",
-    "description": "Haunted by vengeful spirits known as the Hollow-Eyed, a daughter must embrace her bloodline's dark rituals or be consumed the spirit",
+    "description": "Hunted by vengeful spirits called the Hollow-Eyed, a young woman must embrace her bloodline’s forbidden rituals or be consumed.",
     "deck": "pitch-decks/the-bone-collectors-daughter-pitch-deck.pdf",
     "onesheet": "one-sheets/the-bone-collectors-daughter-one-sheet.pdf",
     "treatment": "assets/the-bone-collectors-daughter-treatment.pdf",
@@ -891,7 +896,7 @@ const projectsData = [
     "genre": "Thriller",
     "format": "Limited Series",
     "audience": "Adults 25–54 | Thriller Audiences",
-    "description": "A hostage negotiator whose career was built on never losing a life is forced to negotiate for her own daughter’s kidnapping by the man she put in federal prison fifteen years ago.",
+    "description": "A hostage negotiator who has never lost a life must negotiate for her own kidnapped daughter with the man she sent to federal prison fifteen years ago.",
     "deck": "pitch-decks/the-extraction-studio-pitch-deck.pptx",
     "onesheet": "one-sheets/the-extraction-one-sheet.pdf",
     "image": "images/the-extraction-poster.png",
@@ -906,7 +911,7 @@ const projectsData = [
     "genre": "Thriller | Espionage",
     "format": "Limited Series",
     "audience": "Adults 25–54 | Global Prestige Audiences",
-    "description": "A visionary NATO treaty architect survives the ambush that kills the man she secretly loves, only to discover that the mentor guiding her grief is quietly editing her memories and remaking her into the conspiracy’s instrument.",
+    "description": "A visionary NATO treaty architect survives the ambush that kills the man she secretly loves, then discovers her mentor is quietly editing her memories to turn her into the conspiracy’s weapon.",
     "deck": "pitch-decks/page-41-studio-pitch-deck.pptx",
     "onesheet": "one-sheets/page-41-one-sheet.pdf",
     "image": "images/page-41-poster.png",
@@ -921,7 +926,7 @@ const projectsData = [
     "genre": "Thriller",
     "format": "MOW",
     "audience": "Adult Audiences",
-    "description": "A ruthless gentrification attorney inherits her dead aunt’s crumbling house and uncovers the secret of her own erased childhood, forcing her to choose between the armored life she built on forgetting and the truth that can bring a beloved pastor down.",
+    "description": "A gentrification attorney inherits her aunt’s crumbling Atlanta home and uncovers the secret of her erased childhood, forcing her to choose between forgetting and the truth.",
     "deck": "pitch-decks/the-devon-house-studio-pitch-deck.pptx",
     "onesheet": "one-sheets/the-devon-house-one-sheet.pdf",
     "image": "images/the-devon-house-poster.png",
@@ -953,7 +958,7 @@ const projectsData = [
     "genre": "Thriller",
     "format": "MOW",
     "audience": "Adult Audiences",
-    "description": "A celebrated Atlanta therapist is framed for the murder of the ex-husband who built a machine of police, courts, and even her own marriage to destroy her from beyond the grave.",
+    "description": "A celebrated Atlanta therapist is framed for the murder of her ex-husband, who built a conspiracy to destroy her from beyond the grave.",
     "deck": "pitch-decks/twice-betrayed-studio-pitch-deck.pptx",
     "onesheet": "one-sheets/twice-betrayed-one-sheet.pdf",
     "image": "images/twice-betrayed-poster.png",
@@ -1015,7 +1020,7 @@ const projectsData = [
     "genre": "Action Thriller",
     "format": "Feature",
     "audience": "Adults 25–54 | Thriller Audiences",
-    "description": "An ex-Army MP driving Atlanta’s Perimeter for rideshare money picks up a bookkeeper fleeing a trafficking ring. When the man running it kidnaps her daughter, she must confront the trauma that ended her military career and get them out before dawn.",
+    "description": "An ex-Army MP driving Atlanta’s Perimeter for rideshare money picks up a bookkeeper fleeing a trafficking ring, and when its boss kidnaps the woman’s daughter, she has until dawn to get them out.",
     "deck": "pitch-decks/last-exit-on-285-pitch-deck.pptx",
     "platforms": [
       "BET+"
@@ -1028,7 +1033,7 @@ const projectsData = [
     "genre": "Romantic Comedy",
     "format": "Feature",
     "audience": "Adults 18–49 | Romance Audiences",
-    "description": "To survive planning her ex-fiancé’s wedding and her family’s relentless matchmaking, a meticulous Chicago wedding planner signs a no-love pact with a commitment-averse designer, only to find their fake dates becoming real.",
+    "description": "Stuck planning her ex-fiancé’s wedding, a meticulous Chicago wedding planner signs a no-love pact with a commitment-averse designer, until their fake dates start turning real.",
     "deck": "pitch-decks/rsvp-clause-pitch-deck.pptx",
     "onesheet": "one-sheets/rsvp-clause-one-pager-and-cast.pdf",
     "platforms": [
@@ -1042,7 +1047,7 @@ const projectsData = [
     "genre": "Techno-Thriller",
     "format": "Feature",
     "audience": "Adults 25–54 | Global Thriller Audiences",
-    "description": "After a passenger dies aboard an international flight and is erased from its digital manifest, a guilt-haunted accident investigator must expose a private intelligence contractor before everyone trapped inside a remote French airport is rewritten out of existence.",
+    "description": "When a passenger dies mid-flight and vanishes from the digital manifest, a guilt-haunted accident investigator must expose the intelligence contractor behind it before everyone stranded at a remote French airport is erased too.",
     "deck": "pitch-decks/the-13th-passenger-pitch-deck.pptx",
     "image": "images/the-13th-passenger.png",
     "platforms": [
@@ -1070,7 +1075,7 @@ const projectsData = [
     "genre": "Locked-Room Suspense Thriller",
     "format": "MOW",
     "audience": "Adults 25–54 | Black Women Thriller Audiences",
-    "description": "During a historic Atlanta ice storm, five Black women trapped beneath the airport turn on one another when a federal witness’s deadly secret surfaces and a carbon monoxide leak leaves them forty-five minutes to decide who deserves to escape.",
+    "description": "During a historic Atlanta ice storm, five Black women trapped beneath the airport turn on each other when a federal witness’s secret surfaces and a carbon monoxide leak leaves them 45 minutes to decide who escapes.",
     "deck": "pitch-decks/the-layover-pitch-deck-2026.pptx",
     "onesheet": "one-sheets/the-layover-onepager-tvone-betplus.pdf",
     "platforms": [
@@ -1085,7 +1090,7 @@ const projectsData = [
     "genre": "Psychological Thriller",
     "format": "Feature",
     "audience": "Adults 25–54 | Black Women Thriller Audiences",
-    "description": "When an Atlanta fashion founder hires an assistant who anticipates her every need, the young woman’s growing access exposes a secret tied to her late father and forces the founder to confront the family history she has spent her life avoiding.",
+    "description": "An Atlanta fashion founder hires an assistant who anticipates her every need, until the young woman’s access exposes a secret tied to her late father and the history she has spent her life avoiding.",
     "deck": "pitch-decks/the-perfect-assistant-pitch-deck-final.pptx",
     "platforms": [
       "BET+",
@@ -1115,3 +1120,6 @@ const projectsData = [
     "deck": "pitch-decks/standby-pitch-deck-2026-v2.pptx"
   }
 ];
+
+// Titles marked hidden stay in the file but are not shown on the site.
+const projectsData = projectsDataAll.filter(p => !p.hidden);
