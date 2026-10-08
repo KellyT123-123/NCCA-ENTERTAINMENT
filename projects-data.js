@@ -2,7 +2,7 @@ const projectsDataAll = [
   {
     "title": "The Influencer's Last Post",
     "genre": "Film Noir",
-    "format": "MOW",
+    "format": "Feature",
     "audience": "Women 25–40 | Gen Z",
     "description": "A social media influencer’s final post becomes the only key to solving her own murder.",
     "deck": "pitch-decks/influencers-last-post-pitch-deck.pdf",
@@ -11,10 +11,8 @@ const projectsDataAll = [
     "trailer": "assets/influencers-last-post-teaser.mp4",
     "image": "images/influencers-last-post.png",
     "platforms": [
-      "Paramount+",
-      "Peacock",
-      "BET+",
-      "OWN"
+      "Tubi",
+      "BET+"
     ],
     "archiveLane": "Thriller & Suspense MOW"
   },
@@ -30,10 +28,8 @@ const projectsDataAll = [
     "trailer": "assets/the-line-teaser.mp4",
     "image": "images/the-line.png",
     "platforms": [
-      "Paramount+",
-      "Peacock",
       "BET+",
-      "OWN"
+      "Netflix"
     ],
     "archiveLane": "Network & Returning Series"
   },
@@ -49,9 +45,8 @@ const projectsDataAll = [
     "trailer": "assets/the-last-dynasty-teaser.mp4",
     "image": "images/the-last-dynasty.png",
     "platforms": [
-      "Netflix",
-      "HBO",
-      "Apple"
+      "BET+",
+      "Netflix"
     ],
     "archiveLane": "Southern Stories with Teeth"
   },
@@ -68,8 +63,7 @@ const projectsDataAll = [
     "image": "images/black-girls-guide-to-vengeance-and-vodka.png",
     "platforms": [
       "BET+",
-      "OWN",
-      "Lifetime"
+      "Tubi"
     ],
     "archiveLane": "Romance, Comedy & Character MOW"
   },
@@ -85,10 +79,8 @@ const projectsDataAll = [
     "trailer": "assets/echo-chamber-teaser.mp4",
     "image": "images/echo-chamber.png",
     "platforms": [
-      "ABC",
-      "NBC",
-      "FOX",
-      "CBS"
+      "Broadcast TV",
+      "Netflix"
     ],
     "archiveLane": "Network & Returning Series"
   },
@@ -104,10 +96,7 @@ const projectsDataAll = [
     "trailer": "assets/just-jack-teaser.mp4",
     "image": "images/just-jack.png",
     "platforms": [
-      "ABC",
-      "NBC",
-      "FOX",
-      "CBS"
+      "Broadcast TV"
     ],
     "archiveLane": "Network & Returning Series"
   },
@@ -123,9 +112,8 @@ const projectsDataAll = [
     "trailer": "assets/soul-on-fire-teaser.mp4",
     "image": "images/soul-on-fire.png",
     "platforms": [
-      "Netflix",
-      "HBO",
-      "Apple"
+      "BET+",
+      "Netflix"
     ],
     "archiveLane": "Limited Series"
   },
@@ -160,9 +148,8 @@ const projectsDataAll = [
     "trailer": "",
     "image": "images/she-who-watches.png",
     "platforms": [
-      "HBO",
       "Netflix",
-      "Apple"
+      "HBO/Max"
     ],
     "archiveLane": "Limited Series"
   },
@@ -178,11 +165,8 @@ const projectsDataAll = [
     "trailer": "assets/slice-of-paradise-teaser.mp4",
     "image": "images/slice-of-paradise.png",
     "platforms": [
-      "Paramount+",
-      "Peacock",
-      "ABC",
-      "NBC",
-      "FOX"
+      "Broadcast TV",
+      "Peacock"
     ],
     "archiveLane": "Network & Returning Series"
   },
@@ -198,11 +182,8 @@ const projectsDataAll = [
     "trailer": "assets/the-archive-teaser.mp4",
     "image": "images/the-archive.png",
     "platforms": [
-      "Paramount+",
-      "Peacock",
       "Netflix",
-      "HBO",
-      "Apple"
+      "HBO/Max"
     ],
     "archiveLane": "Network & Returning Series"
   },
@@ -218,9 +199,8 @@ const projectsDataAll = [
     "trailer": "assets/love-after-likes-teaser.mp4",
     "image": "images/love-after-likes.png",
     "platforms": [
-      "Netflix",
-      "Peacock",
-      "BET+"
+      "BET+",
+      "Tubi"
     ],
     "archiveLane": "Romance, Comedy & Character MOW"
   },
@@ -237,8 +217,7 @@ const projectsDataAll = [
     "image": "images/flip-side-of-love.png",
     "platforms": [
       "BET+",
-      "OWN",
-      "Lifetime"
+      "Hallmark"
     ],
     "archiveLane": "Romance, Comedy & Character MOW"
   },
@@ -255,8 +234,7 @@ const projectsDataAll = [
     "image": "images/southern-discomfort.png",
     "platforms": [
       "BET+",
-      "OWN",
-      "Lifetime"
+      "ALLBLK"
     ],
     "archiveLane": "Romance, Comedy & Character MOW"
   },
@@ -273,8 +251,7 @@ const projectsDataAll = [
     "image": "images/second-first-date.png",
     "platforms": [
       "BET+",
-      "OWN",
-      "Lifetime"
+      "Hallmark"
     ],
     "archiveLane": "Romance, Comedy & Character MOW"
   },
@@ -291,8 +268,7 @@ const projectsDataAll = [
     "image": "images/rhythm-and-blooms.png",
     "platforms": [
       "Hallmark",
-      "OWN",
-      "BET+"
+      "OWN"
     ],
     "archiveLane": "Romance, Comedy & Character MOW"
   },
@@ -309,15 +285,14 @@ const projectsDataAll = [
     "image": "images/ex-files.png",
     "platforms": [
       "BET+",
-      "OWN",
-      "Lifetime"
+      "ALLBLK"
     ],
     "archiveLane": "Romance, Comedy & Character MOW"
   },
   {
     "title": "Mirror Image",
     "genre": "Thriller",
-    "format": "MOW",
+    "format": "Feature",
     "audience": "Women 25–40 | Gen Z",
     "description": "A rising fashion influencer is digitally framed by her estranged sister using deepfakes, stolen biometrics, and weaponized clout.",
     "deck": "pitch-decks/mirror-image-pitch-deck.pdf",
@@ -326,9 +301,8 @@ const projectsDataAll = [
     "trailer": "assets/mirror-image-teaser.mp4",
     "image": "images/mirror-image.png",
     "platforms": [
-      "Netflix",
-      "HBO",
-      "Apple"
+      "Tubi",
+      "Netflix"
     ],
     "archiveLane": "Thriller & Suspense MOW"
   },
@@ -344,9 +318,8 @@ const projectsDataAll = [
     "trailer": "assets/past-due-teaser.mp4",
     "image": "images/past-due.png",
     "platforms": [
-      "Netflix",
-      "HBO",
-      "Apple"
+      "Tubi",
+      "Lifetime"
     ],
     "archiveLane": "Thriller & Suspense MOW"
   },
@@ -363,16 +336,14 @@ const projectsDataAll = [
     "image": "images/refractions.png",
     "platforms": [
       "Netflix",
-      "HBO",
-      "Apple",
-      "Theatrical"
+      "Tubi"
     ],
     "archiveLane": "Feature Films"
   },
   {
     "title": "The Proxy",
     "genre": "Thriller",
-    "format": "MOW",
+    "format": "Feature",
     "audience": "Women 25–40 | Black Audiences",
     "description": "Mistaken for someone she isn't, an artist is pulled into the dark underworld of stolen identities.",
     "deck": "pitch-decks/the-proxy-pitch-deck.pdf",
@@ -382,9 +353,7 @@ const projectsDataAll = [
     "image": "images/the-proxy.png",
     "platforms": [
       "BET+",
-      "OWN",
-      "Lifetime",
-      "Paramount+"
+      "Tubi"
     ],
     "archiveLane": "Thriller & Suspense MOW"
   },
@@ -400,9 +369,8 @@ const projectsDataAll = [
     "trailer": "assets/the-alibi-teaser.mp4",
     "image": "images/the-alibi.png",
     "platforms": [
-      "BET+",
-      "OWN",
-      "Lifetime"
+      "Lifetime",
+      "BET+"
     ],
     "archiveLane": "Thriller & Suspense MOW"
   },
@@ -418,10 +386,8 @@ const projectsDataAll = [
     "trailer": "assets/its-somebody-you-know-teaser.mp4",
     "image": "images/somebody-you-know.png",
     "platforms": [
-      "BET+",
-      "OWN",
       "Lifetime",
-      "Paramount+"
+      "BET+"
     ],
     "archiveLane": "Thriller & Suspense MOW"
   },
@@ -438,9 +404,7 @@ const projectsDataAll = [
     "image": "images/atl-soul-poster.png",
     "platforms": [
       "BET+",
-      "OWN",
-      "Lifetime",
-      "Paramount+"
+      "TV One"
     ],
     "archiveLane": "Southern Stories with Teeth"
   },
@@ -456,10 +420,8 @@ const projectsDataAll = [
     "trailer": "assets/the-other-mrs-jameson-teaser.mp4",
     "image": "images/the-other-mrs-jamison.png",
     "platforms": [
-      "BET+",
-      "OWN",
       "Lifetime",
-      "Paramount+"
+      "BET+"
     ],
     "archiveLane": "Thriller & Suspense MOW"
   },
@@ -476,8 +438,7 @@ const projectsDataAll = [
     "image": "images/the-feed.png",
     "platforms": [
       "BET+",
-      "OWN",
-      "Lifetime"
+      "Tubi"
     ],
     "archiveLane": "Romance, Comedy & Character MOW"
   },
@@ -493,11 +454,8 @@ const projectsDataAll = [
     "trailer": "assets/this-is-me-now-teaser.mp4",
     "image": "images/this-is-me-now.png",
     "platforms": [
-      "Paramount+",
-      "Peacock",
-      "ABC",
-      "NBC",
-      "FOX"
+      "BET+",
+      "Tubi"
     ],
     "archiveLane": "Romance, Comedy & Character MOW"
   },
@@ -513,10 +471,7 @@ const projectsDataAll = [
     "trailer": "assets/lifeart-teaser.mp4",
     "image": "images/lifeart.png",
     "platforms": [
-      "Paramount+",
-      "Peacock",
       "Netflix",
-      "HBO",
       "Theatrical"
     ],
     "archiveLane": "Feature Films"
@@ -533,9 +488,8 @@ const projectsDataAll = [
     "trailer": "assets/hot-mess-express-teaser.mp4",
     "image": "images/hot-mess-express.png",
     "platforms": [
-      "Netflix",
-      "HBO",
-      "Apple"
+      "BET+",
+      "Tubi"
     ],
     "archiveLane": "Romance, Comedy & Character MOW"
   },
@@ -570,10 +524,8 @@ const projectsDataAll = [
     "trailer": "assets/sneakerheads-anonymous-teaser.mp4",
     "image": "images/sneakerheads-anonymous.png",
     "platforms": [
-      "Netflix",
-      "HBO",
-      "Apple",
-      "Theatrical"
+      "Tubi",
+      "Netflix"
     ],
     "archiveLane": "Feature Films"
   },
@@ -589,10 +541,8 @@ const projectsDataAll = [
     "trailer": "assets/trap-house-sitting-teaser.mp4",
     "image": "images/trap-house-sitting.png",
     "platforms": [
-      "Netflix",
-      "HBO",
-      "Apple",
-      "Theatrical"
+      "Tubi",
+      "BET+"
     ],
     "archiveLane": "Feature Films"
   },
@@ -609,8 +559,7 @@ const projectsDataAll = [
     "image": "images/the-southern-belles-secret.png",
     "platforms": [
       "BET+",
-      "OWN",
-      "Lifetime"
+      "TV One"
     ],
     "archiveLane": "Southern Stories with Teeth"
   },
@@ -626,9 +575,8 @@ const projectsDataAll = [
     "trailer": "assets/beneath-the-magnolia-tree-teaser.mp4",
     "image": "images/beneath-the-magnolia-tree.png",
     "platforms": [
-      "BET+",
-      "OWN",
-      "Lifetime"
+      "Tubi",
+      "BET+"
     ],
     "archiveLane": "Southern Stories with Teeth"
   },
@@ -645,8 +593,7 @@ const projectsDataAll = [
     "image": "images/divine-deception.png",
     "platforms": [
       "BET+",
-      "OWN",
-      "Lifetime"
+      "TV One"
     ],
     "archiveLane": "Southern Stories with Teeth"
   },
@@ -662,9 +609,8 @@ const projectsDataAll = [
     "trailer": "assets/a-spelman-christmas-teaser.mp4",
     "image": "images/a-spelman-christmas.png",
     "platforms": [
-      "BET+",
       "OWN",
-      "Lifetime"
+      "BET+"
     ],
     "archiveLane": "Holiday & Seasonal"
   },
@@ -680,9 +626,8 @@ const projectsDataAll = [
     "trailer": "assets/grannys-house-holidays-teaser.mp4",
     "image": "images/grannys-house-home-for-the-holidays.png",
     "platforms": [
-      "BET+",
       "OWN",
-      "Lifetime"
+      "BET+"
     ],
     "archiveLane": "Holiday & Seasonal"
   },
@@ -698,9 +643,8 @@ const projectsDataAll = [
     "trailer": "assets/twelve-dates-christmas-tree-lot-teaser.mp4",
     "image": "images/twelve-dates-christmas-tree-lot.png",
     "platforms": [
-      "BET+",
-      "OWN",
-      "Lifetime"
+      "Hallmark",
+      "OWN"
     ],
     "archiveLane": "Holiday & Seasonal"
   },
@@ -717,8 +661,7 @@ const projectsDataAll = [
     "image": "images/digital-shadows.png",
     "platforms": [
       "Netflix",
-      "HBO",
-      "Apple"
+      "Tubi"
     ],
     "archiveLane": "Docuseries"
   },
@@ -735,8 +678,7 @@ const projectsDataAll = [
     "image": "images/exposed.png",
     "platforms": [
       "Netflix",
-      "HBO",
-      "Apple"
+      "Tubi"
     ],
     "archiveLane": "Docuseries"
   },
@@ -814,11 +756,8 @@ const projectsDataAll = [
     "trailer": "assets/ghostmaker-teaser.mp4",
     "image": "images/the-ghostmaker.png",
     "platforms": [
-      "Paramount+",
-      "Peacock",
       "Netflix",
-      "HBO",
-      "Theatrical"
+      "Tubi"
     ],
     "archiveLane": "Feature Films"
   },
@@ -835,8 +774,7 @@ const projectsDataAll = [
     "image": "images/cheer-heist.png",
     "platforms": [
       "Netflix",
-      "HBO/MAX",
-      "Amazon"
+      "Tubi"
     ],
     "archiveLane": "Feature Films"
   },
@@ -852,10 +790,8 @@ const projectsDataAll = [
     "trailer": "assets/second-skin-teaser.mp4",
     "image": "images/second-skin.png",
     "platforms": [
-      "Netflix",
-      "HBO",
-      "Apple",
-      "Theatrical"
+      "Tubi",
+      "Netflix"
     ],
     "archiveLane": "Feature Films"
   },
@@ -871,10 +807,8 @@ const projectsDataAll = [
     "trailer": "assets/the-bone-collectors-daughter-teaser.mp4",
     "image": "images/the-bone-collectors-daughter.png",
     "platforms": [
-      "Netflix",
-      "HBO",
-      "Apple",
-      "Theatrical"
+      "Tubi",
+      "Netflix"
     ],
     "archiveLane": "Feature Films"
   },
@@ -887,6 +821,7 @@ const projectsDataAll = [
     "onesheet": "one-sheets/final-walk-one-sheet.pdf",
     "image": "images/final-walk-poster-a.png",
     "platforms": [
+      "Netflix",
       "Theatrical"
     ],
     "archiveLane": "Feature Films"
@@ -902,7 +837,7 @@ const projectsDataAll = [
     "image": "images/the-extraction-poster.png",
     "platforms": [
       "Netflix",
-      "HBO"
+      "HBO/Max"
     ],
     "archiveLane": "Limited Series"
   },
@@ -917,7 +852,7 @@ const projectsDataAll = [
     "image": "images/page-41-poster.png",
     "platforms": [
       "Netflix",
-      "HBO"
+      "BET+"
     ],
     "archiveLane": "Limited Series"
   },
@@ -932,7 +867,6 @@ const projectsDataAll = [
     "image": "images/the-devon-house-poster.png",
     "platforms": [
       "BET+",
-      "OWN",
       "Lifetime"
     ],
     "archiveLane": "Thriller & Suspense MOW"
@@ -948,7 +882,6 @@ const projectsDataAll = [
     "image": "images/the-understudy-poster.png",
     "platforms": [
       "BET+",
-      "OWN",
       "Lifetime"
     ],
     "archiveLane": "Thriller & Suspense MOW"
@@ -963,9 +896,8 @@ const projectsDataAll = [
     "onesheet": "one-sheets/twice-betrayed-one-sheet.pdf",
     "image": "images/twice-betrayed-poster.png",
     "platforms": [
-      "BET+",
-      "OWN",
-      "Lifetime"
+      "Lifetime",
+      "BET+"
     ],
     "archiveLane": "Thriller & Suspense MOW"
   },
@@ -979,24 +911,20 @@ const projectsDataAll = [
     "onesheet": "one-sheets/the-cost-of-truth-one-sheet.pdf",
     "image": "images/the-cost-of-truth-poster.png",
     "platforms": [
-      "BET+",
-      "OWN",
-      "Lifetime"
+      "TV One",
+      "BET+"
     ],
     "archiveLane": "Thriller & Suspense MOW"
   },
   {
     "title": "Eminent Domain",
     "genre": "Psychological Thriller | Drama",
-    "format": "Feature",
+    "format": "MOW",
     "audience": "Adults 25–54 | Black Audiences",
     "description": "A photographer documenting a historic Black Atlanta neighborhood before it is erased by redevelopment learns the family business behind the buyouts is tied to the man who raised her.",
     "onesheet": "one-sheets/eminent-domain-one-pager.pdf",
     "platforms": [
-      "TV One",
-      "BET+",
-      "OWN",
-      "Lifetime"
+      "BET+"
     ],
     "archiveLane": "Feature Films",
     "image": "images/eminent-domain-poster.jpg"
@@ -1004,13 +932,13 @@ const projectsDataAll = [
   {
     "title": "Fort Silence",
     "genre": "Military Investigative Thriller",
-    "format": "Feature",
+    "format": "MOW",
     "audience": "Adults 25–54 | Thriller Audiences",
     "description": "When a young soldier dies at Fort Stewart, CID agent Jordan Hayes finds the hidden experiment that killed her father twenty years earlier and must defy the commander who raised her before another private becomes a closed case.",
     "deck": "pitch-decks/fort-silence-pitch-deck.pptx",
     "platforms": [
-      "Premium Streaming",
-      "Specialty Feature"
+      "BET+",
+      "Lifetime"
     ],
     "image": "images/fort-silence-poster.png",
     "archiveLane": "Feature Films"
@@ -1018,12 +946,12 @@ const projectsDataAll = [
   {
     "title": "Last Exit on 285",
     "genre": "Action Thriller",
-    "format": "Feature",
+    "format": "MOW",
     "audience": "Adults 25–54 | Thriller Audiences",
     "description": "An ex-Army MP driving Atlanta’s Perimeter for rideshare money picks up a bookkeeper fleeing a trafficking ring, and when its boss kidnaps the woman’s daughter, she has until dawn to get them out.",
     "deck": "pitch-decks/last-exit-on-285-pitch-deck.pptx",
     "platforms": [
-      "BET+"
+      "Lifetime"
     ],
     "image": "images/last-exit-on-285-poster.png",
     "archiveLane": "Feature Films"
@@ -1037,7 +965,8 @@ const projectsDataAll = [
     "deck": "pitch-decks/rsvp-clause-pitch-deck.pptx",
     "onesheet": "one-sheets/rsvp-clause-one-pager-and-cast.pdf",
     "platforms": [
-      "Netflix"
+      "Netflix",
+      "Tubi"
     ],
     "image": "images/rsvp-clause-poster.png",
     "archiveLane": "Feature Films"
@@ -1051,21 +980,20 @@ const projectsDataAll = [
     "deck": "pitch-decks/the-13th-passenger-pitch-deck.pptx",
     "image": "images/the-13th-passenger.png",
     "platforms": [
-      "Netflix"
+      "Netflix",
+      "Tubi"
     ],
     "archiveLane": "Feature Films"
   },
   {
     "title": "The Cookout Confession",
     "genre": "Ensemble Dramedy",
-    "format": "Feature",
+    "format": "MOW",
     "audience": "Adults 25–54 | Ensemble Drama Audiences",
     "description": "On the day she plans to end her marriage in front of her oldest friends, a woman’s hunt for her husband’s mistress forces five women to confess the secrets they have been keeping from each other before the sun goes down.",
     "onesheet": "one-sheets/the-cookout-confession-one-pager-cast-list.pdf",
     "platforms": [
-      "BET+",
-      "HBO",
-      "Hulu"
+      "BET+"
     ],
     "image": "images/the-cookout-confession-poster.png",
     "archiveLane": "Feature Films"
@@ -1088,16 +1016,12 @@ const projectsDataAll = [
   {
     "title": "The Perfect Assistant",
     "genre": "Psychological Thriller",
-    "format": "Feature",
+    "format": "MOW",
     "audience": "Adults 25–54 | Black Women Thriller Audiences",
     "description": "An Atlanta fashion founder hires an assistant who anticipates her every need, until the young woman’s access exposes a secret tied to her late father and the history she has spent her life avoiding.",
     "deck": "pitch-decks/the-perfect-assistant-pitch-deck-final.pptx",
     "platforms": [
-      "BET+",
-      "Lifetime",
-      "TV One",
-      "ALLBLK",
-      "Tubi"
+      "BET+"
     ],
     "image": "images/the-perfect-assistant-poster.png",
     "archiveLane": "Feature Films"
@@ -1111,8 +1035,7 @@ const projectsDataAll = [
     "onesheet": "one-sheets/standby-studio-one-pager.pdf",
     "platforms": [
       "Lifetime",
-      "Tubi",
-      "TV One"
+      "BET+"
     ],
     "casting": "one-sheets/standby-cast-suggestions.pdf",
     "archiveLane": "Feature Films",
