@@ -999,7 +999,7 @@ const projectsDataAll = [
       "Lifetime"
     ],
     "archiveLane": "Feature Films",
-    "image": "images/eminent-domain-poster.png"
+    "image": "images/eminent-domain-poster.jpg"
   },
   {
     "title": "Fort Silence",
