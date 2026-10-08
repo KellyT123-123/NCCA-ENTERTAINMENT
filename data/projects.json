@@ -1,5 +1,5 @@
 {
-  "count": 57,
+  "count": 56,
   "collections": [
     {
       "id": "limited-series",
@@ -19,7 +19,7 @@
     {
       "id": "thriller-mow",
       "name": "Thriller & Suspense MOW",
-      "count": 13
+      "count": 12
     },
     {
       "id": "character-mow",
@@ -464,22 +464,6 @@
       "url": "projects/its-somebody-you-know.html",
       "image": "images/somebody-you-know.png",
       "logline": "When a beloved Atlanta school counselor is murdered, a widowed ex-detective must protect her daughter and her own secrets as every sign points to a killer inside their tight-knit community.",
-      "format": "mow",
-      "genre": "thriller",
-      "platforms": [
-        "lifetime",
-        "bet-plus"
-      ],
-      "status": "development",
-      "collection": "thriller-mow",
-      "collectionName": "Thriller & Suspense MOW"
-    },
-    {
-      "title": "The Other Mrs. Jameson",
-      "slug": "the-other-mrs-jameson",
-      "url": "projects/the-other-mrs-jameson.html",
-      "image": "images/the-other-mrs-jamison.png",
-      "logline": "A newlywed’s picture-perfect Atlanta life unravels when a woman shows up at her door claiming to be her husband’s legal wife, and one of them may not survive the truth.",
       "format": "mow",
       "genre": "thriller",
       "platforms": [
