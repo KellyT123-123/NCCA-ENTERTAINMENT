@@ -1047,15 +1047,23 @@ document.getElementById('modal-close-btn').addEventListener('click',closeModal);
 modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay)closeModal();});
 
 // CONTACT
-const contactProject = new URLSearchParams(window.location.search).get('project');
+const contactParams = new URLSearchParams(window.location.search);
+const contactProject = contactParams.get('project');
+const contactMaterials = contactParams.get('materials');
 if (contactProject) {
   const context = document.getElementById('contact-context');
   const type = document.getElementById('cf-type');
   const message = document.getElementById('cf-message');
   context.hidden = false;
-  context.textContent = `Preparing an inquiry about ${contactProject}.`;
-  if (!type.value) type.value = 'pitch';
-  if (!message.value.trim()) message.value = `I’m interested in discussing ${contactProject}.\n\n`;
+  if (contactMaterials) {
+    context.textContent = `Requesting ${contactMaterials} for ${contactProject}. Materials are shared after studio review.`;
+    if (!type.value) type.value = 'materials';
+    if (!message.value.trim()) message.value = `I’d like to request the ${contactMaterials} for ${contactProject}.\n\n`;
+  } else {
+    context.textContent = `Preparing an inquiry about ${contactProject}.`;
+    if (!type.value) type.value = 'pitch';
+    if (!message.value.trim()) message.value = `I’m interested in discussing ${contactProject}.\n\n`;
+  }
 }
 document.getElementById('contact-form').addEventListener('submit',function(e){
   e.preventDefault();
@@ -1066,7 +1074,7 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
   const type=typeEl.options[typeEl.selectedIndex].text;
   const message=document.getElementById('cf-message').value.trim();
   const subject=encodeURIComponent(`[NCCA Inquiry - ${type}] from ${name}`);
-  const projectLine=contactProject ? `Project: ${contactProject}\n` : '';
+  const projectLine=(contactProject ? `Project: ${contactProject}\n` : '')+(contactMaterials ? `Materials requested: ${contactMaterials}\n` : '');
   const body=encodeURIComponent(`${projectLine}Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry Type: ${type}\n\n${message}`);
   window.location.href=`mailto:contact@nccaentertainment.com?subject=${subject}&body=${body}`;
 });
