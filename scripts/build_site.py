@@ -9,9 +9,10 @@ slate.html is the master list of titles. Run this after any change to the Slate
 
 It regenerates everything that is derived from the Slate, so nothing is typed twice:
   - data/projects.json            (machine-readable slate)
-  - the main nav + mobile menu    (index.html, slate.html), with live counts
+  - the main nav + mobile menu    (index, slate, studio, contact), with live counts
+  - the homepage Shop by Buyer tiles
   - the nav on Music and every Passport page
-  - the contact form's Project dropdown (index.html)
+  - the contact form's Project dropdown (contact.html)
   - Previous / Next / More Like This on every live Passport page
   - "57 original projects"-style counts on the homepage and Slate
 
@@ -132,10 +133,9 @@ def put_block(s, name, content, first_time_pattern=None, path=""):
 
 
 # ---------------------------------------------------------------- nav (home + slate)
-def main_nav(prefix, on_home, buyer_list, format_list, collections, total, pitch_ready):
-    home = "" if on_home else "index.html"
+def main_nav(on_slate, buyer_list, format_list, collections, total, pitch_ready):
     slate = "slate.html"
-    lane_href = (lambda cid: "#" + cid) if not on_home else (lambda cid: slate + "#" + cid)
+    lane_href = (lambda cid: "#" + cid) if on_slate else (lambda cid: slate + "#" + cid)
     buyers = "\n".join('          <a href="%s?platform=%s">%s <span class="mega-count">%d</span></a>'
                        % (slate, b, PLATFORM_LABELS[b], n) for b, n in buyer_list)
     formats = "\n".join('          <a href="%s?format=%s">%s <span class="mega-count">%d</span></a>'
@@ -165,11 +165,11 @@ def main_nav(prefix, on_home, buyer_list, format_list, collections, total, pitch
         <div class="mega-view-all"><a href="{slate}">Browse the full slate ({total}) &rarr;</a></div>
       </div>
     </li>
-    <li><a href="{home}#about">Studio</a></li>
+    <li><a href="studio.html">Studio</a></li>
     <li><a href="music.html">Music</a></li>
-    <li><a href="{home}#contact">Contact</a></li>
-    <li><a href="index.html?type=materials#contact" class="nav__cta">Request Materials</a></li>
-  </ul>""".format(slate=slate, buyers=buyers, formats=formats, lanes="\n".join(lanes), total=total, home=home)
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html?type=materials" class="nav__cta">Request Materials</a></li>
+  </ul>""".format(slate=slate, buyers=buyers, formats=formats, lanes="\n".join(lanes), total=total)
     drawer = """<ul class="drawer-nav">
     <li><a href="index.html">Home</a></li>
     <li><a href="{slate}">Slate ({total})</a></li>
@@ -190,12 +190,12 @@ def main_nav(prefix, on_home, buyer_list, format_list, collections, total, pitch
         </div>
       </div>
     </li>
-    <li><a href="{home}#about">Studio</a></li>
+    <li><a href="studio.html">Studio</a></li>
     <li><a href="music.html">Music</a></li>
-    <li><a href="{home}#contact">Contact</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="index.html?type=materials#contact" class="drawer-cta">Request Materials</a>""".format(
-        slate=slate, total=total, buyers=buyers, formats=formats, lanes="\n".join(lanes), home=home)
+  <a href="contact.html?type=materials" class="drawer-cta">Request Materials</a>""".format(
+        slate=slate, total=total, buyers=buyers, formats=formats, lanes="\n".join(lanes))
     return desktop, drawer
 
 
@@ -205,9 +205,9 @@ MEGA_COUNT_CSS = ".mega-count{opacity:.55;font-size:.85em;margin-left:4px}"
 def build_main_pages(projects, collections):
     buyer_list, format_list, pitch_ready = counts(projects)
     total = len(projects)
-    for path, on_home in (("index.html", True), ("slate.html", False)):
+    for path in ("index.html", "slate.html", "studio.html", "contact.html"):
         s = read(path)
-        desktop, drawer = main_nav("", on_home, buyer_list, format_list, collections, total, pitch_ready)
+        desktop, drawer = main_nav(path == "slate.html", buyer_list, format_list, collections, total, pitch_ready)
         s = put_block(s, "NAV", desktop, r'<ul class="nav__links" role="list">.*?</ul>(?=\s*<div class="nav__right">)', path)
         s = put_block(s, "DRAWER", drawer, r'<ul class="drawer-nav">.*?</ul>\s*<a [^>]*class="drawer-cta"[^>]*>.*?</a>', path)
         # Utility bar: phone and email only.
@@ -224,10 +224,37 @@ def build_main_pages(projects, collections):
         s = re.sub(r"(Projects \()[4-7]\d(\))", lambda m: "%s%d%s" % (m.group(1), total, m.group(2)), s)
         if path == "slate.html":
             s = s.replace('<nav class="collection-nav" aria-label', '<nav class="collection-nav" id="lanes" aria-label', 1)
+        if path == "contact.html":
+            s = put_block(s, "PROJECT-OPTIONS", project_options(projects), None, path)
         if path == "index.html":
-            s = put_block(s, "PROJECT-OPTIONS", project_options(projects),
-                          r'<option value="">General / not title-specific</option>.*?(?=\s*</select>)', path)
+            s = put_block(s, "SHOP-BY-BUYER", shop_by_buyer(buyer_list, format_list, total), None, path)
         write(path, s)
+
+
+def shop_by_buyer(buyer_list, format_list, total):
+    tiles = "\n".join(
+        '        <a class="buyer-tile" href="slate.html?platform=%s"><span class="buyer-tile__name">%s</span>'
+        '<span class="buyer-tile__count">%d title%s</span></a>' % (b, esc(PLATFORM_LABELS[b]), n, "" if n == 1 else "s")
+        for b, n in buyer_list if n >= 3)
+    formats = "\n".join('        <a href="slate.html?format=%s">%s (%d)</a>' % (f, esc(label), n) for f, label, n in format_list)
+    return """  <section class="shop-buyer" id="shop-by-buyer" aria-labelledby="shop-buyer-title">
+    <div class="shop-buyer__inner">
+      <div class="shop-buyer__head">
+        <div>
+          <p class="section-eyebrow">Shop by Buyer</p>
+          <h2 class="section-title" id="shop-buyer-title">Start with your mandate.</h2>
+        </div>
+        <p class="shop-buyer__copy">Every title is developed with a buyer in mind. Pick your network or streamer to see the titles built for it, or browse all %d.</p>
+      </div>
+      <div class="shop-buyer__grid">
+%s
+      </div>
+      <div class="shop-buyer__formats" aria-label="Browse by format">
+%s
+        <a href="slate.html">Full slate (%d) &rarr;</a>
+      </div>
+    </div>
+  </section>""" % (total, tiles, formats, total)
 
 
 def project_options(projects):
@@ -249,8 +276,8 @@ def simple_nav_items(prefix, request_href, item_cls="", cta_cls="", link_cta_cls
     cta_li = '<li%s>' % (' class="%s"' % cta_cls if cta_cls else "")
     a_cta = ' class="%s"' % link_cta_cls if link_cta_cls else ""
     items = [("Slate", prefix + "slate.html"), ("Buyer Lanes", prefix + "slate.html#lanes"),
-             ("Studio", prefix + "index.html#about"), ("Music", prefix + "music.html"),
-             ("Contact", prefix + "index.html#contact")]
+             ("Studio", prefix + "studio.html"), ("Music", prefix + "music.html"),
+             ("Contact", prefix + "contact.html")]
     rows = ['%s<a href="%s">%s</a></li>' % (li, h, t) for t, h in items]
     rows.append('%s<a%s href="%s">Request Materials</a></li>' % (cta_li, a_cta, esc(request_href)))
     return rows
@@ -258,7 +285,7 @@ def simple_nav_items(prefix, request_href, item_cls="", cta_cls="", link_cta_cls
 
 def build_music():
     s = read("music.html")
-    rows = simple_nav_items("", "index.html?type=materials#contact", "nav-item", "nav-item cta")
+    rows = simple_nav_items("", "contact.html?type=materials", "nav-item", "nav-item cta")
     content = '<ul class="nav-list">\n' + "\n".join("          " + r for r in rows) + "\n        </ul>"
     s = put_block(s, "NAV", content, r'<ul class="nav-list">.*?</ul>', "music.html")
     write("music.html", s)
@@ -324,7 +351,7 @@ def build_passports(projects):
             print("warning: %s missing" % path, file=sys.stderr)
             continue
         s = read(path)
-        request = "../index.html?project=%s&type=materials#contact" % quote(p["title"], safe="")
+        request = "../contact.html?project=%s&type=materials" % quote(p["title"], safe="")
         if "project-passport.css" in s:  # newer template
             rows = simple_nav_items("../", request, link_cta_cls="nav-portal")
             content = '<ul class="nav-list">\n' + "\n".join("          " + r for r in rows) + "\n        </ul>"
