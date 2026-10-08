@@ -1,0 +1,954 @@
+{
+  "count": 57,
+  "collections": [
+    {
+      "id": "limited-series",
+      "name": "Limited Series",
+      "count": 4
+    },
+    {
+      "id": "network-series",
+      "name": "Network & Returning Series",
+      "count": 5
+    },
+    {
+      "id": "feature-films",
+      "name": "Feature Films",
+      "count": 15
+    },
+    {
+      "id": "thriller-mow",
+      "name": "Thriller & Suspense MOW",
+      "count": 13
+    },
+    {
+      "id": "character-mow",
+      "name": "Romance, Comedy & Character MOW",
+      "count": 11
+    },
+    {
+      "id": "holiday-seasonal",
+      "name": "Holiday & Seasonal",
+      "count": 3
+    },
+    {
+      "id": "southern-stories",
+      "name": "Southern Stories with Teeth",
+      "count": 4
+    },
+    {
+      "id": "docuseries",
+      "name": "Docuseries",
+      "count": 2
+    }
+  ],
+  "projects": [
+    {
+      "title": "Page 41",
+      "slug": "page-41",
+      "url": "projects/page-41.html",
+      "image": "images/page-41-poster.png",
+      "logline": "A visionary NATO treaty architect survives the ambush that kills the man she secretly loves, then discovers her mentor is quietly editing her memories to turn her into the conspiracy’s weapon.",
+      "format": "limited-series",
+      "genre": "thriller",
+      "platforms": [
+        "netflix",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "limited-series",
+      "collectionName": "Limited Series"
+    },
+    {
+      "title": "The Extraction",
+      "slug": "the-extraction",
+      "url": "projects/the-extraction.html",
+      "image": "images/the-extraction-poster.png",
+      "logline": "A hostage negotiator who has never lost a life must negotiate for her own kidnapped daughter with the man she sent to federal prison fifteen years ago.",
+      "format": "limited-series",
+      "genre": "thriller",
+      "platforms": [
+        "netflix",
+        "hbo"
+      ],
+      "status": "development",
+      "collection": "limited-series",
+      "collectionName": "Limited Series"
+    },
+    {
+      "title": "She Who Watches",
+      "slug": "she-who-watches",
+      "url": "projects/she-who-watches.html",
+      "image": "images/she-who-watches.png",
+      "logline": "A single mother sees a murder through her smart doorbell, then watches the footage vanish, and has six weeks to prove her tech-mogul ex’s crime-prevention AI is creating crimes before his company’s IPO makes him untouchable.",
+      "format": "limited-series",
+      "genre": "thriller",
+      "platforms": [
+        "netflix",
+        "hbo"
+      ],
+      "status": "script-complete",
+      "collection": "limited-series",
+      "collectionName": "Limited Series"
+    },
+    {
+      "title": "Soul on Fire",
+      "slug": "soul-on-fire",
+      "url": "projects/soul-on-fire.html",
+      "image": "images/soul-on-fire.png",
+      "logline": "In 1971 Atlanta, a gifted soul singer signs the record deal she always dreamed of and learns her contract owns more than her voice, as the industry profiting from her sound works to destroy her.",
+      "format": "limited-series",
+      "genre": "drama",
+      "platforms": [
+        "bet-plus",
+        "netflix"
+      ],
+      "status": "pitch-ready",
+      "collection": "limited-series",
+      "collectionName": "Limited Series"
+    },
+    {
+      "title": "The Line",
+      "slug": "the-line",
+      "url": "projects/the-line.html",
+      "image": "images/the-line.png",
+      "logline": "After a fatal shooting at an Atlanta label, a disgraced FBI agent is assigned to protect a fiercely independent music agent who isn’t just running from a criminal empire. She’s maneuvering to take it over.",
+      "format": "network-series",
+      "genre": "drama",
+      "platforms": [
+        "bet-plus",
+        "netflix"
+      ],
+      "status": "pitch-ready",
+      "collection": "network-series",
+      "collectionName": "Network & Returning Series"
+    },
+    {
+      "title": "Echo Chamber",
+      "slug": "echo-chamber",
+      "url": "projects/echo-chamber.html",
+      "image": "images/echo-chamber.png",
+      "logline": "In a near future where digital identity is worth more than reality, each episode follows an ordinary person who learns the true cost of the technology that promised to perfect them.",
+      "format": "network-series",
+      "genre": "drama",
+      "platforms": [
+        "netflix",
+        "broadcast"
+      ],
+      "status": "pitch-ready",
+      "collection": "network-series",
+      "collectionName": "Network & Returning Series"
+    },
+    {
+      "title": "The Archive",
+      "slug": "the-archive",
+      "url": "projects/the-archive.html",
+      "image": "images/the-archive.png",
+      "logline": "A renegade historian protects a library of suppressed stories from corporate erasure.",
+      "format": "network-series",
+      "genre": "drama",
+      "platforms": [
+        "netflix",
+        "hbo"
+      ],
+      "status": "pitch-ready",
+      "collection": "network-series",
+      "collectionName": "Network & Returning Series"
+    },
+    {
+      "title": "Just Jack",
+      "slug": "just-jack",
+      "url": "projects/just-jack.html",
+      "image": "images/just-jack.png",
+      "logline": "Moved to Philadelphia with a paranoid ex-spy uncle and a home inside a half-renovated community theater, a dramatic 14-year-old survives the only way he knows, by performing, which keeps accidentally summoning federal agents.",
+      "format": "network-series",
+      "genre": "comedy",
+      "platforms": [
+        "broadcast"
+      ],
+      "status": "pitch-ready",
+      "collection": "network-series",
+      "collectionName": "Network & Returning Series"
+    },
+    {
+      "title": "Slice of Paradise",
+      "slug": "slice-of-paradise",
+      "url": "projects/slice-of-paradise.html",
+      "image": "images/slice-of-paradise.png",
+      "logline": "A washed-up one-hit wonder takes a job as activity director at a Florida retirement community, where residents who live harder than most twenty-somethings refuse to let him phone it in.",
+      "format": "network-series",
+      "genre": "comedy",
+      "platforms": [
+        "broadcast",
+        "peacock"
+      ],
+      "status": "pitch-ready",
+      "collection": "network-series",
+      "collectionName": "Network & Returning Series"
+    },
+    {
+      "title": "Final Walk",
+      "slug": "final-walk",
+      "url": "projects/final-walk.html",
+      "image": "images/final-walk-poster-a.png",
+      "logline": "A top model becomes an unwitting operative in a cross-border intelligence war, exposing an empire built on beauty and forcing her to decide how far she will go to bring it down.",
+      "format": "feature",
+      "genre": "action",
+      "platforms": [
+        "netflix",
+        "theatrical"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "The 13th Passenger",
+      "slug": "the-13th-passenger",
+      "url": "projects/the-13th-passenger.html",
+      "image": "images/the-13th-passenger.png",
+      "logline": "When a passenger dies mid-flight and vanishes from the digital manifest, a guilt-haunted accident investigator must expose the intelligence contractor behind it before everyone stranded at a remote French airport is erased too.",
+      "format": "feature",
+      "genre": "techno-thriller",
+      "platforms": [
+        "netflix",
+        "tubi"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "Refractions",
+      "slug": "refractions",
+      "url": "projects/refractions.html",
+      "image": "images/refractions.png",
+      "logline": "When the world’s first human clone escapes a secret biotech program, she learns her life is fatally linked to the surgeon she was copied from, and must choose between protecting the life she was never meant to have and exposing the conspiracy that made her.",
+      "format": "feature",
+      "genre": "thriller",
+      "platforms": [
+        "netflix",
+        "tubi"
+      ],
+      "status": "pitch-ready",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "Ghostmaker",
+      "slug": "ghostmaker",
+      "url": "projects/ghostmaker.html",
+      "image": "images/the-ghostmaker.png",
+      "logline": "A disgraced CIA operative who erases identities for a living is hunted by her own agency after a botched mission, and discovers the life she is fighting to save was fabricated too.",
+      "format": "feature",
+      "genre": "action",
+      "platforms": [
+        "netflix",
+        "tubi"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "LifeArt",
+      "slug": "lifeart",
+      "url": "projects/lifeart.html",
+      "image": "images/lifeart.png",
+      "logline": "A European artist builds a lucrative career posing as a reclusive Chinese painter, until one commission threatens to expose the lie and destroy the woman he loves.",
+      "format": "feature",
+      "genre": "drama",
+      "platforms": [
+        "netflix",
+        "theatrical"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "RSVP Clause",
+      "slug": "rsvp-clause",
+      "url": "projects/rsvp-clause.html",
+      "image": "images/rsvp-clause-poster.png",
+      "logline": "Stuck planning her ex-fiancé’s wedding, a meticulous Chicago wedding planner signs a no-love pact with a commitment-averse designer, until their fake dates start turning real.",
+      "format": "feature",
+      "genre": "romantic-comedy",
+      "platforms": [
+        "netflix",
+        "tubi"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "Standby",
+      "slug": "standby",
+      "url": "projects/standby.html",
+      "image": "images/standby-poster.png",
+      "logline": "A woman paid to go on other people’s first dates falls for the man doing the same job for his best friend, and the only way either can be together for real means unraveling the identity fraud their whole business was built on.",
+      "format": "feature",
+      "genre": "romantic-comedy",
+      "platforms": [
+        "lifetime",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "Sneakerheads Anonymous",
+      "slug": "sneakerheads-anonymous",
+      "url": "projects/sneakerheads-anonymous.html",
+      "image": "images/sneakerheads-anonymous.png",
+      "logline": "Scammed out of his savings at a sneaker convention, a humiliated teen turns a fake support group into a viral verification movement, until a counterfeit kingpin moves in and the clout starts costing him everyone he cares about.",
+      "format": "feature",
+      "genre": "comedy",
+      "platforms": [
+        "tubi",
+        "netflix"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "Trap House Sitting",
+      "slug": "trap-house-sitting",
+      "url": "projects/trap-house-sitting.html",
+      "image": "images/trap-house-sitting.png",
+      "logline": "Three overachieving teens agree to house-sit their producer cousin’s Atlanta loft for one quiet weekend and discover it’s the secret hub of the city’s underground music scene.",
+      "format": "feature",
+      "genre": "comedy",
+      "platforms": [
+        "tubi",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "Cheer Heist",
+      "slug": "cheer-heist",
+      "url": "projects/cheer-heist.html",
+      "image": "images/cheer-heist.png",
+      "logline": "When a ruthless elite cheer team steals their championship routine, a scrappy squad of outcasts infiltrates a Vegas mega-intensive to steal it back in a live-streamed heist that flips the entire cheer industry on its head.",
+      "format": "feature",
+      "genre": "comedy",
+      "platforms": [
+        "netflix",
+        "tubi"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "Second Skin",
+      "slug": "second-skin",
+      "url": "projects/second-skin.html",
+      "image": "images/second-skin.png",
+      "logline": "On a remote New Mexico fashion shoot, a model zips into a ceremonial jacket taken from sacred ground, and the thing living inside it begins building a perfect copy of her that wants her skin.",
+      "format": "feature",
+      "genre": "horror",
+      "platforms": [
+        "tubi",
+        "netflix"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "The Bone Collector's Daughter",
+      "slug": "the-bone-collectors-daughter",
+      "url": "projects/the-bone-collectors-daughter.html",
+      "image": "images/the-bone-collectors-daughter.png",
+      "logline": "Hunted by vengeful spirits called the Hollow-Eyed, a young woman must embrace her bloodline’s forbidden rituals or be consumed.",
+      "format": "feature",
+      "genre": "horror",
+      "platforms": [
+        "tubi",
+        "netflix"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "The Influencer's Last Post",
+      "slug": "the-influencers-last-post",
+      "url": "projects/the-influencers-last-post.html",
+      "image": "images/influencers-last-post.png",
+      "logline": "A social media influencer’s final post becomes the only key to solving her own murder.",
+      "format": "feature",
+      "genre": "thriller",
+      "platforms": [
+        "tubi",
+        "bet-plus"
+      ],
+      "status": "pitch-ready",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "Mirror Image",
+      "slug": "mirror-image",
+      "url": "projects/mirror-image.html",
+      "image": "images/mirror-image.png",
+      "logline": "A rising fashion influencer is digitally framed by her estranged sister using deepfakes, stolen biometrics, and weaponized clout.",
+      "format": "feature",
+      "genre": "thriller",
+      "platforms": [
+        "tubi",
+        "netflix"
+      ],
+      "status": "pitch-ready",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "The Proxy",
+      "slug": "the-proxy",
+      "url": "projects/the-proxy.html",
+      "image": "images/the-proxy.png",
+      "logline": "When a struggling Atlanta painter is mistaken for a reclusive art-world legend during a violent heist, she’s pulled into a web of stolen identities and discovers the woman who stole her work also engineered her downfall.",
+      "format": "feature",
+      "genre": "thriller",
+      "platforms": [
+        "bet-plus",
+        "tubi"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "Past Due",
+      "slug": "past-due",
+      "url": "projects/past-due.html",
+      "image": "images/past-due.png",
+      "logline": "A ruthless debt collector starts tracking down her clients, only to realize someone else is hunting them first.",
+      "format": "mow",
+      "genre": "thriller",
+      "platforms": [
+        "tubi",
+        "lifetime"
+      ],
+      "status": "pitch-ready",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "The Alibi",
+      "slug": "the-alibi",
+      "url": "projects/the-alibi.html",
+      "image": "images/the-alibi.png",
+      "logline": "On the night she’s honored as Georgia’s next appellate judge, a woman wakes beside a murdered stranger with no memory of the night and destroys the evidence to save her career, never suspecting the husband she’s protecting framed her.",
+      "format": "mow",
+      "genre": "thriller",
+      "platforms": [
+        "tv-one",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "It's Somebody You Know",
+      "slug": "its-somebody-you-know",
+      "url": "projects/its-somebody-you-know.html",
+      "image": "images/somebody-you-know.png",
+      "logline": "When a beloved Atlanta school counselor is murdered, a widowed ex-detective must protect her daughter and her own secrets as every sign points to a killer inside their tight-knit community.",
+      "format": "mow",
+      "genre": "thriller",
+      "platforms": [
+        "lifetime",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "The Other Mrs. Jameson",
+      "slug": "the-other-mrs-jameson",
+      "url": "projects/the-other-mrs-jameson.html",
+      "image": "images/the-other-mrs-jamison.png",
+      "logline": "A newlywed’s picture-perfect Atlanta life unravels when a woman shows up at her door claiming to be her husband’s legal wife, and one of them may not survive the truth.",
+      "format": "mow",
+      "genre": "thriller",
+      "platforms": [
+        "lifetime",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "The Devon House",
+      "slug": "the-devon-house",
+      "url": "projects/the-devon-house.html",
+      "image": "images/the-devon-house-poster.png",
+      "logline": "A gentrification attorney inherits her aunt’s crumbling Atlanta home and uncovers the secret of her erased childhood, forcing her to choose between forgetting and the truth.",
+      "format": "mow",
+      "genre": "thriller",
+      "platforms": [
+        "bet-plus",
+        "lifetime"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "The Understudy",
+      "slug": "the-understudy",
+      "url": "projects/the-understudy.html",
+      "image": "images/the-understudy-poster.png",
+      "logline": "After a gospel superstar collapses mid-concert, her invisible assistant inherits the spotlight and discovers that her own hands delivered the poison.",
+      "format": "mow",
+      "genre": "thriller",
+      "platforms": [
+        "bet-plus",
+        "lifetime"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "Twice Betrayed",
+      "slug": "twice-betrayed",
+      "url": "projects/twice-betrayed.html",
+      "image": "images/twice-betrayed-poster.png",
+      "logline": "A celebrated Atlanta therapist is framed for the murder of her ex-husband, who built a conspiracy to destroy her from beyond the grave.",
+      "format": "mow",
+      "genre": "thriller",
+      "platforms": [
+        "lifetime",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "The Cost of Truth",
+      "slug": "the-cost-of-truth",
+      "url": "projects/the-cost-of-truth.html",
+      "image": "images/the-cost-of-truth-poster.png",
+      "logline": "With 86 days to stop an execution, a burned-out prosecutor risks everything to expose the buried evidence that can free an innocent man.",
+      "format": "mow",
+      "genre": "thriller",
+      "platforms": [
+        "tv-one",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "The Layover",
+      "slug": "the-layover",
+      "url": "projects/the-layover.html",
+      "image": "images/the-layover-poster.png",
+      "logline": "During a historic Atlanta ice storm, five Black women trapped beneath the airport turn on each other when a federal witness’s secret surfaces and a carbon monoxide leak leaves them 45 minutes to decide who escapes.",
+      "format": "mow",
+      "genre": "locked-room-suspense-thriller",
+      "platforms": [
+        "tv-one",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "Fort Silence",
+      "slug": "fort-silence",
+      "url": "projects/fort-silence.html",
+      "image": "images/fort-silence-poster.png",
+      "logline": "When a young soldier dies at Fort Stewart, CID agent Jordan Hayes finds the hidden experiment that killed her father twenty years earlier and must defy the commander who raised her before another private becomes a closed case.",
+      "format": "mow",
+      "genre": "military-investigative-thriller",
+      "platforms": [
+        "bet-plus",
+        "lifetime"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "Last Exit on 285",
+      "slug": "last-exit-on-285",
+      "url": "projects/last-exit-on-285.html",
+      "image": "images/last-exit-on-285-poster.png",
+      "logline": "An ex-Army MP driving Atlanta’s Perimeter for rideshare money picks up a bookkeeper fleeing a trafficking ring, and when its boss kidnaps the woman’s daughter, she has until dawn to get them out.",
+      "format": "mow",
+      "genre": "action-thriller",
+      "platforms": [
+        "lifetime"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "The Perfect Assistant",
+      "slug": "the-perfect-assistant",
+      "url": "projects/the-perfect-assistant.html",
+      "image": "images/the-perfect-assistant-poster.png",
+      "logline": "An Atlanta fashion founder hires an assistant who anticipates her every need, until the young woman’s access exposes a secret tied to her late father and the history she has spent her life avoiding.",
+      "format": "mow",
+      "genre": "psychological-thriller",
+      "platforms": [
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "Eminent Domain",
+      "slug": "eminent-domain",
+      "url": "projects/eminent-domain.html",
+      "image": "images/eminent-domain-poster.jpg",
+      "logline": "Fleeing an abusive ex, an Atlanta photographer documents a historic Black neighborhood before redevelopment erases it and discovers the family business behind the buyouts is tied to the man who raised her.",
+      "format": "mow",
+      "genre": "psychological-thriller-drama",
+      "platforms": [
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "Black Girl's Guide to Vengeance (and Vodka)",
+      "slug": "black-girls-guide-to-vengeance-and-vodka",
+      "url": "projects/black-girls-guide-to-vengeance-and-vodka.html",
+      "image": "images/black-girls-guide-to-vengeance-and-vodka.png",
+      "logline": "Dumped for an AI clone built from her own data, a software engineer goes viral by launching a revenge app for wronged women.",
+      "format": "mow",
+      "genre": "comedy",
+      "platforms": [
+        "bet-plus",
+        "tubi"
+      ],
+      "status": "pitch-ready",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "Hot Mess Express",
+      "slug": "hot-mess-express",
+      "url": "projects/hot-mess-express.html",
+      "image": "images/hot-mess-express.png",
+      "logline": "A perfectionist Atlanta supermom who runs her family like a flight schedule lands at a crumbling Victorian B&B, where one disaster after another forces her to face the fears she keeps managing around.",
+      "format": "mow",
+      "genre": "comedy",
+      "platforms": [
+        "bet-plus",
+        "tubi"
+      ],
+      "status": "development",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "Love After Likes",
+      "slug": "love-after-likes",
+      "url": "projects/love-after-likes.html",
+      "image": "images/love-after-likes.png",
+      "logline": "Two Atlanta creators fake a relationship for clout, until their feelings stop faking.",
+      "format": "mow",
+      "genre": "romance",
+      "platforms": [
+        "bet-plus",
+        "tubi"
+      ],
+      "status": "pitch-ready",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "Flip Side of Love",
+      "slug": "flip-side-of-love",
+      "url": "projects/flip-side-of-love.html",
+      "image": "images/flip-side-of-love.png",
+      "logline": "When a driven TV producer returns home to film a historic home renovation, she finds the contractor is the ex who broke her heart.",
+      "format": "mow",
+      "genre": "romance",
+      "platforms": [
+        "bet-plus",
+        "hallmark"
+      ],
+      "status": "pitch-ready",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "Southern (Dis)comfort",
+      "slug": "southern-discomfort",
+      "url": "projects/southern-discomfort.html",
+      "image": "images/southern-discomfort.png",
+      "logline": "After her scathing review tanks a struggling soul food restaurant, a feared Atlanta food critic is forced to team up with its chef: her ex-fiancé.",
+      "format": "mow",
+      "genre": "romance",
+      "platforms": [
+        "bet-plus",
+        "allblk"
+      ],
+      "status": "pitch-ready",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "Second First Date",
+      "slug": "second-first-date",
+      "url": "projects/second-first-date.html",
+      "image": "images/second-first-date.png",
+      "logline": "When a dating app matches two former college sweethearts who once vowed never to speak again, they reluctantly agree to three dates as a dare.",
+      "format": "mow",
+      "genre": "romance",
+      "platforms": [
+        "bet-plus",
+        "hallmark"
+      ],
+      "status": "pitch-ready",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "Rhythm & Blooms",
+      "slug": "rhythm-blooms",
+      "url": "projects/rhythm-blooms.html",
+      "image": "images/rhythm-and-blooms.png",
+      "logline": "A structured landscape designer and a jazz club owner fall in love while reviving a rooftop garden.",
+      "format": "mow",
+      "genre": "romance",
+      "platforms": [
+        "hallmark",
+        "own"
+      ],
+      "status": "pitch-ready",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "The Ex-Files",
+      "slug": "the-ex-files",
+      "url": "projects/the-ex-files.html",
+      "image": "images/ex-files.png",
+      "logline": "A divorce attorney’s latest high-profile client is the man she thought she annulled years ago.",
+      "format": "mow",
+      "genre": "romance",
+      "platforms": [
+        "bet-plus",
+        "allblk"
+      ],
+      "status": "pitch-ready",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "The Feed",
+      "slug": "the-feed",
+      "url": "projects/the-feed.html",
+      "image": "images/the-feed.png",
+      "logline": "A Black tech entrepreneur moves his family into a smart-home community and uncovers a racially biased surveillance system built to destroy him.",
+      "format": "mow",
+      "genre": "drama",
+      "platforms": [
+        "bet-plus",
+        "tubi"
+      ],
+      "status": "development",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "This Is Me Now",
+      "slug": "this-is-me-now",
+      "url": "projects/this-is-me-now.html",
+      "image": "images/this-is-me-now.png",
+      "logline": "When a private video goes viral, a straight-A senior bound for MIT is abandoned by her school and fights back with spoken word, reclaiming her story in the most public way possible.",
+      "format": "mow",
+      "genre": "drama",
+      "platforms": [
+        "bet-plus",
+        "tubi"
+      ],
+      "status": "development",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "The Cookout Confession",
+      "slug": "the-cookout-confession",
+      "url": "projects/the-cookout-confession.html",
+      "image": "images/the-cookout-confession-poster.png",
+      "logline": "On the day she plans to end her marriage in front of her oldest friends, a woman’s hunt for her husband’s mistress forces five women to confess the secrets they have been keeping from each other before the sun goes down.",
+      "format": "mow",
+      "genre": "ensemble-dramedy",
+      "platforms": [
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "character-mow",
+      "collectionName": "Romance, Comedy & Character MOW"
+    },
+    {
+      "title": "A Spelman Christmas",
+      "slug": "a-spelman-christmas",
+      "url": "projects/a-spelman-christmas.html",
+      "image": "images/a-spelman-christmas.png",
+      "logline": "A widowed Spelman professor plans to cancel her first Christmas without her husband, until her three daughters come home unannounced with a career meltdown, a surprise fiancé, and a secret pregnancy.",
+      "format": "mow",
+      "genre": "christmas",
+      "platforms": [
+        "own",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "holiday-seasonal",
+      "collectionName": "Holiday & Seasonal"
+    },
+    {
+      "title": "Granny's House for the Holidays",
+      "slug": "grannys-house-for-the-holidays",
+      "url": "projects/grannys-house-for-the-holidays.html",
+      "image": "images/grannys-house-home-for-the-holidays.png",
+      "logline": "When her daughter loses her job and moves home with two kids, a sharp-tongued West End grandmother has to hold three generations together through Christmas and defend her title as queen of the block’s holiday Jubilee.",
+      "format": "mow",
+      "genre": "christmas",
+      "platforms": [
+        "own",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "holiday-seasonal",
+      "collectionName": "Holiday & Seasonal"
+    },
+    {
+      "title": "Twelve Dates at the Christmas Tree Lot",
+      "slug": "twelve-dates-at-the-christmas-tree-lot",
+      "url": "projects/twelve-dates-at-the-christmas-tree-lot.html",
+      "image": "images/twelve-dates-christmas-tree-lot.png",
+      "logline": "Freshly divorced and running his father’s struggling Christmas tree lot in Southwest Atlanta, a single dad has twelve days to reconnect with his teenage daughter, save the lot, and maybe fall for the coffee shop owner across the street.",
+      "format": "mow",
+      "genre": "christmas",
+      "platforms": [
+        "hallmark",
+        "own"
+      ],
+      "status": "development",
+      "collection": "holiday-seasonal",
+      "collectionName": "Holiday & Seasonal"
+    },
+    {
+      "title": "The Last Dynasty",
+      "slug": "the-last-dynasty",
+      "url": "projects/the-last-dynasty.html",
+      "image": "images/the-last-dynasty.png",
+      "logline": "On the night of King Carter’s final party, his estranged daughter Jasmine returns for the money that could pay for her life-saving treatment, but when he turns up murdered and the mansion locks down, she has until sunrise to find the killer.",
+      "format": "mow",
+      "genre": "drama",
+      "platforms": [
+        "bet-plus",
+        "netflix"
+      ],
+      "status": "pitch-ready",
+      "collection": "southern-stories",
+      "collectionName": "Southern Stories with Teeth"
+    },
+    {
+      "title": "ATL Soul: The Velvet LaRou Story",
+      "slug": "atl-soul-the-velvet-larou-story",
+      "url": "projects/atl-soul-the-velvet-larou-story.html",
+      "image": "images/atl-soul-poster.png",
+      "logline": "In 1979 Atlanta, a soul singer robbed of her masters by her label fights through addiction to stage a rooftop protest concert that turns her stolen songs into a citywide reckoning.",
+      "format": "mow",
+      "genre": "thriller",
+      "platforms": [
+        "bet-plus",
+        "tv-one"
+      ],
+      "status": "development",
+      "collection": "southern-stories",
+      "collectionName": "Southern Stories with Teeth"
+    },
+    {
+      "title": "Beneath the Magnolia Tree",
+      "slug": "beneath-the-magnolia-tree",
+      "url": "projects/beneath-the-magnolia-tree.html",
+      "image": "images/beneath-the-magnolia-tree.png",
+      "logline": "After her estranged mother dies, a buttoned-up Atlanta therapist returns home to settle the estate and finds a teenage girl claiming to be her sister, and a family past someone wants kept buried.",
+      "format": "mow",
+      "genre": "southern-gothic",
+      "platforms": [
+        "tubi",
+        "bet-plus"
+      ],
+      "status": "development",
+      "collection": "southern-stories",
+      "collectionName": "Southern Stories with Teeth"
+    },
+    {
+      "title": "Divine Deception",
+      "slug": "divine-deception",
+      "url": "projects/divine-deception.html",
+      "image": "images/divine-deception.png",
+      "logline": "When a gospel superstar returns to her Georgia hometown after her grandmother’s mysterious death, she uncovers decades of abuse and corruption hidden inside the church that raised her, and the truth about her own birth.",
+      "format": "mow",
+      "genre": "southern-gothic",
+      "platforms": [
+        "bet-plus",
+        "tv-one"
+      ],
+      "status": "development",
+      "collection": "southern-stories",
+      "collectionName": "Southern Stories with Teeth"
+    },
+    {
+      "title": "Digital Shadows",
+      "slug": "digital-shadows",
+      "url": "projects/digital-shadows.html",
+      "image": "images/digital-shadows.png",
+      "logline": "Ten true stories of viral fame turned fatal, from deadly online challenges to doxxing and influencer fraud, tracing how a digital footprint becomes a crime scene.",
+      "format": "docuseries",
+      "genre": "docuseries",
+      "platforms": [
+        "netflix",
+        "tubi"
+      ],
+      "status": "development",
+      "collection": "docuseries",
+      "collectionName": "Docuseries"
+    },
+    {
+      "title": "Exposed",
+      "slug": "exposed",
+      "url": "projects/exposed.html",
+      "image": "images/exposed.png",
+      "logline": "Victims of fraud, digital abuse, and institutional betrayal track down the people who took everything from them and confront them, in court or face to face.",
+      "format": "docuseries",
+      "genre": "docuseries",
+      "platforms": [
+        "netflix",
+        "tubi"
+      ],
+      "status": "development",
+      "collection": "docuseries",
+      "collectionName": "Docuseries"
+    }
+  ]
+}
