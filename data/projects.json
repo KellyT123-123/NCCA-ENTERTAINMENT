@@ -1,7 +1,7 @@
 {
   "count": 57,
   "updated": "2026-10-09",
-  "hash": "3af491b544e38dba",
+  "hash": "aad9e49bc9e4ba64",
   "collections": [
     {
       "id": "limited-series",
@@ -213,6 +213,7 @@
       "format": "feature",
       "genre": "action-thriller",
       "platforms": [
+        "netflix",
         "theatrical"
       ],
       "status": "development",
