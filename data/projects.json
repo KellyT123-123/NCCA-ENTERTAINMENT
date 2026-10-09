@@ -1,7 +1,7 @@
 {
-  "count": 56,
+  "count": 57,
   "updated": "2026-10-09",
-  "hash": "ddbbfc1c9627aba0",
+  "hash": "3af491b544e38dba",
   "collections": [
     {
       "id": "limited-series",
@@ -16,7 +16,7 @@
     {
       "id": "feature-films",
       "name": "Feature Films",
-      "count": 15
+      "count": 16
     },
     {
       "id": "thriller-mow",
@@ -198,6 +198,21 @@
       "genre": "action",
       "platforms": [
         "netflix",
+        "theatrical"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "LION CITY",
+      "slug": "lion-city",
+      "url": "projects/lion-city.html",
+      "image": "images/lion-city-poster.jpg",
+      "logline": "Framed by the architect of Singapore’s all-seeing grid, a traumatized American agent and a disgraced inspector must disappear into the city’s analog blind spots to stop a stolen quantum key from erasing identity and finance across ASEAN.",
+      "format": "feature",
+      "genre": "action-thriller",
+      "platforms": [
         "theatrical"
       ],
       "status": "development",
