@@ -14,6 +14,8 @@ It regenerates everything that is derived from the Slate, so nothing is typed tw
   - the nav on Music and every Passport page
   - the contact form's Project dropdown (contact.html)
   - Previous / Next / More Like This on every live Passport page
+  - the "Slate updated" date (changes only when titles or their details change)
+  - the analytics script tag on every public page
   - "57 original projects"-style counts on the homepage and Slate
 
 Generated regions sit between <!-- GEN:NAME:START --> and <!-- GEN:NAME:END -->
@@ -25,6 +27,12 @@ import os
 import re
 import sys
 from urllib.parse import quote
+import datetime
+import hashlib
+try:
+    from zoneinfo import ZoneInfo
+except ImportError:  # pragma: no cover
+    ZoneInfo = None
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -114,6 +122,39 @@ def counts(projects):
 
 
 # ---------------------------------------------------------------- helpers
+def slate_updated(projects):
+    """Keep the last 'updated' date unless the slate's content actually changed."""
+    digest = hashlib.sha256(json.dumps(projects, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()[:16]
+    try:
+        prev = json.loads(read("data/projects.json"))
+    except (OSError, ValueError):
+        prev = {}
+    if prev.get("hash") == digest and prev.get("updated"):
+        return prev["updated"], digest
+    now = datetime.datetime.now(ZoneInfo("America/New_York")) if ZoneInfo else datetime.datetime.now()
+    return now.date().isoformat(), digest
+
+
+def pretty_date(iso):
+    d = datetime.date.fromisoformat(iso)
+    return "%s %d, %d" % (d.strftime("%B"), d.day, d.year)
+
+
+def updated_line(iso, cls):
+    return '<p class="%s">Slate updated <time datetime="%s">%s</time></p>' % (cls, iso, pretty_date(iso))
+
+
+UPDATED_CSS = ".slate-updated{margin:18px 0 0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim,#b0aaa0);opacity:.8}"
+
+
+def ensure_analytics(s, prefix=""):
+    tag = '<script src="%sjs/ncca-analytics.js" defer></script>' % prefix
+    if "ncca-analytics.js" in s:
+        return s
+    i = s.rfind("</body>")
+    return s[:i] + tag + "\n" + s[i:] if i != -1 else s
+
+
 def gen_block(name, content):
     return "<!-- GEN:%s:START -->\n%s\n<!-- GEN:%s:END -->" % (name, content.rstrip(), name)
 
@@ -202,7 +243,7 @@ def main_nav(on_slate, buyer_list, format_list, collections, total, pitch_ready)
 MEGA_COUNT_CSS = ".mega-count{opacity:.55;font-size:.85em;margin-left:4px}"
 
 
-def build_main_pages(projects, collections):
+def build_main_pages(projects, collections, updated_iso):
     buyer_list, format_list, pitch_ready = counts(projects)
     total = len(projects)
     for path in ("index.html", "slate.html", "studio.html", "contact.html"):
@@ -227,16 +268,24 @@ def build_main_pages(projects, collections):
         if path == "contact.html":
             s = put_block(s, "PROJECT-OPTIONS", project_options(projects), None, path)
         if path == "index.html":
-            s = put_block(s, "SHOP-BY-BUYER", shop_by_buyer(buyer_list, format_list, total), None, path)
+            s = put_block(s, "SHOP-BY-BUYER", shop_by_buyer(buyer_list, format_list, total, pitch_ready), None, path)
+        if path in ("index.html", "slate.html"):
+            s = put_block(s, "UPDATED", updated_line(updated_iso, "slate-updated"), None, path)
+            if UPDATED_CSS not in s:
+                s = s.replace("</style>", UPDATED_CSS + "\n</style>", 1)
+        s = ensure_analytics(s)
         write(path, s)
 
 
-def shop_by_buyer(buyer_list, format_list, total):
+def shop_by_buyer(buyer_list, format_list, total, pitch_ready=0):
     tiles = "\n".join(
         '        <a class="buyer-tile" href="slate.html?platform=%s"><span class="buyer-tile__name">%s</span>'
         '<span class="buyer-tile__count">%d title%s</span></a>' % (b, esc(PLATFORM_LABELS[b]), n, "" if n == 1 else "s")
         for b, n in buyer_list if n >= 3)
     formats = "\n".join('        <a href="slate.html?format=%s">%s (%d)</a>' % (f, esc(label), n) for f, label, n in format_list)
+    if pitch_ready:
+        formats = ('        <a class="pitch-ready-chip" href="slate.html?status=pitch-ready">&#9733; %d Pitch-Ready Titles &rarr;</a>\n'
+                   % pitch_ready) + formats
     return """  <section class="shop-buyer" id="shop-by-buyer" aria-labelledby="shop-buyer-title">
     <div class="shop-buyer__inner">
       <div class="shop-buyer__head">
@@ -288,7 +337,7 @@ def build_music():
     rows = simple_nav_items("", "contact.html?type=materials", "nav-item", "nav-item cta")
     content = '<ul class="nav-list">\n' + "\n".join("          " + r for r in rows) + "\n        </ul>"
     s = put_block(s, "NAV", content, r'<ul class="nav-list">.*?</ul>', "music.html")
-    write("music.html", s)
+    write("music.html", ensure_analytics(s))
 
 
 PASSPORT_CSS = """<style>
@@ -361,6 +410,7 @@ def build_passports(projects):
         s = put_block(s, "NAV", content, r'<ul class="nav-list">.*?</ul>', path)
         s = s.replace('href="../projects.html"', 'href="../slate.html"')
         s = put_block(s, "MORE", more_block(p, projects), r'(?=<footer)', path)
+        s = ensure_analytics(s, "../")
         write(path, s)
         done += 1
     return done
@@ -370,13 +420,15 @@ def main():
     projects, collections = load_slate()
     if not projects:
         raise SystemExit("No titles found in slate.html; nothing written.")
-    write("data/projects.json", json.dumps({"count": len(projects), "collections": collections, "projects": projects},
+    updated_iso, digest = slate_updated(projects)
+    write("data/projects.json", json.dumps({"count": len(projects), "updated": updated_iso, "hash": digest,
+                                            "collections": collections, "projects": projects},
                                            ensure_ascii=False, indent=2) + "\n")
-    build_main_pages(projects, collections)
+    build_main_pages(projects, collections, updated_iso)
     build_music()
     n = build_passports(projects)
-    print("Slate: %d titles in %d collections. Updated home, Slate, Music, %d Passports, data/projects.json."
-          % (len(projects), len(collections), n))
+    print("Slate: %d titles in %d collections (updated %s). Rebuilt home, Slate, Studio, Contact, Music, %d Passports."
+          % (len(projects), len(collections), pretty_date(updated_iso), n))
 
 
 if __name__ == "__main__":
