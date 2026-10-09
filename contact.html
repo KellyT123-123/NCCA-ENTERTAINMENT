@@ -502,6 +502,7 @@ ul{list-style:none}
 .contact-page .contact-section{border-top:none}
 @media(max-width:900px){.proof-strip__items{grid-template-columns:1fr 1fr}.contact-band__inner{grid-template-columns:1fr;gap:24px}}
 @media(max-width:640px){.shop-buyer,.proof-strip,.contact-band,.page-head{padding-left:16px;padding-right:16px}.shop-buyer__grid{grid-template-columns:1fr 1fr}}
+.writers-note{margin:18px 0 0;font-size:13px;line-height:1.6;color:var(--muted)}.writers-note a{color:var(--text-dim)}
 </style>
 </head>
 <body class="contact-page">
@@ -661,6 +662,7 @@ ul{list-style:none}
           <div class="contact-item"><div class="contact-item__icon">&#128222;</div><a href="tel:+19102629307">(910) 262-9307</a></div>
           <div class="contact-item"><div class="contact-item__icon">&#128205;</div><span>Atlanta, GA &mdash; Development &bull; Packaging &bull; Physical Production</span></div>
         </div>
+        <p class="writers-note">Writers and creators: NCCA does not accept unsolicited material. <a href="studio.html#submissions">Read our submissions policy</a>.</p>
         <div class="response-time-note"><span>&#9200;</span><span>We typically respond within 24&ndash;48 business hours.</span></div>
       </div>
       <div class="contact-right">
@@ -680,7 +682,7 @@ ul{list-style:none}
             <label class="form-label" for="cf-type">Inquiry Type</label>
             <select id="cf-type" class="form-select">
               <option value="">Select inquiry type&hellip;</option>
-              <option value="pitch">Project Pitch</option>
+              <option value="pitch">Discuss an NCCA Title</option>
               <option value="partnership">Partnership / Co-Production</option>
               <option value="materials">Script / Materials Access</option>
               <option value="packaging">Packaging Conversation</option>
@@ -851,6 +853,7 @@ ul{list-style:none}
       <ul>
         <li><a href="studio.html">About NCCA Entertainment</a></li>
         <li><a href="music.html">Music</a></li>
+        <li><a href="studio.html#submissions">For Writers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -931,7 +934,7 @@ function openModal(id){
   document.getElementById('modal-synopsis').textContent=d.synopsis;
   document.getElementById('modal-tags').innerHTML=d.tags.map(t=>`<span class="modal__tag">${t}</span>`).join('<span style="color:var(--border);margin:0 4px">&middot;</span>');
   document.getElementById('modal-meta').innerHTML=d.meta.map(m=>`<div class="modal__meta-item"><div class="modal__meta-item__label">${m.label}</div><div class="modal__meta-item__val">${m.val}</div></div>`).join('');
-  document.getElementById('modal-actions').innerHTML=`<a href="${d.link}" class="btn-full-details" style="flex:1;display:flex;align-items:center;justify-content:center;">Full Details &rarr;</a><button class="btn-quick-view" style="flex:1;" onclick="closeModal()">Close</button>`;
+  document.getElementById('modal-actions').innerHTML=`<a href="${d.link}" class="btn-full-details" style="flex:1;display:flex;align-items:center;justify-content:center;">View Passport &rarr;</a><button class="btn-quick-view" style="flex:1;" onclick="closeModal()">Close</button>`;
   modalOverlay.classList.add('open');document.body.style.overflow='hidden';
 }
 function closeModal(){modalOverlay.classList.remove('open');document.body.style.overflow='';}
@@ -1117,5 +1120,6 @@ function requestMeeting() {
 }
 
 </script>
+<script src="js/ncca-analytics.js" defer></script>
 </body>
 </html>
