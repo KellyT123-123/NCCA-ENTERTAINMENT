@@ -971,12 +971,30 @@ materialsSelect.addEventListener('change',()=>{
 // Form delivery: posts straight to the studio inbox. To switch services (e.g. Formspree),
 // change FORM_ENDPOINT only. If delivery fails, the visitor's email app opens as a fallback.
 const FORM_ENDPOINT='https://formsubmit.co/ajax/contact@nccaentertainment.com';
+// Spam filters. Bots that trip these see the normal "thanks" message, but nothing is sent.
+// 1) Speed check: no human fills this form out in under 4 seconds.
+const FORM_LOADED_AT=Date.now();
+const MIN_FILL_MS=4000;
+// 2) Phrase blocklist: marketing-spam language no buyer would use. Edit freely.
+const SPAM_PATTERNS=[
+  /\bseo\b/i, /search engine optimi[sz]/i, /first page of google/i, /\brank(ing)? (first|#?1|higher|on google)/i,
+  /appear(ing)? first when/i, /\bbacklinks?\b/i, /(more|boost|increase) (website |site )?traffic/i,
+  /guest post/i, /web ?design services/i, /launch it within a day/i, /are you interested in more details/i,
+  /\b(crypto|bitcoin|forex)\b/i, /business (loan|funding)/i, /unsubscribe/i
+];
+const looksLikeSpam=(text)=>SPAM_PATTERNS.some(p=>p.test(text)) || (text.match(/https?:\/\//gi)||[]).length>2;
 document.getElementById('contact-form').addEventListener('submit',async function(e){
   e.preventDefault();
   const form=this;
   const status=document.getElementById('cf-status');
   const btn=document.getElementById('cf-submit');
   if(document.getElementById('cf-website').value) return;
+  const fakeThanks=()=>{
+    status.textContent='Thanks. Your message is in. The studio replies within 24–48 business hours.';
+    status.className='form-status is-ok'; status.hidden=false; form.reset();
+  };
+  const spamText=[document.getElementById('cf-company').value,document.getElementById('cf-message').value].join(' ');
+  if(Date.now()-FORM_LOADED_AT<MIN_FILL_MS || looksLikeSpam(spamText)){ fakeThanks(); return; }
   const name=document.getElementById('cf-name').value.trim();
   const email=document.getElementById('cf-email').value.trim();
   const company=document.getElementById('cf-company').value.trim();
