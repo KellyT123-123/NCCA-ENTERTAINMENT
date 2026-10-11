@@ -349,3 +349,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* NCCA logo (Concept A) */
+.brand-lockup .site-logo{display:block;height:34px;width:auto}
+@media (max-width: 620px){.brand-lockup .site-logo{height:28px}}
