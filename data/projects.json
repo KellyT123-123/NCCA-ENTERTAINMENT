@@ -1,32 +1,32 @@
 {
-  "count": 57,
-  "updated": "2026-10-09",
-  "hash": "aad9e49bc9e4ba64",
+  "count": 37,
+  "updated": "2026-10-11",
+  "hash": "e0d488443fe3d037",
   "collections": [
     {
       "id": "limited-series",
       "name": "Limited Series",
-      "count": 4
+      "count": 2
     },
     {
       "id": "network-series",
       "name": "Network & Returning Series",
-      "count": 5
+      "count": 3
     },
     {
       "id": "feature-films",
       "name": "Feature Films",
-      "count": 16
+      "count": 13
     },
     {
       "id": "thriller-mow",
       "name": "Thriller & Suspense MOW",
-      "count": 12
+      "count": 6
     },
     {
       "id": "character-mow",
       "name": "Romance, Comedy & Character MOW",
-      "count": 11
+      "count": 6
     },
     {
       "id": "holiday-seasonal",
@@ -36,7 +36,7 @@
     {
       "id": "southern-stories",
       "name": "Southern Stories with Teeth",
-      "count": 4
+      "count": 2
     },
     {
       "id": "docuseries",
@@ -78,38 +78,6 @@
       "collectionName": "Limited Series"
     },
     {
-      "title": "She Who Watches",
-      "slug": "she-who-watches",
-      "url": "projects/she-who-watches.html",
-      "image": "images/she-who-watches.png",
-      "logline": "A single mother sees a murder through her smart doorbell, then watches the footage vanish, and has six weeks to prove her tech-mogul ex’s crime-prevention AI is creating crimes before his company’s IPO makes him untouchable.",
-      "format": "limited-series",
-      "genre": "thriller",
-      "platforms": [
-        "netflix",
-        "hbo"
-      ],
-      "status": "script-complete",
-      "collection": "limited-series",
-      "collectionName": "Limited Series"
-    },
-    {
-      "title": "Soul on Fire",
-      "slug": "soul-on-fire",
-      "url": "projects/soul-on-fire.html",
-      "image": "images/soul-on-fire.png",
-      "logline": "In 1971 Atlanta, a gifted soul singer signs the record deal she always dreamed of and learns her contract owns more than her voice, as the industry profiting from her sound works to destroy her.",
-      "format": "limited-series",
-      "genre": "drama",
-      "platforms": [
-        "bet-plus",
-        "netflix"
-      ],
-      "status": "pitch-ready",
-      "collection": "limited-series",
-      "collectionName": "Limited Series"
-    },
-    {
       "title": "The Line",
       "slug": "the-line",
       "url": "projects/the-line.html",
@@ -120,38 +88,6 @@
       "platforms": [
         "bet-plus",
         "netflix"
-      ],
-      "status": "pitch-ready",
-      "collection": "network-series",
-      "collectionName": "Network & Returning Series"
-    },
-    {
-      "title": "Echo Chamber",
-      "slug": "echo-chamber",
-      "url": "projects/echo-chamber.html",
-      "image": "images/echo-chamber.png",
-      "logline": "In a near future where digital identity is worth more than reality, each episode follows an ordinary person who learns the true cost of the technology that promised to perfect them.",
-      "format": "network-series",
-      "genre": "drama",
-      "platforms": [
-        "netflix",
-        "broadcast"
-      ],
-      "status": "pitch-ready",
-      "collection": "network-series",
-      "collectionName": "Network & Returning Series"
-    },
-    {
-      "title": "The Archive",
-      "slug": "the-archive",
-      "url": "projects/the-archive.html",
-      "image": "images/the-archive.png",
-      "logline": "A renegade historian protects a library of suppressed stories from corporate erasure.",
-      "format": "network-series",
-      "genre": "drama",
-      "platforms": [
-        "netflix",
-        "hbo"
       ],
       "status": "pitch-ready",
       "collection": "network-series",
@@ -230,25 +166,10 @@
       "genre": "techno-thriller",
       "platforms": [
         "netflix",
-        "tubi"
+        "tubi",
+        "theatrical"
       ],
       "status": "development",
-      "collection": "feature-films",
-      "collectionName": "Feature Films"
-    },
-    {
-      "title": "Refractions",
-      "slug": "refractions",
-      "url": "projects/refractions.html",
-      "image": "images/refractions.png",
-      "logline": "When the world’s first human clone escapes a secret biotech program, she learns her life is fatally linked to the surgeon she was copied from, and must choose between protecting the life she was never meant to have and exposing the conspiracy that made her.",
-      "format": "feature",
-      "genre": "thriller",
-      "platforms": [
-        "netflix",
-        "tubi"
-      ],
-      "status": "pitch-ready",
       "collection": "feature-films",
       "collectionName": "Feature Films"
     },
@@ -262,7 +183,8 @@
       "genre": "action",
       "platforms": [
         "netflix",
-        "tubi"
+        "tubi",
+        "theatrical"
       ],
       "status": "development",
       "collection": "feature-films",
@@ -294,7 +216,8 @@
       "genre": "romantic-comedy",
       "platforms": [
         "netflix",
-        "tubi"
+        "tubi",
+        "theatrical"
       ],
       "status": "development",
       "collection": "feature-films",
@@ -310,23 +233,8 @@
       "genre": "romantic-comedy",
       "platforms": [
         "lifetime",
-        "bet-plus"
-      ],
-      "status": "development",
-      "collection": "feature-films",
-      "collectionName": "Feature Films"
-    },
-    {
-      "title": "Sneakerheads Anonymous",
-      "slug": "sneakerheads-anonymous",
-      "url": "projects/sneakerheads-anonymous.html",
-      "image": "images/sneakerheads-anonymous.png",
-      "logline": "Scammed out of his savings at a sneaker convention, a humiliated teen turns a fake support group into a viral verification movement, until a counterfeit kingpin moves in and the clout starts costing him everyone he cares about.",
-      "format": "feature",
-      "genre": "comedy",
-      "platforms": [
-        "tubi",
-        "netflix"
+        "bet-plus",
+        "theatrical"
       ],
       "status": "development",
       "collection": "feature-films",
@@ -342,7 +250,8 @@
       "genre": "comedy",
       "platforms": [
         "tubi",
-        "bet-plus"
+        "bet-plus",
+        "theatrical"
       ],
       "status": "development",
       "collection": "feature-films",
@@ -358,7 +267,8 @@
       "genre": "comedy",
       "platforms": [
         "netflix",
-        "tubi"
+        "tubi",
+        "theatrical"
       ],
       "status": "development",
       "collection": "feature-films",
@@ -374,7 +284,8 @@
       "genre": "horror",
       "platforms": [
         "tubi",
-        "netflix"
+        "netflix",
+        "theatrical"
       ],
       "status": "development",
       "collection": "feature-films",
@@ -390,7 +301,8 @@
       "genre": "horror",
       "platforms": [
         "tubi",
-        "netflix"
+        "netflix",
+        "theatrical"
       ],
       "status": "development",
       "collection": "feature-films",
@@ -406,23 +318,8 @@
       "genre": "thriller",
       "platforms": [
         "tubi",
-        "bet-plus"
-      ],
-      "status": "pitch-ready",
-      "collection": "feature-films",
-      "collectionName": "Feature Films"
-    },
-    {
-      "title": "Mirror Image",
-      "slug": "mirror-image",
-      "url": "projects/mirror-image.html",
-      "image": "images/mirror-image.png",
-      "logline": "A rising fashion influencer is digitally framed by her estranged sister using deepfakes, stolen biometrics, and weaponized clout.",
-      "format": "feature",
-      "genre": "thriller",
-      "platforms": [
-        "tubi",
-        "netflix"
+        "bet-plus",
+        "theatrical"
       ],
       "status": "pitch-ready",
       "collection": "feature-films",
@@ -438,27 +335,12 @@
       "genre": "thriller",
       "platforms": [
         "bet-plus",
-        "tubi"
+        "tubi",
+        "theatrical"
       ],
       "status": "development",
       "collection": "feature-films",
       "collectionName": "Feature Films"
-    },
-    {
-      "title": "Past Due",
-      "slug": "past-due",
-      "url": "projects/past-due.html",
-      "image": "images/past-due.png",
-      "logline": "A ruthless debt collector starts tracking down her clients, only to realize someone else is hunting them first.",
-      "format": "mow",
-      "genre": "thriller",
-      "platforms": [
-        "tubi",
-        "lifetime"
-      ],
-      "status": "pitch-ready",
-      "collection": "thriller-mow",
-      "collectionName": "Thriller & Suspense MOW"
     },
     {
       "title": "The Alibi",
@@ -477,38 +359,6 @@
       "collectionName": "Thriller & Suspense MOW"
     },
     {
-      "title": "It's Somebody You Know",
-      "slug": "its-somebody-you-know",
-      "url": "projects/its-somebody-you-know.html",
-      "image": "images/somebody-you-know.png",
-      "logline": "When a beloved Atlanta school counselor is murdered, a widowed ex-detective must protect her daughter and her own secrets as every sign points to a killer inside their tight-knit community.",
-      "format": "mow",
-      "genre": "thriller",
-      "platforms": [
-        "lifetime",
-        "bet-plus"
-      ],
-      "status": "development",
-      "collection": "thriller-mow",
-      "collectionName": "Thriller & Suspense MOW"
-    },
-    {
-      "title": "The Devon House",
-      "slug": "the-devon-house",
-      "url": "projects/the-devon-house.html",
-      "image": "images/the-devon-house-poster.png",
-      "logline": "A gentrification attorney inherits her aunt’s crumbling Atlanta home and uncovers the secret of her erased childhood, forcing her to choose between forgetting and the truth.",
-      "format": "mow",
-      "genre": "thriller",
-      "platforms": [
-        "bet-plus",
-        "lifetime"
-      ],
-      "status": "development",
-      "collection": "thriller-mow",
-      "collectionName": "Thriller & Suspense MOW"
-    },
-    {
       "title": "The Understudy",
       "slug": "the-understudy",
       "url": "projects/the-understudy.html",
@@ -519,38 +369,6 @@
       "platforms": [
         "bet-plus",
         "lifetime"
-      ],
-      "status": "development",
-      "collection": "thriller-mow",
-      "collectionName": "Thriller & Suspense MOW"
-    },
-    {
-      "title": "Twice Betrayed",
-      "slug": "twice-betrayed",
-      "url": "projects/twice-betrayed.html",
-      "image": "images/twice-betrayed-poster.png",
-      "logline": "A celebrated Atlanta therapist is framed for the murder of her ex-husband, who built a conspiracy to destroy her from beyond the grave.",
-      "format": "mow",
-      "genre": "thriller",
-      "platforms": [
-        "lifetime",
-        "bet-plus"
-      ],
-      "status": "development",
-      "collection": "thriller-mow",
-      "collectionName": "Thriller & Suspense MOW"
-    },
-    {
-      "title": "The Cost of Truth",
-      "slug": "the-cost-of-truth",
-      "url": "projects/the-cost-of-truth.html",
-      "image": "images/the-cost-of-truth-poster.png",
-      "logline": "With 86 days to stop an execution, a burned-out prosecutor risks everything to expose the buried evidence that can free an innocent man.",
-      "format": "mow",
-      "genre": "thriller",
-      "platforms": [
-        "tv-one",
-        "bet-plus"
       ],
       "status": "development",
       "collection": "thriller-mow",
@@ -619,37 +437,6 @@
       "collectionName": "Thriller & Suspense MOW"
     },
     {
-      "title": "Eminent Domain",
-      "slug": "eminent-domain",
-      "url": "projects/eminent-domain.html",
-      "image": "images/eminent-domain-poster.jpg",
-      "logline": "Fleeing an abusive ex, an Atlanta photographer documents a historic Black neighborhood before redevelopment erases it and discovers the family business behind the buyouts is tied to the man who raised her.",
-      "format": "mow",
-      "genre": "psychological-thriller-drama",
-      "platforms": [
-        "bet-plus"
-      ],
-      "status": "development",
-      "collection": "thriller-mow",
-      "collectionName": "Thriller & Suspense MOW"
-    },
-    {
-      "title": "Black Girl's Guide to Vengeance (and Vodka)",
-      "slug": "black-girls-guide-to-vengeance-and-vodka",
-      "url": "projects/black-girls-guide-to-vengeance-and-vodka.html",
-      "image": "images/black-girls-guide-to-vengeance-and-vodka.png",
-      "logline": "Dumped for an AI clone built from her own data, a software engineer goes viral by launching a revenge app for wronged women.",
-      "format": "mow",
-      "genre": "comedy",
-      "platforms": [
-        "bet-plus",
-        "tubi"
-      ],
-      "status": "pitch-ready",
-      "collection": "character-mow",
-      "collectionName": "Romance, Comedy & Character MOW"
-    },
-    {
       "title": "Hot Mess Express",
       "slug": "hot-mess-express",
       "url": "projects/hot-mess-express.html",
@@ -662,22 +449,6 @@
         "tubi"
       ],
       "status": "development",
-      "collection": "character-mow",
-      "collectionName": "Romance, Comedy & Character MOW"
-    },
-    {
-      "title": "Love After Likes",
-      "slug": "love-after-likes",
-      "url": "projects/love-after-likes.html",
-      "image": "images/love-after-likes.png",
-      "logline": "Two Atlanta creators fake a relationship for clout, until their feelings stop faking.",
-      "format": "mow",
-      "genre": "romance",
-      "platforms": [
-        "bet-plus",
-        "tubi"
-      ],
-      "status": "pitch-ready",
       "collection": "character-mow",
       "collectionName": "Romance, Comedy & Character MOW"
     },
@@ -742,54 +513,6 @@
         "own"
       ],
       "status": "pitch-ready",
-      "collection": "character-mow",
-      "collectionName": "Romance, Comedy & Character MOW"
-    },
-    {
-      "title": "The Ex-Files",
-      "slug": "the-ex-files",
-      "url": "projects/the-ex-files.html",
-      "image": "images/ex-files.png",
-      "logline": "A divorce attorney’s latest high-profile client is the man she thought she annulled years ago.",
-      "format": "mow",
-      "genre": "romance",
-      "platforms": [
-        "bet-plus",
-        "allblk"
-      ],
-      "status": "pitch-ready",
-      "collection": "character-mow",
-      "collectionName": "Romance, Comedy & Character MOW"
-    },
-    {
-      "title": "The Feed",
-      "slug": "the-feed",
-      "url": "projects/the-feed.html",
-      "image": "images/the-feed.png",
-      "logline": "A Black tech entrepreneur moves his family into a smart-home community and uncovers a racially biased surveillance system built to destroy him.",
-      "format": "mow",
-      "genre": "drama",
-      "platforms": [
-        "bet-plus",
-        "tubi"
-      ],
-      "status": "development",
-      "collection": "character-mow",
-      "collectionName": "Romance, Comedy & Character MOW"
-    },
-    {
-      "title": "This Is Me Now",
-      "slug": "this-is-me-now",
-      "url": "projects/this-is-me-now.html",
-      "image": "images/this-is-me-now.png",
-      "logline": "When a private video goes viral, a straight-A senior bound for MIT is abandoned by her school and fights back with spoken word, reclaiming her story in the most public way possible.",
-      "format": "mow",
-      "genre": "drama",
-      "platforms": [
-        "bet-plus",
-        "tubi"
-      ],
-      "status": "development",
       "collection": "character-mow",
       "collectionName": "Romance, Comedy & Character MOW"
     },
@@ -869,38 +592,6 @@
         "netflix"
       ],
       "status": "pitch-ready",
-      "collection": "southern-stories",
-      "collectionName": "Southern Stories with Teeth"
-    },
-    {
-      "title": "ATL Soul: The Velvet LaRou Story",
-      "slug": "atl-soul-the-velvet-larou-story",
-      "url": "projects/atl-soul-the-velvet-larou-story.html",
-      "image": "images/atl-soul-poster.png",
-      "logline": "In 1979 Atlanta, a soul singer robbed of her masters by her label fights through addiction to stage a rooftop protest concert that turns her stolen songs into a citywide reckoning.",
-      "format": "mow",
-      "genre": "thriller",
-      "platforms": [
-        "bet-plus",
-        "tv-one"
-      ],
-      "status": "development",
-      "collection": "southern-stories",
-      "collectionName": "Southern Stories with Teeth"
-    },
-    {
-      "title": "Beneath the Magnolia Tree",
-      "slug": "beneath-the-magnolia-tree",
-      "url": "projects/beneath-the-magnolia-tree.html",
-      "image": "images/beneath-the-magnolia-tree.png",
-      "logline": "After her estranged mother dies, a buttoned-up Atlanta therapist returns home to settle the estate and finds a teenage girl claiming to be her sister, and a family past someone wants kept buried.",
-      "format": "mow",
-      "genre": "southern-gothic",
-      "platforms": [
-        "tubi",
-        "bet-plus"
-      ],
-      "status": "development",
       "collection": "southern-stories",
       "collectionName": "Southern Stories with Teeth"
     },
