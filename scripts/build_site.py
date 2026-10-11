@@ -265,6 +265,9 @@ def build_main_pages(projects, collections, updated_iso):
         s = re.sub(r"(Projects \()[4-7]\d(\))", lambda m: "%s%d%s" % (m.group(1), total, m.group(2)), s)
         if path == "slate.html":
             s = s.replace('<nav class="collection-nav" aria-label', '<nav class="collection-nav" id="lanes" aria-label', 1)
+            for c in collections:  # keep each collection's "N titles" badge in step
+                s = re.sub(r'(id="%s".*?data-collection-count>)[^<]*' % re.escape(c["id"]),
+                           lambda m, n=c["count"]: m.group(1) + "%d title%s" % (n, "" if n == 1 else "s"), s, count=1, flags=re.S)
         if path == "contact.html":
             s = put_block(s, "PROJECT-OPTIONS", project_options(projects), None, path)
         if path == "index.html":
