@@ -1,12 +1,12 @@
 {
-  "count": 37,
+  "count": 40,
   "updated": "2026-10-11",
-  "hash": "e0d488443fe3d037",
+  "hash": "33cba897be32d507",
   "collections": [
     {
       "id": "limited-series",
       "name": "Limited Series",
-      "count": 2
+      "count": 3
     },
     {
       "id": "network-series",
@@ -16,7 +16,7 @@
     {
       "id": "feature-films",
       "name": "Feature Films",
-      "count": 13
+      "count": 15
     },
     {
       "id": "thriller-mow",
@@ -72,6 +72,21 @@
       "platforms": [
         "netflix",
         "hbo"
+      ],
+      "status": "development",
+      "collection": "limited-series",
+      "collectionName": "Limited Series"
+    },
+    {
+      "title": "GRAY CELL",
+      "slug": "gray-cell",
+      "url": "projects/gray-cell.html",
+      "image": "images/gray-cell-poster.jpg",
+      "logline": "In Singapore’s automated future, a covert team hunts threats dismissed by the city’s predictive system. Each intervention forces its leader to choose whose life the system can afford to lose.",
+      "format": "limited-series",
+      "genre": "action-thriller",
+      "platforms": [
+        "netflix"
       ],
       "status": "development",
       "collection": "limited-series",
@@ -150,6 +165,38 @@
       "genre": "action-thriller",
       "platforms": [
         "netflix",
+        "theatrical"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "The Wingwoman",
+      "slug": "the-wingwoman",
+      "url": "projects/the-wingwoman.html",
+      "image": "images/the-wingwoman-poster.jpg",
+      "logline": "A dating guru who sells love as a system has thirty days to prove it works in public or lose her company, so she coaches her best friend’s divorced brother into a viral romance, without telling him that her entire rulebook started in his college notebook.",
+      "format": "feature",
+      "genre": "romantic-comedy",
+      "platforms": [
+        "streaming",
+        "theatrical"
+      ],
+      "status": "development",
+      "collection": "feature-films",
+      "collectionName": "Feature Films"
+    },
+    {
+      "title": "The Terms of Engagement",
+      "slug": "the-terms-of-engagement",
+      "url": "projects/the-terms-of-engagement.html",
+      "image": "images/the-terms-of-engagement-poster.jpg",
+      "logline": "When a hot mic catches two rival political strategists trashing their own candidates, their bosses rebrand the scandal as a secret romance and stage an engagement through Election Day. As their signed contract threatens to leak, the relationship they are faking becomes the only honest thing either has done in a decade.",
+      "format": "feature",
+      "genre": "romantic-comedy",
+      "platforms": [
+        "streaming",
         "theatrical"
       ],
       "status": "development",

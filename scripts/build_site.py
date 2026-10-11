@@ -40,7 +40,7 @@ PLATFORM_LABELS = {
     "bet-plus": "BET+", "netflix": "Netflix", "tubi": "Tubi", "lifetime": "Lifetime",
     "tv-one": "TV One", "own": "OWN", "hallmark": "Hallmark", "hbo": "HBO / Max",
     "broadcast": "Broadcast TV", "allblk": "ALLBLK", "theatrical": "Theatrical",
-    "peacock": "Peacock", "paramount": "Paramount+", "apple": "Apple TV+",
+    "peacock": "Peacock", "streaming": "Streamers", "paramount": "Paramount+", "apple": "Apple TV+",
 }
 FORMAT_LABELS = [
     ("feature", "Feature Films"), ("mow", "TV Movies (MOW)"),
