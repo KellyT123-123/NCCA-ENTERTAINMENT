@@ -17,6 +17,7 @@ It regenerates everything that is derived from the Slate, so nothing is typed tw
   - the "Slate updated" date (changes only when titles or their details change)
   - the analytics script tag on every public page
   - "57 original projects"-style counts on the homepage and Slate
+  - the private Materials Room (every title's decks and one-pagers; see MATERIALS_ROOM)
 
 Generated regions sit between <!-- GEN:NAME:START --> and <!-- GEN:NAME:END -->
 markers. Edit the script, not the generated HTML.
@@ -257,12 +258,13 @@ def build_main_pages(projects, collections, updated_iso):
         if MEGA_COUNT_CSS not in s:
             s = s.replace("</style>", MEGA_COUNT_CSS + "\n</style>", 1)
         # Keep every "NN original projects" style count in step with the slate.
-        s = re.sub(r"\b([4-7]\d)(\s+(?:original scripted projects|Original Projects|original projects|Projects|projects|titles))\b",
+        # Two-digit totals of any size; "N titles" is left alone because buyer and lane badges use it.
+        s = re.sub(r"\b([1-9]\d)(\s+(?:original scripted projects|Original Projects|original projects|Projects|projects))\b",
                    lambda m: "%d%s" % (total, m.group(2)), s)
-        s = re.sub(r'(<div class="hero__stat-num">)[4-7]\d(</div><div class="hero__stat-label">Original Projects)',
+        s = re.sub(r'(<div class="hero__stat-num">)[1-9]\d(</div><div class="hero__stat-label">Original Projects)',
                    lambda m: "%s%d%s" % (m.group(1), total, m.group(2)), s)
-        s = re.sub(r"\b(All|Explore all|Explore All)\s+[4-7]\d\b", lambda m: "%s %d" % (m.group(1), total), s)
-        s = re.sub(r"(Projects \()[4-7]\d(\))", lambda m: "%s%d%s" % (m.group(1), total, m.group(2)), s)
+        s = re.sub(r"\b(All|Explore all|Explore All)\s+[1-9]\d\b", lambda m: "%s %d" % (m.group(1), total), s)
+        s = re.sub(r"(Projects \()[1-9]\d(\))", lambda m: "%s%d%s" % (m.group(1), total, m.group(2)), s)
         if path == "slate.html":
             s = s.replace('<nav class="collection-nav" aria-label', '<nav class="collection-nav" id="lanes" aria-label', 1)
             for c in collections:  # keep each collection's "N titles" badge in step
@@ -419,6 +421,185 @@ def build_passports(projects):
     return done
 
 
+# ---- MATERIALS ROOM (private, unlisted) ----
+# One page listing every title and every file on the site, with Open and Copy link buttons.
+# The address is deliberately hard to guess. It is never linked, never in the sitemap, and noindexed.
+MATERIALS_ROOM = "materials-room-e5e0cb80.html"
+SITE = "https://nccaentertainment.com/"
+MATERIAL_DIRS = ("pitch-decks", "one-sheets")
+# Files whose names don't start with the title's slug.
+MATERIAL_ALIASES = {"spelman-christmas": "a-spelman-christmas"}
+
+
+def material_kind(name):
+    n, ext = name.lower(), os.path.splitext(name)[1].lower()
+    if "deck" in n:
+        return (0, "Pitch Deck", "PDF") if ext == ".pdf" else (1, "Pitch Deck", "PowerPoint")
+    if "cast" in n and ("one-pager" in n or "onepager" in n or "one-sheet" in n):
+        return (2, "One-Pager + Cast", "PDF")
+    if "cast" in n:
+        return (3, "Cast Suggestions", "PDF")
+    return (2, "One-Pager", "PDF")
+
+
+def material_owner(stem, slugs):
+    for alias, slug in MATERIAL_ALIASES.items():
+        if stem.startswith(alias):
+            return slug
+    best = [s for s in slugs if stem == s or stem.startswith(s + "-")]
+    return max(best, key=len) if best else None
+
+
+def build_materials_room(projects):
+    live = [p["slug"] for p in projects]
+    hidden_slugs = sorted(f[:-5] for f in os.listdir(os.path.join(ROOT, "projects"))
+                          if f.endswith(".html") and f[:-5] not in live)
+    files = {}
+    for d in MATERIAL_DIRS:
+        for f in sorted(os.listdir(os.path.join(ROOT, d))):
+            if f.lower().endswith((".pdf", ".pptx")):
+                stem = os.path.splitext(f)[0].lower()
+                owner = material_owner(stem, live + hidden_slugs) or "_other"
+                files.setdefault(owner, []).append("%s/%s" % (d, f))
+
+    def title_for(slug):
+        m = re.search(r"<title>([^<]*?)\s*(?:—|\||-)\s*NCCA", read("projects/%s.html" % slug)) \
+            if os.path.exists(os.path.join(ROOT, "projects/%s.html" % slug)) else None
+        return html.unescape(m.group(1)) if m else slug.replace("-", " ").title()
+
+    def card(title, slug, meta, image, on_slate):
+        items = sorted(files.get(slug, []), key=lambda f: (material_kind(os.path.basename(f))[0], f))
+        rows = []
+        for f in items:
+            _, label, fmt = material_kind(os.path.basename(f))
+            url = SITE + f
+            rows.append('<li class="file"><span class="file__name">%s <em>%s</em></span>'
+                        '<span class="file__btns"><a class="btn" href="%s" target="_blank" rel="noopener">Open</a>'
+                        '<button class="btn btn--gold" type="button" data-copy="%s">Copy link</button></span></li>'
+                        % (esc(label), esc(fmt), esc(f), esc(url)))
+        if not rows:
+            rows.append('<li class="file file--none">No files on the site yet.</li>')
+        passport = '<a class="passport" href="projects/%s.html" target="_blank" rel="noopener">Passport page</a>' % esc(slug) \
+            if os.path.exists(os.path.join(ROOT, "projects/%s.html" % slug)) else ""
+        reply = ('<button class="btn btn--ghost" type="button" data-reply="%s" data-title="%s">Copy approval email</button>'
+                 % (esc(json.dumps([[material_kind(os.path.basename(f))[1], SITE + f] for f in items
+                                    if not f.endswith(".pptx")])), esc(title))) if items else ""
+        thumb = '<img src="%s" alt="" loading="lazy">' % esc(image) if image else '<div class="noimg"></div>'
+        return ('<article class="card%s" data-name="%s" data-has="%d">%s<div class="card__body">'
+                '<h3>%s</h3><p class="meta">%s%s</p><ul class="files">%s</ul><div class="card__foot">%s%s</div></div></article>'
+                % ("" if on_slate else " card--off", esc(title.lower()), 1 if items else 0, thumb, esc(title),
+                   esc(meta), "" if on_slate else " · Off the slate", "".join(rows), passport, reply))
+
+    cards = [card(p["title"], p["slug"], p.get("collectionName", ""), p.get("image", ""), True) for p in projects]
+    off = [card(title_for(s), s, "Hidden", "", False) for s in hidden_slugs if s in files]
+    other = files.get("_other", [])
+    with_files = sum(1 for p in projects if p["slug"] in files)
+    n_files = sum(len(v) for v in files.values())
+    other_html = ""
+    if other:
+        other_html = '<h2>Other files</h2><ul class="files files--other">%s</ul>' % "".join(
+            '<li class="file"><span class="file__name">%s</span><span class="file__btns"><a class="btn" href="%s" target="_blank" '
+            'rel="noopener">Open</a><button class="btn btn--gold" type="button" data-copy="%s">Copy link</button></span></li>'
+            % (esc(os.path.basename(f)), esc(f), esc(SITE + f)) for f in other)
+    page = MATERIALS_ROOM_TEMPLATE.replace("{{CARDS}}", "\n".join(cards)).replace("{{OFF}}", (
+        '<h2>Off the slate</h2><p class="sub">Hidden titles that still have files on the site.</p><div class="grid">%s</div>'
+        % "\n".join(off)) if off else "").replace("{{OTHER}}", other_html).replace(
+        "{{STATS}}", "%d titles on the slate · %d with materials · %d files" % (len(projects), with_files, n_files))
+    write(MATERIALS_ROOM, page)
+    return with_files, n_files
+
+
+MATERIALS_ROOM_TEMPLATE = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Materials Room · NCCA Entertainment</title>
+<link rel="icon" href="images/brand/ncca-favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0A;--panel:#141414;--line:#2E2E2E;--text:#E8E4DC;--dim:#9A948A;--gold:#C9A84C}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15px/1.5 'DM Sans',system-ui,sans-serif;padding:32px 16px 80px}
+.wrap{max-width:1180px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:20px}
+header img{height:40px;display:block;margin-bottom:14px}
+h1{font:600 2rem 'Playfair Display',Georgia,serif}
+h2{font:600 1.4rem 'Playfair Display',Georgia,serif;margin:48px 0 6px}
+.sub,.stats{color:var(--dim);font-size:.9rem}
+.how{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:6px;padding:14px 18px;margin-bottom:20px;font-size:.92rem;color:var(--dim)}
+.how b{color:var(--text)}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:20px}
+.tools input[type=search]{flex:1 1 260px;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:6px;padding:10px 14px;font:inherit}
+.tools label{color:var(--dim);font-size:.9rem;display:flex;gap:8px;align-items:center;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin-top:16px}
+.card{display:flex;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.card img,.noimg{width:72px;height:108px;object-fit:cover;border-radius:4px;flex:none;background:#1E1E1E}
+.card--off{opacity:.8}
+.card__body{flex:1;min-width:0;display:flex;flex-direction:column}
+h3{font:600 1.08rem 'Playfair Display',Georgia,serif}
+.meta{color:var(--dim);font-size:.8rem;margin-bottom:8px}
+.files{list-style:none;display:flex;flex-direction:column;gap:6px;flex:1}
+.file{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.88rem}
+.file em{color:var(--dim);font-style:normal;font-size:.78rem}
+.file--none{color:var(--dim);font-style:italic}
+.file__btns{display:flex;gap:6px;flex:none}
+.btn{background:transparent;border:1px solid var(--line);color:var(--text);border-radius:4px;padding:4px 10px;font:500 .78rem 'DM Sans',sans-serif;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--gold)}
+.btn--gold{border-color:rgba(201,168,76,.5);color:var(--gold)}
+.btn--ghost{color:var(--dim)}
+.btn.done{background:var(--gold);color:#0A0A0A;border-color:var(--gold)}
+.card__foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.passport{color:var(--gold);font-size:.8rem;text-decoration:none}
+.files--other{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;margin-top:12px}
+.hide{display:none!important}
+@media (max-width:420px){.grid{grid-template-columns:1fr}.card img,.noimg{width:56px;height:84px}.file{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div><img src="images/brand/ncca-logo-compact-on-dark.svg" alt="NCCA Entertainment"><h1>Materials Room</h1></div>
+  <p class="stats">{{STATS}}</p>
+</header>
+<div class="how"><b>Private page.</b> Don't share this address. To approve a request: find the title, hit <b>Copy link</b> (or <b>Copy approval email</b> for a ready-to-paste reply with every PDF), and paste it into your reply. Rebuilt automatically whenever the site is.</div>
+<div class="tools">
+  <input type="search" id="q" placeholder="Search titles" aria-label="Search titles">
+  <label><input type="checkbox" id="has"> Only titles with files</label>
+</div>
+<div class="grid" id="grid">
+{{CARDS}}
+</div>
+{{OFF}}
+{{OTHER}}
+</div>
+<script>
+function copyText(t,btn,label){
+  var done=function(){btn.classList.add('done');btn.textContent='Copied';setTimeout(function(){btn.classList.remove('done');btn.textContent=label},1600)};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(done,fallback)}else{fallback()}
+  function fallback(){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){prompt('Copy this:',t)}a.remove()}
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-copy]');if(b){copyText(b.dataset.copy,b,'Copy link');return}
+  var r=e.target.closest('[data-reply]');if(r){
+    var files=JSON.parse(r.dataset.reply),t=r.dataset.title;
+    var lines=files.map(function(f){return f[0]+': '+f[1]}).join('\n');
+    var msg='Thanks for your interest in '+t+'. Here are the materials you requested:\n\n'+lines+
+      '\n\nThese are shared for your review only. Please don\'t forward them without checking with me first. Happy to set up a call whenever works for you.\n\nKT';
+    copyText(msg,r,'Copy approval email')}
+});
+var q=document.getElementById('q'),has=document.getElementById('has');
+function filter(){var v=q.value.trim().toLowerCase();document.querySelectorAll('.card').forEach(function(c){
+  c.classList.toggle('hide',(v&&c.dataset.name.indexOf(v)<0)||(has.checked&&c.dataset.has==='0'))})}
+q.addEventListener('input',filter);has.addEventListener('change',filter);
+</script>
+</body>
+</html>
+"""
+
+
 def main():
     projects, collections = load_slate()
     if not projects:
@@ -430,8 +611,10 @@ def main():
     build_main_pages(projects, collections, updated_iso)
     build_music()
     n = build_passports(projects)
+    with_files, n_files = build_materials_room(projects)
     print("Slate: %d titles in %d collections (updated %s). Rebuilt home, Slate, Studio, Contact, Music, %d Passports."
           % (len(projects), len(collections), pretty_date(updated_iso), n))
+    print("Materials Room: %d titles with files, %d files total (%s)." % (with_files, n_files, MATERIALS_ROOM))
 
 
 if __name__ == "__main__":
