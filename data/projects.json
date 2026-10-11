@@ -1,7 +1,7 @@
 {
   "count": 40,
   "updated": "2026-10-11",
-  "hash": "33cba897be32d507",
+  "hash": "9cfbc696f96701d2",
   "collections": [
     {
       "id": "limited-series",
@@ -180,6 +180,7 @@
       "format": "feature",
       "genre": "romantic-comedy",
       "platforms": [
+        "netflix",
         "streaming",
         "theatrical"
       ],
@@ -196,6 +197,7 @@
       "format": "feature",
       "genre": "romantic-comedy",
       "platforms": [
+        "netflix",
         "streaming",
         "theatrical"
       ],
