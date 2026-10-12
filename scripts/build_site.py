@@ -432,14 +432,21 @@ MATERIAL_ALIASES = {"spelman-christmas": "a-spelman-christmas"}
 
 
 def material_kind(name):
+    """(sort order, label, format) for a materials file, judged from its file name."""
     n, ext = name.lower(), os.path.splitext(name)[1].lower()
+    fmt = "PowerPoint" if ext == ".pptx" else "PDF"
     if "deck" in n:
-        return (0, "Pitch Deck", "PDF") if ext == ".pdf" else (1, "Pitch Deck", "PowerPoint")
+        return (0 if ext == ".pdf" else 1, "Pitch Deck", fmt)
+    if "bible" in n:
+        return (2, "Series Bible", fmt)
+    ep = re.search(r"episode-(\d+)", n)
+    if ep:
+        return (6, "Episode %s Guest Casting" % ep.group(1), fmt)
     if "cast" in n and ("one-pager" in n or "onepager" in n or "one-sheet" in n):
-        return (2, "One-Pager + Cast", "PDF")
+        return (3, "One-Pager + Cast", fmt)
     if "cast" in n:
-        return (3, "Cast Suggestions", "PDF")
-    return (2, "One-Pager", "PDF")
+        return (4, "Cast Suggestions", fmt)
+    return (3, "One-Pager", fmt)
 
 
 def material_owner(stem, slugs):
