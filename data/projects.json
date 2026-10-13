@@ -1,7 +1,7 @@
 {
-  "count": 40,
-  "updated": "2026-10-11",
-  "hash": "9cfbc696f96701d2",
+  "count": 41,
+  "updated": "2026-10-13",
+  "hash": "d719f5b3370f8eb2",
   "collections": [
     {
       "id": "limited-series",
@@ -21,7 +21,7 @@
     {
       "id": "thriller-mow",
       "name": "Thriller & Suspense MOW",
-      "count": 6
+      "count": 7
     },
     {
       "id": "character-mow",
@@ -465,6 +465,22 @@
       "genre": "action-thriller",
       "platforms": [
         "lifetime"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "Paper Tags",
+      "slug": "paper-tags",
+      "url": "projects/paper-tags.html",
+      "image": "images/paper-tags-poster.png",
+      "logline": "When a young musician is shot dead outside an Atlanta club, Detective Tasha Monroe signs the ex she once put away on as her informant, then finds the forged impound releases behind a stolen-car ring all carry her mentor’s initials.",
+      "format": "mow",
+      "genre": "crime-thriller",
+      "platforms": [
+        "lifetime",
+        "bet-plus"
       ],
       "status": "development",
       "collection": "thriller-mow",
