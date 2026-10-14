@@ -1,7 +1,7 @@
 {
   "count": 41,
-  "updated": "2026-10-13",
-  "hash": "d719f5b3370f8eb2",
+  "updated": "2026-10-14",
+  "hash": "df4c3004a3c0e483",
   "collections": [
     {
       "id": "limited-series",
@@ -361,7 +361,7 @@
       "title": "The Influencer's Last Post",
       "slug": "the-influencers-last-post",
       "url": "projects/the-influencers-last-post.html",
-      "image": "images/influencers-last-post.png",
+      "image": "images/the-influencers-last-post-poster.png",
       "logline": "A social media influencer’s final post becomes the only key to solving her own murder.",
       "format": "feature",
       "genre": "thriller",
