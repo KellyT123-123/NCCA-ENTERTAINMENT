@@ -9,7 +9,7 @@ const projectsDataAll = [
     "onesheet": "one-sheets/influencers-last-post-one-sheet.pdf",
     "treatment": "assets/influencers-last-post-treatment.pdf",
     "trailer": "assets/influencers-last-post-teaser.mp4",
-    "image": "images/influencers-last-post.png",
+    "image": "images/the-influencers-last-post-poster.png",
     "platforms": [
       "Tubi",
       "BET+"
