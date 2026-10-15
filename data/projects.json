@@ -1,7 +1,7 @@
 {
-  "count": 41,
-  "updated": "2026-10-14",
-  "hash": "df4c3004a3c0e483",
+  "count": 42,
+  "updated": "2026-10-15",
+  "hash": "ecfedddc1b154b08",
   "collections": [
     {
       "id": "limited-series",
@@ -21,7 +21,7 @@
     {
       "id": "thriller-mow",
       "name": "Thriller & Suspense MOW",
-      "count": 7
+      "count": 8
     },
     {
       "id": "character-mow",
@@ -481,6 +481,21 @@
       "platforms": [
         "lifetime",
         "bet-plus"
+      ],
+      "status": "development",
+      "collection": "thriller-mow",
+      "collectionName": "Thriller & Suspense MOW"
+    },
+    {
+      "title": "The Caregiver’s Secret",
+      "slug": "the-caregivers-secret",
+      "url": "projects/the-caregivers-secret.html",
+      "image": "images/the-caregivers-secret-poster.png",
+      "logline": "A disgraced nurse takes a live-in job caring for a silenced former senator, then learns the family chose her on purpose: her one mistake makes her the perfect person to blame.",
+      "format": "mow",
+      "genre": "domestic-thriller",
+      "platforms": [
+        "lifetime"
       ],
       "status": "development",
       "collection": "thriller-mow",
