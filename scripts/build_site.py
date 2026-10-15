@@ -437,6 +437,12 @@ def material_kind(name):
     fmt = "PowerPoint" if ext == ".pptx" else "PDF"
     if "deck" in n:
         return (0 if ext == ".pdf" else 1, "Pitch Deck", fmt)
+    if "script" in n or "draft" in n:
+        return (7, "Script", fmt)
+    if "extension" in n:
+        return (8, "Story Extension", fmt)
+    if "pitch" in n:
+        return (5, "Pitch Sheet", fmt)
     if "bible" in n:
         return (2, "Series Bible", fmt)
     ep = re.search(r"episode-(\d+)", n)
@@ -490,7 +496,8 @@ def build_materials_room(projects):
             if os.path.exists(os.path.join(ROOT, "projects/%s.html" % slug)) else ""
         reply = ('<button class="btn btn--ghost" type="button" data-reply="%s" data-title="%s">Copy approval email</button>'
                  % (esc(json.dumps([[material_kind(os.path.basename(f))[1], SITE + f] for f in items
-                                    if not f.endswith(".pptx")])), esc(title))) if items else ""
+                                    if not f.endswith(".pptx") and material_kind(os.path.basename(f))[1] != "Script"])),
+                    esc(title))) if items else ""
         thumb = '<img src="%s" alt="" loading="lazy">' % esc(image) if image else '<div class="noimg"></div>'
         return ('<article class="card%s" data-name="%s" data-has="%d">%s<div class="card__body">'
                 '<h3>%s</h3><p class="meta">%s%s</p><ul class="files">%s</ul><div class="card__foot">%s%s</div></div></article>'
